@@ -10,8 +10,8 @@ stages:
 build:
   stage: build
   script:
-    - './build.cmd Pack Test'
+    - './build.cmd Test'
   artifacts:
     paths:
       - output/*.nupkg
-      - output/test-results/*
+      - output/test-results/*.trx
