@@ -124,8 +124,8 @@ partial class Build
     IEnumerable<string> IReportIssues.InspectCodeFailOnCategories => new string[0];
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _
-            .SetVersion(DefaultDeploymentVersion));
+        .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
+        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion));
 
     string PublicNuGetSource => "https://api.nuget.org/v3/index.json";
     string FeedzNuGetSource => "https://f.feedz.io/gruke/alpha/nuget";
@@ -186,11 +186,10 @@ partial class Build
         {
             var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
             foreach (var issue in issues)
-                await GitHubActions.Instance.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+                await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
         });
 
     Target Install => _ => _
-        .DependsOn<IPack>()
         .Executes(() =>
         {
             SuppressErrors(() => DotNet($"tool uninstall -g GreemDev.{Solution.Nuke_GlobalTool.Name}"), logWarning: false);
