@@ -5,14 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch`
+    - Instead, only the most recent value is retained.
 - Added support for XML Solutions into `gruke :setup` ([nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572))
   - Thanks, [@lahma](https://github.com/lahma)!
 - Added support for resolving VS2026 MSBuild installations ([nuke-build#1583](https://github.com/nuke-build/nuke/pull/1583))
   - Thanks, [@Kielek](https://github.com/Kielek)!
-- Added support for Windows installations being not on C:\ ([nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557))
-  - Thanks, [@Uriel6575](https://github.com/Uriel6575)! 
-- Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch`
-  - Instead, only the most recent value is retained.
+- Added support for Windows installations being not on `C:\` ([nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557))
+  - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
+- Removed deprecated & retired Azure Pipelines OS images ([nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549))
+    - Thanks, [@aneilmac](https://github.com/Uriel6575)!
 
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
