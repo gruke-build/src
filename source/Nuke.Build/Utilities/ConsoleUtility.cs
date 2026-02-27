@@ -3,10 +3,12 @@
 // https://github.com/GreemDev/NUKE/blob/master/LICENSE
 
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
+using Serilog;
 
 namespace Nuke.Common.Utilities;
 
@@ -111,13 +113,24 @@ public class ConsoleUtility
     }
 
     // ReSharper disable once CognitiveComplexity
-    public static string ReadSecret()
+    public static string ReadSecret(TimeSpan timeout)
     {
         var secret = string.Empty;
 
+        var stopwatch = Stopwatch.StartNew();
         do
         {
-            var key = Console.ReadKey(intercept: true);
+            ConsoleKeyInfo key;
+            try
+            {
+                key = Console.ReadKey(intercept: true);
+            }
+            catch
+            {
+                Log.Error("Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
+                break;
+            }
+
             if (key.Key == ConsoleKey.Backspace)
             {
                 if (secret.Length > 0)
@@ -129,6 +142,7 @@ public class ConsoleUtility
                             : 1;
                     var length = secret.Length - charsToRemove;
                     secret = secret[..length];
+                    stopwatch = Stopwatch.StartNew();
                     Console.Write(string.Concat(Enumerable.Repeat("\b \b", charsToRemove)));
                 }
             }
@@ -140,7 +154,13 @@ public class ConsoleUtility
             else if (!char.IsControl(key.KeyChar))
             {
                 secret += key.KeyChar;
+                stopwatch = Stopwatch.StartNew();
                 Console.Write("*");
+            }
+            else if (stopwatch.Elapsed >= timeout)
+            {
+                Console.WriteLine($"Timed out. Continuing with what was input (length: {secret.Length}).");
+                break;
             }
         } while (true);
 

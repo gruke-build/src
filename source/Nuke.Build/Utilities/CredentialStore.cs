@@ -65,12 +65,13 @@ public static class CredentialStore
 
     private static string Security => ToolPathResolver.GetPathExecutable("security");
 
-    public static string GetPassword(string profile, string rootDirectory)
+    public static string GetPassword(string profile, string rootDirectory, TimeSpan? passwordPromptTimeout = null)
     {
+        passwordPromptTimeout ??= TimeSpan.FromSeconds(10);
         string PromptForPassword()
         {
             Host.Information($"Enter password for {Constants.GetParametersFileName(profile)}:");
-            return ConsoleUtility.ReadSecret();
+            return ConsoleUtility.ReadSecret(passwordPromptTimeout.Value);
         }
 
         var credentialStoreName = Constants.GetCredentialStoreName(rootDirectory, profile);
@@ -89,7 +90,7 @@ public static class CredentialStore
                     ? "Enter a minimum 10 character password (leave empty for auto-generated stored in macOS keychain):"
                     : "Enter a minimum 10 character password:");
 
-            var password = ConsoleUtility.ReadSecret();
+            var password = ConsoleUtility.ReadSecret(TimeSpan.FromMinutes(2));
             if (password.IsNullOrEmpty() && EnvironmentInfo.IsOsx)
             {
                 generated = true;
