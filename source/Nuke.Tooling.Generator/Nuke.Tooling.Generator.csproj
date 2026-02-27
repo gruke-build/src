@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Nuke.CodeGeneration</RootNamespace>
+    <PackageId>GreemDev.Nuke.Tooling.Generator</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

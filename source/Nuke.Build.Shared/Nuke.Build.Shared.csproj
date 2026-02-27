@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <PackageId>GreemDev.Nuke.Build.Shared</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>GreemDev.Nuke.Utilities.Text.Json</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
