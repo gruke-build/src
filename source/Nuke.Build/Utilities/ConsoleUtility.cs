@@ -119,28 +119,22 @@ public class ConsoleUtility
     {
         var secret = string.Empty;
 
-        var keyReader = new ConsoleKeyReader();
+        using var keyReader = new ConsoleKeyReader();
         do
         {
-            ConsoleKeyInfo key;
-
-            try
+            if (keyReader.Read(timeout) is not { } key)
             {
-                if (keyReader.Read(timeout) is not { } keyInfo)
+                if (keyReader.DidError)
                 {
-                    Console.WriteLine($"Timed out. Continuing with what was input (length: {secret.Length}).");
-                    break;
-                }
-
-                key = keyInfo;
-                keyReader.Reset();
-            }
-            catch
-            {
-                Log.Error(
-                    "Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
+                    Log.Error(
+                        "Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
+                } 
+                else
+                    Log.Error("Timed out. Continuing with what was input (length: {length}).", secret.Length);
                 break;
             }
+
+            keyReader.Reset();
 
             if (key.Key == ConsoleKey.Backspace)
             {

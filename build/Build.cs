@@ -54,7 +54,7 @@ partial class Build
 
     [CI] readonly TeamCity TeamCity;
     [CI] readonly AzurePipelines AzurePipelines;
-    [CI] readonly AppVeyor AppVeyor;
+    //[CI] readonly AppVeyor AppVeyor;
     [CI] readonly GitHubActions GitHubActions;
 
     GitVersion GitVersion => From<IHazGitVersion>().Versioning;
@@ -141,7 +141,9 @@ partial class Build
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => IsPublicRelease && Host is AppVeyor || GitRepository.IsOnDevelopBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment)
+        .Requires(() => 
+            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
+            (GitRepository.IsOnDevelopBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment))
         .WhenSkipped(DependencyBehavior.Execute);
 
     IEnumerable<AbsolutePath> NuGetPackageFiles

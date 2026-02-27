@@ -13,6 +13,7 @@ public class ConsoleKeyReader : IDisposable
     private AutoResetEvent _get, _got;
 
     private ConsoleKeyInfo? _read;
+
     private bool Disposed { get; set; }
 
     public bool ConsumeInput { get; init; }
@@ -24,6 +25,8 @@ public class ConsoleKeyReader : IDisposable
 
     private void Init()
     {
+        ObjectDisposedException.ThrowIf(Disposed, this);
+
         _get = new AutoResetEvent(false);
         _got = new AutoResetEvent(false);
         _thread = new Thread(Reader) { IsBackground = true };
@@ -44,16 +47,35 @@ public class ConsoleKeyReader : IDisposable
             }
 
             _get.WaitOne();
-            _read = Console.ReadKey(intercept: !ConsumeInput);
-            _got.Set();
+            try
+            {
+                _read = Console.ReadKey(intercept: !ConsumeInput);
+            }
+            catch (InvalidOperationException)
+            {
+                DidError = true;
+            }
+            finally
+            {
+                _got.Set();
+            }
+
+            if (DidError)
+                return;
         }
     }
 
+    public bool DidError { get; private set; }
+
     public ConsoleKeyInfo? Read(TimeSpan timeout)
     {
+        ObjectDisposedException.ThrowIf(Disposed, this);
+
         _get.Set();
         return _got.WaitOne(timeout)
-            ? _read
+            ? DidError
+                ? null
+                : _read
             : null;
     }
 
@@ -62,8 +84,10 @@ public class ConsoleKeyReader : IDisposable
         _get.Reset();
         _got.Reset();
         _read = null;
-        _thread.Interrupt();
+        if (_thread.IsAlive)
+            _thread.Interrupt();
         _thread = null;
+        DidError = false;
         Init();
     }
 
@@ -71,7 +95,15 @@ public class ConsoleKeyReader : IDisposable
     {
         if (!Disposed)
         {
-            _thread.Interrupt();
+            _get.Reset();
+            _got.Reset();
+            _read = null;
+            if (_thread.IsAlive)
+                _thread.Interrupt();
+            _thread = null;
+            DidError = false;
+
+            Disposed = true;
         }
     }
 }
