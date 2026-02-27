@@ -6,7 +6,7 @@ Before you can set up a build project, you need to install NUKE's dedicated [.NE
 
 ```powershell
 # terminal-command
-dotnet tool install Nuke.GlobalTool --global
+dotnet tool install GreemDev.Nuke.GlobalTool --global
 ```
 
 From now on, you can use the global tool to:
@@ -20,7 +20,7 @@ From now on, you can use the global tool to:
 - [Manage secrets in parameter files](../06-global-tool/02-secrets.md)
 
 :::note
-If you're running on Linux-based systems, it's worth checking if the `nuke` global tool is available. This can be verified with `where nuke`. If the global tool is not found, you have to manually add `$HOME/.dotnet/tools` to your terminal configuration:
+If you're running on Linux-based systems, it's worth checking if the `gruke` global tool is available. This can be verified with `where gruke`. If the global tool is not found, you have to manually add `$HOME/.dotnet/tools` to your terminal configuration:
 
 <Tabs>
   <TabItem value="zsh" label="Zsh" default>
