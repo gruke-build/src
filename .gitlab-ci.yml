@@ -11,3 +11,7 @@ build:
   stage: build
   script:
     - './build.cmd Pack Test'
+  artifacts:
+    paths:
+      - output/*.nupkg
+      - output/test-results/*
