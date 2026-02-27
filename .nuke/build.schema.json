@@ -21,29 +21,6 @@
         "VSCode"
       ]
     },
-    "SignPathSettings": {
-      "type": "object",
-      "properties": {
-        "OrganizationId": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "ProjectSlug": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "PolicySlug": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
     "ExecutableTarget": {
       "type": "string",
       "enum": [
@@ -75,7 +52,6 @@
         "ReportIssues",
         "Restore",
         "RunTargetInDockerImageTest",
-        "SignPackages",
         "Test",
         "UpdateContributors",
         "UpdateStargazers"
@@ -194,13 +170,6 @@
           "type": "string",
           "description": "nuget.org API key",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "SignPathApiToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "SignPathSettings": {
-          "$ref": "#/definitions/SignPathSettings"
         },
         "SlackWebhook": {
           "type": "string",

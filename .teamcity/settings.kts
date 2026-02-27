@@ -63,12 +63,6 @@ project {
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
         text (
-            "env.SignPathSettings",
-            label = "SignPathSettings",
-            value = "SignPathSettings { OrganizationId = 0fdaf334-6910-41f4-83d2-e58e4cccb087, ProjectSlug = nuke, PolicySlug = release-signing }",
-            allowEmpty = true,
-            display = ParameterDisplay.NORMAL)
-        text (
             "env.TestDegreeOfParallelism",
             label = "TestDegreeOfParallelism",
             value = "1",
