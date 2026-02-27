@@ -191,8 +191,8 @@ partial class Build
         .DependsOn<IPack>()
         .Executes(() =>
         {
-            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Nuke_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g {Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
+            SuppressErrors(() => DotNet($"tool uninstall -g GreemDev.{Solution.Nuke_GlobalTool.Name}"), logWarning: false);
+            DotNet($"tool install -g GreemDev.{Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
         });
 
     T From<T>()
