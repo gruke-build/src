@@ -4,7 +4,7 @@ As a community, we want to help each other, provide constructive feedback, and m
 
 ## Consumer Expectations
 
-NUKE is a personal project that was made open-source to let the whole community benefit from it **free of charge** but also ["as is"](https://github.com/nuke-build/nuke/blob/develop/LICENSE). Like many open-source projects, it is primarily maintained and developed by a [single person](https://github.com/matkoch). Some of the **most time-consuming tasks** around the project are:
+NUKE is a personal project that was made open-source to let the whole community benefit from it **free of charge** but also ["as is"](https://github.com/GreemDev/NUKE/blob/develop/LICENSE). Like many open-source projects, it is primarily maintained and developed by a [single person](https://github.com/matkoch). Some of the **most time-consuming tasks** around the project are:
 
 - Development of the NuGet package itself (C#, .NET, MSBuild)
 - Collecting CLI metadata (.NET ClI, MSBuild, Docker, +30 others)
@@ -26,7 +26,6 @@ Therefore, **everything that benefits a larger audience is prioritized** over di
 There are several minimal to zero efforts you can make to show your support for the project:
 
 - Give the [GitHub project](https://github.com/nuke-build/nuke/stargazers) a star (and tell your team)
-- Follow [@nukebuildnet](https://twitter.com/nukebuildnet) and [@nuke@dotnet.social](https://dotnet.social/@nuke)
 - Upvote, share and comment on our content (see [#mentions](https://app.slack.com/client/T9QUKHC4A/CDJD8CGQ5) on Slack)
 - Talk about NUKE on social media and let others know where it can help (tag us!)
 
@@ -52,16 +51,16 @@ Evaluate whether your topic is going to be a valid issue:
 
 - Have you read and searched the [documentation](https://nuke.build/docs/introduction/)?
 - Have you checked the [FAQ](https://nuke.build/faq/)?
-- Is your issue more of a question? Ask on [GitHub discussions](https://github.com/nuke-build/nuke/discussions), [Slack](https://nuke.build/slack), or [Discord](https://nuke.build/discord)!
+- Is your issue more of a question? Ask on [GitHub discussions](https://github.com/GreemDev/NUKE/discussions)!
 - Have you checked existing/closed issues? Is your version behind?
-- Have you read the relevant [changelog notes](https://github.com/nuke-build/nuke/blob/develop/CHANGELOG.md)?
+- Have you read the relevant [changelog notes](https://github.com/GreemDev/NUKE/blob/develop/CHANGELOG.md)?
 - Have you verified it's not an external tool issue? Invoke the command manually!
 - Don't file issues for tool wrappers. Send a pull request instead!
 - Refrain from debating the governance or state of the project out of your own interests (see [consumer expectations](#consumer-expectations) & [sustainability contributions](#sustainability-contributions))
 
 ### When creating an issue
 
-Choose one of the [issue templates](https://github.com/nuke-build/nuke/issues/new/choose) and fill it out as well as possible. This includes, but is not limited to:
+Choose one of the [issue templates](https://github.com/GreemDev/NUKE/issues/new/choose) and fill it out as well as possible. This includes, but is not limited to:
 
 - State the issue as short as possible (more likely there's time to comprehend it)
 - Use [markdown](https://docs.github.com/en/get-started/writing-on-github) for code, logs, and other special text fragments
@@ -87,7 +86,7 @@ The issue will be addressed sooner or later depending on the priority, available
 
 In your own interest of getting a pull-request merged (timely):
 
-- Discuss non-trivial changes in an [issue](https://github.com/nuke-build/nuke/issues/new/choose)
+- Discuss non-trivial changes in an [issue](https://github.com/GreemDev/NUKE/issues/new/choose)
 - Make sure your employer allows contributions
 - Branch your work off from the `develop` branch
 - Get familiar with the coding conventions
@@ -106,7 +105,7 @@ In your own interest of getting a pull-request merged (timely):
 - [Link the issue it relates to](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) (unless it's trivial)
 - Check all the applicable boxes
 
-For tool wrappers (e.g. [.NET CLI](https://github.com/nuke-build/nuke/blob/develop/source/Nuke.Common/Tools/DotNet/DotNet.json)), also note the following remarks:
+For tool wrappers (e.g. [.NET CLI](https://github.com/GreemDev/NUKE/blob/develop/source/Nuke.Common/Tools/DotNet/DotNet.json)), also note the following remarks:
 
 - Copy/paste as much as possible
 - Cover at least a full command with all its arguments
@@ -119,7 +118,7 @@ For tool wrappers (e.g. [.NET CLI](https://github.com/nuke-build/nuke/blob/devel
 - Don't explicitly define `secret: false` (it's the default)
 - Don't provide `default: xxx` (it's obsolete)
 - Test your changes by calling the `GenerateTools` target
-- Don't commit generated code; it will be done manually once per release
+- Don't commit generated code; it will be done manually once per release, and your changes will be overwritten when that happens.
 
 ### After creating a pull-request
 

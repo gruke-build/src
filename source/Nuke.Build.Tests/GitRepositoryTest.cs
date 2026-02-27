@@ -14,11 +14,11 @@ namespace Nuke.Common.Tests;
 public class GitRepositoryTest
 {
     [Theory]
-    [InlineData("https://github.com/nuke-build", "github.com", "nuke-build")]
-    [InlineData("https://github.com/nuke-build/", "github.com", "nuke-build")]
-    [InlineData("https://github.com/nuke-build/nuke", "github.com", "nuke-build/nuke")]
-    [InlineData("https://github.com/nuke-build/nuke.git", "github.com", "nuke-build/nuke")]
-    [InlineData("https://user:pass@github.com/nuke-build/nuke.git", "github.com", "nuke-build/nuke")]
+    [InlineData("https://github.com/GreemDev/NUKE", "github.com", "GreemDev")]
+    [InlineData("https://github.com/GreemDev/NUKE/", "github.com", "GreemDev")]
+    [InlineData("https://github.com/GreemDev/NUKE", "github.com", "GreemDev/NUKE")]
+    [InlineData("https://github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
+    [InlineData("https://user:pass@github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
     [InlineData(" https://github.com/TdMxm/nuke.git", "github.com", "TdMxm/nuke")]
     [InlineData("git@git.test.org:test", "git.test.org", "test")]
     [InlineData("git@git.test.org/test", "git.test.org", "test")]
