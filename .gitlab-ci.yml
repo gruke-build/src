@@ -13,5 +13,5 @@ build:
     - './build.cmd Test'
   artifacts:
     paths:
-      - output/*.nupkg
-      - output/test-results/*.trx
+      - output/
+      - output/test-results/
