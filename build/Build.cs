@@ -54,7 +54,6 @@ partial class Build
 
     [CI] readonly TeamCity TeamCity;
     [CI] readonly AzurePipelines AzurePipelines;
-    //[CI] readonly AppVeyor AppVeyor;
     [CI] readonly GitHubActions GitHubActions;
 
     GitVersion GitVersion => From<IHazGitVersion>().Versioning;
