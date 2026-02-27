@@ -14,8 +14,8 @@ namespace Nuke.Common.Tests;
 public class GitRepositoryTest
 {
     [Theory]
-    [InlineData("https://github.com/GreemDev/NUKE", "github.com", "GreemDev")]
-    [InlineData("https://github.com/GreemDev/NUKE/", "github.com", "GreemDev")]
+    [InlineData("https://github.com/GreemDev", "github.com", "GreemDev")]
+    [InlineData("https://github.com/GreemDev/", "github.com", "GreemDev")]
     [InlineData("https://github.com/GreemDev/NUKE", "github.com", "GreemDev/NUKE")]
     [InlineData("https://github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
     [InlineData("https://user:pass@github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
@@ -39,7 +39,7 @@ public class GitRepositoryTest
     }
 
     [Theory]
-    [InlineData("https://github.com/nuke-build", GitProtocol.Https)]
+    [InlineData("https://github.com/GreemDev", GitProtocol.Https)]
     [InlineData("git@git.test.org:test", GitProtocol.Ssh)]
     [InlineData("ssh://git.test.org:1234/test/test", GitProtocol.Ssh)]
     [InlineData("git://git.test.org:1234/test/test", GitProtocol.Ssh)]
