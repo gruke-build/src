@@ -30,8 +30,7 @@ internal static class EncryptionUtility
         }
         catch
         {
-            Assert.Fail($"Could not decrypt '{name}' with provided password");
-            return null;
+            throw new CryptographicException($"Could not decrypt '{name}' with provided password");
         }
     }
 
