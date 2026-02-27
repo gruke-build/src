@@ -6,6 +6,15 @@ using Nuke.Common.CI.GitHubActions;
 using Nuke.Components;
 
 [GitHubActions(
+    ReleaseWorkflow, 
+    GitHubActionsImage.UbuntuLatest,
+    FetchDepth = 0,
+    OnPushBranches = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
+    InvokedTargets = new[] { nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish) },
+    EnableGitHubToken = true,
+    PublishArtifacts = true,
+    ImportSecrets = new[] { nameof(PublicNuGetApiKey) })]
+[GitHubActions(
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
@@ -40,5 +49,6 @@ using Nuke.Components;
     ImportSecrets = new[] { nameof(FeedzNuGetApiKey) })]
 partial class Build
 {
+    const string ReleaseWorkflow = "release";
     const string AlphaDeployment = "alpha-deployment";
 }
