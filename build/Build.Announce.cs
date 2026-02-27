@@ -34,7 +34,7 @@ partial class Build
     IEnumerable<string> ChangelogSectionNotes => ChangelogTasks.ExtractChangelogSectionNotes(From<IHazChangelog>().ChangelogFile);
 
     string AnnouncementTitle => $"NUKE {MajorMinorPatchVersion} RELEASED!";
-    string AnnouncementLink => $"https://nuget.org/packages/Nuke.Common/{MajorMinorPatchVersion}";
+    string AnnouncementLink => $"https://nuget.org/packages/GreemDev.Nuke.Common/{MajorMinorPatchVersion}";
     int AnnouncementColor => 0x00ACC1;
 
     string AnnouncementThumbnailUrl =>
