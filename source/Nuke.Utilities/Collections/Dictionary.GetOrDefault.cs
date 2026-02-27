@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/GreemDev/NUKE/blob/master/LICENSE
 
 #if NETSTANDARD2_0
 

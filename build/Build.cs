@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/GreemDev/NUKE/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -128,11 +128,11 @@ partial class Build
             .SetVersion(DefaultDeploymentVersion));
 
     string PublicNuGetSource => "https://api.nuget.org/v3/index.json";
-    string FeedzNuGetSource => "https://f.feedz.io/nuke/alpha/nuget";
+    string FeedzNuGetSource => "https://f.feedz.io/gruke/alpha/nuget";
     string DefaultDeploymentVersion => "9999.0.0";
 
-    [Parameter] [Secret] readonly string PublicNuGetApiKey;
-    [Parameter] [Secret] readonly string FeedzNuGetApiKey;
+    [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
+    [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
     bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
     string IPublish.NuGetSource => IsPublicRelease ? PublicNuGetSource : FeedzNuGetSource;
