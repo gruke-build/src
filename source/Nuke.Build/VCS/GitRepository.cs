@@ -76,13 +76,19 @@ public class GitRepository
 
         var configFile = gitDirectory / "config";
         var configFileContent = configFile.ReadAllLines();
-        var data = configFileContent
+        var data = new Dictionary<string, string>();
+        var rawData = configFileContent
             .Select(x => x.Trim())
             .SkipWhile(x => x != $"[branch {branch.DoubleQuote()}]")
             .Skip(1)
             .TakeWhile(x => !x.StartsWith("["))
-            .Select(x => x.Split('='))
-            .ToDictionary(x => x.ElementAt(0).Trim(), x => x.ElementAt(1).Trim());
+            .Select(x => x.Split('='));
+
+        foreach (var partPair in rawData)
+        {
+            data[partPair.ElementAt(0).Trim()] = partPair.ElementAt(1).Trim();
+        }
+
         return data.TryGetValue("remote", out var remote) && data.TryGetValue("merge", out var merge)
             ? (remote, merge.TrimStart("refs/heads/"))
             : (null, null);
