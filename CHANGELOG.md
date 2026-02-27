@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- Added support for XML Solutions into `gruke :setup` ([nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572))
+  - Thanks, [@lahma](https://github.com/lahma)!
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch`
   - Instead, only the most recent value is retained.
 
