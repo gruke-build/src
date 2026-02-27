@@ -45,7 +45,7 @@ public class GitHubTasksTest
     [Fact]
     public void GitHubRepositoryFromUrlTest()
     {
-        var repository = GitRepository.FromUrl("https://github.com/nuke-build/nuke", "dev");
+        var repository = GitRepository.FromUrl("https://github.com/GreemDev/NUKE", "dev");
 
         repository.GetGitHubBrowseUrl("LICENSE", itemType: GitHubItemType.File).Should().Be($"{repository}/blob/dev/LICENSE");
         repository.GetGitHubBrowseUrl("source", itemType: GitHubItemType.Directory).Should().Be($"{repository}/tree/dev/source");
