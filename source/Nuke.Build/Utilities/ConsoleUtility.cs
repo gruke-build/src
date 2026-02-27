@@ -7,7 +7,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using JetBrains.Annotations;
+using Nuke.Build.Utilities;
 using Serilog;
 
 namespace Nuke.Common.Utilities;
@@ -117,17 +119,26 @@ public class ConsoleUtility
     {
         var secret = string.Empty;
 
-        var stopwatch = Stopwatch.StartNew();
+        var keyReader = new ConsoleKeyReader();
         do
         {
             ConsoleKeyInfo key;
+
             try
             {
-                key = Console.ReadKey(intercept: true);
+                if (keyReader.Read(timeout) is not { } keyInfo)
+                {
+                    Console.WriteLine($"Timed out. Continuing with what was input (length: {secret.Length}).");
+                    break;
+                }
+
+                key = keyInfo;
+                keyReader.Reset();
             }
             catch
             {
-                Log.Error("Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
+                Log.Error(
+                    "Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
                 break;
             }
 
@@ -142,7 +153,6 @@ public class ConsoleUtility
                             : 1;
                     var length = secret.Length - charsToRemove;
                     secret = secret[..length];
-                    stopwatch = Stopwatch.StartNew();
                     Console.Write(string.Concat(Enumerable.Repeat("\b \b", charsToRemove)));
                 }
             }
@@ -154,13 +164,7 @@ public class ConsoleUtility
             else if (!char.IsControl(key.KeyChar))
             {
                 secret += key.KeyChar;
-                stopwatch = Stopwatch.StartNew();
                 Console.Write("*");
-            }
-            else if (stopwatch.Elapsed >= timeout)
-            {
-                Console.WriteLine($"Timed out. Continuing with what was input (length: {secret.Length}).");
-                break;
             }
         } while (true);
 
