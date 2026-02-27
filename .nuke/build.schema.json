@@ -172,6 +172,7 @@
         },
         "FeedzNuGetApiKey": {
           "type": "string",
+          "description": "feedz.io API key",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "GitHubReleaseGitHubToken": {
@@ -191,6 +192,7 @@
         },
         "PublicNuGetApiKey": {
           "type": "string",
+          "description": "nuget.org API key",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "SignPathApiToken": {
