@@ -5,5 +5,7 @@
     "OrganizationId": "0fdaf334-6910-41f4-83d2-e58e4cccb087",
     "ProjectSlug": "nuke",
     "PolicySlug": "release-signing"
-  }
+  },
+  "PublicNuGetApiKey": "v1:21HLXHSLX6mpGJ9RB91FYTaiN1RoA6bdbGKXPhE0MA57cRq5c6x3SvUrY7GpxVv7",
+  "FeedzNuGetApiKey": "v1:MvVfd0VJU8BQQxjF+XFQG7zHMHdMG/tETZpXToOQE/3pWjB/HNcrt7w/5n1TM7ko"
 }
