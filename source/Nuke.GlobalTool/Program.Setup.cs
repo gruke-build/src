@@ -70,7 +70,7 @@ partial class Program
         ClearPreviousLine();
         ShowInput("round_pushpin", "Build project location", buildProjectRelativeDirectory);
 
-        var nukeVersion = PromptForChoice("Which Nuke.Common version should be used?",
+        var nukeVersion = PromptForChoice("Which GreemDev.Nuke.Common version should be used?",
             new[]
                 {
                     ("latest release", nukeLatestReleaseVersion.GetAwaiter().GetResult()),
@@ -81,7 +81,7 @@ partial class Program
                 .Where(x => x.Item2 != null)
                 .Distinct(x => x.Item2)
                 .Select(x => (x.Item2, $"{x.Item2} ({x.Item1})")).ToArray());
-        ShowInput("gem_stone", "Nuke.Common version", nukeVersion);
+        ShowInput("gem_stone", "GreemDev.Nuke.Common version", nukeVersion);
 
         var solutionFile = (AbsolutePath)PromptForChoice(
             "Which solution should be the default?",
