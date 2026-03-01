@@ -49,7 +49,7 @@ There are plenty of ways to show your commitment to the project and strengthen i
 
 Evaluate whether your topic is going to be a valid issue:
 
-- Have you read and searched the [documentation](https://nuke.build/docs/introduction/)?
+- Have you read and searched the [documentation](https://gruke.readthedocs.io/en/latest/introduction/)?
 - Have you checked the [FAQ](https://nuke.build/faq/)?
 - Is your issue more of a question? Ask on [GitHub discussions](https://github.com/GreemDev/NUKE/discussions)!
 - Have you checked existing/closed issues? Is your version behind?
@@ -74,7 +74,7 @@ Choose one of the [issue templates](https://github.com/GreemDev/NUKE/issues/new/
 Once the `triage` label is removed from your issue, you will know how it is seen from the project's perspective:
 
 - Issues labeled as `area:cicd` or `area:tools` usually can be fixed in user code
-  - [Custom arguments](https://nuke.build/docs/common/cli-tools/#custom-arguments) can be wrapped in local extension methods
+  - [Custom arguments](https://gruke.readthedocs.io/en/latest/common/cli-tools/#custom-arguments) can be wrapped in local extension methods
   - Additional steps in CI/CD configuration generation can be added through inheritance
 - If your issue is labeled as `good first issue`, consider sending a pull-request
 

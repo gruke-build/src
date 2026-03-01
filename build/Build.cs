@@ -45,11 +45,6 @@ partial class Build
         IPublish,
         ICreateGitHubRelease
 {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
     public static int Main() => Execute<Build>(x => ((IPack)x).Pack);
 
     [CI] readonly TeamCity TeamCity;
