@@ -16,8 +16,8 @@
 
 image:
   - Visual Studio 2022
-  - Ubuntu
-  - MacOs
+  - Ubuntu2004
+  - macOS
 
 branches:
   except:
