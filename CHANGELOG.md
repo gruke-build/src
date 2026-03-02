@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 - Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke.Common` package.
-- Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch`
+- Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
     - Instead, only the most recent value is retained.
 - Refactored the documentation in-repository to work on `mkdocs`:
   - https://github.com/gruke-build/docs
