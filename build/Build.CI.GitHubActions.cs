@@ -9,44 +9,44 @@ using Nuke.Components;
     ReleaseWorkflow, 
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranches = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    InvokedTargets = new[] { nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish) },
+    OnPushBranches = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    InvokedTargets = [nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = true,
-    ImportSecrets = new[] { nameof(PublicNuGetApiKey) })]
+    ImportSecrets = [nameof(PublicNuGetApiKey)])]
 [GitHubActions(
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     PublishArtifacts = false)]
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     PublishArtifacts = false)]
 [GitHubActions(
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     PublishArtifacts = false)]
 [GitHubActions(
     AlphaDeployment,
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(IPublish.Publish) },
+    OnPushBranches = [DevelopBranch],
+    InvokedTargets = [nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = false,
-    ImportSecrets = new[] { nameof(FeedzNuGetApiKey) })]
+    ImportSecrets = [nameof(FeedzNuGetApiKey)])]
 partial class Build
 {
     const string ReleaseWorkflow = "release";

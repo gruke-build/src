@@ -8,7 +8,7 @@ using Nuke.Components;
 [AppVeyor(
     suffix: null,
     AppVeyorImage.VisualStudio2022,
-    BranchesOnly = new[] { MasterBranch, $"/{ReleaseBranchPrefix}\\/*/" },
+    BranchesOnly = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
     SkipTags = true,
     InvokedTargets = [nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish)],
     Secrets = [])]
@@ -17,7 +17,7 @@ using Nuke.Components;
     AppVeyorImage.VisualStudioLatest,
     AppVeyorImage.UbuntuLatest,
     AppVeyorImage.MacOsLatest,
-    BranchesExcept = new[] { MasterBranch, $"/{ReleaseBranchPrefix}\\/*/" },
+    BranchesExcept = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
     SkipTags = true,
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     Secrets = [])]

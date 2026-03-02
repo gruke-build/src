@@ -18,10 +18,10 @@ using Nuke.Components;
     AzurePipelinesImage.MacOsLatest,
     EnsureUnshallowClone = true,
     PullRequestsDisabled = true,
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
-    NonEntryTargets = new[] { nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage) },
-    ExcludedTargets = new[] { nameof(Clean) },
-    CacheKeyFiles = new[] { "global.json", "source/**/*.csproj" })]
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
+    NonEntryTargets = [nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage)],
+    ExcludedTargets = [nameof(Clean)],
+    CacheKeyFiles = ["global.json", "source/**/*.csproj"])]
 partial class Build
 {
     public class AzurePipelinesAttribute : Nuke.Common.CI.AzurePipelines.AzurePipelinesAttribute
