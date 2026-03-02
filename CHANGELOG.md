@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactored the documentation in-repository to work on `mkdocs`:
   - https://github.com/gruke-build/docs
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
+- fix: log `npm` warn messages as a warning ([nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523))
+  - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)
 - Added support for XML Solutions into `gruke :setup` ([nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572))
   - Thanks, [@lahma](https://github.com/lahma)!
 - Added support for resolving VS2026 MSBuild installations ([nuke-build#1583](https://github.com/nuke-build/nuke/pull/1583))
@@ -19,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
 - Removed deprecated & retired Azure Pipelines OS images ([nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549))
     - Thanks, [@aneilmac](https://github.com/Uriel6575)!
+- Similarly, I did the same for AppVeyor images
 
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
