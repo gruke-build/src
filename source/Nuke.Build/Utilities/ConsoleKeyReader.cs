@@ -40,13 +40,13 @@ public class ConsoleKeyReader : IDisposable
             try
             {
                 Thread.Sleep(1);
+                _get.WaitOne();
             }
             catch (ThreadInterruptedException)
             {
-                return;
+                DidError = true;
             }
 
-            _get.WaitOne();
             try
             {
                 _read = Console.ReadKey(intercept: !ConsumeInput);
