@@ -33,7 +33,7 @@ partial class Build
         IHazTwitterCredentials,
         IHazChangelog,
         IHazGitRepository,
-        IHazFetchingGitVersion,
+        IHazGitVersion,
         IHazSolution,
         IRestore,
         ICompile,
@@ -51,7 +51,7 @@ partial class Build
     [CI] readonly AzurePipelines AzurePipelines;
     [CI] readonly GitHubActions GitHubActions;
 
-    GitVersion GitVersion => From<IHazFetchingGitVersion>().Versioning;
+    GitVersion GitVersion => From<IHazGitVersion>().Versioning;
     GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
@@ -90,7 +90,8 @@ partial class Build
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
+    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects 
+        => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;
