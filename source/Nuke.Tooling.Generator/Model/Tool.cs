@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/GreemDev/NUKE/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Nuke.CodeGeneration.Model;
 public class Tool : IDeprecatable
 {
     [JsonProperty("$schema")]
-    public string Schema => "https://raw.githubusercontent.com/GreemDev/NUKE/master/source/Nuke.Tooling.Generator/schema.json";
+    public string Schema => "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json";
 
     [JsonIgnore] public string SpecificationFile { get; set; }
     [JsonIgnore] public string DefaultOutputFile => Path.ChangeExtension(SpecificationFile, "Generated.cs");

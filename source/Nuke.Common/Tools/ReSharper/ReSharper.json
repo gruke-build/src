@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/GreemDev/NUKE/master/source/Nuke.Tooling.Generator/schema.json",
+  "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "references": [
     "https://www.jetbrains.com/help/resharper/dupFinder.html#//div[@class='chapter'][2]/ul"
   ],

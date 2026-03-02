@@ -1,6 +1,6 @@
 ﻿// Copyright 2024 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/GreemDev/NUKE/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using JetBrains.Annotations;

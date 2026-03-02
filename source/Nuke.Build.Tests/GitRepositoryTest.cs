@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/GreemDev/NUKE/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.IO;
@@ -14,11 +14,11 @@ namespace Nuke.Common.Tests;
 public class GitRepositoryTest
 {
     [Theory]
-    [InlineData("https://github.com/GreemDev", "github.com", "GreemDev")]
-    [InlineData("https://github.com/GreemDev/", "github.com", "GreemDev")]
-    [InlineData("https://github.com/GreemDev/NUKE", "github.com", "GreemDev/NUKE")]
-    [InlineData("https://github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
-    [InlineData("https://user:pass@github.com/GreemDev/NUKE.git", "github.com", "GreemDev/NUKE")]
+    [InlineData("https://github.com/gruke-build", "github.com", "gruke-build")]
+    [InlineData("https://github.com/nuke-build/", "github.com", "nuke-build")]
+    [InlineData("https://github.com/gruke-build/src", "github.com", "gruke-build/src")]
+    [InlineData("https://github.com/nuke-build/nuke.git", "github.com", "nuke-build/nuke")]
+    [InlineData("https://user:pass@github.com/gruke-build/src.git", "github.com", "gruke-build/src")]
     [InlineData(" https://github.com/TdMxm/nuke.git", "github.com", "TdMxm/nuke")]
     [InlineData("git@git.test.org:test", "git.test.org", "test")]
     [InlineData("git@git.test.org/test", "git.test.org", "test")]

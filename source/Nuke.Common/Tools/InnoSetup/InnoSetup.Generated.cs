@@ -1,4 +1,4 @@
-// Generated from https://github.com/GreemDev/NUKE/blob/master/source/Nuke.Common/Tools/InnoSetup/InnoSetup.json
+// Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/InnoSetup/InnoSetup.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;

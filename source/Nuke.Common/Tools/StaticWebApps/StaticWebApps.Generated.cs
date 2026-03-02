@@ -1,4 +1,4 @@
-// Generated from https://github.com/GreemDev/NUKE/blob/master/source/Nuke.Common/Tools/StaticWebApps/StaticWebApps.json
+// Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/StaticWebApps/StaticWebApps.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://raw.githubusercontent.com/GreemDev/NUKE/master/source/Nuke.CodeGeneration/schema.json",
+  "id": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.CodeGeneration/schema.json",
   "title": "Tool specification schema file by NUKE",
   "definitions": {
     "DataClass": {

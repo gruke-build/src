@@ -1,4 +1,4 @@
-// Generated from https://github.com/GreemDev/NUKE/blob/master/source/Nuke.Common/Tools/DotNet/DotNet.json
+// Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/DotNet/DotNet.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;

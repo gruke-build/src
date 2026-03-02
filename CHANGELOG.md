@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch`
     - Instead, only the most recent value is retained.
 - Refactored the documentation in-repository to work on `mkdocs`:
-  - https://github.com/GreemDev/NUKE-Docs
+  - https://github.com/gruke-build/docs
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
 - Added support for XML Solutions into `gruke :setup` ([nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572))
   - Thanks, [@lahma](https://github.com/lahma)!

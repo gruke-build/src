@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/GreemDev/NUKE/master/source/Nuke.Tooling.Generator/schema.json",
+  "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "references": [
     "https://docs.unity3d.com/Manual/CommandLineArguments.html#//div[@class='content']//table[1]"
   ],

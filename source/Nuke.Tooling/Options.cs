@@ -1,6 +1,6 @@
 // Copyright 2022 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/GreemDev/NUKE/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;

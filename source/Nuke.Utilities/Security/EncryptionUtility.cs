@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/GreemDev/NUKE/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 #if NET6_0_OR_GREATER
 

@@ -1,4 +1,4 @@
-// Generated from https://github.com/GreemDev/NUKE/blob/master/source/Nuke.Common/Tools/Kubernetes/Kubernetes.json
+// Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Kubernetes/Kubernetes.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
