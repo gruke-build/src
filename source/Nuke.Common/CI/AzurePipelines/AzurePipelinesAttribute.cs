@@ -30,6 +30,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
     private bool? _largeFileStorage;
     private int? _fetchDepth;
     private bool? _clean;
+    private bool? _ensureUnshallowClone;
 
     public AzurePipelinesAttribute(
         AzurePipelinesImage image,
@@ -76,6 +77,12 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
     public bool Clean
     {
         set => _clean = value;
+        get => throw new NotSupportedException();
+    }
+
+    public bool EnsureUnshallowClone
+    {
+        set => _ensureUnshallowClone = value;
         get => throw new NotSupportedException();
     }
 
@@ -229,12 +236,22 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
     {
         if (_submodules.HasValue || _largeFileStorage.HasValue || _fetchDepth.HasValue || _clean.HasValue)
         {
-            yield return new AzurePipelineCheckoutStep
+            yield return new AzurePipelinesCheckoutStep
                          {
                              InclueSubmodules = _submodules,
                              IncludeLargeFileStorage = _largeFileStorage,
                              FetchDepth = _fetchDepth,
                              Clean = _clean
+                         };
+        }
+
+        if (_ensureUnshallowClone.GetValueOrDefault())
+        {
+            yield return new AzurePipelinesCmdStep
+                         {
+                             DisplayName = "git: Fetch Unshallow",
+                             Command = "git fetch",
+                             Arguments = "--unshallow"
                          };
         }
 
@@ -276,7 +293,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
         //            }).ToArray<TeamCityDependency>();
 
         var chainLinkTargets = GetInvokedTargets(executableTarget, relevantTargets).ToArray();
-        yield return new AzurePipelinesCmdStep
+        yield return new AzurePipelinesBuildCmdStep
                      {
                          BuildCmdPath = BuildCmdPath,
                          PartitionSize = executableTarget.PartitionSize,

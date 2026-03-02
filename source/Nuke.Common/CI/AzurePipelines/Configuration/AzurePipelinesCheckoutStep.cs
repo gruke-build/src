@@ -9,7 +9,7 @@ namespace Nuke.Common.CI.AzurePipelines.Configuration;
 
 // https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/pipeline-options-for-git?view=azure-devops&tabs=yaml#checkout-submodules
 [PublicAPI]
-public class AzurePipelineCheckoutStep : AzurePipelinesStep
+public class AzurePipelinesCheckoutStep : AzurePipelinesStep
 {
     public bool? InclueSubmodules { get; set; }
     public bool? IncludeLargeFileStorage { get; set; }
