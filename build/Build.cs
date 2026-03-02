@@ -33,7 +33,7 @@ partial class Build
         IHazTwitterCredentials,
         IHazChangelog,
         IHazGitRepository,
-        IHazGitVersion,
+        IHazFetchingGitVersion,
         IHazSolution,
         IRestore,
         ICompile,
@@ -51,7 +51,7 @@ partial class Build
     [CI] readonly AzurePipelines AzurePipelines;
     [CI] readonly GitHubActions GitHubActions;
 
-    GitVersion GitVersion => From<IHazGitVersion>().Versioning;
+    GitVersion GitVersion => From<IHazFetchingGitVersion>().Versioning;
     GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;

@@ -63,6 +63,8 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
         .SetSha(GitRepository.Commit)
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
             .SetBuild(o.Versioning.FullSemVer))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetBuild(o.Versioning.FullSemVer))
         .SetFramework("netcoreapp3.0");
 
     Configure<CodecovSettings> CodecovSettings => _ => _;

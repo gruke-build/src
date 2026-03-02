@@ -17,3 +17,11 @@ public interface IHazGitVersion : INukeBuild
     [Required]
     GitVersion Versioning => TryGetValue(() => Versioning);
 }
+
+[PublicAPI]
+public interface IHazFetchingGitVersion : INukeBuild
+{
+    [GitVersion(NoFetch = false, Framework = "net8.0")]
+    [Required]
+    GitVersion Versioning => TryGetValue(() => Versioning);
+}

@@ -40,6 +40,8 @@ public interface IPack : ICompile, IHazArtifacts
         .SetOutputDirectory(PackagesDirectory)
         .WhenNotNull(this as IHazGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.NuGetVersionV2))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
             .SetVersion(o.Versioning.NuGetVersionV2))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _

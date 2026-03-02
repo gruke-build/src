@@ -27,6 +27,8 @@ public interface ICompile : IRestore, IHazConfiguration
             ReportSummary(_ => _
                 .WhenNotNull(this as IHazGitVersion, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetVersionV2))
+                .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.NuGetVersionV2))
                 .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetPackageVersion)));
 
@@ -55,6 +57,10 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
@@ -69,6 +75,10 @@ public interface ICompile : IRestore, IHazConfiguration
         .WhenNotNull(this as IHazGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
