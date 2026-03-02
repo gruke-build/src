@@ -1642,7 +1642,7 @@ public partial class DockerHistorySettings : DockerOptionsBase
 public partial class DockerServiceCreateSettings : DockerOptionsBase
 {
     /// <summary>Specify configurations to expose to the service.</summary>
-    [Argument(Format = "--config {value}")] public string Config => Get<string>(() => Config);
+    [Argument(Format = "--config {value}")] public new string Config => Get<string>(() => Config);
     /// <summary>Placement constraints.</summary>
     [Argument(Format = "--constraint {value}")] public IReadOnlyList<string> Constraint => Get<List<string>>(() => Constraint);
     /// <summary>Container labels.</summary>
@@ -2376,7 +2376,7 @@ public partial class DockerConfigCreateSettings : DockerOptionsBase
     /// <summary>Template driver.</summary>
     [Argument(Format = "--template-driver {value}")] public string TemplateDriver => Get<string>(() => TemplateDriver);
     /// <summary>CONFIG</summary>
-    [Argument(Format = "{value}", Position = -2)] public string Config => Get<string>(() => Config);
+    [Argument(Format = "{value}", Position = -2)] public new string Config => Get<string>(() => Config);
     /// <summary>file|-</summary>
     [Argument(Format = "{value}", Position = -1)] public string File => Get<string>(() => File);
 }
@@ -4944,7 +4944,7 @@ public partial class DockerBuildxCreateSettings : DockerOptionsBase
     /// <summary>Flags for buildkitd daemon.</summary>
     [Argument(Format = "--buildkitd-flags {value}")] public string BuildKitDFlags => Get<string>(() => BuildKitDFlags);
     /// <summary>BuildKit config file.</summary>
-    [Argument(Format = "--config {value}")] public string Config => Get<string>(() => Config);
+    [Argument(Format = "--config {value}")] public new string Config => Get<string>(() => Config);
     /// <summary>Driver to use (available: <c>docker-container</c>, <c>kubernetes</c>, <c>remote</c>).</summary>
     [Argument(Format = "--driver {value}")] public DockerDriverType Driver => Get<DockerDriverType>(() => Driver);
     /// <summary>Options for the driver.</summary>

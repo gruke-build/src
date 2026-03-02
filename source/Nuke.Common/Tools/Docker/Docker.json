@@ -710,6 +710,7 @@
             "name": "Config",
             "type": "string",
             "format": "--config {value}",
+            "hidesBase": true,
             "help": "Specify configurations to expose to the service."
           },
           {
@@ -2367,6 +2368,7 @@
             "name": "Config",
             "type": "string",
             "format": "{value}",
+            "hidesBase": true,
             "position": -2,
             "help": "CONFIG"
           },
@@ -8652,6 +8654,7 @@
             "name": "Config",
             "type": "string",
             "format": "--config {value}",
+            "hidesBase": true,
             "help": "BuildKit config file."
           },
           {

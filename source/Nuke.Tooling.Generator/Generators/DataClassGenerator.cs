@@ -103,7 +103,7 @@ public static class DataClassGenerator
                     (nameof(CommandAttribute.Type), $"typeof({dataClass.Tool.GetClassName()})"),
                     (nameof(CommandAttribute.Command), $"nameof({dataClass.Tool.GetClassName()}.{settingsClass.Task.GetTaskMethodName()})"),
                     (nameof(CommandAttribute.Arguments), settingsClass.Task.DefiniteArgument?.DoubleQuote()),
-                }.Where(x => x.Item2 != null)
+                }.Where(x => x.Value != null)
                 .Select(x => $"{x.Name} = {x.Value}").JoinCommaSpace();
             return $"[Command({commandArguments})]";
         }
@@ -119,7 +119,9 @@ public static class DataClassGenerator
 
         writer
             .WriteLine($"/// <summary>{property.Help}</summary>")
-            .WriteLine($"{attributes.JoinSpace()} public {type.External} {property.Name} => Get<{type.Internal}>(() => {property.Name});");
+            .WriteLine($"{attributes.JoinSpace()} public{
+                (property.HidesBase ? " new" : string.Empty)
+            } {type.External} {property.Name} => Get<{type.Internal}>(() => {property.Name});");
 
         string GetArgumentAttribute()
         {

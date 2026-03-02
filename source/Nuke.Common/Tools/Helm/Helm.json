@@ -1453,6 +1453,7 @@
             "name": "Set",
             "type": "Dictionary<string, object>",
             "format": "--set {key}={value}",
+            "hidesBase": true,
             "separator": ",",
             "secret": false,
             "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
@@ -1584,6 +1585,7 @@
             "name": "Set",
             "type": "Dictionary<string, object>",
             "format": "--set {key}={value}",
+            "hidesBase": true,
             "separator": ",",
             "secret": false,
             "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
@@ -2464,6 +2466,7 @@
             "name": "Set",
             "type": "Dictionary<string, object>",
             "format": "--set {key}={value}",
+            "hidesBase": true,
             "separator": ",",
             "secret": false,
             "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
@@ -2722,6 +2725,7 @@
             "name": "Set",
             "type": "Dictionary<string, object>",
             "format": "--set {key}={value}",
+            "hidesBase": true,
             "separator": ",",
             "secret": false,
             "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."

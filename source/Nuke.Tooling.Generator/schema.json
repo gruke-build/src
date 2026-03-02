@@ -88,6 +88,10 @@
           "description": "Item formatting for dictionaries. '{key}' and '{value}' are replaced accordingly.",
           "type": "string"
         },
+        "hidesBase": {
+          "description": "Minimize compilation warnings by including a 'new' keyword on this definition.",
+          "type": "boolean"
+        },
         "noArgument": {
           "description": "Omits argument parsing.",
           "type": "boolean"
