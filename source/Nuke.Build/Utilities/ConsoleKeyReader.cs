@@ -44,7 +44,7 @@ public class ConsoleKeyReader : IDisposable
             }
             catch (ThreadInterruptedException)
             {
-                DidError = true;
+                return;
             }
 
             try
