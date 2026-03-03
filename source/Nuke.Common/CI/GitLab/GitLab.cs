@@ -317,7 +317,7 @@ public partial class GitLab : Host, IBuildServer
     /// The previous latest commit present on a branch or tag.
     /// Is always <c>0000000000000000000000000000000000000000</c> for merge request pipelines, the first commit in pipelines for branches or tags, or when manually running a pipeline.
     /// </summary>
-    public string CommitBeforeSha => EnvironmentInfo.GetVariable("CI_COMMIT_BEFORE_SHA");
+    [NoConvert] public string CommitBeforeSha => EnvironmentInfo.GetVariable("CI_COMMIT_BEFORE_SHA");
 
     /// <summary>
     /// The commit branch name.
