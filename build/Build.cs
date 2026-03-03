@@ -122,9 +122,9 @@ partial class Build
         .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
         .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion));
 
-    string PublicNuGetSource => "https://api.nuget.org/v3/index.json";
-    string FeedzNuGetSource => "https://f.feedz.io/gruke/alpha/nuget";
-    string DefaultDeploymentVersion => "9999.0.0";
+    const string PublicNuGetSource = "https://api.nuget.org/v3/index.json";
+    const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
+    const string DefaultDeploymentVersion = "9999.0.0";
 
     [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
