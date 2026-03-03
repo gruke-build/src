@@ -351,14 +351,14 @@ public partial class GitLab : Host, IBuildServer
     /// The commit tag message.
     /// Available only in pipelines for tags.
     /// </summary>
-    public string CommitTagMessage => EnvironmentInfo.GetVariable("CI_COMMIT_TAG_MESSAGE");
+    [CanBeNull] public string CommitTagMessage => EnvironmentInfo.GetVariable("CI_COMMIT_TAG_MESSAGE");
 
     /// <summary>
     /// The timestamp of the commit in the ISO 8601 format.
     /// For example, <c>2022-01-31T16:47:55Z</c>.
     /// UTC by default.
     /// </summary>
-    public string CommitTimestamp => EnvironmentInfo.GetVariable("CI_COMMIT_TIMESTAMP");
+    public DateTime CommitTimestamp => EnvironmentInfo.GetVariable<DateTime>("CI_COMMIT_TIMESTAMP");
 
     /// <summary>
     /// The title of the commit.
@@ -369,12 +369,12 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The unique ID of build execution in a single executor.
     /// </summary>
-    public string ConcurrentId => EnvironmentInfo.GetVariable("CI_CONCURRENT_ID");
+    public long ConcurrentId => EnvironmentInfo.GetVariable<long>("CI_CONCURRENT_ID");
 
     /// <summary>
     /// The unique ID of build execution in a single executor and project.
     /// </summary>
-    public string ConcurrentProjectId => EnvironmentInfo.GetVariable("CI_CONCURRENT_PROJECT_ID");
+    public long ConcurrentProjectId => EnvironmentInfo.GetVariable<long>("CI_CONCURRENT_PROJECT_ID");
 
     /// <summary>
     /// <c>true</c> if debug logging (tracing) is enabled.
@@ -426,18 +426,18 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The authentication password of the GitLab Deploy Token, if the project has one.
     /// </summary>
-    public string DeployPassword => EnvironmentInfo.GetVariable("CI_DEPLOY_PASSWORD");
+    [CanBeNull] public string DeployPassword => EnvironmentInfo.GetVariable("CI_DEPLOY_PASSWORD");
 
     /// <summary>
     /// The authentication username of the GitLab Deploy Token, if the project has one.
     /// </summary>
-    public string DeployUser => EnvironmentInfo.GetVariable("CI_DEPLOY_USER");
+    [CanBeNull] public string DeployUser => EnvironmentInfo.GetVariable("CI_DEPLOY_USER");
 
     /// <summary>
     /// The name of the environment for this job.
     /// Available if <c>environment:name</c> is set.
     /// </summary>
-    public string EnvironmentName => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_NAME");
+    [CanBeNull] public string EnvironmentName => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_NAME");
 
     /// <summary>
     /// The simplified version of the environment name, suitable for inclusion in DNS, URLs, Kubernetes labels, and so on.
@@ -445,32 +445,32 @@ public partial class GitLab : Host, IBuildServer
     /// The slug is truncated to 24 characters.
     /// A random suffix is automatically added to uppercase environment names.
     /// </summary>
-    public string EnvironmentSlug => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_SLUG");
+    [CanBeNull] public string EnvironmentSlug => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_SLUG");
 
     /// <summary>
     /// The URL of the environment for this job.
     /// Available if <c>environment:url</c> is set.
     /// </summary>
-    public string EnvironmentUrl => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_URL");
+    [CanBeNull] public string EnvironmentUrl => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_URL");
 
     /// <summary>
     /// The action annotation specified for this job's environment.
     /// Available if <c>environment:action</c> is set.
     /// Can be <c>start</c>, <c>prepare</c>, or <c>stop</c>.
     /// </summary>
-    public string EnvironmentAction => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_ACTION");
+    [CanBeNull] public string EnvironmentAction => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_ACTION");
 
     /// <summary>
     /// The deployment tier of the environment for this job.
     /// </summary>
-    public string EnvironmentTier => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_TIER");
+    [CanBeNull] public string EnvironmentTier => EnvironmentInfo.GetVariable("CI_ENVIRONMENT_TIER");
 
     /// <summary>
     /// The description of the release.
     /// Available only on pipelines for tags.
     /// Description length is limited to first 1024 characters.
     /// </summary>
-    public string ReleaseDescription => EnvironmentInfo.GetVariable("CI_RELEASE_DESCRIPTION");
+    [CanBeNull] public string ReleaseDescription => EnvironmentInfo.GetVariable("CI_RELEASE_DESCRIPTION");
 
     /// <summary>
     /// Only available if FIPS mode is enabled in the GitLab instance.
@@ -490,30 +490,6 @@ public partial class GitLab : Host, IBuildServer
     public string JobImage => EnvironmentInfo.GetVariable("CI_JOB_IMAGE");
 
     /// <summary>
-    /// A RS256 JSON web token to authenticate with third party systems that support JWT authentication, for example HashiCorp's Vault.
-    /// <a href="https://docs.gitlab.com/ee/update/deprecations.html#old-versions-of-json-web-tokens-are-deprecated">Deprecated in GitLab 15.9</a> and scheduled to be removed in GitLab 17.0.
-    /// Use ID tokens instead.
-    /// </summary>
-    [Obsolete] public string JobJwt => EnvironmentInfo.GetVariable("CI_JOB_JWT");
-
-    /// <summary>
-    /// The same value as <c>$CI_JOB_JWT</c>.
-    /// <a href="https://docs.gitlab.com/ee/update/deprecations.html#old-versions-of-json-web-tokens-are-deprecated">Deprecated in GitLab 15.9</a> and scheduled to be removed in GitLab 17.0.
-    /// Use ID tokens instead.
-    /// </summary>
-    [Obsolete] public string JobJwtV1 => EnvironmentInfo.GetVariable("CI_JOB_JWT_V1");
-
-    /// <summary>
-    /// A newly formatted RS256 JSON web token to increase compatibility.
-    /// Similar to <c>$CI_JOB_JWT</c>, except the issuer (<c>iss</c>) claim is changed from <c>gitlab.com</c> to <c>https://gitlab.com</c>, <c>sub</c> has changed from <c>job_id</c> to a string that contains the project path, and an <c>aud</c> claim is added.
-    /// The <c>aud</c> field is a constant value.
-    /// Trusting JWTs in multiple relying parties can lead to one RP sending a JWT to another one and acting maliciously as a job.
-    /// <a href="https://docs.gitlab.com/ee/update/deprecations.html#old-versions-of-json-web-tokens-are-deprecated">Deprecated in GitLab 15.9</a> and scheduled to be removed in GitLab 17.0.
-    /// Use ID tokens instead.
-    /// </summary>
-    [Obsolete] public string JobJwtV2 => EnvironmentInfo.GetVariable("CI_JOB_JWT_V2");
-
-    /// <summary>
     /// <c>$CI_JOB_NAME</c> in lowercase, shortened to 63 bytes, and with everything except <c>0-9</c> and <c>a-z</c> replaced with <c>-</c>.
     /// No leading / trailing <c>-</c>.
     /// Use in paths.
@@ -530,7 +506,7 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The job timeout, in seconds.
     /// </summary>
-    public string JobTimeout => EnvironmentInfo.GetVariable("CI_JOB_TIMEOUT");
+    public long JobTimeout => EnvironmentInfo.GetVariable<long>("CI_JOB_TIMEOUT");
 
     /// <summary>
     /// The job details URL.
@@ -542,7 +518,7 @@ public partial class GitLab : Host, IBuildServer
     /// For example, <c>2022-01-31T16:47:55Z</c>.
     /// UTC by default.
     /// </summary>
-    public string JobStartedAt => EnvironmentInfo.GetVariable("CI_JOB_STARTED_AT");
+    public DateTime JobStartedAt => EnvironmentInfo.GetVariable<DateTime>("CI_JOB_STARTED_AT");
 
     /// <summary>
     /// Only available if the pipeline has a Kubernetes cluster available for deployments.
@@ -554,20 +530,20 @@ public partial class GitLab : Host, IBuildServer
     /// The index of the job in the job set.
     /// Only available if the job uses <c>parallel</c>.
     /// </summary>
-    public string NodeIndex => EnvironmentInfo.GetVariable("CI_NODE_INDEX");
+    public long NodeIndex => EnvironmentInfo.GetVariable<long>("CI_NODE_INDEX");
 
     /// <summary>
     /// The total number of instances of this job running in parallel.
     /// Set to <c>1</c> if the job does not use <c>parallel</c>.
     /// </summary>
-    public string NodeTotal => EnvironmentInfo.GetVariable("CI_NODE_TOTAL");
+    public long NodeTotal => EnvironmentInfo.GetVariable<long>("CI_NODE_TOTAL");
 
     /// <summary>
     /// A comma-separated list of up to four merge requests that use the current branch and project as the merge request source.
     /// Only available in branch and merge request pipelines if the branch has an associated merge request.
     /// For example, <c>gitlab-org/gitlab!333,gitlab-org/gitlab-foss!11</c>.
     /// </summary>
-    public string OpenMergeRequests => EnvironmentInfo.GetVariable("CI_OPEN_MERGE_REQUESTS");
+    [CanBeNull] public string OpenMergeRequests => EnvironmentInfo.GetVariable("CI_OPEN_MERGE_REQUESTS");
 
     /// <summary>
     /// The configured domain that hosts GitLab Pages.
@@ -584,7 +560,7 @@ public partial class GitLab : Host, IBuildServer
     /// The project-level IID (internal ID) of the current pipeline.
     /// This ID is unique only within the current project.
     /// </summary>
-    public string PipelineIid => EnvironmentInfo.GetVariable("CI_PIPELINE_IID");
+    public long PipelineIid => EnvironmentInfo.GetVariable<long>("CI_PIPELINE_IID");
 
     /// <summary>
     /// The URL for the pipeline details.
@@ -596,7 +572,7 @@ public partial class GitLab : Host, IBuildServer
     /// For example, <c>2022-01-31T16:47:55Z</c>.
     /// UTC by default.
     /// </summary>
-    public string PipelineCreatedAt => EnvironmentInfo.GetVariable("CI_PIPELINE_CREATED_AT");
+    public DateTime PipelineCreatedAt => EnvironmentInfo.GetVariable<DateTime>("CI_PIPELINE_CREATED_AT");
 
     /// <summary>
     /// The pipeline name defined in <c>workflow:name</c>
@@ -613,7 +589,7 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The project namespace ID of the job.
     /// </summary>
-    public string ProjectNamespaceId => EnvironmentInfo.GetVariable("CI_PROJECT_NAMESPACE_ID");
+    public long ProjectNamespaceId => EnvironmentInfo.GetVariable<long>("CI_PROJECT_NAMESPACE_ID");
 
     /// <summary>
     /// A comma-separated, lowercase list of the languages used in the repository.
@@ -677,7 +653,7 @@ public partial class GitLab : Host, IBuildServer
     /// The port of the GitLab instance URL, without host or protocol.
     /// For example <c>8080</c>.
     /// </summary>
-    public string ServerPort => EnvironmentInfo.GetVariable("CI_SERVER_PORT");
+    public long ServerPort => EnvironmentInfo.GetVariable<long>("CI_SERVER_PORT");
 
     /// <summary>
     /// The protocol of the GitLab instance URL, without host or port.
@@ -695,22 +671,22 @@ public partial class GitLab : Host, IBuildServer
     /// The SSH port of the GitLab instance, used for access to Git repositories via SSH.
     /// For example <c>22</c>.
     /// </summary>
-    public string ServerShellSshPort => EnvironmentInfo.GetVariable("CI_SERVER_SHELL_SSH_PORT");
+    public long ServerShellSshPort => EnvironmentInfo.GetVariable<long>("CI_SERVER_SHELL_SSH_PORT");
 
     /// <summary>
     /// File containing the TLS CA certificate to verify the GitLab server when <c>tls-ca-file</c> set in runner settings.
     /// </summary>
-    public string ServerTlsCaFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_CA_FILE");
+    [CanBeNull] public string ServerTlsCaFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_CA_FILE");
 
     /// <summary>
     /// File containing the TLS certificate to verify the GitLab server when <c>tls-cert-file</c> set in runner settings.
     /// </summary>
-    public string ServerTlsCertFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_CERT_FILE");
+    [CanBeNull] public string ServerTlsCertFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_CERT_FILE");
 
     /// <summary>
     /// File containing the TLS key to verify the GitLab server when <c>tls-key-file</c> set in runner settings.
     /// </summary>
-    public string ServerTlsKeyFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_KEY_FILE");
+    [CanBeNull] public string ServerTlsKeyFile => EnvironmentInfo.GetVariable("CI_SERVER_TLS_KEY_FILE");
 
     /// <summary>
     /// The base URL of the GitLab instance, including protocol and port.
@@ -722,19 +698,19 @@ public partial class GitLab : Host, IBuildServer
     /// The major version of the GitLab instance.
     /// For example, if the GitLab version is <c>13.6.1</c>, the <c>$CI_SERVER_VERSION_MAJOR</c> is <c>13</c>.
     /// </summary>
-    public string ServerVersionMajor => EnvironmentInfo.GetVariable("CI_SERVER_VERSION_MAJOR");
+    public long ServerVersionMajor => EnvironmentInfo.GetVariable<long>("CI_SERVER_VERSION_MAJOR");
 
     /// <summary>
     /// The minor version of the GitLab instance.
     /// For example, if the GitLab version is <c>13.6.1</c>, the <c>$CI_SERVER_VERSION_MINOR</c> is <c>6</c>.
     /// </summary>
-    public string ServerVersionMinor => EnvironmentInfo.GetVariable("CI_SERVER_VERSION_MINOR");
+    public long ServerVersionMinor => EnvironmentInfo.GetVariable<long>("CI_SERVER_VERSION_MINOR");
 
     /// <summary>
     /// The patch version of the GitLab instance.
     /// For example, if the GitLab version is <c>13.6.1</c>, the <c>$CI_SERVER_VERSION_PATCH</c> is <c>1</c>.
     /// </summary>
-    public string ServerVersionPatch => EnvironmentInfo.GetVariable("CI_SERVER_VERSION_PATCH");
+    public long ServerVersionPatch => EnvironmentInfo.GetVariable<long>("CI_SERVER_VERSION_PATCH");
 
     /// <summary>
     /// Available for all jobs executed in CI/CD. <c>yes</c> when available.
@@ -767,13 +743,13 @@ public partial class GitLab : Host, IBuildServer
     /// The path to the <c>kubeconfig</c> file with contexts for every shared agent connection.
     /// Only available when a GitLab agent is authorized to access the project.
     /// </summary>
-    public string Kubeconfig => EnvironmentInfo.GetVariable("KUBECONFIG");
+    [CanBeNull] public string Kubeconfig => EnvironmentInfo.GetVariable("KUBECONFIG");
 
     /// <summary>
     /// The webhook payload.
     /// Only available when a pipeline is triggered with a webhook.
     /// </summary>
-    public string TriggerPayload => EnvironmentInfo.GetVariable("TRIGGER_PAYLOAD");
+    [CanBeNull] public string TriggerPayload => EnvironmentInfo.GetVariable("TRIGGER_PAYLOAD");
 
     /// <summary>
     /// Approval status of the merge request. <c>true</c> when merge request approvals is available and the merge request has been approved.
@@ -783,29 +759,29 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// Comma-separated list of usernames of assignees for the merge request.
     /// </summary>
-    public string MergeRequestAssignees => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_ASSIGNEES");
+    [CanBeNull] public string MergeRequestAssignees => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_ASSIGNEES");
 
     /// <summary>
     /// The base SHA of the merge request diff.
     /// </summary>
-    public string MergeRequestDiffBaseSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DIFF_BASE_SHA");
+    [CanBeNull] public string MergeRequestDiffBaseSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DIFF_BASE_SHA");
 
     /// <summary>
     /// The version of the merge request diff.
     /// </summary>
-    public string MergeRequestDiffId => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DIFF_ID");
+    [CanBeNull] public string MergeRequestDiffId => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DIFF_ID");
 
     /// <summary>
     /// The event type of the merge request.
     /// Can be <c>detached</c>, <c>merged_result</c> or <c>merge_train</c>.
     /// </summary>
-    public string MergeRequestEventType => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_EVENT_TYPE");
+    [CanBeNull] public string MergeRequestEventType => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_EVENT_TYPE");
 
     /// <summary>
     /// The description of the merge request.
     /// If the description is more than 2700 characters long, only the first 2700 characters are stored in the variable.
     /// </summary>
-    public string MergeRequestDescription => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DESCRIPTION");
+    [CanBeNull] public string MergeRequestDescription => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_DESCRIPTION");
 
     /// <summary>
     /// <c>true</c> if <c>$CI_MERGE_REQUEST_DESCRIPTION</c> is truncated down to 2700 characters because the description of the merge request is too long.
@@ -816,51 +792,51 @@ public partial class GitLab : Host, IBuildServer
     /// The instance-level ID of the merge request.
     /// This is a unique ID across all projects on the GitLab instance.
     /// </summary>
-    public string MergeRequestId => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_ID");
+    public long MergeRequestId => EnvironmentInfo.GetVariable<long>("CI_MERGE_REQUEST_ID");
 
     /// <summary>
     /// The project-level IID (internal ID) of the merge request.
     /// This ID is unique for the current project, and is the number used in the merge request URL, page title, and other visible locations.
     /// </summary>
-    public string MergeRequestIid => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_IID");
+    public long MergeRequestIid => EnvironmentInfo.GetVariable<long>("CI_MERGE_REQUEST_IID");
 
     /// <summary>
     /// Comma-separated label names of the merge request.
     /// </summary>
-    public string MergeRequestLabels => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_LABELS");
+    [CanBeNull] public string MergeRequestLabels => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_LABELS");
 
     /// <summary>
     /// The milestone title of the merge request.
     /// </summary>
-    public string MergeRequestMilestone => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_MILESTONE");
+    [CanBeNull] public string MergeRequestMilestone => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_MILESTONE");
 
     /// <summary>
     /// The ID of the project of the merge request.
     /// </summary>
-    public string MergeRequestProjectId => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_PROJECT_ID");
+    public long MergeRequestProjectId => EnvironmentInfo.GetVariable<long>("CI_MERGE_REQUEST_PROJECT_ID");
 
     /// <summary>
     /// The path of the project of the merge request.
     /// For example <c>namespace/awesome-project</c>.
     /// </summary>
-    public string MergeRequestProjectPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_PROJECT_PATH");
+    [CanBeNull] public string MergeRequestProjectPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_PROJECT_PATH");
 
     /// <summary>
     /// The URL of the project of the merge request.
     /// For example, <c>http://192.168.10.15:3000/namespace/awesome-project</c>.
     /// </summary>
-    public string MergeRequestProjectUrl => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_PROJECT_URL");
+    [CanBeNull] public string MergeRequestProjectUrl => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_PROJECT_URL");
 
     /// <summary>
     /// The ref path of the merge request.
     /// For example, <c>refs/merge-requests/1/head</c>.
     /// </summary>
-    public string MergeRequestRefPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_REF_PATH");
+    [CanBeNull] public string MergeRequestRefPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_REF_PATH");
 
     /// <summary>
     /// The source branch name of the merge request.
     /// </summary>
-    public string MergeRequestSourceBranchName => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_BRANCH_NAME");
+    [CanBeNull] public string MergeRequestSourceBranchName => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_BRANCH_NAME");
 
     /// <summary>
     /// <c>true</c> when the source branch of the merge request is protected.
@@ -872,22 +848,22 @@ public partial class GitLab : Host, IBuildServer
     /// The variable is empty in merge request pipelines.
     /// The SHA is present only in merged results pipelines.
     /// </summary>
-    public string MergeRequestSourceBranchSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_BRANCH_SHA");
+    [CanBeNull] public string MergeRequestSourceBranchSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_BRANCH_SHA");
 
     /// <summary>
     /// The ID of the source project of the merge request.
     /// </summary>
-    public string MergeRequestSourceProjectId => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_PROJECT_ID");
+    public long MergeRequestSourceProjectId => EnvironmentInfo.GetVariable<long>("CI_MERGE_REQUEST_SOURCE_PROJECT_ID");
 
     /// <summary>
     /// The path of the source project of the merge request.
     /// </summary>
-    public string MergeRequestSourceProjectPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_PROJECT_PATH");
+    [CanBeNull] public string MergeRequestSourceProjectPath => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_PROJECT_PATH");
 
     /// <summary>
     /// The URL of the source project of the merge request.
     /// </summary>
-    public string MergeRequestSourceProjectUrl => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_PROJECT_URL");
+    [CanBeNull] public string MergeRequestSourceProjectUrl => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_SOURCE_PROJECT_URL");
 
     /// <summary>
     /// <c>true</c> when the squash on merge option is set.
@@ -897,7 +873,7 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The target branch name of the merge request.
     /// </summary>
-    public string MergeRequestTargetBranchName => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TARGET_BRANCH_NAME");
+    [CanBeNull] public string MergeRequestTargetBranchName => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TARGET_BRANCH_NAME");
 
     /// <summary>
     /// <c>true</c> when the target branch of the merge request is protected.
@@ -909,45 +885,45 @@ public partial class GitLab : Host, IBuildServer
     /// The variable is empty in merge request pipelines.
     /// The SHA is present only in merged results pipelines.
     /// </summary>
-    public string MergeRequestTargetBranchSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TARGET_BRANCH_SHA");
+    [CanBeNull] public string MergeRequestTargetBranchSha => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TARGET_BRANCH_SHA");
 
     /// <summary>
     /// The title of the merge request.
     /// </summary>
-    public string MergeRequestTitle => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TITLE");
+    [CanBeNull] public string MergeRequestTitle => EnvironmentInfo.GetVariable("CI_MERGE_REQUEST_TITLE");
 
     /// <summary>
     /// Pull request ID from GitHub.
     /// </summary>
-    public string ExternalPullRequestIid => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_IID");
+    public long ExternalPullRequestIid => EnvironmentInfo.GetVariable<long>("CI_EXTERNAL_PULL_REQUEST_IID");
 
     /// <summary>
     /// The source repository name of the pull request.
     /// </summary>
-    public string ExternalPullRequestSourceRepository => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_REPOSITORY");
+    [CanBeNull] public string ExternalPullRequestSourceRepository => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_REPOSITORY");
 
     /// <summary>
     /// The target repository name of the pull request.
     /// </summary>
-    public string ExternalPullRequestTargetRepository => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY");
+    [CanBeNull] public string ExternalPullRequestTargetRepository => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY");
 
     /// <summary>
     /// The source branch name of the pull request.
     /// </summary>
-    public string ExternalPullRequestSourceBranchName => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_NAME");
+    [CanBeNull] public string ExternalPullRequestSourceBranchName => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_NAME");
 
     /// <summary>
     /// The HEAD SHA of the source branch of the pull request.
     /// </summary>
-    public string ExternalPullRequestSourceBranchSha => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_SHA");
+    [CanBeNull] public string ExternalPullRequestSourceBranchSha => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_SHA");
 
     /// <summary>
     /// The target branch name of the pull request.
     /// </summary>
-    public string ExternalPullRequestTargetBranchName => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_NAME");
+    [CanBeNull] public string ExternalPullRequestTargetBranchName => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_NAME");
 
     /// <summary>
     /// The HEAD SHA of the target branch of the pull request.
     /// </summary>
-    public string ExternalPullRequestTargetBranchSha => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_SHA");
+    [CanBeNull] public string ExternalPullRequestTargetBranchSha => EnvironmentInfo.GetVariable("CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_SHA");
 }
