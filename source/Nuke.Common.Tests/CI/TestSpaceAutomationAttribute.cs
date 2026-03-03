@@ -9,7 +9,7 @@ using Nuke.Common.CI.SpaceAutomation;
 
 namespace Nuke.Common.Tests.CI;
 
-public class TestSpaceAutomationAttribute : SpaceAutomationAttribute, ITestConfigurationGenerator
+public class TestSpaceAutomationAttribute : SpaceAutomationOnPremisesAttribute, ITestConfigurationGenerator
 {
     public TestSpaceAutomationAttribute(string jobName, string image)
         : base(jobName, image)
