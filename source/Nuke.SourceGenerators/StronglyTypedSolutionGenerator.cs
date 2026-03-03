@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -69,7 +70,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                 continue;
 
                 [CanBeNull]
-                string GetDeclaration(IProjectContainer container)
+                string GetDeclaration(IProjectContainer container, string folderName = null)
                 {
                     var prefix = new string('_', container.Descendants(x => x.Parent).Count() + 1);
                     var model = new
@@ -79,21 +80,24 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                         Name = GetEscapedName(container switch
                         {
                             Solution => member.Name,
-                            SolutionFolder folder => prefix.Substring(1) + folder.Name,
+                            SolutionFolder folder => folderName ?? folder.Name,
                             _ => throw new ArgumentOutOfRangeException(nameof(container), container, null)
                         }),
                         Projects = container.Projects.OrderBy(x => x.Name).Select(x => new
                         {
                             x.Name,
-                            EscapedName = GetEscapedName(x.Name),
+                            EscapedName = GetEscapedName(x.Name)
                         }),
                         Folders = container.SolutionFolders.OrderBy(x => x.Name).Select(x => new
                         {
                             x.Name,
-                            TypeName = prefix + GetEscapedName(x.Name),
-                            EscapedName = GetEscapedName(x.Name),
+                            TypeName = folderName ?? $"{prefix}{GetEscapedName(x.Name)}",
+                            EscapedName = GetEscapedName(x.Name)
                         }),
-                        Declarations = container.SolutionFolders.OrderBy(x => x.Name).Select(GetDeclaration).ToArray(),
+                        Declarations = container.SolutionFolders
+                            .OrderBy(x => x.Name)
+                            .Select(x => GetDeclaration(x, $"{prefix}{GetEscapedName(x.Name)}"))
+                            .ToArray()
                     };
 
                     // lang=csharp
@@ -119,10 +123,20 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                         """);
                     return template.Render(model);
 
-                    string GetEscapedName(string name) => name
-                        // .Replace(".", fancyNaming ? "丨" : "_")
-                        .Replace(".", fancyNaming ? "٠" : "_")
-                        .ReplaceRegex(@"(^[\W^\d]|[\W])", _ => "_");
+
+                    string GetEscapedName(string name)
+                    {
+                        name = s_nonAlphanumericPattern
+                            .Replace(
+                                name.Replace(".", fancyNaming ? "٠" : "_"), 
+                                _ => "_"
+                            );
+
+                        if (s_startsWithNumberPattern.IsMatch(name))
+                            return "_" + name;
+
+                        return name;
+                    }
                 }
             }
         }
@@ -160,4 +174,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
             return Constants.TryGetRootDirectoryFrom(startDirectory).NotNull();
         }
     }
+
+    private static readonly Regex s_nonAlphanumericPattern = new("[^A-Za-z0-9_]", RegexOptions.Compiled);
+    private static readonly Regex s_startsWithNumberPattern = new("^[0-9]", RegexOptions.Compiled);
 }
