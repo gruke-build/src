@@ -22,6 +22,8 @@ public class GitLabCIConfiguration : ConfigurationEntity
     public bool UploadArtifacts { get; set; }
     public string[] Artifacts { get; set; }
 
+    public string[] ExcludedArtifacts { get; set; }
+
     public override void Write(CustomFileWriter writer)
     {
         if (UseDocker && DockerImage == null &&
@@ -77,7 +79,7 @@ public class GitLabCIConfiguration : ConfigurationEntity
                     writer.WriteLine("paths:");
                     using (writer.Indent())
                     {
-                        foreach (var artifactPath in Artifacts)
+                        foreach (var artifactPath in Artifacts.Except(ExcludedArtifacts))
                         {
                             writer.WriteLine($"- {artifactPath.SingleQuoteIfNeeded()}");
                         }

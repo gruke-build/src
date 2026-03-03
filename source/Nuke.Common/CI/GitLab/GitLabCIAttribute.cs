@@ -26,6 +26,8 @@ public class GitLabCIAttribute : ConfigurationAttributeBase
 
     public bool UploadProducedArtifacts { get; set; }
 
+    public string[] ExcludedArtifacts { get; set; } = [];
+
     public override Type HostType => typeof(GitLab);
     public override IEnumerable<AbsolutePath> GeneratedFiles => [ ConfigurationFile ];
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
@@ -43,6 +45,7 @@ public class GitLabCIAttribute : ConfigurationAttributeBase
                    DockerImage = DockerImage,
                    UploadArtifacts = UploadProducedArtifacts,
                    InvokedTargets = InvokedTargets,
+                   ExcludedArtifacts = ExcludedArtifacts,
                    Artifacts = GetArtifacts(relevantTargets).ToArray(),
                    Variables = GetVariables()
                };
