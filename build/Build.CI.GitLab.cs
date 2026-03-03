@@ -8,5 +8,5 @@ using Nuke.Components;
 [GitLabCI(
     InvokedTargets = [nameof(ITest.Test)],
     UploadProducedArtifacts = true
-    )]
+)]
 partial class Build;
