@@ -26,9 +26,6 @@ public interface ICompile : IRestore, IHazConfiguration
         .WhenSkipped(DependencyBehavior.Skip)
         .Executes(() =>
         {
-            if ((this as IHazGitVersion)?.Versioning is { } present)
-                Log.Debug(JsonSerializer.Serialize(present));
-
             ReportSummary(_ => _
                 .WhenNotNull(this as IHazGitVersion, (_, o) => _
                     .AddPair("Version", o.Versioning.SemVer))
