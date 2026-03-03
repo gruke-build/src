@@ -42,7 +42,7 @@ using Nuke.Components;
     AlphaDeployment,
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranches = [DevelopBranch],
+    On = [ GitHubActionsTrigger.WorkflowDispatch ],
     InvokedTargets = [nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = false,
