@@ -148,7 +148,8 @@ partial class Build
         .Consumes(From<IPack>().Pack)
         .Requires(() => 
             (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
-            (GitRepository.IsOnDevelopBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment))
+            (GitRepository.IsOnDevelopBranch() 
+             && ((Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment) || Host is GitLab)))
         .WhenSkipped(DependencyBehavior.Execute);
 
     IEnumerable<AbsolutePath> NuGetPackageFiles
