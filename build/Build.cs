@@ -8,9 +8,9 @@ using System.Linq;
 using NuGet.Packaging;
 using Nuke.Common;
 using Nuke.Common.CI;
-using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.CI.GitLab;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
@@ -130,8 +130,18 @@ partial class Build
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
     bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
-    string IPublish.NuGetSource => IsPublicRelease ? PublicNuGetSource : FeedzNuGetSource;
-    string IPublish.NuGetApiKey => IsPublicRelease ? PublicNuGetApiKey : FeedzNuGetApiKey;
+
+    string IPublish.NuGetSource => IsPublicRelease
+        ? PublicNuGetSource
+        : Host is GitLab gl
+            ? gl.GetNuGetSourceUrlForCurrentProject()
+            : FeedzNuGetSource;
+
+    string IPublish.NuGetApiKey => IsPublicRelease 
+        ? PublicNuGetApiKey 
+        : Host is GitLab gl 
+            ? gl.JobToken
+            : FeedzNuGetApiKey;
 
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()

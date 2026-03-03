@@ -22,10 +22,10 @@ variables:
 stages:
   - build
 
-'Run: Test':
+'Run: Publish':
   stage: build
   script:
-    - './build.sh Test'
+    - './build.sh Publish'
   artifacts:
     paths:
       - output/test-results/*.trx
