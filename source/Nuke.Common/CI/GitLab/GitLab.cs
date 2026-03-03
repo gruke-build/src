@@ -223,7 +223,7 @@ public partial class GitLab : Host, IBuildServer
     /// Image names must follow the container registry naming convention.
     /// Only available if the container registry is enabled for the project.
     /// </summary>
-    public string RegistryImage => EnvironmentInfo.GetVariable("CI_REGISTRY_IMAGE");
+    [CanBeNull] public string RegistryImage => EnvironmentInfo.GetVariable("CI_REGISTRY_IMAGE");
 
     /// <summary>
     /// The password to push containers to the GitLab project's container registry.
@@ -231,7 +231,7 @@ public partial class GitLab : Host, IBuildServer
     /// This password value is the same as the <c>$CI_JOB_TOKEN</c> and is valid only as long as the job is running.
     /// Use the <c>$CI_DEPLOY_PASSWORD</c> for long-lived access to the registry
     /// </summary>
-    public string RegistryPassword => EnvironmentInfo.GetVariable("CI_REGISTRY_PASSWORD");
+    [CanBeNull] public string RegistryPassword => EnvironmentInfo.GetVariable("CI_REGISTRY_PASSWORD");
 
     /// <summary>
     /// The username to push containers to the project's GitLab container registry.
@@ -548,7 +548,7 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The configured domain that hosts GitLab Pages.
     /// </summary>
-    public string PagesDomain => EnvironmentInfo.GetVariable("CI_PAGES_DOMAIN");
+    [CanBeNull] public string PagesDomain => EnvironmentInfo.GetVariable("CI_PAGES_DOMAIN");
 
     /// <summary>
     /// The URL for a GitLab Pages site.
