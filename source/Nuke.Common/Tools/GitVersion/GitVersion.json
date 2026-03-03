@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "references": [
     "https://raw.githubusercontent.com/GitTools/GitVersion/master/docs/more-info/variables.md",
-    "https://raw.githubusercontent.com/GitTools/GitVersion/master/src/GitVersionExe/HelpWriter.cs"
+    "https://raw.githubusercontent.com/GitTools/GitVersion/refs/heads/main/src/GitVersion.App/HelpWriter.cs"
   ],
   "name": "GitVersion",
   "officialUrl": "http://gitversion.readthedocs.io/en/stable/",

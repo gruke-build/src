@@ -41,9 +41,9 @@ public interface IPack : ICompile, IHazArtifacts
         .WhenNotNull(this as IHazGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
         .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
-            .SetVersion(o.Versioning.NuGetVersionV2))
+            .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
-            .SetVersion(o.Versioning.NuGetVersionV2))
+            .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetVersion(o.Versioning.NuGetPackageVersion))
         .WhenNotNull(this as IHazChangelog, (_, o) => _

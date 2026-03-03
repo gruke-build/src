@@ -5,11 +5,14 @@ assembly-file-versioning-scheme: MajorMinorPatch
 
 branches:
   master:
-    tag: ''
+    label: ''
+    regex: ^master$|^main$
   develop:
-    tag: 'alpha'
+    label: 'alpha'
+    regex: ^develop$
   release:
-    tag: 'beta'
+    label: 'beta'
+    regex: ^release(\/.+)$
 
 ignore:
   sha: []

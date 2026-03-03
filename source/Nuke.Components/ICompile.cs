@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
@@ -12,6 +13,7 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;
@@ -24,11 +26,14 @@ public interface ICompile : IRestore, IHazConfiguration
         .WhenSkipped(DependencyBehavior.Skip)
         .Executes(() =>
         {
+            if ((this as IHazGitVersion)?.Versioning is { } present)
+                Log.Debug(JsonSerializer.Serialize(present));
+
             ReportSummary(_ => _
                 .WhenNotNull(this as IHazGitVersion, (_, o) => _
-                    .AddPair("Version", o.Versioning.NuGetVersionV2))
+                    .AddPair("Version", o.Versioning.SemVer))
                 .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
-                    .AddPair("Version", o.Versioning.NuGetVersionV2))
+                    .AddPair("Version", o.Versioning.SemVer))
                 .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetPackageVersion)));
 

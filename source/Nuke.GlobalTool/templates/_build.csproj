@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="GreemDev.Nuke.Common" Version="_NUKE_VERSION_" />
-    <PackageDownload Include="GitVersion.Tool" Version="[5.8.0]" />    // GITVERSION
+    <PackageDownload Include="GitVersion.Tool" Version="[6.6.0]" />    // GITVERSION
   </ItemGroup>
 
 </Project>

@@ -8,6 +8,7 @@ using System.Reflection;
 using JetBrains.Annotations;
 using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Git;
 using Nuke.Common.Tooling;
@@ -26,7 +27,6 @@ namespace Nuke.Common.Tools.GitVersion;
 public class GitVersionAttribute : ValueInjectionAttributeBase
 {
     public string Framework { get; set; }
-    public bool DisableOnUnix { get; set; }
     public bool UpdateAssemblyInfo { get; set; }
     public bool UpdateBuildNumber { get; set; } = true;
     public bool NoFetch { get; set; }
@@ -34,13 +34,6 @@ public class GitVersionAttribute : ValueInjectionAttributeBase
 
     public override object GetValue(MemberInfo member, object instance)
     {
-        // TODO: https://github.com/GitTools/GitVersion/issues/1097
-        if (EnvironmentInfo.IsUnix && DisableOnUnix)
-        {
-            Log.Warning("{Tool} is disabled on UNIX environment", nameof(GitVersion));
-            return null;
-        }
-
         var repository = SuppressErrors(() => GitRepository.FromLocalDirectory(Build.RootDirectory));
         if (repository is { Protocol: GitProtocol.Ssh } && !NoFetch)
             Log.Warning($"{nameof(GitVersion)} does not support fetching SSH endpoints, enable {nameof(NoFetch)} to skip fetching");
