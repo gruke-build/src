@@ -20,8 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for Windows installations being not on `C:\` ([nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557))
   - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
 - Removed deprecated & retired Azure Pipelines OS images ([nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549))
-    - Thanks, [@aneilmac](https://github.com/Uriel6575)!
-- Similarly, I did the same for AppVeyor images
+  - Thanks, [@aneilmac](https://github.com/Uriel6575)!
+  - Similarly, I did the same for AppVeyor images.
+- Fix `StronglyTypedSolutionGenerator` causing compilation errors when a Solution Folder is prefixed with digits. [nuke-build#1581](https://github.com/nuke-build/nuke/pull/1581)
+  - Thanks, [@ITaluone](https://github.com/ITaluone)!
 
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
