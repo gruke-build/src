@@ -14,6 +14,8 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.SpaceAutomation;
 
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 #pragma warning disable CS0618 // Type or member is obsolete
 // ReSharper disable once ClassNeverInstantiated.Global
 public class SpaceAutomationOnPremisesAttribute(string name, string image) : SpaceAutomationAttribute(name, image);

@@ -9,7 +9,9 @@ using Nuke.Common.CI.SpaceAutomation;
 
 namespace Nuke.Common.Tests.CI;
 
-public class TestSpaceAutomationAttribute : SpaceAutomationOnPremisesAttribute, ITestConfigurationGenerator
+#pragma warning disable CS0618 // Type or member is obsolete
+public class TestSpaceAutomationAttribute : SpaceAutomationAttribute, ITestConfigurationGenerator
+#pragma warning restore CS0618 // Type or member is obsolete
 {
     public TestSpaceAutomationAttribute(string jobName, string image)
         : base(jobName, image)
