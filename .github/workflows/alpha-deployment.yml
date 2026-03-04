@@ -16,7 +16,10 @@
 
 name: alpha-deployment
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   ubuntu-latest:
