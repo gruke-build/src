@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration GitHubActions_alpha-deployment --host GitHubActions
+#         gruke --generate-configuration GitHubActions_alpha-deployment --host GitHubActions
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------

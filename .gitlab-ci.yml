@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration GitLab --host GitLab
+#         gruke --generate-configuration GitLab --host GitLab
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------

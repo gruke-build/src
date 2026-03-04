@@ -26,9 +26,6 @@
       "enum": [
         "Announce",
         "AnnounceDiscord",
-        "AnnounceMastodon",
-        "AnnounceSlack",
-        "AnnounceTwitter",
         "Changelog",
         "CheckoutExternalRepositories",
         "Clean",
@@ -163,17 +160,9 @@
         "Major": {
           "type": "boolean"
         },
-        "MastodonAccessToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
         "PublicNuGetApiKey": {
           "type": "string",
           "description": "nuget.org API key",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "SlackWebhook": {
-          "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "Solution": {
@@ -183,22 +172,6 @@
         "TestDegreeOfParallelism": {
           "type": "integer",
           "format": "int32"
-        },
-        "TwitterAccessToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterAccessTokenSecret": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterConsumerKey": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterConsumerSecret": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "UseHttps": {
           "type": "boolean"
