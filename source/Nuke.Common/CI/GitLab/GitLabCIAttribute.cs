@@ -14,6 +14,8 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.GitLab;
 
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Class)]
 public class GitLabCIAttribute : ConfigurationAttributeBase
 {
     public bool Docker { get; set; } = true;

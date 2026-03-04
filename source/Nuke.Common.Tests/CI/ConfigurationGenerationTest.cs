@@ -24,15 +24,16 @@ namespace Nuke.Common.Tests.CI;
 
 public class ConfigurationGenerationTest
 {
+    private static readonly TestBuild s_testBuild = new();
+    
     [Theory]
     [MemberData(nameof(GetAttributes))]
     public Task Test(string testName, ITestConfigurationGenerator attribute)
     {
-        var build = new TestBuild();
-        var relevantTargets = ExecutableTargetFactory.CreateAll(build, x => x.Compile);
+        var relevantTargets = ExecutableTargetFactory
+            .CreateAll(s_testBuild, x => x.Compile);
 
         var stream = new MemoryStream();
-        ((ConfigurationAttributeBase)attribute).Build = build;
         attribute.Stream = new StreamWriter(stream, leaveOpen: true);
         attribute.Generate(relevantTargets);
 
@@ -46,7 +47,7 @@ public class ConfigurationGenerationTest
 
     public static IEnumerable<object[]> GetAttributes()
     {
-        return TestBuild.GetAttributes().Select(x => new object[] { x.TestName, x.Generator });
+        return TestBuild.GetAttributes(s_testBuild).Select(x => new object[] { x.TestName, x.Generator });
     }
 
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
@@ -54,13 +55,14 @@ public class ConfigurationGenerationTest
     [TeamCityToken("GitHubToken", "74928d76-46e8-45cc-ad22-6438915ac070")]
     public class TestBuild : NukeBuild
     {
-        public static IEnumerable<(string TestName, IConfigurationGenerator Generator)> GetAttributes()
+        public static IEnumerable<(string TestName, IConfigurationGenerator Generator)> GetAttributes(TestBuild testBuild)
         {
             yield return
             (
                 null,
                 new TestTeamCityAttribute
                 {
+                    Build = testBuild,
                     Description = "description",
                     Version = "1.3.3.7",
                     NonEntryTargets = new[] { nameof(Clean) },
@@ -80,6 +82,7 @@ public class ConfigurationGenerationTest
                     AzurePipelinesImage.Ubuntu2204,
                     AzurePipelinesImage.Windows2025)
                 {
+                    Build = testBuild,
                     NonEntryTargets = new[] { nameof(Clean) },
                     InvokedTargets = new[] { nameof(Test) },
                     ExcludedTargets = new[] { nameof(Pack) },
@@ -107,6 +110,7 @@ public class ConfigurationGenerationTest
                     AppVeyorImage.UbuntuLatest,
                     AppVeyorImage.VisualStudio2022)
                 {
+                    Build = testBuild,
                     InvokedTargets = new[] { nameof(Test) },
                     BranchesOnly = new[] { "only_branch" },
                     BranchesExcept = new[] { "except_branch" },
@@ -125,6 +129,7 @@ public class ConfigurationGenerationTest
                     GitHubActionsImage.UbuntuLatest,
                     GitHubActionsImage.WindowsLatest)
                 {
+                    Build = testBuild,
                     On = new[] { GitHubActionsTrigger.Push, GitHubActionsTrigger.PullRequest },
                     InvokedTargets = new[] { nameof(Test) },
                     ImportSecrets = new[] { nameof(ApiKey) },
@@ -142,6 +147,7 @@ public class ConfigurationGenerationTest
                     GitHubActionsImage.UbuntuLatest,
                     GitHubActionsImage.WindowsLatest)
                 {
+                    Build = testBuild,
                     InvokedTargets = new[] { nameof(Test) },
                     OnCronSchedule = "* 0 * * *",
                     OnPushBranches = new[] { "push_branch" },
@@ -174,6 +180,7 @@ public class ConfigurationGenerationTest
                 null,
                 new TestSpaceAutomationAttribute("Name", "mcr.microsoft.com/dotnet/sdk:5.0")
                 {
+                    Build = testBuild,
                     InvokedTargets = new[] { nameof(Test) },
                     VolumeSize = "10.gb",
                     ResourcesCpu = "1.cpu",
@@ -188,6 +195,18 @@ public class ConfigurationGenerationTest
                     OnCronSchedule = "* 0 * * *",
                     ImportSecrets = new[] { "GitHubToken" },
                     TimeoutInMinutes = 15
+                }
+            );
+
+            yield return
+            (
+                null,
+                new TestGitLabCIAttribute
+                {
+                    Build = testBuild,
+                    InvokedTargets = new[] { nameof(Publish) },
+                    UploadProducedArtifacts = true,
+                    ExcludedArtifacts = new[] { "output/packages/*.nupkg" }
                 }
             );
         }
