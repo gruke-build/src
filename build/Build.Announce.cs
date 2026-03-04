@@ -70,43 +70,6 @@ partial class Build
         }
     }
 
-    IEnumerable<(string Text, string Url)> AnnouncementSponsors =>
-        new (string Text, string Url)[]
-        {
-            ("Octopus Deploy", "https://octopus.com/"),
-            ("Datadog", "https://datadoghq.com/"),
-            ("Amazon Web Services", "https://aws.amazon.com/"),
-        };
-
-    // https://api.slack.com/apps/A050ZLH0V40/incoming-webhooks?
-    [Parameter] [Secret] readonly string SlackWebhook;
-
-    Target AnnounceSlack => _ => _
-        .TriggeredBy(Announce)
-        .ProceedAfterFailure()
-        .Requires(() => SlackWebhook)
-        .Executes(async () =>
-        {
-            await SendSlackMessageAsync(_ => _
-                    .AddAttachments(_ => _
-                        .SetFallback(AnnouncementTitle)
-                        .SetAuthorName(AnnouncementTitle)
-                        .SetAuthorLink(AnnouncementLink)
-                        .SetColor($"#{AnnouncementColor:x8}")
-                        .SetThumbUrl(AnnouncementThumbnailUrl)
-                        .SetText(new StringBuilder()
-                            .Append($"<!channel>, this new release includes *<{AnnouncementComparisonUrl}|{AnnouncementGitInfo.CommitsText}>*")
-                            .AppendLine(AnnouncementGitInfo.NotableCommmitters.Count > 0
-                                ? $" with notable contributions from {AnnouncementGitInfo.NotableCommmitters.JoinCommaAnd()}. A round of applause for them! :clap:"
-                                : ". No contributions this time. :sweat_smile:")
-                            .AppendLine()
-                            .AppendLine("Remember that you can call `nuke :update` to update your builds! :bulb:")
-                            .AppendLine()
-                            .AppendLine(AnnouncementReleaseNotes).ToString())
-                        .SetFooter($"Powered by {AnnouncementSponsors.Select(x => $"*<{x.Url}|{x.Text}>*").JoinCommaAnd()}.")),
-                SlackWebhook);
-        });
-
     // Server settings | Apps | Integrations | Webhooks | NUKE
     [Parameter] [Secret] readonly string DiscordWebhook;
 
@@ -129,66 +92,10 @@ partial class Build
                                 ? $" with notable contributions from {AnnouncementGitInfo.NotableCommmitters.JoinCommaAnd()}. A round of applause for them! 👏"
                                 : ". No contributions this time. 😅")
                             .AppendLine()
-                            .AppendLine("Remember that you can call `nuke :update` to update your builds! 💡")
+                            .AppendLine("Remember that you can call `gruke :update` to update your builds! 💡")
                             .AppendLine()
                             .AppendLine(AnnouncementReleaseNotes).ToString()
-                            .Replace("*", "**"))
-                        .SetFooter(_ => _
-                            .SetText($"Powered by {AnnouncementSponsors.Select(x => x.Text).JoinCommaAnd()}.")
-                            .SetIconUrl("https://cdn.discordapp.com/emojis/674275938757771306.webp?size=240&quality=lossless"))),
+                            .Replace("*", "**"))),
                 DiscordWebhook);
-        });
-
-    string AnnouncementTweetText =>
-        new StringBuilder()
-            .AppendLine($"🔥 Check out the new {MajorMinorPatchVersion} release! 🏗")
-            .AppendLine()
-            .AppendLine($"More information at 👉 {GitRepository.GetGitHubBrowseUrl(From<IHazChangelog>().ChangelogFile)}").ToString();
-
-    Target AnnounceTwitter => _ => _
-        .TriggeredBy(Announce)
-        .ProceedAfterFailure()
-        .Requires(() => TwitterCredentials.ConsumerKey)
-        .Requires(() => TwitterCredentials.ConsumerSecret)
-        .Requires(() => TwitterCredentials.AccessToken)
-        .Requires(() => TwitterCredentials.AccessTokenSecret)
-        .Executes(async () =>
-        {
-            var context = new TwitterContext(
-                new SingleUserAuthorizer
-                {
-                    CredentialStore =
-                        new SingleUserInMemoryCredentialStore
-                        {
-                            ConsumerKey = TwitterCredentials.ConsumerKey,
-                            ConsumerSecret = TwitterCredentials.ConsumerSecret,
-                            AccessToken = TwitterCredentials.AccessToken,
-                            AccessTokenSecret = TwitterCredentials.AccessTokenSecret
-                        }
-                });
-
-            var media = await context.UploadMediaAsync(
-                media: ReleaseImageFile.ReadAllBytes(),
-                mediaType: "image/png",
-                mediaCategory: "tweet_image");
-
-            await context.TweetMediaAsync(AnnouncementTweetText, mediaIds: new[] { media.NotNull().MediaID.ToString() });
-        });
-
-    string AnnouncementTootText => AnnouncementTweetText;
-    // https://dotnet.social/settings/applications/496
-    [Parameter] [Secret] readonly string MastodonAccessToken;
-
-    Target AnnounceMastodon => _ => _
-        .TriggeredBy(Announce)
-        .ProceedAfterFailure()
-        .Requires(() => MastodonAccessToken)
-        .Executes(async () =>
-        {
-            await SendMastodonMessageAsync(_ => _
-                    .SetText(AnnouncementTootText)
-                    .AddMediaFiles(ReleaseImageFile),
-                "https://dotnet.social",
-                MastodonAccessToken);
         });
 }
