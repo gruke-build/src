@@ -37,18 +37,18 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
-      - name: 'Run: Pack, Test, Publish'
-        run: ./build.cmd Pack Test Publish
+      - name: 'Run: Test, Pack, Publish'
+        run: ./build.cmd Test Pack Publish
         env:
           PublicNuGetApiKey: ${{ secrets.PUBLIC_NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish: packages'
-        uses: actions/upload-artifact@v5
-        with:
-          name: packages
-          path: output/packages
       - name: 'Publish: test-results'
         uses: actions/upload-artifact@v5
         with:
           name: test-results
           path: output/test-results
+      - name: 'Publish: packages'
+        uses: actions/upload-artifact@v5
+        with:
+          name: packages
+          path: output/packages

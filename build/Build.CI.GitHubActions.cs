@@ -10,7 +10,7 @@ using Nuke.Components;
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
     OnPushBranches = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
-    InvokedTargets = [nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish)],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack), nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = true,
     ImportSecrets = [nameof(PublicNuGetApiKey)])]
