@@ -10,6 +10,7 @@ using JetBrains.Annotations;
 using Nuke.Common.CI;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
+using Serilog;
 
 namespace Nuke.Common.Git;
 
@@ -86,7 +87,17 @@ public class GitRepository
 
         foreach (var partPair in rawData)
         {
-            data[partPair.ElementAt(0).Trim()] = partPair.ElementAt(1).Trim();
+            var key = partPair.ElementAt(0).Trim();
+            var keyData = partPair.ElementAt(1).Trim();
+            if (data.TryGetValue(key, out var existingData))
+            {
+                Log.Warning("Duplicate branch configuration found for '{branch}'; key: {key}, value: {value}", 
+                    branch, key, existingData);
+                Log.Warning("Overriding existing value '{oldValue}' with new value '{newValue}'", existingData, keyData);
+                Log.Warning("To remove this warning, remove the mentioned duplicate entries from your config at '{configFile}'.", configFile.ToString());
+            }
+
+            data[key] = keyData;
         }
 
         return data.TryGetValue("remote", out var remote) && data.TryGetValue("merge", out var merge)
