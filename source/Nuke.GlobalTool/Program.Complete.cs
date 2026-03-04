@@ -16,7 +16,7 @@ namespace Nuke.GlobalTool;
 
 partial class Program
 {
-    private const string CommandName = "nuke";
+    private const string CommandName = "gruke";
 
     [UsedImplicitly]
     public static int Complete(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
