@@ -152,9 +152,7 @@ public class UpdateSolutionFileContentTests
             .UseParameters(number);
     }
 
-    // Genuinely confused with this one. The output matches expected, yet the test fails.
-
-    /*[Theory]
+    [Theory]
     [InlineData(
         1,
         """
@@ -185,7 +183,7 @@ public class UpdateSolutionFileContentTests
         _testOutputHelper.WriteLine($"expected: {Environment.NewLine}{expected}");
         _testOutputHelper.WriteLine($"result: {Environment.NewLine}{stringStream}");
 
-        return Verifier.VerifyXml(stringStream.ToString())
+        return Verifier.VerifyXml(expected)
             .UseParameters(number);
-    }*/
+    }
 }
