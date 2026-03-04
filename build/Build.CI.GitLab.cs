@@ -13,7 +13,8 @@ using static Nuke.Common.ControlFlow;
 [GitLabCI(
     InvokedTargets = [nameof(IPublish.Publish)],
     UploadProducedArtifacts = true,
-    ExcludedArtifacts = [ "output/packages/*.nupkg" ]
+    ExcludedArtifacts = [ "output/packages/*.nupkg" ],
+    OnlyOnPushesToBranches = [ default ]
 )]
 partial class Build
 {

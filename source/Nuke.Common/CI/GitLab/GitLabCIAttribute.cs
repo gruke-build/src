@@ -19,7 +19,7 @@ namespace Nuke.Common.CI.GitLab;
 public class GitLabCIAttribute : ConfigurationAttributeBase
 {
     public bool Docker { get; set; } = true;
-    
+
     public bool RecurseSubmodules { get; set; }
 
     [CanBeNull] public string DockerImage { get; set; }
@@ -29,6 +29,8 @@ public class GitLabCIAttribute : ConfigurationAttributeBase
     public bool UploadProducedArtifacts { get; set; }
 
     public string[] ExcludedArtifacts { get; set; } = [];
+
+    public string[] OnlyOnPushesToBranches { get; set; }
 
     public override Type HostType => typeof(GitLab);
     public override IEnumerable<AbsolutePath> GeneratedFiles => [ ConfigurationFile ];
@@ -48,6 +50,7 @@ public class GitLabCIAttribute : ConfigurationAttributeBase
                    UploadArtifacts = UploadProducedArtifacts,
                    InvokedTargets = InvokedTargets,
                    ExcludedArtifacts = ExcludedArtifacts,
+                   OnlyOnPushesToBranches = OnlyOnPushesToBranches,
                    Artifacts = GetArtifacts(relevantTargets).ToArray(),
                    Variables = GetVariables()
                };

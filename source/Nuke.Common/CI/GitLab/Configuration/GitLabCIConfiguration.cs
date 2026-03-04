@@ -23,6 +23,8 @@ public class GitLabCIConfiguration : ConfigurationEntity
     public string[] Artifacts { get; set; }
 
     public string[] ExcludedArtifacts { get; set; }
+    
+    public string[] OnlyOnPushesToBranches { get; set; }
 
     public override void Write(CustomFileWriter writer)
     {
@@ -84,6 +86,22 @@ public class GitLabCIConfiguration : ConfigurationEntity
                             writer.WriteLine($"- {artifactPath.SingleQuoteIfNeeded()}");
                         }
                     }
+                }
+            }
+
+            if (OnlyOnPushesToBranches.Length > 0)
+            {
+                writer.WriteLine("rules:");
+                using (writer.Indent())
+                {
+                    var longCondition = OnlyOnPushesToBranches.Select(FormatCondition).Join(" || ");
+
+                    writer.WriteLine($"- if: {longCondition}");
+
+                    static string FormatCondition(string branchName) =>
+                        branchName is null
+                            ? "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH" 
+                            : $"$CI_COMMIT_BRANCH == {branchName.DoubleQuote()}";
                 }
             }
         }

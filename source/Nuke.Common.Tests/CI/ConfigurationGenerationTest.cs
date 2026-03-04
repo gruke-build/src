@@ -206,7 +206,8 @@ public class ConfigurationGenerationTest
                     Build = testBuild,
                     InvokedTargets = new[] { nameof(Publish) },
                     UploadProducedArtifacts = true,
-                    ExcludedArtifacts = new[] { "output/packages/*.nupkg" }
+                    ExcludedArtifacts = new[] { "output/packages/*.nupkg" },
+                    OnlyOnPushesToBranches = [ default ]
                 }
             );
         }

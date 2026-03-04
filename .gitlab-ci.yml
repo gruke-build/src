@@ -30,3 +30,5 @@ stages:
     paths:
       - output/test-results/*.trx
       - output/test-results/*.xml
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
