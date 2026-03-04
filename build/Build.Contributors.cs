@@ -22,10 +22,10 @@ partial class Build
         {
             var previousContributors = ContributorsCacheFile.Existing()?.ReadAllLines() ?? new string[0];
 
-            var repositoryDirectories = new[] { RootDirectory / ".git" }
-                .Concat(ExternalRepositoriesDirectory.GlobDirectories("*/.git"));
-            var contributors = repositoryDirectories
-                .SelectMany(x => Git(@"log --pretty=""%an|%ae%n%cn|%ce""", workingDirectory: x, logOutput: false))
+            var repositoryDirectory = RootDirectory / ".git";
+            var contributors = Git(@"log --pretty=""%an|%ae%n%cn|%ce""",
+                    workingDirectory: repositoryDirectory,
+                    logOutput: false)
                 .Select(x => x.Text)
                 .Distinct().ToList()
                 .Select(x => x.Split('|'))
