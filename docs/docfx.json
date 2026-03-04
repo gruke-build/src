@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../source",
+          "files": [
+            "**/*.csproj"
+          ],
+          "exclude": ["Nuke.GlobalTool/templates/*.csproj", "Nuke.**.Tests/*.csproj"]
+        }
+      ],
+      "output": "apimeta"
+    }
+  ],
+  "build": {
+    "maxParallelism": 6,
+    "content": [
+      {
+        "src": "api",
+        "files": [ "index.md", "toc.yml" ],
+        "dest": "api"
+      },
+      {
+        "src": "apimeta",
+        "files": [ "**.yml" ],
+        "dest": "api"
+      },
+      {
+        "files": [ "toc.yml", "index.md" ]
+      }
+    ],
+    "resource": [
+      {
+        "src": "../",
+        "files": [
+          "images/icon.ico",
+          "images/icon-tiny.png"
+        ]
+      }
+    ],
+    "output": "generated",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "gruke",
+      "_appTitle": "gruke",
+      "_appFaviconPath": "images/icon.ico",
+      "_appLogoPath": "images/icon-tiny.png",
+      "_appFooter": "The AKEless Build System for C#/.NET",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}
