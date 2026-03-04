@@ -21,7 +21,7 @@ internal static class Constants
 {
     internal const string NukeFileName = NukeDirectoryName;
     internal const string NukeDirectoryName = ".nuke";
-    internal const string NukeCommonPackageId = nameof(Nuke) + "." + nameof(Common);
+    internal const string NukeCommonPackageId = "GreemDev." + nameof(Nuke) + "." + nameof(Common);
     internal const string BuildSchemaFileName = "build.schema.json";
 
     internal const string TargetsSeparator = "+";
