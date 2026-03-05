@@ -4,38 +4,32 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using LinqToTwitter;
-using LinqToTwitter.OAuth;
+using Discord;
+using Discord.Webhook;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
 using Nuke.Common.Git;
-using Nuke.Common.IO;
-using Nuke.Common.Tools.Discord;
 using Nuke.Common.Tools.GitHub;
-using Nuke.Common.Tools.Mastodon;
-using Nuke.Common.Tools.Slack;
 using Nuke.Common.Utilities;
 using Nuke.Components;
-using static Nuke.Common.Tools.Discord.DiscordTasks;
 using static Nuke.Common.Tools.Git.GitTasks;
-using static Nuke.Common.Tools.Mastodon.MastodonTasks;
-using static Nuke.Common.Tools.Slack.SlackTasks;
 
 partial class Build
 {
     Target Announce => _ => _
         .DependsOn(ReleaseImage)
         .WhenSkipped(DependencyBehavior.Skip)
-        // .TriggeredBy<IPublish>()
+        .TriggeredBy<IPublish>()
         .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch());
 
     IEnumerable<string> ChangelogSectionNotes => ChangelogTasks.ExtractChangelogSectionNotes(From<IHazChangelog>().ChangelogFile);
 
-    string AnnouncementTitle => $"NUKE {MajorMinorPatchVersion} RELEASED!";
+    string AnnouncementTitle => $"GRUKE {MajorMinorPatchVersion} RELEASED!";
     string AnnouncementLink => $"https://nuget.org/packages/GreemDev.Nuke.Common/{MajorMinorPatchVersion}";
-    int AnnouncementColor => 0x00ACC1;
+    uint AnnouncementColor => 0x00ACC1;
 
     string AnnouncementThumbnailUrl =>
         (GitVersion.Major, GitVersion.Minor, GitVersion.Patch) switch
@@ -50,22 +44,22 @@ partial class Build
     string AnnouncementReleaseNotes =>
         new StringBuilder()
             .AppendLine("*Release Notes*")
-            .AppendLine("```")
-            .AppendLine(ChangelogSectionNotes.Select(x => x.Replace("- ", "• ").Replace("`", string.Empty)).JoinNewLine())
-            .AppendLine("```").ToString();
+            .AppendLine(ChangelogSectionNotes.Join('\n'))
+            .ToString();
 
     (string CommitsText, IReadOnlyCollection<string> NotableCommmitters) AnnouncementGitInfo
     {
         get
         {
-            var committers = Git($"log {MajorMinorPatchVersion}^..{MajorMinorPatchVersion} --pretty=tformat:%an", logInvocation: false, logOutput: false);
+            var committers = Git($"log {MajorMinorPatchVersion}^..{MajorMinorPatchVersion} --pretty=tformat:%an", logInvocation: false,
+                logOutput: false);
             var commitsText = $"{committers.Count} {(committers.Count == 1 ? "commit" : "commits")}";
             var notableCommitters = committers
                 .Select(x => x.Text)
                 .GroupBy(x => x)
                 .OrderByDescending(x => x.Count())
                 .Select(x => x.Key)
-                .Where(x => x != "Matthias Koch").ToList();
+                .Where(x => x is not "Matthias Koch" and not "GreemDev").ToList();
             return (commitsText, notableCommitters);
         }
     }
@@ -79,14 +73,22 @@ partial class Build
         .Requires(() => DiscordWebhook)
         .Executes(async () =>
         {
-            await SendDiscordMessageAsync(_ => _
-                    .SetContent("@everyone")
-                    .AddEmbeds(_ => _
-                        .SetTitle(AnnouncementTitle)
-                        .SetColor(AnnouncementColor)
-                        .SetThumbnail(_ => _
-                            .SetUrl(AnnouncementThumbnailUrl))
-                        .SetDescription(new StringBuilder()
+            var webhookClient = new DiscordWebhookClient(DiscordWebhook);
+            using var fileAttachment = new FileAttachment(ReleaseImageFile);
+
+            await webhookClient.SendFileAsync(fileAttachment,
+                text: "@everyone",
+                allowedMentions: AllowedMentions.None,
+                username: "GRUKE Release",
+                avatarUrl: "https://github.com/gruke-build/src/blob/develop/images/icon.png?raw=true",
+                embeds:
+                [
+                    new EmbedBuilder()
+                        .WithTitle(AnnouncementTitle)
+                        .WithUrl(AnnouncementLink)
+                        .WithColor(AnnouncementColor)
+                        .WithThumbnailUrl(AnnouncementThumbnailUrl)
+                        .WithDescription(new StringBuilder()
                             .Append($"This new release includes *[{AnnouncementGitInfo.CommitsText}]({AnnouncementComparisonUrl})*")
                             .AppendLine(AnnouncementGitInfo.NotableCommmitters.Count > 0
                                 ? $" with notable contributions from {AnnouncementGitInfo.NotableCommmitters.JoinCommaAnd()}. A round of applause for them! 👏"
@@ -95,7 +97,8 @@ partial class Build
                             .AppendLine("Remember that you can call `gruke :update` to update your builds! 💡")
                             .AppendLine()
                             .AppendLine(AnnouncementReleaseNotes).ToString()
-                            .Replace("*", "**"))),
-                DiscordWebhook);
+                            .Replace("*", "**")
+                        ).Build()
+                ]);
         });
 }

@@ -54,6 +54,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Discord.Net.Webhook" Version="3.19.0" />
     <PackageReference Include="linqtotwitter" Version="6.15.0" />
     <PackageReference Include="MQTTnet" Version="4.3.7.1207" />
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
