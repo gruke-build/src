@@ -80,7 +80,7 @@ partial class Build
                 text: "@everyone",
                 allowedMentions: AllowedMentions.None,
                 username: "GRUKE Release",
-                avatarUrl: "https://github.com/gruke-build/src/blob/develop/images/icon.png?raw=true",
+                avatarUrl: "https://github.com/gruke-build/src/blob/develop/images/icon-social.png?raw=true",
                 embeds:
                 [
                     new EmbedBuilder()
