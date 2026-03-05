@@ -22,7 +22,7 @@ public enum GitProtocol
 
 [PublicAPI]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public class GitRepository
+public partial class GitRepository
 {
     private const string FallbackRemoteName = "origin";
 
@@ -180,12 +180,10 @@ public class GitRepository
 
     private static (GitProtocol Protocol, string Endpoint, string Identifier) GetRemoteConnectionFromUrl(string url)
     {
-        var regex = new Regex(
-            @"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$");
-        var match = regex.Match(url.NotNull().Trim());
+        var match = GitRemoteRegex.Match(url.NotNull().Trim());
 
         Assert.True(match.Success, $"Url '{url}' could not be parsed.");
-        var protocol = match.Groups["protocol"].Value.EqualsOrdinalIgnoreCase(GitProtocol.Https.ToString())
+        var protocol = match.Groups["protocol"].Value.EqualsOrdinalIgnoreCase(nameof(GitProtocol.Https))
             ? GitProtocol.Https
             : GitProtocol.Ssh;
         return (protocol, match.Groups["endpoint"].Value, match.Groups["identifier"].Value);
@@ -299,4 +297,9 @@ public class GitRepository
     {
         return (Protocol == GitProtocol.Https ? HttpsUrl : SshUrl).TrimEnd(".git");
     }
+    
+    public static readonly Regex GitRemoteRegex = GitRemotePattern();
+
+    [GeneratedRegex(@"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$")]
+    private static partial Regex GitRemotePattern();
 }

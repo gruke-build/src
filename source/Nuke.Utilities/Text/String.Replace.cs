@@ -25,7 +25,9 @@ public static partial class StringExtensions
         return Regex.Replace(str, pattern, matchEvaluator, options);
     }
 
+#pragma warning disable SYSLIB1045
     private static readonly Regex s_unicodeRegex = new(@"\\u(?<Value>[a-zA-Z0-9]{4})", RegexOptions.Compiled);
+#pragma warning restore SYSLIB1045
 
     [Pure]
     public static string ReplaceUnicode(this string str)
