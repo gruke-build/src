@@ -13,7 +13,7 @@ using Nuke.Components;
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack), nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = true,
-    ImportSecrets = [nameof(PublicNuGetApiKey)])]
+    ImportSecrets = [nameof(PublicNuGetApiKey), nameof(DiscordWebhook)])]
 [GitHubActions(
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
