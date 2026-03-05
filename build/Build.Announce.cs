@@ -88,6 +88,7 @@ partial class Build
                         .WithUrl(AnnouncementLink)
                         .WithColor(AnnouncementColor)
                         .WithThumbnailUrl(AnnouncementThumbnailUrl)
+                        .WithImageUrl(fileAttachment.GetAttachmentUrl())
                         .WithDescription(new StringBuilder()
                             .Append($"This new release includes *[{AnnouncementGitInfo.CommitsText}]({AnnouncementComparisonUrl})*")
                             .AppendLine(AnnouncementGitInfo.NotableCommmitters.Count > 0
