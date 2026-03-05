@@ -43,13 +43,3 @@ jobs:
           PublicNuGetApiKey: ${{ secrets.PUBLIC_NUGET_API_KEY }}
           DiscordWebhook: ${{ secrets.DISCORD_WEBHOOK }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Publish: test-results'
-        uses: actions/upload-artifact@v5
-        with:
-          name: test-results
-          path: output/test-results
-      - name: 'Publish: packages'
-        uses: actions/upload-artifact@v5
-        with:
-          name: packages
-          path: output/packages

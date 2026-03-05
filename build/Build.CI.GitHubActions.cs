@@ -12,7 +12,7 @@ using Nuke.Components;
     OnPushBranches = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack), nameof(IPublish.Publish)],
     EnableGitHubToken = true,
-    PublishArtifacts = true,
+    PublishArtifacts = false,
     ImportSecrets = [nameof(PublicNuGetApiKey), nameof(DiscordWebhook)])]
 [GitHubActions(
     "windows-latest",
@@ -20,24 +20,21 @@ using Nuke.Components;
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     OnPullRequestBranches = [DevelopBranch],
-    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
-    PublishArtifacts = false)]
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     OnPullRequestBranches = [DevelopBranch],
-    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
-    PublishArtifacts = false)]
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     OnPullRequestBranches = [DevelopBranch],
-    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
-    PublishArtifacts = false)]
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     AlphaDeployment,
     GitHubActionsImage.UbuntuLatest,
