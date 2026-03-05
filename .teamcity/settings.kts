@@ -68,13 +68,6 @@ project {
             value = "1",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
-        checkbox (
-            "env.UseHttps",
-            label = "UseHttps",
-            value = "False",
-            checked = "True",
-            unchecked = "False",
-            display = ParameterDisplay.NORMAL)
         select (
             "env.Verbosity",
             label = "Verbosity",

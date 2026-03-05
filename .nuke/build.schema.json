@@ -27,7 +27,6 @@
         "Announce",
         "AnnounceDiscord",
         "Changelog",
-        "CheckoutExternalRepositories",
         "Clean",
         "Compile",
         "CreateGitHubRelease",
@@ -172,9 +171,6 @@
         "TestDegreeOfParallelism": {
           "type": "integer",
           "format": "int32"
-        },
-        "UseHttps": {
-          "type": "boolean"
         }
       }
     },
