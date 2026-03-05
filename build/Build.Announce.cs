@@ -67,6 +67,9 @@ partial class Build
     // Server settings | Apps | Integrations | Webhooks | NUKE
     [Parameter] [Secret] readonly string DiscordWebhook;
 
+    // either null, 'everyone'/'@everyone' or a role ID
+    [Parameter] readonly string AnnouncementPing;
+
     Target AnnounceDiscord => _ => _
         .TriggeredBy(Announce)
         .ProceedAfterFailure()
@@ -77,8 +80,14 @@ partial class Build
             using var fileAttachment = new FileAttachment(ReleaseImageFile);
 
             await webhookClient.SendFileAsync(fileAttachment,
-                text: "@everyone",
-                allowedMentions: AllowedMentions.None,
+                text: AnnouncementPing is not null 
+                    ? AnnouncementPing.EqualsOrdinalIgnoreCase("everyone") ||
+                      AnnouncementPing.EqualsOrdinalIgnoreCase("@everyone")
+                        ? "@everyone"
+                        : ulong.TryParse(AnnouncementPing, out var id)
+                            ? MentionUtils.MentionRole(id)
+                            : null
+                    : null,
                 username: "GRUKE Release",
                 avatarUrl: "https://github.com/gruke-build/src/blob/develop/images/icon-social.png?raw=true",
                 embeds:
