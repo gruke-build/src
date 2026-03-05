@@ -34,6 +34,12 @@ project {
     buildTypesOrder = arrayListOf(Pack, Test_P1T2, Test_P2T2, Test, ReportDuplicates, ReportIssues, ReportCoverage)
 
     params {
+        text (
+            "env.AnnouncementPing",
+            label = "AnnouncementPing",
+            value = "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
         checkbox (
             "env.AutoStash",
             label = "AutoStash",
