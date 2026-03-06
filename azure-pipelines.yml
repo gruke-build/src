@@ -30,10 +30,8 @@ stages:
         strategy:
           parallel: 2
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:
@@ -59,10 +57,8 @@ stages:
         displayName: '📦 Pack'
         dependsOn: [  ]
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:
@@ -96,10 +92,8 @@ stages:
         strategy:
           parallel: 2
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:
@@ -125,10 +119,8 @@ stages:
         displayName: '📦 Pack'
         dependsOn: [  ]
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:
@@ -162,10 +154,8 @@ stages:
         strategy:
           parallel: 2
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:
@@ -191,10 +181,8 @@ stages:
         displayName: '📦 Pack'
         dependsOn: [  ]
         steps:
-          - task: CmdLine@2
-            displayName: 'git: Fetch Unshallow'
-            inputs:
-              script: 'git fetch --unshallow'
+          - checkout: self
+            fetchDepth: 0
           - task: Cache@2
             displayName: 'Cache: nuke-temp'
             inputs:

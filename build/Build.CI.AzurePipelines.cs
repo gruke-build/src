@@ -16,7 +16,7 @@ using Nuke.Components;
     AzurePipelinesImage.UbuntuLatest,
     AzurePipelinesImage.WindowsLatest,
     AzurePipelinesImage.MacOsLatest,
-    EnsureUnshallowClone = true,
+    FetchDepth = 0,
     PullRequestsDisabled = true,
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     NonEntryTargets = [nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage)],
