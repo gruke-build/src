@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- Removed properties in the `GitVersion` record that have been removed in newer versions. 
+  - Instead of `NuGetVersionV2`, use `FullSemVer`.
 - Implemented a basic `.gitlab-ci.yml` generator. Currently only generates a single job, for all specified targets.
   - You can also specify to automatically upload all (known (via `.Produces`)) artifacts from the executed targets.
   - On top of this, you can specify artifacts to exclude.
@@ -14,6 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactored the documentation in-repository to work on `mkdocs`:
   - https://github.com/gruke-build/docs
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
+- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on GitHub Pages for *C# API reference* documentation specifically.
+  - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`gh-pages`](https://github.com/gruke-build/src/tree/gh-pages) branch, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
+  - View the deployment on [gruke-build.github.io](https://gruke-build.github.io/src/api/).
 - [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
   - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)!
 - [nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572): Added support for XML Solutions into `gruke :setup`
