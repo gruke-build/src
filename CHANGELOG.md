@@ -14,18 +14,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactored the documentation in-repository to work on `mkdocs`:
   - https://github.com/gruke-build/docs
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
-- fix: log `npm` warn messages as a warning ([nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523))
+- [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
   - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)!
-- Added support for XML Solutions into `gruke :setup` ([nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572))
+- [nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572): Added support for XML Solutions into `gruke :setup`
   - Thanks, [@lahma](https://github.com/lahma)!
-- Added support for resolving VS2026 MSBuild installations ([nuke-build#1583](https://github.com/nuke-build/nuke/pull/1583))
+- [nuke-build#1583](https://github.com/nuke-build/nuke/pull/1583): Added support for resolving VS2026 MSBuild installations
   - Thanks, [@Kielek](https://github.com/Kielek)!
-- Added support for Windows installations being not on `C:\` ([nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557))
+- [nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557): Added support for Windows installations being not on `C:\`
   - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
-- Removed deprecated & retired Azure Pipelines OS images ([nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549))
+- [nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549): Removed deprecated & retired Azure Pipelines OS images
   - Thanks, [@aneilmac](https://github.com/Uriel6575)!
-  - Similarly, I did the same for AppVeyor images.
-- Fix `StronglyTypedSolutionGenerator` causing compilation errors when a Solution Folder is prefixed with digits. [nuke-build#1581](https://github.com/nuke-build/nuke/pull/1581)
+  - Similarly, I did the same for AppVeyor & GitHub runner images. ([nuke-build#1519](https://github.com/nuke-build/nuke/issues/1519))
+- Fix `StronglyTypedSolutionGenerator` causing compilation errors when a Solution Folder is prefixed with digits. ([nuke-build#1581](https://github.com/nuke-build/nuke/pull/1581))
   - Thanks, [@ITaluone](https://github.com/ITaluone)!
 
 ## [10.1.0] / 2025-12-02
