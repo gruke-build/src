@@ -345,7 +345,7 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The first eight characters of <c>$CI_COMMIT_SHA</c>.
     /// </summary>
-    public string CommitShortSha => EnvironmentInfo.GetVariable("CI_COMMIT_SHORT_SHA");
+    [NoConvert] public string CommitShortSha => EnvironmentInfo.GetVariable("CI_COMMIT_SHORT_SHA");
 
     /// <summary>
     /// The commit tag message.
