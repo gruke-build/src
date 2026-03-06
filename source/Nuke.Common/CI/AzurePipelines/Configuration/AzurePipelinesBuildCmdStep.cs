@@ -14,10 +14,10 @@ namespace Nuke.Common.CI.AzurePipelines.Configuration;
 [PublicAPI]
 public class AzurePipelinesCmdStep : AzurePipelinesStep
 {
-    public string DisplayName { get; set; }
-    public string Command { get; set; }
-    [CanBeNull] public string Arguments { get; set; }
-    public Dictionary<string, string> Imports { get; set; } = new();
+    public virtual string DisplayName { get; set; }
+    public virtual string Command { get; set; }
+    [CanBeNull] public virtual string Arguments { get; set; }
+    public virtual Dictionary<string, string> Imports { get; set; } = new();
 
     public override void Write(CustomFileWriter writer)
     {
@@ -42,35 +42,36 @@ public class AzurePipelinesCmdStep : AzurePipelinesStep
 }
 
 [PublicAPI]
-public class AzurePipelinesBuildCmdStep : AzurePipelinesStep
+public class AzurePipelinesBuildCmdStep : AzurePipelinesCmdStep
 {
     public string[] InvokedTargets { get; set; }
     public string BuildCmdPath { get; set; }
     public int? PartitionSize { get; set; }
-    public Dictionary<string, string> Imports { get; set; }
 
-    public override void Write(CustomFileWriter writer)
+    public override string Arguments
     {
-        using (writer.WriteBlock("- task: CmdLine@2"))
+        get
         {
-            writer.WriteLine("displayName: " + $"Run: {InvokedTargets.JoinCommaSpace()}".SingleQuote());
-
             var arguments = $"{InvokedTargets.JoinSpace()} --skip";
             if (PartitionSize != null)
                 arguments += $" --partition $(System.JobPositionInPhase)/{PartitionSize}";
 
-            using (writer.WriteBlock("inputs:"))
-            {
-                writer.WriteLine($"script: './{BuildCmdPath} {arguments}'");
-            }
-
-            if (Imports.Count > 0)
-            {
-                using (writer.WriteBlock("env:"))
-                {
-                    Imports.ForEach(x => writer.WriteLine($"{x.Key}: {x.Value}"));
-                }
-            }
+            return arguments;
         }
+        set => throw new NotSupportedException("get-only override");
     }
+
+    public override string DisplayName
+    {
+        get => $"Run: {InvokedTargets.JoinCommaSpace()}";
+        set => throw new NotSupportedException("get-only override");
+    }
+
+    public override string Command
+    {
+        get => $"./{BuildCmdPath}";
+        set => throw new NotSupportedException("get-only override");
+    }
+
+    public override Dictionary<string, string> Imports { get; set; }
 }
