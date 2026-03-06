@@ -96,7 +96,7 @@ class Build : NukeBuild
             MSBuild(s => s                                                                      // NUGET && MSBUILD
                 .SetTargetPath(Solution)                                                        // NUGET && MSBUILD
                 .SetTargets("Restore", "Pack")                                                  // NUGET && MSBUILD
-                .SetPackageVersion(GitVersion.NuGetVersionV2)                                   // NUGET && MSBUILD && GITVERSION
+                .SetPackageVersion(GitVersion.FullSemVer)                                       // NUGET && MSBUILD && GITVERSION
                 .SetPackageReleaseNotes(GetNuGetReleaseNotes(ChangelogFile, GitRepository))     // NUGET && MSBUILD && CHANGELOG && GIT
                 .SetPackageOutputPath(ArtifactsDirectory)                                       // NUGET && MSBUILD && ARTIFACTS_DIR
                 .SetPackageOutputPath(OutputDirectory)                                          // NUGET && MSBUILD && OUTPUT_DIR
@@ -105,7 +105,7 @@ class Build : NukeBuild
                 .SetSymbolPackageFormat(NuGetSymbolPackageFormat.snupkg));                      // NUGET && MSBUILD
             DotNetPack(s => s                                                                   // NUGET && DOTNET
                 .SetProject(Solution)                                                           // NUGET && DOTNET
-                .SetVersion(GitVersion.NuGetVersionV2)                                          // NUGET && DOTNET && GITVERSION
+                .SetVersion(GitVersion.FullSemVer)                                              // NUGET && DOTNET && GITVERSION
                 .SetPackageReleaseNotes(GetNuGetReleaseNotes(ChangelogFile, GitRepository))     // NUGET && DOTNET && CHANGELOG && GIT
                 .SetOutputDirectory(ArtifactsDirectory)                                         // NUGET && DOTNET && ARTIFACTS_DIR
                 .SetOutputDirectory(OutputDirectory)                                            // NUGET && DOTNET && OUTPUT_DIR
