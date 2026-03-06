@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Implemented a basic `.gitlab-ci.yml` generator. Currently only generates a single job, for all specified targets.
   - You can also specify to automatically upload all (known (via `.Produces`)) artifacts from the executed targets.
   - On top of this, you can specify artifacts to exclude.
-- Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke.Common` package.
+- Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke` package.
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
     - Instead, only the most recent value is retained.
 - Refactored the documentation in-repository to work on `mkdocs`:
