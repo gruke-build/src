@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Instead of `NuGetVersionV2`, use `FullSemVer`.
 - Implemented a basic `.gitlab-ci.yml` generator. Currently only generates a single job, for all specified targets.
   - You can also specify to automatically upload all (known (via `.Produces`)) artifacts from the executed targets.
-  - On top of this, you can specify artifacts to exclude.
+  - On top of this, you can specify artifacts to exclude; as well as only running the job on specific branch(es) push event.
 - Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke` package.
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
     - Instead, only the most recent value is retained.
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557): Added support for Windows installations being not on `C:\`
   - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
 - [nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549): Removed deprecated & retired Azure Pipelines OS images
-  - Thanks, [@aneilmac](https://github.com/Uriel6575)!
+  - Thanks, [@aneilmac](https://github.com/aneilmac)!
   - Similarly, I did the same for AppVeyor & GitHub runner images. ([nuke-build#1519](https://github.com/nuke-build/nuke/issues/1519))
 - Fix `StronglyTypedSolutionGenerator` causing compilation errors when a Solution Folder is prefixed with digits. ([nuke-build#1581](https://github.com/nuke-build/nuke/pull/1581))
   - Thanks, [@ITaluone](https://github.com/ITaluone)!
