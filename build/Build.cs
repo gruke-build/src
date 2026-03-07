@@ -22,6 +22,7 @@ using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities;
 using Nuke.Components;
+using Serilog;
 using static Nuke.Common.ControlFlow;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
@@ -187,9 +188,20 @@ partial class Build
         .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch())
         .Executes(async () =>
         {
-            var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
-            foreach (var issue in issues)
-                await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+            try
+            {
+                var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
+                foreach (var issue in issues)
+                    await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Failed to comment on milestone issues: {message}", e.Message);
+                if (e.StackTrace is {} st)
+#pragma warning disable CA2254
+                    Log.Warning(st);
+#pragma warning restore CA2254
+            }
         });
 
     Target Install => _ => _
