@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -29,7 +29,7 @@ public static class ProjectUpdater
 
     private static void UpdateTargetFramework(Microsoft.Build.Evaluation.Project buildProject)
     {
-        buildProject.SetProperty("TargetFramework", "net8.0");
+        buildProject.SetProperty("TargetFramework", "net10.0");
     }
 
     private static void UpdateNukeCommonPackage(Microsoft.Build.Evaluation.Project buildProject, out FloatRange previousPackageVersion)

@@ -9,11 +9,13 @@
     <NukeScriptDirectory>_SCRIPT_DIRECTORY_</NukeScriptDirectory>
     <NukeTelemetryVersion>_TELEMETRY_VERSION_</NukeTelemetryVersion>
     <IsPackable>false</IsPackable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <UseArtifactsOutput>false</UseArtifactsOutput>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nuke.Common" Version="_NUKE_VERSION_" />
-    <PackageDownload Include="GitVersion.Tool" Version="[5.8.0]" />    // GITVERSION
+    <PackageReference Include="GreemDev.Nuke" Version="_NUKE_VERSION_" />
+    <PackageDownload Include="GitVersion.Tool" Version="[6.6.0]" />    // GITVERSION
   </ItemGroup>
 
 </Project>

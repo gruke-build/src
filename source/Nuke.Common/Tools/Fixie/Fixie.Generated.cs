@@ -1,4 +1,4 @@
-// Generated from https://github.com/nuke-build/nuke/blob/master/source/Nuke.Common/Tools/Fixie/Fixie.json
+// Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Fixie/Fixie.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -29,7 +29,7 @@ public partial class FixieTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Fixie is a .NET modern test framework similar to NUnit and xUnit, but with an emphasis on low-ceremony defaults and flexible customization.</p><p>For more details, visit the <a href="https://fixie.github.io/">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> Fixie(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new FixieTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>The <c>dotnet fixie</c> command is used to execute Fixie unit tests in a given project.</p><p>For more details, visit the <a href="https://fixie.github.io/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://www.nuke.build/docs/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--</c> via <see cref="FixieSettings.CustomArguments"/></li><li><c>--configuration</c> via <see cref="FixieSettings.Configuration"/></li><li><c>--framework</c> via <see cref="FixieSettings.Framework"/></li><li><c>--no-build</c> via <see cref="FixieSettings.NoBuild"/></li><li><c>--report</c> via <see cref="FixieSettings.Report"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--</c> via <see cref="FixieSettings.CustomArguments"/></li><li><c>--configuration</c> via <see cref="FixieSettings.Configuration"/></li><li><c>--framework</c> via <see cref="FixieSettings.Framework"/></li><li><c>--no-build</c> via <see cref="FixieSettings.NoBuild"/></li><li><c>--report</c> via <see cref="FixieSettings.Report"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Fixie(FixieSettings options = null) => new FixieTasks().Run<FixieSettings>(options);
     /// <inheritdoc cref="FixieTasks.Fixie(Nuke.Common.Tools.Fixie.FixieSettings)"/>
     public static IReadOnlyCollection<Output> Fixie(Configure<FixieSettings> configurator) => new FixieTasks().Run<FixieSettings>(configurator.Invoke(new FixieSettings()));

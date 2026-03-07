@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.IO;
@@ -170,7 +170,9 @@ public static class SignPathTasks
 
     private static IDisposable SwitchSecurityProtocol()
     {
+#pragma warning disable SYSLIB0014
         return DelegateDisposable.SetAndRestore(() => ServicePointManager.SecurityProtocol, SecurityProtocolType.Tls12);
+#pragma warning restore SYSLIB0014
     }
 
     private static HttpClient CreateAuthorizedHttpClient(string apiToken, TimeSpan timeout)

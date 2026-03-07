@@ -1,18 +1,29 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 using Nuke.Common.Utilities;
 using VerifyXunit;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Nuke.GlobalTool.Tests;
 
 public class UpdateSolutionFileContentTests
 {
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public UpdateSolutionFileContentTests(ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
     [Theory]
     [InlineData(
         1,
@@ -138,6 +149,41 @@ public class UpdateSolutionFileContentTests
         Program.UpdateSolutionFileContent(content, "RELATIVE", "GUID", "NAME");
 
         return Verifier.Verify(expected)
+            .UseParameters(number);
+    }
+
+    [Theory]
+    [InlineData(
+        1,
+        """
+        <Solution>
+          <Project Path="TestProject1/TestProject1.csproj" />
+        </Solution>
+        """,
+        """
+        <Solution>
+          <Project Path="TestProject1/TestProject1.csproj" />
+          <Project Path="RELATIVE">
+            <Build Project="false" />
+          </Project>
+        </Solution>
+        """)]
+    public Task TestXml(int number, string input, string expected)
+    {
+        var content = XDocument.Load(new StringReader(input));
+        Program.UpdateSolutionXmlFileContent(content, "RELATIVE");
+
+        var settings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
+        var stringStream = new StringWriter();
+        using var writer = XmlWriter.Create(stringStream, settings);
+        content.Save(writer);
+        writer.Flush();
+
+        _testOutputHelper.WriteLine($"input: {Environment.NewLine}{input}");
+        _testOutputHelper.WriteLine($"expected: {Environment.NewLine}{expected}");
+        _testOutputHelper.WriteLine($"result: {Environment.NewLine}{stringStream}");
+
+        return Verifier.VerifyXml(expected)
             .UseParameters(number);
     }
 }

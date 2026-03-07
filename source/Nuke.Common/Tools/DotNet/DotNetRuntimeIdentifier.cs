@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.ComponentModel;
@@ -36,6 +36,7 @@ public class DotNetRuntimeIdentifier : Enumeration
     public static DotNetRuntimeIdentifier tizen = new() { Value = "tizen" };
     public static DotNetRuntimeIdentifier tizen_4_0_0 = new() { Value = "tizen.4.0.0" };
     public static DotNetRuntimeIdentifier tizen_5_0_0 = new() { Value = "tizen.5.0.0" };
+    public static DotNetRuntimeIdentifier osx_arm64 = new() { Value = "osx-arm64" };
     public static DotNetRuntimeIdentifier osx_x64 = new() { Value = "osx-x64" };
     public static DotNetRuntimeIdentifier osx_10_10_x64 = new() { Value = "osx.10.10-x64" };
     public static DotNetRuntimeIdentifier osx_10_11_x64 = new() { Value = "osx.10.11-x64" };

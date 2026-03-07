@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.IO;
@@ -62,6 +62,8 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
         .SetBranch(GitRepository.Branch)
         .SetSha(GitRepository.Commit)
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
+            .SetBuild(o.Versioning.FullSemVer))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
             .SetBuild(o.Versioning.FullSemVer))
         .SetFramework("netcoreapp3.0");
 

@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,17 @@ namespace Nuke.Common.CI.SpaceAutomation;
 
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+#pragma warning disable CS0618 // Type or member is obsolete
+// ReSharper disable once ClassNeverInstantiated.Global
+public class SpaceAutomationOnPremisesAttribute(string name, string image) : SpaceAutomationAttribute(name, image);
+#pragma warning restore CS0618 // Type or member is obsolete
+
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[Obsolete(message: $"JetBrains Space was officially discontinued on June 1, 2025. "
+                   + $"If you are still using a self-managed Space instance, "
+                   + $"use {nameof(SpaceAutomationOnPremisesAttribute)} instead to remove this warning.", 
+    UrlFormat = "https://blog.jetbrains.com/space/2024/11/27/discontinuation-of-the-spacecode-private-preview/")]
 public class SpaceAutomationAttribute : ConfigurationAttributeBase
 {
     private readonly string _name;

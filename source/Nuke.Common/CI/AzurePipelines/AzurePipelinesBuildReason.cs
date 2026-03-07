@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -33,5 +33,8 @@ public enum AzurePipelinesBuildReason
     PullRequest,
 
     /// <summary>The build was triggered by a resource trigger or it was triggered by another build.</summary>
-    ResourceTrigger
+    ResourceTrigger,
+
+    /// <summary>Another build triggers the build.</summary>
+    BuildCompletion
 }

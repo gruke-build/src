@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 #if NET6_0_OR_GREATER
 
@@ -30,8 +30,7 @@ internal static class EncryptionUtility
         }
         catch
         {
-            Assert.Fail($"Could not decrypt '{name}' with provided password");
-            return null;
+            throw new CryptographicException($"Could not decrypt '{name}' with provided password");
         }
     }
 
@@ -51,7 +50,9 @@ internal static class EncryptionUtility
     private static Stream GetCryptoStream(Stream stream, byte[] password, Func<SymmetricAlgorithm, ICryptoTransform> transformSelector)
     {
         var salt = new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 };
+#pragma warning disable SYSLIB0060
         var pdb = new Rfc2898DeriveBytes(password, salt, iterations: 10_000, HashAlgorithmName.SHA256);
+#pragma warning restore SYSLIB0060
         using var symmetricAlgorithm = Aes.Create().NotNull();
         symmetricAlgorithm.Key = pdb.GetBytes(32);
         symmetricAlgorithm.IV = pdb.GetBytes(16);

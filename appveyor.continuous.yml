@@ -9,15 +9,15 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration AppVeyor_continuous --host AppVeyor
+#         gruke --generate-configuration AppVeyor_continuous --host AppVeyor
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------
 
 image:
   - Visual Studio 2022
-  - Ubuntu
-  - MacOs
+  - Ubuntu2004
+  - macOS
 
 branches:
   except:

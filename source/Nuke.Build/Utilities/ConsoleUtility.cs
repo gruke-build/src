@@ -1,12 +1,16 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using JetBrains.Annotations;
+using Nuke.Build.Utilities;
+using Serilog;
 
 namespace Nuke.Common.Utilities;
 
@@ -111,13 +115,27 @@ public class ConsoleUtility
     }
 
     // ReSharper disable once CognitiveComplexity
-    public static string ReadSecret()
+    public static string ReadSecret(TimeSpan timeout)
     {
         var secret = string.Empty;
 
+        using var keyReader = new ConsoleKeyReader();
         do
         {
-            var key = Console.ReadKey(intercept: true);
+            if (keyReader.Read(timeout) is not { } key)
+            {
+                if (keyReader.DidError)
+                {
+                    Log.Error(
+                        "Failed to read console key input for password. Are we perhaps in a headless environment? Proceeding with an empty password string.");
+                } 
+                else
+                    Log.Error("Timed out. Continuing with what was input (length: {length}).", secret.Length);
+                break;
+            }
+
+            keyReader.Reset();
+
             if (key.Key == ConsoleKey.Backspace)
             {
                 if (secret.Length > 0)

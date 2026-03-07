@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.IO;
@@ -14,11 +14,11 @@ namespace Nuke.Common.Tests;
 public class GitRepositoryTest
 {
     [Theory]
-    [InlineData("https://github.com/nuke-build", "github.com", "nuke-build")]
+    [InlineData("https://github.com/gruke-build", "github.com", "gruke-build")]
     [InlineData("https://github.com/nuke-build/", "github.com", "nuke-build")]
-    [InlineData("https://github.com/nuke-build/nuke", "github.com", "nuke-build/nuke")]
+    [InlineData("https://github.com/gruke-build/src", "github.com", "gruke-build/src")]
     [InlineData("https://github.com/nuke-build/nuke.git", "github.com", "nuke-build/nuke")]
-    [InlineData("https://user:pass@github.com/nuke-build/nuke.git", "github.com", "nuke-build/nuke")]
+    [InlineData("https://user:pass@github.com/gruke-build/src.git", "github.com", "gruke-build/src")]
     [InlineData(" https://github.com/TdMxm/nuke.git", "github.com", "TdMxm/nuke")]
     [InlineData("git@git.test.org:test", "git.test.org", "test")]
     [InlineData("git@git.test.org/test", "git.test.org", "test")]
@@ -39,7 +39,7 @@ public class GitRepositoryTest
     }
 
     [Theory]
-    [InlineData("https://github.com/nuke-build", GitProtocol.Https)]
+    [InlineData("https://github.com/GreemDev", GitProtocol.Https)]
     [InlineData("git@git.test.org:test", GitProtocol.Ssh)]
     [InlineData("ssh://git.test.org:1234/test/test", GitProtocol.Ssh)]
     [InlineData("git://git.test.org:1234/test/test", GitProtocol.Ssh)]

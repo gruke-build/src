@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Linq;
 using NuGet.Packaging;
 using Nuke.Common;
 using Nuke.Common.CI;
-using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.CI.GitLab;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
@@ -30,7 +30,6 @@ using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
 [ShutdownDotNetAfterServerBuild]
 partial class Build
     : NukeBuild,
-        IHazTwitterCredentials,
         IHazChangelog,
         IHazGitRepository,
         IHazGitVersion,
@@ -45,16 +44,10 @@ partial class Build
         IPublish,
         ICreateGitHubRelease
 {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
     public static int Main() => Execute<Build>(x => ((IPack)x).Pack);
 
     [CI] readonly TeamCity TeamCity;
     [CI] readonly AzurePipelines AzurePipelines;
-    [CI] readonly AppVeyor AppVeyor;
     [CI] readonly GitHubActions GitHubActions;
 
     GitVersion GitVersion => From<IHazGitVersion>().Versioning;
@@ -62,8 +55,6 @@ partial class Build
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
     Nuke.Common.ProjectModel.Solution IHazSolution.Solution => Solution;
-
-    IHazTwitterCredentials TwitterCredentials => From<IHazTwitterCredentials>();
 
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
@@ -96,7 +87,8 @@ partial class Build
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
+    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects 
+        => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;
@@ -124,24 +116,37 @@ partial class Build
     IEnumerable<string> IReportIssues.InspectCodeFailOnCategories => new string[0];
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _
-            .SetVersion(DefaultDeploymentVersion));
+        .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
+        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion));
 
-    string PublicNuGetSource => "https://api.nuget.org/v3/index.json";
-    string FeedzNuGetSource => "https://f.feedz.io/nuke/alpha/nuget";
-    string DefaultDeploymentVersion => "9999.0.0";
+    const string PublicNuGetSource = "https://api.nuget.org/v3/index.json";
+    const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
+    const string DefaultDeploymentVersion = "9999.0.0";
 
-    [Parameter] [Secret] readonly string PublicNuGetApiKey;
-    [Parameter] [Secret] readonly string FeedzNuGetApiKey;
+    [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
+    [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
     bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
-    string IPublish.NuGetSource => IsPublicRelease ? PublicNuGetSource : FeedzNuGetSource;
-    string IPublish.NuGetApiKey => IsPublicRelease ? PublicNuGetApiKey : FeedzNuGetApiKey;
+
+    string IPublish.NuGetSource => IsPublicRelease
+        ? PublicNuGetSource
+        : Host is GitLab gl
+            ? gl.GetNuGetSourceUrlForCurrentProject()
+            : FeedzNuGetSource;
+
+    string IPublish.NuGetApiKey => IsPublicRelease 
+        ? PublicNuGetApiKey 
+        : Host is GitLab gl 
+            ? gl.JobToken
+            : FeedzNuGetApiKey;
 
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => IsPublicRelease && Host is AppVeyor || GitRepository.IsOnDevelopBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment)
+        .Requires(() => 
+            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
+            (GitRepository.IsOnDevelopBranch() 
+             && ((Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment) || Host is GitLab)))
         .WhenSkipped(DependencyBehavior.Execute);
 
     IEnumerable<AbsolutePath> NuGetPackageFiles
@@ -184,15 +189,14 @@ partial class Build
         {
             var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
             foreach (var issue in issues)
-                await GitHubActions.Instance.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+                await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
         });
 
     Target Install => _ => _
-        .DependsOn<IPack>()
         .Executes(() =>
         {
-            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Nuke_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g {Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
+            SuppressErrors(() => DotNet($"tool uninstall -g GreemDev.{Solution.Nuke_GlobalTool.Name}"), logWarning: false);
+            DotNet($"tool install -g GreemDev.{Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
         });
 
     T From<T>()

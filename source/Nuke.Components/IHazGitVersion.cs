@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -14,6 +14,14 @@ namespace Nuke.Components;
 public interface IHazGitVersion : INukeBuild
 {
     [GitVersion(NoFetch = true, Framework = "net8.0")]
+    [Required]
+    GitVersion Versioning => TryGetValue(() => Versioning);
+}
+
+[PublicAPI]
+public interface IHazFetchingGitVersion : INukeBuild
+{
+    [GitVersion(NoFetch = false, Framework = "net8.0")]
     [Required]
     GitVersion Versioning => TryGetValue(() => Versioning);
 }

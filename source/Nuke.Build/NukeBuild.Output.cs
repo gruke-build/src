@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -19,7 +19,7 @@ partial class NukeBuild
         if (IsOutputEnabled(DefaultOutput.Logo))
             Host.WriteLogo();
 
-        Host.Information($"NUKE Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
+        Host.Information($"NUKE Execution Engine version GreemDev/{typeof(NukeBuild).Assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})");
         Host.Information();
     }
 

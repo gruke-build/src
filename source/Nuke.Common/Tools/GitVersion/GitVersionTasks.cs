@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -32,6 +32,7 @@ public record GitVersion(
     int Major,
     int Minor,
     int Patch,
+    string MajorMinorPatch,
     string PreReleaseTag,
     string PreReleaseTagWithDash,
     string PreReleaseLabel,
@@ -41,7 +42,6 @@ public record GitVersion(
     string BuildMetaData,
     string BuildMetaDataPadded,
     string FullBuildMetaData,
-    string MajorMinorPatch,
     string SemVer,
     string LegacySemVer,
     string LegacySemVerPadded,
@@ -53,10 +53,6 @@ public record GitVersion(
     string EscapedBranchName,
     string Sha,
     string ShortSha,
-    string NuGetVersionV2,
-    string NuGetVersion,
-    string NuGetPreReleaseTagV2,
-    string NuGetPreReleaseTag,
     string VersionSourceSha,
     string CommitsSinceVersionSource,
     string CommitsSinceVersionSourcePadded,

@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -103,12 +103,16 @@ public class CITest
         if (value is not string strValue || property.GetCustomAttribute<NoConvertAttribute>() != null)
             return;
 
-        bool.TryParse(strValue, out _).Should().BeFalse("boolean");
-        long.TryParse(strValue, out _).Should().BeFalse("long");
-        decimal.TryParse(strValue, out _).Should().BeFalse("decimal");
-        DateTime.TryParse(strValue, out _).Should().BeFalse("DateTime");
-        TimeSpan.TryParse(strValue, out _).Should().BeFalse("TimeSpan");
-        Guid.TryParse(strValue, out _).Should().BeFalse("Guid");
+        const string errorString = "a 'string'-typed property should not be directly parseable as another type. "
+                                   + "'{0}' can be parsed as a {1}; as such its property type should be updated to match, "
+                                   + "to make the API cleaner.";
+
+        bool.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, "boolean");
+        long.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, "long");
+        decimal.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, "decimal");
+        DateTime.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, nameof(DateTime));
+        TimeSpan.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, nameof(TimeSpan));
+        Guid.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, nameof(Guid));
     }
 
     private static object CreateInstance(Type type)

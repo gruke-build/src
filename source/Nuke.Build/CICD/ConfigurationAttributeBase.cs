@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGene
         writer.WriteComment();
         writer.WriteComment("    - To trigger manual generation invoke:");
         writer.WriteComment();
-        writer.WriteComment($"        nuke --{ConfigurationParameterName} {Id} --host {HostName}");
+        writer.WriteComment($"        gruke --{ConfigurationParameterName} {Id} --host {HostName}");
         writer.WriteComment();
         writer.WriteComment("</auto-generated>");
         writer.WriteComment("------------------------------------------------------------------------------");

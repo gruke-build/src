@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using JetBrains.Annotations;
 using Nuke.Common.CI;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
+using Serilog;
 
 namespace Nuke.Common.Git;
 
@@ -21,7 +22,7 @@ public enum GitProtocol
 
 [PublicAPI]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public class GitRepository
+public partial class GitRepository
 {
     private const string FallbackRemoteName = "origin";
 
@@ -76,13 +77,29 @@ public class GitRepository
 
         var configFile = gitDirectory / "config";
         var configFileContent = configFile.ReadAllLines();
-        var data = configFileContent
+        var data = new Dictionary<string, string>();
+        var rawData = configFileContent
             .Select(x => x.Trim())
             .SkipWhile(x => x != $"[branch {branch.DoubleQuote()}]")
             .Skip(1)
             .TakeWhile(x => !x.StartsWith("["))
-            .Select(x => x.Split('='))
-            .ToDictionary(x => x.ElementAt(0).Trim(), x => x.ElementAt(1).Trim());
+            .Select(x => x.Split('='));
+
+        foreach (var partPair in rawData)
+        {
+            var key = partPair.ElementAt(0).Trim();
+            var keyData = partPair.ElementAt(1).Trim();
+            if (data.TryGetValue(key, out var existingData))
+            {
+                Log.Warning("Duplicate branch configuration found for '{branch}'; key: {key}, value: {value}", 
+                    branch, key, existingData);
+                Log.Warning("Overriding existing value '{oldValue}' with new value '{newValue}'", existingData, keyData);
+                Log.Warning("To remove this warning, remove the mentioned duplicate entries from your config at '{configFile}'.", configFile.ToString());
+            }
+
+            data[key] = keyData;
+        }
+
         return data.TryGetValue("remote", out var remote) && data.TryGetValue("merge", out var merge)
             ? (remote, merge.TrimStart("refs/heads/"))
             : (null, null);
@@ -163,12 +180,10 @@ public class GitRepository
 
     private static (GitProtocol Protocol, string Endpoint, string Identifier) GetRemoteConnectionFromUrl(string url)
     {
-        var regex = new Regex(
-            @"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$");
-        var match = regex.Match(url.NotNull().Trim());
+        var match = GitRemoteRegex.Match(url.NotNull().Trim());
 
         Assert.True(match.Success, $"Url '{url}' could not be parsed.");
-        var protocol = match.Groups["protocol"].Value.EqualsOrdinalIgnoreCase(GitProtocol.Https.ToString())
+        var protocol = match.Groups["protocol"].Value.EqualsOrdinalIgnoreCase(nameof(GitProtocol.Https))
             ? GitProtocol.Https
             : GitProtocol.Ssh;
         return (protocol, match.Groups["endpoint"].Value, match.Groups["identifier"].Value);
@@ -282,4 +297,9 @@ public class GitRepository
     {
         return (Protocol == GitProtocol.Https ? HttpsUrl : SshUrl).TrimEnd(".git");
     }
+    
+    public static readonly Regex GitRemoteRegex = GitRemotePattern();
+
+    [GeneratedRegex(@"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$")]
+    private static partial Regex GitRemotePattern();
 }

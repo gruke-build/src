@@ -1,11 +1,12 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Nuke.Common.CI;
@@ -13,6 +14,7 @@ using Nuke.Common.IO;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 using Nuke.Common.ValueInjection;
+using Serilog;
 
 namespace Nuke.Common.Execution;
 
@@ -80,7 +82,17 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
 
             if ((member?.HasCustomAttribute<SecretAttribute>() ?? false) &&
                 !BuildServerConfigurationGeneration.IsActive)
-                return DecryptValue(profile, parameter, property.Value.ToObject<string>());
+            {
+                try
+                {
+                    return DecryptValue(profile, parameter, property.Value.ToObject<string>());
+                }
+                catch (CryptographicException ce)
+                {
+                    Log.Error(ce.Message);
+                    return string.Empty;
+                }
+            }
 
             return property.Value.ToObject(destinationType);
         };

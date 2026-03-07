@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -229,7 +229,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
     {
         if (_submodules.HasValue || _largeFileStorage.HasValue || _fetchDepth.HasValue || _clean.HasValue)
         {
-            yield return new AzurePipelineCheckoutStep
+            yield return new AzurePipelinesCheckoutStep
                          {
                              InclueSubmodules = _submodules,
                              IncludeLargeFileStorage = _largeFileStorage,
@@ -276,7 +276,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
         //            }).ToArray<TeamCityDependency>();
 
         var chainLinkTargets = GetInvokedTargets(executableTarget, relevantTargets).ToArray();
-        yield return new AzurePipelinesCmdStep
+        yield return new AzurePipelinesBuildCmdStep
                      {
                          BuildCmdPath = BuildCmdPath,
                          PartitionSize = executableTarget.PartitionSize,

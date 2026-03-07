@@ -9,13 +9,13 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration AppVeyor --host AppVeyor
+#         gruke --generate-configuration AppVeyor --host AppVeyor
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------
 
 image:
-  - Ubuntu
+  - Ubuntu2004
   - Visual Studio 2022
 
 branches:

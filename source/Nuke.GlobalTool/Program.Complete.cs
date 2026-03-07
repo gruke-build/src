@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Nuke.GlobalTool;
 
 partial class Program
 {
-    private const string CommandName = "nuke";
+    private const string CommandName = "gruke";
 
     [UsedImplicitly]
     public static int Complete(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)

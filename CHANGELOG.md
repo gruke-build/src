@@ -6,6 +6,35 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 
+## [10.2.0] / 2026-03-07
+- Removed properties in the `GitVersion` record that have been removed in newer versions. 
+  - Instead of `NuGetVersionV2`, use `FullSemVer`.
+- Implemented a basic `.gitlab-ci.yml` generator. Currently only generates a single job, for all specified targets.
+  - You can also specify to automatically upload all (known (via `.Produces`)) artifacts from the executed targets.
+  - On top of this, you can specify artifacts to exclude; as well as only running the job on specific branch(es) push event.
+- Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke` package.
+- Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
+    - Instead, only the most recent value is retained.
+- Refactored the documentation in-repository to work on `mkdocs`:
+  - https://github.com/gruke-build/docs
+  - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
+- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on GitHub Pages for *C# API reference* documentation specifically.
+  - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`gh-pages`](https://github.com/gruke-build/src/tree/gh-pages) branch, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
+  - View the deployment on [gruke-build.github.io](https://gruke-build.github.io/src/api/).
+- [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
+  - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)!
+- [nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572): Added support for XML Solutions into `gruke :setup`
+  - Thanks, [@lahma](https://github.com/lahma)!
+- [nuke-build#1583](https://github.com/nuke-build/nuke/pull/1583): Added support for resolving VS2026 MSBuild installations
+  - Thanks, [@Kielek](https://github.com/Kielek)!
+- [nuke-build#1557](https://github.com/nuke-build/nuke/pull/1557): Added support for Windows installations being not on `C:\`
+  - Thanks, [@Uriel6575](https://github.com/Uriel6575)!
+- [nuke-build#1549](https://github.com/nuke-build/nuke/pull/1549): Removed deprecated & retired Azure Pipelines OS images
+  - Thanks, [@aneilmac](https://github.com/aneilmac)!
+  - Similarly, I did the same for AppVeyor & GitHub runner images. ([nuke-build#1519](https://github.com/nuke-build/nuke/issues/1519))
+- Fix `StronglyTypedSolutionGenerator` causing compilation errors when a Solution Folder is prefixed with digits. ([nuke-build#1581](https://github.com/nuke-build/nuke/pull/1581))
+  - Thanks, [@ITaluone](https://github.com/ITaluone)!
+
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
 - Fixed MSBuild target packaging for .NET 10
@@ -1227,117 +1256,118 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/nuke-build/nuke/compare/10.1.0...HEAD
-[10.1.0]: https://github.com/nuke-build/nuke/compare/10.0.0...10.1.0
-[10.0.0]: https://github.com/nuke-build/nuke/compare/9.0.4...10.0.0
-[9.0.4]: https://github.com/nuke-build/nuke/compare/9.0.3...9.0.4
-[9.0.3]: https://github.com/nuke-build/nuke/compare/9.0.2...9.0.3
-[9.0.2]: https://github.com/nuke-build/nuke/compare/9.0.1...9.0.2
-[9.0.1]: https://github.com/nuke-build/nuke/compare/9.0.0...9.0.1
-[9.0.0]: https://github.com/nuke-build/nuke/compare/8.1.4...9.0.0
-[8.1.4]: https://github.com/nuke-build/nuke/compare/8.1.3...8.1.4
-[8.1.3]: https://github.com/nuke-build/nuke/compare/8.1.2...8.1.3
-[8.1.2]: https://github.com/nuke-build/nuke/compare/8.1.1...8.1.2
-[8.1.1]: https://github.com/nuke-build/nuke/compare/8.1.0...8.1.1
-[8.1.0]: https://github.com/nuke-build/nuke/compare/8.0.0...8.1.0
-[8.0.0]: https://github.com/nuke-build/nuke/compare/7.0.6...8.0.0
-[7.0.6]: https://github.com/nuke-build/nuke/compare/7.0.5...7.0.6
-[7.0.5]: https://github.com/nuke-build/nuke/compare/7.0.4...7.0.5
-[7.0.4]: https://github.com/nuke-build/nuke/compare/7.0.3...7.0.4
-[7.0.3]: https://github.com/nuke-build/nuke/compare/7.0.2...7.0.3
-[7.0.2]: https://github.com/nuke-build/nuke/compare/7.0.1...7.0.2
-[7.0.1]: https://github.com/nuke-build/nuke/compare/7.0.0...7.0.1
-[7.0.0]: https://github.com/nuke-build/nuke/compare/6.3.0...7.0.0
-[6.3.0]: https://github.com/nuke-build/nuke/compare/6.2.1...6.3.0
-[6.2.1]: https://github.com/nuke-build/nuke/compare/6.2.0...6.2.1
-[6.2.0]: https://github.com/nuke-build/nuke/compare/6.1.2...6.2.0
-[6.1.2]: https://github.com/nuke-build/nuke/compare/6.1.1...6.1.2
-[6.1.1]: https://github.com/nuke-build/nuke/compare/6.1.0...6.1.1
-[6.1.0]: https://github.com/nuke-build/nuke/compare/6.0.3...6.1.0
-[6.0.3]: https://github.com/nuke-build/nuke/compare/6.0.2...6.0.3
-[6.0.2]: https://github.com/nuke-build/nuke/compare/6.0.1...6.0.2
-[6.0.1]: https://github.com/nuke-build/nuke/compare/6.0.0...6.0.1
-[6.0.0]: https://github.com/nuke-build/nuke/compare/5.3.0...6.0.0
-[5.3.0]: https://github.com/nuke-build/nuke/compare/5.2.1...5.3.0
-[5.2.1]: https://github.com/nuke-build/nuke/compare/5.2.0...5.2.1
-[5.2.0]: https://github.com/nuke-build/nuke/compare/5.1.4...5.2.0
-[5.1.4]: https://github.com/nuke-build/nuke/compare/5.1.3...5.1.4
-[5.1.3]: https://github.com/nuke-build/nuke/compare/5.1.2...5.1.3
-[5.1.2]: https://github.com/nuke-build/nuke/compare/5.1.1...5.1.2
-[5.1.1]: https://github.com/nuke-build/nuke/compare/5.1.0...5.1.1
-[5.1.0]: https://github.com/nuke-build/nuke/compare/5.0.2...5.1.0
-[5.0.2]: https://github.com/nuke-build/nuke/compare/5.0.1...5.0.2
-[5.0.1]: https://github.com/nuke-build/nuke/compare/5.0.0...5.0.1
-[5.0.0]: https://github.com/nuke-build/nuke/compare/0.25.0...5.0.0
-[0.25.0]: https://github.com/nuke-build/nuke/compare/0.24.11...0.25.0
-[0.24.11]: https://github.com/nuke-build/nuke/compare/0.24.10...0.24.11
-[0.24.10]: https://github.com/nuke-build/nuke/compare/0.24.9...0.24.10
-[0.24.9]: https://github.com/nuke-build/nuke/compare/0.24.8...0.24.9
-[0.24.8]: https://github.com/nuke-build/nuke/compare/0.24.7...0.24.8
-[0.24.7]: https://github.com/nuke-build/nuke/compare/0.24.6...0.24.7
-[0.24.6]: https://github.com/nuke-build/nuke/compare/0.24.5...0.24.6
-[0.24.5]: https://github.com/nuke-build/nuke/compare/0.24.4...0.24.5
-[0.24.4]: https://github.com/nuke-build/nuke/compare/0.24.2...0.24.4
-[0.24.2]: https://github.com/nuke-build/nuke/compare/0.24.1...0.24.2
-[0.24.1]: https://github.com/nuke-build/nuke/compare/0.24.0...0.24.1
-[0.24.0]: https://github.com/nuke-build/nuke/compare/0.23.7...0.24.0
-[0.23.7]: https://github.com/nuke-build/nuke/compare/0.23.6...0.23.7
-[0.23.6]: https://github.com/nuke-build/nuke/compare/0.23.5...0.23.6
-[0.23.5]: https://github.com/nuke-build/nuke/compare/0.23.4...0.23.5
-[0.23.4]: https://github.com/nuke-build/nuke/compare/0.23.3...0.23.4
-[0.23.3]: https://github.com/nuke-build/nuke/compare/0.23.2...0.23.3
-[0.23.2]: https://github.com/nuke-build/nuke/compare/0.23.1...0.23.2
-[0.23.1]: https://github.com/nuke-build/nuke/compare/0.23.0...0.23.1
-[0.23.0]: https://github.com/nuke-build/nuke/compare/0.22.2...0.23.0
-[0.22.2]: https://github.com/nuke-build/nuke/compare/0.22.1...0.22.2
-[0.22.1]: https://github.com/nuke-build/nuke/compare/0.22.0...0.22.1
-[0.22.0]: https://github.com/nuke-build/nuke/compare/0.21.2...0.22.0
-[0.21.2]: https://github.com/nuke-build/nuke/compare/0.21.1...0.21.2
-[0.21.1]: https://github.com/nuke-build/nuke/compare/0.21.0...0.21.1
-[0.21.0]: https://github.com/nuke-build/nuke/compare/0.20.1...0.21.0
-[0.20.1]: https://github.com/nuke-build/nuke/compare/0.20.0...0.20.1
-[0.20.0]: https://github.com/nuke-build/nuke/compare/0.19.2...0.20.0
-[0.19.2]: https://github.com/nuke-build/nuke/compare/0.19.1...0.19.2
-[0.19.1]: https://github.com/nuke-build/nuke/compare/0.19.0...0.19.1
-[0.19.0]: https://github.com/nuke-build/nuke/compare/0.18.0...0.19.0
-[0.18.0]: https://github.com/nuke-build/nuke/compare/0.17.7...0.18.0
-[0.17.7]: https://github.com/nuke-build/nuke/compare/0.17.6...0.17.7
-[0.17.6]: https://github.com/nuke-build/nuke/compare/0.17.5...0.17.6
-[0.17.5]: https://github.com/nuke-build/nuke/compare/0.17.4...0.17.5
-[0.17.4]: https://github.com/nuke-build/nuke/compare/0.17.3...0.17.4
-[0.17.3]: https://github.com/nuke-build/nuke/compare/0.17.2...0.17.3
-[0.17.2]: https://github.com/nuke-build/nuke/compare/0.17.1...0.17.2
-[0.17.1]: https://github.com/nuke-build/nuke/compare/0.17.0...0.17.1
-[0.17.0]: https://github.com/nuke-build/nuke/compare/0.16.0...0.17.0
-[0.16.0]: https://github.com/nuke-build/nuke/compare/0.15.0...0.16.0
-[0.15.0]: https://github.com/nuke-build/nuke/compare/0.14.1...0.15.0
-[0.14.1]: https://github.com/nuke-build/nuke/compare/0.14.0...0.14.1
-[0.14.0]: https://github.com/nuke-build/nuke/compare/0.13.0...0.14.0
-[0.13.0]: https://github.com/nuke-build/nuke/compare/0.12.4...0.13.0
-[0.12.4]: https://github.com/nuke-build/nuke/compare/0.12.3...0.12.4
-[0.12.3]: https://github.com/nuke-build/nuke/compare/0.12.2...0.12.3
-[0.12.2]: https://github.com/nuke-build/nuke/compare/0.12.1...0.12.2
-[0.12.1]: https://github.com/nuke-build/nuke/compare/0.12.0...0.12.1
-[0.12.0]: https://github.com/nuke-build/nuke/compare/0.11.1...0.12.0
-[0.11.1]: https://github.com/nuke-build/nuke/compare/0.11.0...0.11.1
-[0.11.0]: https://github.com/nuke-build/nuke/compare/0.10.5...0.11.0
-[0.10.5]: https://github.com/nuke-build/nuke/compare/0.10.4...0.10.5
-[0.10.4]: https://github.com/nuke-build/nuke/compare/0.10.3...0.10.4
-[0.10.3]: https://github.com/nuke-build/nuke/compare/0.10.2...0.10.3
-[0.10.2]: https://github.com/nuke-build/nuke/compare/0.10.1...0.10.2
-[0.10.1]: https://github.com/nuke-build/nuke/compare/0.10.0...0.10.1
-[0.10.0]: https://github.com/nuke-build/nuke/compare/0.9.1...0.10.0
-[0.9.1]: https://github.com/nuke-build/nuke/compare/0.9.0...0.9.1
-[0.9.0]: https://github.com/nuke-build/nuke/compare/0.8.0...0.9.0
-[0.8.0]: https://github.com/nuke-build/nuke/compare/0.7.0...0.8.0
-[0.7.0]: https://github.com/nuke-build/nuke/compare/0.6.2...0.7.0
-[0.6.2]: https://github.com/nuke-build/nuke/compare/0.6.1...0.6.2
-[0.6.1]: https://github.com/nuke-build/nuke/compare/0.6.0...0.6.1
-[0.6.0]: https://github.com/nuke-build/nuke/compare/0.5.3...0.6.0
-[0.5.3]: https://github.com/nuke-build/nuke/compare/0.5.2...0.5.3
-[0.5.2]: https://github.com/nuke-build/nuke/compare/0.5.0...0.5.2
-[0.5.0]: https://github.com/nuke-build/nuke/compare/0.4.0...0.5.0
-[0.4.0]: https://github.com/nuke-build/nuke/compare/0.3.1...0.4.0
-[0.3.1]: https://github.com/nuke-build/nuke/compare/0.2.10...0.3.1
-[0.2.10]: https://github.com/nuke-build/nuke/compare/0.2.0...0.2.10
-[0.2.0]: https://github.com/nuke-build/nuke/tree/0.2.0
+[vNext]: https://github.com/gruke-build/src/compare/10.2.0...HEAD
+[10.2.0]: https://github.com/gruke-build/src/compare/10.1.0...10.2.0
+[10.1.0]: https://github.com/gruke-build/src/compare/10.0.0...10.1.0
+[10.0.0]: https://github.com/gruke-build/src/compare/9.0.4...10.0.0
+[9.0.4]: https://github.com/gruke-build/src/compare/9.0.3...9.0.4
+[9.0.3]: https://github.com/gruke-build/src/compare/9.0.2...9.0.3
+[9.0.2]: https://github.com/gruke-build/src/compare/9.0.1...9.0.2
+[9.0.1]: https://github.com/gruke-build/src/compare/9.0.0...9.0.1
+[9.0.0]: https://github.com/gruke-build/src/compare/8.1.4...9.0.0
+[8.1.4]: https://github.com/gruke-build/src/compare/8.1.3...8.1.4
+[8.1.3]: https://github.com/gruke-build/src/compare/8.1.2...8.1.3
+[8.1.2]: https://github.com/gruke-build/src/compare/8.1.1...8.1.2
+[8.1.1]: https://github.com/gruke-build/src/compare/8.1.0...8.1.1
+[8.1.0]: https://github.com/gruke-build/src/compare/8.0.0...8.1.0
+[8.0.0]: https://github.com/gruke-build/src/compare/7.0.6...8.0.0
+[7.0.6]: https://github.com/gruke-build/src/compare/7.0.5...7.0.6
+[7.0.5]: https://github.com/gruke-build/src/compare/7.0.4...7.0.5
+[7.0.4]: https://github.com/gruke-build/src/compare/7.0.3...7.0.4
+[7.0.3]: https://github.com/gruke-build/src/compare/7.0.2...7.0.3
+[7.0.2]: https://github.com/gruke-build/src/compare/7.0.1...7.0.2
+[7.0.1]: https://github.com/gruke-build/src/compare/7.0.0...7.0.1
+[7.0.0]: https://github.com/gruke-build/src/compare/6.3.0...7.0.0
+[6.3.0]: https://github.com/gruke-build/src/compare/6.2.1...6.3.0
+[6.2.1]: https://github.com/gruke-build/src/compare/6.2.0...6.2.1
+[6.2.0]: https://github.com/gruke-build/src/compare/6.1.2...6.2.0
+[6.1.2]: https://github.com/gruke-build/src/compare/6.1.1...6.1.2
+[6.1.1]: https://github.com/gruke-build/src/compare/6.1.0...6.1.1
+[6.1.0]: https://github.com/gruke-build/src/compare/6.0.3...6.1.0
+[6.0.3]: https://github.com/gruke-build/src/compare/6.0.2...6.0.3
+[6.0.2]: https://github.com/gruke-build/src/compare/6.0.1...6.0.2
+[6.0.1]: https://github.com/gruke-build/src/compare/6.0.0...6.0.1
+[6.0.0]: https://github.com/gruke-build/src/compare/5.3.0...6.0.0
+[5.3.0]: https://github.com/gruke-build/src/compare/5.2.1...5.3.0
+[5.2.1]: https://github.com/gruke-build/src/compare/5.2.0...5.2.1
+[5.2.0]: https://github.com/gruke-build/src/compare/5.1.4...5.2.0
+[5.1.4]: https://github.com/gruke-build/src/compare/5.1.3...5.1.4
+[5.1.3]: https://github.com/gruke-build/src/compare/5.1.2...5.1.3
+[5.1.2]: https://github.com/gruke-build/src/compare/5.1.1...5.1.2
+[5.1.1]: https://github.com/gruke-build/src/compare/5.1.0...5.1.1
+[5.1.0]: https://github.com/gruke-build/src/compare/5.0.2...5.1.0
+[5.0.2]: https://github.com/gruke-build/src/compare/5.0.1...5.0.2
+[5.0.1]: https://github.com/gruke-build/src/compare/5.0.0...5.0.1
+[5.0.0]: https://github.com/gruke-build/src/compare/0.25.0...5.0.0
+[0.25.0]: https://github.com/gruke-build/src/compare/0.24.11...0.25.0
+[0.24.11]: https://github.com/gruke-build/src/compare/0.24.10...0.24.11
+[0.24.10]: https://github.com/gruke-build/src/compare/0.24.9...0.24.10
+[0.24.9]: https://github.com/gruke-build/src/compare/0.24.8...0.24.9
+[0.24.8]: https://github.com/gruke-build/src/compare/0.24.7...0.24.8
+[0.24.7]: https://github.com/gruke-build/src/compare/0.24.6...0.24.7
+[0.24.6]: https://github.com/gruke-build/src/compare/0.24.5...0.24.6
+[0.24.5]: https://github.com/gruke-build/src/compare/0.24.4...0.24.5
+[0.24.4]: https://github.com/gruke-build/src/compare/0.24.2...0.24.4
+[0.24.2]: https://github.com/gruke-build/src/compare/0.24.1...0.24.2
+[0.24.1]: https://github.com/gruke-build/src/compare/0.24.0...0.24.1
+[0.24.0]: https://github.com/gruke-build/src/compare/0.23.7...0.24.0
+[0.23.7]: https://github.com/gruke-build/src/compare/0.23.6...0.23.7
+[0.23.6]: https://github.com/gruke-build/src/compare/0.23.5...0.23.6
+[0.23.5]: https://github.com/gruke-build/src/compare/0.23.4...0.23.5
+[0.23.4]: https://github.com/gruke-build/src/compare/0.23.3...0.23.4
+[0.23.3]: https://github.com/gruke-build/src/compare/0.23.2...0.23.3
+[0.23.2]: https://github.com/gruke-build/src/compare/0.23.1...0.23.2
+[0.23.1]: https://github.com/gruke-build/src/compare/0.23.0...0.23.1
+[0.23.0]: https://github.com/gruke-build/src/compare/0.22.2...0.23.0
+[0.22.2]: https://github.com/gruke-build/src/compare/0.22.1...0.22.2
+[0.22.1]: https://github.com/gruke-build/src/compare/0.22.0...0.22.1
+[0.22.0]: https://github.com/gruke-build/src/compare/0.21.2...0.22.0
+[0.21.2]: https://github.com/gruke-build/src/compare/0.21.1...0.21.2
+[0.21.1]: https://github.com/gruke-build/src/compare/0.21.0...0.21.1
+[0.21.0]: https://github.com/gruke-build/src/compare/0.20.1...0.21.0
+[0.20.1]: https://github.com/gruke-build/src/compare/0.20.0...0.20.1
+[0.20.0]: https://github.com/gruke-build/src/compare/0.19.2...0.20.0
+[0.19.2]: https://github.com/gruke-build/src/compare/0.19.1...0.19.2
+[0.19.1]: https://github.com/gruke-build/src/compare/0.19.0...0.19.1
+[0.19.0]: https://github.com/gruke-build/src/compare/0.18.0...0.19.0
+[0.18.0]: https://github.com/gruke-build/src/compare/0.17.7...0.18.0
+[0.17.7]: https://github.com/gruke-build/src/compare/0.17.6...0.17.7
+[0.17.6]: https://github.com/gruke-build/src/compare/0.17.5...0.17.6
+[0.17.5]: https://github.com/gruke-build/src/compare/0.17.4...0.17.5
+[0.17.4]: https://github.com/gruke-build/src/compare/0.17.3...0.17.4
+[0.17.3]: https://github.com/gruke-build/src/compare/0.17.2...0.17.3
+[0.17.2]: https://github.com/gruke-build/src/compare/0.17.1...0.17.2
+[0.17.1]: https://github.com/gruke-build/src/compare/0.17.0...0.17.1
+[0.17.0]: https://github.com/gruke-build/src/compare/0.16.0...0.17.0
+[0.16.0]: https://github.com/gruke-build/src/compare/0.15.0...0.16.0
+[0.15.0]: https://github.com/gruke-build/src/compare/0.14.1...0.15.0
+[0.14.1]: https://github.com/gruke-build/src/compare/0.14.0...0.14.1
+[0.14.0]: https://github.com/gruke-build/src/compare/0.13.0...0.14.0
+[0.13.0]: https://github.com/gruke-build/src/compare/0.12.4...0.13.0
+[0.12.4]: https://github.com/gruke-build/src/compare/0.12.3...0.12.4
+[0.12.3]: https://github.com/gruke-build/src/compare/0.12.2...0.12.3
+[0.12.2]: https://github.com/gruke-build/src/compare/0.12.1...0.12.2
+[0.12.1]: https://github.com/gruke-build/src/compare/0.12.0...0.12.1
+[0.12.0]: https://github.com/gruke-build/src/compare/0.11.1...0.12.0
+[0.11.1]: https://github.com/gruke-build/src/compare/0.11.0...0.11.1
+[0.11.0]: https://github.com/gruke-build/src/compare/0.10.5...0.11.0
+[0.10.5]: https://github.com/gruke-build/src/compare/0.10.4...0.10.5
+[0.10.4]: https://github.com/gruke-build/src/compare/0.10.3...0.10.4
+[0.10.3]: https://github.com/gruke-build/src/compare/0.10.2...0.10.3
+[0.10.2]: https://github.com/gruke-build/src/compare/0.10.1...0.10.2
+[0.10.1]: https://github.com/gruke-build/src/compare/0.10.0...0.10.1
+[0.10.0]: https://github.com/gruke-build/src/compare/0.9.1...0.10.0
+[0.9.1]: https://github.com/gruke-build/src/compare/0.9.0...0.9.1
+[0.9.0]: https://github.com/gruke-build/src/compare/0.8.0...0.9.0
+[0.8.0]: https://github.com/gruke-build/src/compare/0.7.0...0.8.0
+[0.7.0]: https://github.com/gruke-build/src/compare/0.6.2...0.7.0
+[0.6.2]: https://github.com/gruke-build/src/compare/0.6.1...0.6.2
+[0.6.1]: https://github.com/gruke-build/src/compare/0.6.0...0.6.1
+[0.6.0]: https://github.com/gruke-build/src/compare/0.5.3...0.6.0
+[0.5.3]: https://github.com/gruke-build/src/compare/0.5.2...0.5.3
+[0.5.2]: https://github.com/gruke-build/src/compare/0.5.0...0.5.2
+[0.5.0]: https://github.com/gruke-build/src/compare/0.4.0...0.5.0
+[0.4.0]: https://github.com/gruke-build/src/compare/0.3.1...0.4.0
+[0.3.1]: https://github.com/gruke-build/src/compare/0.2.10...0.3.1
+[0.2.10]: https://github.com/gruke-build/src/compare/0.2.0...0.2.10
+[0.2.0]: https://github.com/gruke-build/src/tree/0.2.0

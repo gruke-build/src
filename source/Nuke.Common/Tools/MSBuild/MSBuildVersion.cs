@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -15,6 +15,7 @@ namespace Nuke.Common.Tools.MSBuild;
 [PublicAPI]
 public enum MSBuildVersion
 {
+    VS2026,
     VS2022,
     VS2019,
     VS2017,

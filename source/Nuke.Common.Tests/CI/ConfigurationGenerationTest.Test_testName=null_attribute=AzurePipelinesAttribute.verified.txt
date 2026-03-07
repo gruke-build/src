@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration AzurePipelines --host AzurePipelines
+#         gruke --generate-configuration AzurePipelines --host AzurePipelines
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------
@@ -176,11 +176,11 @@ stages:
             inputs:
               artifactName: coverage-report.zip
               pathToPublish: 'output/coverage-report.zip'
-  - stage: windows_2019
-    displayName: 'windows-2019'
+  - stage: windows_2025
+    displayName: 'windows-2025'
     dependsOn: [  ]
     pool:
-      vmImage: 'windows-2019'
+      vmImage: 'windows-2025'
     jobs:
       - job: Restore
         displayName: 'Restore'

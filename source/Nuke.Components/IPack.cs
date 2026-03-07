@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -40,8 +40,10 @@ public interface IPack : ICompile, IHazArtifacts
         .SetOutputDirectory(PackagesDirectory)
         .WhenNotNull(this as IHazGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
-            .SetVersion(o.Versioning.NuGetVersionV2))
+            .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetVersion(o.Versioning.NuGetPackageVersion))
         .WhenNotNull(this as IHazChangelog, (_, o) => _

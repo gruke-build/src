@@ -9,7 +9,7 @@
 //
 //     - To trigger manual generation invoke:
 //
-//         nuke --generate-configuration TeamCity --host TeamCity
+//         gruke --generate-configuration TeamCity --host TeamCity
 //
 // </auto-generated>
 // ------------------------------------------------------------------------------

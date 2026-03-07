@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Diagnostics;
@@ -46,7 +46,7 @@ public partial class Program
 
     private static void PrintInfo()
     {
-        Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
+        Host.Information($"NUKE Global Tool 🌐 version GreemDev/{typeof(Program).Assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})");
     }
 
     [CanBeNull]

@@ -1,6 +1,10 @@
 external
 nuke-global.*
 
+# docfx output
+docs/apimeta
+docs/generated
+
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/
@@ -53,6 +57,7 @@ _ReSharper*
 _dotTrace*
 
 .DS_Store
+._*
 
 # Tests
 *.received.txt

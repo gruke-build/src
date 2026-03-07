@@ -1,44 +1,51 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Components;
 
 [GitHubActions(
+    ReleaseWorkflow, 
+    GitHubActionsImage.UbuntuLatest,
+    FetchDepth = 0,
+    OnPushBranches = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack), nameof(IPublish.Publish)],
+    EnableGitHubToken = true,
+    PublishArtifacts = false,
+    ImportSecrets = [nameof(PublicNuGetApiKey), nameof(DiscordWebhook)])]
+[GitHubActions(
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
-    PublishArtifacts = false)]
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
-    PublishArtifacts = false)]
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
-    PublishArtifacts = false)]
+    OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    OnPullRequestBranches = [DevelopBranch],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)])]
 [GitHubActions(
     AlphaDeployment,
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(IPublish.Publish) },
+    OnPushBranches = [DevelopBranch],
+    InvokedTargets = [nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = false,
-    ImportSecrets = new[] { nameof(FeedzNuGetApiKey) })]
+    ImportSecrets = [nameof(FeedzNuGetApiKey)])]
 partial class Build
 {
+    const string ReleaseWorkflow = "release";
     const string AlphaDeployment = "alpha-deployment";
 }

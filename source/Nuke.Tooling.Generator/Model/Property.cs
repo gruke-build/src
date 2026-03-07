@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -49,6 +49,9 @@ public class Property : IDeprecatable
 
     [Description("Omits argument parsing.")]
     public bool NoArgument { get; set; }
+
+    [Description("Minimize compilation warnings by including a 'new' keyword on this definition.")]
+    public bool HidesBase { get; set; }
 
     [Description("Custom implementation of the property.")]
     public bool CustomImpl { get; set; }

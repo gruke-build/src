@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -23,7 +23,8 @@ public enum AppVeyorImage
     [EnumValue("Visual Studio 2022")] VisualStudioLatest,
     [EnumValue("Ubuntu1604")] Ubuntu1604,
     [EnumValue("Ubuntu1804")] Ubuntu1804,
-    [EnumValue("Ubuntu")] UbuntuLatest,
-    [EnumValue("MacOs-Mojave")] MacOsMojave,
-    [EnumValue("MacOs")] MacOsLatest
+    [EnumValue("Ubuntu2004")] Ubuntu2004,
+    [EnumValue("Ubuntu2004")] UbuntuLatest,
+    [EnumValue("macOS-mojave")] MacOsMojave,
+    [EnumValue("macOS")] MacOsLatest
 }

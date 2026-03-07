@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -45,7 +45,7 @@ public class GitHubTasksTest
     [Fact]
     public void GitHubRepositoryFromUrlTest()
     {
-        var repository = GitRepository.FromUrl("https://github.com/nuke-build/nuke", "dev");
+        var repository = GitRepository.FromUrl("https://github.com/gruke-build/src", "dev");
 
         repository.GetGitHubBrowseUrl("LICENSE", itemType: GitHubItemType.File).Should().Be($"{repository}/blob/dev/LICENSE");
         repository.GetGitHubBrowseUrl("source", itemType: GitHubItemType.Directory).Should().Be($"{repository}/tree/dev/source");

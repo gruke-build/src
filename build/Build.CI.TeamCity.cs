@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -12,24 +12,22 @@ using Nuke.Components;
 
 [TeamCity(
     VcsTriggeredTargets =
-        new[]
-        {
-            nameof(IPack.Pack),
+    [
+        nameof(IPack.Pack),
             nameof(ITest.Test),
             nameof(IReportDuplicates.ReportDuplicates),
             nameof(IReportIssues.ReportIssues),
             nameof(IReportCoverage.ReportCoverage)
-        },
+    ],
     NonEntryTargets =
-        new[]
-        {
-            nameof(IRestore.Restore),
+    [
+        nameof(IRestore.Restore),
             nameof(DownloadLicenses),
             nameof(ICompile.Compile),
             nameof(InstallFonts),
             nameof(ReleaseImage)
-        },
-    ExcludedTargets = new[] { nameof(Clean), nameof(ISignPackages.SignPackages) })]
+    ],
+    ExcludedTargets = [nameof(Clean)])]
 partial class Build
 {
     public class TeamCityAttribute : Nuke.Common.CI.TeamCity.TeamCityAttribute

@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
@@ -25,8 +25,8 @@ internal static partial class Telemetry
     public const string OptOutEnvironmentKey = "NUKE_TELEMETRY_OPTOUT";
     public const int CurrentVersion = 1;
 
-    // private const string InstrumentationKey = "310c87d7-60e1-48c1-b452-19e8f4801fba";
-    private const string InstrumentationKey = "4b987be9-f807-4846-b777-4291f3a5ad8b";
+    //private const string InstrumentationKey = "4b987be9-f807-4846-b777-4291f3a5ad8b";
+    private const string InstrumentationKey = "2a733a11-62b8-4408-bf7d-0b77ec22821b";
     private const string VersionPropertyName = "NukeTelemetryVersion";
 
     private static readonly TelemetryClient s_client;
@@ -44,7 +44,7 @@ internal static partial class Telemetry
             return;
 
         var configuration = TelemetryConfiguration.CreateDefault();
-        configuration.ConnectionString = $"InstrumentationKey={InstrumentationKey}";
+        configuration.ConnectionString = $"InstrumentationKey={InstrumentationKey};IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=7f9babfb-a27b-4e02-9ffb-c580d6b2b85a";
         s_client = new TelemetryClient(configuration);
         s_client.Context.Session.Id = Guid.NewGuid().ToString();
         s_client.Context.Location.Ip = "N/A";
@@ -87,7 +87,7 @@ internal static partial class Telemetry
 
         for (var version = CurrentVersion; version > 0; version--)
         {
-            var cookieFile = GetCookieFile("Nuke.GlobalTool", version);
+            var cookieFile = GetCookieFile("GreemDev.Nuke.GlobalTool", version);
             if (cookieFile.FileExists())
                 return version;
         }
@@ -103,7 +103,8 @@ internal static partial class Telemetry
                 $"Telemetry v{CurrentVersion}",
                 "------------",
                 "NUKE collects anonymous usage data in order to help us improve your experience.",
-                "Read more about scope, data points, and opt-out: https://nuke.build/telemetry",
+                "Read more about scope, data points, and opt-out: ",
+                "https://gruke.readthedocs.io/release/getting-started/telemetry/",
                 string.Empty
             }.JoinNewLine();
 

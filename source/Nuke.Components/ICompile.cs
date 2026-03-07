@@ -1,10 +1,11 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
@@ -12,6 +13,7 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;
@@ -26,7 +28,9 @@ public interface ICompile : IRestore, IHazConfiguration
         {
             ReportSummary(_ => _
                 .WhenNotNull(this as IHazGitVersion, (_, o) => _
-                    .AddPair("Version", o.Versioning.NuGetVersionV2))
+                    .AddPair("Version", o.Versioning.SemVer))
+                .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.SemVer))
                 .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetPackageVersion)));
 
@@ -55,6 +59,10 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
@@ -69,6 +77,10 @@ public interface ICompile : IRestore, IHazConfiguration
         .WhenNotNull(this as IHazGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))

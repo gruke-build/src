@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -21,9 +21,8 @@ internal static class Constants
 {
     internal const string NukeFileName = NukeDirectoryName;
     internal const string NukeDirectoryName = ".nuke";
-    internal const string NukeCommonPackageId = nameof(Nuke) + "." + nameof(Common);
+    internal const string NukeCommonPackageId = "GreemDev." + nameof(Nuke) + "." + nameof(Common);
     internal const string BuildSchemaFileName = "build.schema.json";
-    internal const string VisualStudioDebugFileName = $"{VisualStudioDebugParameterName}.log";
 
     internal const string TargetsSeparator = "+";
     internal const string RootDirectoryParameterName = "Root";

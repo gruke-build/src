@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -16,11 +16,12 @@ using Nuke.Components;
     AzurePipelinesImage.UbuntuLatest,
     AzurePipelinesImage.WindowsLatest,
     AzurePipelinesImage.MacOsLatest,
+    FetchDepth = 0,
     PullRequestsDisabled = true,
-    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
-    NonEntryTargets = new[] { nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage) },
-    ExcludedTargets = new[] { nameof(Clean), nameof(ISignPackages.SignPackages) },
-    CacheKeyFiles = new[] { "global.json", "source/**/*.csproj" })]
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
+    NonEntryTargets = [nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage)],
+    ExcludedTargets = [nameof(Clean)],
+    CacheKeyFiles = ["global.json", "source/**/*.csproj"])]
 partial class Build
 {
     public class AzurePipelinesAttribute : Nuke.Common.CI.AzurePipelines.AzurePipelinesAttribute

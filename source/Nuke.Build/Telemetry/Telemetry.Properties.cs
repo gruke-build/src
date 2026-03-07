@@ -1,6 +1,6 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Collections.Generic;
@@ -127,7 +127,7 @@ internal partial class Telemetry
     {
         return type.Assembly
             .GetCustomAttributes<AssemblyMetadataAttribute>()
-            .Any(x => x is { Key: "RepositoryUrl", Value: "https://github.com/nuke-build/nuke.git" });
+            .Any(x => x is { Key: "RepositoryUrl", Value: "https://github.com/gruke-build/src.git" });
     }
 
     private static bool IsCustomType(Type type)

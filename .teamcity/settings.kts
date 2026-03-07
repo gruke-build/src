@@ -9,7 +9,7 @@
 //
 //     - To trigger manual generation invoke:
 //
-//         nuke --generate-configuration TeamCity --host TeamCity
+//         gruke --generate-configuration TeamCity --host TeamCity
 //
 // </auto-generated>
 // ------------------------------------------------------------------------------
@@ -34,6 +34,12 @@ project {
     buildTypesOrder = arrayListOf(Pack, Test_P1T2, Test_P2T2, Test, ReportDuplicates, ReportIssues, ReportCoverage)
 
     params {
+        text (
+            "env.AnnouncementPing",
+            label = "AnnouncementPing",
+            value = "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
         checkbox (
             "env.AutoStash",
             label = "AutoStash",
@@ -63,23 +69,10 @@ project {
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
         text (
-            "env.SignPathSettings",
-            label = "SignPathSettings",
-            value = "SignPathSettings { OrganizationId = 0fdaf334-6910-41f4-83d2-e58e4cccb087, ProjectSlug = nuke, PolicySlug = release-signing }",
-            allowEmpty = true,
-            display = ParameterDisplay.NORMAL)
-        text (
             "env.TestDegreeOfParallelism",
             label = "TestDegreeOfParallelism",
             value = "1",
             allowEmpty = true,
-            display = ParameterDisplay.NORMAL)
-        checkbox (
-            "env.UseHttps",
-            label = "UseHttps",
-            value = "False",
-            checked = "True",
-            unchecked = "False",
             display = ParameterDisplay.NORMAL)
         select (
             "env.Verbosity",

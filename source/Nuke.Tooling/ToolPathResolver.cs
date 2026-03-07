@@ -1,6 +1,6 @@
 // Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.IO;
@@ -31,7 +31,7 @@ public static class ToolPathResolver
             return Path.GetFullPath(pathExecutable);
 
         var locateExecutable = EnvironmentInfo.IsWin
-            ? @"C:\Windows\System32\where.exe"
+            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "where.exe")
             : "/usr/bin/which";
 
         if (!File.Exists(locateExecutable))
