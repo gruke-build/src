@@ -3,11 +3,9 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using JetBrains.Annotations;
 using Serilog;
 

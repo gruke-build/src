@@ -3,7 +3,6 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.ComponentModel;
 using System.Linq;
 using FluentAssertions;
 using Nuke.Common.Tooling;

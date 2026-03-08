@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using JetBrains.Annotations;
-using Serilog.Events;
+
 // ReSharper disable ArrangeMethodOrOperatorBody
 
 namespace Nuke.Common.Tooling;

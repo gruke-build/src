@@ -3,7 +3,6 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.IO;
 using System.Linq;
 
 namespace Nuke.Common.IO;

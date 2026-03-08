@@ -8,7 +8,6 @@ using System.Reflection;
 using JetBrains.Annotations;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
-using Serilog;
 
 namespace Nuke.Common.ProjectModel;
 

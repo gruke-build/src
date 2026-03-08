@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using Nuke.Common.Utilities;
-using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
 namespace Nuke.Common.Execution.Theming;

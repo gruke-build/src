@@ -13,7 +13,6 @@ using JetBrains.Annotations;
 using Nuke.Common.CI.TeamCity.Configuration;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 using Nuke.Common.ValueInjection;

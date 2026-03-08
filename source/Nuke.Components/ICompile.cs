@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
@@ -13,7 +12,6 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
-using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;

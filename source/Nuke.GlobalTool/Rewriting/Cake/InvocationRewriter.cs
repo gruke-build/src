@@ -8,7 +8,6 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Nuke.Common;
-using Nuke.Common.IO;
 using Serilog;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
