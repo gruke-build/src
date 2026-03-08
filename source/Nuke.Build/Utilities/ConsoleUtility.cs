@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using JetBrains.Annotations;
-using Nuke.Build.Utilities;
 using Serilog;
 
 namespace Nuke.Common.Utilities;
