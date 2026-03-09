@@ -19,8 +19,6 @@ namespace Nuke.Common.Tools.Slack;
 [PublicAPI]
 public static class SlackTasks
 {
-    private static HttpClient s_client = new();
-
     public static void SendSlackMessage(Configure<SlackMessage> configurator, string webhook)
     {
         SendSlackMessageAsync(configurator, webhook).Wait();
@@ -31,7 +29,7 @@ public static class SlackTasks
         var message = configurator(new SlackMessage());
         var payload = JsonConvert.SerializeObject(message);
 
-        var response = await s_client.CreateRequest(HttpMethod.Post, webhook)
+        var response = await HttpClientProxy.Shared.CreateRequest(HttpMethod.Post, webhook)
             .WithFormUrlEncodedContent(new Dictionary<string, string> { ["payload"] = payload })
             .GetResponseAsync();
 
@@ -43,7 +41,7 @@ public static class SlackTasks
     {
         var message = configurator(new SlackMessage());
 
-        var response = await s_client.CreateRequest(
+        var response = await HttpClientProxy.Shared.CreateRequest(
                 HttpMethod.Post,
                 message.Timestamp == null
                     ? "https://slack.com/api/chat.postMessage"

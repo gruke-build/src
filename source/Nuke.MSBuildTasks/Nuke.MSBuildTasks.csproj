@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <TargetFrameworks>net10.0;net472</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageId>GreemDev.Nuke.MSBuildTasks</PackageId>
   </PropertyGroup>
 

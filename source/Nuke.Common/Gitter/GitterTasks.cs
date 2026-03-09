@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Net;
 
 namespace Nuke.Common.Gitter;
@@ -19,8 +20,6 @@ namespace Nuke.Common.Gitter;
 
 public static class GitterTasks
 {
-    private static HttpClient s_client = new();
-
     public static void SendGitterMessage(string message, string roomId, string token)
     {
         SendGitterMessageAsync(message, roomId, token).Wait();
@@ -28,7 +27,7 @@ public static class GitterTasks
 
     public static async Task SendGitterMessageAsync(string message, string roomId, string token)
     {
-        var response = await s_client.CreateRequest(HttpMethod.Post, $"https://api.gitter.im/v1/rooms/{roomId}/chatMessages")
+        var response = await HttpClientProxy.Shared.CreateRequest(HttpMethod.Post, $"https://api.gitter.im/v1/rooms/{roomId}/chatMessages")
             .WithBearerAuthentication(token)
             .GetResponseAsync();
 

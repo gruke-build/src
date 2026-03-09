@@ -16,6 +16,9 @@ using Newtonsoft.Json.Linq;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
+using Nuke.Common.Utilities.Collections;
+using Nuke.Common.Utilities.Net;
+using Serilog;
 
 namespace Nuke.Common.CI.GitHubActions;
 
@@ -32,7 +35,7 @@ public partial class GitHubActions : Host, IBuildServer
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
     private readonly Lazy<JObject> _eventContext;
-    private readonly Lazy<HttpClient> _httpClient;
+    private readonly Lazy<HttpClientProxy> _httpClient;
     private readonly Lazy<long> _jobId;
 
     internal GitHubActions()
@@ -50,7 +53,12 @@ public partial class GitHubActions : Host, IBuildServer
             client.BaseAddress = new Uri("https://api.github.com");
             client.DefaultRequestHeaders.UserAgent.ParseAdd("nuke-build");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64Auth);
-            return client;
+            return new HttpClientProxy(client,
+                (fmt, args, extraLines, caller) =>
+                {
+                    Log.Information($"{caller} : {fmt}", args);
+                    extraLines.ForEach(line => Log.Error(line));
+                });
         });
         _jobId = Lazy.Create(GetJobId);
     }

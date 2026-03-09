@@ -10,17 +10,16 @@ using System.Runtime.Serialization;
 
 namespace Nuke.Common.Utilities.Net;
 
-public static partial class HttpResponseExtensions
+public partial class HttpResponseInspector
 {
     /// <summary>
     /// Asserts the status code of an HTTP response.
     /// </summary>
-    public static HttpResponseInspector AssertStatusCode(
-        this HttpResponseInspector inspector,
+    public HttpResponseInspector AssertStatusCode(
         HttpStatusCode status,
         Func<HttpResponseMessage, string> errorSelector = null)
     {
-        var response = inspector.Response;
+        var response = Response;
         if (response.StatusCode != status)
         {
             throw new HttpResponseException(
@@ -29,40 +28,40 @@ public static partial class HttpResponseExtensions
                     : errorSelector.Invoke(response));
         }
 
-        return inspector;
+        return this;
     }
 
     /// <summary>
     /// Asserts the status code of an HTTP response.
     /// </summary>
-    public static HttpResponseInspector AssertStatusCode(this HttpResponseInspector inspector, Func<HttpStatusCode, string> errorSelector)
+    public HttpResponseInspector AssertStatusCode(Func<HttpStatusCode, string> errorSelector)
     {
-        var response = inspector.Response;
+        var response = Response;
         if (errorSelector.Invoke(response.StatusCode) is { } error)
             throw new HttpResponseException(error);
 
-        return inspector;
+        return this;
     }
 
     /// <summary>
     /// Asserts a successful status code for an HTTP response.
     /// </summary>
-    public static HttpResponseInspector AssertSuccessfulStatusCode(this HttpResponseInspector inspector)
+    public HttpResponseInspector AssertSuccessfulStatusCode()
     {
-        inspector.Response.EnsureSuccessStatusCode();
-        return inspector;
+        Response.EnsureSuccessStatusCode();
+        return this;
     }
 
     /// <summary>
     /// Asserts an HTTP response.
     /// </summary>
-    public static HttpResponseInspector AssertResponse(this HttpResponseInspector inspector, Func<HttpResponseMessage, string> errorSelector)
+    public HttpResponseInspector AssertResponse(Func<HttpResponseMessage, string> errorSelector)
     {
-        var response = inspector.Response;
+        var response = Response;
         if (errorSelector.Invoke(response) is { } error)
             throw new HttpResponseException(error);
 
-        return inspector;
+        return this;
     }
 }
 

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using NuGet.Packaging;
 using Nuke.Common;
 using Nuke.Common.CI;
@@ -21,6 +22,7 @@ using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities;
+using Nuke.Common.Utilities.Net;
 using Nuke.Components;
 using Serilog;
 using static Nuke.Common.ControlFlow;
