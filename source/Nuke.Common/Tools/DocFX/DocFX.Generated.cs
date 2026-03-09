@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/DocFX/DocFX.json
 
 using JetBrains.Annotations;
