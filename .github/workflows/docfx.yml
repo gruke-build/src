@@ -36,8 +36,9 @@ jobs:
       with:
         source-directory: 'docs/generated'
         destination-github-username: 'gruke-build'
-        destination-repository-name: 'src'
+        destination-repository-name: 'docs'
         user-name: "GitHub Actions on behalf of GreemDev"
         user-email: greemdev@ryujinx.app
-        target-branch: gh-pages
+        target-branch: api
+        target-directory: docs
         create-target-branch-if-needed: true
