@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactored the documentation in-repository to work on `mkdocs`:
   - https://github.com/gruke-build/docs
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
-- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on GitHub Pages for *C# API reference* documentation specifically.
+- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on ReadTheDocs alongside the above documentation for *C# API reference* documentation specifically.
   - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`docfx`](https://github.com/gruke-build/docs/tree/docfx) branch on the [`gruke-build/docs`](https://github.com/gruke-build/docs) repository, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
   - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io/docfx).
 - [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
