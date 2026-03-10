@@ -39,6 +39,5 @@ jobs:
         destination-repository-name: 'docs'
         user-name: "GitHub Actions on behalf of GreemDev"
         user-email: greemdev@ryujinx.app
-        target-branch: api
+        target-branch: docfx
         target-directory: docs
-        create-target-branch-if-needed: true
