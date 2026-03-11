@@ -15,12 +15,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke` package.
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
     - Instead, only the most recent value is retained.
-- Refactored the documentation in-repository to work on `mkdocs`:
+- Refactored the documentation in-repository to work on `mkdocs`, hosted by [readthedocs](https://readthedocs.org):
   - https://github.com/gruke-build/docs
-  - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
+  - View the deployment on [nuke.greemdev.net](https://nuke.greemdev.net).
 - Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on ReadTheDocs alongside the above documentation for *C# API reference* documentation specifically.
   - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`docfx`](https://github.com/gruke-build/docs/tree/docfx) branch on the [`gruke-build/docs`](https://github.com/gruke-build/docs) repository, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
-  - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io/docfx).
+  - View the deployment on [nuke.greemdev.net/docfx](https://nuke.greemdev.net/docfx).
 - [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
   - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)!
 - [nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572): Added support for XML Solutions into `gruke :setup`

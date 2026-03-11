@@ -48,7 +48,7 @@ public static class WriterExtensions
         where T : IWriterWrapper
     {
         var lines = new List<string>();
-        lines.Add(("This is a <a href=\"https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api\">"
+        lines.Add(("This is a <a href=\"https://nuke.greemdev.net/release/common/cli-tools/#fluent-api\">"
                    + "CLI wrapper with fluent API</a> that allows to modify the following arguments:").Paragraph());
         lines.AddRange(GetArgumentsList(task.SettingsClass));
 

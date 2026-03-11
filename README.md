@@ -22,7 +22,7 @@ Solid and scalable CI/CD pipelines are an essential pillar for being competitive
 
 NUKE brings your build automation to an even level with every other .NET project. How? It's a regular console application allowing all the OOP goodness! Besides, it solves many common problems in build automation, like parameter injection, path separator abstraction, access to solution and project models, and build step sharing across repositories. NUKE can also generate CI/CD configurations (YAML, etc.) that automatically parallelize build steps on multiple agents to optimize throughput!
 
-**For more information check out our [documentation](https://gruke.readthedocs.io/release/introduction/), or visit our community...**
+**For more information check out our [documentation](https://nuke.greemdev.net/release/introduction/), or visit our community...**
 
 [![Discord](https://img.shields.io/discord/405806471578648588?style=for-the-badge&color=5B65EA)](https://discord.gg/H8bcFr2)
 

@@ -104,7 +104,7 @@ internal static partial class Telemetry
                 "------------",
                 "NUKE collects anonymous usage data in order to help us improve your experience.",
                 "Read more about scope, data points, and opt-out: ",
-                "https://gruke.readthedocs.io/release/getting-started/telemetry/",
+                "https://nuke.greemdev.net/release/getting-started/telemetry/",
                 string.Empty
             }.JoinNewLine();
 
