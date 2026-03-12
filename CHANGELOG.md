@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
+  - Thanks, [@rus-art](https://github.com/rus-art)!
 
 ## [10.2.0] / 2026-03-07
 - Removed properties in the `GitVersion` record that have been removed in newer versions. 
