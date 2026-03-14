@@ -13,6 +13,7 @@ using Nuke.Common.CI;
 using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.Bitrise;
+using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitLab;
 using Nuke.Common.CI.Jenkins;
 using Nuke.Common.CI.TeamCity;
@@ -65,6 +66,14 @@ public class CITest
         AssertProperty(instance, property);
         Assert.True(instance.Ci);
         Assert.True(instance.ContinousIntegration);
+    }
+
+    [CITheory(typeof(ForgejoActions))]
+    [MemberData(nameof(Properties), typeof(ForgejoActions))]
+    public void TestForgejoActions(PropertyInfo property, ForgejoActions instance)
+    {
+        AssertProperty(instance, property);
+        Assert.True(instance.Ci);
     }
 
     [CITheory(typeof(GitLab))]

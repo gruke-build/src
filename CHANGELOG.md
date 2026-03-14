@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) envionment support
+  - Access environment variables defined in their documentation in your C# code in a type-safe manner with in-IDE documentation for each variable.
 - [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
   - Thanks, [@rus-art](https://github.com/rus-art)!
 
