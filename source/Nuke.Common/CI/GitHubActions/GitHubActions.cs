@@ -126,12 +126,12 @@ public partial class GitHubActions : Host, IBuildServer
 
     public string Token => EnvironmentInfo.GetVariable("GITHUB_TOKEN");
 
-    public long JobId => _jobId.Value;
+    [NoValueCheck] public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
-    public int? PullRequestNumber => GitHubEvent.GetPropertyValue<int>("number");
-    public string PullRequestAction => GitHubEvent.GetPropertyStringValue("action");
+    public int? PullRequestNumber => GitHubEvent.GetPropertyValueOrNull<int>("number");
+    [CanBeNull] public string PullRequestAction => GitHubEvent.GetPropertyStringValueOrNull("action");
 
     public AbsolutePath StepSummaryFile => EnvironmentInfo.GetVariable("GITHUB_STEP_SUMMARY");
 

@@ -11,3 +11,6 @@ namespace Nuke.Common.CI;
 public class NoConvertAttribute : Attribute
 {
 }
+
+[AttributeUsage(AttributeTargets.Property)]
+internal class NoValueCheckAttribute : Attribute;

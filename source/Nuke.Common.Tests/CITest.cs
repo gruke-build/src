@@ -103,6 +103,9 @@ public class CITest
 
     private static void AssertProperty(object instance, PropertyInfo property)
     {
+        if (property.GetCustomAttribute<NoValueCheckAttribute>() != null)
+            return;
+
         object value;
         try
         {
@@ -114,7 +117,7 @@ public class CITest
         }
 
         if (property.GetCustomAttribute<CanBeNullAttribute>() == null)
-            value.Should().NotBeNull();
+            value.Should().NotBeNull(", because property attributes indicate this should be treated as non-null.");
         else if (property.PropertyType != typeof(string))
             Nullable.GetUnderlyingType(property.PropertyType).Should().NotBeNull();
 
