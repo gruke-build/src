@@ -35,8 +35,6 @@ public partial class GitHubActions : Host, IBuildServer
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
     private readonly Lazy<JObject> _eventContext;
-    private readonly Lazy<HttpClientProxy> _httpClient;
-    private readonly Lazy<long> _jobId;
 
     internal GitHubActions()
     {
@@ -45,22 +43,6 @@ public partial class GitHubActions : Host, IBuildServer
             var content = File.ReadAllText(EventPath);
             return JsonConvert.DeserializeObject<JObject>(content);
         });
-        _httpClient = Lazy.Create(() =>
-        {
-            var base64Auth = Convert.ToBase64String(Encoding.ASCII.GetBytes($":{Token.NotNull()}"));
-
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.github.com");
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("nuke-build");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64Auth);
-            return new HttpClientProxy(client,
-                (fmt, args, extraLines, caller) =>
-                {
-                    Log.Information($"{caller} : {fmt}", args);
-                    extraLines.ForEach(line => Log.Error(line));
-                });
-        });
-        _jobId = Lazy.Create(GetJobId);
     }
 
     string IBuildServer.Branch => Ref;
@@ -123,10 +105,6 @@ public partial class GitHubActions : Host, IBuildServer
     public string Job => EnvironmentInfo.GetVariable("GITHUB_JOB");
 
     // https://github.com/actions/toolkit/tree/master/packages/core/src
-
-    public string Token => EnvironmentInfo.GetVariable("GITHUB_TOKEN");
-
-    [NoValueCheck] public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
