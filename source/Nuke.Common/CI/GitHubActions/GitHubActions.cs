@@ -66,6 +66,11 @@ public partial class GitHubActions : Host, IBuildServer
     string IBuildServer.Branch => Ref;
     string IBuildServer.Commit => Sha;
 
+    /// <summary>
+    /// Always set to <c>true</c>.
+    /// </summary>
+    public bool Ci => EnvironmentInfo.GetVariable<bool>("CI");
+
     ///<summary>The path to the GitHub home directory used to store user data. For example, <c>/github/home</c>.</summary>
     public string Home => EnvironmentInfo.GetVariable("HOME");
 
@@ -120,6 +125,7 @@ public partial class GitHubActions : Host, IBuildServer
     // https://github.com/actions/toolkit/tree/master/packages/core/src
 
     public string Token => EnvironmentInfo.GetVariable("GITHUB_TOKEN");
+
     public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;

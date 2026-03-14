@@ -14,6 +14,7 @@ using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.Bitrise;
 using Nuke.Common.CI.ForgejoActions;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.GitLab;
 using Nuke.Common.CI.Jenkins;
 using Nuke.Common.CI.TeamCity;
@@ -79,6 +80,14 @@ public class CITest
     [CITheory(typeof(GitLab))]
     [MemberData(nameof(Properties), typeof(GitLab))]
     public void TestGitLab(PropertyInfo property, GitLab instance)
+    {
+        AssertProperty(instance, property);
+        Assert.True(instance.Ci);
+    }
+
+    [CITheory(typeof(GitHubActions))]
+    [MemberData(nameof(Properties), typeof(GitHubActions))]
+    public void TestGitHubActions(PropertyInfo property, GitHubActions instance)
     {
         AssertProperty(instance, property);
         Assert.True(instance.Ci);
