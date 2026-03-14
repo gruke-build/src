@@ -12,6 +12,6 @@ jobs:
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
-            git@gitlab.com:gruke-build/src.git
+            git@gitlab.com:greemryu/nuke.git
           ssh_private_key:
             ${{ secrets.GITLAB_SSH_KEY }}
