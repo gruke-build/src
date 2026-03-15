@@ -32,6 +32,15 @@ public interface IEnvironment<TEnvironment>
             : $"{TEnvironment.EnvironmentVariablePrefix}_{subName}"
         );
 
+    public static string GetOrNullIfEmpty(string subName = null)
+    {
+        return Get(subName) is {} value
+            ? !string.IsNullOrEmpty(value)
+                ? value
+                : null
+            : null;
+    }
+
     public static bool Has(string subName = null, bool allowEmpty = true)
         => EnvironmentInfo.HasVariable(subName is null
                 ? TEnvironment.EnvironmentVariablePrefix
