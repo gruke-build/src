@@ -21,6 +21,7 @@ namespace Nuke.Common.CI.TeamCity;
 /// Interface according to the <a href="https://confluence.jetbrains.com/display/TCDL/Build+Script+Interaction+with+TeamCity">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public partial class TeamCity : Host, IBuildServer, IEnvironment<TeamCity>
 {

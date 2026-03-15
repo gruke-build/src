@@ -13,7 +13,9 @@ namespace Nuke.Common.CI.TravisCI;
 /// Interface according to the <a href="https://docs.travis-ci.com/user/environment-variables/">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
+// ReSharper disable InconsistentNaming
 public partial class TravisCI : Host, IBuildServer, IEnvironment<TravisCI>
 {
     public static string EnvironmentVariablePrefix => "TRAVIS";
@@ -24,9 +26,7 @@ public partial class TravisCI : Host, IBuildServer, IEnvironment<TravisCI>
     internal static bool IsRunningTravisCI => EnvironmentInfo.HasVariable("TRAVIS");
 
     internal TravisCI()
-    {
-        
-    }
+    { }
 
     string IBuildServer.Branch => Branch;
     string IBuildServer.Commit => Commit;

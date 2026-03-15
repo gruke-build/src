@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
+using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.Bitrise;
 
@@ -24,13 +25,6 @@ public class Bitrise : Host, IBuildServer, IEnvironment<Bitrise>
     [UsedImplicitly]
     internal static bool IsRunningBitrise => IEnvironment<Bitrise>.Has("IO");
 
-    private static DateTime ConvertUnixTimestamp(long timestamp)
-    {
-        return new DateTime(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, kind: DateTimeKind.Utc)
-            .AddSeconds(timestamp)
-            .ToLocalTime();
-    }
-
     internal Bitrise()
     {
     }
@@ -44,7 +38,7 @@ public class Bitrise : Host, IBuildServer, IEnvironment<Bitrise>
     public string AppUrl => IEnvironment<Bitrise>.Get("APP_URL");
     [NoConvert] public string AppSlug => IEnvironment<Bitrise>.Get("APP_SLUG");
     [NoConvert] public string BuildSlug => IEnvironment<Bitrise>.Get("BUILD_SLUG");
-    public DateTime BuildTriggerTimestamp => ConvertUnixTimestamp(IEnvironment<Bitrise>.Get<long>("BUILD_TRIGGER_TIMESTAMP"));
+    public DateTime BuildTriggerTimestamp => DateTime.FromUnixTimestamp(IEnvironment<Bitrise>.Get<long>("BUILD_TRIGGER_TIMESTAMP"));
     public string RepositoryUrl => EnvironmentInfo.GetVariable("GIT_REPOSITORY_URL");
     public string GitBranch => IEnvironment<Bitrise>.Get("GIT_BRANCH");
     [CanBeNull] public string GitTag => IEnvironment<Bitrise>.Get("GIT_TAG");

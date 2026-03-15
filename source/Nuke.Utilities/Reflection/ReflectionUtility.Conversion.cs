@@ -35,7 +35,6 @@ public static partial class ReflectionUtility
         catch
         {
             Assert.Fail($"Value '{value}' could not be converted to '{destinationType.GetDisplayShortName()}'");
-            // ReSharper disable once HeuristicUnreachableCode
             return null;
         }
     }
