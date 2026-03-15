@@ -7,19 +7,12 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Nuke.Build.CICD;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
-using Nuke.Common.Utilities.Collections;
-using Nuke.Common.Utilities.Net;
-using Serilog;
 
 namespace Nuke.Common.CI.GitHubActions;
 

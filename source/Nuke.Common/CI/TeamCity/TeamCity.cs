@@ -9,7 +9,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
-using Nuke.Build.CICD;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DotCover;
 using Nuke.Common.Utilities;

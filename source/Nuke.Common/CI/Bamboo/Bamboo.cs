@@ -5,7 +5,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
-using Nuke.Build.CICD;
 
 namespace Nuke.Common.CI.Bamboo;
 

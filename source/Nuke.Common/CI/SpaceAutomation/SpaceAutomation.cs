@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
-using Nuke.Build.CICD;
 
 namespace Nuke.Common.CI.SpaceAutomation;
 
@@ -23,7 +22,7 @@ public partial class SpaceAutomation : Host, IBuildServer, IEnvironment<SpaceAut
     public new static SpaceAutomation Instance => Host.Instance as SpaceAutomation;
 
     [UsedImplicitly]
-    internal static bool IsRunningSpaceAutomation => EnvironmentInfo.HasVariable("JB_SPACE_PROJECT_KEY");
+    internal static bool IsRunningSpaceAutomation => IEnvironment<SpaceAutomation>.Has("PROJECT_KEY");
 
     string IBuildServer.Branch => GitBranch;
     string IBuildServer.Commit => GitRevision;

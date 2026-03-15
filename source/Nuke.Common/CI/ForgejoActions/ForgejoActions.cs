@@ -8,7 +8,6 @@ using System.IO;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Nuke.Build.CICD;
 using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.ForgejoActions;

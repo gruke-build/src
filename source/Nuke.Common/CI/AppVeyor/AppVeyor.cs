@@ -7,7 +7,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
-using Nuke.Build.CICD;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 

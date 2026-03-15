@@ -3,9 +3,8 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using JetBrains.Annotations;
-using Nuke.Common;
 
-namespace Nuke.Build.CICD;
+namespace Nuke.Common.CI;
 
 /// <summary>
 /// Represents a CI/CD build environment.

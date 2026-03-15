@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
-using Nuke.Build.CICD;
 using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.GitLab;
