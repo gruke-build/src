@@ -117,7 +117,7 @@ public class CITest
         }
 
         if (property.GetCustomAttribute<CanBeNullAttribute>() == null)
-            value.Should().NotBeNull(", because property attributes indicate this should be treated as non-null.");
+            value.Should().NotBeNull("property attributes indicate this should be treated as non-null");
         else if (property.PropertyType != typeof(string))
             Nullable.GetUnderlyingType(property.PropertyType).Should().NotBeNull();
 
