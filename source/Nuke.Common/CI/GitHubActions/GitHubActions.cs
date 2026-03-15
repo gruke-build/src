@@ -7,12 +7,18 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
+using Nuke.Common.Utilities.Collections;
+using Nuke.Common.Utilities.Net;
+using Serilog;
 
 namespace Nuke.Common.CI.GitHubActions;
 
@@ -32,6 +38,8 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
     private readonly Lazy<JObject> _eventContext;
+    private readonly Lazy<HttpClientProxy> _httpClient;
+    private readonly Lazy<long> _jobId;
 
     internal GitHubActions()
     {
@@ -40,6 +48,27 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
             var content = File.ReadAllText(EventPath);
             return JsonConvert.DeserializeObject<JObject>(content);
         });
+        _httpClient = Lazy.Create(() =>
+        {
+            if (!IEnvironment<GitHubActions>.Has("TOKEN"))
+                return null;
+
+            var base64Auth = Convert.ToBase64String(
+                Encoding.ASCII.GetBytes($":{IEnvironment<GitHubActions>.Get("TOKEN")}")
+            );
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("https://api.github.com");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("gruke-build");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64Auth);
+            return new HttpClientProxy(client,
+                (fmt, args, extraLines, caller) =>
+                {
+                    Log.Information($"{caller} : {fmt}", args);
+                    extraLines.ForEach(line => Log.Error(line));
+                });
+        });
+        _jobId = Lazy.Create(GetJobId);
     }
 
     string IBuildServer.Branch => Ref;
@@ -51,7 +80,7 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public bool Ci => EnvironmentInfo.GetVariable<bool>("CI");
 
     ///<summary>The path to the GitHub home directory used to store user data. For example, <c>/github/home</c>.</summary>
-    public string Home => IEnvironment<GitHubActions>.Get("HOME");
+    public string Home => EnvironmentInfo.GetVariable("HOME");
 
     ///<summary>The name of the workflow.</summary>
     public string Workflow => IEnvironment<GitHubActions>.Get("WORKFLOW");
@@ -102,6 +131,11 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public string Job => IEnvironment<GitHubActions>.Get("JOB");
 
     // https://github.com/actions/toolkit/tree/master/packages/core/src
+
+    /// <summary>
+    /// Will be equivalent to <see cref="long.MinValue"/> if there is no <c>GITHUB_TOKEN</c> environment variable set.
+    /// </summary>
+    [NoValueCheck] public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";

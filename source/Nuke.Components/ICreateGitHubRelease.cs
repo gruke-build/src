@@ -24,7 +24,7 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 {
     public const string GitHubRelease = nameof(GitHubRelease);
 
-    [Parameter] [Secret] public string GitHubToken => TryGetValue(() => GitHubToken);
+    [Parameter] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? EnvironmentInfo.GetVariable("GITHUB_TOKEN");
 
     string Name { get; }
     bool Prerelease => false;
