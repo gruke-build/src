@@ -30,7 +30,6 @@ public partial class GitLab : Host, IBuildServer, IEnvironment<GitLab>
     private const string SectionResetSequence = "\r\u001b[0K";
 
     private readonly Action<string> _messageSink;
-    private string _environmentVariablePrefix;
 
     internal GitLab()
         : this(messageSink: null)

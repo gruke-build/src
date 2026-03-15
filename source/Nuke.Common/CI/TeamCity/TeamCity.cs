@@ -74,7 +74,6 @@ public partial class TeamCity : Host, IBuildServer, IEnvironment<TeamCity>
     private readonly Lazy<IReadOnlyDictionary<string, string>> _configurationProperties;
     private readonly Lazy<IReadOnlyDictionary<string, string>> _runnerProperties;
     private readonly Lazy<IReadOnlyCollection<string>> _recentlyFailedTests;
-    private string _environmentVariablePrefix;
 
     internal TeamCity()
         : this(messageSink: null)

@@ -28,7 +28,6 @@ public class ForgejoActions : Host, IBuildServer, IEnvironment<ForgejoActions>
     public new static ForgejoActions Instance => Host.Instance as ForgejoActions;
 
     private readonly Lazy<JObject> _eventContext;
-    private string _environmentVariablePrefix;
 
     internal ForgejoActions()
     {

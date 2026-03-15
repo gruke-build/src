@@ -38,7 +38,6 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
     private readonly Lazy<JObject> _eventContext;
-    private string _environmentVariablePrefix;
 
     internal GitHubActions()
     {
