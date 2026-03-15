@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
+using Nuke.Build.CICD;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DotCover;
 using Nuke.Common.Utilities;
@@ -22,12 +23,14 @@ namespace Nuke.Common.CI.TeamCity;
 /// </summary>
 [PublicAPI]
 [ExcludeFromCodeCoverage]
-public partial class TeamCity : Host, IBuildServer
+public partial class TeamCity : Host, IBuildServer, IEnvironment<TeamCity>
 {
+    public static string EnvironmentVariablePrefix => "TEAMCITY";
+
     public new static TeamCity Instance => Host.Instance as TeamCity;
 
     [UsedImplicitly]
-    internal static bool IsRunningTeamCity => EnvironmentInfo.HasVariable("TEAMCITY_VERSION");
+    internal static bool IsRunningTeamCity => IEnvironment<TeamCity>.Has("VERSION");
 
     [CanBeNull]
     private static IReadOnlyDictionary<string, string> ParseDictionary([CanBeNull] AbsolutePath file)
@@ -71,6 +74,7 @@ public partial class TeamCity : Host, IBuildServer
     private readonly Lazy<IReadOnlyDictionary<string, string>> _configurationProperties;
     private readonly Lazy<IReadOnlyDictionary<string, string>> _runnerProperties;
     private readonly Lazy<IReadOnlyCollection<string>> _recentlyFailedTests;
+    private string _environmentVariablePrefix;
 
     internal TeamCity()
         : this(messageSink: null)
@@ -81,7 +85,7 @@ public partial class TeamCity : Host, IBuildServer
     {
         _messageSink = messageSink ?? Console.WriteLine;
 
-        _systemProperties = Lazy.Create(() => ParseDictionary(EnvironmentInfo.GetVariable("TEAMCITY_BUILD_PROPERTIES_FILE")));
+        _systemProperties = Lazy.Create(() => ParseDictionary(IEnvironment<TeamCity>.Get("BUILD_PROPERTIES_FILE")));
         _configurationProperties = Lazy.Create(() => ParseDictionary(SystemProperties?["teamcity.configuration.properties.file"]));
         _runnerProperties = Lazy.Create(() => ParseDictionary(SystemProperties?["teamcity.runner.properties.file"]));
         _recentlyFailedTests = Lazy.Create(() =>

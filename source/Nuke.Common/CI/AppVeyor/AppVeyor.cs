@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
+using Nuke.Build.CICD;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 
@@ -33,14 +34,16 @@ public enum AppVeyorMessageCategory
 /// </summary>
 [PublicAPI]
 [ExcludeFromCodeCoverage]
-public partial class AppVeyor : Host, IBuildServer
+public partial class AppVeyor : Host, IBuildServer, IEnvironment<AppVeyor>
 {
+    public static string EnvironmentVariablePrefix => "APPVEYOR";
+
     public new static AppVeyor Instance => Host.Instance as AppVeyor;
 
-    public static int MessageLimit = 500;
+    private static int s_messageLimit = 500;
 
     [UsedImplicitly]
-    internal static bool IsRunningAppVeyor => EnvironmentInfo.HasVariable("APPVEYOR");
+    internal static bool IsRunningAppVeyor => IEnvironment<AppVeyor>.Has();
 
     private readonly Lazy<Tool> _cli = Lazy.Create(() => IsRunningAppVeyor ? ToolResolver.GetEnvironmentOrPathTool("appveyor") : null);
     private int _messageCount;
@@ -54,40 +57,40 @@ public partial class AppVeyor : Host, IBuildServer
 
     public Tool Cli => _cli.Value;
 
-    public string Url => EnvironmentInfo.GetVariable("APPVEYOR_URL");
-    public string ApiUrl => EnvironmentInfo.GetVariable("APPVEYOR_API_URL");
-    public string AccountName => EnvironmentInfo.GetVariable("APPVEYOR_ACCOUNT_NAME");
-    public int ProjectId => EnvironmentInfo.GetVariable<int>("APPVEYOR_PROJECT_ID");
-    public string ProjectName => EnvironmentInfo.GetVariable("APPVEYOR_PROJECT_NAME");
-    public string ProjectSlug => EnvironmentInfo.GetVariable("APPVEYOR_PROJECT_SLUG");
-    public string BuildFolder => EnvironmentInfo.GetVariable("APPVEYOR_BUILD_FOLDER");
-    public int BuildId => EnvironmentInfo.GetVariable<int>("APPVEYOR_BUILD_ID");
-    public int BuildNumber => EnvironmentInfo.GetVariable<int>("APPVEYOR_BUILD_NUMBER");
-    public string BuildVersion => EnvironmentInfo.GetVariable("APPVEYOR_BUILD_VERSION");
-    public string BuildWorkerImage => EnvironmentInfo.GetVariable("APPVEYOR_BUILD_WORKER_IMAGE");
-    [CanBeNull] public int? PullRequestNumber => EnvironmentInfo.GetVariable<int?>("APPVEYOR_PULL_REQUEST_NUMBER");
-    [CanBeNull] public string PullRequestTitle => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_TITLE");
-    [CanBeNull] public string PullRequestHeadRepositoryName => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME");
-    [CanBeNull] public string PullRequestHeadRepositoryBranch => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH");
-    [CanBeNull] public string PullRequestHeadCommit => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_COMMIT");
-    public string JobId => EnvironmentInfo.GetVariable("APPVEYOR_JOB_ID");
-    [CanBeNull] public string JobName => EnvironmentInfo.GetVariable("APPVEYOR_JOB_NAME");
-    public int JobNumber => EnvironmentInfo.GetVariable<int>("APPVEYOR_JOB_NUMBER");
-    public string RepositoryProvider => EnvironmentInfo.GetVariable("APPVEYOR_REPO_PROVIDER");
-    public string RepositoryScm => EnvironmentInfo.GetVariable("APPVEYOR_REPO_SCM");
-    public string RepositoryName => EnvironmentInfo.GetVariable("APPVEYOR_REPO_NAME");
-    public string RepositoryBranch => EnvironmentInfo.GetVariable("APPVEYOR_REPO_BRANCH");
-    public bool RepositoryTag => EnvironmentInfo.GetVariable<bool>("APPVEYOR_REPO_TAG");
-    [CanBeNull] public string RepositoryTagName => EnvironmentInfo.GetVariable("APPVEYOR_REPO_TAG_NAME");
-    public string RepositoryCommitSha => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT");
-    public string RepositoryCommitAuthor => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_AUTHOR");
-    public string RepositoryCommitAuthorEmail => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL");
-    public DateTime RepositoryCommitTimestamp => EnvironmentInfo.GetVariable<DateTime>("APPVEYOR_REPO_COMMIT_TIMESTAMP");
-    public string RepositoryCommitMessage => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_MESSAGE");
-    [CanBeNull] public string RepositoryCommitMessageExtended => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED");
-    public bool ScheduledBuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_SCHEDULED_BUILD");
-    public bool ForcedBuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_FORCED_BUILD");
-    public bool Rebuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_RE_BUILD");
+    public string Url => IEnvironment<AppVeyor>.Get("URL");
+    public string ApiUrl => IEnvironment<AppVeyor>.Get("API_URL");
+    public string AccountName => IEnvironment<AppVeyor>.Get("ACCOUNT_NAME");
+    public long ProjectId => IEnvironment<AppVeyor>.Get<long>("PROJECT_ID");
+    public string ProjectName => IEnvironment<AppVeyor>.Get("PROJECT_NAME");
+    public string ProjectSlug => IEnvironment<AppVeyor>.Get("PROJECT_SLUG");
+    public string BuildFolder => IEnvironment<AppVeyor>.Get("BUILD_FOLDER");
+    public long BuildId => IEnvironment<AppVeyor>.Get<long>("BUILD_ID");
+    public long BuildNumber => IEnvironment<AppVeyor>.Get<long>("BUILD_NUMBER");
+    public string BuildVersion => IEnvironment<AppVeyor>.Get("BUILD_VERSION");
+    public string BuildWorkerImage => IEnvironment<AppVeyor>.Get("BUILD_WORKER_IMAGE");
+    [CanBeNull] public long? PullRequestNumber => IEnvironment<AppVeyor>.Get<long?>("PULL_REQUEST_NUMBER");
+    [CanBeNull] public string PullRequestTitle => IEnvironment<AppVeyor>.Get("PULL_REQUEST_TITLE");
+    [CanBeNull] public string PullRequestHeadRepositoryName => IEnvironment<AppVeyor>.Get("PULL_REQUEST_HEAD_REPO_NAME");
+    [CanBeNull] public string PullRequestHeadRepositoryBranch => IEnvironment<AppVeyor>.Get("PULL_REQUEST_HEAD_REPO_BRANCH");
+    [CanBeNull] public string PullRequestHeadCommit => IEnvironment<AppVeyor>.Get("PULL_REQUEST_HEAD_COMMIT");
+    public string JobId => IEnvironment<AppVeyor>.Get("JOB_ID");
+    [CanBeNull] public string JobName => IEnvironment<AppVeyor>.Get("JOB_NAME");
+    public long JobNumber => IEnvironment<AppVeyor>.Get<long>("JOB_NUMBER");
+    public string RepositoryProvider => IEnvironment<AppVeyor>.Get("REPO_PROVIDER");
+    public string RepositoryScm => IEnvironment<AppVeyor>.Get("REPO_SCM");
+    public string RepositoryName => IEnvironment<AppVeyor>.Get("REPO_NAME");
+    public string RepositoryBranch => IEnvironment<AppVeyor>.Get("REPO_BRANCH");
+    public bool RepositoryTag => IEnvironment<AppVeyor>.Get<bool>("REPO_TAG");
+    [CanBeNull] public string RepositoryTagName => IEnvironment<AppVeyor>.Get("REPO_TAG_NAME");
+    public string RepositoryCommitSha => IEnvironment<AppVeyor>.Get("REPO_COMMIT");
+    public string RepositoryCommitAuthor => IEnvironment<AppVeyor>.Get("REPO_COMMIT_AUTHOR");
+    public string RepositoryCommitAuthorEmail => IEnvironment<AppVeyor>.Get("REPO_COMMIT_AUTHOR_EMAIL");
+    public DateTime RepositoryCommitTimestamp => IEnvironment<AppVeyor>.Get<DateTime>("REPO_COMMIT_TIMESTAMP");
+    public string RepositoryCommitMessage => IEnvironment<AppVeyor>.Get("REPO_COMMIT_MESSAGE");
+    [CanBeNull] public string RepositoryCommitMessageExtended => IEnvironment<AppVeyor>.Get("REPO_COMMIT_MESSAGE_EXTENDED");
+    public bool ScheduledBuild => IEnvironment<AppVeyor>.Get<bool>("SCHEDULED_BUILD");
+    public bool ForcedBuild => IEnvironment<AppVeyor>.Get<bool>("FORCED_BUILD");
+    public bool Rebuild => IEnvironment<AppVeyor>.Get<bool>("RE_BUILD");
     [CanBeNull] public string Platform => EnvironmentInfo.GetVariable("PLATFORM");
     [CanBeNull] public string Configuration => EnvironmentInfo.GetVariable("CONFIGURATION");
 
@@ -120,10 +123,10 @@ public partial class AppVeyor : Host, IBuildServer
 
     private void WriteMessage(AppVeyorMessageCategory category, string message, string details)
     {
-        if (_messageCount == MessageLimit)
+        if (_messageCount == s_messageLimit)
         {
             Theme.WriteWarning(
-                $"AppVeyor has a default limit of {MessageLimit} messages. " +
+                $"AppVeyor has a default limit of {s_messageLimit} messages. " +
                 "If you're getting an exception from 'appveyor.exe' after this message, " +
                 "contact https://appveyor.com/support to resolve this issue for your account.");
         }

@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
+using Nuke.Build.CICD;
 
 namespace Nuke.Common.CI.SpaceAutomation;
 
@@ -15,8 +16,10 @@ namespace Nuke.Common.CI.SpaceAutomation;
 [PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
-public partial class SpaceAutomation : Host, IBuildServer
+public partial class SpaceAutomation : Host, IBuildServer, IEnvironment<SpaceAutomation>
 {
+    public static string EnvironmentVariablePrefix => "JB_SPACE";
+
     public new static SpaceAutomation Instance => Host.Instance as SpaceAutomation;
 
     [UsedImplicitly]
@@ -25,19 +28,19 @@ public partial class SpaceAutomation : Host, IBuildServer
     string IBuildServer.Branch => GitBranch;
     string IBuildServer.Commit => GitRevision;
 
-    public string ProjectKey => EnvironmentInfo.GetVariable("JB_SPACE_PROJECT_KEY");
-    public string ProjectId => EnvironmentInfo.GetVariable("JB_SPACE_PROJECT_ID");
-    public string ApiUrl => EnvironmentInfo.GetVariable("JB_SPACE_API_URL");
-    public string ClientId => EnvironmentInfo.GetVariable("JB_SPACE_CLIENT_ID");
-    public string ClientSecret => EnvironmentInfo.GetVariable("JB_SPACE_CLIENT_SECRET");
-    public string ClientToken => EnvironmentInfo.GetVariable("JB_SPACE_CLIENT_TOKEN");
-    public string ExecutionNumber => EnvironmentInfo.GetVariable("JB_SPACE_EXECUTION_NUMBER");
-    public string ExecutionId => EnvironmentInfo.GetVariable("JB_SPACE_EXECUTION_ID");
-    public string ExecutionUrl => EnvironmentInfo.GetVariable("JB_SPACE_EXECUTION_URL");
-    public string RepositoryName => EnvironmentInfo.GetVariable("JB_SPACE_GIT_REPOSITORY_NAME");
-    public string GitRevision => EnvironmentInfo.GetVariable("JB_SPACE_GIT_REVISION");
-    public string GitBranch => EnvironmentInfo.GetVariable("JB_SPACE_GIT_BRANCH");
-    public string StepDataPath => EnvironmentInfo.GetVariable("JB_SPACE_STEP_DATA_PATH");
-    public string WorkDirPath => EnvironmentInfo.GetVariable("JB_SPACE_WORK_DIR_PATH");
-    public string FileSharePath => EnvironmentInfo.GetVariable("JB_SPACE_FILE_SHARE_PATH");
+    public string ProjectKey => IEnvironment<SpaceAutomation>.Get("PROJECT_KEY");
+    public string ProjectId => IEnvironment<SpaceAutomation>.Get("PROJECT_ID");
+    public string ApiUrl => IEnvironment<SpaceAutomation>.Get("API_URL");
+    public string ClientId => IEnvironment<SpaceAutomation>.Get("CLIENT_ID");
+    public string ClientSecret => IEnvironment<SpaceAutomation>.Get("CLIENT_SECRET");
+    public string ClientToken => IEnvironment<SpaceAutomation>.Get("CLIENT_TOKEN");
+    public string ExecutionNumber => IEnvironment<SpaceAutomation>.Get("EXECUTION_NUMBER");
+    public string ExecutionId => IEnvironment<SpaceAutomation>.Get("EXECUTION_ID");
+    public string ExecutionUrl => IEnvironment<SpaceAutomation>.Get("EXECUTION_URL");
+    public string RepositoryName => IEnvironment<SpaceAutomation>.Get("GIT_REPOSITORY_NAME");
+    public string GitRevision => IEnvironment<SpaceAutomation>.Get("GIT_REVISION");
+    public string GitBranch => IEnvironment<SpaceAutomation>.Get("GIT_BRANCH");
+    public string StepDataPath => IEnvironment<SpaceAutomation>.Get("STEP_DATA_PATH");
+    public string WorkDirPath => IEnvironment<SpaceAutomation>.Get("WORK_DIR_PATH");
+    public string FileSharePath => IEnvironment<SpaceAutomation>.Get("FILE_SHARE_PATH");
 }
