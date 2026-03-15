@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Nuke.Common.Tooling;
 using Nuke.Common.Utilities.Collections;
 using Serilog;
 using SixLabors.Fonts;
@@ -20,15 +19,11 @@ using static Nuke.Common.IO.HttpTasks;
 
 partial class Build
 {
-    [LatestGitHubRelease("JetBrains/JetBrainsMono")]
-    readonly string JetBrainsMonoVersion;
-
-    string[] FontDownloadUrls =>
-        new[]
-        {
-            "https://github.com/googlefonts/roboto/releases/latest/download/roboto-unhinted.zip",
-            $"https://github.com/JetBrains/JetBrainsMono/releases/download/v{JetBrainsMonoVersion}/JetBrainsMono-{JetBrainsMonoVersion}.zip"
-        };
+    readonly string[] FontDownloadUrls =
+    [
+        "https://github.com/googlefonts/roboto/releases/latest/download/roboto-unhinted.zip",
+        "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-v2.304.zip"
+    ];
 
     AbsolutePath FontDirectory => TemporaryDirectory / "fonts";
     IReadOnlyCollection<AbsolutePath> FontArchives => FontDirectory.GlobFiles("*.*");
