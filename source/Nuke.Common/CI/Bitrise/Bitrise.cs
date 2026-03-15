@@ -14,6 +14,7 @@ namespace Nuke.Common.CI.Bitrise;
 /// Interface according to the <a href="https://docs.bitrise.io/en/bitrise-ci/references/available-environment-variables.html">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public class Bitrise : Host, IBuildServer, IEnvironment<Bitrise>
 {

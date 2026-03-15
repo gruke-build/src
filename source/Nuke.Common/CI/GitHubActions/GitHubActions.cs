@@ -27,6 +27,7 @@ namespace Nuke.Common.CI.GitHubActions;
 /// Interface according to the <a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActions>
 {

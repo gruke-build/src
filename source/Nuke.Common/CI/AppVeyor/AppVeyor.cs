@@ -33,6 +33,7 @@ public enum AppVeyorMessageCategory
 /// Interface according to the <a href="https://www.appveyor.com/docs/environment-variables/">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public partial class AppVeyor : Host, IBuildServer, IEnvironment<AppVeyor>
 {

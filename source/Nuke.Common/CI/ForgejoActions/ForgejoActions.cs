@@ -17,6 +17,7 @@ namespace Nuke.Common.CI.ForgejoActions;
 /// Interface according to the <a href="https://forgejo.org/docs/next/user/actions/reference/#env-1">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public class ForgejoActions : Host, IBuildServer, IEnvironment<ForgejoActions>
 {
