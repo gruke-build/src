@@ -79,7 +79,11 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     /// </summary>
     public bool Ci => EnvironmentInfo.GetVariable<bool>("CI");
 
-    ///<summary>The path to the GitHub home directory used to store user data. For example, <c>/github/home</c>.</summary>
+    ///<summary>
+    /// The path to the GitHub home directory used to store user data. For example, <c>/github/home</c>.
+    /// </summary>
+    /// <remarks>Returned value is null on Windows. Windows does not expose a HOME environment variable.</remarks>
+    [NoValueCheckOnPlatform(PlatformFamily.Windows)] 
     public string Home => EnvironmentInfo.GetVariable("HOME");
 
     ///<summary>The name of the workflow.</summary>

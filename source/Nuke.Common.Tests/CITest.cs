@@ -116,6 +116,9 @@ public class CITest
             throw exception.InnerException.NotNull();
         }
 
+        if (property.GetCustomAttribute<NoValueCheckOnPlatformAttribute>()?.ShouldSkip() ?? false)
+            return;
+
         if (property.GetCustomAttribute<CanBeNullAttribute>() == null)
             value.Should().NotBeNull("property attributes indicate this should be treated as non-null");
         else if (property.PropertyType != typeof(string))
