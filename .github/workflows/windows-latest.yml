@@ -34,7 +34,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: 'Cache: .nuke/temp, ~/.nuget/packages'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .nuke/temp
@@ -43,12 +43,12 @@ jobs:
       - name: 'Run: Test, Pack'
         run: ./build.cmd Test Pack
       - name: 'Publish: test-results'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: packages'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: packages
           path: output/packages

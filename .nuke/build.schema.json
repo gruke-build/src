@@ -9,6 +9,7 @@
         "Bamboo",
         "Bitbucket",
         "Bitrise",
+        "ForgejoActions",
         "GitHubActions",
         "GitLab",
         "Jenkins",
@@ -18,7 +19,8 @@
         "Terminal",
         "TravisCI",
         "VisualStudio",
-        "VSCode"
+        "VSCode",
+        "WoodpeckerCI"
       ]
     },
     "ExecutableTarget": {
