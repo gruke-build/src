@@ -14,6 +14,7 @@
 - bmello4688
 - BrewingCoder
 - Cervac Petru
+- Chase Florell
 - Chris Pulman
 - Christian Klemm
 - Chuong Ho
