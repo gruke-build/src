@@ -33,6 +33,7 @@
 - Martin Gill
 - Matthias Koch
 - Matthias Schmidt
+- Morten Larsen
 - Nefarion
 - Oleg Shevchenko
 - Pieter Nijs
