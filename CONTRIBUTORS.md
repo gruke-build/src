@@ -15,3 +15,4 @@
 - Pieter Nijs
 - Sigtryggur Ómarsson
 - Taylor Buchanan
+- y-karnitskaya
