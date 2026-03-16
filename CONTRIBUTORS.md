@@ -1,5 +1,6 @@
 - Amadeusz Sadowski
 - Andrew Bowen
+- Anže Videnič
 - BrewingCoder
 - Cervac Petru
 - Christian Klemm
