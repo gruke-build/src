@@ -39,5 +39,6 @@
 - Sigtryggur Ómarsson
 - Stefan de Vogelaere
 - Taylor Buchanan
+- Taylor Buchanan
 - ThomasBoettcherHolschen
 - y-karnitskaya
