@@ -35,6 +35,7 @@
 - MarioGK-AutoSystem
 - Marko Lahma
 - Martin Gill
+- Matt Richardson
 - Matthias Koch
 - Matthias Schmidt
 - Morten Larsen
