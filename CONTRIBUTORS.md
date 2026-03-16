@@ -56,6 +56,7 @@
 - Kamil Kopański
 - Karl Solgård
 - Karl Solgård
+- Kevin Thompson
 - Kurai András
 - Laurent Kempé
 - Leon Grave
