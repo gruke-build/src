@@ -72,5 +72,6 @@
 - Taylor Buchanan
 - ThomasBoettcherHolschen
 - tyb-dev
+- Vladyslav
 - workgroupengineering
 - y-karnitskaya
