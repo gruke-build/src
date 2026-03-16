@@ -83,6 +83,7 @@
 - ThomasBoettcherHolschen
 - Todor Todorov
 - tyb-dev
+- Vince Vriend
 - Vladyslav
 - workgroupengineering
 - y-karnitskaya
