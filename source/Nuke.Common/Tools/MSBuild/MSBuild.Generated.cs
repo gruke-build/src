@@ -753,12 +753,12 @@ public static partial class MSBuildSettingsExtensions
 [TypeConverter(typeof(TypeConverter<MSBuildToolsVersion>))]
 public partial class MSBuildToolsVersion : Enumeration
 {
-    public static MSBuildToolsVersion _2_0 = (MSBuildToolsVersion) "2.0";
-    public static MSBuildToolsVersion _3_5 = (MSBuildToolsVersion) "3.5";
-    public static MSBuildToolsVersion _4_0 = (MSBuildToolsVersion) "4.0";
-    public static MSBuildToolsVersion _12_0 = (MSBuildToolsVersion) "12.0";
-    public static MSBuildToolsVersion _14_0 = (MSBuildToolsVersion) "14.0";
-    public static MSBuildToolsVersion _15_0 = (MSBuildToolsVersion) "15.0";
+    public static readonly MSBuildToolsVersion _2_0 = (MSBuildToolsVersion) "2.0";
+    public static readonly MSBuildToolsVersion _3_5 = (MSBuildToolsVersion) "3.5";
+    public static readonly MSBuildToolsVersion _4_0 = (MSBuildToolsVersion) "4.0";
+    public static readonly MSBuildToolsVersion _12_0 = (MSBuildToolsVersion) "12.0";
+    public static readonly MSBuildToolsVersion _14_0 = (MSBuildToolsVersion) "14.0";
+    public static readonly MSBuildToolsVersion _15_0 = (MSBuildToolsVersion) "15.0";
     public static implicit operator MSBuildToolsVersion(string value)
     {
         return new MSBuildToolsVersion { Value = value };
@@ -773,11 +773,11 @@ public partial class MSBuildToolsVersion : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildVerbosity>))]
 public partial class MSBuildVerbosity : Enumeration
 {
-    public static MSBuildVerbosity Quiet = (MSBuildVerbosity) "Quiet";
-    public static MSBuildVerbosity Minimal = (MSBuildVerbosity) "Minimal";
-    public static MSBuildVerbosity Normal = (MSBuildVerbosity) "Normal";
-    public static MSBuildVerbosity Detailed = (MSBuildVerbosity) "Detailed";
-    public static MSBuildVerbosity Diagnostic = (MSBuildVerbosity) "Diagnostic";
+    public static readonly MSBuildVerbosity Quiet = (MSBuildVerbosity) "Quiet";
+    public static readonly MSBuildVerbosity Minimal = (MSBuildVerbosity) "Minimal";
+    public static readonly MSBuildVerbosity Normal = (MSBuildVerbosity) "Normal";
+    public static readonly MSBuildVerbosity Detailed = (MSBuildVerbosity) "Detailed";
+    public static readonly MSBuildVerbosity Diagnostic = (MSBuildVerbosity) "Diagnostic";
     public static implicit operator MSBuildVerbosity(string value)
     {
         return new MSBuildVerbosity { Value = value };
@@ -792,11 +792,11 @@ public partial class MSBuildVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildTargetPlatform>))]
 public partial class MSBuildTargetPlatform : Enumeration
 {
-    public static MSBuildTargetPlatform MSIL = (MSBuildTargetPlatform) "MSIL";
-    public static MSBuildTargetPlatform x86 = (MSBuildTargetPlatform) "x86";
-    public static MSBuildTargetPlatform x64 = (MSBuildTargetPlatform) "x64";
-    public static MSBuildTargetPlatform arm = (MSBuildTargetPlatform) "arm";
-    public static MSBuildTargetPlatform Win32 = (MSBuildTargetPlatform) "Win32";
+    public static readonly MSBuildTargetPlatform MSIL = (MSBuildTargetPlatform) "MSIL";
+    public static readonly MSBuildTargetPlatform x86 = (MSBuildTargetPlatform) "x86";
+    public static readonly MSBuildTargetPlatform x64 = (MSBuildTargetPlatform) "x64";
+    public static readonly MSBuildTargetPlatform arm = (MSBuildTargetPlatform) "arm";
+    public static readonly MSBuildTargetPlatform Win32 = (MSBuildTargetPlatform) "Win32";
     public static implicit operator MSBuildTargetPlatform(string value)
     {
         return new MSBuildTargetPlatform { Value = value };
@@ -811,8 +811,8 @@ public partial class MSBuildTargetPlatform : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildSymbolPackageFormat>))]
 public partial class MSBuildSymbolPackageFormat : Enumeration
 {
-    public static MSBuildSymbolPackageFormat symbols_nupkg = (MSBuildSymbolPackageFormat) "symbols.nupkg";
-    public static MSBuildSymbolPackageFormat snupkg = (MSBuildSymbolPackageFormat) "snupkg";
+    public static readonly MSBuildSymbolPackageFormat symbols_nupkg = (MSBuildSymbolPackageFormat) "symbols.nupkg";
+    public static readonly MSBuildSymbolPackageFormat snupkg = (MSBuildSymbolPackageFormat) "snupkg";
     public static implicit operator MSBuildSymbolPackageFormat(string value)
     {
         return new MSBuildSymbolPackageFormat { Value = value };

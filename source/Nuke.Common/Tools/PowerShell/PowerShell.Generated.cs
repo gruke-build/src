@@ -320,8 +320,8 @@ public static partial class PowerShellSettingsExtensions
 [TypeConverter(typeof(TypeConverter<PowerShellFormat>))]
 public partial class PowerShellFormat : Enumeration
 {
-    public static PowerShellFormat Text = (PowerShellFormat) "Text";
-    public static PowerShellFormat Xml = (PowerShellFormat) "Xml";
+    public static readonly PowerShellFormat Text = (PowerShellFormat) "Text";
+    public static readonly PowerShellFormat Xml = (PowerShellFormat) "Xml";
     public static implicit operator PowerShellFormat(string value)
     {
         return new PowerShellFormat { Value = value };
@@ -336,10 +336,10 @@ public partial class PowerShellFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<PowerShellWindowStyle>))]
 public partial class PowerShellWindowStyle : Enumeration
 {
-    public static PowerShellWindowStyle Normal = (PowerShellWindowStyle) "Normal";
-    public static PowerShellWindowStyle Minimized = (PowerShellWindowStyle) "Minimized";
-    public static PowerShellWindowStyle Maximized = (PowerShellWindowStyle) "Maximized";
-    public static PowerShellWindowStyle Hidden = (PowerShellWindowStyle) "Hidden";
+    public static readonly PowerShellWindowStyle Normal = (PowerShellWindowStyle) "Normal";
+    public static readonly PowerShellWindowStyle Minimized = (PowerShellWindowStyle) "Minimized";
+    public static readonly PowerShellWindowStyle Maximized = (PowerShellWindowStyle) "Maximized";
+    public static readonly PowerShellWindowStyle Hidden = (PowerShellWindowStyle) "Hidden";
     public static implicit operator PowerShellWindowStyle(string value)
     {
         return new PowerShellWindowStyle { Value = value };

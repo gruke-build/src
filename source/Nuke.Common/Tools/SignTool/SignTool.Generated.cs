@@ -670,8 +670,8 @@ public static partial class SignToolSettingsExtensions
 [TypeConverter(typeof(TypeConverter<SignToolContentMethod>))]
 public partial class SignToolContentMethod : Enumeration
 {
-    public static SignToolContentMethod Embedded = (SignToolContentMethod) "Embedded";
-    public static SignToolContentMethod DetachedSignedData = (SignToolContentMethod) "DetachedSignedData";
+    public static readonly SignToolContentMethod Embedded = (SignToolContentMethod) "Embedded";
+    public static readonly SignToolContentMethod DetachedSignedData = (SignToolContentMethod) "DetachedSignedData";
     public static implicit operator SignToolContentMethod(string value)
     {
         return new SignToolContentMethod { Value = value };
@@ -686,8 +686,8 @@ public partial class SignToolContentMethod : Enumeration
 [TypeConverter(typeof(TypeConverter<SignToolDigestAlgorithm>))]
 public partial class SignToolDigestAlgorithm : Enumeration
 {
-    public static SignToolDigestAlgorithm SHA1 = (SignToolDigestAlgorithm) "SHA1";
-    public static SignToolDigestAlgorithm SHA256 = (SignToolDigestAlgorithm) "SHA256";
+    public static readonly SignToolDigestAlgorithm SHA1 = (SignToolDigestAlgorithm) "SHA1";
+    public static readonly SignToolDigestAlgorithm SHA256 = (SignToolDigestAlgorithm) "SHA256";
     public static implicit operator SignToolDigestAlgorithm(string value)
     {
         return new SignToolDigestAlgorithm { Value = value };

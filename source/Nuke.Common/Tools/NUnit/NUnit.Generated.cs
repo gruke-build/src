@@ -658,9 +658,9 @@ public static partial class NUnit3SettingsExtensions
 [TypeConverter(typeof(TypeConverter<NUnitProcessType>))]
 public partial class NUnitProcessType : Enumeration
 {
-    public static NUnitProcessType Single = (NUnitProcessType) "Single";
-    public static NUnitProcessType Separate = (NUnitProcessType) "Separate";
-    public static NUnitProcessType Multiple = (NUnitProcessType) "Multiple";
+    public static readonly NUnitProcessType Single = (NUnitProcessType) "Single";
+    public static readonly NUnitProcessType Separate = (NUnitProcessType) "Separate";
+    public static readonly NUnitProcessType Multiple = (NUnitProcessType) "Multiple";
     public static implicit operator NUnitProcessType(string value)
     {
         return new NUnitProcessType { Value = value };
@@ -675,9 +675,9 @@ public partial class NUnitProcessType : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitPrincipalPolicy>))]
 public partial class NUnitPrincipalPolicy : Enumeration
 {
-    public static NUnitPrincipalPolicy UnauthenticatedPrincipal = (NUnitPrincipalPolicy) "UnauthenticatedPrincipal";
-    public static NUnitPrincipalPolicy NoPrincipal = (NUnitPrincipalPolicy) "NoPrincipal";
-    public static NUnitPrincipalPolicy WindowsPrincipal = (NUnitPrincipalPolicy) "WindowsPrincipal";
+    public static readonly NUnitPrincipalPolicy UnauthenticatedPrincipal = (NUnitPrincipalPolicy) "UnauthenticatedPrincipal";
+    public static readonly NUnitPrincipalPolicy NoPrincipal = (NUnitPrincipalPolicy) "NoPrincipal";
+    public static readonly NUnitPrincipalPolicy WindowsPrincipal = (NUnitPrincipalPolicy) "WindowsPrincipal";
     public static implicit operator NUnitPrincipalPolicy(string value)
     {
         return new NUnitPrincipalPolicy { Value = value };
@@ -692,13 +692,13 @@ public partial class NUnitPrincipalPolicy : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitLabelType>))]
 public partial class NUnitLabelType : Enumeration
 {
-    public static NUnitLabelType Off = (NUnitLabelType) "Off";
-    public static NUnitLabelType On = (NUnitLabelType) "On";
-    public static NUnitLabelType All = (NUnitLabelType) "All";
-    public static NUnitLabelType OnOutputOnly = (NUnitLabelType) "OnOutputOnly";
-    public static NUnitLabelType Before = (NUnitLabelType) "Before";
-    public static NUnitLabelType After = (NUnitLabelType) "After";
-    public static NUnitLabelType BeforeAndAfter = (NUnitLabelType) "BeforeAndAfter";
+    public static readonly NUnitLabelType Off = (NUnitLabelType) "Off";
+    public static readonly NUnitLabelType On = (NUnitLabelType) "On";
+    public static readonly NUnitLabelType All = (NUnitLabelType) "All";
+    public static readonly NUnitLabelType OnOutputOnly = (NUnitLabelType) "OnOutputOnly";
+    public static readonly NUnitLabelType Before = (NUnitLabelType) "Before";
+    public static readonly NUnitLabelType After = (NUnitLabelType) "After";
+    public static readonly NUnitLabelType BeforeAndAfter = (NUnitLabelType) "BeforeAndAfter";
     public static implicit operator NUnitLabelType(string value)
     {
         return new NUnitLabelType { Value = value };
@@ -713,11 +713,11 @@ public partial class NUnitLabelType : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitTraceLevel>))]
 public partial class NUnitTraceLevel : Enumeration
 {
-    public static NUnitTraceLevel Off = (NUnitTraceLevel) "Off";
-    public static NUnitTraceLevel Error = (NUnitTraceLevel) "Error";
-    public static NUnitTraceLevel Warning = (NUnitTraceLevel) "Warning";
-    public static NUnitTraceLevel Info = (NUnitTraceLevel) "Info";
-    public static NUnitTraceLevel Verbose = (NUnitTraceLevel) "Verbose";
+    public static readonly NUnitTraceLevel Off = (NUnitTraceLevel) "Off";
+    public static readonly NUnitTraceLevel Error = (NUnitTraceLevel) "Error";
+    public static readonly NUnitTraceLevel Warning = (NUnitTraceLevel) "Warning";
+    public static readonly NUnitTraceLevel Info = (NUnitTraceLevel) "Info";
+    public static readonly NUnitTraceLevel Verbose = (NUnitTraceLevel) "Verbose";
     public static implicit operator NUnitTraceLevel(string value)
     {
         return new NUnitTraceLevel { Value = value };

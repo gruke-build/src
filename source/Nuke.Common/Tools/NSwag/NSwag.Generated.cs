@@ -8501,9 +8501,9 @@ public static partial class NSwagSwaggerToTypeScriptClientSettingsExtensions
 [TypeConverter(typeof(TypeConverter<SchemaType>))]
 public partial class SchemaType : Enumeration
 {
-    public static SchemaType JsonSchema = (SchemaType) "JsonSchema";
-    public static SchemaType Swagger2 = (SchemaType) "Swagger2";
-    public static SchemaType OpenApi3 = (SchemaType) "OpenApi3";
+    public static readonly SchemaType JsonSchema = (SchemaType) "JsonSchema";
+    public static readonly SchemaType Swagger2 = (SchemaType) "Swagger2";
+    public static readonly SchemaType OpenApi3 = (SchemaType) "OpenApi3";
     public static implicit operator SchemaType(string value)
     {
         return new SchemaType { Value = value };
@@ -8518,9 +8518,9 @@ public partial class SchemaType : Enumeration
 [TypeConverter(typeof(TypeConverter<PropertyNameHandling>))]
 public partial class PropertyNameHandling : Enumeration
 {
-    public static PropertyNameHandling Default = (PropertyNameHandling) "Default";
-    public static PropertyNameHandling CamelCase = (PropertyNameHandling) "CamelCase";
-    public static PropertyNameHandling SnakeCase = (PropertyNameHandling) "SnakeCase";
+    public static readonly PropertyNameHandling Default = (PropertyNameHandling) "Default";
+    public static readonly PropertyNameHandling CamelCase = (PropertyNameHandling) "CamelCase";
+    public static readonly PropertyNameHandling SnakeCase = (PropertyNameHandling) "SnakeCase";
     public static implicit operator PropertyNameHandling(string value)
     {
         return new PropertyNameHandling { Value = value };
@@ -8535,8 +8535,8 @@ public partial class PropertyNameHandling : Enumeration
 [TypeConverter(typeof(TypeConverter<ReferenceTypeNullHandling>))]
 public partial class ReferenceTypeNullHandling : Enumeration
 {
-    public static ReferenceTypeNullHandling Null = (ReferenceTypeNullHandling) "Null";
-    public static ReferenceTypeNullHandling NotNull = (ReferenceTypeNullHandling) "NotNull";
+    public static readonly ReferenceTypeNullHandling Null = (ReferenceTypeNullHandling) "Null";
+    public static readonly ReferenceTypeNullHandling NotNull = (ReferenceTypeNullHandling) "NotNull";
     public static implicit operator ReferenceTypeNullHandling(string value)
     {
         return new ReferenceTypeNullHandling { Value = value };
@@ -8551,9 +8551,9 @@ public partial class ReferenceTypeNullHandling : Enumeration
 [TypeConverter(typeof(TypeConverter<EnumHandling>))]
 public partial class EnumHandling : Enumeration
 {
-    public static EnumHandling Integer = (EnumHandling) "Integer";
-    public static EnumHandling String = (EnumHandling) "String";
-    public static EnumHandling CamelCaseString = (EnumHandling) "CamelCaseString";
+    public static readonly EnumHandling Integer = (EnumHandling) "Integer";
+    public static readonly EnumHandling String = (EnumHandling) "String";
+    public static readonly EnumHandling CamelCaseString = (EnumHandling) "CamelCaseString";
     public static implicit operator EnumHandling(string value)
     {
         return new EnumHandling { Value = value };
@@ -8568,12 +8568,12 @@ public partial class EnumHandling : Enumeration
 [TypeConverter(typeof(TypeConverter<OperationGenerationMode>))]
 public partial class OperationGenerationMode : Enumeration
 {
-    public static OperationGenerationMode MultipleClientsFromOperationId = (OperationGenerationMode) "MultipleClientsFromOperationId";
-    public static OperationGenerationMode MultipleClientsFromPathSegments = (OperationGenerationMode) "MultipleClientsFromPathSegments";
-    public static OperationGenerationMode MultipleClientsFromFirstTagAndPathSegments = (OperationGenerationMode) "MultipleClientsFromFirstTagAndPathSegments";
-    public static OperationGenerationMode MultipleClientsFromFirstTagAndOperationId = (OperationGenerationMode) "MultipleClientsFromFirstTagAndOperationId";
-    public static OperationGenerationMode SingleClientFromOperationId = (OperationGenerationMode) "SingleClientFromOperationId";
-    public static OperationGenerationMode SingleClientFromPathSegments = (OperationGenerationMode) "SingleClientFromPathSegments";
+    public static readonly OperationGenerationMode MultipleClientsFromOperationId = (OperationGenerationMode) "MultipleClientsFromOperationId";
+    public static readonly OperationGenerationMode MultipleClientsFromPathSegments = (OperationGenerationMode) "MultipleClientsFromPathSegments";
+    public static readonly OperationGenerationMode MultipleClientsFromFirstTagAndPathSegments = (OperationGenerationMode) "MultipleClientsFromFirstTagAndPathSegments";
+    public static readonly OperationGenerationMode MultipleClientsFromFirstTagAndOperationId = (OperationGenerationMode) "MultipleClientsFromFirstTagAndOperationId";
+    public static readonly OperationGenerationMode SingleClientFromOperationId = (OperationGenerationMode) "SingleClientFromOperationId";
+    public static readonly OperationGenerationMode SingleClientFromPathSegments = (OperationGenerationMode) "SingleClientFromPathSegments";
     public static implicit operator OperationGenerationMode(string value)
     {
         return new OperationGenerationMode { Value = value };
@@ -8588,10 +8588,10 @@ public partial class OperationGenerationMode : Enumeration
 [TypeConverter(typeof(TypeConverter<CSharpClassStyle>))]
 public partial class CSharpClassStyle : Enumeration
 {
-    public static CSharpClassStyle Poco = (CSharpClassStyle) "Poco";
-    public static CSharpClassStyle Inpc = (CSharpClassStyle) "Inpc";
-    public static CSharpClassStyle Prism = (CSharpClassStyle) "Prism";
-    public static CSharpClassStyle Record = (CSharpClassStyle) "Record";
+    public static readonly CSharpClassStyle Poco = (CSharpClassStyle) "Poco";
+    public static readonly CSharpClassStyle Inpc = (CSharpClassStyle) "Inpc";
+    public static readonly CSharpClassStyle Prism = (CSharpClassStyle) "Prism";
+    public static readonly CSharpClassStyle Record = (CSharpClassStyle) "Record";
     public static implicit operator CSharpClassStyle(string value)
     {
         return new CSharpClassStyle { Value = value };
@@ -8606,8 +8606,8 @@ public partial class CSharpClassStyle : Enumeration
 [TypeConverter(typeof(TypeConverter<CSharpControllerStyle>))]
 public partial class CSharpControllerStyle : Enumeration
 {
-    public static CSharpControllerStyle Partial = (CSharpControllerStyle) "Partial";
-    public static CSharpControllerStyle Abstract = (CSharpControllerStyle) "Abstract";
+    public static readonly CSharpControllerStyle Partial = (CSharpControllerStyle) "Partial";
+    public static readonly CSharpControllerStyle Abstract = (CSharpControllerStyle) "Abstract";
     public static implicit operator CSharpControllerStyle(string value)
     {
         return new CSharpControllerStyle { Value = value };
@@ -8622,8 +8622,8 @@ public partial class CSharpControllerStyle : Enumeration
 [TypeConverter(typeof(TypeConverter<CSharpControllerTarget>))]
 public partial class CSharpControllerTarget : Enumeration
 {
-    public static CSharpControllerTarget AspNet = (CSharpControllerTarget) "AspNet";
-    public static CSharpControllerTarget AspNetCore = (CSharpControllerTarget) "AspNetCore";
+    public static readonly CSharpControllerTarget AspNet = (CSharpControllerTarget) "AspNet";
+    public static readonly CSharpControllerTarget AspNetCore = (CSharpControllerTarget) "AspNetCore";
     public static implicit operator CSharpControllerTarget(string value)
     {
         return new CSharpControllerTarget { Value = value };
@@ -8638,8 +8638,8 @@ public partial class CSharpControllerTarget : Enumeration
 [TypeConverter(typeof(TypeConverter<CSharpControllerRouteNamingStrategy>))]
 public partial class CSharpControllerRouteNamingStrategy : Enumeration
 {
-    public static CSharpControllerRouteNamingStrategy None = (CSharpControllerRouteNamingStrategy) "None";
-    public static CSharpControllerRouteNamingStrategy OperationId = (CSharpControllerRouteNamingStrategy) "OperationId";
+    public static readonly CSharpControllerRouteNamingStrategy None = (CSharpControllerRouteNamingStrategy) "None";
+    public static readonly CSharpControllerRouteNamingStrategy OperationId = (CSharpControllerRouteNamingStrategy) "OperationId";
     public static implicit operator CSharpControllerRouteNamingStrategy(string value)
     {
         return new CSharpControllerRouteNamingStrategy { Value = value };
@@ -8654,13 +8654,13 @@ public partial class CSharpControllerRouteNamingStrategy : Enumeration
 [TypeConverter(typeof(TypeConverter<TypeScriptTemplate>))]
 public partial class TypeScriptTemplate : Enumeration
 {
-    public static TypeScriptTemplate JQueryCallbacks = (TypeScriptTemplate) "JQueryCallbacks";
-    public static TypeScriptTemplate JQueryPromises = (TypeScriptTemplate) "JQueryPromises";
-    public static TypeScriptTemplate AngularJS = (TypeScriptTemplate) "AngularJS";
-    public static TypeScriptTemplate Angular = (TypeScriptTemplate) "Angular";
-    public static TypeScriptTemplate Fetch = (TypeScriptTemplate) "Fetch";
-    public static TypeScriptTemplate Aurelia = (TypeScriptTemplate) "Aurelia";
-    public static TypeScriptTemplate Axios = (TypeScriptTemplate) "Axios";
+    public static readonly TypeScriptTemplate JQueryCallbacks = (TypeScriptTemplate) "JQueryCallbacks";
+    public static readonly TypeScriptTemplate JQueryPromises = (TypeScriptTemplate) "JQueryPromises";
+    public static readonly TypeScriptTemplate AngularJS = (TypeScriptTemplate) "AngularJS";
+    public static readonly TypeScriptTemplate Angular = (TypeScriptTemplate) "Angular";
+    public static readonly TypeScriptTemplate Fetch = (TypeScriptTemplate) "Fetch";
+    public static readonly TypeScriptTemplate Aurelia = (TypeScriptTemplate) "Aurelia";
+    public static readonly TypeScriptTemplate Axios = (TypeScriptTemplate) "Axios";
     public static implicit operator TypeScriptTemplate(string value)
     {
         return new TypeScriptTemplate { Value = value };
@@ -8675,8 +8675,8 @@ public partial class TypeScriptTemplate : Enumeration
 [TypeConverter(typeof(TypeConverter<PromiseType>))]
 public partial class PromiseType : Enumeration
 {
-    public static PromiseType Promise = (PromiseType) "Promise";
-    public static PromiseType QPromise = (PromiseType) "QPromise";
+    public static readonly PromiseType Promise = (PromiseType) "Promise";
+    public static readonly PromiseType QPromise = (PromiseType) "QPromise";
     public static implicit operator PromiseType(string value)
     {
         return new PromiseType { Value = value };
@@ -8691,8 +8691,8 @@ public partial class PromiseType : Enumeration
 [TypeConverter(typeof(TypeConverter<HttpClass>))]
 public partial class HttpClass : Enumeration
 {
-    public static HttpClass Http = (HttpClass) "Http";
-    public static HttpClass HttpClient = (HttpClass) "HttpClient";
+    public static readonly HttpClass Http = (HttpClass) "Http";
+    public static readonly HttpClass HttpClient = (HttpClass) "HttpClient";
     public static implicit operator HttpClass(string value)
     {
         return new HttpClass { Value = value };
@@ -8707,8 +8707,8 @@ public partial class HttpClass : Enumeration
 [TypeConverter(typeof(TypeConverter<InjectionTokenType>))]
 public partial class InjectionTokenType : Enumeration
 {
-    public static InjectionTokenType OpaqueToken = (InjectionTokenType) "OpaqueToken";
-    public static InjectionTokenType InjectionToken = (InjectionTokenType) "InjectionToken";
+    public static readonly InjectionTokenType OpaqueToken = (InjectionTokenType) "OpaqueToken";
+    public static readonly InjectionTokenType InjectionToken = (InjectionTokenType) "InjectionToken";
     public static implicit operator InjectionTokenType(string value)
     {
         return new InjectionTokenType { Value = value };
@@ -8723,10 +8723,10 @@ public partial class InjectionTokenType : Enumeration
 [TypeConverter(typeof(TypeConverter<TypeScriptDateTimeType>))]
 public partial class TypeScriptDateTimeType : Enumeration
 {
-    public static TypeScriptDateTimeType Date = (TypeScriptDateTimeType) "Date";
-    public static TypeScriptDateTimeType MomentJS = (TypeScriptDateTimeType) "MomentJS";
-    public static TypeScriptDateTimeType String = (TypeScriptDateTimeType) "String";
-    public static TypeScriptDateTimeType OffsetMomentJS = (TypeScriptDateTimeType) "OffsetMomentJS";
+    public static readonly TypeScriptDateTimeType Date = (TypeScriptDateTimeType) "Date";
+    public static readonly TypeScriptDateTimeType MomentJS = (TypeScriptDateTimeType) "MomentJS";
+    public static readonly TypeScriptDateTimeType String = (TypeScriptDateTimeType) "String";
+    public static readonly TypeScriptDateTimeType OffsetMomentJS = (TypeScriptDateTimeType) "OffsetMomentJS";
     public static implicit operator TypeScriptDateTimeType(string value)
     {
         return new TypeScriptDateTimeType { Value = value };
@@ -8741,8 +8741,8 @@ public partial class TypeScriptDateTimeType : Enumeration
 [TypeConverter(typeof(TypeConverter<TypeScriptNullValue>))]
 public partial class TypeScriptNullValue : Enumeration
 {
-    public static TypeScriptNullValue Null = (TypeScriptNullValue) "Null";
-    public static TypeScriptNullValue Undefined = (TypeScriptNullValue) "Undefined";
+    public static readonly TypeScriptNullValue Null = (TypeScriptNullValue) "Null";
+    public static readonly TypeScriptNullValue Undefined = (TypeScriptNullValue) "Undefined";
     public static implicit operator TypeScriptNullValue(string value)
     {
         return new TypeScriptNullValue { Value = value };
@@ -8757,9 +8757,9 @@ public partial class TypeScriptNullValue : Enumeration
 [TypeConverter(typeof(TypeConverter<TypeScriptTypeStyle>))]
 public partial class TypeScriptTypeStyle : Enumeration
 {
-    public static TypeScriptTypeStyle Interface = (TypeScriptTypeStyle) "Interface";
-    public static TypeScriptTypeStyle Class = (TypeScriptTypeStyle) "Class";
-    public static TypeScriptTypeStyle KnockoutClass = (TypeScriptTypeStyle) "KnockoutClass";
+    public static readonly TypeScriptTypeStyle Interface = (TypeScriptTypeStyle) "Interface";
+    public static readonly TypeScriptTypeStyle Class = (TypeScriptTypeStyle) "Class";
+    public static readonly TypeScriptTypeStyle KnockoutClass = (TypeScriptTypeStyle) "KnockoutClass";
     public static implicit operator TypeScriptTypeStyle(string value)
     {
         return new TypeScriptTypeStyle { Value = value };

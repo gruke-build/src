@@ -418,13 +418,13 @@ public static partial class PwshSettingsExtensions
 [TypeConverter(typeof(TypeConverter<PwshExecutionPolicy>))]
 public partial class PwshExecutionPolicy : Enumeration
 {
-    public static PwshExecutionPolicy AllSigned = (PwshExecutionPolicy) "AllSigned";
-    public static PwshExecutionPolicy Bypass = (PwshExecutionPolicy) "Bypass";
-    public static PwshExecutionPolicy Default = (PwshExecutionPolicy) "Default";
-    public static PwshExecutionPolicy RemoteSigned = (PwshExecutionPolicy) "RemoteSigned";
-    public static PwshExecutionPolicy Restricted = (PwshExecutionPolicy) "Restricted";
-    public static PwshExecutionPolicy Undefined = (PwshExecutionPolicy) "Undefined";
-    public static PwshExecutionPolicy Unrestricted = (PwshExecutionPolicy) "Unrestricted";
+    public static readonly PwshExecutionPolicy AllSigned = (PwshExecutionPolicy) "AllSigned";
+    public static readonly PwshExecutionPolicy Bypass = (PwshExecutionPolicy) "Bypass";
+    public static readonly PwshExecutionPolicy Default = (PwshExecutionPolicy) "Default";
+    public static readonly PwshExecutionPolicy RemoteSigned = (PwshExecutionPolicy) "RemoteSigned";
+    public static readonly PwshExecutionPolicy Restricted = (PwshExecutionPolicy) "Restricted";
+    public static readonly PwshExecutionPolicy Undefined = (PwshExecutionPolicy) "Undefined";
+    public static readonly PwshExecutionPolicy Unrestricted = (PwshExecutionPolicy) "Unrestricted";
     public static implicit operator PwshExecutionPolicy(string value)
     {
         return new PwshExecutionPolicy { Value = value };
@@ -439,8 +439,8 @@ public partial class PwshExecutionPolicy : Enumeration
 [TypeConverter(typeof(TypeConverter<PwshInOutFormat>))]
 public partial class PwshInOutFormat : Enumeration
 {
-    public static PwshInOutFormat Text = (PwshInOutFormat) "Text";
-    public static PwshInOutFormat Xml = (PwshInOutFormat) "Xml";
+    public static readonly PwshInOutFormat Text = (PwshInOutFormat) "Text";
+    public static readonly PwshInOutFormat Xml = (PwshInOutFormat) "Xml";
     public static implicit operator PwshInOutFormat(string value)
     {
         return new PwshInOutFormat { Value = value };
@@ -455,10 +455,10 @@ public partial class PwshInOutFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<PwshWindowStyle>))]
 public partial class PwshWindowStyle : Enumeration
 {
-    public static PwshWindowStyle Normal = (PwshWindowStyle) "Normal";
-    public static PwshWindowStyle Minimized = (PwshWindowStyle) "Minimized";
-    public static PwshWindowStyle Maximized = (PwshWindowStyle) "Maximized";
-    public static PwshWindowStyle Hidden = (PwshWindowStyle) "Hidden";
+    public static readonly PwshWindowStyle Normal = (PwshWindowStyle) "Normal";
+    public static readonly PwshWindowStyle Minimized = (PwshWindowStyle) "Minimized";
+    public static readonly PwshWindowStyle Maximized = (PwshWindowStyle) "Maximized";
+    public static readonly PwshWindowStyle Hidden = (PwshWindowStyle) "Hidden";
     public static implicit operator PwshWindowStyle(string value)
     {
         return new PwshWindowStyle { Value = value };

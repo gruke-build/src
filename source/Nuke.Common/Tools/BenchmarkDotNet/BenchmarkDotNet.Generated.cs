@@ -792,11 +792,11 @@ public static partial class BenchmarkDotNetSettingsExtensions
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetJob>))]
 public partial class BenchmarkDotNetJob : Enumeration
 {
-    public static BenchmarkDotNetJob Dry = (BenchmarkDotNetJob) "Dry";
-    public static BenchmarkDotNetJob Short = (BenchmarkDotNetJob) "Short";
-    public static BenchmarkDotNetJob Medium = (BenchmarkDotNetJob) "Medium";
-    public static BenchmarkDotNetJob Long = (BenchmarkDotNetJob) "Long";
-    public static BenchmarkDotNetJob Default = (BenchmarkDotNetJob) "Default";
+    public static readonly BenchmarkDotNetJob Dry = (BenchmarkDotNetJob) "Dry";
+    public static readonly BenchmarkDotNetJob Short = (BenchmarkDotNetJob) "Short";
+    public static readonly BenchmarkDotNetJob Medium = (BenchmarkDotNetJob) "Medium";
+    public static readonly BenchmarkDotNetJob Long = (BenchmarkDotNetJob) "Long";
+    public static readonly BenchmarkDotNetJob Default = (BenchmarkDotNetJob) "Default";
     public static implicit operator BenchmarkDotNetJob(string value)
     {
         return new BenchmarkDotNetJob { Value = value };
@@ -811,10 +811,10 @@ public partial class BenchmarkDotNetJob : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetOutlierMode>))]
 public partial class BenchmarkDotNetOutlierMode : Enumeration
 {
-    public static BenchmarkDotNetOutlierMode DontRemove = (BenchmarkDotNetOutlierMode) "DontRemove";
-    public static BenchmarkDotNetOutlierMode RemoveUpper = (BenchmarkDotNetOutlierMode) "RemoveUpper";
-    public static BenchmarkDotNetOutlierMode RemoveLower = (BenchmarkDotNetOutlierMode) "RemoveLower";
-    public static BenchmarkDotNetOutlierMode RemoveAll = (BenchmarkDotNetOutlierMode) "RemoveAll";
+    public static readonly BenchmarkDotNetOutlierMode DontRemove = (BenchmarkDotNetOutlierMode) "DontRemove";
+    public static readonly BenchmarkDotNetOutlierMode RemoveUpper = (BenchmarkDotNetOutlierMode) "RemoveUpper";
+    public static readonly BenchmarkDotNetOutlierMode RemoveLower = (BenchmarkDotNetOutlierMode) "RemoveLower";
+    public static readonly BenchmarkDotNetOutlierMode RemoveAll = (BenchmarkDotNetOutlierMode) "RemoveAll";
     public static implicit operator BenchmarkDotNetOutlierMode(string value)
     {
         return new BenchmarkDotNetOutlierMode { Value = value };
@@ -829,13 +829,13 @@ public partial class BenchmarkDotNetOutlierMode : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetExporter>))]
 public partial class BenchmarkDotNetExporter : Enumeration
 {
-    public static BenchmarkDotNetExporter GitHub = (BenchmarkDotNetExporter) "GitHub";
-    public static BenchmarkDotNetExporter StackOverflow = (BenchmarkDotNetExporter) "StackOverflow";
-    public static BenchmarkDotNetExporter RPlot = (BenchmarkDotNetExporter) "RPlot";
-    public static BenchmarkDotNetExporter CSV = (BenchmarkDotNetExporter) "CSV";
-    public static BenchmarkDotNetExporter JSON = (BenchmarkDotNetExporter) "JSON";
-    public static BenchmarkDotNetExporter HTML = (BenchmarkDotNetExporter) "HTML";
-    public static BenchmarkDotNetExporter XML = (BenchmarkDotNetExporter) "XML";
+    public static readonly BenchmarkDotNetExporter GitHub = (BenchmarkDotNetExporter) "GitHub";
+    public static readonly BenchmarkDotNetExporter StackOverflow = (BenchmarkDotNetExporter) "StackOverflow";
+    public static readonly BenchmarkDotNetExporter RPlot = (BenchmarkDotNetExporter) "RPlot";
+    public static readonly BenchmarkDotNetExporter CSV = (BenchmarkDotNetExporter) "CSV";
+    public static readonly BenchmarkDotNetExporter JSON = (BenchmarkDotNetExporter) "JSON";
+    public static readonly BenchmarkDotNetExporter HTML = (BenchmarkDotNetExporter) "HTML";
+    public static readonly BenchmarkDotNetExporter XML = (BenchmarkDotNetExporter) "XML";
     public static implicit operator BenchmarkDotNetExporter(string value)
     {
         return new BenchmarkDotNetExporter { Value = value };
@@ -850,10 +850,10 @@ public partial class BenchmarkDotNetExporter : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetProfiler>))]
 public partial class BenchmarkDotNetProfiler : Enumeration
 {
-    public static BenchmarkDotNetProfiler EP = (BenchmarkDotNetProfiler) "EP";
-    public static BenchmarkDotNetProfiler ETW = (BenchmarkDotNetProfiler) "ETW";
-    public static BenchmarkDotNetProfiler CV = (BenchmarkDotNetProfiler) "CV";
-    public static BenchmarkDotNetProfiler NativeMemory = (BenchmarkDotNetProfiler) "NativeMemory";
+    public static readonly BenchmarkDotNetProfiler EP = (BenchmarkDotNetProfiler) "EP";
+    public static readonly BenchmarkDotNetProfiler ETW = (BenchmarkDotNetProfiler) "ETW";
+    public static readonly BenchmarkDotNetProfiler CV = (BenchmarkDotNetProfiler) "CV";
+    public static readonly BenchmarkDotNetProfiler NativeMemory = (BenchmarkDotNetProfiler) "NativeMemory";
     public static implicit operator BenchmarkDotNetProfiler(string value)
     {
         return new BenchmarkDotNetProfiler { Value = value };
@@ -868,9 +868,9 @@ public partial class BenchmarkDotNetProfiler : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetRunStrategy>))]
 public partial class BenchmarkDotNetRunStrategy : Enumeration
 {
-    public static BenchmarkDotNetRunStrategy Throughput = (BenchmarkDotNetRunStrategy) "Throughput";
-    public static BenchmarkDotNetRunStrategy ColdStart = (BenchmarkDotNetRunStrategy) "ColdStart";
-    public static BenchmarkDotNetRunStrategy Monitoring = (BenchmarkDotNetRunStrategy) "Monitoring";
+    public static readonly BenchmarkDotNetRunStrategy Throughput = (BenchmarkDotNetRunStrategy) "Throughput";
+    public static readonly BenchmarkDotNetRunStrategy ColdStart = (BenchmarkDotNetRunStrategy) "ColdStart";
+    public static readonly BenchmarkDotNetRunStrategy Monitoring = (BenchmarkDotNetRunStrategy) "Monitoring";
     public static implicit operator BenchmarkDotNetRunStrategy(string value)
     {
         return new BenchmarkDotNetRunStrategy { Value = value };
@@ -885,8 +885,8 @@ public partial class BenchmarkDotNetRunStrategy : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetCaseMode>))]
 public partial class BenchmarkDotNetCaseMode : Enumeration
 {
-    public static BenchmarkDotNetCaseMode Flat = (BenchmarkDotNetCaseMode) "Flat";
-    public static BenchmarkDotNetCaseMode Tree = (BenchmarkDotNetCaseMode) "Tree";
+    public static readonly BenchmarkDotNetCaseMode Flat = (BenchmarkDotNetCaseMode) "Flat";
+    public static readonly BenchmarkDotNetCaseMode Tree = (BenchmarkDotNetCaseMode) "Tree";
     public static implicit operator BenchmarkDotNetCaseMode(string value)
     {
         return new BenchmarkDotNetCaseMode { Value = value };

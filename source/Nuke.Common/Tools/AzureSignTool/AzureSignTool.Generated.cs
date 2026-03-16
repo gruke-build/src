@@ -388,10 +388,10 @@ public static partial class AzureSignToolSettingsExtensions
 [TypeConverter(typeof(TypeConverter<AzureSignToolDigestAlgorithm>))]
 public partial class AzureSignToolDigestAlgorithm : Enumeration
 {
-    public static AzureSignToolDigestAlgorithm sha1 = (AzureSignToolDigestAlgorithm) "sha1";
-    public static AzureSignToolDigestAlgorithm sha256 = (AzureSignToolDigestAlgorithm) "sha256";
-    public static AzureSignToolDigestAlgorithm sha384 = (AzureSignToolDigestAlgorithm) "sha384";
-    public static AzureSignToolDigestAlgorithm sha512 = (AzureSignToolDigestAlgorithm) "sha512";
+    public static readonly AzureSignToolDigestAlgorithm sha1 = (AzureSignToolDigestAlgorithm) "sha1";
+    public static readonly AzureSignToolDigestAlgorithm sha256 = (AzureSignToolDigestAlgorithm) "sha256";
+    public static readonly AzureSignToolDigestAlgorithm sha384 = (AzureSignToolDigestAlgorithm) "sha384";
+    public static readonly AzureSignToolDigestAlgorithm sha512 = (AzureSignToolDigestAlgorithm) "sha512";
     public static implicit operator AzureSignToolDigestAlgorithm(string value)
     {
         return new AzureSignToolDigestAlgorithm { Value = value };

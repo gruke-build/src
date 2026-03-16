@@ -6024,8 +6024,8 @@ public static partial class HelmOptionsBaseExtensions
 [TypeConverter(typeof(TypeConverter<HelmOutputFormat>))]
 public partial class HelmOutputFormat : Enumeration
 {
-    public static HelmOutputFormat json = (HelmOutputFormat) "json";
-    public static HelmOutputFormat yaml = (HelmOutputFormat) "yaml";
+    public static readonly HelmOutputFormat json = (HelmOutputFormat) "json";
+    public static readonly HelmOutputFormat yaml = (HelmOutputFormat) "yaml";
     public static implicit operator HelmOutputFormat(string value)
     {
         return new HelmOutputFormat { Value = value };

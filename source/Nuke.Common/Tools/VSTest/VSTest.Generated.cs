@@ -362,9 +362,9 @@ public static partial class VSTestSettingsExtensions
 [TypeConverter(typeof(TypeConverter<VsTestPlatform>))]
 public partial class VsTestPlatform : Enumeration
 {
-    public static VsTestPlatform x86 = (VsTestPlatform) "x86";
-    public static VsTestPlatform x64 = (VsTestPlatform) "x64";
-    public static VsTestPlatform ARM = (VsTestPlatform) "ARM";
+    public static readonly VsTestPlatform x86 = (VsTestPlatform) "x86";
+    public static readonly VsTestPlatform x64 = (VsTestPlatform) "x64";
+    public static readonly VsTestPlatform ARM = (VsTestPlatform) "ARM";
     public static implicit operator VsTestPlatform(string value)
     {
         return new VsTestPlatform { Value = value };
@@ -379,9 +379,9 @@ public partial class VsTestPlatform : Enumeration
 [TypeConverter(typeof(TypeConverter<VsTestFramework>))]
 public partial class VsTestFramework : Enumeration
 {
-    public static VsTestFramework Framework35 = (VsTestFramework) "Framework35";
-    public static VsTestFramework Framework40 = (VsTestFramework) "Framework40";
-    public static VsTestFramework Framework45 = (VsTestFramework) "Framework45";
+    public static readonly VsTestFramework Framework35 = (VsTestFramework) "Framework35";
+    public static readonly VsTestFramework Framework40 = (VsTestFramework) "Framework40";
+    public static readonly VsTestFramework Framework45 = (VsTestFramework) "Framework45";
     public static implicit operator VsTestFramework(string value)
     {
         return new VsTestFramework { Value = value };

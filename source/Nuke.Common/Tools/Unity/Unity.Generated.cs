@@ -1379,44 +1379,44 @@ public static partial class UnityProjectOptionsExtensions
 [TypeConverter(typeof(TypeConverter<UnityBuildTarget>))]
 public partial class UnityBuildTarget : Enumeration
 {
-    public static UnityBuildTarget Android = (UnityBuildTarget) "Android";
-    public static UnityBuildTarget Bratwurst = (UnityBuildTarget) "Bratwurst";
-    public static UnityBuildTarget CloudRendering = (UnityBuildTarget) "CloudRendering";
-    public static UnityBuildTarget iOS = (UnityBuildTarget) "iOS";
-    public static UnityBuildTarget Linux = (UnityBuildTarget) "Linux";
-    public static UnityBuildTarget Linux64 = (UnityBuildTarget) "Linux64";
-    public static UnityBuildTarget LinuxHeadlessSimulation = (UnityBuildTarget) "LinuxHeadlessSimulation";
-    public static UnityBuildTarget LinuxUniversal = (UnityBuildTarget) "LinuxUniversal";
-    public static UnityBuildTarget N3DS = (UnityBuildTarget) "N3DS";
-    public static UnityBuildTarget OSXUniversal = (UnityBuildTarget) "OSXUniversal";
-    public static UnityBuildTarget PS4 = (UnityBuildTarget) "PS4";
-    public static UnityBuildTarget PS5 = (UnityBuildTarget) "PS5";
-    public static UnityBuildTarget PSM = (UnityBuildTarget) "PSM";
-    public static UnityBuildTarget PSP2 = (UnityBuildTarget) "PSP2";
-    public static UnityBuildTarget SamsungTV = (UnityBuildTarget) "SamsungTV";
-    public static UnityBuildTarget Stadia = (UnityBuildTarget) "Stadia";
-    public static UnityBuildTarget standalone = (UnityBuildTarget) "standalone";
-    public static UnityBuildTarget StandaloneLinux = (UnityBuildTarget) "StandaloneLinux";
-    public static UnityBuildTarget StandaloneLinux64 = (UnityBuildTarget) "StandaloneLinux64";
-    public static UnityBuildTarget StandaloneLinuxUniversal = (UnityBuildTarget) "StandaloneLinuxUniversal";
-    public static UnityBuildTarget StandaloneOSX = (UnityBuildTarget) "StandaloneOSX";
-    public static UnityBuildTarget StandaloneOSXIntel = (UnityBuildTarget) "StandaloneOSXIntel";
-    public static UnityBuildTarget StandaloneOSXIntel64 = (UnityBuildTarget) "StandaloneOSXIntel64";
-    public static UnityBuildTarget StandaloneOSXUniversal = (UnityBuildTarget) "StandaloneOSXUniversal";
-    public static UnityBuildTarget StandaloneWindows = (UnityBuildTarget) "StandaloneWindows";
-    public static UnityBuildTarget StandaloneWindows64 = (UnityBuildTarget) "StandaloneWindows64";
-    public static UnityBuildTarget Switch = (UnityBuildTarget) "Switch";
-    public static UnityBuildTarget Tizen = (UnityBuildTarget) "Tizen";
-    public static UnityBuildTarget tvOS = (UnityBuildTarget) "tvOS";
-    public static UnityBuildTarget WSAPlayer = (UnityBuildTarget) "WSAPlayer";
-    public static UnityBuildTarget Web = (UnityBuildTarget) "Web";
-    public static UnityBuildTarget WebGL = (UnityBuildTarget) "WebGL";
-    public static UnityBuildTarget WebStreamed = (UnityBuildTarget) "WebStreamed";
-    public static UnityBuildTarget WiiU = (UnityBuildTarget) "WiiU";
-    public static UnityBuildTarget Win = (UnityBuildTarget) "Win";
-    public static UnityBuildTarget Win64 = (UnityBuildTarget) "Win64";
-    public static UnityBuildTarget WindowsStoreApps = (UnityBuildTarget) "WindowsStoreApps";
-    public static UnityBuildTarget XboxOne = (UnityBuildTarget) "XboxOne";
+    public static readonly UnityBuildTarget Android = (UnityBuildTarget) "Android";
+    public static readonly UnityBuildTarget Bratwurst = (UnityBuildTarget) "Bratwurst";
+    public static readonly UnityBuildTarget CloudRendering = (UnityBuildTarget) "CloudRendering";
+    public static readonly UnityBuildTarget iOS = (UnityBuildTarget) "iOS";
+    public static readonly UnityBuildTarget Linux = (UnityBuildTarget) "Linux";
+    public static readonly UnityBuildTarget Linux64 = (UnityBuildTarget) "Linux64";
+    public static readonly UnityBuildTarget LinuxHeadlessSimulation = (UnityBuildTarget) "LinuxHeadlessSimulation";
+    public static readonly UnityBuildTarget LinuxUniversal = (UnityBuildTarget) "LinuxUniversal";
+    public static readonly UnityBuildTarget N3DS = (UnityBuildTarget) "N3DS";
+    public static readonly UnityBuildTarget OSXUniversal = (UnityBuildTarget) "OSXUniversal";
+    public static readonly UnityBuildTarget PS4 = (UnityBuildTarget) "PS4";
+    public static readonly UnityBuildTarget PS5 = (UnityBuildTarget) "PS5";
+    public static readonly UnityBuildTarget PSM = (UnityBuildTarget) "PSM";
+    public static readonly UnityBuildTarget PSP2 = (UnityBuildTarget) "PSP2";
+    public static readonly UnityBuildTarget SamsungTV = (UnityBuildTarget) "SamsungTV";
+    public static readonly UnityBuildTarget Stadia = (UnityBuildTarget) "Stadia";
+    public static readonly UnityBuildTarget standalone = (UnityBuildTarget) "standalone";
+    public static readonly UnityBuildTarget StandaloneLinux = (UnityBuildTarget) "StandaloneLinux";
+    public static readonly UnityBuildTarget StandaloneLinux64 = (UnityBuildTarget) "StandaloneLinux64";
+    public static readonly UnityBuildTarget StandaloneLinuxUniversal = (UnityBuildTarget) "StandaloneLinuxUniversal";
+    public static readonly UnityBuildTarget StandaloneOSX = (UnityBuildTarget) "StandaloneOSX";
+    public static readonly UnityBuildTarget StandaloneOSXIntel = (UnityBuildTarget) "StandaloneOSXIntel";
+    public static readonly UnityBuildTarget StandaloneOSXIntel64 = (UnityBuildTarget) "StandaloneOSXIntel64";
+    public static readonly UnityBuildTarget StandaloneOSXUniversal = (UnityBuildTarget) "StandaloneOSXUniversal";
+    public static readonly UnityBuildTarget StandaloneWindows = (UnityBuildTarget) "StandaloneWindows";
+    public static readonly UnityBuildTarget StandaloneWindows64 = (UnityBuildTarget) "StandaloneWindows64";
+    public static readonly UnityBuildTarget Switch = (UnityBuildTarget) "Switch";
+    public static readonly UnityBuildTarget Tizen = (UnityBuildTarget) "Tizen";
+    public static readonly UnityBuildTarget tvOS = (UnityBuildTarget) "tvOS";
+    public static readonly UnityBuildTarget WSAPlayer = (UnityBuildTarget) "WSAPlayer";
+    public static readonly UnityBuildTarget Web = (UnityBuildTarget) "Web";
+    public static readonly UnityBuildTarget WebGL = (UnityBuildTarget) "WebGL";
+    public static readonly UnityBuildTarget WebStreamed = (UnityBuildTarget) "WebStreamed";
+    public static readonly UnityBuildTarget WiiU = (UnityBuildTarget) "WiiU";
+    public static readonly UnityBuildTarget Win = (UnityBuildTarget) "Win";
+    public static readonly UnityBuildTarget Win64 = (UnityBuildTarget) "Win64";
+    public static readonly UnityBuildTarget WindowsStoreApps = (UnityBuildTarget) "WindowsStoreApps";
+    public static readonly UnityBuildTarget XboxOne = (UnityBuildTarget) "XboxOne";
     public static implicit operator UnityBuildTarget(string value)
     {
         return new UnityBuildTarget { Value = value };
@@ -1431,14 +1431,14 @@ public partial class UnityBuildTarget : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityGLCore>))]
 public partial class UnityGLCore : Enumeration
 {
-    public static UnityGLCore _32 = (UnityGLCore) "32";
-    public static UnityGLCore _33 = (UnityGLCore) "33";
-    public static UnityGLCore _40 = (UnityGLCore) "40";
-    public static UnityGLCore _41 = (UnityGLCore) "41";
-    public static UnityGLCore _42 = (UnityGLCore) "42";
-    public static UnityGLCore _43 = (UnityGLCore) "43";
-    public static UnityGLCore _44 = (UnityGLCore) "44";
-    public static UnityGLCore _45 = (UnityGLCore) "45";
+    public static readonly UnityGLCore _32 = (UnityGLCore) "32";
+    public static readonly UnityGLCore _33 = (UnityGLCore) "33";
+    public static readonly UnityGLCore _40 = (UnityGLCore) "40";
+    public static readonly UnityGLCore _41 = (UnityGLCore) "41";
+    public static readonly UnityGLCore _42 = (UnityGLCore) "42";
+    public static readonly UnityGLCore _43 = (UnityGLCore) "43";
+    public static readonly UnityGLCore _44 = (UnityGLCore) "44";
+    public static readonly UnityGLCore _45 = (UnityGLCore) "45";
     public static implicit operator UnityGLCore(string value)
     {
         return new UnityGLCore { Value = value };
@@ -1453,9 +1453,9 @@ public partial class UnityGLCore : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityGLES>))]
 public partial class UnityGLES : Enumeration
 {
-    public static UnityGLES _30 = (UnityGLES) "30";
-    public static UnityGLES _31 = (UnityGLES) "31";
-    public static UnityGLES _32 = (UnityGLES) "32";
+    public static readonly UnityGLES _30 = (UnityGLES) "30";
+    public static readonly UnityGLES _31 = (UnityGLES) "31";
+    public static readonly UnityGLES _32 = (UnityGLES) "32";
     public static implicit operator UnityGLES(string value)
     {
         return new UnityGLES { Value = value };
@@ -1470,9 +1470,9 @@ public partial class UnityGLES : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityStackTraceLogType>))]
 public partial class UnityStackTraceLogType : Enumeration
 {
-    public static UnityStackTraceLogType None = (UnityStackTraceLogType) "None";
-    public static UnityStackTraceLogType Script_Only = (UnityStackTraceLogType) "Script Only";
-    public static UnityStackTraceLogType Full = (UnityStackTraceLogType) "Full";
+    public static readonly UnityStackTraceLogType None = (UnityStackTraceLogType) "None";
+    public static readonly UnityStackTraceLogType Script_Only = (UnityStackTraceLogType) "Script Only";
+    public static readonly UnityStackTraceLogType Full = (UnityStackTraceLogType) "Full";
     public static implicit operator UnityStackTraceLogType(string value)
     {
         return new UnityStackTraceLogType { Value = value };
@@ -1487,12 +1487,12 @@ public partial class UnityStackTraceLogType : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityPlatformTextureFormat>))]
 public partial class UnityPlatformTextureFormat : Enumeration
 {
-    public static UnityPlatformTextureFormat dxt = (UnityPlatformTextureFormat) "dxt";
-    public static UnityPlatformTextureFormat pvrtc = (UnityPlatformTextureFormat) "pvrtc";
-    public static UnityPlatformTextureFormat atc = (UnityPlatformTextureFormat) "atc";
-    public static UnityPlatformTextureFormat etc = (UnityPlatformTextureFormat) "etc";
-    public static UnityPlatformTextureFormat etc2 = (UnityPlatformTextureFormat) "etc2";
-    public static UnityPlatformTextureFormat astc = (UnityPlatformTextureFormat) "astc";
+    public static readonly UnityPlatformTextureFormat dxt = (UnityPlatformTextureFormat) "dxt";
+    public static readonly UnityPlatformTextureFormat pvrtc = (UnityPlatformTextureFormat) "pvrtc";
+    public static readonly UnityPlatformTextureFormat atc = (UnityPlatformTextureFormat) "atc";
+    public static readonly UnityPlatformTextureFormat etc = (UnityPlatformTextureFormat) "etc";
+    public static readonly UnityPlatformTextureFormat etc2 = (UnityPlatformTextureFormat) "etc2";
+    public static readonly UnityPlatformTextureFormat astc = (UnityPlatformTextureFormat) "astc";
     public static implicit operator UnityPlatformTextureFormat(string value)
     {
         return new UnityPlatformTextureFormat { Value = value };
@@ -1507,8 +1507,8 @@ public partial class UnityPlatformTextureFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityTestPlatform>))]
 public partial class UnityTestPlatform : Enumeration
 {
-    public static UnityTestPlatform EditMode = (UnityTestPlatform) "EditMode";
-    public static UnityTestPlatform PlayMode = (UnityTestPlatform) "PlayMode";
+    public static readonly UnityTestPlatform EditMode = (UnityTestPlatform) "EditMode";
+    public static readonly UnityTestPlatform PlayMode = (UnityTestPlatform) "PlayMode";
     public static implicit operator UnityTestPlatform(string value)
     {
         return new UnityTestPlatform { Value = value };

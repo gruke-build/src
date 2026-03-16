@@ -482,11 +482,11 @@ public static partial class Xunit2SettingsExtensions
 [TypeConverter(typeof(TypeConverter<Xunit2ReporterType>))]
 public partial class Xunit2ReporterType : Enumeration
 {
-    public static Xunit2ReporterType AppVeyor = (Xunit2ReporterType) "AppVeyor";
-    public static Xunit2ReporterType JSON = (Xunit2ReporterType) "JSON";
-    public static Xunit2ReporterType Quiet = (Xunit2ReporterType) "Quiet";
-    public static Xunit2ReporterType TeamCity = (Xunit2ReporterType) "TeamCity";
-    public static Xunit2ReporterType Verbose = (Xunit2ReporterType) "Verbose";
+    public static readonly Xunit2ReporterType AppVeyor = (Xunit2ReporterType) "AppVeyor";
+    public static readonly Xunit2ReporterType JSON = (Xunit2ReporterType) "JSON";
+    public static readonly Xunit2ReporterType Quiet = (Xunit2ReporterType) "Quiet";
+    public static readonly Xunit2ReporterType TeamCity = (Xunit2ReporterType) "TeamCity";
+    public static readonly Xunit2ReporterType Verbose = (Xunit2ReporterType) "Verbose";
     public static implicit operator Xunit2ReporterType(string value)
     {
         return new Xunit2ReporterType { Value = value };
@@ -501,10 +501,10 @@ public partial class Xunit2ReporterType : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2ResultFormat>))]
 public partial class Xunit2ResultFormat : Enumeration
 {
-    public static Xunit2ResultFormat Xml = (Xunit2ResultFormat) "Xml";
-    public static Xunit2ResultFormat XmlV1 = (Xunit2ResultFormat) "XmlV1";
-    public static Xunit2ResultFormat NUnit = (Xunit2ResultFormat) "NUnit";
-    public static Xunit2ResultFormat HTML = (Xunit2ResultFormat) "HTML";
+    public static readonly Xunit2ResultFormat Xml = (Xunit2ResultFormat) "Xml";
+    public static readonly Xunit2ResultFormat XmlV1 = (Xunit2ResultFormat) "XmlV1";
+    public static readonly Xunit2ResultFormat NUnit = (Xunit2ResultFormat) "NUnit";
+    public static readonly Xunit2ResultFormat HTML = (Xunit2ResultFormat) "HTML";
     public static implicit operator Xunit2ResultFormat(string value)
     {
         return new Xunit2ResultFormat { Value = value };
@@ -519,10 +519,10 @@ public partial class Xunit2ResultFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2ParallelOption>))]
 public partial class Xunit2ParallelOption : Enumeration
 {
-    public static Xunit2ParallelOption none = (Xunit2ParallelOption) "none";
-    public static Xunit2ParallelOption collections = (Xunit2ParallelOption) "collections";
-    public static Xunit2ParallelOption assemblies = (Xunit2ParallelOption) "assemblies";
-    public static Xunit2ParallelOption all = (Xunit2ParallelOption) "all";
+    public static readonly Xunit2ParallelOption none = (Xunit2ParallelOption) "none";
+    public static readonly Xunit2ParallelOption collections = (Xunit2ParallelOption) "collections";
+    public static readonly Xunit2ParallelOption assemblies = (Xunit2ParallelOption) "assemblies";
+    public static readonly Xunit2ParallelOption all = (Xunit2ParallelOption) "all";
     public static implicit operator Xunit2ParallelOption(string value)
     {
         return new Xunit2ParallelOption { Value = value };
@@ -537,9 +537,9 @@ public partial class Xunit2ParallelOption : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2AppDomainMode>))]
 public partial class Xunit2AppDomainMode : Enumeration
 {
-    public static Xunit2AppDomainMode IfAvailable = (Xunit2AppDomainMode) "IfAvailable";
-    public static Xunit2AppDomainMode Required = (Xunit2AppDomainMode) "Required";
-    public static Xunit2AppDomainMode Denied = (Xunit2AppDomainMode) "Denied";
+    public static readonly Xunit2AppDomainMode IfAvailable = (Xunit2AppDomainMode) "IfAvailable";
+    public static readonly Xunit2AppDomainMode Required = (Xunit2AppDomainMode) "Required";
+    public static readonly Xunit2AppDomainMode Denied = (Xunit2AppDomainMode) "Denied";
     public static implicit operator Xunit2AppDomainMode(string value)
     {
         return new Xunit2AppDomainMode { Value = value };

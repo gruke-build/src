@@ -589,8 +589,8 @@ public static partial class SlackMessageConfirmationExtensions
 [TypeConverter(typeof(TypeConverter<SlackMessageActionStyle>))]
 public partial class SlackMessageActionStyle : Enumeration
 {
-    public static SlackMessageActionStyle primary = (SlackMessageActionStyle) "primary";
-    public static SlackMessageActionStyle danger = (SlackMessageActionStyle) "danger";
+    public static readonly SlackMessageActionStyle primary = (SlackMessageActionStyle) "primary";
+    public static readonly SlackMessageActionStyle danger = (SlackMessageActionStyle) "danger";
     public static implicit operator SlackMessageActionStyle(string value)
     {
         return new SlackMessageActionStyle { Value = value };

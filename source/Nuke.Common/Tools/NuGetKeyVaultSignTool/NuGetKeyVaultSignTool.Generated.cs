@@ -213,10 +213,10 @@ public static partial class NuGetKeyVaultSignToolSettingsExtensions
 [TypeConverter(typeof(TypeConverter<NuGetKeyVaultSignToolDigestAlgorithm>))]
 public partial class NuGetKeyVaultSignToolDigestAlgorithm : Enumeration
 {
-    public static NuGetKeyVaultSignToolDigestAlgorithm sha1 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha1";
-    public static NuGetKeyVaultSignToolDigestAlgorithm sha256 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha256";
-    public static NuGetKeyVaultSignToolDigestAlgorithm sha384 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha384";
-    public static NuGetKeyVaultSignToolDigestAlgorithm sha512 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha512";
+    public static readonly NuGetKeyVaultSignToolDigestAlgorithm sha1 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha1";
+    public static readonly NuGetKeyVaultSignToolDigestAlgorithm sha256 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha256";
+    public static readonly NuGetKeyVaultSignToolDigestAlgorithm sha384 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha384";
+    public static readonly NuGetKeyVaultSignToolDigestAlgorithm sha512 = (NuGetKeyVaultSignToolDigestAlgorithm) "sha512";
     public static implicit operator NuGetKeyVaultSignToolDigestAlgorithm(string value)
     {
         return new NuGetKeyVaultSignToolDigestAlgorithm { Value = value };

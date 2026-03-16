@@ -500,9 +500,9 @@ public static partial class ILRepackSettingsExtensions
 [TypeConverter(typeof(TypeConverter<ILRepackTarget>))]
 public partial class ILRepackTarget : Enumeration
 {
-    public static ILRepackTarget library = (ILRepackTarget) "library";
-    public static ILRepackTarget exe = (ILRepackTarget) "exe";
-    public static ILRepackTarget winexe = (ILRepackTarget) "winexe";
+    public static readonly ILRepackTarget library = (ILRepackTarget) "library";
+    public static readonly ILRepackTarget exe = (ILRepackTarget) "exe";
+    public static readonly ILRepackTarget winexe = (ILRepackTarget) "winexe";
     public static implicit operator ILRepackTarget(string value)
     {
         return new ILRepackTarget { Value = value };

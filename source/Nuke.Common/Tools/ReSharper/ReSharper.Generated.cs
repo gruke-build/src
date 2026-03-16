@@ -1146,10 +1146,10 @@ public static partial class ReSharperSettingsBaseExtensions
 [TypeConverter(typeof(TypeConverter<ReSharperSettingsLayers>))]
 public partial class ReSharperSettingsLayers : Enumeration
 {
-    public static ReSharperSettingsLayers GlobalAll = (ReSharperSettingsLayers) "GlobalAll";
-    public static ReSharperSettingsLayers GlobalPerProduct = (ReSharperSettingsLayers) "GlobalPerProduct";
-    public static ReSharperSettingsLayers SolutionShared = (ReSharperSettingsLayers) "SolutionShared";
-    public static ReSharperSettingsLayers SolutionPersonal = (ReSharperSettingsLayers) "SolutionPersonal";
+    public static readonly ReSharperSettingsLayers GlobalAll = (ReSharperSettingsLayers) "GlobalAll";
+    public static readonly ReSharperSettingsLayers GlobalPerProduct = (ReSharperSettingsLayers) "GlobalPerProduct";
+    public static readonly ReSharperSettingsLayers SolutionShared = (ReSharperSettingsLayers) "SolutionShared";
+    public static readonly ReSharperSettingsLayers SolutionPersonal = (ReSharperSettingsLayers) "SolutionPersonal";
     public static implicit operator ReSharperSettingsLayers(string value)
     {
         return new ReSharperSettingsLayers { Value = value };
@@ -1164,9 +1164,9 @@ public partial class ReSharperSettingsLayers : Enumeration
 [TypeConverter(typeof(TypeConverter<ReSharperMSBuildToolset>))]
 public partial class ReSharperMSBuildToolset : Enumeration
 {
-    public static ReSharperMSBuildToolset _12_0 = (ReSharperMSBuildToolset) "12.0";
-    public static ReSharperMSBuildToolset _14_0 = (ReSharperMSBuildToolset) "14.0";
-    public static ReSharperMSBuildToolset _15_0 = (ReSharperMSBuildToolset) "15.0";
+    public static readonly ReSharperMSBuildToolset _12_0 = (ReSharperMSBuildToolset) "12.0";
+    public static readonly ReSharperMSBuildToolset _14_0 = (ReSharperMSBuildToolset) "14.0";
+    public static readonly ReSharperMSBuildToolset _15_0 = (ReSharperMSBuildToolset) "15.0";
     public static implicit operator ReSharperMSBuildToolset(string value)
     {
         return new ReSharperMSBuildToolset { Value = value };
@@ -1181,10 +1181,10 @@ public partial class ReSharperMSBuildToolset : Enumeration
 [TypeConverter(typeof(TypeConverter<ReSharperFormat>))]
 public partial class ReSharperFormat : Enumeration
 {
-    public static ReSharperFormat Xml = (ReSharperFormat) "Xml";
-    public static ReSharperFormat Html = (ReSharperFormat) "Html";
-    public static ReSharperFormat Text = (ReSharperFormat) "Text";
-    public static ReSharperFormat Json = (ReSharperFormat) "Json";
+    public static readonly ReSharperFormat Xml = (ReSharperFormat) "Xml";
+    public static readonly ReSharperFormat Html = (ReSharperFormat) "Html";
+    public static readonly ReSharperFormat Text = (ReSharperFormat) "Text";
+    public static readonly ReSharperFormat Json = (ReSharperFormat) "Json";
     public static implicit operator ReSharperFormat(string value)
     {
         return new ReSharperFormat { Value = value };
@@ -1199,13 +1199,13 @@ public partial class ReSharperFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<ReSharperVerbosity>))]
 public partial class ReSharperVerbosity : Enumeration
 {
-    public static ReSharperVerbosity OFF = (ReSharperVerbosity) "OFF";
-    public static ReSharperVerbosity FATAL = (ReSharperVerbosity) "FATAL";
-    public static ReSharperVerbosity ERROR = (ReSharperVerbosity) "ERROR";
-    public static ReSharperVerbosity WARN = (ReSharperVerbosity) "WARN";
-    public static ReSharperVerbosity INFO = (ReSharperVerbosity) "INFO";
-    public static ReSharperVerbosity VERBOSE = (ReSharperVerbosity) "VERBOSE";
-    public static ReSharperVerbosity TRACE = (ReSharperVerbosity) "TRACE";
+    public static readonly ReSharperVerbosity OFF = (ReSharperVerbosity) "OFF";
+    public static readonly ReSharperVerbosity FATAL = (ReSharperVerbosity) "FATAL";
+    public static readonly ReSharperVerbosity ERROR = (ReSharperVerbosity) "ERROR";
+    public static readonly ReSharperVerbosity WARN = (ReSharperVerbosity) "WARN";
+    public static readonly ReSharperVerbosity INFO = (ReSharperVerbosity) "INFO";
+    public static readonly ReSharperVerbosity VERBOSE = (ReSharperVerbosity) "VERBOSE";
+    public static readonly ReSharperVerbosity TRACE = (ReSharperVerbosity) "TRACE";
     public static implicit operator ReSharperVerbosity(string value)
     {
         return new ReSharperVerbosity { Value = value };
@@ -1220,11 +1220,11 @@ public partial class ReSharperVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<ReSharperSeverity>))]
 public partial class ReSharperSeverity : Enumeration
 {
-    public static ReSharperSeverity INFO = (ReSharperSeverity) "INFO";
-    public static ReSharperSeverity HINT = (ReSharperSeverity) "HINT";
-    public static ReSharperSeverity SUGGESTION = (ReSharperSeverity) "SUGGESTION";
-    public static ReSharperSeverity WARNING = (ReSharperSeverity) "WARNING";
-    public static ReSharperSeverity ERROR = (ReSharperSeverity) "ERROR";
+    public static readonly ReSharperSeverity INFO = (ReSharperSeverity) "INFO";
+    public static readonly ReSharperSeverity HINT = (ReSharperSeverity) "HINT";
+    public static readonly ReSharperSeverity SUGGESTION = (ReSharperSeverity) "SUGGESTION";
+    public static readonly ReSharperSeverity WARNING = (ReSharperSeverity) "WARNING";
+    public static readonly ReSharperSeverity ERROR = (ReSharperSeverity) "ERROR";
     public static implicit operator ReSharperSeverity(string value)
     {
         return new ReSharperSeverity { Value = value };

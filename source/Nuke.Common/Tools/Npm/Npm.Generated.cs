@@ -382,8 +382,8 @@ public static partial class NpmRunSettingsExtensions
 [TypeConverter(typeof(TypeConverter<NpmOnlyMode>))]
 public partial class NpmOnlyMode : Enumeration
 {
-    public static NpmOnlyMode production = (NpmOnlyMode) "production";
-    public static NpmOnlyMode development = (NpmOnlyMode) "development";
+    public static readonly NpmOnlyMode production = (NpmOnlyMode) "production";
+    public static readonly NpmOnlyMode development = (NpmOnlyMode) "development";
     public static implicit operator NpmOnlyMode(string value)
     {
         return new NpmOnlyMode { Value = value };

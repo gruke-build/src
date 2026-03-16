@@ -364,10 +364,10 @@ public static partial class VSWhereSettingsExtensions
 [TypeConverter(typeof(TypeConverter<VSWhereFormat>))]
 public partial class VSWhereFormat : Enumeration
 {
-    public static VSWhereFormat json = (VSWhereFormat) "json";
-    public static VSWhereFormat text = (VSWhereFormat) "text";
-    public static VSWhereFormat value = (VSWhereFormat) "value";
-    public static VSWhereFormat xml = (VSWhereFormat) "xml";
+    public static readonly VSWhereFormat json = (VSWhereFormat) "json";
+    public static readonly VSWhereFormat text = (VSWhereFormat) "text";
+    public static readonly VSWhereFormat value = (VSWhereFormat) "value";
+    public static readonly VSWhereFormat xml = (VSWhereFormat) "xml";
     public static implicit operator VSWhereFormat(string value)
     {
         return new VSWhereFormat { Value = value };

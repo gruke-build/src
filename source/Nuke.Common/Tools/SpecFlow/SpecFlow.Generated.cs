@@ -552,11 +552,11 @@ public static partial class SpecFlowAboutSettingsExtensions
 [TypeConverter(typeof(TypeConverter<SpecFlowToolIntegration>))]
 public partial class SpecFlowToolIntegration : Enumeration
 {
-    public static SpecFlowToolIntegration None = (SpecFlowToolIntegration) "None";
-    public static SpecFlowToolIntegration VS2010 = (SpecFlowToolIntegration) "VS2010";
-    public static SpecFlowToolIntegration VS2012 = (SpecFlowToolIntegration) "VS2012";
-    public static SpecFlowToolIntegration VS2013 = (SpecFlowToolIntegration) "VS2013";
-    public static SpecFlowToolIntegration TFS = (SpecFlowToolIntegration) "TFS";
+    public static readonly SpecFlowToolIntegration None = (SpecFlowToolIntegration) "None";
+    public static readonly SpecFlowToolIntegration VS2010 = (SpecFlowToolIntegration) "VS2010";
+    public static readonly SpecFlowToolIntegration VS2012 = (SpecFlowToolIntegration) "VS2012";
+    public static readonly SpecFlowToolIntegration VS2013 = (SpecFlowToolIntegration) "VS2013";
+    public static readonly SpecFlowToolIntegration TFS = (SpecFlowToolIntegration) "TFS";
     public static implicit operator SpecFlowToolIntegration(string value)
     {
         return new SpecFlowToolIntegration { Value = value };

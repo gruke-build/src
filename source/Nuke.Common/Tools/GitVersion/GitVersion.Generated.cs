@@ -392,8 +392,8 @@ public static partial class GitVersionSettingsExtensions
 [TypeConverter(typeof(TypeConverter<GitVersionOutput>))]
 public partial class GitVersionOutput : Enumeration
 {
-    public static GitVersionOutput json = (GitVersionOutput) "json";
-    public static GitVersionOutput buildserver = (GitVersionOutput) "buildserver";
+    public static readonly GitVersionOutput json = (GitVersionOutput) "json";
+    public static readonly GitVersionOutput buildserver = (GitVersionOutput) "buildserver";
     public static implicit operator GitVersionOutput(string value)
     {
         return new GitVersionOutput { Value = value };
@@ -408,11 +408,11 @@ public partial class GitVersionOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<GitVersionVerbosity>))]
 public partial class GitVersionVerbosity : Enumeration
 {
-    public static GitVersionVerbosity debug = (GitVersionVerbosity) "debug";
-    public static GitVersionVerbosity info = (GitVersionVerbosity) "info";
-    public static GitVersionVerbosity warn = (GitVersionVerbosity) "warn";
-    public static GitVersionVerbosity error = (GitVersionVerbosity) "error";
-    public static GitVersionVerbosity none = (GitVersionVerbosity) "none";
+    public static readonly GitVersionVerbosity debug = (GitVersionVerbosity) "debug";
+    public static readonly GitVersionVerbosity info = (GitVersionVerbosity) "info";
+    public static readonly GitVersionVerbosity warn = (GitVersionVerbosity) "warn";
+    public static readonly GitVersionVerbosity error = (GitVersionVerbosity) "error";
+    public static readonly GitVersionVerbosity none = (GitVersionVerbosity) "none";
     public static implicit operator GitVersionVerbosity(string value)
     {
         return new GitVersionVerbosity { Value = value };

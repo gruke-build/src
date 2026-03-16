@@ -520,8 +520,8 @@ public static partial class NerdbankGitVersioningPrepareReleaseSettingsExtension
 [TypeConverter(typeof(TypeConverter<NerdbankGitVersioningFormat>))]
 public partial class NerdbankGitVersioningFormat : Enumeration
 {
-    public static NerdbankGitVersioningFormat text = (NerdbankGitVersioningFormat) "text";
-    public static NerdbankGitVersioningFormat json = (NerdbankGitVersioningFormat) "json";
+    public static readonly NerdbankGitVersioningFormat text = (NerdbankGitVersioningFormat) "text";
+    public static readonly NerdbankGitVersioningFormat json = (NerdbankGitVersioningFormat) "json";
     public static implicit operator NerdbankGitVersioningFormat(string value)
     {
         return new NerdbankGitVersioningFormat { Value = value };
@@ -536,14 +536,14 @@ public partial class NerdbankGitVersioningFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<NerdbankGitVersioningCISystem>))]
 public partial class NerdbankGitVersioningCISystem : Enumeration
 {
-    public static NerdbankGitVersioningCISystem AppVeyor = (NerdbankGitVersioningCISystem) "AppVeyor";
-    public static NerdbankGitVersioningCISystem VisualStudioTeamServices = (NerdbankGitVersioningCISystem) "VisualStudioTeamServices";
-    public static NerdbankGitVersioningCISystem GitHubActions = (NerdbankGitVersioningCISystem) "GitHubActions";
-    public static NerdbankGitVersioningCISystem TeamCity = (NerdbankGitVersioningCISystem) "TeamCity";
-    public static NerdbankGitVersioningCISystem AtlassianBamboo = (NerdbankGitVersioningCISystem) "AtlassianBamboo";
-    public static NerdbankGitVersioningCISystem Jenkins = (NerdbankGitVersioningCISystem) "Jenkins";
-    public static NerdbankGitVersioningCISystem GitLab = (NerdbankGitVersioningCISystem) "GitLab";
-    public static NerdbankGitVersioningCISystem Travis = (NerdbankGitVersioningCISystem) "Travis";
+    public static readonly NerdbankGitVersioningCISystem AppVeyor = (NerdbankGitVersioningCISystem) "AppVeyor";
+    public static readonly NerdbankGitVersioningCISystem VisualStudioTeamServices = (NerdbankGitVersioningCISystem) "VisualStudioTeamServices";
+    public static readonly NerdbankGitVersioningCISystem GitHubActions = (NerdbankGitVersioningCISystem) "GitHubActions";
+    public static readonly NerdbankGitVersioningCISystem TeamCity = (NerdbankGitVersioningCISystem) "TeamCity";
+    public static readonly NerdbankGitVersioningCISystem AtlassianBamboo = (NerdbankGitVersioningCISystem) "AtlassianBamboo";
+    public static readonly NerdbankGitVersioningCISystem Jenkins = (NerdbankGitVersioningCISystem) "Jenkins";
+    public static readonly NerdbankGitVersioningCISystem GitLab = (NerdbankGitVersioningCISystem) "GitLab";
+    public static readonly NerdbankGitVersioningCISystem Travis = (NerdbankGitVersioningCISystem) "Travis";
     public static implicit operator NerdbankGitVersioningCISystem(string value)
     {
         return new NerdbankGitVersioningCISystem { Value = value };

@@ -125,11 +125,11 @@ public static partial class MinVerSettingsExtensions
 [TypeConverter(typeof(TypeConverter<MinVerVerbosity>))]
 public partial class MinVerVerbosity : Enumeration
 {
-    public static MinVerVerbosity Error = (MinVerVerbosity) "Error";
-    public static MinVerVerbosity Warn = (MinVerVerbosity) "Warn";
-    public static MinVerVerbosity Info = (MinVerVerbosity) "Info";
-    public static MinVerVerbosity Debug = (MinVerVerbosity) "Debug";
-    public static MinVerVerbosity Trace = (MinVerVerbosity) "Trace";
+    public static readonly MinVerVerbosity Error = (MinVerVerbosity) "Error";
+    public static readonly MinVerVerbosity Warn = (MinVerVerbosity) "Warn";
+    public static readonly MinVerVerbosity Info = (MinVerVerbosity) "Info";
+    public static readonly MinVerVerbosity Debug = (MinVerVerbosity) "Debug";
+    public static readonly MinVerVerbosity Trace = (MinVerVerbosity) "Trace";
     public static implicit operator MinVerVerbosity(string value)
     {
         return new MinVerVerbosity { Value = value };
@@ -144,9 +144,9 @@ public partial class MinVerVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<MinVerVersionPart>))]
 public partial class MinVerVersionPart : Enumeration
 {
-    public static MinVerVersionPart Major = (MinVerVersionPart) "Major";
-    public static MinVerVersionPart Minor = (MinVerVersionPart) "Minor";
-    public static MinVerVersionPart Patch = (MinVerVersionPart) "Patch";
+    public static readonly MinVerVersionPart Major = (MinVerVersionPart) "Major";
+    public static readonly MinVerVersionPart Minor = (MinVerVersionPart) "Minor";
+    public static readonly MinVerVersionPart Patch = (MinVerVersionPart) "Patch";
     public static implicit operator MinVerVersionPart(string value)
     {
         return new MinVerVersionPart { Value = value };

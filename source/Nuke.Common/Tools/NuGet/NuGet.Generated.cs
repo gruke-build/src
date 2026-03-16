@@ -2281,9 +2281,9 @@ public static partial class NuGetSourcesListSettingsExtensions
 [TypeConverter(typeof(TypeConverter<NuGetVerbosity>))]
 public partial class NuGetVerbosity : Enumeration
 {
-    public static NuGetVerbosity Normal = (NuGetVerbosity) "Normal";
-    public static NuGetVerbosity Quiet = (NuGetVerbosity) "Quiet";
-    public static NuGetVerbosity Detailed = (NuGetVerbosity) "Detailed";
+    public static readonly NuGetVerbosity Normal = (NuGetVerbosity) "Normal";
+    public static readonly NuGetVerbosity Quiet = (NuGetVerbosity) "Quiet";
+    public static readonly NuGetVerbosity Detailed = (NuGetVerbosity) "Detailed";
     public static implicit operator NuGetVerbosity(string value)
     {
         return new NuGetVerbosity { Value = value };
@@ -2298,8 +2298,8 @@ public partial class NuGetVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<PackageSaveMode>))]
 public partial class PackageSaveMode : Enumeration
 {
-    public static PackageSaveMode Nuspec = (PackageSaveMode) "Nuspec";
-    public static PackageSaveMode Nupkg = (PackageSaveMode) "Nupkg";
+    public static readonly PackageSaveMode Nuspec = (PackageSaveMode) "Nuspec";
+    public static readonly PackageSaveMode Nupkg = (PackageSaveMode) "Nupkg";
     public static implicit operator PackageSaveMode(string value)
     {
         return new PackageSaveMode { Value = value };
@@ -2314,9 +2314,9 @@ public partial class PackageSaveMode : Enumeration
 [TypeConverter(typeof(TypeConverter<NuGetMSBuildVersion>))]
 public partial class NuGetMSBuildVersion : Enumeration
 {
-    public static NuGetMSBuildVersion _4 = (NuGetMSBuildVersion) "4";
-    public static NuGetMSBuildVersion _12 = (NuGetMSBuildVersion) "12";
-    public static NuGetMSBuildVersion _14 = (NuGetMSBuildVersion) "14";
+    public static readonly NuGetMSBuildVersion _4 = (NuGetMSBuildVersion) "4";
+    public static readonly NuGetMSBuildVersion _12 = (NuGetMSBuildVersion) "12";
+    public static readonly NuGetMSBuildVersion _14 = (NuGetMSBuildVersion) "14";
     public static implicit operator NuGetMSBuildVersion(string value)
     {
         return new NuGetMSBuildVersion { Value = value };
@@ -2331,8 +2331,8 @@ public partial class NuGetMSBuildVersion : Enumeration
 [TypeConverter(typeof(TypeConverter<NuGetSymbolPackageFormat>))]
 public partial class NuGetSymbolPackageFormat : Enumeration
 {
-    public static NuGetSymbolPackageFormat symbols_nupkg = (NuGetSymbolPackageFormat) "symbols.nupkg";
-    public static NuGetSymbolPackageFormat snupkg = (NuGetSymbolPackageFormat) "snupkg";
+    public static readonly NuGetSymbolPackageFormat symbols_nupkg = (NuGetSymbolPackageFormat) "symbols.nupkg";
+    public static readonly NuGetSymbolPackageFormat snupkg = (NuGetSymbolPackageFormat) "snupkg";
     public static implicit operator NuGetSymbolPackageFormat(string value)
     {
         return new NuGetSymbolPackageFormat { Value = value };
@@ -2347,8 +2347,8 @@ public partial class NuGetSymbolPackageFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<NuGetSourcesListFormat>))]
 public partial class NuGetSourcesListFormat : Enumeration
 {
-    public static NuGetSourcesListFormat Detailed = (NuGetSourcesListFormat) "Detailed";
-    public static NuGetSourcesListFormat Short = (NuGetSourcesListFormat) "Short";
+    public static readonly NuGetSourcesListFormat Detailed = (NuGetSourcesListFormat) "Detailed";
+    public static readonly NuGetSourcesListFormat Short = (NuGetSourcesListFormat) "Short";
     public static implicit operator NuGetSourcesListFormat(string value)
     {
         return new NuGetSourcesListFormat { Value = value };
@@ -2363,11 +2363,11 @@ public partial class NuGetSourcesListFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<DependencyVersion>))]
 public partial class DependencyVersion : Enumeration
 {
-    public static DependencyVersion Lowest = (DependencyVersion) "Lowest";
-    public static DependencyVersion HighestPatch = (DependencyVersion) "HighestPatch";
-    public static DependencyVersion HighestMinor = (DependencyVersion) "HighestMinor";
-    public static DependencyVersion Highest = (DependencyVersion) "Highest";
-    public static DependencyVersion Ignore = (DependencyVersion) "Ignore";
+    public static readonly DependencyVersion Lowest = (DependencyVersion) "Lowest";
+    public static readonly DependencyVersion HighestPatch = (DependencyVersion) "HighestPatch";
+    public static readonly DependencyVersion HighestMinor = (DependencyVersion) "HighestMinor";
+    public static readonly DependencyVersion Highest = (DependencyVersion) "Highest";
+    public static readonly DependencyVersion Ignore = (DependencyVersion) "Ignore";
     public static implicit operator DependencyVersion(string value)
     {
         return new DependencyVersion { Value = value };
@@ -2382,9 +2382,9 @@ public partial class DependencyVersion : Enumeration
 [TypeConverter(typeof(TypeConverter<NuGetSignHashAlgorithm>))]
 public partial class NuGetSignHashAlgorithm : Enumeration
 {
-    public static NuGetSignHashAlgorithm sha256 = (NuGetSignHashAlgorithm) "sha256";
-    public static NuGetSignHashAlgorithm sha384 = (NuGetSignHashAlgorithm) "sha384";
-    public static NuGetSignHashAlgorithm sha512 = (NuGetSignHashAlgorithm) "sha512";
+    public static readonly NuGetSignHashAlgorithm sha256 = (NuGetSignHashAlgorithm) "sha256";
+    public static readonly NuGetSignHashAlgorithm sha384 = (NuGetSignHashAlgorithm) "sha384";
+    public static readonly NuGetSignHashAlgorithm sha512 = (NuGetSignHashAlgorithm) "sha512";
     public static implicit operator NuGetSignHashAlgorithm(string value)
     {
         return new NuGetSignHashAlgorithm { Value = value };

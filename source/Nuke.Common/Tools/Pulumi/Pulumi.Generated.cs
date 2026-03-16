@@ -6606,12 +6606,12 @@ public static partial class PulumiDestroySettingsExtensions
 [TypeConverter(typeof(TypeConverter<PulumiSecretsProvider>))]
 public partial class PulumiSecretsProvider : Enumeration
 {
-    public static PulumiSecretsProvider default_ = (PulumiSecretsProvider) "default";
-    public static PulumiSecretsProvider passphrase = (PulumiSecretsProvider) "passphrase";
-    public static PulumiSecretsProvider awskms = (PulumiSecretsProvider) "awskms";
-    public static PulumiSecretsProvider azurekeyvault = (PulumiSecretsProvider) "azurekeyvault";
-    public static PulumiSecretsProvider gcpkms = (PulumiSecretsProvider) "gcpkms";
-    public static PulumiSecretsProvider hashivault = (PulumiSecretsProvider) "hashivault";
+    public static readonly PulumiSecretsProvider default_ = (PulumiSecretsProvider) "default";
+    public static readonly PulumiSecretsProvider passphrase = (PulumiSecretsProvider) "passphrase";
+    public static readonly PulumiSecretsProvider awskms = (PulumiSecretsProvider) "awskms";
+    public static readonly PulumiSecretsProvider azurekeyvault = (PulumiSecretsProvider) "azurekeyvault";
+    public static readonly PulumiSecretsProvider gcpkms = (PulumiSecretsProvider) "gcpkms";
+    public static readonly PulumiSecretsProvider hashivault = (PulumiSecretsProvider) "hashivault";
     public static implicit operator PulumiSecretsProvider(string value)
     {
         return new PulumiSecretsProvider { Value = value };

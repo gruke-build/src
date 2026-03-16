@@ -491,14 +491,14 @@ public static partial class OpenCoverSettingsExtensions
 [TypeConverter(typeof(TypeConverter<OpenCoverVerbosity>))]
 public partial class OpenCoverVerbosity : Enumeration
 {
-    public static OpenCoverVerbosity Off = (OpenCoverVerbosity) "Off";
-    public static OpenCoverVerbosity Fatal = (OpenCoverVerbosity) "Fatal";
-    public static OpenCoverVerbosity Error = (OpenCoverVerbosity) "Error";
-    public static OpenCoverVerbosity Warn = (OpenCoverVerbosity) "Warn";
-    public static OpenCoverVerbosity Info = (OpenCoverVerbosity) "Info";
-    public static OpenCoverVerbosity Debug = (OpenCoverVerbosity) "Debug";
-    public static OpenCoverVerbosity Verbose = (OpenCoverVerbosity) "Verbose";
-    public static OpenCoverVerbosity All = (OpenCoverVerbosity) "All";
+    public static readonly OpenCoverVerbosity Off = (OpenCoverVerbosity) "Off";
+    public static readonly OpenCoverVerbosity Fatal = (OpenCoverVerbosity) "Fatal";
+    public static readonly OpenCoverVerbosity Error = (OpenCoverVerbosity) "Error";
+    public static readonly OpenCoverVerbosity Warn = (OpenCoverVerbosity) "Warn";
+    public static readonly OpenCoverVerbosity Info = (OpenCoverVerbosity) "Info";
+    public static readonly OpenCoverVerbosity Debug = (OpenCoverVerbosity) "Debug";
+    public static readonly OpenCoverVerbosity Verbose = (OpenCoverVerbosity) "Verbose";
+    public static readonly OpenCoverVerbosity All = (OpenCoverVerbosity) "All";
     public static implicit operator OpenCoverVerbosity(string value)
     {
         return new OpenCoverVerbosity { Value = value };
@@ -513,10 +513,10 @@ public partial class OpenCoverVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<OpenCoverSkipping>))]
 public partial class OpenCoverSkipping : Enumeration
 {
-    public static OpenCoverSkipping File = (OpenCoverSkipping) "File";
-    public static OpenCoverSkipping Filter = (OpenCoverSkipping) "Filter";
-    public static OpenCoverSkipping Attribute = (OpenCoverSkipping) "Attribute";
-    public static OpenCoverSkipping MissingPdb = (OpenCoverSkipping) "MissingPdb";
+    public static readonly OpenCoverSkipping File = (OpenCoverSkipping) "File";
+    public static readonly OpenCoverSkipping Filter = (OpenCoverSkipping) "Filter";
+    public static readonly OpenCoverSkipping Attribute = (OpenCoverSkipping) "Attribute";
+    public static readonly OpenCoverSkipping MissingPdb = (OpenCoverSkipping) "MissingPdb";
     public static implicit operator OpenCoverSkipping(string value)
     {
         return new OpenCoverSkipping { Value = value };
@@ -531,9 +531,9 @@ public partial class OpenCoverSkipping : Enumeration
 [TypeConverter(typeof(TypeConverter<RegistrationType>))]
 public partial class RegistrationType : Enumeration
 {
-    public static RegistrationType User = (RegistrationType) "User";
-    public static RegistrationType Path32 = (RegistrationType) "Path32";
-    public static RegistrationType Path64 = (RegistrationType) "Path64";
+    public static readonly RegistrationType User = (RegistrationType) "User";
+    public static readonly RegistrationType Path32 = (RegistrationType) "Path32";
+    public static readonly RegistrationType Path64 = (RegistrationType) "Path64";
     public static implicit operator RegistrationType(string value)
     {
         return new RegistrationType { Value = value };

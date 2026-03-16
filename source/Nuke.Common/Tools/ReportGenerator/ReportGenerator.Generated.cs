@@ -255,36 +255,36 @@ public static partial class ReportGeneratorSettingsExtensions
 [TypeConverter(typeof(TypeConverter<ReportTypes>))]
 public partial class ReportTypes : Enumeration
 {
-    public static ReportTypes Badges = (ReportTypes) "Badges";
-    public static ReportTypes Cobertura = (ReportTypes) "Cobertura";
-    public static ReportTypes Clover = (ReportTypes) "Clover";
-    public static ReportTypes CsvSummary = (ReportTypes) "CsvSummary";
-    public static ReportTypes Html = (ReportTypes) "Html";
-    public static ReportTypes Html_Light = (ReportTypes) "Html_Light";
-    public static ReportTypes Html_Dark = (ReportTypes) "Html_Dark";
-    public static ReportTypes Html_BlueRed = (ReportTypes) "Html_BlueRed";
-    public static ReportTypes HtmlInline = (ReportTypes) "HtmlInline";
-    public static ReportTypes HtmlInline_AzurePipelines = (ReportTypes) "HtmlInline_AzurePipelines";
-    public static ReportTypes HtmlInline_AzurePipelines_Light = (ReportTypes) "HtmlInline_AzurePipelines_Light";
-    public static ReportTypes HtmlInline_AzurePipelines_Dark = (ReportTypes) "HtmlInline_AzurePipelines_Dark";
-    public static ReportTypes HtmlChart = (ReportTypes) "HtmlChart";
-    public static ReportTypes HtmlSummary = (ReportTypes) "HtmlSummary";
-    public static ReportTypes Html_BlueRed_Summary = (ReportTypes) "Html_BlueRed_Summary";
-    public static ReportTypes JsonSummary = (ReportTypes) "JsonSummary";
-    public static ReportTypes Latex = (ReportTypes) "Latex";
-    public static ReportTypes LatexSummary = (ReportTypes) "LatexSummary";
-    public static ReportTypes lcov = (ReportTypes) "lcov";
-    public static ReportTypes MarkdownSummary = (ReportTypes) "MarkdownSummary";
-    public static ReportTypes MarkdownSummaryGithub = (ReportTypes) "MarkdownSummaryGithub";
-    public static ReportTypes MarkdownDeltaSummary = (ReportTypes) "MarkdownDeltaSummary";
-    public static ReportTypes OpenCover = (ReportTypes) "OpenCover";
-    public static ReportTypes MHtml = (ReportTypes) "MHtml";
-    public static ReportTypes PngChart = (ReportTypes) "PngChart";
-    public static ReportTypes TextSummary = (ReportTypes) "TextSummary";
-    public static ReportTypes Xml = (ReportTypes) "Xml";
-    public static ReportTypes XmlSummary = (ReportTypes) "XmlSummary";
-    public static ReportTypes SonarQube = (ReportTypes) "SonarQube";
-    public static ReportTypes TeamCitySummary = (ReportTypes) "TeamCitySummary";
+    public static readonly ReportTypes Badges = (ReportTypes) "Badges";
+    public static readonly ReportTypes Cobertura = (ReportTypes) "Cobertura";
+    public static readonly ReportTypes Clover = (ReportTypes) "Clover";
+    public static readonly ReportTypes CsvSummary = (ReportTypes) "CsvSummary";
+    public static readonly ReportTypes Html = (ReportTypes) "Html";
+    public static readonly ReportTypes Html_Light = (ReportTypes) "Html_Light";
+    public static readonly ReportTypes Html_Dark = (ReportTypes) "Html_Dark";
+    public static readonly ReportTypes Html_BlueRed = (ReportTypes) "Html_BlueRed";
+    public static readonly ReportTypes HtmlInline = (ReportTypes) "HtmlInline";
+    public static readonly ReportTypes HtmlInline_AzurePipelines = (ReportTypes) "HtmlInline_AzurePipelines";
+    public static readonly ReportTypes HtmlInline_AzurePipelines_Light = (ReportTypes) "HtmlInline_AzurePipelines_Light";
+    public static readonly ReportTypes HtmlInline_AzurePipelines_Dark = (ReportTypes) "HtmlInline_AzurePipelines_Dark";
+    public static readonly ReportTypes HtmlChart = (ReportTypes) "HtmlChart";
+    public static readonly ReportTypes HtmlSummary = (ReportTypes) "HtmlSummary";
+    public static readonly ReportTypes Html_BlueRed_Summary = (ReportTypes) "Html_BlueRed_Summary";
+    public static readonly ReportTypes JsonSummary = (ReportTypes) "JsonSummary";
+    public static readonly ReportTypes Latex = (ReportTypes) "Latex";
+    public static readonly ReportTypes LatexSummary = (ReportTypes) "LatexSummary";
+    public static readonly ReportTypes lcov = (ReportTypes) "lcov";
+    public static readonly ReportTypes MarkdownSummary = (ReportTypes) "MarkdownSummary";
+    public static readonly ReportTypes MarkdownSummaryGithub = (ReportTypes) "MarkdownSummaryGithub";
+    public static readonly ReportTypes MarkdownDeltaSummary = (ReportTypes) "MarkdownDeltaSummary";
+    public static readonly ReportTypes OpenCover = (ReportTypes) "OpenCover";
+    public static readonly ReportTypes MHtml = (ReportTypes) "MHtml";
+    public static readonly ReportTypes PngChart = (ReportTypes) "PngChart";
+    public static readonly ReportTypes TextSummary = (ReportTypes) "TextSummary";
+    public static readonly ReportTypes Xml = (ReportTypes) "Xml";
+    public static readonly ReportTypes XmlSummary = (ReportTypes) "XmlSummary";
+    public static readonly ReportTypes SonarQube = (ReportTypes) "SonarQube";
+    public static readonly ReportTypes TeamCitySummary = (ReportTypes) "TeamCitySummary";
     public static implicit operator ReportTypes(string value)
     {
         return new ReportTypes { Value = value };
@@ -299,11 +299,11 @@ public partial class ReportTypes : Enumeration
 [TypeConverter(typeof(TypeConverter<ReportGeneratorVerbosity>))]
 public partial class ReportGeneratorVerbosity : Enumeration
 {
-    public static ReportGeneratorVerbosity Off = (ReportGeneratorVerbosity) "Off";
-    public static ReportGeneratorVerbosity Verbose = (ReportGeneratorVerbosity) "Verbose";
-    public static ReportGeneratorVerbosity Info = (ReportGeneratorVerbosity) "Info";
-    public static ReportGeneratorVerbosity Warning = (ReportGeneratorVerbosity) "Warning";
-    public static ReportGeneratorVerbosity Error = (ReportGeneratorVerbosity) "Error";
+    public static readonly ReportGeneratorVerbosity Off = (ReportGeneratorVerbosity) "Off";
+    public static readonly ReportGeneratorVerbosity Verbose = (ReportGeneratorVerbosity) "Verbose";
+    public static readonly ReportGeneratorVerbosity Info = (ReportGeneratorVerbosity) "Info";
+    public static readonly ReportGeneratorVerbosity Warning = (ReportGeneratorVerbosity) "Warning";
+    public static readonly ReportGeneratorVerbosity Error = (ReportGeneratorVerbosity) "Error";
     public static implicit operator ReportGeneratorVerbosity(string value)
     {
         return new ReportGeneratorVerbosity { Value = value };

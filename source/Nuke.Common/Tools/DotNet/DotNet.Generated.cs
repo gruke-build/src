@@ -8659,40 +8659,40 @@ public static partial class DotNetWorkloadRepairSettingsExtensions
 [TypeConverter(typeof(TypeConverter<DotNetRuntimeIdentifier>))]
 public partial class DotNetRuntimeIdentifier : Enumeration
 {
-    public static DotNetRuntimeIdentifier win_x64 = (DotNetRuntimeIdentifier) "win-x64";
-    public static DotNetRuntimeIdentifier win_x86 = (DotNetRuntimeIdentifier) "win-x86";
-    public static DotNetRuntimeIdentifier win_arm = (DotNetRuntimeIdentifier) "win-arm";
-    public static DotNetRuntimeIdentifier win_arm64 = (DotNetRuntimeIdentifier) "win-arm64";
-    public static DotNetRuntimeIdentifier win7_x64 = (DotNetRuntimeIdentifier) "win7-x64";
-    public static DotNetRuntimeIdentifier win7_x86 = (DotNetRuntimeIdentifier) "win7-x86";
-    public static DotNetRuntimeIdentifier win81_x64 = (DotNetRuntimeIdentifier) "win81-x64";
-    public static DotNetRuntimeIdentifier win81_x86 = (DotNetRuntimeIdentifier) "win81-x86";
-    public static DotNetRuntimeIdentifier win81_arm = (DotNetRuntimeIdentifier) "win81-arm";
-    public static DotNetRuntimeIdentifier win10_x64 = (DotNetRuntimeIdentifier) "win10-x64";
-    public static DotNetRuntimeIdentifier win10_x86 = (DotNetRuntimeIdentifier) "win10-x86";
-    public static DotNetRuntimeIdentifier win10_arm = (DotNetRuntimeIdentifier) "win10-arm";
-    public static DotNetRuntimeIdentifier win10_arm64 = (DotNetRuntimeIdentifier) "win10-arm64";
-    public static DotNetRuntimeIdentifier linux_x64 = (DotNetRuntimeIdentifier) "linux-x64";
-    public static DotNetRuntimeIdentifier linux_musl_x64 = (DotNetRuntimeIdentifier) "linux-musl-x64";
-    public static DotNetRuntimeIdentifier linux_arm = (DotNetRuntimeIdentifier) "linux-arm";
-    public static DotNetRuntimeIdentifier linux_arm64 = (DotNetRuntimeIdentifier) "linux-arm64";
-    public static DotNetRuntimeIdentifier rhel_x64 = (DotNetRuntimeIdentifier) "rhel-x64";
-    public static DotNetRuntimeIdentifier rhel_6_x64 = (DotNetRuntimeIdentifier) "rhel.6-x64";
-    public static DotNetRuntimeIdentifier tizen = (DotNetRuntimeIdentifier) "tizen";
-    public static DotNetRuntimeIdentifier tizen_4_0_0 = (DotNetRuntimeIdentifier) "tizen.4.0.0";
-    public static DotNetRuntimeIdentifier tizen_5_0_0 = (DotNetRuntimeIdentifier) "tizen.5.0.0";
-    public static DotNetRuntimeIdentifier osx_arm64 = (DotNetRuntimeIdentifier) "osx-arm64";
-    public static DotNetRuntimeIdentifier osx_x64 = (DotNetRuntimeIdentifier) "osx-x64";
-    public static DotNetRuntimeIdentifier osx_10_10_x64 = (DotNetRuntimeIdentifier) "osx.10.10-x64";
-    public static DotNetRuntimeIdentifier osx_10_11_x64 = (DotNetRuntimeIdentifier) "osx.10.11-x64";
-    public static DotNetRuntimeIdentifier osx_10_12_x64 = (DotNetRuntimeIdentifier) "osx.10.12-x64";
-    public static DotNetRuntimeIdentifier osx_10_13_x64 = (DotNetRuntimeIdentifier) "osx.10.13-x64";
-    public static DotNetRuntimeIdentifier osx_10_14_x64 = (DotNetRuntimeIdentifier) "osx.10.14-x64";
-    public static DotNetRuntimeIdentifier osx_10_15_x64 = (DotNetRuntimeIdentifier) "osx.10.15-x64";
-    public static DotNetRuntimeIdentifier osx_11_0_x64 = (DotNetRuntimeIdentifier) "osx.11.0-x64";
-    public static DotNetRuntimeIdentifier osx_11_0_arm64 = (DotNetRuntimeIdentifier) "osx.11.0-arm64";
-    public static DotNetRuntimeIdentifier osx_12_x64 = (DotNetRuntimeIdentifier) "osx.12-x64";
-    public static DotNetRuntimeIdentifier osx_12_arm64 = (DotNetRuntimeIdentifier) "osx.12-arm64";
+    public static readonly DotNetRuntimeIdentifier win_x64 = (DotNetRuntimeIdentifier) "win-x64";
+    public static readonly DotNetRuntimeIdentifier win_x86 = (DotNetRuntimeIdentifier) "win-x86";
+    public static readonly DotNetRuntimeIdentifier win_arm = (DotNetRuntimeIdentifier) "win-arm";
+    public static readonly DotNetRuntimeIdentifier win_arm64 = (DotNetRuntimeIdentifier) "win-arm64";
+    public static readonly DotNetRuntimeIdentifier win7_x64 = (DotNetRuntimeIdentifier) "win7-x64";
+    public static readonly DotNetRuntimeIdentifier win7_x86 = (DotNetRuntimeIdentifier) "win7-x86";
+    public static readonly DotNetRuntimeIdentifier win81_x64 = (DotNetRuntimeIdentifier) "win81-x64";
+    public static readonly DotNetRuntimeIdentifier win81_x86 = (DotNetRuntimeIdentifier) "win81-x86";
+    public static readonly DotNetRuntimeIdentifier win81_arm = (DotNetRuntimeIdentifier) "win81-arm";
+    public static readonly DotNetRuntimeIdentifier win10_x64 = (DotNetRuntimeIdentifier) "win10-x64";
+    public static readonly DotNetRuntimeIdentifier win10_x86 = (DotNetRuntimeIdentifier) "win10-x86";
+    public static readonly DotNetRuntimeIdentifier win10_arm = (DotNetRuntimeIdentifier) "win10-arm";
+    public static readonly DotNetRuntimeIdentifier win10_arm64 = (DotNetRuntimeIdentifier) "win10-arm64";
+    public static readonly DotNetRuntimeIdentifier linux_x64 = (DotNetRuntimeIdentifier) "linux-x64";
+    public static readonly DotNetRuntimeIdentifier linux_musl_x64 = (DotNetRuntimeIdentifier) "linux-musl-x64";
+    public static readonly DotNetRuntimeIdentifier linux_arm = (DotNetRuntimeIdentifier) "linux-arm";
+    public static readonly DotNetRuntimeIdentifier linux_arm64 = (DotNetRuntimeIdentifier) "linux-arm64";
+    public static readonly DotNetRuntimeIdentifier rhel_x64 = (DotNetRuntimeIdentifier) "rhel-x64";
+    public static readonly DotNetRuntimeIdentifier rhel_6_x64 = (DotNetRuntimeIdentifier) "rhel.6-x64";
+    public static readonly DotNetRuntimeIdentifier tizen = (DotNetRuntimeIdentifier) "tizen";
+    public static readonly DotNetRuntimeIdentifier tizen_4_0_0 = (DotNetRuntimeIdentifier) "tizen.4.0.0";
+    public static readonly DotNetRuntimeIdentifier tizen_5_0_0 = (DotNetRuntimeIdentifier) "tizen.5.0.0";
+    public static readonly DotNetRuntimeIdentifier osx_arm64 = (DotNetRuntimeIdentifier) "osx-arm64";
+    public static readonly DotNetRuntimeIdentifier osx_x64 = (DotNetRuntimeIdentifier) "osx-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_10_x64 = (DotNetRuntimeIdentifier) "osx.10.10-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_11_x64 = (DotNetRuntimeIdentifier) "osx.10.11-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_12_x64 = (DotNetRuntimeIdentifier) "osx.10.12-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_13_x64 = (DotNetRuntimeIdentifier) "osx.10.13-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_14_x64 = (DotNetRuntimeIdentifier) "osx.10.14-x64";
+    public static readonly DotNetRuntimeIdentifier osx_10_15_x64 = (DotNetRuntimeIdentifier) "osx.10.15-x64";
+    public static readonly DotNetRuntimeIdentifier osx_11_0_x64 = (DotNetRuntimeIdentifier) "osx.11.0-x64";
+    public static readonly DotNetRuntimeIdentifier osx_11_0_arm64 = (DotNetRuntimeIdentifier) "osx.11.0-arm64";
+    public static readonly DotNetRuntimeIdentifier osx_12_x64 = (DotNetRuntimeIdentifier) "osx.12-x64";
+    public static readonly DotNetRuntimeIdentifier osx_12_arm64 = (DotNetRuntimeIdentifier) "osx.12-arm64";
     public static implicit operator DotNetRuntimeIdentifier(string value)
     {
         return new DotNetRuntimeIdentifier { Value = value };
@@ -8707,11 +8707,11 @@ public partial class DotNetRuntimeIdentifier : Enumeration
 [TypeConverter(typeof(TypeConverter<DotNetVerbosity>))]
 public partial class DotNetVerbosity : Enumeration
 {
-    public static DotNetVerbosity quiet = (DotNetVerbosity) "quiet";
-    public static DotNetVerbosity minimal = (DotNetVerbosity) "minimal";
-    public static DotNetVerbosity normal = (DotNetVerbosity) "normal";
-    public static DotNetVerbosity detailed = (DotNetVerbosity) "detailed";
-    public static DotNetVerbosity diagnostic = (DotNetVerbosity) "diagnostic";
+    public static readonly DotNetVerbosity quiet = (DotNetVerbosity) "quiet";
+    public static readonly DotNetVerbosity minimal = (DotNetVerbosity) "minimal";
+    public static readonly DotNetVerbosity normal = (DotNetVerbosity) "normal";
+    public static readonly DotNetVerbosity detailed = (DotNetVerbosity) "detailed";
+    public static readonly DotNetVerbosity diagnostic = (DotNetVerbosity) "diagnostic";
     public static implicit operator DotNetVerbosity(string value)
     {
         return new DotNetVerbosity { Value = value };
@@ -8726,8 +8726,8 @@ public partial class DotNetVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<DotNetSymbolPackageFormat>))]
 public partial class DotNetSymbolPackageFormat : Enumeration
 {
-    public static DotNetSymbolPackageFormat symbols_nupkg = (DotNetSymbolPackageFormat) "symbols.nupkg";
-    public static DotNetSymbolPackageFormat snupkg = (DotNetSymbolPackageFormat) "snupkg";
+    public static readonly DotNetSymbolPackageFormat symbols_nupkg = (DotNetSymbolPackageFormat) "symbols.nupkg";
+    public static readonly DotNetSymbolPackageFormat snupkg = (DotNetSymbolPackageFormat) "snupkg";
     public static implicit operator DotNetSymbolPackageFormat(string value)
     {
         return new DotNetSymbolPackageFormat { Value = value };
@@ -8742,11 +8742,11 @@ public partial class DotNetSymbolPackageFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<DotNetNuGetAuthentication>))]
 public partial class DotNetNuGetAuthentication : Enumeration
 {
-    public static DotNetNuGetAuthentication basic = (DotNetNuGetAuthentication) "basic";
-    public static DotNetNuGetAuthentication negotiate = (DotNetNuGetAuthentication) "negotiate";
-    public static DotNetNuGetAuthentication kerberos = (DotNetNuGetAuthentication) "kerberos";
-    public static DotNetNuGetAuthentication ntlm = (DotNetNuGetAuthentication) "ntlm";
-    public static DotNetNuGetAuthentication digest = (DotNetNuGetAuthentication) "digest";
+    public static readonly DotNetNuGetAuthentication basic = (DotNetNuGetAuthentication) "basic";
+    public static readonly DotNetNuGetAuthentication negotiate = (DotNetNuGetAuthentication) "negotiate";
+    public static readonly DotNetNuGetAuthentication kerberos = (DotNetNuGetAuthentication) "kerberos";
+    public static readonly DotNetNuGetAuthentication ntlm = (DotNetNuGetAuthentication) "ntlm";
+    public static readonly DotNetNuGetAuthentication digest = (DotNetNuGetAuthentication) "digest";
     public static implicit operator DotNetNuGetAuthentication(string value)
     {
         return new DotNetNuGetAuthentication { Value = value };
@@ -8761,9 +8761,9 @@ public partial class DotNetNuGetAuthentication : Enumeration
 [TypeConverter(typeof(TypeConverter<DotNetFormatSeverity>))]
 public partial class DotNetFormatSeverity : Enumeration
 {
-    public static DotNetFormatSeverity info = (DotNetFormatSeverity) "info";
-    public static DotNetFormatSeverity warn = (DotNetFormatSeverity) "warn";
-    public static DotNetFormatSeverity error = (DotNetFormatSeverity) "error";
+    public static readonly DotNetFormatSeverity info = (DotNetFormatSeverity) "info";
+    public static readonly DotNetFormatSeverity warn = (DotNetFormatSeverity) "warn";
+    public static readonly DotNetFormatSeverity error = (DotNetFormatSeverity) "error";
     public static implicit operator DotNetFormatSeverity(string value)
     {
         return new DotNetFormatSeverity { Value = value };
@@ -8778,9 +8778,9 @@ public partial class DotNetFormatSeverity : Enumeration
 [TypeConverter(typeof(TypeConverter<DotNetNuGetSignHashAlgorithm>))]
 public partial class DotNetNuGetSignHashAlgorithm : Enumeration
 {
-    public static DotNetNuGetSignHashAlgorithm sha256 = (DotNetNuGetSignHashAlgorithm) "sha256";
-    public static DotNetNuGetSignHashAlgorithm sha384 = (DotNetNuGetSignHashAlgorithm) "sha384";
-    public static DotNetNuGetSignHashAlgorithm sha512 = (DotNetNuGetSignHashAlgorithm) "sha512";
+    public static readonly DotNetNuGetSignHashAlgorithm sha256 = (DotNetNuGetSignHashAlgorithm) "sha256";
+    public static readonly DotNetNuGetSignHashAlgorithm sha384 = (DotNetNuGetSignHashAlgorithm) "sha384";
+    public static readonly DotNetNuGetSignHashAlgorithm sha512 = (DotNetNuGetSignHashAlgorithm) "sha512";
     public static implicit operator DotNetNuGetSignHashAlgorithm(string value)
     {
         return new DotNetNuGetSignHashAlgorithm { Value = value };

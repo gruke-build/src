@@ -1885,8 +1885,8 @@ public static partial class OctopusBuildInformationSettingsExtensions
 [TypeConverter(typeof(TypeConverter<OctopusPackFormat>))]
 public partial class OctopusPackFormat : Enumeration
 {
-    public static OctopusPackFormat NuPkg = (OctopusPackFormat) "NuPkg";
-    public static OctopusPackFormat Zip = (OctopusPackFormat) "Zip";
+    public static readonly OctopusPackFormat NuPkg = (OctopusPackFormat) "NuPkg";
+    public static readonly OctopusPackFormat Zip = (OctopusPackFormat) "Zip";
     public static implicit operator OctopusPackFormat(string value)
     {
         return new OctopusPackFormat { Value = value };
@@ -1901,9 +1901,9 @@ public partial class OctopusPackFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<OctopusOverwriteMode>))]
 public partial class OctopusOverwriteMode : Enumeration
 {
-    public static OctopusOverwriteMode FailIfExists = (OctopusOverwriteMode) "FailIfExists";
-    public static OctopusOverwriteMode OverwriteExisting = (OctopusOverwriteMode) "OverwriteExisting";
-    public static OctopusOverwriteMode IgnoreIfExists = (OctopusOverwriteMode) "IgnoreIfExists";
+    public static readonly OctopusOverwriteMode FailIfExists = (OctopusOverwriteMode) "FailIfExists";
+    public static readonly OctopusOverwriteMode OverwriteExisting = (OctopusOverwriteMode) "OverwriteExisting";
+    public static readonly OctopusOverwriteMode IgnoreIfExists = (OctopusOverwriteMode) "IgnoreIfExists";
     public static implicit operator OctopusOverwriteMode(string value)
     {
         return new OctopusOverwriteMode { Value = value };

@@ -2562,12 +2562,12 @@ public static partial class DocFXTemplateSettingsExtensions
 [TypeConverter(typeof(TypeConverter<DocFXLogLevel>))]
 public partial class DocFXLogLevel : Enumeration
 {
-    public static DocFXLogLevel Diagnostic = (DocFXLogLevel) "Diagnostic";
-    public static DocFXLogLevel Verbose = (DocFXLogLevel) "Verbose";
-    public static DocFXLogLevel Info = (DocFXLogLevel) "Info";
-    public static DocFXLogLevel Suggestion = (DocFXLogLevel) "Suggestion";
-    public static DocFXLogLevel Warning = (DocFXLogLevel) "Warning";
-    public static DocFXLogLevel Error = (DocFXLogLevel) "Error";
+    public static readonly DocFXLogLevel Diagnostic = (DocFXLogLevel) "Diagnostic";
+    public static readonly DocFXLogLevel Verbose = (DocFXLogLevel) "Verbose";
+    public static readonly DocFXLogLevel Info = (DocFXLogLevel) "Info";
+    public static readonly DocFXLogLevel Suggestion = (DocFXLogLevel) "Suggestion";
+    public static readonly DocFXLogLevel Warning = (DocFXLogLevel) "Warning";
+    public static readonly DocFXLogLevel Error = (DocFXLogLevel) "Error";
     public static implicit operator DocFXLogLevel(string value)
     {
         return new DocFXLogLevel { Value = value };
@@ -2582,8 +2582,8 @@ public partial class DocFXLogLevel : Enumeration
 [TypeConverter(typeof(TypeConverter<DocFXTemplateCommand>))]
 public partial class DocFXTemplateCommand : Enumeration
 {
-    public static DocFXTemplateCommand Export = (DocFXTemplateCommand) "Export";
-    public static DocFXTemplateCommand List = (DocFXTemplateCommand) "List";
+    public static readonly DocFXTemplateCommand Export = (DocFXTemplateCommand) "Export";
+    public static readonly DocFXTemplateCommand List = (DocFXTemplateCommand) "List";
     public static implicit operator DocFXTemplateCommand(string value)
     {
         return new DocFXTemplateCommand { Value = value };

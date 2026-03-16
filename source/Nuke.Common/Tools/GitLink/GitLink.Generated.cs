@@ -324,8 +324,8 @@ public static partial class GitLink3SettingsExtensions
 [TypeConverter(typeof(TypeConverter<GitLinkSourceCodeRetrieval>))]
 public partial class GitLinkSourceCodeRetrieval : Enumeration
 {
-    public static GitLinkSourceCodeRetrieval Http = (GitLinkSourceCodeRetrieval) "Http";
-    public static GitLinkSourceCodeRetrieval Powershell = (GitLinkSourceCodeRetrieval) "Powershell";
+    public static readonly GitLinkSourceCodeRetrieval Http = (GitLinkSourceCodeRetrieval) "Http";
+    public static readonly GitLinkSourceCodeRetrieval Powershell = (GitLinkSourceCodeRetrieval) "Powershell";
     public static implicit operator GitLinkSourceCodeRetrieval(string value)
     {
         return new GitLinkSourceCodeRetrieval { Value = value };

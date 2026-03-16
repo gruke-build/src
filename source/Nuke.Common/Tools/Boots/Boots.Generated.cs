@@ -154,10 +154,10 @@ public static partial class BootsSettingsExtensions
 [TypeConverter(typeof(TypeConverter<BootsProductType>))]
 public partial class BootsProductType : Enumeration
 {
-    public static BootsProductType Mono = (BootsProductType) "Mono";
-    public static BootsProductType Xamarin_Android = (BootsProductType) "Xamarin.Android";
-    public static BootsProductType Xamarin_iOS = (BootsProductType) "Xamarin.iOS";
-    public static BootsProductType Xamarin_Mac = (BootsProductType) "Xamarin.Mac";
+    public static readonly BootsProductType Mono = (BootsProductType) "Mono";
+    public static readonly BootsProductType Xamarin_Android = (BootsProductType) "Xamarin.Android";
+    public static readonly BootsProductType Xamarin_iOS = (BootsProductType) "Xamarin.iOS";
+    public static readonly BootsProductType Xamarin_Mac = (BootsProductType) "Xamarin.Mac";
     public static implicit operator BootsProductType(string value)
     {
         return new BootsProductType { Value = value };
@@ -172,9 +172,9 @@ public partial class BootsProductType : Enumeration
 [TypeConverter(typeof(TypeConverter<BootsFileType>))]
 public partial class BootsFileType : Enumeration
 {
-    public static BootsFileType vsix = (BootsFileType) "vsix";
-    public static BootsFileType pkg = (BootsFileType) "pkg";
-    public static BootsFileType msi = (BootsFileType) "msi";
+    public static readonly BootsFileType vsix = (BootsFileType) "vsix";
+    public static readonly BootsFileType pkg = (BootsFileType) "pkg";
+    public static readonly BootsFileType msi = (BootsFileType) "msi";
     public static implicit operator BootsFileType(string value)
     {
         return new BootsFileType { Value = value };

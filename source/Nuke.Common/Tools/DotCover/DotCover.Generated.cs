@@ -1351,11 +1351,11 @@ public static partial class DotCoverZipSettingsExtensions
 [TypeConverter(typeof(TypeConverter<DotCoverReportType>))]
 public partial class DotCoverReportType : Enumeration
 {
-    public static DotCoverReportType Html = (DotCoverReportType) "Html";
-    public static DotCoverReportType Json = (DotCoverReportType) "Json";
-    public static DotCoverReportType Xml = (DotCoverReportType) "Xml";
-    public static DotCoverReportType DetailedXml = (DotCoverReportType) "DetailedXml";
-    public static DotCoverReportType NDependXML = (DotCoverReportType) "NDependXML";
+    public static readonly DotCoverReportType Html = (DotCoverReportType) "Html";
+    public static readonly DotCoverReportType Json = (DotCoverReportType) "Json";
+    public static readonly DotCoverReportType Xml = (DotCoverReportType) "Xml";
+    public static readonly DotCoverReportType DetailedXml = (DotCoverReportType) "DetailedXml";
+    public static readonly DotCoverReportType NDependXML = (DotCoverReportType) "NDependXML";
     public static implicit operator DotCoverReportType(string value)
     {
         return new DotCoverReportType { Value = value };

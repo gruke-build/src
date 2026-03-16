@@ -24558,11 +24558,11 @@ public static partial class DockerRunTargetSettingsExtensions
 [TypeConverter(typeof(TypeConverter<DockerLogLevel>))]
 public partial class DockerLogLevel : Enumeration
 {
-    public static DockerLogLevel debug = (DockerLogLevel) "debug";
-    public static DockerLogLevel info = (DockerLogLevel) "info";
-    public static DockerLogLevel warn = (DockerLogLevel) "warn";
-    public static DockerLogLevel error = (DockerLogLevel) "error";
-    public static DockerLogLevel fatal = (DockerLogLevel) "fatal";
+    public static readonly DockerLogLevel debug = (DockerLogLevel) "debug";
+    public static readonly DockerLogLevel info = (DockerLogLevel) "info";
+    public static readonly DockerLogLevel warn = (DockerLogLevel) "warn";
+    public static readonly DockerLogLevel error = (DockerLogLevel) "error";
+    public static readonly DockerLogLevel fatal = (DockerLogLevel) "fatal";
     public static implicit operator DockerLogLevel(string value)
     {
         return new DockerLogLevel { Value = value };
@@ -24577,9 +24577,9 @@ public partial class DockerLogLevel : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerRestartCondition>))]
 public partial class DockerRestartCondition : Enumeration
 {
-    public static DockerRestartCondition none = (DockerRestartCondition) "none";
-    public static DockerRestartCondition on_failure = (DockerRestartCondition) "on-failure";
-    public static DockerRestartCondition any = (DockerRestartCondition) "any";
+    public static readonly DockerRestartCondition none = (DockerRestartCondition) "none";
+    public static readonly DockerRestartCondition on_failure = (DockerRestartCondition) "on-failure";
+    public static readonly DockerRestartCondition any = (DockerRestartCondition) "any";
     public static implicit operator DockerRestartCondition(string value)
     {
         return new DockerRestartCondition { Value = value };
@@ -24594,8 +24594,8 @@ public partial class DockerRestartCondition : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerRollbackFailureAction>))]
 public partial class DockerRollbackFailureAction : Enumeration
 {
-    public static DockerRollbackFailureAction pause = (DockerRollbackFailureAction) "pause";
-    public static DockerRollbackFailureAction continue_ = (DockerRollbackFailureAction) "continue";
+    public static readonly DockerRollbackFailureAction pause = (DockerRollbackFailureAction) "pause";
+    public static readonly DockerRollbackFailureAction continue_ = (DockerRollbackFailureAction) "continue";
     public static implicit operator DockerRollbackFailureAction(string value)
     {
         return new DockerRollbackFailureAction { Value = value };
@@ -24610,8 +24610,8 @@ public partial class DockerRollbackFailureAction : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerRollbackOrder>))]
 public partial class DockerRollbackOrder : Enumeration
 {
-    public static DockerRollbackOrder start_first = (DockerRollbackOrder) "start-first";
-    public static DockerRollbackOrder stop_first = (DockerRollbackOrder) "stop-first";
+    public static readonly DockerRollbackOrder start_first = (DockerRollbackOrder) "start-first";
+    public static readonly DockerRollbackOrder stop_first = (DockerRollbackOrder) "stop-first";
     public static implicit operator DockerRollbackOrder(string value)
     {
         return new DockerRollbackOrder { Value = value };
@@ -24626,9 +24626,9 @@ public partial class DockerRollbackOrder : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerUpdateFailureAction>))]
 public partial class DockerUpdateFailureAction : Enumeration
 {
-    public static DockerUpdateFailureAction pause = (DockerUpdateFailureAction) "pause";
-    public static DockerUpdateFailureAction continue_ = (DockerUpdateFailureAction) "continue";
-    public static DockerUpdateFailureAction rollback = (DockerUpdateFailureAction) "rollback";
+    public static readonly DockerUpdateFailureAction pause = (DockerUpdateFailureAction) "pause";
+    public static readonly DockerUpdateFailureAction continue_ = (DockerUpdateFailureAction) "continue";
+    public static readonly DockerUpdateFailureAction rollback = (DockerUpdateFailureAction) "rollback";
     public static implicit operator DockerUpdateFailureAction(string value)
     {
         return new DockerUpdateFailureAction { Value = value };
@@ -24643,8 +24643,8 @@ public partial class DockerUpdateFailureAction : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerUpdateOrder>))]
 public partial class DockerUpdateOrder : Enumeration
 {
-    public static DockerUpdateOrder start_first = (DockerUpdateOrder) "start-first";
-    public static DockerUpdateOrder stop_first = (DockerUpdateOrder) "stop-first";
+    public static readonly DockerUpdateOrder start_first = (DockerUpdateOrder) "start-first";
+    public static readonly DockerUpdateOrder stop_first = (DockerUpdateOrder) "stop-first";
     public static implicit operator DockerUpdateOrder(string value)
     {
         return new DockerUpdateOrder { Value = value };
@@ -24659,9 +24659,9 @@ public partial class DockerUpdateOrder : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerAvailability>))]
 public partial class DockerAvailability : Enumeration
 {
-    public static DockerAvailability active = (DockerAvailability) "active";
-    public static DockerAvailability pause = (DockerAvailability) "pause";
-    public static DockerAvailability drain = (DockerAvailability) "drain";
+    public static readonly DockerAvailability active = (DockerAvailability) "active";
+    public static readonly DockerAvailability pause = (DockerAvailability) "pause";
+    public static readonly DockerAvailability drain = (DockerAvailability) "drain";
     public static implicit operator DockerAvailability(string value)
     {
         return new DockerAvailability { Value = value };
@@ -24676,8 +24676,8 @@ public partial class DockerAvailability : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerRole>))]
 public partial class DockerRole : Enumeration
 {
-    public static DockerRole worker = (DockerRole) "worker";
-    public static DockerRole manager = (DockerRole) "manager";
+    public static readonly DockerRole worker = (DockerRole) "worker";
+    public static readonly DockerRole manager = (DockerRole) "manager";
     public static implicit operator DockerRole(string value)
     {
         return new DockerRole { Value = value };
@@ -24692,9 +24692,9 @@ public partial class DockerRole : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerResolveImage>))]
 public partial class DockerResolveImage : Enumeration
 {
-    public static DockerResolveImage always = (DockerResolveImage) "always";
-    public static DockerResolveImage changed = (DockerResolveImage) "changed";
-    public static DockerResolveImage never = (DockerResolveImage) "never";
+    public static readonly DockerResolveImage always = (DockerResolveImage) "always";
+    public static readonly DockerResolveImage changed = (DockerResolveImage) "changed";
+    public static readonly DockerResolveImage never = (DockerResolveImage) "never";
     public static implicit operator DockerResolveImage(string value)
     {
         return new DockerResolveImage { Value = value };
@@ -24709,9 +24709,9 @@ public partial class DockerResolveImage : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerProgressType>))]
 public partial class DockerProgressType : Enumeration
 {
-    public static DockerProgressType auto = (DockerProgressType) "auto";
-    public static DockerProgressType plain = (DockerProgressType) "plain";
-    public static DockerProgressType tty = (DockerProgressType) "tty";
+    public static readonly DockerProgressType auto = (DockerProgressType) "auto";
+    public static readonly DockerProgressType plain = (DockerProgressType) "plain";
+    public static readonly DockerProgressType tty = (DockerProgressType) "tty";
     public static implicit operator DockerProgressType(string value)
     {
         return new DockerProgressType { Value = value };
@@ -24726,9 +24726,9 @@ public partial class DockerProgressType : Enumeration
 [TypeConverter(typeof(TypeConverter<DockerDriverType>))]
 public partial class DockerDriverType : Enumeration
 {
-    public static DockerDriverType docker_container = (DockerDriverType) "docker-container";
-    public static DockerDriverType kubernetes = (DockerDriverType) "kubernetes";
-    public static DockerDriverType remote = (DockerDriverType) "remote";
+    public static readonly DockerDriverType docker_container = (DockerDriverType) "docker-container";
+    public static readonly DockerDriverType kubernetes = (DockerDriverType) "kubernetes";
+    public static readonly DockerDriverType remote = (DockerDriverType) "remote";
     public static implicit operator DockerDriverType(string value)
     {
         return new DockerDriverType { Value = value };

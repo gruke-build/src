@@ -267,15 +267,15 @@ public static partial class MauiCheckConfigSettingsExtensions
 [TypeConverter(typeof(TypeConverter<MauiCheckDotNetRollForward>))]
 public partial class MauiCheckDotNetRollForward : Enumeration
 {
-    public static MauiCheckDotNetRollForward disable = (MauiCheckDotNetRollForward) "disable";
-    public static MauiCheckDotNetRollForward major = (MauiCheckDotNetRollForward) "major";
-    public static MauiCheckDotNetRollForward minor = (MauiCheckDotNetRollForward) "minor";
-    public static MauiCheckDotNetRollForward feature = (MauiCheckDotNetRollForward) "feature";
-    public static MauiCheckDotNetRollForward patch = (MauiCheckDotNetRollForward) "patch";
-    public static MauiCheckDotNetRollForward latestMajor = (MauiCheckDotNetRollForward) "latestMajor";
-    public static MauiCheckDotNetRollForward latestMinor = (MauiCheckDotNetRollForward) "latestMinor";
-    public static MauiCheckDotNetRollForward latestFeature = (MauiCheckDotNetRollForward) "latestFeature";
-    public static MauiCheckDotNetRollForward latestPatch = (MauiCheckDotNetRollForward) "latestPatch";
+    public static readonly MauiCheckDotNetRollForward disable = (MauiCheckDotNetRollForward) "disable";
+    public static readonly MauiCheckDotNetRollForward major = (MauiCheckDotNetRollForward) "major";
+    public static readonly MauiCheckDotNetRollForward minor = (MauiCheckDotNetRollForward) "minor";
+    public static readonly MauiCheckDotNetRollForward feature = (MauiCheckDotNetRollForward) "feature";
+    public static readonly MauiCheckDotNetRollForward patch = (MauiCheckDotNetRollForward) "patch";
+    public static readonly MauiCheckDotNetRollForward latestMajor = (MauiCheckDotNetRollForward) "latestMajor";
+    public static readonly MauiCheckDotNetRollForward latestMinor = (MauiCheckDotNetRollForward) "latestMinor";
+    public static readonly MauiCheckDotNetRollForward latestFeature = (MauiCheckDotNetRollForward) "latestFeature";
+    public static readonly MauiCheckDotNetRollForward latestPatch = (MauiCheckDotNetRollForward) "latestPatch";
     public static implicit operator MauiCheckDotNetRollForward(string value)
     {
         return new MauiCheckDotNetRollForward { Value = value };
@@ -290,15 +290,15 @@ public partial class MauiCheckDotNetRollForward : Enumeration
 [TypeConverter(typeof(TypeConverter<MauiCheckCheckup>))]
 public partial class MauiCheckCheckup : Enumeration
 {
-    public static MauiCheckCheckup OpenJdkCheckup = (MauiCheckCheckup) "OpenJdkCheckup";
-    public static MauiCheckCheckup VisualStudioMacCheckup = (MauiCheckCheckup) "VisualStudioMacCheckup";
-    public static MauiCheckCheckup AndroidSdkPackagesCheckup = (MauiCheckCheckup) "AndroidSdkPackagesCheckup";
-    public static MauiCheckCheckup AndroidEmulatorCheckup = (MauiCheckCheckup) "AndroidEmulatorCheckup";
-    public static MauiCheckCheckup XCodeCheckup = (MauiCheckCheckup) "XCodeCheckup";
-    public static MauiCheckCheckup DotNetCheckup = (MauiCheckCheckup) "DotNetCheckup";
-    public static MauiCheckCheckup DotNetWorkloadDuplicatesCheckup = (MauiCheckCheckup) "DotNetWorkloadDuplicatesCheckup";
-    public static MauiCheckCheckup DotNetSentinelCheckup = (MauiCheckCheckup) "DotNetSentinelCheckup";
-    public static MauiCheckCheckup DotNetWorkloadsCheckup = (MauiCheckCheckup) "DotNetWorkloadsCheckup";
+    public static readonly MauiCheckCheckup OpenJdkCheckup = (MauiCheckCheckup) "OpenJdkCheckup";
+    public static readonly MauiCheckCheckup VisualStudioMacCheckup = (MauiCheckCheckup) "VisualStudioMacCheckup";
+    public static readonly MauiCheckCheckup AndroidSdkPackagesCheckup = (MauiCheckCheckup) "AndroidSdkPackagesCheckup";
+    public static readonly MauiCheckCheckup AndroidEmulatorCheckup = (MauiCheckCheckup) "AndroidEmulatorCheckup";
+    public static readonly MauiCheckCheckup XCodeCheckup = (MauiCheckCheckup) "XCodeCheckup";
+    public static readonly MauiCheckCheckup DotNetCheckup = (MauiCheckCheckup) "DotNetCheckup";
+    public static readonly MauiCheckCheckup DotNetWorkloadDuplicatesCheckup = (MauiCheckCheckup) "DotNetWorkloadDuplicatesCheckup";
+    public static readonly MauiCheckCheckup DotNetSentinelCheckup = (MauiCheckCheckup) "DotNetSentinelCheckup";
+    public static readonly MauiCheckCheckup DotNetWorkloadsCheckup = (MauiCheckCheckup) "DotNetWorkloadsCheckup";
     public static implicit operator MauiCheckCheckup(string value)
     {
         return new MauiCheckCheckup { Value = value };

@@ -7772,8 +7772,8 @@ public static partial class KubernetesOptionsBaseExtensions
 [TypeConverter(typeof(TypeConverter<KubernetesApiResourcesOutput>))]
 public partial class KubernetesApiResourcesOutput : Enumeration
 {
-    public static KubernetesApiResourcesOutput wide = (KubernetesApiResourcesOutput) "wide";
-    public static KubernetesApiResourcesOutput name = (KubernetesApiResourcesOutput) "name";
+    public static readonly KubernetesApiResourcesOutput wide = (KubernetesApiResourcesOutput) "wide";
+    public static readonly KubernetesApiResourcesOutput name = (KubernetesApiResourcesOutput) "name";
     public static implicit operator KubernetesApiResourcesOutput(string value)
     {
         return new KubernetesApiResourcesOutput { Value = value };
@@ -7788,15 +7788,15 @@ public partial class KubernetesApiResourcesOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesRunOutput>))]
 public partial class KubernetesRunOutput : Enumeration
 {
-    public static KubernetesRunOutput json = (KubernetesRunOutput) "json";
-    public static KubernetesRunOutput yaml = (KubernetesRunOutput) "yaml";
-    public static KubernetesRunOutput name = (KubernetesRunOutput) "name";
-    public static KubernetesRunOutput templatefile = (KubernetesRunOutput) "templatefile";
-    public static KubernetesRunOutput template = (KubernetesRunOutput) "template";
-    public static KubernetesRunOutput go_template = (KubernetesRunOutput) "go-template";
-    public static KubernetesRunOutput go_template_file = (KubernetesRunOutput) "go-template-file";
-    public static KubernetesRunOutput jsonpath = (KubernetesRunOutput) "jsonpath";
-    public static KubernetesRunOutput jsonpath_file = (KubernetesRunOutput) "jsonpath-file";
+    public static readonly KubernetesRunOutput json = (KubernetesRunOutput) "json";
+    public static readonly KubernetesRunOutput yaml = (KubernetesRunOutput) "yaml";
+    public static readonly KubernetesRunOutput name = (KubernetesRunOutput) "name";
+    public static readonly KubernetesRunOutput templatefile = (KubernetesRunOutput) "templatefile";
+    public static readonly KubernetesRunOutput template = (KubernetesRunOutput) "template";
+    public static readonly KubernetesRunOutput go_template = (KubernetesRunOutput) "go-template";
+    public static readonly KubernetesRunOutput go_template_file = (KubernetesRunOutput) "go-template-file";
+    public static readonly KubernetesRunOutput jsonpath = (KubernetesRunOutput) "jsonpath";
+    public static readonly KubernetesRunOutput jsonpath_file = (KubernetesRunOutput) "jsonpath-file";
     public static implicit operator KubernetesRunOutput(string value)
     {
         return new KubernetesRunOutput { Value = value };
@@ -7811,11 +7811,11 @@ public partial class KubernetesRunOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesGetOutput>))]
 public partial class KubernetesGetOutput : Enumeration
 {
-    public static KubernetesGetOutput json = (KubernetesGetOutput) "json";
-    public static KubernetesGetOutput yaml = (KubernetesGetOutput) "yaml";
-    public static KubernetesGetOutput wide = (KubernetesGetOutput) "wide";
-    public static KubernetesGetOutput name = (KubernetesGetOutput) "name";
-    public static KubernetesGetOutput custom_columns = (KubernetesGetOutput) "custom-columns";
+    public static readonly KubernetesGetOutput json = (KubernetesGetOutput) "json";
+    public static readonly KubernetesGetOutput yaml = (KubernetesGetOutput) "yaml";
+    public static readonly KubernetesGetOutput wide = (KubernetesGetOutput) "wide";
+    public static readonly KubernetesGetOutput name = (KubernetesGetOutput) "name";
+    public static readonly KubernetesGetOutput custom_columns = (KubernetesGetOutput) "custom-columns";
     public static implicit operator KubernetesGetOutput(string value)
     {
         return new KubernetesGetOutput { Value = value };
@@ -7830,15 +7830,15 @@ public partial class KubernetesGetOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesRollingUpdateOutput>))]
 public partial class KubernetesRollingUpdateOutput : Enumeration
 {
-    public static KubernetesRollingUpdateOutput json = (KubernetesRollingUpdateOutput) "json";
-    public static KubernetesRollingUpdateOutput yaml = (KubernetesRollingUpdateOutput) "yaml";
-    public static KubernetesRollingUpdateOutput name = (KubernetesRollingUpdateOutput) "name";
-    public static KubernetesRollingUpdateOutput go_template_file = (KubernetesRollingUpdateOutput) "go-template-file";
-    public static KubernetesRollingUpdateOutput templatefile = (KubernetesRollingUpdateOutput) "templatefile";
-    public static KubernetesRollingUpdateOutput template = (KubernetesRollingUpdateOutput) "template";
-    public static KubernetesRollingUpdateOutput go_template = (KubernetesRollingUpdateOutput) "go-template";
-    public static KubernetesRollingUpdateOutput jsonpath = (KubernetesRollingUpdateOutput) "jsonpath";
-    public static KubernetesRollingUpdateOutput jsonpath_file = (KubernetesRollingUpdateOutput) "jsonpath-file";
+    public static readonly KubernetesRollingUpdateOutput json = (KubernetesRollingUpdateOutput) "json";
+    public static readonly KubernetesRollingUpdateOutput yaml = (KubernetesRollingUpdateOutput) "yaml";
+    public static readonly KubernetesRollingUpdateOutput name = (KubernetesRollingUpdateOutput) "name";
+    public static readonly KubernetesRollingUpdateOutput go_template_file = (KubernetesRollingUpdateOutput) "go-template-file";
+    public static readonly KubernetesRollingUpdateOutput templatefile = (KubernetesRollingUpdateOutput) "templatefile";
+    public static readonly KubernetesRollingUpdateOutput template = (KubernetesRollingUpdateOutput) "template";
+    public static readonly KubernetesRollingUpdateOutput go_template = (KubernetesRollingUpdateOutput) "go-template";
+    public static readonly KubernetesRollingUpdateOutput jsonpath = (KubernetesRollingUpdateOutput) "jsonpath";
+    public static readonly KubernetesRollingUpdateOutput jsonpath_file = (KubernetesRollingUpdateOutput) "jsonpath-file";
     public static implicit operator KubernetesRollingUpdateOutput(string value)
     {
         return new KubernetesRollingUpdateOutput { Value = value };
@@ -7853,15 +7853,15 @@ public partial class KubernetesRollingUpdateOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesLabelOutput>))]
 public partial class KubernetesLabelOutput : Enumeration
 {
-    public static KubernetesLabelOutput json = (KubernetesLabelOutput) "json";
-    public static KubernetesLabelOutput yaml = (KubernetesLabelOutput) "yaml";
-    public static KubernetesLabelOutput name = (KubernetesLabelOutput) "name";
-    public static KubernetesLabelOutput template = (KubernetesLabelOutput) "template";
-    public static KubernetesLabelOutput go_template = (KubernetesLabelOutput) "go-template";
-    public static KubernetesLabelOutput go_template_file = (KubernetesLabelOutput) "go-template-file";
-    public static KubernetesLabelOutput templatefile = (KubernetesLabelOutput) "templatefile";
-    public static KubernetesLabelOutput jsonpath = (KubernetesLabelOutput) "jsonpath";
-    public static KubernetesLabelOutput jsonpath_file = (KubernetesLabelOutput) "jsonpath-file";
+    public static readonly KubernetesLabelOutput json = (KubernetesLabelOutput) "json";
+    public static readonly KubernetesLabelOutput yaml = (KubernetesLabelOutput) "yaml";
+    public static readonly KubernetesLabelOutput name = (KubernetesLabelOutput) "name";
+    public static readonly KubernetesLabelOutput template = (KubernetesLabelOutput) "template";
+    public static readonly KubernetesLabelOutput go_template = (KubernetesLabelOutput) "go-template";
+    public static readonly KubernetesLabelOutput go_template_file = (KubernetesLabelOutput) "go-template-file";
+    public static readonly KubernetesLabelOutput templatefile = (KubernetesLabelOutput) "templatefile";
+    public static readonly KubernetesLabelOutput jsonpath = (KubernetesLabelOutput) "jsonpath";
+    public static readonly KubernetesLabelOutput jsonpath_file = (KubernetesLabelOutput) "jsonpath-file";
     public static implicit operator KubernetesLabelOutput(string value)
     {
         return new KubernetesLabelOutput { Value = value };
@@ -7876,15 +7876,15 @@ public partial class KubernetesLabelOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesAnnotateOutput>))]
 public partial class KubernetesAnnotateOutput : Enumeration
 {
-    public static KubernetesAnnotateOutput json = (KubernetesAnnotateOutput) "json";
-    public static KubernetesAnnotateOutput yaml = (KubernetesAnnotateOutput) "yaml";
-    public static KubernetesAnnotateOutput name = (KubernetesAnnotateOutput) "name";
-    public static KubernetesAnnotateOutput templatefile = (KubernetesAnnotateOutput) "templatefile";
-    public static KubernetesAnnotateOutput template = (KubernetesAnnotateOutput) "template";
-    public static KubernetesAnnotateOutput go_template = (KubernetesAnnotateOutput) "go-template";
-    public static KubernetesAnnotateOutput go_template_file = (KubernetesAnnotateOutput) "go-template-file";
-    public static KubernetesAnnotateOutput jsonpath = (KubernetesAnnotateOutput) "jsonpath";
-    public static KubernetesAnnotateOutput jsonpath_file = (KubernetesAnnotateOutput) "jsonpath-file";
+    public static readonly KubernetesAnnotateOutput json = (KubernetesAnnotateOutput) "json";
+    public static readonly KubernetesAnnotateOutput yaml = (KubernetesAnnotateOutput) "yaml";
+    public static readonly KubernetesAnnotateOutput name = (KubernetesAnnotateOutput) "name";
+    public static readonly KubernetesAnnotateOutput templatefile = (KubernetesAnnotateOutput) "templatefile";
+    public static readonly KubernetesAnnotateOutput template = (KubernetesAnnotateOutput) "template";
+    public static readonly KubernetesAnnotateOutput go_template = (KubernetesAnnotateOutput) "go-template";
+    public static readonly KubernetesAnnotateOutput go_template_file = (KubernetesAnnotateOutput) "go-template-file";
+    public static readonly KubernetesAnnotateOutput jsonpath = (KubernetesAnnotateOutput) "jsonpath";
+    public static readonly KubernetesAnnotateOutput jsonpath_file = (KubernetesAnnotateOutput) "jsonpath-file";
     public static implicit operator KubernetesAnnotateOutput(string value)
     {
         return new KubernetesAnnotateOutput { Value = value };
@@ -7899,15 +7899,15 @@ public partial class KubernetesAnnotateOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesExposeOutput>))]
 public partial class KubernetesExposeOutput : Enumeration
 {
-    public static KubernetesExposeOutput json = (KubernetesExposeOutput) "json";
-    public static KubernetesExposeOutput yaml = (KubernetesExposeOutput) "yaml";
-    public static KubernetesExposeOutput name = (KubernetesExposeOutput) "name";
-    public static KubernetesExposeOutput template = (KubernetesExposeOutput) "template";
-    public static KubernetesExposeOutput go_template = (KubernetesExposeOutput) "go-template";
-    public static KubernetesExposeOutput go_template_file = (KubernetesExposeOutput) "go-template-file";
-    public static KubernetesExposeOutput templatefile = (KubernetesExposeOutput) "templatefile";
-    public static KubernetesExposeOutput jsonpath = (KubernetesExposeOutput) "jsonpath";
-    public static KubernetesExposeOutput jsonpath_file = (KubernetesExposeOutput) "jsonpath-file";
+    public static readonly KubernetesExposeOutput json = (KubernetesExposeOutput) "json";
+    public static readonly KubernetesExposeOutput yaml = (KubernetesExposeOutput) "yaml";
+    public static readonly KubernetesExposeOutput name = (KubernetesExposeOutput) "name";
+    public static readonly KubernetesExposeOutput template = (KubernetesExposeOutput) "template";
+    public static readonly KubernetesExposeOutput go_template = (KubernetesExposeOutput) "go-template";
+    public static readonly KubernetesExposeOutput go_template_file = (KubernetesExposeOutput) "go-template-file";
+    public static readonly KubernetesExposeOutput templatefile = (KubernetesExposeOutput) "templatefile";
+    public static readonly KubernetesExposeOutput jsonpath = (KubernetesExposeOutput) "jsonpath";
+    public static readonly KubernetesExposeOutput jsonpath_file = (KubernetesExposeOutput) "jsonpath-file";
     public static implicit operator KubernetesExposeOutput(string value)
     {
         return new KubernetesExposeOutput { Value = value };
@@ -7922,15 +7922,15 @@ public partial class KubernetesExposeOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesPatchOutput>))]
 public partial class KubernetesPatchOutput : Enumeration
 {
-    public static KubernetesPatchOutput json = (KubernetesPatchOutput) "json";
-    public static KubernetesPatchOutput yaml = (KubernetesPatchOutput) "yaml";
-    public static KubernetesPatchOutput name = (KubernetesPatchOutput) "name";
-    public static KubernetesPatchOutput template = (KubernetesPatchOutput) "template";
-    public static KubernetesPatchOutput go_template = (KubernetesPatchOutput) "go-template";
-    public static KubernetesPatchOutput go_template_file = (KubernetesPatchOutput) "go-template-file";
-    public static KubernetesPatchOutput templatefile = (KubernetesPatchOutput) "templatefile";
-    public static KubernetesPatchOutput jsonpath = (KubernetesPatchOutput) "jsonpath";
-    public static KubernetesPatchOutput jsonpath_file = (KubernetesPatchOutput) "jsonpath-file";
+    public static readonly KubernetesPatchOutput json = (KubernetesPatchOutput) "json";
+    public static readonly KubernetesPatchOutput yaml = (KubernetesPatchOutput) "yaml";
+    public static readonly KubernetesPatchOutput name = (KubernetesPatchOutput) "name";
+    public static readonly KubernetesPatchOutput template = (KubernetesPatchOutput) "template";
+    public static readonly KubernetesPatchOutput go_template = (KubernetesPatchOutput) "go-template";
+    public static readonly KubernetesPatchOutput go_template_file = (KubernetesPatchOutput) "go-template-file";
+    public static readonly KubernetesPatchOutput templatefile = (KubernetesPatchOutput) "templatefile";
+    public static readonly KubernetesPatchOutput jsonpath = (KubernetesPatchOutput) "jsonpath";
+    public static readonly KubernetesPatchOutput jsonpath_file = (KubernetesPatchOutput) "jsonpath-file";
     public static implicit operator KubernetesPatchOutput(string value)
     {
         return new KubernetesPatchOutput { Value = value };
@@ -7945,9 +7945,9 @@ public partial class KubernetesPatchOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesPatchType>))]
 public partial class KubernetesPatchType : Enumeration
 {
-    public static KubernetesPatchType json = (KubernetesPatchType) "json";
-    public static KubernetesPatchType merge = (KubernetesPatchType) "merge";
-    public static KubernetesPatchType strategic = (KubernetesPatchType) "strategic";
+    public static readonly KubernetesPatchType json = (KubernetesPatchType) "json";
+    public static readonly KubernetesPatchType merge = (KubernetesPatchType) "merge";
+    public static readonly KubernetesPatchType strategic = (KubernetesPatchType) "strategic";
     public static implicit operator KubernetesPatchType(string value)
     {
         return new KubernetesPatchType { Value = value };
@@ -7962,15 +7962,15 @@ public partial class KubernetesPatchType : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesReplaceOutput>))]
 public partial class KubernetesReplaceOutput : Enumeration
 {
-    public static KubernetesReplaceOutput json = (KubernetesReplaceOutput) "json";
-    public static KubernetesReplaceOutput yaml = (KubernetesReplaceOutput) "yaml";
-    public static KubernetesReplaceOutput name = (KubernetesReplaceOutput) "name";
-    public static KubernetesReplaceOutput template = (KubernetesReplaceOutput) "template";
-    public static KubernetesReplaceOutput go_template = (KubernetesReplaceOutput) "go-template";
-    public static KubernetesReplaceOutput go_template_file = (KubernetesReplaceOutput) "go-template-file";
-    public static KubernetesReplaceOutput templatefile = (KubernetesReplaceOutput) "templatefile";
-    public static KubernetesReplaceOutput jsonpath = (KubernetesReplaceOutput) "jsonpath";
-    public static KubernetesReplaceOutput jsonpath_file = (KubernetesReplaceOutput) "jsonpath-file";
+    public static readonly KubernetesReplaceOutput json = (KubernetesReplaceOutput) "json";
+    public static readonly KubernetesReplaceOutput yaml = (KubernetesReplaceOutput) "yaml";
+    public static readonly KubernetesReplaceOutput name = (KubernetesReplaceOutput) "name";
+    public static readonly KubernetesReplaceOutput template = (KubernetesReplaceOutput) "template";
+    public static readonly KubernetesReplaceOutput go_template = (KubernetesReplaceOutput) "go-template";
+    public static readonly KubernetesReplaceOutput go_template_file = (KubernetesReplaceOutput) "go-template-file";
+    public static readonly KubernetesReplaceOutput templatefile = (KubernetesReplaceOutput) "templatefile";
+    public static readonly KubernetesReplaceOutput jsonpath = (KubernetesReplaceOutput) "jsonpath";
+    public static readonly KubernetesReplaceOutput jsonpath_file = (KubernetesReplaceOutput) "jsonpath-file";
     public static implicit operator KubernetesReplaceOutput(string value)
     {
         return new KubernetesReplaceOutput { Value = value };
@@ -7985,15 +7985,15 @@ public partial class KubernetesReplaceOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesTaintOutput>))]
 public partial class KubernetesTaintOutput : Enumeration
 {
-    public static KubernetesTaintOutput json = (KubernetesTaintOutput) "json";
-    public static KubernetesTaintOutput yaml = (KubernetesTaintOutput) "yaml";
-    public static KubernetesTaintOutput name = (KubernetesTaintOutput) "name";
-    public static KubernetesTaintOutput template = (KubernetesTaintOutput) "template";
-    public static KubernetesTaintOutput go_template = (KubernetesTaintOutput) "go-template";
-    public static KubernetesTaintOutput go_template_file = (KubernetesTaintOutput) "go-template-file";
-    public static KubernetesTaintOutput templatefile = (KubernetesTaintOutput) "templatefile";
-    public static KubernetesTaintOutput jsonpath = (KubernetesTaintOutput) "jsonpath";
-    public static KubernetesTaintOutput jsonpath_file = (KubernetesTaintOutput) "jsonpath-file";
+    public static readonly KubernetesTaintOutput json = (KubernetesTaintOutput) "json";
+    public static readonly KubernetesTaintOutput yaml = (KubernetesTaintOutput) "yaml";
+    public static readonly KubernetesTaintOutput name = (KubernetesTaintOutput) "name";
+    public static readonly KubernetesTaintOutput template = (KubernetesTaintOutput) "template";
+    public static readonly KubernetesTaintOutput go_template = (KubernetesTaintOutput) "go-template";
+    public static readonly KubernetesTaintOutput go_template_file = (KubernetesTaintOutput) "go-template-file";
+    public static readonly KubernetesTaintOutput templatefile = (KubernetesTaintOutput) "templatefile";
+    public static readonly KubernetesTaintOutput jsonpath = (KubernetesTaintOutput) "jsonpath";
+    public static readonly KubernetesTaintOutput jsonpath_file = (KubernetesTaintOutput) "jsonpath-file";
     public static implicit operator KubernetesTaintOutput(string value)
     {
         return new KubernetesTaintOutput { Value = value };
@@ -8008,15 +8008,15 @@ public partial class KubernetesTaintOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesApplyOutput>))]
 public partial class KubernetesApplyOutput : Enumeration
 {
-    public static KubernetesApplyOutput json = (KubernetesApplyOutput) "json";
-    public static KubernetesApplyOutput yaml = (KubernetesApplyOutput) "yaml";
-    public static KubernetesApplyOutput name = (KubernetesApplyOutput) "name";
-    public static KubernetesApplyOutput template = (KubernetesApplyOutput) "template";
-    public static KubernetesApplyOutput go_template = (KubernetesApplyOutput) "go-template";
-    public static KubernetesApplyOutput go_template_file = (KubernetesApplyOutput) "go-template-file";
-    public static KubernetesApplyOutput templatefile = (KubernetesApplyOutput) "templatefile";
-    public static KubernetesApplyOutput jsonpath = (KubernetesApplyOutput) "jsonpath";
-    public static KubernetesApplyOutput jsonpath_file = (KubernetesApplyOutput) "jsonpath-file";
+    public static readonly KubernetesApplyOutput json = (KubernetesApplyOutput) "json";
+    public static readonly KubernetesApplyOutput yaml = (KubernetesApplyOutput) "yaml";
+    public static readonly KubernetesApplyOutput name = (KubernetesApplyOutput) "name";
+    public static readonly KubernetesApplyOutput template = (KubernetesApplyOutput) "template";
+    public static readonly KubernetesApplyOutput go_template = (KubernetesApplyOutput) "go-template";
+    public static readonly KubernetesApplyOutput go_template_file = (KubernetesApplyOutput) "go-template-file";
+    public static readonly KubernetesApplyOutput templatefile = (KubernetesApplyOutput) "templatefile";
+    public static readonly KubernetesApplyOutput jsonpath = (KubernetesApplyOutput) "jsonpath";
+    public static readonly KubernetesApplyOutput jsonpath_file = (KubernetesApplyOutput) "jsonpath-file";
     public static implicit operator KubernetesApplyOutput(string value)
     {
         return new KubernetesApplyOutput { Value = value };
@@ -8031,15 +8031,15 @@ public partial class KubernetesApplyOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesAutoscaleOutput>))]
 public partial class KubernetesAutoscaleOutput : Enumeration
 {
-    public static KubernetesAutoscaleOutput json = (KubernetesAutoscaleOutput) "json";
-    public static KubernetesAutoscaleOutput yaml = (KubernetesAutoscaleOutput) "yaml";
-    public static KubernetesAutoscaleOutput name = (KubernetesAutoscaleOutput) "name";
-    public static KubernetesAutoscaleOutput template = (KubernetesAutoscaleOutput) "template";
-    public static KubernetesAutoscaleOutput go_template = (KubernetesAutoscaleOutput) "go-template";
-    public static KubernetesAutoscaleOutput go_template_file = (KubernetesAutoscaleOutput) "go-template-file";
-    public static KubernetesAutoscaleOutput templatefile = (KubernetesAutoscaleOutput) "templatefile";
-    public static KubernetesAutoscaleOutput jsonpath = (KubernetesAutoscaleOutput) "jsonpath";
-    public static KubernetesAutoscaleOutput jsonpath_file = (KubernetesAutoscaleOutput) "jsonpath-file";
+    public static readonly KubernetesAutoscaleOutput json = (KubernetesAutoscaleOutput) "json";
+    public static readonly KubernetesAutoscaleOutput yaml = (KubernetesAutoscaleOutput) "yaml";
+    public static readonly KubernetesAutoscaleOutput name = (KubernetesAutoscaleOutput) "name";
+    public static readonly KubernetesAutoscaleOutput template = (KubernetesAutoscaleOutput) "template";
+    public static readonly KubernetesAutoscaleOutput go_template = (KubernetesAutoscaleOutput) "go-template";
+    public static readonly KubernetesAutoscaleOutput go_template_file = (KubernetesAutoscaleOutput) "go-template-file";
+    public static readonly KubernetesAutoscaleOutput templatefile = (KubernetesAutoscaleOutput) "templatefile";
+    public static readonly KubernetesAutoscaleOutput jsonpath = (KubernetesAutoscaleOutput) "jsonpath";
+    public static readonly KubernetesAutoscaleOutput jsonpath_file = (KubernetesAutoscaleOutput) "jsonpath-file";
     public static implicit operator KubernetesAutoscaleOutput(string value)
     {
         return new KubernetesAutoscaleOutput { Value = value };
@@ -8054,15 +8054,15 @@ public partial class KubernetesAutoscaleOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesWaitOutput>))]
 public partial class KubernetesWaitOutput : Enumeration
 {
-    public static KubernetesWaitOutput json = (KubernetesWaitOutput) "json";
-    public static KubernetesWaitOutput yaml = (KubernetesWaitOutput) "yaml";
-    public static KubernetesWaitOutput name = (KubernetesWaitOutput) "name";
-    public static KubernetesWaitOutput template = (KubernetesWaitOutput) "template";
-    public static KubernetesWaitOutput go_template = (KubernetesWaitOutput) "go-template";
-    public static KubernetesWaitOutput go_template_file = (KubernetesWaitOutput) "go-template-file";
-    public static KubernetesWaitOutput templatefile = (KubernetesWaitOutput) "templatefile";
-    public static KubernetesWaitOutput jsonpath = (KubernetesWaitOutput) "jsonpath";
-    public static KubernetesWaitOutput jsonpath_file = (KubernetesWaitOutput) "jsonpath-file";
+    public static readonly KubernetesWaitOutput json = (KubernetesWaitOutput) "json";
+    public static readonly KubernetesWaitOutput yaml = (KubernetesWaitOutput) "yaml";
+    public static readonly KubernetesWaitOutput name = (KubernetesWaitOutput) "name";
+    public static readonly KubernetesWaitOutput template = (KubernetesWaitOutput) "template";
+    public static readonly KubernetesWaitOutput go_template = (KubernetesWaitOutput) "go-template";
+    public static readonly KubernetesWaitOutput go_template_file = (KubernetesWaitOutput) "go-template-file";
+    public static readonly KubernetesWaitOutput templatefile = (KubernetesWaitOutput) "templatefile";
+    public static readonly KubernetesWaitOutput jsonpath = (KubernetesWaitOutput) "jsonpath";
+    public static readonly KubernetesWaitOutput jsonpath_file = (KubernetesWaitOutput) "jsonpath-file";
     public static implicit operator KubernetesWaitOutput(string value)
     {
         return new KubernetesWaitOutput { Value = value };
@@ -8077,15 +8077,15 @@ public partial class KubernetesWaitOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesConvertOutput>))]
 public partial class KubernetesConvertOutput : Enumeration
 {
-    public static KubernetesConvertOutput json = (KubernetesConvertOutput) "json";
-    public static KubernetesConvertOutput yaml = (KubernetesConvertOutput) "yaml";
-    public static KubernetesConvertOutput name = (KubernetesConvertOutput) "name";
-    public static KubernetesConvertOutput go_template = (KubernetesConvertOutput) "go-template";
-    public static KubernetesConvertOutput go_template_file = (KubernetesConvertOutput) "go-template-file";
-    public static KubernetesConvertOutput templatefile = (KubernetesConvertOutput) "templatefile";
-    public static KubernetesConvertOutput template = (KubernetesConvertOutput) "template";
-    public static KubernetesConvertOutput jsonpath = (KubernetesConvertOutput) "jsonpath";
-    public static KubernetesConvertOutput jsonpath_file = (KubernetesConvertOutput) "jsonpath-file";
+    public static readonly KubernetesConvertOutput json = (KubernetesConvertOutput) "json";
+    public static readonly KubernetesConvertOutput yaml = (KubernetesConvertOutput) "yaml";
+    public static readonly KubernetesConvertOutput name = (KubernetesConvertOutput) "name";
+    public static readonly KubernetesConvertOutput go_template = (KubernetesConvertOutput) "go-template";
+    public static readonly KubernetesConvertOutput go_template_file = (KubernetesConvertOutput) "go-template-file";
+    public static readonly KubernetesConvertOutput templatefile = (KubernetesConvertOutput) "templatefile";
+    public static readonly KubernetesConvertOutput template = (KubernetesConvertOutput) "template";
+    public static readonly KubernetesConvertOutput jsonpath = (KubernetesConvertOutput) "jsonpath";
+    public static readonly KubernetesConvertOutput jsonpath_file = (KubernetesConvertOutput) "jsonpath-file";
     public static implicit operator KubernetesConvertOutput(string value)
     {
         return new KubernetesConvertOutput { Value = value };
@@ -8100,15 +8100,15 @@ public partial class KubernetesConvertOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesCreateOutput>))]
 public partial class KubernetesCreateOutput : Enumeration
 {
-    public static KubernetesCreateOutput json = (KubernetesCreateOutput) "json";
-    public static KubernetesCreateOutput yaml = (KubernetesCreateOutput) "yaml";
-    public static KubernetesCreateOutput name = (KubernetesCreateOutput) "name";
-    public static KubernetesCreateOutput template = (KubernetesCreateOutput) "template";
-    public static KubernetesCreateOutput go_template = (KubernetesCreateOutput) "go-template";
-    public static KubernetesCreateOutput go_template_file = (KubernetesCreateOutput) "go-template-file";
-    public static KubernetesCreateOutput templatefile = (KubernetesCreateOutput) "templatefile";
-    public static KubernetesCreateOutput jsonpath = (KubernetesCreateOutput) "jsonpath";
-    public static KubernetesCreateOutput jsonpath_file = (KubernetesCreateOutput) "jsonpath-file";
+    public static readonly KubernetesCreateOutput json = (KubernetesCreateOutput) "json";
+    public static readonly KubernetesCreateOutput yaml = (KubernetesCreateOutput) "yaml";
+    public static readonly KubernetesCreateOutput name = (KubernetesCreateOutput) "name";
+    public static readonly KubernetesCreateOutput template = (KubernetesCreateOutput) "template";
+    public static readonly KubernetesCreateOutput go_template = (KubernetesCreateOutput) "go-template";
+    public static readonly KubernetesCreateOutput go_template_file = (KubernetesCreateOutput) "go-template-file";
+    public static readonly KubernetesCreateOutput templatefile = (KubernetesCreateOutput) "templatefile";
+    public static readonly KubernetesCreateOutput jsonpath = (KubernetesCreateOutput) "jsonpath";
+    public static readonly KubernetesCreateOutput jsonpath_file = (KubernetesCreateOutput) "jsonpath-file";
     public static implicit operator KubernetesCreateOutput(string value)
     {
         return new KubernetesCreateOutput { Value = value };
@@ -8123,15 +8123,15 @@ public partial class KubernetesCreateOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesRunContainerOutput>))]
 public partial class KubernetesRunContainerOutput : Enumeration
 {
-    public static KubernetesRunContainerOutput json = (KubernetesRunContainerOutput) "json";
-    public static KubernetesRunContainerOutput yaml = (KubernetesRunContainerOutput) "yaml";
-    public static KubernetesRunContainerOutput name = (KubernetesRunContainerOutput) "name";
-    public static KubernetesRunContainerOutput template = (KubernetesRunContainerOutput) "template";
-    public static KubernetesRunContainerOutput go_template = (KubernetesRunContainerOutput) "go-template";
-    public static KubernetesRunContainerOutput go_template_file = (KubernetesRunContainerOutput) "go-template-file";
-    public static KubernetesRunContainerOutput templatefile = (KubernetesRunContainerOutput) "templatefile";
-    public static KubernetesRunContainerOutput jsonpath = (KubernetesRunContainerOutput) "jsonpath";
-    public static KubernetesRunContainerOutput jsonpath_file = (KubernetesRunContainerOutput) "jsonpath-file";
+    public static readonly KubernetesRunContainerOutput json = (KubernetesRunContainerOutput) "json";
+    public static readonly KubernetesRunContainerOutput yaml = (KubernetesRunContainerOutput) "yaml";
+    public static readonly KubernetesRunContainerOutput name = (KubernetesRunContainerOutput) "name";
+    public static readonly KubernetesRunContainerOutput template = (KubernetesRunContainerOutput) "template";
+    public static readonly KubernetesRunContainerOutput go_template = (KubernetesRunContainerOutput) "go-template";
+    public static readonly KubernetesRunContainerOutput go_template_file = (KubernetesRunContainerOutput) "go-template-file";
+    public static readonly KubernetesRunContainerOutput templatefile = (KubernetesRunContainerOutput) "templatefile";
+    public static readonly KubernetesRunContainerOutput jsonpath = (KubernetesRunContainerOutput) "jsonpath";
+    public static readonly KubernetesRunContainerOutput jsonpath_file = (KubernetesRunContainerOutput) "jsonpath-file";
     public static implicit operator KubernetesRunContainerOutput(string value)
     {
         return new KubernetesRunContainerOutput { Value = value };
@@ -8146,15 +8146,15 @@ public partial class KubernetesRunContainerOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesEditOutput>))]
 public partial class KubernetesEditOutput : Enumeration
 {
-    public static KubernetesEditOutput json = (KubernetesEditOutput) "json";
-    public static KubernetesEditOutput yaml = (KubernetesEditOutput) "yaml";
-    public static KubernetesEditOutput name = (KubernetesEditOutput) "name";
-    public static KubernetesEditOutput template = (KubernetesEditOutput) "template";
-    public static KubernetesEditOutput go_template = (KubernetesEditOutput) "go-template";
-    public static KubernetesEditOutput go_template_file = (KubernetesEditOutput) "go-template-file";
-    public static KubernetesEditOutput templatefile = (KubernetesEditOutput) "templatefile";
-    public static KubernetesEditOutput jsonpath = (KubernetesEditOutput) "jsonpath";
-    public static KubernetesEditOutput jsonpath_file = (KubernetesEditOutput) "jsonpath-file";
+    public static readonly KubernetesEditOutput json = (KubernetesEditOutput) "json";
+    public static readonly KubernetesEditOutput yaml = (KubernetesEditOutput) "yaml";
+    public static readonly KubernetesEditOutput name = (KubernetesEditOutput) "name";
+    public static readonly KubernetesEditOutput template = (KubernetesEditOutput) "template";
+    public static readonly KubernetesEditOutput go_template = (KubernetesEditOutput) "go-template";
+    public static readonly KubernetesEditOutput go_template_file = (KubernetesEditOutput) "go-template-file";
+    public static readonly KubernetesEditOutput templatefile = (KubernetesEditOutput) "templatefile";
+    public static readonly KubernetesEditOutput jsonpath = (KubernetesEditOutput) "jsonpath";
+    public static readonly KubernetesEditOutput jsonpath_file = (KubernetesEditOutput) "jsonpath-file";
     public static implicit operator KubernetesEditOutput(string value)
     {
         return new KubernetesEditOutput { Value = value };
@@ -8169,15 +8169,15 @@ public partial class KubernetesEditOutput : Enumeration
 [TypeConverter(typeof(TypeConverter<KubernetesScaleOutput>))]
 public partial class KubernetesScaleOutput : Enumeration
 {
-    public static KubernetesScaleOutput json = (KubernetesScaleOutput) "json";
-    public static KubernetesScaleOutput yaml = (KubernetesScaleOutput) "yaml";
-    public static KubernetesScaleOutput name = (KubernetesScaleOutput) "name";
-    public static KubernetesScaleOutput template = (KubernetesScaleOutput) "template";
-    public static KubernetesScaleOutput go_template = (KubernetesScaleOutput) "go-template";
-    public static KubernetesScaleOutput go_template_file = (KubernetesScaleOutput) "go-template-file";
-    public static KubernetesScaleOutput templatefile = (KubernetesScaleOutput) "templatefile";
-    public static KubernetesScaleOutput jsonpath = (KubernetesScaleOutput) "jsonpath";
-    public static KubernetesScaleOutput jsonpath_file = (KubernetesScaleOutput) "jsonpath-file";
+    public static readonly KubernetesScaleOutput json = (KubernetesScaleOutput) "json";
+    public static readonly KubernetesScaleOutput yaml = (KubernetesScaleOutput) "yaml";
+    public static readonly KubernetesScaleOutput name = (KubernetesScaleOutput) "name";
+    public static readonly KubernetesScaleOutput template = (KubernetesScaleOutput) "template";
+    public static readonly KubernetesScaleOutput go_template = (KubernetesScaleOutput) "go-template";
+    public static readonly KubernetesScaleOutput go_template_file = (KubernetesScaleOutput) "go-template-file";
+    public static readonly KubernetesScaleOutput templatefile = (KubernetesScaleOutput) "templatefile";
+    public static readonly KubernetesScaleOutput jsonpath = (KubernetesScaleOutput) "jsonpath";
+    public static readonly KubernetesScaleOutput jsonpath_file = (KubernetesScaleOutput) "jsonpath-file";
     public static implicit operator KubernetesScaleOutput(string value)
     {
         return new KubernetesScaleOutput { Value = value };

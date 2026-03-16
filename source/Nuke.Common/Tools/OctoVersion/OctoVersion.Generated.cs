@@ -407,13 +407,13 @@ public static partial class OctoVersionExecuteSettingsExtensions
 [TypeConverter(typeof(TypeConverter<OctoVersionOutputFormatter>))]
 public partial class OctoVersionOutputFormatter : Enumeration
 {
-    public static OctoVersionOutputFormatter Nuke = (OctoVersionOutputFormatter) "Nuke";
-    public static OctoVersionOutputFormatter Cake = (OctoVersionOutputFormatter) "Cake";
-    public static OctoVersionOutputFormatter Console = (OctoVersionOutputFormatter) "Console";
-    public static OctoVersionOutputFormatter QuietConsole = (OctoVersionOutputFormatter) "QuietConsole";
-    public static OctoVersionOutputFormatter Environment = (OctoVersionOutputFormatter) "Environment";
-    public static OctoVersionOutputFormatter Json = (OctoVersionOutputFormatter) "Json";
-    public static OctoVersionOutputFormatter TeamCity = (OctoVersionOutputFormatter) "TeamCity";
+    public static readonly OctoVersionOutputFormatter Nuke = (OctoVersionOutputFormatter) "Nuke";
+    public static readonly OctoVersionOutputFormatter Cake = (OctoVersionOutputFormatter) "Cake";
+    public static readonly OctoVersionOutputFormatter Console = (OctoVersionOutputFormatter) "Console";
+    public static readonly OctoVersionOutputFormatter QuietConsole = (OctoVersionOutputFormatter) "QuietConsole";
+    public static readonly OctoVersionOutputFormatter Environment = (OctoVersionOutputFormatter) "Environment";
+    public static readonly OctoVersionOutputFormatter Json = (OctoVersionOutputFormatter) "Json";
+    public static readonly OctoVersionOutputFormatter TeamCity = (OctoVersionOutputFormatter) "TeamCity";
     public static implicit operator OctoVersionOutputFormatter(string value)
     {
         return new OctoVersionOutputFormatter { Value = value };

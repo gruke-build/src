@@ -338,11 +338,11 @@ public static partial class DotNetTestSettingsExtensions
 [TypeConverter(typeof(TypeConverter<CoverletOutputFormat>))]
 public partial class CoverletOutputFormat : Enumeration
 {
-    public static CoverletOutputFormat json = (CoverletOutputFormat) "json";
-    public static CoverletOutputFormat lcov = (CoverletOutputFormat) "lcov";
-    public static CoverletOutputFormat opencover = (CoverletOutputFormat) "opencover";
-    public static CoverletOutputFormat cobertura = (CoverletOutputFormat) "cobertura";
-    public static CoverletOutputFormat teamcity = (CoverletOutputFormat) "teamcity";
+    public static readonly CoverletOutputFormat json = (CoverletOutputFormat) "json";
+    public static readonly CoverletOutputFormat lcov = (CoverletOutputFormat) "lcov";
+    public static readonly CoverletOutputFormat opencover = (CoverletOutputFormat) "opencover";
+    public static readonly CoverletOutputFormat cobertura = (CoverletOutputFormat) "cobertura";
+    public static readonly CoverletOutputFormat teamcity = (CoverletOutputFormat) "teamcity";
     public static implicit operator CoverletOutputFormat(string value)
     {
         return new CoverletOutputFormat { Value = value };
@@ -357,9 +357,9 @@ public partial class CoverletOutputFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<CoverletThresholdType>))]
 public partial class CoverletThresholdType : Enumeration
 {
-    public static CoverletThresholdType line = (CoverletThresholdType) "line";
-    public static CoverletThresholdType branch = (CoverletThresholdType) "branch";
-    public static CoverletThresholdType method = (CoverletThresholdType) "method";
+    public static readonly CoverletThresholdType line = (CoverletThresholdType) "line";
+    public static readonly CoverletThresholdType branch = (CoverletThresholdType) "branch";
+    public static readonly CoverletThresholdType method = (CoverletThresholdType) "method";
     public static implicit operator CoverletThresholdType(string value)
     {
         return new CoverletThresholdType { Value = value };
