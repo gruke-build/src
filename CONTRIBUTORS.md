@@ -1,5 +1,6 @@
 - Andrew Bowen
 - BrewingCoder
+- ebugusey
 - GitHub
 - GreemDev
 - James
