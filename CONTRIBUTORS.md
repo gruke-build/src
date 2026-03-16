@@ -2,6 +2,7 @@
 - GitHub
 - GreemDev
 - James
+- jwfx
 - Luiz Henrique Cassettari
 - Marko Lahma
 - Matthias Koch
