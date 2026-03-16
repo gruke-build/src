@@ -36,6 +36,7 @@
 - jwfx
 - jwfx
 - Kamil Kopański
+- Karl Solgård
 - Leon Grave
 - Luiz Henrique Cassettari
 - Lukas Grützmacher
