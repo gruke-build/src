@@ -9,6 +9,7 @@
 - Andrew Stakhov
 - Andriy
 - Anže Videnič
+- arian ashk
 - aristotelos
 - avidenic
 - Bastian Schmidt
