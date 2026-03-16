@@ -23,6 +23,7 @@
 - Chase Florell
 - Chris Pulman
 - Christian Klemm
+- Christian Sindberg
 - Chuong Ho
 - Corey Underdown
 - Corey Underdown
