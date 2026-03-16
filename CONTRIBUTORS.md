@@ -20,6 +20,7 @@
 - Nefarion
 - Pieter Nijs
 - Sam13
+- Scott Hunter
 - Sigtryggur Ómarsson
 - Stefan de Vogelaere
 - Taylor Buchanan
