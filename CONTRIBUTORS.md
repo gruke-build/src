@@ -19,6 +19,7 @@
 - BrewingCoder
 - Cédric Menzi
 - Cervac Petru
+- chaquotay
 - Chase Florell
 - Chris Pulman
 - Christian Klemm
