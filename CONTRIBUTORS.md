@@ -1,6 +1,7 @@
 - Amadeusz Sadowski
 - Andreas Willich
 - Andrew Bowen
+- Andrew H
 - Anže Videnič
 - BrewingCoder
 - Cervac Petru
