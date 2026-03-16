@@ -50,6 +50,7 @@
 - Sandro Figo
 - Scott Hunter
 - Sigtryggur Ómarsson
+- Simusharp
 - Stefan de Vogelaere
 - Taylor Buchanan
 - Taylor Buchanan
