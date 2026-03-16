@@ -51,6 +51,7 @@
 - Georg Dangl
 - GitHub
 - GreemDev
+- Grégoire Pailler
 - Ian Flett
 - Ian Flett
 - Il Harper
