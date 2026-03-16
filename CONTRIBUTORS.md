@@ -132,6 +132,7 @@
 - Simon Cropp
 - Simusharp
 - Søren BC
+- Stefan Bertels
 - Stefan de Vogelaere
 - Stephan Müller
 - Taylor Buchanan
