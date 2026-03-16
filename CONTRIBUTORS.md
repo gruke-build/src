@@ -41,6 +41,7 @@
 - Nefarion
 - Oleg Shevchenko
 - Pieter Nijs
+- Piotr Kiełkowicz
 - Rafael Lillo
 - Sam13
 - Sandro Figo
