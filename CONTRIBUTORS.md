@@ -75,6 +75,7 @@
 - Matthias Schmidt
 - Morten Larsen
 - Muhammad Vakili
+- Nate
 - Nefarion
 - Oleg Shevchenko
 - parc1vaL
