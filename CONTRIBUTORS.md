@@ -75,6 +75,7 @@
 - jnovick
 - Jonas S
 - Jonathan Robson
+- Jonathan Ziller
 - Jörg Preiß
 - Jos van der Til
 - José Manuel Nieto
