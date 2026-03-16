@@ -6,6 +6,7 @@
 - Daniel Kuschny
 - ebugusey
 - Emmanuel Ferdman
+- Eris
 - GitHub
 - GreemDev
 - ITaluone
