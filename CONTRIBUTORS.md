@@ -40,6 +40,7 @@
 - Eric Sondergard
 - Eris
 - Frank Strieter
+- fvaillancourt
 - Gabriel Weyer
 - Georg Dangl
 - GitHub
