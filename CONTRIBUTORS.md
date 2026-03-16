@@ -158,6 +158,7 @@
 - Victor Gladkikh
 - Vince Vriend
 - Vlad Khapin
+- Vladislav Khapin
 - Vladyslav
 - Volkmar Rigo
 - Wael Rabadi
