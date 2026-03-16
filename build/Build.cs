@@ -94,9 +94,6 @@ partial class Build
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;
 
-    Configure<DotNetTestSettings> ITest.TestSettings => _ => _
-        .SetProcessEnvironmentVariable("NUKE_TELEMETRY_OPTOUT", bool.TrueString);
-
     Target ITest.Test => _ => _
         .Inherit<ITest>()
         .OnlyWhenStatic(() => Host is not GitHubActions { Workflow: AlphaDeployment })
