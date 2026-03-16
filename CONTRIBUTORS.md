@@ -1,6 +1,7 @@
 - Andrew Bowen
 - GitHub
 - GreemDev
+- James
 - Luiz Henrique Cassettari
 - Marko Lahma
 - Matthias Koch
