@@ -1,4 +1,4 @@
-﻿// Copyright 2023 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of NUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -10,9 +10,9 @@ using Nuke.Common.Execution.Theming;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 
-namespace Nuke.Common.CI.GitHubActions;
+namespace Nuke.Common.CI.ForgejoActions;
 
-public partial class GitHubActions
+public partial class ForgejoActions
 {
     internal override IHostTheme Theme => AnsiConsoleHostTheme.Default256AnsiColorTheme;
 
@@ -20,7 +20,8 @@ public partial class GitHubActions
     {
         return DelegateDisposable.CreateBracket(
             () => Group(text),
-            () => EndGroup(text));
+            () => EndGroup(text)
+        );
     }
 
     protected internal override void ReportWarning(string text, string details = null)

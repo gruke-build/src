@@ -18,7 +18,7 @@ namespace Nuke.Common.CI.ForgejoActions;
 [PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
-public class ForgejoActions : Host, IBuildServer, IEnvironment<ForgejoActions>
+public partial class ForgejoActions : Host, IBuildServer, IEnvironment<ForgejoActions>
 {
     public static string EnvironmentVariablePrefix => "FORGEJO";
 
