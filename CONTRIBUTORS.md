@@ -73,6 +73,7 @@
 - jnovick
 - Jonas S
 - Jonathan Robson
+- Jörg Preiß
 - Jos van der Til
 - José Manuel Nieto
 - Julian Moschüring
