@@ -17,6 +17,7 @@
 - arian ashk
 - aristotelos
 - arodus
+- Arodus
 - Atif Aziz
 - avidenic
 - baez90
