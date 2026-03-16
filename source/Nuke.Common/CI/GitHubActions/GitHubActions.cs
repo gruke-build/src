@@ -53,7 +53,7 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
                 return null;
 
             var base64Auth = Convert.ToBase64String(
-                Encoding.ASCII.GetBytes($":{IEnvironment<GitHubActions>.Get("TOKEN")}")
+                Encoding.ASCII.GetBytes($":{Token.NotNull()}")
             );
 
             var client = new HttpClient();
@@ -135,10 +135,12 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
 
     // https://github.com/actions/toolkit/tree/master/packages/core/src
 
+    [CanBeNull] public string Token => IEnvironment<GitHubActions>.Get("TOKEN");
+
     /// <summary>
     /// Will be equivalent to <see cref="long.MinValue"/> if there is no <c>GITHUB_TOKEN</c> environment variable set.
     /// </summary>
-    [NoValueCheck] public long JobId => _jobId.Value;
+    public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
