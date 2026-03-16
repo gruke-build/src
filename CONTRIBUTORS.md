@@ -1,4 +1,5 @@
 - Amadeusz Sadowski
+- Andreas Willich
 - Andrew Bowen
 - Anže Videnič
 - BrewingCoder
