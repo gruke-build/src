@@ -81,6 +81,7 @@
 - Taylor Buchanan
 - Taylor Buchanan
 - ThomasBoettcherHolschen
+- Todor Todorov
 - tyb-dev
 - Vladyslav
 - workgroupengineering
