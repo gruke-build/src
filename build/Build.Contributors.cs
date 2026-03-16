@@ -22,17 +22,16 @@ partial class Build
         {
             var previousContributors = ContributorsCacheFile.Existing()?.ReadAllLines() ?? new string[0];
 
-            var repositoryDirectory = RootDirectory / ".git";
-            var contributors = Git(@"log --pretty=""%an|%ae%n%cn|%ce""",
-                    workingDirectory: repositoryDirectory,
-                    logOutput: false)
+            var contributors = Git($"{"log --pretty=\"%an|%ae%n%cn|%ce\"":nq}", logOutput: false)
                 .Select(x => x.Text)
-                .Distinct().ToList()
+                .Distinct()
+                .ToList()
                 .Select(x => x.Split('|'))
                 .ForEachLazy(x => Assert.Count(x, length: 2))
-                .Select(x => new { Name = x[0], Email = x[1] }).ToList();
+                .Select(x => (Name: x[0], Email: x[1])).ToList();
 
-            var newContributors = contributors.Where(x => !previousContributors.Contains(x.Email));
+            var newContributors = contributors
+                .Where(x => !previousContributors.Contains(x.Email));
 
             foreach (var newContributor in newContributors)
             {
