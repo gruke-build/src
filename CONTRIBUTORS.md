@@ -103,6 +103,7 @@
 - Matthias Schmidt
 - Melvyn Laïly
 - Michael Baird
+- Michael Bisbjerg
 - Michael Samorokov
 - Moien Tajik
 - Morten Gjesing
