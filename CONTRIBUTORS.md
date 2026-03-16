@@ -41,6 +41,7 @@
 - Il Harper
 - ITaluone
 - James
+- Jamie Phillips
 - jnovick
 - Jos van der Til
 - José Manuel Nieto
