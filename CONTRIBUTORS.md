@@ -15,6 +15,7 @@
 - Jos van der Til
 - José Manuel Nieto
 - jwfx
+- Kamil Kopański
 - Luiz Henrique Cassettari
 - Marko Lahma
 - Matthias Koch
