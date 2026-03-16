@@ -45,6 +45,7 @@
 - Morten Larsen
 - Nefarion
 - Oleg Shevchenko
+- Peter Palotas
 - Pieter Nijs
 - Piotr Kiełkowicz
 - Rafael Lillo
