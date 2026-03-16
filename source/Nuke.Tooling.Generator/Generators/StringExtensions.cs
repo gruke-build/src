@@ -14,7 +14,7 @@ namespace Nuke.CodeGeneration.Generators;
 public static class StringExtensions
 {
     private static readonly string[] s_reservedWords =
-    {
+    [
         "abstract",
         "as",
         "base",
@@ -92,7 +92,7 @@ public static class StringExtensions
         "void",
         "volatile",
         "while"
-    };
+    ];
 
     public static string ToInstance(this string text)
     {

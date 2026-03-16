@@ -142,7 +142,7 @@ public class CITest
     private static object CreateInstance(Type type)
     {
         var bindingFlags = BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.OptionalParamBinding;
-        return Activator.CreateInstance(type, bindingFlags, binder: null, args: new object[0], culture: CultureInfo.CurrentCulture);
+        return Activator.CreateInstance(type, bindingFlags, binder: null, args: [], culture: CultureInfo.CurrentCulture);
     }
 
     private static bool IsRunning(Type type)

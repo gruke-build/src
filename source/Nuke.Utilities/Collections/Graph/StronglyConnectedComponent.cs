@@ -15,7 +15,7 @@ internal class StronglyConnectedComponent<T> : IEnumerable<Vertex<T>>
 
     public StronglyConnectedComponent()
     {
-        _list = new LinkedList<Vertex<T>>();
+        _list = [];
     }
 
     public void Add(Vertex<T> vertex)

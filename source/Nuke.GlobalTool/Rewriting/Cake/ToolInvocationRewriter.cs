@@ -21,18 +21,17 @@ namespace Nuke.GlobalTool.Rewriting.Cake;
 internal class ToolInvocationRewriter : SafeSyntaxRewriter
 {
     private static IEnumerable<ReplacementData> Replacements =>
-        new ReplacementData[]
-        {
-            new(original: "DotNetCoreRestore", replacement: nameof(DotNetTasks.DotNetRestore), positionals: new[] { "ProjectFile" }),
-            new(original: "DotNetCoreBuild", replacement: nameof(DotNetTasks.DotNetBuild), positionals: new[] { "ProjectFile" }),
-            new(original: "DotNetCoreTest", replacement: nameof(DotNetTasks.DotNetTest), positionals: new[] { "ProjectFile" }),
-            new(original: "DotNetCorePack", replacement: nameof(DotNetTasks.DotNetPack), positionals: new[] { "ProjectFile" }),
-            new(original: "DotNetCorePublish", replacement: nameof(DotNetTasks.DotNetPublish), positionals: new[] { "Project" }),
-            new(original: "Sign", replacement: nameof(SignToolTasks.SignTool), positionals: new[] { "Files" }),
-            new(original: "NuGetRestore", replacement: nameof(NuGetTasks.NuGetRestore), positionals: new[] { "TargetPath" }),
-            new(original: "NuGetPack", replacement: nameof(NuGetTasks.NuGetPack), positionals: new[] { "TargetPath" }),
-            new(original: "MSBuild", replacement: nameof(MSBuildTasks.MSBuild), positionals: new[] { "TargetPath" }),
-        };
+    [
+        new(original: "DotNetCoreRestore", replacement: nameof(DotNetTasks.DotNetRestore), positionals: ["ProjectFile"]),
+            new(original: "DotNetCoreBuild", replacement: nameof(DotNetTasks.DotNetBuild), positionals: ["ProjectFile"]),
+            new(original: "DotNetCoreTest", replacement: nameof(DotNetTasks.DotNetTest), positionals: ["ProjectFile"]),
+            new(original: "DotNetCorePack", replacement: nameof(DotNetTasks.DotNetPack), positionals: ["ProjectFile"]),
+            new(original: "DotNetCorePublish", replacement: nameof(DotNetTasks.DotNetPublish), positionals: ["Project"]),
+            new(original: "Sign", replacement: nameof(SignToolTasks.SignTool), positionals: ["Files"]),
+            new(original: "NuGetRestore", replacement: nameof(NuGetTasks.NuGetRestore), positionals: ["TargetPath"]),
+            new(original: "NuGetPack", replacement: nameof(NuGetTasks.NuGetPack), positionals: ["TargetPath"]),
+            new(original: "MSBuild", replacement: nameof(MSBuildTasks.MSBuild), positionals: ["TargetPath"])
+    ];
 
     public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
     {
@@ -84,7 +83,7 @@ internal class ToolInvocationRewriter : SafeSyntaxRewriter
         {
             Original = original;
             Replacement = replacement;
-            Positionals = positionals ?? new string[0];
+            Positionals = positionals ?? [];
             Renames = renames ?? new Dictionary<string, string>();
 
             Renames.Add("ArgumentCustomization", "ProcessArgumentConfigurator");

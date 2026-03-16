@@ -40,7 +40,7 @@ public class Task : IDeprecatable
     public bool OmitCommonProperties { get; set; }
 
     [Description("Appends the properties of the named property sets.")]
-    public List<string> CommonPropertySets { get; set; } = new();
+    public List<string> CommonPropertySets { get; set; } = [];
 
     [Description("Generates a pre-process hook")]
     public bool PreProcess { get; set; }

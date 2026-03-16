@@ -151,7 +151,7 @@ public partial class GitRepository
     private static IReadOnlyCollection<string> GetTagsFromCommit(AbsolutePath gitDirectory, string commit)
     {
         if (commit == null)
-            return Array.Empty<string>();
+            return [];
 
         var packedTags = GetPackedRefs(gitDirectory)
             .Where(x => x.Commit == commit && x.Reference.StartsWithOrdinalIgnoreCase("refs/tags"))
@@ -170,7 +170,7 @@ public partial class GitRepository
     {
         var packedRefsFile = gitDirectory / "packed-refs";
         if (!packedRefsFile.Exists())
-            return Array.Empty<(string Commit, string Reference)>();
+            return [];
 
         return packedRefsFile.ReadAllLines()
             .Where(x => !x.StartsWith("#") && !x.StartsWith("^"))

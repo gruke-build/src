@@ -32,7 +32,7 @@ public class ArgumentParserTest
     [Fact]
     public void TestNamed()
     {
-        var parser = new ArgumentParser(new[] { "--string", "foobar" });
+        var parser = new ArgumentParser(["--string", "foobar"]);
 
         parser.HasArgument("string").Should().BeTrue();
 

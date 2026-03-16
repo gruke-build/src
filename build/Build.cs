@@ -108,10 +108,10 @@ partial class Build
     bool IReportCoverage.ReportToCodecov => false;
 
     IEnumerable<(string PackageId, string Version)> IReportIssues.InspectCodePlugins
-        => new (string PackageId, string Version)[]
-           {
-               new("ReSharperPlugin.CognitiveComplexity", ReSharperPluginLatest)
-           };
+        =>
+        [
+            new("ReSharperPlugin.CognitiveComplexity", ReSharperPluginLatest)
+        ];
 
     bool IReportIssues.InspectCodeFailOnWarning => false;
     bool IReportIssues.InspectCodeReportWarnings => true;

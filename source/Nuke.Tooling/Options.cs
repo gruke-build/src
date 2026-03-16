@@ -72,7 +72,7 @@ public class Options : IOptions
     private static JsonConverter OptionsBuilderConverter = new ObjectFromFieldConverter(typeof(Options), "InternalOptions");
 
     internal static JsonSerializer JsonSerializer = new() { Converters = { LookupTableConverter, OptionsBuilderConverter } };
-    internal static JsonSerializerSettings JsonSerializerSettings = new() { Converters = new[] { LookupTableConverter, OptionsBuilderConverter } };
+    internal static JsonSerializerSettings JsonSerializerSettings = new() { Converters = [LookupTableConverter, OptionsBuilderConverter] };
 
     protected internal JObject InternalOptions = new();
 
@@ -216,7 +216,7 @@ public class Options : IOptions
 
     private void UsingCollection<T>(Expression<Func<IReadOnlyCollection<T>>> provider, Action<List<T>> action)
     {
-        var collection = Get<List<T>>(provider) ?? new List<T>();
+        var collection = Get<List<T>>(provider) ?? [];
         action.Invoke(collection);
         Set(provider, collection);
     }

@@ -223,7 +223,7 @@ public static class Logging
 
         private InMemorySink()
         {
-            _logEvents = new List<LogEvent>();
+            _logEvents = [];
         }
 
         public IReadOnlyCollection<LogEvent> LogEvents => _logEvents.AsReadOnly();

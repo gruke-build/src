@@ -21,7 +21,7 @@ internal class StronglyConnectedComponentFinder<T>
     /// <returns>Set of strongly connected components (sets of vertices)</returns>
     public StronglyConnectedComponentList<T> DetectCycle(IEnumerable<Vertex<T>> graph)
     {
-        _stronglyConnectedComponents = new StronglyConnectedComponentList<T>();
+        _stronglyConnectedComponents = [];
         _index = 0;
         _stack = new Stack<Vertex<T>>();
         foreach (var v in graph)

@@ -52,7 +52,7 @@ public partial class Host
             () =>
             {
                 var formattedBlockText = text
-                    .Split(new[] { EnvironmentInfo.NewLine }, StringSplitOptions.None)
+                    .Split([EnvironmentInfo.NewLine], StringSplitOptions.None)
                     .Select(Theme.FormatInformation);
 
                 Debug();

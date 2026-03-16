@@ -20,7 +20,7 @@ partial class Build
     Target UpdateContributors => _ => _
         .Executes(() =>
         {
-            var previousContributors = ContributorsCacheFile.Existing()?.ReadAllLines() ?? new string[0];
+            var previousContributors = ContributorsCacheFile.Existing()?.ReadAllLines() ?? [];
 
             var contributors = Git($"{"log --pretty=\"%an|%ae%n%cn|%ce\"":nq}", logOutput: false)
                 .Select(x => x.Text)
@@ -35,7 +35,7 @@ partial class Build
 
             foreach (var newContributor in newContributors)
             {
-                var content = (ContributorsFile.Existing()?.ReadAllLines() ?? new string[0])
+                var content = (ContributorsFile.Existing()?.ReadAllLines() ?? [])
                     .Concat($"- {newContributor.Name}").OrderBy(x => x);
                 ContributorsFile.WriteAllLines(content, Encoding.Default);
                 Git($"add {ContributorsFile}");

@@ -43,7 +43,7 @@ public static class ToolPathResolver
                         : pathExecutable);
 
             var environmentVariable = Environment.GetEnvironmentVariable("PATH").NotNullOrEmpty("PATH variable not available");
-            var paths = environmentVariable.Split(new[] { Path.PathSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            var paths = environmentVariable.Split([Path.PathSeparator], StringSplitOptions.RemoveEmptyEntries);
             return paths.Select(GetExecutableFullPath).FirstOrDefault(File.Exists).NotNull($"Could not find '{pathExecutable}' on the PATH.");
         }
 

@@ -7,7 +7,7 @@ namespace Nuke.Common.Utilities;
 public static partial class StringExtensions
 {
     private static readonly string[] KnownWords =
-    {
+    [
         "DotNet",
         "GitHub",
         "GitVersion",
@@ -19,5 +19,5 @@ public static partial class StringExtensions
         "GitLab",
         "SignPath",
         "JetBrains"
-    };
+    ];
 }

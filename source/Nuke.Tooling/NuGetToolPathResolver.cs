@@ -26,8 +26,8 @@ public static class NuGetToolPathResolver
     {
         Assert.True(packageId != null && packageExecutable != null);
 
-        var packageDirectory = GetPackageDirectory(packageId.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries), version);
-        var packageExecutables = packageExecutable.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+        var packageDirectory = GetPackageDirectory(packageId.Split(['|'], StringSplitOptions.RemoveEmptyEntries), version);
+        var packageExecutables = packageExecutable.Split(['|'], StringSplitOptions.RemoveEmptyEntries);
 #if !NETSTANDARD2_0
             var enumerationOptions = new EnumerationOptions { RecurseSubdirectories = true, MatchCasing = MatchCasing.CaseInsensitive };
 #endif

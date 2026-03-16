@@ -27,7 +27,7 @@ public ref struct ArgumentStringHandler
         out bool handlerIsValid)
     {
         _builder = new(literalLength, formattedCount);
-        _secretValues = new List<string>();
+        _secretValues = [];
         handlerIsValid = true;
     }
 

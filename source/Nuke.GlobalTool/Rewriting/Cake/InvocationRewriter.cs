@@ -16,17 +16,16 @@ namespace Nuke.GlobalTool.Rewriting.Cake;
 internal class InvocationRewriter : SafeSyntaxRewriter
 {
     private static IEnumerable<ReplacementData> Replacements =>
-        new ReplacementData[]
-        {
-            new(original: "Does", replacement: nameof(ITargetDefinition.Executes), convert: ConvertLambdaBodyToBlock),
+    [
+        new(original: "Does", replacement: nameof(ITargetDefinition.Executes), convert: ConvertLambdaBodyToBlock),
             new(original: "IsDependentOn", replacement: nameof(ITargetDefinition.DependsOn), convert: ConvertStringToIdentifier),
             new(original: "IsDependeeOf", replacement: nameof(ITargetDefinition.DependentFor), convert: ConvertStringToIdentifier),
             new(original: "ContinueOnError", replacement: nameof(ITargetDefinition.ProceedAfterFailure)),
             new(original: "WithCriteria", replacement: RenameWithCriteria, convert: ConvertWithCriteria),
             // Logger
             new(original: "Information", replacement: $"{nameof(Log)}.{nameof(Log.Information)}"),
-            new(original: "Verbose", replacement: $"{nameof(Log)}.{nameof(Log.Debug)}"),
-        };
+            new(original: "Verbose", replacement: $"{nameof(Log)}.{nameof(Log.Debug)}")
+    ];
 
     private static Func<ExpressionSyntax, ExpressionSyntax> ConvertStringToIdentifier = x =>
     {

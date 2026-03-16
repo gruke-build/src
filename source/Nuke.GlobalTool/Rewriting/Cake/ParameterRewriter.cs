@@ -37,9 +37,9 @@ internal class ParameterRewriter : SafeSyntaxRewriter
             var attribute = Attribute(IdentifierName(name));
             if (argument != null)
                 attribute = attribute.WithArgumentList(AttributeArgumentList(
-                    SeparatedList(new[] { AttributeArgument(argument.ToLiteralExpression()) })));
+                    SeparatedList([AttributeArgument(argument.ToLiteralExpression())])));
 
-            return AttributeList(SeparatedList(new[] { attribute }));
+            return AttributeList(SeparatedList([attribute]));
         }
 
         node = node.WithoutTrivia();

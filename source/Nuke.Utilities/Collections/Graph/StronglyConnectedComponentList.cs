@@ -15,7 +15,7 @@ internal class StronglyConnectedComponentList<T> : IEnumerable<StronglyConnected
 
     public StronglyConnectedComponentList()
     {
-        _collection = new LinkedList<StronglyConnectedComponent<T>>();
+        _collection = [];
     }
 
     public void Add(StronglyConnectedComponent<T> scc)

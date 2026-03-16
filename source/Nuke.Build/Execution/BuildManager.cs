@@ -21,7 +21,7 @@ internal static class BuildManager
 {
     private const int ErrorExitCode = -1;
 
-    private static readonly LinkedList<Action> s_cancellationHandlers = new();
+    private static readonly LinkedList<Action> s_cancellationHandlers = [];
 
     public static event Action CancellationHandler
     {

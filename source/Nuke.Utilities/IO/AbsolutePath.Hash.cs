@@ -64,7 +64,7 @@ partial class AbsolutePathExtensions
             md5.TransformBlock(contentBytes, inputOffset: 0, inputCount: contentBytes.Length, outputBuffer: contentBytes, outputOffset: 0);
         }
 
-        md5.TransformFinalBlock(new byte[0], inputOffset: 0, inputCount: 0);
+        md5.TransformFinalBlock([], inputOffset: 0, inputCount: 0);
 
         return BitConverter.ToString(md5.Hash).Replace("-", "").ToLower();
     }

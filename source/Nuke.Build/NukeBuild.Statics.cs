@@ -31,7 +31,7 @@ public abstract partial class NukeBuild
 
         Verbosity = ParameterService.GetParameter<Verbosity?>(() => Verbosity) ?? Verbosity.Normal;
         Host = ParameterService.GetParameter(() => Host) ?? Host.Default;
-        LoadedLocalProfiles = ParameterService.GetParameter(() => LoadedLocalProfiles) ?? new string[0];
+        LoadedLocalProfiles = ParameterService.GetParameter(() => LoadedLocalProfiles) ?? [];
     }
 
     /// <summary>

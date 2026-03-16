@@ -19,7 +19,7 @@ namespace Nuke.Common.Execution;
 
 internal partial class Telemetry
 {
-    private static readonly string[] s_knownTargets = { "Restore", "Compile", "Test" };
+    private static readonly string[] s_knownTargets = ["Restore", "Compile", "Test"];
 
     private static Dictionary<string, string> GetCommonProperties(INukeBuild build = null)
     {

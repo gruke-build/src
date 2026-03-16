@@ -14,9 +14,8 @@ namespace Nuke.Common.CI.TeamCity.Configuration;
 public class TeamCityConfiguration : ConfigurationEntity
 {
     public virtual string[] Header =>
-        new[]
-        {
-            "import jetbrains.buildServer.configs.kotlin.v2018_1.*",
+    [
+        "import jetbrains.buildServer.configs.kotlin.v2018_1.*",
             "import jetbrains.buildServer.configs.kotlin.v2018_1.buildFeatures.*",
             "import jetbrains.buildServer.configs.kotlin.v2018_1.buildSteps.*",
             "import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.*",
@@ -24,7 +23,7 @@ public class TeamCityConfiguration : ConfigurationEntity
             "",
             $"version = {Version.DoubleQuote()}",
             ""
-        };
+    ];
 
     public string Version { get; set; }
     public TeamCityProject Project { get; set; }

@@ -23,9 +23,8 @@ internal class ClassRewriter : SafeSyntaxRewriter
     private static readonly SyntaxTrivia EndMultilineComment = SyntaxTrivia(SyntaxKind.MultiLineCommentTrivia, "*/");
 
     private static string[] NamespaceImports =>
-        new[]
-        {
-            "System",
+    [
+        "System",
             "System.Collections.Generic",
             "System.IO",
             "System.Linq",
@@ -40,21 +39,20 @@ internal class ClassRewriter : SafeSyntaxRewriter
             "Nuke.Common.Tools.DotNet",
             "Nuke.Common.Tools.GitVersion",
             "Nuke.Common.Tools.SignTool",
-            "Nuke.Common.Utilities.Collections",
-        };
+            "Nuke.Common.Utilities.Collections"
+    ];
 
     private static Type[] StaticClassImports =>
-        new[]
-        {
-            typeof(ControlFlow),
+    [
+        typeof(ControlFlow),
             typeof(DotNetTasks),
             typeof(MSBuildTasks),
             typeof(SignToolTasks),
             typeof(NuGetTasks),
             typeof(TextTasks),
             typeof(XmlTasks),
-            typeof(EnvironmentInfo),
-        };
+            typeof(EnvironmentInfo)
+    ];
 
     private string _defaultTargetFieldName;
     private string _defaultTargetName;
@@ -70,7 +68,7 @@ internal class ClassRewriter : SafeSyntaxRewriter
             var literalExpression = defaultTargetField.GetSingleDeclarator().Initializer?.Value as LiteralExpressionSyntax;
             var defaultTarget = literalExpression.GetConstantValue<string>();
             var mainMethodDeclaration = ParseMemberDeclaration($"public static int Main() => Execute<Build>(x => x.{defaultTarget});");
-            node = node.WithMembers(List(new[] { mainMethodDeclaration }.Concat(node.Members.Except(new[] { defaultTargetField }))));
+            node = node.WithMembers(List(new[] { mainMethodDeclaration }.Concat(node.Members.Except([defaultTargetField]))));
         }
         else if (_defaultTargetName != null)
         {

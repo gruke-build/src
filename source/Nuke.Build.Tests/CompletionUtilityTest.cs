@@ -33,7 +33,7 @@ public class CompletionUtilityTest
     {
         var file = TestDirectory / "SchemaUtilityTest.TestTargetBuild.verified.json";
         var schema = JsonDocument.Parse(file.ReadAllText());
-        var items = CompletionUtility.GetItemsFromSchema(schema, new[] { "dev" });
+        var items = CompletionUtility.GetItemsFromSchema(schema, ["dev"]);
         await Verifier.Verify(items, _verifySettings);
     }
 

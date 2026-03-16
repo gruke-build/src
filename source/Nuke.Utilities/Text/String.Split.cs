@@ -66,7 +66,7 @@ public static partial class StringExtensions
     [Pure]
     public static string[] SplitLineBreaks(this string str, StringSplitOptions options = StringSplitOptions.None)
     {
-        return str.Split(new[] { "\r\n", "\n" }, options);
+        return str.Split(["\r\n", "\n"], options);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public static partial class StringExtensions
     [Pure]
     public static string[] SplitParagraphs(this string str, StringSplitOptions options = StringSplitOptions.None)
     {
-        return str.Split(new[] { "\r\n\r\n", "\n\n" }, options);
+        return str.Split(["\r\n\r\n", "\n\n"], options);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public static partial class StringExtensions
     [Pure]
     public static string[] SplitSpace(this string str)
     {
-        return str.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        return str.Split([' '], StringSplitOptions.RemoveEmptyEntries);
     }
 
     /// <summary>

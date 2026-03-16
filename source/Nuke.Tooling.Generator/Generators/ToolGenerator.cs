@@ -115,7 +115,7 @@ public static class ToolGenerator
                    "System.Linq",
                    "System.Text"
                }
-            .Concat(tool.Imports ?? new List<string>())
+            .Concat(tool.Imports ?? [])
             .OrderBy(x => x);
     }
 }

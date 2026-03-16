@@ -89,7 +89,7 @@ public partial class Program
                 : "build.ps1/sh files";
 
             return PromptForConfirmation($"Could not find {missingItem}. Do you want to setup a build?")
-                ? Setup(new string[0], rootDirectory, buildScript: null)
+                ? Setup([], rootDirectory, buildScript: null)
                 : 0;
         }
 

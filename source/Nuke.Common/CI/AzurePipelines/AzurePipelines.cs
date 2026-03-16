@@ -238,7 +238,7 @@ public partial class AzurePipelines : Host, IBuildServer
             dictionaryConfigurator?
                 .Invoke(new Dictionary<string, object>())
                 .Select(x => $"{x.Key}={EscapeValue(x.Value.ToString())}").ToArray()
-            ?? new string[0];
+            ?? [];
 
         Write(command, escapedTokens, message);
     }

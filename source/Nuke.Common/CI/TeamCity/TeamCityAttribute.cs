@@ -25,7 +25,7 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
 {
     public override Type HostType => typeof(TeamCity);
     public override AbsolutePath ConfigurationFile => TeamcityDirectory / "settings.kts";
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { PomFile, ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [PomFile, ConfigurationFile];
     private AbsolutePath TeamcityDirectory => Build.RootDirectory / ".teamcity";
     private AbsolutePath PomFile => TeamcityDirectory / "pom.xml";
 
@@ -39,18 +39,18 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
     public string Description { get; set; }
     public bool CleanCheckoutDirectory { get; set; } = true;
 
-    public string[] VcsTriggerBranchFilters { get; set; } = new string[0];
-    public string[] VcsTriggerRules { get; set; } = { "+:**" };
-    public string[] VcsTriggeredTargets { get; set; } = new string[0];
+    public string[] VcsTriggerBranchFilters { get; set; } = [];
+    public string[] VcsTriggerRules { get; set; } = ["+:**"];
+    public string[] VcsTriggeredTargets { get; set; } = [];
 
     public bool NightlyBuildAlways { get; set; } = true;
-    public string[] NightlyTriggerBranchFilters { get; set; } = new string[0];
-    public string[] NightlyTriggerRules { get; set; } = { "+:**" };
-    public string[] NightlyTriggeredTargets { get; set; } = new string[0];
+    public string[] NightlyTriggerBranchFilters { get; set; } = [];
+    public string[] NightlyTriggerRules { get; set; } = ["+:**"];
+    public string[] NightlyTriggeredTargets { get; set; } = [];
 
-    public string[] ManuallyTriggeredTargets { get; set; } = new string[0];
+    public string[] ManuallyTriggeredTargets { get; set; } = [];
 
-    public string[] ImportSecrets { get; set; } = new string[0];
+    public string[] ImportSecrets { get; set; } = [];
 
     protected override StreamWriter CreateStream()
     {
@@ -151,7 +151,7 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
                              };
             }
 
-            artifactRules = new[] { "**/*" };
+            artifactRules = ["**/*"];
             snapshotDependencies = buildTypes[executableTarget]
                 .Select(x => new TeamCitySnapshotDependency
                              {
@@ -163,7 +163,7 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
                 .Select(x => new TeamCityArtifactDependency
                              {
                                  BuildType = x,
-                                 ArtifactRules = new[] { "**/*" }
+                                 ArtifactRules = ["**/*"]
                              }).ToArray<TeamCityDependency>();
         }
 

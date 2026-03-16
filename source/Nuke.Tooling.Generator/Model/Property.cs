@@ -84,7 +84,7 @@ public class Property : IDeprecatable
     public string Help { get; set; }
 
     [Description("Dictionary delegates for named properties.")]
-    public List<Property> Delegates { get; set; } = new();
+    public List<Property> Delegates { get; set; } = [];
 
     [Description("Obsolete message. Property is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }

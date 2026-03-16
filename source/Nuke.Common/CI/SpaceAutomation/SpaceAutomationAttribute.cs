@@ -44,7 +44,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
 
     public override Type HostType => typeof(SpaceAutomation);
     public override AbsolutePath ConfigurationFile => Build.RootDirectory / ".space.kts";
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
     public override IEnumerable<string> IrrelevantTargetNames => new string[0];
@@ -52,7 +52,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
     public string VolumeSize { get; set; }
     public string ResourcesCpu { get; set; }
     public string ResourcesMemory { get; set; }
-    public string[] RefSpec { get; set; } = { "refs/heads/*:refs/heads/*" };
+    public string[] RefSpec { get; set; } = ["refs/heads/*:refs/heads/*"];
 
     public bool Submodules
     {
@@ -60,7 +60,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
-    public string[] InvokedTargets { get; set; } = new string[0];
+    public string[] InvokedTargets { get; set; } = [];
 
     public bool OnPush
     {
@@ -76,7 +76,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
     public string[] OnPushPathExcludes { get; set; }
 
     public string OnCronSchedule { get; set; }
-    public string[] ImportSecrets { get; set; } = new string[0];
+    public string[] ImportSecrets { get; set; } = [];
 
     public int TimeoutInMinutes
     {

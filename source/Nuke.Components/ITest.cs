@@ -59,7 +59,7 @@ public interface ITest : ICompile, IHazArtifacts
             AzurePipelines.Instance?.PublishTestResults(
                 type: AzurePipelinesTestResultsType.VSTest,
                 title: $"{Path.GetFileNameWithoutExtension(x)} ({AzurePipelines.Instance.StageDisplayName})",
-                files: new string[] { x }));
+                files: [x]));
     }
 
     void ReportTestCount()

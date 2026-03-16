@@ -42,7 +42,7 @@ public static partial class AbsolutePathExtensions
             path.Parent.CreateDirectory();
 
         if (!File.Exists(path))
-            File.WriteAllBytes(path, new byte[0]);
+            File.WriteAllBytes(path, []);
 
         File.SetLastWriteTime(path, time ?? DateTime.Now);
 

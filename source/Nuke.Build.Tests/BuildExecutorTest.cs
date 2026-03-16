@@ -38,7 +38,7 @@ public class BuildExecutorTest
     [Fact]
     public void TestParameterSkipped()
     {
-        ExecuteBuild(skippedTargets: new[] { A });
+        ExecuteBuild(skippedTargets: [A]);
         AssertSucceeded(B, C);
         AssertSkipped(A);
         A.Skipped.Should().Be("via parameter");
@@ -50,7 +50,7 @@ public class BuildExecutorTest
         C.IsDefault = true;
         C.Invoked = false;
 
-        ExecuteBuild(skippedTargets: new ExecutableTarget[0]);
+        ExecuteBuild(skippedTargets: []);
         AssertSkipped(A, B, C);
     }
 
@@ -59,7 +59,7 @@ public class BuildExecutorTest
     {
         C.Invoked = true;
 
-        ExecuteBuild(skippedTargets: new ExecutableTarget[0]);
+        ExecuteBuild(skippedTargets: []);
         AssertSucceeded(C);
         AssertSkipped(A, B);
     }
@@ -68,7 +68,7 @@ public class BuildExecutorTest
     public void TestParameterSkipped_DependencyBehavior_Skip()
     {
         B.DependencyBehavior = DependencyBehavior.Skip;
-        ExecuteBuild(skippedTargets: new[] { B });
+        ExecuteBuild(skippedTargets: [B]);
         AssertSucceeded(C);
         AssertSkipped(A, B);
         A.Skipped.Should().Be("because of B");
@@ -197,8 +197,8 @@ public class BuildExecutorTest
         static string[] SelectNames(ExecutableTarget[] targets) => targets?.Select(x => x.Name).ToArray();
 
         var build = new TestBuild();
-        build.ExecutableTargets = new[] { A, B, C };
-        build.ExecutionPlan = new[] { A, B, C };
+        build.ExecutableTargets = [A, B, C];
+        build.ExecutionPlan = [A, B, C];
         BuildExecutor.Execute(build, SelectNames(skippedTargets));
     }
 
