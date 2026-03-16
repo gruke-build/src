@@ -17,6 +17,7 @@
 - Chuong Ho
 - Dan Siegel
 - Daniel Kuschny
+- Daniel Valadas
 - Daniil Zhelninskiy
 - Danny Staple
 - ebugusey
