@@ -10,6 +10,7 @@
 - Andrew Stakhov
 - Andriy
 - Anže Videnič
+- Arialdo Martini
 - arian ashk
 - aristotelos
 - Atif Aziz
