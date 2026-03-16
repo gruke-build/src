@@ -30,6 +30,7 @@
 - Kamil Kopański
 - Leon Grave
 - Luiz Henrique Cassettari
+- Lukas Grützmacher
 - MarioGK-AutoSystem
 - Marko Lahma
 - Martin Gill
