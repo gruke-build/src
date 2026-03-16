@@ -8,6 +8,7 @@
 - Chris Pulman
 - Christian Klemm
 - Daniel Kuschny
+- Danny Staple
 - ebugusey
 - Emmanuel Ferdman
 - Eris
