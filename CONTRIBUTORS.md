@@ -46,6 +46,7 @@
 - fvaillancourt
 - Gabriel Weyer
 - Georg Dangl
+- Georg Dangl
 - GitHub
 - GreemDev
 - Ian Flett
