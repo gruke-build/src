@@ -5,6 +5,7 @@
 - Anže Videnič
 - BrewingCoder
 - Cervac Petru
+- Chris Pulman
 - Christian Klemm
 - Daniel Kuschny
 - ebugusey
