@@ -26,9 +26,9 @@ on:
       - develop
 
 jobs:
-  codeberg-medium:
-    name: codeberg-medium
-    runs-on: codeberg-medium
+  'Run: Test (codeberg-medium-lazy)':
+    name: 'Run: Test (codeberg-medium-lazy)'
+    runs-on: codeberg-medium-lazy
     timeout-minutes: 10
     steps:
       - uses: https://data.forgejo.org/actions/checkout@v6

@@ -148,7 +148,7 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     {
         return new ForgejoActionsJob
                {
-                   Name = runner.Replace(".", "_"),
+                   Name = $"Run: {InvokedTargets.JoinComma().Truncate(200)} ({runner.Replace(".", "_")})".SingleQuote(),
                    EnvironmentName = EnvironmentName,
                    EnvironmentUrl = EnvironmentUrl,
                    Steps = GetSteps(runner, relevantTargets).ToArray(),

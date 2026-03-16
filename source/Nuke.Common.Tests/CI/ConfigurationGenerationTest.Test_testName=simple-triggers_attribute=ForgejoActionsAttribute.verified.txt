@@ -23,8 +23,8 @@ permissions:
   actions: read
 
 jobs:
-  codeberg-tiny:
-    name: codeberg-tiny
+  'Run: Test (codeberg-tiny)':
+    name: 'Run: Test (codeberg-tiny)'
     runs-on: codeberg-tiny
     timeout-minutes: 2
     steps:
@@ -55,8 +55,8 @@ jobs:
         with:
           name: coverage-report.zip
           path: output/coverage-report.zip
-  codeberg-small-lazy:
-    name: codeberg-small-lazy
+  'Run: Test (codeberg-small-lazy)':
+    name: 'Run: Test (codeberg-small-lazy)'
     runs-on: codeberg-small-lazy
     timeout-minutes: 5
     steps:

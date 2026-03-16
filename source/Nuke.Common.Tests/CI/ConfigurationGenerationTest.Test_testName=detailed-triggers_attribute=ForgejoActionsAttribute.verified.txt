@@ -49,8 +49,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  codeberg-tiny:
-    name: codeberg-tiny
+  'Run: Test (codeberg-tiny)':
+    name: 'Run: Test (codeberg-tiny)'
     runs-on: codeberg-tiny
     timeout-minutes: 2
     concurrency:
@@ -97,8 +97,8 @@ jobs:
         with:
           name: coverage-report.zip
           path: output/coverage-report.zip
-  my-windows-runner-that-isnt-real:
-    name: my-windows-runner-that-isnt-real
+  'Run: Test (my-windows-runner-that-isnt-real)':
+    name: 'Run: Test (my-windows-runner-that-isnt-real)'
     runs-on: my-windows-runner-that-isnt-real
     timeout-minutes: 30
     concurrency:
