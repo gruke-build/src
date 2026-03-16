@@ -1,6 +1,7 @@
 - Amadeusz Sadowski
 - Andrew Bowen
 - BrewingCoder
+- Cervac Petru
 - Christian Klemm
 - ebugusey
 - Emmanuel Ferdman
