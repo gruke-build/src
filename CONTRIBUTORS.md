@@ -69,6 +69,7 @@
 - Scott Hunter
 - Sigtryggur Ómarsson
 - Simusharp
+- Søren BC
 - Stefan de Vogelaere
 - Taylor Buchanan
 - Taylor Buchanan
