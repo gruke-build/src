@@ -22,6 +22,18 @@ public interface INukeBuild
     internal IReadOnlyCollection<ExecutableTarget> ExecutableTargets { get; }
     internal IReadOnlyCollection<IBuildExtension> BuildExtensions { get; }
     internal bool IsInterceptorExecution { get; }
+
+    /// <summary>
+    /// Force .NET SDK commands to ignore any persistent build servers.
+    ///
+    /// This option provides a consistent way to disable all use of build caching,
+    /// which forces a build from scratch.
+    ///
+    /// A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason.
+    ///
+    /// Available since .NET 7 SDK.
+    /// </summary>
+    public bool DisableDotNetBuildServers { get; set; }
     internal string[] LoadedLocalProfiles { get; }
     internal bool IsOutputEnabled(DefaultOutput output);
 

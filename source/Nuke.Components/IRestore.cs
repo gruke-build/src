@@ -8,12 +8,13 @@ using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Utilities;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;
 
 [PublicAPI]
-public interface IRestore : IHazSolution, INukeBuild
+public interface IRestore : IHazSolution
 {
     Target Restore => _ => _
         .Executes(() =>
@@ -24,6 +25,7 @@ public interface IRestore : IHazSolution, INukeBuild
         });
 
     sealed Configure<DotNetRestoreSettings> RestoreSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProjectFile(Solution)
         .SetIgnoreFailedSources(IgnoreFailedSources);
     // RestorePackagesWithLockFile

@@ -34,6 +34,7 @@ public interface IPack : ICompile, IHazArtifacts
         });
 
     sealed Configure<DotNetPackSettings> PackSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProject(Solution)
         .SetConfiguration(Configuration)
         .SetNoBuild(SucceededTargets.Contains(Compile))

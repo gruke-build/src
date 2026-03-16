@@ -53,6 +53,14 @@ public class Property : IDeprecatable
     [Description("Minimize compilation warnings by including a 'new' keyword on this definition.")]
     public bool HidesBase { get; set; }
 
+    [Description(
+        "Specifies if this property is for a boolean flag with no value. This will only generate a single extension, instead of the usual 3 (Disable, Enable, Toggle).")]
+    public bool OneWayFlag { get; set; }
+
+    [Description(
+        "Specify a custom string to be used in place of 'Enable/Disable' prefixing the generated extension (boolean property only). Expected to be used in tandem with oneWayFlag.")]
+    public string CustomBoolExtensionPrefix { get; set; }
+
     [Description("Custom implementation of the property.")]
     public bool CustomImpl { get; set; }
 

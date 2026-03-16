@@ -67,6 +67,15 @@ namespace Nuke.Common;
 [SerializeBuildServerState]
 public abstract partial class NukeBuild : INukeBuild
 {
+    private bool? _disableDotNetBuildServers;
+
+    /// <inheritdoc/>
+    public bool DisableDotNetBuildServers
+    {
+        get => _disableDotNetBuildServers.GetValueOrDefault(IsServerBuild && !IsInterceptorExecution);
+        set => _disableDotNetBuildServers = value;
+    }
+
     /// <summary>
     /// Executes the build. The provided expression defines the <em>default</em> target that is invoked,
     /// if no targets have been specified via command-line arguments.

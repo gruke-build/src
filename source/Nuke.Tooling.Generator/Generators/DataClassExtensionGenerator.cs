@@ -37,7 +37,7 @@ public static class DataClassExtensionGenerator
         writer.WriteLine($"#region {property.Name}");
         var access = $"o.{property.Name}";
 
-        if (!property.IsList() && !property.IsDictionary() && !property.IsLookupTable())
+        if (!property.IsList() && !property.IsDictionary() && !property.IsLookupTable() && !property.OneWayFlag)
         {
             var attributes = property.Secret ?? false ? "[Secret] " : string.Empty;
             writer
@@ -62,25 +62,38 @@ public static class DataClassExtensionGenerator
         // bool
         if (property.IsBoolean())
         {
-            writer
-                // Enable
-                .WriteMethod(
-                    property,
-                    name: $"Enable{property.Name}",
-                    additionalParameters: [],
-                    modification: $"Set(() => {access}, true)")
-                // Disable
-                .WriteMethod(
-                    property,
-                    name: $"Disable{property.Name}",
-                    additionalParameters: [],
-                    modification: $"Set(() => {access}, false)")
-                // Toggle
-                .WriteMethod(
-                    property,
-                    name: $"Toggle{property.Name}",
-                    additionalParameters: [],
-                    modification: $"Set(() => {access}, !{access})");
+            if (property.OneWayFlag)
+            {
+                writer
+                    // Enable or disable, whichever this one-way flag dictates.
+                    .WriteMethod(
+                        property,
+                        name: $"{property.CustomBoolExtensionPrefix}{property.Name}",
+                        additionalParameters: [],
+                        modification: $"Set(() => {access}, true)");
+            }
+            else
+            {
+                writer
+                    // Enable
+                    .WriteMethod(
+                        property,
+                        name: $"Enable{property.Name}",
+                        additionalParameters: [],
+                        modification: $"Set(() => {access}, true)")
+                    // Disable
+                    .WriteMethod(
+                        property,
+                        name: $"Disable{property.Name}",
+                        additionalParameters: [],
+                        modification: $"Set(() => {access}, false)")
+                    // Toggle
+                    .WriteMethod(
+                        property,
+                        name: $"Toggle{property.Name}",
+                        additionalParameters: [],
+                        modification: $"Set(() => {access}, !{access})");
+            }
         }
 
         // List<T>

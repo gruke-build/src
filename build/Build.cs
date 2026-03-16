@@ -30,7 +30,6 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
 
 [DotNetVerbosityMapping]
-[ShutdownDotNetAfterServerBuild]
 partial class Build
     : NukeBuild,
         IHazChangelog,

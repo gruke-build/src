@@ -46,6 +46,7 @@ public interface ICompile : IRestore, IHazConfiguration
         });
 
     sealed Configure<DotNetBuildSettings> CompileSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProjectFile(Solution)
         .SetConfiguration(Configuration)
         .When(IsServerBuild, _ => _
@@ -67,6 +68,7 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetInformationalVersion(o.Versioning.AssemblyInformationalVersion));
 
     sealed Configure<DotNetPublishSettings> PublishSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetConfiguration(Configuration)
         .EnableNoBuild()
         .EnableNoLogo()
