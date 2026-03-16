@@ -14,6 +14,7 @@
 - bitbonk
 - bmello4688
 - BrewingCoder
+- Cédric Menzi
 - Cervac Petru
 - Chase Florell
 - Chris Pulman
