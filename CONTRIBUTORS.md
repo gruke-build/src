@@ -4,6 +4,7 @@
 - Andrew H
 - Anže Videnič
 - avidenic
+- bitbonk
 - BrewingCoder
 - Cervac Petru
 - Chris Pulman
