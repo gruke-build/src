@@ -110,6 +110,7 @@
 - Victor Gladkikh
 - Vince Vriend
 - Vladyslav
+- Volkmar Rigo
 - Will Speak
 - workgroupengineering
 - y-karnitskaya
