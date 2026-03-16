@@ -58,6 +58,7 @@
 - GitHub
 - GreemDev
 - Grégoire Pailler
+- hayhay27
 - Ian Flett
 - Ian Flett
 - Igor Popov
