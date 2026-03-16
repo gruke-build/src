@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ public partial class HttpClientProxy : IHttpClientProxy
 
     private readonly HttpClient _http;
     private readonly LogCallback? _callback;
+    private HttpRequestHeaders _defaultRequestHeaders;
 
     public static HttpClientProxy CreateStdOut(HttpClient backingClient)
     {
@@ -86,6 +88,11 @@ public partial class HttpClientProxy : IHttpClientProxy
     {
         get => _http.MaxResponseContentBufferSize;
         set => _http.MaxResponseContentBufferSize = value;
+    }
+
+    public HttpRequestHeaders DefaultRequestHeaders
+    {
+        get => _http.DefaultRequestHeaders;
     }
 
     [SuppressMessage("ReSharper", "RedundantAssignment",

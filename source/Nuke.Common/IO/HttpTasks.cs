@@ -10,13 +10,16 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
+using Nuke.Common.Utilities.Collections;
+using Nuke.Common.Utilities.Net;
+using Serilog;
 
 namespace Nuke.Common.IO;
 
 [PublicAPI]
-public static class HttpTasks
+public static partial class HttpTasks
 {
-    public static TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
+    public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
 
     [Pure]
     public static string HttpDownloadString(
@@ -24,7 +27,7 @@ public static class HttpTasks
         Configure<HttpClient> clientConfigurator = null,
         Action<HttpRequestHeaders> headerConfigurator = null)
     {
-        return HttpDownloadStringAsync(uri, clientConfigurator, headerConfigurator).GetAwaiter().GetResult();
+        return HttpDownloadStringAsync(uri, clientConfigurator, headerConfigurator).Result;
     }
 
     [Pure]
@@ -44,7 +47,7 @@ public static class HttpTasks
         Configure<HttpClient> clientConfigurator = null,
         Action<HttpRequestHeaders> headerConfigurator = null)
     {
-        HttpDownloadFileAsync(uri, path, mode, clientConfigurator, headerConfigurator).GetAwaiter().GetResult();
+        HttpDownloadFileAsync(uri, path, mode, clientConfigurator, headerConfigurator).Wait();
     }
 
     public static async Task HttpDownloadFileAsync(

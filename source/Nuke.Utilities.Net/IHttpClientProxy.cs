@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -19,6 +20,7 @@ namespace Nuke.Common.Utilities.Net;
 [PublicAPI]
 public interface IHttpClientProxy
 {
+    public HttpRequestHeaders DefaultRequestHeaders { get; }
     public Version DefaultRequestVersion { get; set; }
     public HttpVersionPolicy DefaultVersionPolicy { get; set; }
     public Uri? BaseAddress { get; set; }

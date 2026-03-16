@@ -22,7 +22,7 @@ partial class Build
     readonly string[] FontDownloadUrls =
     [
         "https://github.com/googlefonts/roboto/releases/latest/download/roboto-unhinted.zip",
-        "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-v2.304.zip"
+        "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
     ];
 
     AbsolutePath FontDirectory => TemporaryDirectory / "fonts";
@@ -33,7 +33,7 @@ partial class Build
     Target InstallFonts => _ => _
         .Executes(() =>
         {
-            FontDownloadUrls.ForEach(x => HttpDownloadFile(x, FontDirectory / new Uri(x).Segments.Last()));
+            FontDownloadUrls.ForEach(x => HttpDownloadFileLogged(x, FontDirectory / new Uri(x).Segments.Last()));
             FontArchives.ForEach(x => x.UncompressTo(FontDirectory / x.NameWithoutExtension));
 
             FontFiles.ForEach(x =>

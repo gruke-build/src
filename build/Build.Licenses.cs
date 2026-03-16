@@ -41,7 +41,7 @@ partial class Build
 
             var downloadTasks = Licenses.Select(async x =>
             {
-                await HttpDownloadFileAsync(x.Url, LicensesDirectory / $"{x.Project}.txt");
+                await HttpDownloadFileLoggedAsync(x.Url, LicensesDirectory / $"{x.Project}.txt");
                 Log.Information("Downloaded license for {Project}", x.Project);
             });
             Task.WaitAll(downloadTasks.ToArray());
