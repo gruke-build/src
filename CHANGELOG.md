@@ -5,10 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- [Removed Telemetry](https://github.com/gruke-build/src/commit/c4943bcab7a645b571bf9452fd2a5a7a11457b9b)
+  - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e) about it.
 - [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) & [Woodpecker CI](https://woodpecker-ci.org/docs/intro) environment support
   - Access environment variables defined in their documentation in your C# code in a type-safe manner with in-IDE documentation for each variable.
 - [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) workflow generation
   - Due to Forgejo Actions' [overwhelming similarities to GitHub Actions](https://forgejo.org/docs/latest/user/actions/github-actions/), I was able to maintain practically 1:1 feature parity with the GitHub Actions generator.
+  - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
+  - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
 - [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
   - Thanks, [@rus-art](https://github.com/rus-art)!
 
