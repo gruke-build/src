@@ -5,6 +5,7 @@
 - Andrew Bowen
 - Andrew H
 - Andrew Hunt
+- Andrew Lock
 - Andrew Stakhov
 - Andriy
 - Anže Videnič
