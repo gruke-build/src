@@ -88,6 +88,7 @@
 - Matt Richardson
 - Matthias Koch
 - Matthias Schmidt
+- Michael Samorokov
 - Moien Tajik
 - Morten Larsen
 - Muhammad Vakili
