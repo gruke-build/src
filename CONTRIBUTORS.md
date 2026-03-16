@@ -43,6 +43,7 @@
 - David Driscoll
 - Dennis Doomen
 - Dominik Baran
+- dos36
 - ebugusey
 - Eduardo Cáceres
 - Elijah
