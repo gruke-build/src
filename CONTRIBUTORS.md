@@ -3,4 +3,5 @@
 - Luiz Henrique Cassettari
 - Marko Lahma
 - Matthias Koch
+- Matthias Schmidt
 - Sigtryggur Ómarsson
