@@ -81,6 +81,7 @@
 - Kevin Thompson
 - Kevin Thompson
 - Kurai András
+- kysel
 - Lars Nielsen
 - Laurent Kempé
 - Leon Grave
