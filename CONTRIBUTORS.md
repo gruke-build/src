@@ -77,6 +77,7 @@
 - Karl Solgård
 - Karl Solgård
 - Kevin Thompson
+- Kevin Thompson
 - Kurai András
 - Lars Nielsen
 - Laurent Kempé
