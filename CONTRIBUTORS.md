@@ -1,5 +1,6 @@
 - Andrew Bowen
 - BrewingCoder
+- Christian Klemm
 - ebugusey
 - Emmanuel Ferdman
 - GitHub
