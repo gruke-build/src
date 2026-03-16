@@ -7,7 +7,7 @@ using Nuke.Components;
 
 [ForgejoActions(
     "forgejo-integration-test",
-    CodebergRunners.MediumLazy,
+    CodebergRunners.Medium,
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     OnPullRequestBranches = [DevelopBranch],
