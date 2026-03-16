@@ -114,6 +114,7 @@
 - Sam13
 - Sandro Figo
 - Scott Hunter
+- Sebastian Karasek
 - Sigtryggur Ómarsson
 - Simon Cropp
 - Simusharp
