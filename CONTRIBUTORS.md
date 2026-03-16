@@ -12,6 +12,7 @@
 - aristotelos
 - avidenic
 - Bastian Schmidt
+- Bill Henning
 - bitbonk
 - bmello4688
 - BrewingCoder
