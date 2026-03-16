@@ -34,6 +34,7 @@
 - Nefarion
 - Oleg Shevchenko
 - Pieter Nijs
+- Rafael Lillo
 - Sam13
 - Sandro Figo
 - Scott Hunter
