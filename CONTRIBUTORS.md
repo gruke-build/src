@@ -14,5 +14,6 @@
 - Matthias Schmidt
 - Pieter Nijs
 - Sigtryggur Ómarsson
+- Stefan de Vogelaere
 - Taylor Buchanan
 - y-karnitskaya
