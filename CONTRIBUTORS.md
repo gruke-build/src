@@ -9,6 +9,7 @@
 - ebugusey
 - Emmanuel Ferdman
 - Eris
+- Frank Strieter
 - GitHub
 - GreemDev
 - ITaluone
