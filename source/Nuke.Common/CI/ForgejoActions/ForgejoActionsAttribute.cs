@@ -64,7 +64,6 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     public string OnCronSchedule { get; set; }
 
     public string[] ImportSecrets { get; set; } = [];
-    public bool EnableForgejoToken { get; set; }
     public ForgejoActionsPermissions[] WritePermissions { get; set; } = [];
     public ForgejoActionsPermissions[] ReadPermissions { get; set; } = [];
 
