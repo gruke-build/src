@@ -50,6 +50,7 @@
 - Matthias Koch
 - Matthias Schmidt
 - Morten Larsen
+- Muhammad Vakili
 - Nefarion
 - Oleg Shevchenko
 - Peter Palotas
