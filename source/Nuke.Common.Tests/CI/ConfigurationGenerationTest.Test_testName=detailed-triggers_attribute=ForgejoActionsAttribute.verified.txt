@@ -77,8 +77,8 @@ jobs:
       - name: 'Run: Test'
         run: ./build.cmd Test
         env:
-          OptionalInput: ${{ github.event.inputs.OptionalInput }}
-          RequiredInput: ${{ github.event.inputs.RequiredInput }}
+          OptionalInput: ${{ forgejo.event.inputs.OptionalInput }}
+          RequiredInput: ${{ forgejo.event.inputs.RequiredInput }}
       - name: 'Publish: src'
         uses: https://data.forgejo.org/actions/upload-artifact@v7
         if: success() || failure()
@@ -125,8 +125,8 @@ jobs:
       - name: 'Run: Test'
         run: ./build.cmd Test
         env:
-          OptionalInput: ${{ github.event.inputs.OptionalInput }}
-          RequiredInput: ${{ github.event.inputs.RequiredInput }}
+          OptionalInput: ${{ forgejo.event.inputs.OptionalInput }}
+          RequiredInput: ${{ forgejo.event.inputs.RequiredInput }}
       - name: 'Publish: src'
         uses: https://data.forgejo.org/actions/upload-artifact@v7
         if: success() || failure()

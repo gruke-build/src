@@ -212,7 +212,7 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     protected virtual IEnumerable<(string Key, string Value)> GetImports()
     {
         foreach (var input in OnWorkflowDispatchOptionalInputs.Concat(OnWorkflowDispatchRequiredInputs))
-            yield return (input, $"${{{{ github.event.inputs.{input} }}}}");
+            yield return (input, $"${{{{ forgejo.event.inputs.{input} }}}}");
 
         static string GetSecretValue(string secret)
             => $"${{{{ secrets.{secret.SplitCamelHumpsWithKnownWords().JoinUnderscore().ToUpperInvariant()} }}}}";
