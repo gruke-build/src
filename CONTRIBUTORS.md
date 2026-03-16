@@ -38,6 +38,7 @@
 - Daniil Zhelninskiy
 - Danny Staple
 - David Driscoll
+- Dennis Doomen
 - Dominik Baran
 - ebugusey
 - Eduardo Cáceres
