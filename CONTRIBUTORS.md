@@ -42,6 +42,7 @@
 - Dominik Baran
 - ebugusey
 - Eduardo Cáceres
+- Elijah
 - Emmanuel Ferdman
 - Eric Sondergard
 - Eris
