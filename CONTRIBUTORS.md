@@ -17,6 +17,7 @@
 - jwfx
 - Kamil Kopański
 - Luiz Henrique Cassettari
+- MarioGK-AutoSystem
 - Marko Lahma
 - Matthias Koch
 - Matthias Schmidt
