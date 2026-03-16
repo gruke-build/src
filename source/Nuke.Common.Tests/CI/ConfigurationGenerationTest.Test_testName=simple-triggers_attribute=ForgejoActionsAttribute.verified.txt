@@ -42,17 +42,17 @@ jobs:
           ApiKey: ${{ secrets.API_KEY }}
           FORGEJO_TOKEN: ${{ forgejo.TOKEN }}
       - name: 'Publish: src'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: coverage-report.zip
           path: output/coverage-report.zip
@@ -75,17 +75,17 @@ jobs:
           ApiKey: ${{ secrets.API_KEY }}
           FORGEJO_TOKEN: ${{ forgejo.TOKEN }}
       - name: 'Publish: src'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: coverage-report.zip
           path: output/coverage-report.zip

@@ -44,7 +44,7 @@ jobs:
       - name: 'Run: Test'
         run: ./build.cmd Test
       - name: 'Publish: test-results'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         with:
           name: test-results
           path: output/test-results

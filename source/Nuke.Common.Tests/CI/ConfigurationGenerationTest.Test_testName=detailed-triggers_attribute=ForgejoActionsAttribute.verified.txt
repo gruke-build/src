@@ -80,19 +80,19 @@ jobs:
           OptionalInput: ${{ forgejo.event.inputs.OptionalInput }}
           RequiredInput: ${{ forgejo.event.inputs.RequiredInput }}
       - name: 'Publish: src'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: coverage-report.zip
@@ -128,19 +128,19 @@ jobs:
           OptionalInput: ${{ forgejo.event.inputs.OptionalInput }}
           RequiredInput: ${{ forgejo.event.inputs.RequiredInput }}
       - name: 'Publish: src'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: https://data.forgejo.org/actions/upload-artifact@v7
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v5
         if: success() || failure()
         with:
           name: coverage-report.zip

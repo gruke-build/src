@@ -26,7 +26,7 @@ namespace Nuke.Common.Tests.CI;
 public class ConfigurationGenerationTest
 {
     private static readonly TestBuild s_testBuild = new();
-    
+
     [Theory]
     [MemberData(nameof(GetAttributes))]
     public Task Test(string testName, ITestConfigurationGenerator attribute)
