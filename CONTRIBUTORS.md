@@ -35,6 +35,7 @@
 - Daniil Zhelninskiy
 - Danny Staple
 - ebugusey
+- Eduardo Cáceres
 - Emmanuel Ferdman
 - Eric Sondergard
 - Eris
