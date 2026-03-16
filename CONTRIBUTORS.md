@@ -1,4 +1,5 @@
 - Amadeusz Sadowski
+- Andre Loker
 - Andreas Willich
 - Andrew Bowen
 - Andrew H
