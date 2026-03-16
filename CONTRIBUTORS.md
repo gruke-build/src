@@ -19,6 +19,7 @@
 - Georg Dangl
 - GitHub
 - GreemDev
+- Ian Flett
 - ITaluone
 - James
 - Jos van der Til
