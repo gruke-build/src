@@ -3,6 +3,7 @@
 - ebugusey
 - GitHub
 - GreemDev
+- ITaluone
 - James
 - Jos van der Til
 - José Manuel Nieto
