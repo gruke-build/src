@@ -9,4 +9,5 @@
 - Marko Lahma
 - Matthias Koch
 - Matthias Schmidt
+- Pieter Nijs
 - Sigtryggur Ómarsson
