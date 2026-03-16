@@ -17,7 +17,7 @@ public class ForgejoActionsArtifactStep : ForgejoActionsStep
     public override void Write(CustomFileWriter writer)
     {
         writer.WriteLine("- name: " + $"Publish: {Name}".SingleQuote());
-        writer.WriteLine("  uses: https://data.forgejo.org/actions/upload-artifact@v7");
+        writer.WriteLine("  uses: https://data.forgejo.org/forgejo/upload-artifact@v5");
 
         using (writer.Indent())
         {
