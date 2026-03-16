@@ -1,6 +1,7 @@
 - Andrew Bowen
 - BrewingCoder
 - ebugusey
+- Emmanuel Ferdman
 - GitHub
 - GreemDev
 - ITaluone
