@@ -6,7 +6,7 @@ using Nuke.Common.CI.ForgejoActions;
 using Nuke.Components;
 
 [ForgejoActions(
-    "forgejo-integration-test",
+    "test",
     CodebergRunners.Medium,
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],

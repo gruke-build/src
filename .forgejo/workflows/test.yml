@@ -9,12 +9,12 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         gruke --generate-configuration ForgejoActions_forgejo-integration-test --host ForgejoActions
+#         gruke --generate-configuration ForgejoActions_test --host ForgejoActions
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------
 
-name: forgejo-integration-test
+name: test
 
 on:
   push:
