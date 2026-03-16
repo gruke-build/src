@@ -10,6 +10,7 @@
 - Emmanuel Ferdman
 - Eris
 - Frank Strieter
+- Gabriel Weyer
 - Georg Dangl
 - GitHub
 - GreemDev
