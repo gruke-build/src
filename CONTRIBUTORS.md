@@ -69,6 +69,7 @@
 - Jamie Phillips
 - Jiří Ondruška
 - jnovick
+- Jonas S
 - Jos van der Til
 - José Manuel Nieto
 - Julian Moschüring
