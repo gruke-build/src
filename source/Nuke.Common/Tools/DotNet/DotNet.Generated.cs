@@ -8651,6 +8651,54 @@ public static partial class DotNetWorkloadRepairSettingsExtensions
     #endregion
 }
 #endregion
+#region DotNetRuntimeIdentifier
+/// <summary>Used within <see cref="DotNetTasks"/>.</summary>
+[PublicAPI]
+[Serializable]
+[ExcludeFromCodeCoverage]
+[TypeConverter(typeof(TypeConverter<DotNetRuntimeIdentifier>))]
+public partial class DotNetRuntimeIdentifier : Enumeration
+{
+    public static DotNetRuntimeIdentifier win_x64 = (DotNetRuntimeIdentifier) "win-x64";
+    public static DotNetRuntimeIdentifier win_x86 = (DotNetRuntimeIdentifier) "win-x86";
+    public static DotNetRuntimeIdentifier win_arm = (DotNetRuntimeIdentifier) "win-arm";
+    public static DotNetRuntimeIdentifier win_arm64 = (DotNetRuntimeIdentifier) "win-arm64";
+    public static DotNetRuntimeIdentifier win7_x64 = (DotNetRuntimeIdentifier) "win7-x64";
+    public static DotNetRuntimeIdentifier win7_x86 = (DotNetRuntimeIdentifier) "win7-x86";
+    public static DotNetRuntimeIdentifier win81_x64 = (DotNetRuntimeIdentifier) "win81-x64";
+    public static DotNetRuntimeIdentifier win81_x86 = (DotNetRuntimeIdentifier) "win81-x86";
+    public static DotNetRuntimeIdentifier win81_arm = (DotNetRuntimeIdentifier) "win81-arm";
+    public static DotNetRuntimeIdentifier win10_x64 = (DotNetRuntimeIdentifier) "win10-x64";
+    public static DotNetRuntimeIdentifier win10_x86 = (DotNetRuntimeIdentifier) "win10-x86";
+    public static DotNetRuntimeIdentifier win10_arm = (DotNetRuntimeIdentifier) "win10-arm";
+    public static DotNetRuntimeIdentifier win10_arm64 = (DotNetRuntimeIdentifier) "win10-arm64";
+    public static DotNetRuntimeIdentifier linux_x64 = (DotNetRuntimeIdentifier) "linux-x64";
+    public static DotNetRuntimeIdentifier linux_musl_x64 = (DotNetRuntimeIdentifier) "linux-musl-x64";
+    public static DotNetRuntimeIdentifier linux_arm = (DotNetRuntimeIdentifier) "linux-arm";
+    public static DotNetRuntimeIdentifier linux_arm64 = (DotNetRuntimeIdentifier) "linux-arm64";
+    public static DotNetRuntimeIdentifier rhel_x64 = (DotNetRuntimeIdentifier) "rhel-x64";
+    public static DotNetRuntimeIdentifier rhel_6_x64 = (DotNetRuntimeIdentifier) "rhel.6-x64";
+    public static DotNetRuntimeIdentifier tizen = (DotNetRuntimeIdentifier) "tizen";
+    public static DotNetRuntimeIdentifier tizen_4_0_0 = (DotNetRuntimeIdentifier) "tizen.4.0.0";
+    public static DotNetRuntimeIdentifier tizen_5_0_0 = (DotNetRuntimeIdentifier) "tizen.5.0.0";
+    public static DotNetRuntimeIdentifier osx_arm64 = (DotNetRuntimeIdentifier) "osx-arm64";
+    public static DotNetRuntimeIdentifier osx_x64 = (DotNetRuntimeIdentifier) "osx-x64";
+    public static DotNetRuntimeIdentifier osx_10_10_x64 = (DotNetRuntimeIdentifier) "osx.10.10-x64";
+    public static DotNetRuntimeIdentifier osx_10_11_x64 = (DotNetRuntimeIdentifier) "osx.10.11-x64";
+    public static DotNetRuntimeIdentifier osx_10_12_x64 = (DotNetRuntimeIdentifier) "osx.10.12-x64";
+    public static DotNetRuntimeIdentifier osx_10_13_x64 = (DotNetRuntimeIdentifier) "osx.10.13-x64";
+    public static DotNetRuntimeIdentifier osx_10_14_x64 = (DotNetRuntimeIdentifier) "osx.10.14-x64";
+    public static DotNetRuntimeIdentifier osx_10_15_x64 = (DotNetRuntimeIdentifier) "osx.10.15-x64";
+    public static DotNetRuntimeIdentifier osx_11_0_x64 = (DotNetRuntimeIdentifier) "osx.11.0-x64";
+    public static DotNetRuntimeIdentifier osx_11_0_arm64 = (DotNetRuntimeIdentifier) "osx.11.0-arm64";
+    public static DotNetRuntimeIdentifier osx_12_x64 = (DotNetRuntimeIdentifier) "osx.12-x64";
+    public static DotNetRuntimeIdentifier osx_12_arm64 = (DotNetRuntimeIdentifier) "osx.12-arm64";
+    public static implicit operator DotNetRuntimeIdentifier(string value)
+    {
+        return new DotNetRuntimeIdentifier { Value = value };
+    }
+}
+#endregion
 #region DotNetVerbosity
 /// <summary>Used within <see cref="DotNetTasks"/>.</summary>
 [PublicAPI]
