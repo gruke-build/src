@@ -13,6 +13,7 @@
 - Chris Pulman
 - Christian Klemm
 - Chuong Ho
+- Dan Siegel
 - Daniel Kuschny
 - Daniil Zhelninskiy
 - Danny Staple
