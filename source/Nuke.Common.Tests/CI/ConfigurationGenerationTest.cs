@@ -12,6 +12,7 @@ using JetBrains.Annotations;
 using Nuke.Common.CI;
 using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
+using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Execution;
@@ -141,6 +142,23 @@ public class ConfigurationGenerationTest
 
             yield return
             (
+                "simple-triggers",
+                new TestForgejoActionsAttribute(
+                    CodebergRunners.Tiny,
+                    CodebergRunners.SmallLazy)
+                {
+                    Build = testBuild,
+                    On = new[] { ForgejoActionsTrigger.Push, ForgejoActionsTrigger.PullRequest },
+                    InvokedTargets = new[] { nameof(Test) },
+                    ImportSecrets = new[] { nameof(ApiKey) },
+                    EnableForgejoToken = true,
+                    WritePermissions = new[] { ForgejoActionsPermissions.Contents },
+                    ReadPermissions = new[] { ForgejoActionsPermissions.Actions }
+                }
+            );
+
+            yield return
+            (
                 "detailed-triggers",
                 new TestGitHubActionsAttribute(
                     GitHubActionsImage.MacOsLatest,
@@ -162,6 +180,41 @@ public class ConfigurationGenerationTest
                     OnWorkflowDispatchRequiredInputs = new[] { "RequiredInput" },
                     PublishCondition = "success() || failure()",
                     Submodules = GitHubActionsSubmodules.Recursive,
+                    Lfs = true,
+                    FetchDepth = 2,
+                    Progress = false,
+                    Filter = "tree:0",
+                    TimeoutMinutes = 30,
+                    ConcurrencyCancelInProgress = true,
+                    JobConcurrencyCancelInProgress = true,
+                    JobConcurrencyGroup = "custom-job-group",
+                    EnvironmentName = "environment-name",
+                    EnvironmentUrl = "environment-url"
+                }
+            );
+
+            yield return
+            (
+                "detailed-triggers",
+                new TestForgejoActionsAttribute(
+                    CodebergRunners.Tiny,
+                    "my-windows-runner-that-isnt-real")
+                {
+                    Build = testBuild,
+                    InvokedTargets = new[] { nameof(Test) },
+                    OnCronSchedule = "* 0 * * *",
+                    OnPushBranches = new[] { "push_branch" },
+                    OnPushTags = new[] { "push_tag/*" },
+                    OnPushIncludePaths = new[] { "push_include_path" },
+                    OnPushExcludePaths = new[] { "push_exclude_path" },
+                    OnPullRequestBranches = new[] { "pull_request_branch" },
+                    OnPullRequestTags = new[] { "pull_request_tag" },
+                    OnPullRequestIncludePaths = new[] { "pull_request_include_path" },
+                    OnPullRequestExcludePaths = new[] { "pull_request_exclude_path/**" },
+                    OnWorkflowDispatchOptionalInputs = new[] { "OptionalInput" },
+                    OnWorkflowDispatchRequiredInputs = new[] { "RequiredInput" },
+                    PublishCondition = "success() || failure()",
+                    Submodules = ForgejoActionsSubmodules.Recursive,
                     Lfs = true,
                     FetchDepth = 2,
                     Progress = false,

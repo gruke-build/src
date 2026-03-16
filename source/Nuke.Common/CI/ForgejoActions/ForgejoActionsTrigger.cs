@@ -1,0 +1,18 @@
+// Copyright 2023 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
+using System;
+using System.Linq;
+using JetBrains.Annotations;
+using Nuke.Common.Tooling;
+
+namespace Nuke.Common.CI.ForgejoActions;
+
+[PublicAPI]
+public enum ForgejoActionsTrigger
+{
+    [EnumValue("push")] Push,
+    [EnumValue("pull_request")] PullRequest,
+    [EnumValue("workflow_dispatch")] WorkflowDispatch
+}
