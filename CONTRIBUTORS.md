@@ -155,6 +155,7 @@
 - Ulrich Buchgraber
 - Victor Gladkikh
 - Vince Vriend
+- Vlad Khapin
 - Vladyslav
 - Volkmar Rigo
 - Wael Rabadi
