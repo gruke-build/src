@@ -35,6 +35,7 @@
 - Daniel Valadas
 - Daniil Zhelninskiy
 - Danny Staple
+- David Driscoll
 - Dominik Baran
 - ebugusey
 - Eduardo Cáceres
