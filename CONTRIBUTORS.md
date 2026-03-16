@@ -28,6 +28,7 @@
 - Luiz Henrique Cassettari
 - MarioGK-AutoSystem
 - Marko Lahma
+- Martin Gill
 - Matthias Koch
 - Matthias Schmidt
 - Nefarion
