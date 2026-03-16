@@ -50,6 +50,7 @@
 - Frank Strieter
 - fvaillancourt
 - Gabriel Weyer
+- gebolze
 - Georg Dangl
 - Georg Dangl
 - GitHub
