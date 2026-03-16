@@ -2,6 +2,7 @@
 - Andreas Willich
 - Andrew Bowen
 - Andrew H
+- Andrew Stakhov
 - Anže Videnič
 - avidenic
 - bitbonk
