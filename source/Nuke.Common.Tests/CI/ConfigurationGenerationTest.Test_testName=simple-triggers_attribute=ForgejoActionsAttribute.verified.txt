@@ -18,9 +18,9 @@ name: test
 
 on: [push, pull_request]
 
-permissions:
-  contents: write
-  actions: read
+concurrency:
+  group: ${{ forgejo.workflow }} @ ${{ forgejo.event.pull_request.head.label || forgejo.head_ref || forgejo.run_id }}
+  cancel-in-progress: true
 
 jobs:
   'Run: Test (codeberg-tiny)':

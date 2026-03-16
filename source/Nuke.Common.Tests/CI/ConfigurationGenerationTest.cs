@@ -151,8 +151,7 @@ public class ConfigurationGenerationTest
                     On = new[] { ForgejoActionsTrigger.Push, ForgejoActionsTrigger.PullRequest },
                     InvokedTargets = new[] { nameof(Test) },
                     ImportSecrets = new[] { nameof(ApiKey) },
-                    WritePermissions = new[] { ForgejoActionsPermissions.Contents },
-                    ReadPermissions = new[] { ForgejoActionsPermissions.Actions }
+                    ConcurrencyCancelInProgress = true
                 }
             );
 

@@ -17,7 +17,6 @@ public class ForgejoActionsConfiguration : ConfigurationEntity
 
     public ForgejoActionsTrigger[] ShortTriggers { get; set; }
     public ForgejoActionsDetailedTrigger[] DetailedTriggers { get; set; }
-    public (ForgejoActionsPermissions Type, string Permission)[] Permissions { get; set; }
     public string ConcurrencyGroup { get; set; }
     public bool ConcurrencyCancelInProgress { get; set; }
     public ForgejoActionsJob[] Jobs { get; set; }
@@ -35,16 +34,6 @@ public class ForgejoActionsConfiguration : ConfigurationEntity
             using (writer.Indent())
             {
                 DetailedTriggers.ForEach(x => x.Write(writer));
-            }
-        }
-
-        if (Permissions.Length > 0)
-        {
-            writer.WriteLine();
-            writer.WriteLine("permissions:");
-            using (writer.Indent())
-            {
-                Permissions.ForEach(x => writer.WriteLine($"{x.Type.GetValue()}: {x.Permission}"));
             }
         }
 

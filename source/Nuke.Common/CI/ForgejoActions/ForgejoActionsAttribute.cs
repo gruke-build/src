@@ -64,8 +64,6 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     public string OnCronSchedule { get; set; }
 
     public string[] ImportSecrets { get; set; } = [];
-    public ForgejoActionsPermissions[] WritePermissions { get; set; } = [];
-    public ForgejoActionsPermissions[] ReadPermissions { get; set; } = [];
 
     public string[] CacheIncludePatterns { get; set; } = [".nuke/temp", "~/.nuget/packages"];
     public string[] CacheExcludePatterns { get; set; } = [];
@@ -129,8 +127,6 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
                                 Name = _name,
                                 ShortTriggers = On,
                                 DetailedTriggers = GetTriggers().ToArray(),
-                                Permissions = WritePermissions.Select(x => (x, "write"))
-                                    .Concat(ReadPermissions.Select(x => (x, "read"))).ToArray(),
                                 ConcurrencyGroup = ConcurrencyGroup,
                                 ConcurrencyCancelInProgress = ConcurrencyCancelInProgress,
                                 Jobs = _runners.Select(x => GetJobs(x, relevantTargets)).ToArray()
