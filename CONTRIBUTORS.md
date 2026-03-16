@@ -3,6 +3,7 @@
 - Andreas Willich
 - Andrew Bowen
 - Andrew H
+- Andrew Hunt
 - Andrew Stakhov
 - Andriy
 - Anže Videnič
