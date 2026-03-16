@@ -71,6 +71,7 @@
 - Ivan Derevianko
 - James
 - Jamie Phillips
+- Jiří Kyzlink
 - Jiří Ondruška
 - jnovick
 - Jonas S
