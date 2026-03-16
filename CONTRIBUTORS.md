@@ -5,6 +5,7 @@
 - GreemDev
 - James
 - Jos van der Til
+- José Manuel Nieto
 - jwfx
 - Luiz Henrique Cassettari
 - Marko Lahma
