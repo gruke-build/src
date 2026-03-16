@@ -18,6 +18,7 @@
 - bmello4688
 - BrewingCoder
 - Cédric Menzi
+- Cédric Menzi
 - Cervac Petru
 - chaquotay
 - Chase Florell
