@@ -14,3 +14,4 @@
 - Matthias Schmidt
 - Pieter Nijs
 - Sigtryggur Ómarsson
+- Taylor Buchanan
