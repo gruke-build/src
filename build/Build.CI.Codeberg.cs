@@ -7,11 +7,11 @@ using Nuke.Components;
 
 [ForgejoActions(
     "forgejo-integration-test",
-    CodebergRunners.Small,
+    CodebergRunners.Medium,
     FetchDepth = 0,
     OnPushBranchesIgnore = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
     OnPullRequestBranches = [DevelopBranch],
-    InvokedTargets = [nameof(ITest.Test)], 
+    InvokedTargets = [nameof(ITest.Test)],
     PublishArtifacts = true
 )]
 public partial class Build;
