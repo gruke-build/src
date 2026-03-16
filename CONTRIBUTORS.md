@@ -95,6 +95,7 @@
 - Matt Richardson
 - Matthias Koch
 - Matthias Schmidt
+- Melvyn Laïly
 - Michael Baird
 - Michael Samorokov
 - Moien Tajik
