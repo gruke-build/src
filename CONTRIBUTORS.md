@@ -64,6 +64,7 @@
 - Karl Solgård
 - Kevin Thompson
 - Kurai András
+- Lars Nielsen
 - Laurent Kempé
 - Leon Grave
 - Luiz Henrique Cassettari
