@@ -3,6 +3,7 @@
 - BrewingCoder
 - Cervac Petru
 - Christian Klemm
+- Daniel Kuschny
 - ebugusey
 - Emmanuel Ferdman
 - GitHub
