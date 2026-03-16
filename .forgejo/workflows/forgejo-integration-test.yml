@@ -26,10 +26,10 @@ on:
       - develop
 
 jobs:
-  codeberg-small:
-    name: codeberg-small
-    runs-on: codeberg-small
-    timeout-minutes: 5
+  codeberg-medium:
+    name: codeberg-medium
+    runs-on: codeberg-medium
+    timeout-minutes: 10
     steps:
       - uses: https://data.forgejo.org/actions/checkout@v6
         with:
