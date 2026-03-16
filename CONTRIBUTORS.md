@@ -12,6 +12,7 @@
 - Danny Staple
 - ebugusey
 - Emmanuel Ferdman
+- Eric Sondergard
 - Eris
 - Frank Strieter
 - Gabriel Weyer
