@@ -148,6 +148,7 @@
 - Sebastian
 - Sebastian
 - Sebastian Karasek
+- Sebastian Karasek
 - Sigtryggur Ómarsson
 - Simon Cropp
 - Simusharp
