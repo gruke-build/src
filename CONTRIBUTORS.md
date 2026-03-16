@@ -15,6 +15,7 @@
 - Marko Lahma
 - Matthias Koch
 - Matthias Schmidt
+- Nefarion
 - Pieter Nijs
 - Sam13
 - Sigtryggur Ómarsson
