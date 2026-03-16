@@ -47,6 +47,7 @@
 - Emmanuel Ferdman
 - Eric Sondergard
 - Eris
+- Esben Sune Rasmussen
 - Frank Strieter
 - fvaillancourt
 - Gabriel Weyer
