@@ -1,3 +1,4 @@
+- Amadeusz Sadowski
 - Andrew Bowen
 - BrewingCoder
 - Christian Klemm
