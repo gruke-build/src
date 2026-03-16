@@ -41,6 +41,7 @@
 - Daniel Valadas
 - Daniil Zhelninskiy
 - Danny Staple
+- Dariel Marlow
 - David Driscoll
 - Dennis Doomen
 - Dominik Baran
