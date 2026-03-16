@@ -3,6 +3,7 @@
 - Andrew Bowen
 - Andrew H
 - Anže Videnič
+- avidenic
 - BrewingCoder
 - Cervac Petru
 - Chris Pulman
