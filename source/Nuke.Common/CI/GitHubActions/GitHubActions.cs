@@ -33,7 +33,8 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public static string EnvironmentVariablePrefix => "GITHUB";
 
     [UsedImplicitly]
-    internal static bool IsRunningGitHubActions => IEnvironment<GitHubActions>.Has("ACTIONS");
+    internal static bool IsRunningGitHubActions 
+        => IEnvironment<GitHubActions>.Has("ACTIONS") && !EnvironmentInfo.HasVariable("FORGEJO_ACTIONS");
 
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
