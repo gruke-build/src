@@ -6,6 +6,7 @@
 - Anže Videnič
 - avidenic
 - bitbonk
+- bmello4688
 - BrewingCoder
 - Cervac Petru
 - Chris Pulman
