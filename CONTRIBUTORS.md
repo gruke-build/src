@@ -74,6 +74,7 @@
 - Matt Richardson
 - Matthias Koch
 - Matthias Schmidt
+- Moien Tajik
 - Morten Larsen
 - Muhammad Vakili
 - Nate
