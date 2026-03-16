@@ -50,6 +50,7 @@
 - Karl Solgård
 - Karl Solgård
 - Kurai András
+- Laurent Kempé
 - Leon Grave
 - Luiz Henrique Cassettari
 - Lukas Grützmacher
