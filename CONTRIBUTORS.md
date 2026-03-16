@@ -14,6 +14,7 @@
 - aristotelos
 - Atif Aziz
 - avidenic
+- baez90
 - Bastian Schmidt
 - Bill Henning
 - bitbonk
