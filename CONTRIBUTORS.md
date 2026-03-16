@@ -71,6 +71,7 @@
 - Jiří Ondruška
 - jnovick
 - Jonas S
+- Jonathan Robson
 - Jos van der Til
 - José Manuel Nieto
 - Julian Moschüring
