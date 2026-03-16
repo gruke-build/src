@@ -7,6 +7,7 @@
 - Andrew Stakhov
 - Andriy
 - Anže Videnič
+- aristotelos
 - avidenic
 - bitbonk
 - bmello4688
