@@ -41,6 +41,7 @@
 - jwfx
 - Kamil Kopański
 - Karl Solgård
+- Karl Solgård
 - Kurai András
 - Leon Grave
 - Luiz Henrique Cassettari
