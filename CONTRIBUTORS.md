@@ -2,6 +2,7 @@
 - GitHub
 - GreemDev
 - James
+- Jos van der Til
 - jwfx
 - Luiz Henrique Cassettari
 - Marko Lahma
