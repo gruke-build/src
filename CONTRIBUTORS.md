@@ -9,6 +9,7 @@
 - Anže Videnič
 - aristotelos
 - avidenic
+- Bastian Schmidt
 - bitbonk
 - bmello4688
 - BrewingCoder
