@@ -92,6 +92,7 @@
 - Stephan Müller
 - Taylor Buchanan
 - Taylor Buchanan
+- Thomas
 - ThomasBoettcherHolschen
 - Todor Todorov
 - tyb-dev
