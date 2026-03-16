@@ -33,11 +33,11 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
 
     public ForgejoActionsAttribute(
         string name,
-        string image,
-        params string[] images)
+        string runner,
+        params string[] runners)
     {
         _name = name.Replace(oldChar: ' ', newChar: '_');
-        _runners = new[] { image }.Concat(images).ToArray();
+        _runners = runners.Prepend(runner).ToArray();
     }
 
     public override string IdPostfix => _name;
@@ -46,7 +46,7 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
-    public override IEnumerable<string> IrrelevantTargetNames => new string[0];
+    public override IEnumerable<string> IrrelevantTargetNames => [];
 
     public ForgejoActionsTrigger[] On { get; set; } = [];
     public string[] OnPushBranches { get; set; } = [];
@@ -75,7 +75,7 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
     public string PublishCondition { get; set; }
 
     public int TimeoutMinutes { get; set; }
-    
+
     public string EnvironmentName { get; set; }
     public string EnvironmentUrl { get; set; }
 
@@ -218,9 +218,6 @@ public class ForgejoActionsAttribute : ConfigurationAttributeBase
 
         foreach (var secret in ImportSecrets)
             yield return (secret, GetSecretValue(secret));
-
-        if (EnableForgejoToken)
-            yield return ("FORGEJO_TOKEN", "${{ forgejo.TOKEN }}");
     }
 
     protected virtual IEnumerable<ForgejoActionsDetailedTrigger> GetTriggers()
