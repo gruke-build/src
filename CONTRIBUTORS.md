@@ -26,6 +26,7 @@
 - Ian Flett
 - ITaluone
 - James
+- jnovick
 - Jos van der Til
 - José Manuel Nieto
 - Julian Moschüring
