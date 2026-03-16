@@ -77,6 +77,7 @@
 - Sandro Figo
 - Scott Hunter
 - Sigtryggur Ómarsson
+- Simon Cropp
 - Simusharp
 - Søren BC
 - Stefan de Vogelaere
