@@ -11,6 +11,7 @@
 - Anže Videnič
 - arian ashk
 - aristotelos
+- Atif Aziz
 - avidenic
 - Bastian Schmidt
 - Bill Henning
