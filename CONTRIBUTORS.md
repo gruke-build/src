@@ -18,6 +18,7 @@
 - Matthias Koch
 - Matthias Schmidt
 - Nefarion
+- Oleg Shevchenko
 - Pieter Nijs
 - Sam13
 - Scott Hunter
