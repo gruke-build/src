@@ -49,8 +49,6 @@ partial class Build
 {
     public static int Main() => Execute<Build>(x => ((IPack)x).Pack);
 
-    [CI] readonly TeamCity TeamCity;
-    [CI] readonly AzurePipelines AzurePipelines;
     [CI] readonly GitHubActions GitHubActions;
 
     GitVersion GitVersion => From<IHazGitVersion>().Versioning;
