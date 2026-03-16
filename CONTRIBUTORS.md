@@ -34,6 +34,7 @@
 - Oleg Shevchenko
 - Pieter Nijs
 - Sam13
+- Sandro Figo
 - Scott Hunter
 - Sigtryggur Ómarsson
 - Stefan de Vogelaere
