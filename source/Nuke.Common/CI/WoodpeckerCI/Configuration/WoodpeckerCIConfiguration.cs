@@ -37,14 +37,14 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
             {
                 OnlyOnBranches.Replace(oldValue: null, "${CI_REPO_DEFAULT_BRANCH}");
                 writer.WriteLine(OnlyOnBranches.Length is 1
-                    ? $"branch: {OnlyOnBranches[0].SingleQuoteIfNeeded()}"
-                    : $"branch: [{OnlyOnBranches.JoinComma()}]"
+                    ? $"branch: {OnlyOnBranches[0].SingleQuoteIfNeeded(' ', '*', '/')}"
+                    : $"branch: [ {OnlyOnBranches.Select(x => x.SingleQuoteIfNeeded(' ', '*', '/')).JoinCommaSpace()} ]"
                 );
             }
 
             writer.WriteLine(Triggers.Length is 1
                 ? $"event: {Triggers[0].GetValue()}"
-                : $"event: [{Triggers.Select(x => x.GetValue()).JoinComma()}]");
+                : $"event: [ {Triggers.Select(x => x.GetValue()).JoinCommaSpace()} ]");
         }
 
         writer.WriteLine();

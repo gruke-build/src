@@ -58,7 +58,7 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
         yield return new WoodpeckerCIRunStep
                      {
                          InvokedTargets = InvokedTargets,
-                         Name = $"Run: {InvokedTargets.JoinCommaAnd()}"
+                         Name = $"Run: {InvokedTargets.JoinCommaSpace()}"
                      };
     }
 

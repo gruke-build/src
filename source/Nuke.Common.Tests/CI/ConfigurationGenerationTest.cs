@@ -15,6 +15,7 @@ using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
+using Nuke.Common.CI.WoodpeckerCI;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
@@ -249,6 +250,16 @@ public class ConfigurationGenerationTest
                 }
             );
 
+            yield return (
+                null,
+                new TestWoodpeckerCIAttribute
+                {
+                    OnlyOnBranches = [default, "feature/*"],
+                    Triggers = [WoodpeckerCIEvent.Push, WoodpeckerCIEvent.PullRequest],
+                    InvokedTargets = [nameof(Test), nameof(Publish)]
+                }
+            );
+
             yield return
             (
                 null,
@@ -258,7 +269,7 @@ public class ConfigurationGenerationTest
                     InvokedTargets = [nameof(Publish)],
                     UploadProducedArtifacts = true,
                     ExcludedArtifacts = ["output/packages/*.nupkg"],
-                    OnlyOnPushesToBranches = [ default ]
+                    OnlyOnPushesToBranches = [default]
                 }
             );
         }
