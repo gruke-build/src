@@ -27,7 +27,7 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
     {
         // naive implementation: this can be extended in the future
         // https://woodpecker-ci.org/docs/usage/workflow-syntax
-        
+
         Assert.NotEmpty(Triggers, "Cannot create a Woodpecker workflow with no triggers.");
 
         writer.WriteLine("when:");

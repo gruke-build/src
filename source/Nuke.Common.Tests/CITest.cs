@@ -19,6 +19,7 @@ using Nuke.Common.CI.GitLab;
 using Nuke.Common.CI.Jenkins;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.CI.TravisCI;
+using Nuke.Common.CI.WoodpeckerCI;
 using Xunit;
 
 namespace Nuke.Common.Tests;
@@ -91,6 +92,13 @@ public class CITest
     {
         AssertProperty(instance, property);
         Assert.True(instance.Ci);
+    }
+    
+    [CITheory(typeof(WoodpeckerCI))]
+    [MemberData(nameof(Properties), typeof(WoodpeckerCI))]
+    public void TestWoodpeckerCI(PropertyInfo property, WoodpeckerCI instance)
+    {
+        AssertProperty(instance, property);
     }
 
     public static IEnumerable<object[]> Properties(Type type)
