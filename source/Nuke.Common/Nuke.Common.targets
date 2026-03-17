@@ -45,6 +45,7 @@
     <None Include="$(NukeRootDirectory)\.teamcity\settings.kts" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\.teamcity\settings.kts')" />
     <None Include="$(NukeRootDirectory)\.github\workflows\*.yml" LinkBase="ci" />
     <None Include="$(NukeRootDirectory)\.forgejo\workflows\*.yml" LinkBase="ci" />
+    <None Include="$(NukeRootDirectory)\.woodpecker\*.yml" LinkBase="ci" />
     <None Include="$(NukeRootDirectory)\azure-pipelines*.yml" LinkBase="ci" />
     <None Include="$(NukeRootDirectory)\Jenkinsfile" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\Jenkinsfile')" />
     <None Include="$(NukeRootDirectory)\appveyor*.yml" LinkBase="ci" />

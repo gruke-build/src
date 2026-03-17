@@ -3,6 +3,7 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System.ComponentModel;
+using JetBrains.Annotations;
 using Nuke.Common.Tooling;
 
 namespace Nuke.Common.CI.WoodpeckerCI;
@@ -10,51 +11,98 @@ namespace Nuke.Common.CI.WoodpeckerCI;
 /// <summary>
 ///     Enumeration according to the <a href="https://woodpecker-ci.org/docs/usage/workflow-syntax#event">documentation</a>.
 /// </summary>
-[TypeConverter(typeof(TypeConverter<WoodpeckerCIEventType>))]
-public class WoodpeckerCIEventType : Enumeration
+[PublicAPI]
+public enum WoodpeckerCIEvent
 {
     /// <summary>
     /// Triggered when a commit is pushed to a branch.
     /// </summary>
-    public static WoodpeckerCIEventType Push = new("push");
+    [EnumValue("push")] Push,
     /// <summary>
     /// Triggered when a pull request is opened or a new commit is pushed to it.
     /// </summary>
-    public static WoodpeckerCIEventType PullRequest = new("pull_request");
+    [EnumValue("pull_request")] PullRequest,
     /// <summary>
     /// Triggered when a pull request is closed or merged.
     /// </summary>
-    public static WoodpeckerCIEventType PullRequestClosed = new("pull_request_closed");
+    [EnumValue("pull_request_closed")] PullRequestClosed,
     /// <summary>
     /// Triggered when a pull request metadata has changed (e.g. title, body, label, milestone, ...).
     /// </summary>
-    public static WoodpeckerCIEventType PullRequestMetadata = new("pull_request_metadata");
+    [EnumValue("pull_request_metadata")] PullRequestMetadata,
     /// <summary>
     /// Triggered when a tag is pushed.
     /// </summary>
-    public static WoodpeckerCIEventType Tag = new("tag");
+    [EnumValue("tag")] Tag,
     /// <summary>
     /// Triggered when a release, pre-release or draft is created.
     /// (You can apply further filters using <a href="https://woodpecker-ci.org/docs/usage/workflow-syntax#evaluate">evaluate</a>
     /// with <a href="https://woodpecker-ci.org/docs/usage/environment#built-in-environment-variables">environment variables</a>.)
     /// </summary>
-    public static WoodpeckerCIEventType Release = new("release");
+    [EnumValue("release")] Release,
     /// <summary>
     /// Triggered when a deployment is created in the repository. (This event can be triggered from Woodpecker directly. GitHub also supports webhook triggers.)
     /// </summary>
-    public static WoodpeckerCIEventType Deployment = new("deployment");
+    [EnumValue("deployment")] Deployment,
     /// <summary>
     /// Triggered when a cron job is executed.
     /// </summary>
-    public static WoodpeckerCIEventType Cron = new("cron");
+    [EnumValue("cron")] Cron,
     /// <summary>
     /// Triggered when a user manually triggers a pipeline.
     /// </summary>
-    public static WoodpeckerCIEventType Manual = new("manual");
+    [EnumValue("manual")] Manual
+}
 
-    private WoodpeckerCIEventType(string value)
+/// <summary>
+///     Enumeration according to the <a href="https://woodpecker-ci.org/docs/usage/workflow-syntax#event">documentation</a>.
+/// </summary>
+[TypeConverter(typeof(TypeConverter<WoodpeckerCIEventType>))]
+[PublicAPI]
+public class WoodpeckerCIEventType : Enumeration
+{
+    /// <summary>
+    /// Triggered when a commit is pushed to a branch.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Push = new(WoodpeckerCIEvent.Push);
+    /// <summary>
+    /// Triggered when a pull request is opened or a new commit is pushed to it.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType PullRequest = new(WoodpeckerCIEvent.PullRequest);
+    /// <summary>
+    /// Triggered when a pull request is closed or merged.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType PullRequestClosed = new(WoodpeckerCIEvent.PullRequestClosed);
+    /// <summary>
+    /// Triggered when a pull request metadata has changed (e.g. title, body, label, milestone, ...).
+    /// </summary>
+    public static readonly WoodpeckerCIEventType PullRequestMetadata = new(WoodpeckerCIEvent.PullRequestMetadata);
+    /// <summary>
+    /// Triggered when a tag is pushed.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Tag = new(WoodpeckerCIEvent.Tag);
+    /// <summary>
+    /// Triggered when a release, pre-release or draft is created.
+    /// (You can apply further filters using <a href="https://woodpecker-ci.org/docs/usage/workflow-syntax#evaluate">evaluate</a>
+    /// with <a href="https://woodpecker-ci.org/docs/usage/environment#built-in-environment-variables">environment variables</a>.)
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Release = new(WoodpeckerCIEvent.Release);
+    /// <summary>
+    /// Triggered when a deployment is created in the repository. (This event can be triggered from Woodpecker directly. GitHub also supports webhook triggers.)
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Deployment = new(WoodpeckerCIEvent.Deployment);
+    /// <summary>
+    /// Triggered when a cron job is executed.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Cron = new(WoodpeckerCIEvent.Cron);
+    /// <summary>
+    /// Triggered when a user manually triggers a pipeline.
+    /// </summary>
+    public static readonly WoodpeckerCIEventType Manual = new(WoodpeckerCIEvent.Manual);
+
+    private WoodpeckerCIEventType(WoodpeckerCIEvent ciEvent)
     {
-        Value = value;
+        Value = ciEvent.GetValue();
     }
 
     public static implicit operator string(WoodpeckerCIEventType eventType)
