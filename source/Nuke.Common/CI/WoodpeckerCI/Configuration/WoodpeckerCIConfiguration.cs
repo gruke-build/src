@@ -15,6 +15,8 @@ namespace Nuke.Common.CI.WoodpeckerCI.Configuration;
 [PublicAPI]
 public class WoodpeckerCIConfiguration : ConfigurationEntity
 {
+    public bool MinimalFetch { get; set; }
+
     public IEnumerable<string> InvokedTargets { get; set; }
 
     public string[] OnlyOnBranches { get; set; }
@@ -46,18 +48,22 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
                 ? $"event: {Triggers[0].GetValue()}"
                 : $"event: [ {Triggers.Select(x => x.GetValue()).JoinCommaSpace()} ]");
         }
-        
-        writer.WriteLine("clone:");
-        using (writer.Indent())
+
+        if (!MinimalFetch)
         {
-            writer.WriteLine("- name: 'Checkout Code'");
+            writer.WriteLine("clone:");
             using (writer.Indent())
             {
-                writer.WriteLine("image: woodpeckerci/plugin-git");
-                writer.WriteLine("settings:");
+                writer.WriteLine("- name: 'Checkout Code'");
                 using (writer.Indent())
                 {
-                    writer.WriteLine("depth: 0");
+                    writer.WriteLine("image: woodpeckerci/plugin-git");
+                    writer.WriteLine("settings:");
+                    using (writer.Indent())
+                    {
+                        writer.WriteLine("depth: 0");
+                        writer.WriteLine("partial: false");
+                    }
                 }
             }
         }

@@ -184,7 +184,7 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     #region Current workflow/step
 
     public string WorkflowName => IEnvironment<WoodpeckerCI>.Get("WORKFLOW_NAME");
-    public string StepName => IEnvironment<WoodpeckerCI>.Get("STEP_NAME");
+    [NoValueCheck] public string StepName => IEnvironment<WoodpeckerCI>.Get("STEP_NAME");
     public long StepNumber => IEnvironment<WoodpeckerCI>.Get<long>("STEP_NUMBER");
     public DateTime StepStartedAt => DateTime.FromUnixTimestamp(IEnvironment<WoodpeckerCI>.Get<long>("STEP_STARTED"));
 
@@ -321,7 +321,7 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     /// <summary>
     /// Version of the server
     /// </summary>
-    public string SystemVersion => IEnvironment<WoodpeckerCI>.Get("SYSTEM_VERSION");
+    [NoConvert] public string SystemVersion => IEnvironment<WoodpeckerCI>.Get("SYSTEM_VERSION");
 
     #endregion
 }

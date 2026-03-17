@@ -22,6 +22,7 @@ clone:
     image: woodpeckerci/plugin-git
     settings:
       depth: 0
+      partial: false
 
 steps:
   - name: 'Run: Test'

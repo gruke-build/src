@@ -256,7 +256,8 @@ public class ConfigurationGenerationTest
                 {
                     OnlyOnBranches = [default, "feature/*"],
                     Triggers = [WoodpeckerCIEvent.Push, WoodpeckerCIEvent.PullRequest],
-                    InvokedTargets = [nameof(Test), nameof(Publish)]
+                    InvokedTargets = [nameof(Test), nameof(Publish)],
+                    MinimalFetch = false
                 }
             );
 

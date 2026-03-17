@@ -31,7 +31,6 @@ public partial class HttpClientProxy : IHttpClientProxy
 
     private readonly HttpClient _http;
     private readonly LogCallback? _callback;
-    private HttpRequestHeaders _defaultRequestHeaders;
 
     public static HttpClientProxy CreateStdOut(HttpClient backingClient)
     {

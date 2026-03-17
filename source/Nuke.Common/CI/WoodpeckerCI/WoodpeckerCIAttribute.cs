@@ -20,6 +20,11 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
 {
     private readonly string _name;
 
+    /// <summary>
+    /// Only fetch one commit with its blob objects. To resolve the entire history, make this false.
+    /// </summary>
+    public bool MinimalFetch { get; set; } = true;
+
     public string[] InvokedTargets { get; set; } = [];
 
     public string[] OnlyOnBranches { get; set; }
@@ -46,6 +51,7 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
     {
         return new WoodpeckerCIConfiguration
                {
+                   MinimalFetch = MinimalFetch,
                    InvokedTargets = InvokedTargets,
                    OnlyOnBranches = OnlyOnBranches,
                    Triggers = Triggers,

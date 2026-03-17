@@ -140,7 +140,7 @@ public class CITest
 
         const string errorString = "a 'string'-typed property should not be directly parseable as another type. "
                                    + "'{0}' can be parsed as a {1}; as such its property type should be updated to match, "
-                                   + "to make the API cleaner.";
+                                   + "to make the API cleaner";
 
         bool.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, "boolean");
         long.TryParse(strValue, out _).Should().BeFalse(errorString, strValue, "long");

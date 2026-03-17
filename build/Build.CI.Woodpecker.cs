@@ -9,6 +9,7 @@ using Nuke.Components;
     name: "test-woodpecker",
     OnlyOnBranches = [default],
     Triggers = [WoodpeckerCIEvent.Push],
-    InvokedTargets = [nameof(ITest.Test)]
+    InvokedTargets = [nameof(ITest.Test)],
+    MinimalFetch = false
 )]
 public partial class Build;
