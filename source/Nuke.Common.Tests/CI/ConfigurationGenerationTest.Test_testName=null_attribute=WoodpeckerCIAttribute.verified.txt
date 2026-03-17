@@ -17,6 +17,11 @@
 when:
   branch: [ ${CI_REPO_DEFAULT_BRANCH}, 'feature/*' ]
   event: [ push, pull_request ]
+clone:
+  - name: 'Checkout Code'
+    image: woodpeckerci/plugin-git
+    settings:
+      depth: 0
 
 steps:
   - name: 'Run: Test, Publish'

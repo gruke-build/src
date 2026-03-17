@@ -19,10 +19,13 @@ public class WoodpeckerCIRunStep : WoodpeckerCIStep
     {
         base.Write(writer);
 
-        writer.WriteLine("  commands:");
         using (writer.Indent())
         {
-            writer.WriteLine($"  - './build.sh {InvokedTargets.JoinSpace()}'");
+            writer.WriteLine("commands:");
+            using (writer.Indent())
+            {
+                writer.WriteLine($"- './build.sh {InvokedTargets.JoinSpace()}'");
+            }
         }
     }
 }

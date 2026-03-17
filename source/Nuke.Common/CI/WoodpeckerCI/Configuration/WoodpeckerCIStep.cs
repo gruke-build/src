@@ -20,18 +20,21 @@ public abstract class WoodpeckerCIStep : ConfigurationEntity
     public override void Write(CustomFileWriter writer)
     {
         writer.WriteLine($"- name: {Name.SingleQuoteIfNeeded()}");
-        writer.WriteLine($"  image: {DockerImage.NotNull("DockerImage != null")}");
-        if (EnvironmentVariables.Count > 0)
+        using (writer.Indent())
         {
-            writer.WriteLine();
-            writer.WriteLine("  environment:");
-            using (writer.Indent())
+            writer.WriteLine($"image: {DockerImage.NotNull("DockerImage != null")}");
+            if (EnvironmentVariables.Count > 0)
             {
-                foreach (var (varName, varValue) in EnvironmentVariables)
+                writer.WriteLine();
+                writer.WriteLine("environment:");
+                using (writer.Indent())
                 {
-                    writer.WriteLine(varValue is bool
-                        ? $"  {varName}: {varValue.ToString()!.ToLower()}"
-                        : $"  {varName}: {varValue.NotNull().ToString().SingleQuoteIfNeeded()}");
+                    foreach (var (varName, varValue) in EnvironmentVariables)
+                    {
+                        writer.WriteLine(varValue is bool
+                            ? $"{varName}: {varValue.ToString()!.ToLower()}"
+                            : $"{varName}: {varValue.NotNull().ToString().SingleQuoteIfNeeded()}");
+                    }
                 }
             }
         }

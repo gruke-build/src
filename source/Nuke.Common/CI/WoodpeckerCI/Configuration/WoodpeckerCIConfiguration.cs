@@ -46,6 +46,21 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
                 ? $"event: {Triggers[0].GetValue()}"
                 : $"event: [ {Triggers.Select(x => x.GetValue()).JoinCommaSpace()} ]");
         }
+        
+        writer.WriteLine("clone:");
+        using (writer.Indent())
+        {
+            writer.WriteLine("- name: 'Checkout Code'");
+            using (writer.Indent())
+            {
+                writer.WriteLine("image: woodpeckerci/plugin-git");
+                writer.WriteLine("settings:");
+                using (writer.Indent())
+                {
+                    writer.WriteLine("depth: 0");
+                }
+            }
+        }
 
         writer.WriteLine();
         writer.WriteLine("steps:");
