@@ -131,7 +131,7 @@ public class CITest
             value.Should().NotBeNull("property attributes indicate this should be treated as non-null");
         else if (property.PropertyType != typeof(string) &&
                  property.PropertyType.IsGenericType &&
-                 property.PropertyType.IsAssignableTo(typeof(Nullable<>).MakeGenericType(property.PropertyType.GenericTypeArguments[0]))
+                 property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)
                 )
             Nullable.GetUnderlyingType(property.PropertyType).Should().NotBeNull();
 
