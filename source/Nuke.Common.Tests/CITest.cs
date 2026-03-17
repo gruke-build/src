@@ -93,7 +93,7 @@ public class CITest
         AssertProperty(instance, property);
         Assert.True(instance.Ci);
     }
-    
+
     [CITheory(typeof(WoodpeckerCI))]
     [MemberData(nameof(Properties), typeof(WoodpeckerCI))]
     public void TestWoodpeckerCI(PropertyInfo property, WoodpeckerCI instance)
@@ -129,7 +129,10 @@ public class CITest
 
         if (property.GetCustomAttribute<CanBeNullAttribute>() == null)
             value.Should().NotBeNull("property attributes indicate this should be treated as non-null");
-        else if (property.PropertyType != typeof(string))
+        else if (property.PropertyType != typeof(string) &&
+                 property.PropertyType.IsGenericType &&
+                 property.PropertyType.IsAssignableTo(typeof(Nullable<>).MakeGenericType(property.PropertyType.GenericTypeArguments[0]))
+                )
             Nullable.GetUnderlyingType(property.PropertyType).Should().NotBeNull();
 
         if (value is not string strValue || property.GetCustomAttribute<NoConvertAttribute>() != null)
@@ -156,7 +159,7 @@ public class CITest
     private static bool IsRunning(Type type)
     {
         var property = type.GetProperty($"IsRunning{type.Name}", BindingFlags.NonPublic | BindingFlags.Static).NotNull();
-        return (bool) property.GetValue(obj: null);
+        return (bool)property.GetValue(obj: null);
     }
 
     private class CITheoryAttribute : TheoryAttribute

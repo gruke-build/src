@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Due to Forgejo Actions' [overwhelming similarities to GitHub Actions](https://forgejo.org/docs/latest/user/actions/github-actions/), I was able to maintain practically 1:1 feature parity with the GitHub Actions generator.
   - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
   - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
+- [Woodpecker CI](https://woodpecker-ci.org/docs/intro) workflow generation
+  - Very minimal implementation currently. 
+  - Woodpecker has no first-party job artifacts functionality, expecting you to provide your own S3 (or compatible) bucket.
+  - This is mostly only useful as a linter/tester. 
+  - I intend on adding helpers on the WoodpeckerCI class to let you easily make releases on common forges (GitHub, Forgejo, GitLab)
+    - The downside is that authentication will not be automatic; you *will* need to pre-configure a PAT and the environment variable containing it for your Woodpecker project.
 - [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
   - Thanks, [@rus-art](https://github.com/rus-art)!
 

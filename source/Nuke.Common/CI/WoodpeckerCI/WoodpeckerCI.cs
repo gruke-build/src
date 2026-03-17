@@ -49,7 +49,9 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     /// <summary>
     /// The unique ID number the repository has on the git forge
     /// </summary>
-    public string RepositoryRemoteId => IEnvironment<WoodpeckerCI>.Get("REPO_REMOTE_ID");
+    [CanBeNull] public long? RepositoryRemoteId => IEnvironment<WoodpeckerCI>.Has("REPO_REMOTE_ID")
+        ? IEnvironment<WoodpeckerCI>.Get<long>("REPO_REMOTE_ID")
+        : null;
 
     public string RepositoryUrl => IEnvironment<WoodpeckerCI>.Get("REPO_URL");
     public string RepositoryCloneUrl => IEnvironment<WoodpeckerCI>.Get("REPO_CLONE_URL");
@@ -66,7 +68,7 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
 
     public string CommitSha => IEnvironment<WoodpeckerCI>.Get("COMMIT_SHA");
     public string CommitRef => IEnvironment<WoodpeckerCI>.Get("COMMIT_REF");
-    public string CommitRefSpec => IEnvironment<WoodpeckerCI>.Get("COMMIT_REFSPEC");
+    [CanBeNull] public string CommitRefSpec => IEnvironment<WoodpeckerCI>.Get("COMMIT_REFSPEC");
 
     /// <summary>
     /// Commit branch (equals target branch for pull requests)
@@ -111,7 +113,7 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     /// <summary>
     /// Release is a pre-release (null if event is not <see cref="WoodpeckerCIEventType.Release"/>)
     /// </summary>
-    public bool? CommitPrerelease => IEnvironment<WoodpeckerCI>.Get<bool?>("COMMIT_PRERELEASE");
+    [CanBeNull] public bool? CommitPrerelease => IEnvironment<WoodpeckerCI>.Get<bool?>("COMMIT_PRERELEASE");
 
     #endregion
 
@@ -148,12 +150,12 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     /// <summary>
     /// Pipeline deploy target for <see cref="WoodpeckerCIEventType.Deployment"/> events
     /// </summary>
-    public string PipelineDeployTarget => IEnvironment<WoodpeckerCI>.Get("PIPELINE_DEPLOY_TARGET");
+    [CanBeNull] public string PipelineDeployTarget => IEnvironment<WoodpeckerCI>.Get("PIPELINE_DEPLOY_TARGET");
 
     /// <summary>
     /// Pipeline deploy task for <see cref="WoodpeckerCIEventType.Deployment"/> events
     /// </summary>
-    public string PipelineDeployTask => IEnvironment<WoodpeckerCI>.Get("PIPELINE_DEPLOY_TASK");
+    [CanBeNull] public string PipelineDeployTask => IEnvironment<WoodpeckerCI>.Get("PIPELINE_DEPLOY_TASK");
 
     public DateTime PipelineCreatedAt => DateTime.FromUnixTimestamp(IEnvironment<WoodpeckerCI>.Get<long>("PIPELINE_CREATED"));
     public DateTime PipelineStartedAt => DateTime.FromUnixTimestamp(IEnvironment<WoodpeckerCI>.Get<long>("PIPELINE_STARTED"));
@@ -197,7 +199,7 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
 
     public string PreviousCommitSha => IEnvironment<WoodpeckerCI>.Get("PREV_COMMIT_SHA");
     public string PreviousCommitRef => IEnvironment<WoodpeckerCI>.Get("PREV_COMMIT_REF");
-    public string PreviousCommitRefSpec => IEnvironment<WoodpeckerCI>.Get("PREV_COMMIT_REFSPEC");
+    [CanBeNull] public string PreviousCommitRefSpec => IEnvironment<WoodpeckerCI>.Get("PREV_COMMIT_REFSPEC");
     public string PreviousCommitBranch => IEnvironment<WoodpeckerCI>.Get("PREV_COMMIT_BRANCH");
 
     /// <summary>
@@ -254,12 +256,12 @@ public class WoodpeckerCI : Host, IBuildServer, IEnvironment<WoodpeckerCI>
     /// <summary>
     /// Previous pipeline deploy target for <see cref="WoodpeckerCIEventType.Deployment"/> events
     /// </summary>
-    public string PreviousPipelineDeployTarget => IEnvironment<WoodpeckerCI>.Get("PREV_PIPELINE_DEPLOY_TARGET");
+    [CanBeNull] public string PreviousPipelineDeployTarget => IEnvironment<WoodpeckerCI>.Get("PREV_PIPELINE_DEPLOY_TARGET");
 
     /// <summary>
     /// Previous pipeline deploy task for <see cref="WoodpeckerCIEventType.Deployment"/> events
     /// </summary>
-    public string PreviousPipelineDeployTask => IEnvironment<WoodpeckerCI>.Get("PREV_PIPELINE_DEPLOY_TASK");
+    [CanBeNull] public string PreviousPipelineDeployTask => IEnvironment<WoodpeckerCI>.Get("PREV_PIPELINE_DEPLOY_TASK");
 
     /// <example>
     /// <c>success</c>, <c>failure</c>
