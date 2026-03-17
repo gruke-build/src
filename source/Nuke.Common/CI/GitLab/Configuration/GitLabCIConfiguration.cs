@@ -10,6 +10,7 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.GitLab.Configuration;
 
+[PublicAPI]
 public class GitLabCIConfiguration : ConfigurationEntity
 {
     public bool UseDocker { get; set; }
@@ -23,13 +24,12 @@ public class GitLabCIConfiguration : ConfigurationEntity
     public string[] Artifacts { get; set; }
 
     public string[] ExcludedArtifacts { get; set; }
-    
+
     public string[] OnlyOnPushesToBranches { get; set; }
 
     public override void Write(CustomFileWriter writer)
     {
-        if (UseDocker && DockerImage == null &&
-            s_sdkVersionToDockerImageVersions.TryGetValue(Environment.Version.Major, out var dockerImage))
+        if (UseDocker && DockerImage == null && DotNetDockerImages.LookupCurrent(out var dockerImage))
         {
             DockerImage = dockerImage;
         }
@@ -105,17 +105,5 @@ public class GitLabCIConfiguration : ConfigurationEntity
                 }
             }
         }
-    }
-
-    private static readonly Dictionary<int, string> s_sdkVersionToDockerImageVersions = new();
-
-    static GitLabCIConfiguration()
-    {
-        s_sdkVersionToDockerImageVersions.Add(key: 10, "mcr.microsoft.com/dotnet/sdk:10.0.103");
-        s_sdkVersionToDockerImageVersions.Add(key: 9, "mcr.microsoft.com/dotnet/sdk:9.0.311");
-        s_sdkVersionToDockerImageVersions.Add(key: 8, "mcr.microsoft.com/dotnet/sdk:8.0.418");
-        s_sdkVersionToDockerImageVersions.Add(key: 7, "mcr.microsoft.com/dotnet/sdk:7.0.410");
-        s_sdkVersionToDockerImageVersions.Add(key: 6, "mcr.microsoft.com/dotnet/sdk:6.0.428-1");
-        s_sdkVersionToDockerImageVersions.Add(key: 5, "mcr.microsoft.com/dotnet/sdk:5.0.408");
     }
 }
