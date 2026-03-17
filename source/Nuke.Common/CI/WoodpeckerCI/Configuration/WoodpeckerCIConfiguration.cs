@@ -63,6 +63,7 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
                     {
                         writer.WriteLine("depth: 0");
                         writer.WriteLine("partial: false");
+                        writer.WriteLine("tags: true");
                     }
                 }
             }

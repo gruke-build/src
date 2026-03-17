@@ -23,6 +23,7 @@ clone:
     settings:
       depth: 0
       partial: false
+      tags: true
 
 steps:
   - name: 'Run: Test'

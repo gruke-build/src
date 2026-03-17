@@ -21,7 +21,8 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
     private readonly string _name;
 
     /// <summary>
-    /// Only fetch one commit with its blob objects. To resolve the entire history, make this false.
+    /// Only fetch one commit with its blob objects, and no tags.
+    /// To resolve the entire history, make this false. You will probably need to do that if using <a href="https://gitversion.net/">GitVersion</a>!
     /// </summary>
     public bool MinimalFetch { get; set; } = true;
 
