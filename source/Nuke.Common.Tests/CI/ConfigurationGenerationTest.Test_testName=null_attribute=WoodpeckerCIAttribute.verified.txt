@@ -28,5 +28,8 @@ clone:
 steps:
   - name: 'Run: Test, Publish'
     image: mcr.microsoft.com/dotnet/sdk:10.0.201
+    environment:
+      ApiKey:
+        from_secret: api_key
     commands:
       - './build.sh Test Publish'
