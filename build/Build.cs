@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
 using Nuke.Common;
+using Nuke.Common.ChangeLog;
 using Nuke.Common.CI;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.GitLab;
@@ -110,7 +111,29 @@ partial class Build
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
         .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
-        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion));
+        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion))
+        .Edit(_ =>
+        {
+            return _.SetPackageReleaseNotes(getNuGetReleaseNotes(From<IHazChangelog>().ChangelogFile));
+
+            string getNuGetReleaseNotes(string changelogFile)
+            {
+                var changelogSectionNotes = ChangelogTasks.ExtractChangelogSectionNotes(changelogFile)
+                    .Select(x => x
+                        .Replace("- ", "\u2022 ")
+                        .Replace("* ", "\u2022 ")
+                        .Replace("+ ", "\u2022 ")
+                        .Replace("`", string.Empty)
+                        .Replace(";", "%2C")
+                        .Replace(",", "%2C")
+                    ).ToList();
+
+                changelogSectionNotes.Add(string.Empty);
+                changelogSectionNotes.Add("Full changelog at https://nuke.greemdev.net/docfx/changelog.html");
+
+                return changelogSectionNotes.JoinNewLine();
+            }
+        });
 
     const string PublicNuGetSource = "https://api.nuget.org/v3/index.json";
     const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
