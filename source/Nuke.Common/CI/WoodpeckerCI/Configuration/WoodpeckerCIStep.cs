@@ -16,19 +16,25 @@ public abstract class WoodpeckerCIStep : ConfigurationEntity
     public abstract string DockerImage { get; set; }
 
     public virtual Dictionary<string, object> EnvironmentVariables { get; set; } = new();//unused for now
+    public virtual Dictionary<string, string> ImportedSecrets { get; set; } = new();
 
     public override void Write(CustomFileWriter writer)
     {
-        writer.WriteLine($"- name: {Name.SingleQuoteIfNeeded()}");
-        using (writer.Indent())
+        using (writer.WriteBlock($"- name: {Name.SingleQuoteIfNeeded()}"))
         {
             writer.WriteLine($"image: {DockerImage.NotNull("DockerImage != null")}");
-            if (EnvironmentVariables.Count > 0)
+            if (EnvironmentVariables.Count > 0 || ImportedSecrets.Count > 0)
             {
-                writer.WriteLine();
-                writer.WriteLine("environment:");
-                using (writer.Indent())
+                using (writer.WriteYamlBlock("environment"))
                 {
+                    foreach (var (secretName, secretKey) in ImportedSecrets)
+                    {
+                        using (writer.WriteYamlBlock(secretName))
+                        {
+                            writer.WriteLine($"from_secret: {secretKey}");
+                        }
+                    }
+
                     foreach (var (varName, varValue) in EnvironmentVariables)
                     {
                         writer.WriteLine(varValue is bool

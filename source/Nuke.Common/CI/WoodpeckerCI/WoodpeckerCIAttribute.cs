@@ -32,6 +32,8 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
 
     public WoodpeckerCIEvent[] Triggers { get; set; }
 
+    public string[] ImportSecrets { get; set; } = [];
+
     public WoodpeckerCIAttribute(
         string name)
     {
@@ -40,9 +42,10 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
 
     public override string IdPostfix => _name;
     public override Type HostType => typeof(WoodpeckerCI);
-    public override IEnumerable<AbsolutePath> GeneratedFiles => [ ConfigurationFile ];
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
     public override IEnumerable<string> IrrelevantTargetNames => [];
+
     public override CustomFileWriter CreateWriter(StreamWriter streamWriter)
     {
         return new CustomFileWriter(streamWriter, indentationFactor: 2, commentPrefix: "#");
@@ -65,8 +68,20 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
         yield return new WoodpeckerCIRunStep
                      {
                          InvokedTargets = InvokedTargets,
-                         Name = $"Run: {InvokedTargets.JoinCommaSpace()}"
+                         Name = $"Run: {InvokedTargets.JoinCommaSpace()}",
+                         ImportedSecrets = GetImports().ToDictionary(x => x.Key, x => x.Value)
                      };
+    }
+
+    protected virtual IEnumerable<(string Key, string Value)> GetImports()
+    {
+        return ImportSecrets
+            .Select(secret =>
+                (
+                    secret,
+                    secret.SplitCamelHumpsWithKnownWords().JoinUnderscore().ToLowerInvariant()
+                )
+            );
     }
 
     public override AbsolutePath ConfigurationFile => Build.RootDirectory / ".woodpecker" / $"{_name}.yml";

@@ -21,8 +21,7 @@ public class WoodpeckerCIRunStep : WoodpeckerCIStep
 
         using (writer.Indent())
         {
-            writer.WriteLine("commands:");
-            using (writer.Indent())
+            using (writer.WriteYamlBlock("commands"))
             {
                 writer.WriteLine($"- './build.sh {InvokedTargets.JoinSpace()}'");
             }

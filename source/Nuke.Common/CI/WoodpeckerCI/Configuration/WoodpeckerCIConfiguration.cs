@@ -32,8 +32,7 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
 
         Assert.NotEmpty(Triggers, "Cannot create a Woodpecker workflow with no triggers.");
 
-        writer.WriteLine("when:");
-        using (writer.Indent())
+        using (writer.WriteYamlBlock("when"))
         {
             if (OnlyOnBranches.Length > 0)
             {
@@ -51,15 +50,12 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
 
         if (!MinimalFetch)
         {
-            writer.WriteLine("clone:");
-            using (writer.Indent())
+            using (writer.WriteYamlBlock("clone"))
             {
-                writer.WriteLine("- name: 'Checkout Code'");
-                using (writer.Indent())
+                using (writer.WriteBlock("- name: 'Checkout Code'"))
                 {
                     writer.WriteLine("image: woodpeckerci/plugin-git");
-                    writer.WriteLine("settings:");
-                    using (writer.Indent())
+                    using (writer.WriteBlock("settings:"))
                     {
                         writer.WriteLine("depth: 0");
                         writer.WriteLine("partial: false");
@@ -70,8 +66,7 @@ public class WoodpeckerCIConfiguration : ConfigurationEntity
         }
 
         writer.WriteLine();
-        writer.WriteLine("steps:");
-        using (writer.Indent())
+        using (writer.WriteYamlBlock("steps"))
         {
             Steps.ForEach(x => x.Write(writer));
         }
