@@ -34,6 +34,7 @@
         "CreateGitHubRelease",
         "DeleteGitLabCIPackages",
         "DeletePackages",
+        "DocFx",
         "DownloadLicenses",
         "GeneratePublicApi",
         "GenerateTools",
