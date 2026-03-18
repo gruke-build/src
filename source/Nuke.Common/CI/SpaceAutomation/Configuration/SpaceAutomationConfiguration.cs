@@ -21,7 +21,7 @@ public class SpaceAutomationConfiguration : ConfigurationEntity
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock($"job({Name.DoubleQuote()})"))
+        using (writer.WriteKotlinLambda($"job({Name.DoubleQuote()})"))
         {
             if (VolumeSize != null)
             {
@@ -29,13 +29,13 @@ public class SpaceAutomationConfiguration : ConfigurationEntity
                 writer.WriteLine();
             }
 
-            using (writer.WriteBlock("git"))
+            using (writer.WriteKotlinLambda("git"))
             {
                 writer.WriteLine("depth = UNLIMITED_DEPTH");
 
                 if (RefSpec != null)
                 {
-                    using (writer.WriteBlock("refSpec"))
+                    using (writer.WriteKotlinLambda("refSpec"))
                     {
                         RefSpec.ForEach(x => writer.WriteLine($"+{x.DoubleQuote()}"));
                     }
@@ -48,7 +48,7 @@ public class SpaceAutomationConfiguration : ConfigurationEntity
             if (Triggers.Any())
             {
                 writer.WriteLine();
-                using (writer.WriteBlock("startOn"))
+                using (writer.WriteKotlinLambda("startOn"))
                 {
                     Triggers.ForEach(x => x.Write(writer));
                 }
@@ -57,7 +57,7 @@ public class SpaceAutomationConfiguration : ConfigurationEntity
             if (TimeoutInMinutes != null)
             {
                 writer.WriteLine();
-                using (writer.WriteBlock("failOn"))
+                using (writer.WriteKotlinLambda("failOn"))
                 {
                     writer.WriteLine($"timeOut {{ timeOutInMinutes = {TimeoutInMinutes} }}");
                 }

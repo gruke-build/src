@@ -17,7 +17,7 @@ public class TeamCityArtifactDependency : TeamCityDependency
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock($"artifacts({BuildType.Id})"))
+        using (writer.WriteKotlinLambda($"artifacts({BuildType.Id})"))
         {
             writer.WriteArray("artifactRules", ArtifactRules);
         }

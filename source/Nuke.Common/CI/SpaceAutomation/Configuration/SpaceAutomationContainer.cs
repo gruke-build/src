@@ -23,12 +23,12 @@ public class SpaceAutomationContainer : ConfigurationEntity
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock($"container({Image.DoubleQuote()})"))
+        using (writer.WriteKotlinLambda($"container({Image.DoubleQuote()})"))
         {
             Resources.Write(writer);
             Imports.ForEach(x => writer.WriteLine($"{x.Key} = {x.Value}"));
 
-            using (writer.WriteBlock("shellScript"))
+            using (writer.WriteKotlinLambda("shellScript"))
             {
                 var scriptContent = new List<string>();
                 if (Submodules)

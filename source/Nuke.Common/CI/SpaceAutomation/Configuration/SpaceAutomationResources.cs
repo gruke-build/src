@@ -19,7 +19,7 @@ public class SpaceAutomationResources : ConfigurationEntity
     {
         if (Cpu != null || Memory != null)
         {
-            using (writer.WriteBlock($"resources"))
+            using (writer.WriteKotlinLambda("resources"))
             {
                 if (Cpu != null)
                     writer.WriteLine($"cpu = {Cpu}");

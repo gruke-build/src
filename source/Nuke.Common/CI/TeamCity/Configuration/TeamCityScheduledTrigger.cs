@@ -20,9 +20,9 @@ public class TeamCityScheduledTrigger : TeamCityTrigger
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("schedule"))
+        using (writer.WriteKotlinLambda("schedule"))
         {
-            using (writer.WriteBlock("schedulingPolicy = daily"))
+            using (writer.WriteKotlinLambda("schedulingPolicy = daily"))
             {
                 writer.WriteLine("hour = 3");
             }

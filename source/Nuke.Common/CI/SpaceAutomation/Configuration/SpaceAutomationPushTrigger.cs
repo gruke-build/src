@@ -39,14 +39,14 @@ public class SpaceAutomationPushTrigger : SpaceAutomationTrigger
             HasBranchFilter() ||
             HasPathFilter())
         {
-            using (writer.WriteBlock("gitPush"))
+            using (writer.WriteKotlinLambda("gitPush"))
             {
                 if (OnPush != null)
                     writer.WriteLine($"enabled = {OnPush.ToString().ToLowerInvariant()}");
 
                 if (HasBranchFilter())
                 {
-                    using (writer.WriteBlock("branchFilter"))
+                    using (writer.WriteKotlinLambda("branchFilter"))
                     {
                         new[]
                         {
@@ -60,13 +60,13 @@ public class SpaceAutomationPushTrigger : SpaceAutomationTrigger
 
                 if (HasPathFilter())
                 {
-                    using (writer.WriteBlock("pathFilter"))
+                    using (writer.WriteKotlinLambda("pathFilter"))
                     {
                         new[]
                         {
                             OnPushPathIncludes?.Select(x => $"+{x.DoubleQuote()}"),
                             OnPushPathExcludes?.Select(x => $"-{x.DoubleQuote()}")
-                        }.WhereNotNull().SelectMany(x => x).ForEach(x => writer.WriteLine(x));
+                        }.WhereNotNull().SelectMany(x => x).ForEach(writer.WriteLine);
                     }
                 }
             }

@@ -22,7 +22,7 @@ public class TeamCitySnapshotDependency : TeamCityDependency
             => "FailureAction." +
                action.ToString().SplitCamelHumps().JoinUnderscore().ToUpperInvariant();
 
-        using (writer.WriteBlock($"snapshot({BuildType.Id})"))
+        using (writer.WriteKotlinLambda($"snapshot({BuildType.Id})"))
         {
             writer.WriteLine($"onDependencyFailure = {FormatAction(FailureAction)}");
             writer.WriteLine($"onDependencyCancel = {FormatAction(CancelAction)}");

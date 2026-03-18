@@ -40,6 +40,13 @@ public class CustomFileWriter
         writer(this);
     }
 
+    public IDisposable WriteBlock(string text = null)
+    {
+        return DelegateDisposable
+            .CreateBracket(() => WriteLine(text))
+            .CombineWith(Indent());
+    }
+
     public IDisposable Indent()
     {
         return DelegateDisposable.CreateBracket(

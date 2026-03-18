@@ -61,7 +61,7 @@ public class TeamCityBuildType : ConfigurationEntity
         if (!Dependencies?.Any() ?? true)
             return;
 
-        using (writer.WriteBlock("dependencies"))
+        using (writer.WriteKotlinLambda("dependencies"))
         {
             foreach (var dependency in Dependencies)
                 dependency.Write(writer);
@@ -73,7 +73,7 @@ public class TeamCityBuildType : ConfigurationEntity
         if (!Parameters?.Any() ?? true)
             return;
 
-        using (writer.WriteBlock("params"))
+        using (writer.WriteKotlinLambda("params"))
         {
             foreach (var parameter in Parameters)
                 parameter.Write(writer);
@@ -90,7 +90,7 @@ public class TeamCityBuildType : ConfigurationEntity
         if (!Triggers?.Any() ?? true)
             return;
 
-        using (writer.WriteBlock("triggers"))
+        using (writer.WriteKotlinLambda("triggers"))
         {
             foreach (var trigger in Triggers)
                 trigger.Write(writer);
@@ -99,7 +99,7 @@ public class TeamCityBuildType : ConfigurationEntity
 
     public virtual void WriteSteps(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("steps"))
+        using (writer.WriteKotlinLambda("steps"))
         {
             var arguments = $"{InvokedTargets.JoinSpace()} --skip";
             if (Partition != null)
@@ -107,7 +107,7 @@ public class TeamCityBuildType : ConfigurationEntity
 
             void WriteConditionalExec(string path, string condition, string platform)
             {
-                using (writer.WriteBlock("exec"))
+                using (writer.WriteKotlinLambda("exec"))
                 {
                     writer.WriteLine($"path = {path.DoubleQuote()}");
                     writer.WriteLine($"arguments = {arguments.DoubleQuote()}");

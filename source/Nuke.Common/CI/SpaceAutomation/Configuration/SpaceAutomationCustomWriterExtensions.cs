@@ -10,7 +10,7 @@ namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 public static class SpaceAutomationCustomWriterExtensions
 {
-    public static IDisposable WriteBlock(this CustomFileWriter writer, string text)
+    public static IDisposable WriteKotlinLambda(this CustomFileWriter writer, string text)
     {
         return DelegateDisposable
             .CreateBracket(
