@@ -30,9 +30,6 @@ jobs:
 
     - name: 'Run: DocFX'
       run: ./build.cmd DocFX
-      env:
-        FeedzNuGetApiKey: ${{ secrets.FEEDZ_NUGET_API_KEY }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to the Docs Repo
       uses: cpina/github-action-push-to-another-repository@main
