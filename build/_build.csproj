@@ -69,6 +69,13 @@
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="$(NukeRootDirectory)\docs\docfx.json" LinkBase="docs" />
+    <None Include="$(NukeRootDirectory)\docs\index.md" LinkBase="docs" />
+    <None Include="$(NukeRootDirectory)\docs\toc.yml" LinkBase="docs" />
+    <None Include="$(NukeRootDirectory)\docs\api\index.md" LinkBase="docs/api" />
+  </ItemGroup>
+
   <Import Project="..\source\Nuke.Common\Nuke.Common.targets" />
 
 </Project>
