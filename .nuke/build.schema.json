@@ -136,7 +136,7 @@
         },
         "CodecovToken": {
           "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "Configuration": {
           "type": "string",
@@ -147,16 +147,16 @@
         },
         "DiscordWebhook": {
           "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "FeedzNuGetApiKey": {
           "type": "string",
           "description": "feedz.io API key",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "GitHubReleaseGitHubToken": {
           "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "IgnoreFailedSources": {
           "type": "boolean",
@@ -168,7 +168,7 @@
         "PublicNuGetApiKey": {
           "type": "string",
           "description": "nuget.org API key",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "Solution": {
           "type": "string",

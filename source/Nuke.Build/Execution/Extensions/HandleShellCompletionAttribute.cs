@@ -26,7 +26,7 @@ internal class HandleShellCompletionAttribute : BuildExtensionAttributeBase, IOn
                 {
                     "The old-style .nuke configuration is no longer supported.",
                     "You can convert to the new-style .nuke directory by calling:",
-                    "   nuke :update"
+                    "   gruke :update"
                 }.JoinNewLine());
             Environment.Exit(exitCode: -1);
         }

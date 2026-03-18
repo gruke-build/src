@@ -133,7 +133,7 @@ public class SchemaUtility
 
             property.Description = ParameterService.GetParameterDescription(parameterMember);
             property.Default = parameterMember.HasCustomAttribute<SecretAttribute>()
-                ? "Secrets must be entered via 'nuke :secrets [profile]'"
+                ? "Secrets must be entered via 'gruke :secrets [profile]'"
                 : null;
 
             var values = ParameterService.GetParameterValueSet(parameterMember, _build)
