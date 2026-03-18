@@ -8,7 +8,7 @@ using System.Linq;
 namespace Nuke.Common.CI;
 
 [AttributeUsage(AttributeTargets.Property)]
-public class NoConvertAttribute : Attribute;
+internal class NoConvertAttribute : Attribute;
 
 [AttributeUsage(AttributeTargets.Property)]
 internal class NoValueCheckAttribute : Attribute;
