@@ -9,6 +9,8 @@ on:
     paths:
       - 'docs/**'
       - 'source/**'
+      - 'README.md'
+      - "build\Build.DocFX.cs"
   workflow_dispatch:
     inputs: {}
 jobs:

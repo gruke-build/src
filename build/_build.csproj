@@ -70,10 +70,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(NukeRootDirectory)\docs\docfx.json" LinkBase="docs" />
-    <None Include="$(NukeRootDirectory)\docs\index.md" LinkBase="docs" />
-    <None Include="$(NukeRootDirectory)\docs\toc.yml" LinkBase="docs" />
-    <None Include="$(NukeRootDirectory)\docs\api\index.md" LinkBase="docs/api" />
+    <None Include="$(NukeRootDirectory)\docs\docfx.json" LinkBase="docfx" />
+    <None Include="$(NukeRootDirectory)\docs\toc.yml" LinkBase="docfx" />
   </ItemGroup>
 
   <Import Project="..\source\Nuke.Common\Nuke.Common.targets" />

@@ -13,19 +13,31 @@ using Nuke.Common.Tools.DocFX;
 using Nuke.Common.Tools.Git;
 using Nuke.Common.Utilities;
 using Nuke.Components;
+using Serilog;
 
 public partial class Build
 {
-    AbsolutePath DocFxConfiguration => RootDirectory / "docs" / "docfx.json";
-    AbsolutePath ChangelogOutput => RootDirectory / "docs" / "changelog.md";
+    AbsolutePath DocsDirectory => RootDirectory / "docs";
+    
+    AbsolutePath DocFxConfiguration => DocsDirectory / "docfx.json";
+    AbsolutePath ChangelogOutput => DocsDirectory / "changelog.md";
+    
+    AbsolutePath ApiIndexMd => DocsDirectory / "api" / "index.md";
+    AbsolutePath IndexMd => DocsDirectory / "index.md";
 
     Target DocFx => _ => _
         .Requires(() => From<IHazGitVersion>().Versioning)
         .Requires(() => GitTasks.GitHasCleanWorkingCopy())
         .Executes(() =>
         {
-            (DocFxConfiguration.Parent / "apimeta").CleanDirectory();
-            (DocFxConfiguration.Parent / "generated").CleanDirectory();
+            (DocsDirectory / "apimeta").CleanDirectory();
+            (DocsDirectory / "generated").CleanDirectory();
+            (DocsDirectory / "api").CreateOrCleanDirectory();
+
+            ApiIndexMd.WriteAllText("# GRUKE API Documentation", eofLineBreak: true);
+            IndexMd.WriteAllLines((RootDirectory / "README.md")
+                .ReadAllLines()
+                .Prepend(string.Empty).Prepend("# Home"));
 
             var original = DocFxConfiguration.ExistingFile()?.ReadAllLines()
                            ?? throw new InvalidOperationException($"Could not read DocFX config at '{DocFxConfiguration}'.");
@@ -41,7 +53,11 @@ public partial class Build
             finally
             {
                 ChangelogOutput.DeleteFile();
+                (DocsDirectory / "api").DeleteDirectory();
+                IndexMd.DeleteFile();
+                (DocsDirectory / "apimeta").DeleteDirectory();
                 hotswap.Dispose();
+                Log.Information("Generated DocFX documentation can be found at '{Path}'.", DocsDirectory / "generated");
             }
         });
 
