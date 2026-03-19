@@ -10,7 +10,6 @@ using JetBrains.Annotations;
 using Nuke.Common.CI.ForgejoActions.Configuration;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
-using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 

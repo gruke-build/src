@@ -10,9 +10,6 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
-using Nuke.Common.Utilities.Collections;
-using Nuke.Common.Utilities.Net;
-using Serilog;
 
 namespace Nuke.Common.IO;
 

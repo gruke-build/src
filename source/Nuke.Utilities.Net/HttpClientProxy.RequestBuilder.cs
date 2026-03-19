@@ -4,7 +4,6 @@
 
 using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using JetBrains.Annotations;
 
 namespace Nuke.Common.Utilities.Net;
