@@ -19,7 +19,7 @@ public enum GitHubItemType
 
 public static class GitRepositoryExtensions
 {
-        public static bool IsGitHubRepository(this GitRepository repository)
+    public static bool IsGitHubRepository(this GitRepository repository)
     {
         return repository?.Endpoint?.EqualsOrdinalIgnoreCase("github.com") ?? false;
     }

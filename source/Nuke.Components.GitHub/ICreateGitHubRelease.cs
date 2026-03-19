@@ -11,6 +11,7 @@ using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
 using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
@@ -26,6 +27,9 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 
     [Parameter] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? GitHubActions.Instance?.Token;
 
+    [Parameter] public string GitHubOwner => TryGetValue(() => GitHubOwner);
+    [Parameter] public string GitHubRepoName => TryGetValue(() => GitHubRepoName);
+
     string Name { get; }
     bool Prerelease => false;
     bool Draft => false;
@@ -34,15 +38,19 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 
     Target CreateGitHubRelease => _ => _
         .Requires(() => GitHubToken)
+        .When(!GitRepository.IsGitHubRepository(), _ => _
+            .Requires(() => GitHubOwner)
+            .Requires(() => GitHubRepoName)
+        )
         .Executes(async () =>
         {
-            async Task<Release> GetOrCreateRelease()
+            async Task<Release> GetOrCreateRelease(string owner, string repoName)
             {
                 try
                 {
                     return await GitHubTasks.GitHubClient.Repository.Release.Create(
-                        GitRepository.GetGitHubOwner(),
-                        GitRepository.GetGitHubName(),
+                        owner,
+                        repoName,
                         new NewRelease(Name)
                         {
                             Name = Name,
@@ -50,33 +58,37 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
                             Draft = Draft,
                             Body = ChangelogTasks.ExtractChangelogSectionNotes(ChangelogFile).JoinNewLine()
                         });
-
                 }
                 catch
                 {
-                    return await GitHubTasks.GitHubClient.Repository.Release.Get(
-                        GitRepository.GetGitHubOwner(),
-                        GitRepository.GetGitHubName(),
-                        Name);
+                    return await GitHubTasks.GitHubClient.Repository.Release.Get(owner, repoName, Name);
                 }
             }
 
-            GitHubTasks.GitHubClient.Credentials = new Credentials(GitHubToken.NotNull());
-
-            var release = await GetOrCreateRelease();
-
-            var uploadTasks = AssetFiles.Select(async x =>
+            async Task CreateReleaseOnRepository(string githubRepoOwner, string githubRepoName)
             {
-                await using var assetFile = File.OpenRead(x);
-                var asset = new ReleaseAssetUpload
-                            {
-                                FileName = x.Name,
-                                ContentType = "application/octet-stream",
-                                RawData = assetFile
-                            };
-                await GitHubTasks.GitHubClient.Repository.Release.UploadAsset(release, asset);
-            }).ToArray();
+                GitHubTasks.GitHubClient.Credentials = new Credentials(GitHubToken.NotNull());
 
-            Task.WaitAll(uploadTasks);
+                var release = await GetOrCreateRelease(githubRepoOwner, githubRepoName);
+
+                var uploadTasks = AssetFiles.Select(async x =>
+                {
+                    await using var assetFile = File.OpenRead(x);
+                    var asset = new ReleaseAssetUpload
+                                {
+                                    FileName = x.Name,
+                                    ContentType = "application/octet-stream",
+                                    RawData = assetFile
+                                };
+                    await GitHubTasks.GitHubClient.Repository.Release.UploadAsset(release, asset);
+                }).ToArray();
+
+                Task.WaitAll(uploadTasks);
+            }
+
+            if (GitRepository.IsGitHubRepository())
+                await CreateReleaseOnRepository(GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
+            else
+                await CreateReleaseOnRepository(GitHubOwner, GitHubRepoName);
         });
 }
