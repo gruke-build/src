@@ -38,7 +38,10 @@ public partial class Build
             ApiIndexMd.WriteAllText("# GRUKE API Documentation", eofLineBreak: true);
             IndexMd.WriteAllLines((RootDirectory / "README.md")
                 .ReadAllLines()
-                .Prepend(string.Empty).Prepend("# Home"));
+                .Skip(1)
+                .Prepend(string.Empty)
+                .Prepend("# Home")
+            );
 
             var original = DocFxConfiguration.ExistingFile()?.ReadAllLines()
                            ?? throw new InvalidOperationException($"Could not read DocFX config at '{DocFxConfiguration}'.");
