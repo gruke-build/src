@@ -27,10 +27,9 @@ branches:
 skip_tags: true
 
 build_script:
-  - cmd: .\build.cmd Test Pack
-  - sh: ./build.cmd Test Pack
+  - cmd: .\build.cmd Test
+  - sh: ./build.cmd Test
 
 artifacts:
   - path: 'output/test-results/*.trx'
   - path: 'output/test-results/*.xml'
-  - path: 'output/packages/*.nupkg'

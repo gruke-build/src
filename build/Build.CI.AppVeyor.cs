@@ -12,6 +12,6 @@ using Nuke.Components;
     AppVeyorImage.MacOsLatest,
     BranchesExcept = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
     SkipTags = true,
-    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
+    InvokedTargets = [nameof(ITest.Test)],
     Secrets = [])]
 partial class Build;
