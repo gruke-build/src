@@ -7,13 +7,6 @@ using Nuke.Components;
 
 [AppVeyor(
     suffix: null,
-    AppVeyorImage.VisualStudio2022,
-    BranchesOnly = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
-    SkipTags = true,
-    InvokedTargets = [nameof(IPack.Pack), nameof(ITest.Test), nameof(IPublish.Publish)],
-    Secrets = [])]
-[AppVeyor(
-    suffix: "continuous",
     AppVeyorImage.VisualStudioLatest,
     AppVeyorImage.UbuntuLatest,
     AppVeyorImage.MacOsLatest,
