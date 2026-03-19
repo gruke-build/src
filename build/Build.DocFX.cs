@@ -13,15 +13,16 @@ using Nuke.Common.Tools.DocFX;
 using Nuke.Common.Tools.Git;
 using Nuke.Common.Utilities;
 using Nuke.Components;
+using Nuke.Utilities.Text.Json;
 using Serilog;
 
 public partial class Build
 {
     AbsolutePath DocsDirectory => RootDirectory / "docs";
-    
+
     AbsolutePath DocFxConfiguration => DocsDirectory / "docfx.json";
     AbsolutePath ChangelogOutput => DocsDirectory / "changelog.md";
-    
+
     AbsolutePath ApiIndexMd => DocsDirectory / "api" / "index.md";
     AbsolutePath IndexMd => DocsDirectory / "index.md";
 
@@ -61,18 +62,15 @@ public partial class Build
             }
         });
 
-    private IDisposable HotswapDocfxConfigContents(string[] jsonLines)
-    {
-        return DelegateDisposable.CreateBracket(
+    private IDisposable HotswapDocfxConfigContents(string[] jsonLines) =>
+        DelegateDisposable.CreateBracket(
             () =>
             {
                 var modified = JObject.ReadFrom(new JsonTextReader(new StringReader(jsonLines.JoinNewLine())));
-                var appName = GetNestedJsonValue<string>(modified, "build", "globalMetadata", "_appName");
-                var appTitle = GetNestedJsonValue<string>(modified, "build", "globalMetadata", "_appTitle");
-                SetNestedJsonValue(modified, ["build", "globalMetadata", "_appName"],
-                    $"{appName} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
-                SetNestedJsonValue(modified, ["build", "globalMetadata", "_appTitle"],
-                    $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                var appName = modified.GetNested<string>("build.globalMetadata._appName");
+                var appTitle = modified.GetNested<string>("build.globalMetadata._appTitle");
+                modified.SetNested("build.globalMetadata._appName", $"{appName} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                modified.SetNested("build.globalMetadata._appTitle", $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
 
                 DocFxConfiguration.WriteJson(modified);
             },
@@ -81,29 +79,4 @@ public partial class Build
                 DocFxConfiguration.WriteAllLines(jsonLines);
             }
         );
-    }
-
-    private static void SetNestedJsonValue(JToken jobj, string[] keyNames, JToken value)
-    {
-        var token = jobj[keyNames[0]].NotNull();
-
-        foreach (var subKey in keyNames.Skip(1).SkipLast(1))
-        {
-            token = token.NotNull()[subKey];
-        }
-
-        token![keyNames.Last()] = value;
-    }
-
-    private static T GetNestedJsonValue<T>(JToken jobj, params string[] keyNames)
-    {
-        var token = jobj[keyNames[0]].NotNull();
-
-        foreach (var subKey in keyNames.Skip(1))
-        {
-            token = token.NotNull()[subKey];
-        }
-
-        return token!.Value<T>();
-    }
 }
