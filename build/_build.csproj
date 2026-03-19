@@ -64,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\source\Nuke.Components\Nuke.Components.csproj" />
+    <ProjectReference Include="..\source\Nuke.Components.GitHub\Nuke.Components.GitHub.csproj" />
     <ProjectReference Include="..\source\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
