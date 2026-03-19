@@ -5,12 +5,14 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DocFX;
 using Nuke.Common.Tools.Git;
+using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 using Nuke.Components;
 using Nuke.Utilities.Text.Json;
@@ -69,6 +71,16 @@ public partial class Build
             }
         });
 
+    private static string HtmlSpanWrapFooter(string currentFooter, string secondaryContent)
+    {
+        var sb = new StringBuilder("<span>");
+        sb.Append(currentFooter);
+        sb.Append("<br/>"); // line break
+        sb.Append(secondaryContent);
+        sb.Append("</span>");
+        return sb.ToString();
+    }
+
     private IDisposable HotswapDocfxConfigContents(string[] jsonLines) =>
         DelegateDisposable.CreateBracket(
             () =>
@@ -76,8 +88,17 @@ public partial class Build
                 var modified = JObject.ReadFrom(new JsonTextReader(new StringReader(jsonLines.JoinNewLine())));
                 var appName = modified.GetNested<string>("build.globalMetadata._appName");
                 var appTitle = modified.GetNested<string>("build.globalMetadata._appTitle");
-                modified.SetNested("build.globalMetadata._appName", $"{appName} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
-                modified.SetNested("build.globalMetadata._appTitle", $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                var appFooter = modified.GetNested<string>("build.globalMetadata._appFooter");
+                modified.SetNested("build.globalMetadata._appName", 
+                    $"{appName} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                modified.SetNested("build.globalMetadata._appTitle", 
+                    $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                modified.SetNested("build.globalMetadata._appFooter", HtmlSpanWrapFooter(
+                        appFooter,
+                        $"{From<IHazGitVersion>().Versioning.FullSemVer} @ "
+                        + $"<a href=\"{GitRepository.GetGitHubCommitUrl(GitRepository.Commit)}\">{GitRepository.Commit![..7]}</a>"
+                    )
+                );
 
                 DocFxConfiguration.WriteJson(modified);
             },
