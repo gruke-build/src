@@ -86,11 +86,8 @@ public partial class Build
             () =>
             {
                 var modified = JObject.ReadFrom(new JsonTextReader(new StringReader(jsonLines.JoinNewLine())));
-                var appName = modified.GetNested<string>("build.globalMetadata._appName");
                 var appTitle = modified.GetNested<string>("build.globalMetadata._appTitle");
                 var appFooter = modified.GetNested<string>("build.globalMetadata._appFooter");
-                modified.SetNested("build.globalMetadata._appName", 
-                    $"{appName} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
                 modified.SetNested("build.globalMetadata._appTitle", 
                     $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
                 modified.SetNested("build.globalMetadata._appFooter", HtmlSpanWrapFooter(
