@@ -19,7 +19,7 @@ partial class NukeBuild
         if (IsOutputEnabled(DefaultOutput.Logo))
             Host.WriteLogo();
 
-        Host.Information($"NUKE Execution Engine version GreemDev/{typeof(NukeBuild).Assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})");
+        Host.Information($"NUKE Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
         Host.Information();
     }
 

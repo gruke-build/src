@@ -12,7 +12,7 @@ public static class AssemblyExtensions
 {
     public static string GetInformationalText(this Assembly assembly)
     {
-        return $"version {assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})";
+        return $"version GreemDev/{assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})";
     }
 
     public static string GetVersionText(this Assembly assembly)

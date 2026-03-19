@@ -46,7 +46,7 @@ public partial class Program
 
     private static void PrintInfo()
     {
-        Host.Information($"NUKE Global Tool 🌐 version GreemDev/{typeof(Program).Assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})");
+        Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
     }
 
     [CanBeNull]
