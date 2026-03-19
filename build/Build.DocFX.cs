@@ -18,6 +18,10 @@ using Serilog;
 
 public partial class Build
 {
+    AbsolutePath GeneratedDocsDirectory => DocsDirectory / "generated";
+    AbsolutePath ApiMetaDirectory => DocsDirectory / "apimeta";
+    AbsolutePath ApiDirectory => DocsDirectory / "api";
+
     AbsolutePath DocsDirectory => RootDirectory / "docs";
 
     AbsolutePath DocFxConfiguration => DocsDirectory / "docfx.json";
@@ -31,9 +35,9 @@ public partial class Build
         .Requires(() => GitTasks.GitHasCleanWorkingCopy())
         .Executes(() =>
         {
-            (DocsDirectory / "apimeta").CleanDirectory();
-            (DocsDirectory / "generated").CleanDirectory();
-            (DocsDirectory / "api").CreateOrCleanDirectory();
+            ApiMetaDirectory.CleanDirectory();
+            GeneratedDocsDirectory.CleanDirectory();
+            ApiDirectory.CreateOrCleanDirectory();
 
             ApiIndexMd.WriteAllText("# GRUKE API Documentation", eofLineBreak: true);
             IndexMd.WriteAllLines((RootDirectory / "README.md")
@@ -57,11 +61,11 @@ public partial class Build
             finally
             {
                 ChangelogOutput.DeleteFile();
-                (DocsDirectory / "api").DeleteDirectory();
+                ApiDirectory.DeleteDirectory();
                 IndexMd.DeleteFile();
-                (DocsDirectory / "apimeta").DeleteDirectory();
+                ApiMetaDirectory.DeleteDirectory();
                 hotswap.Dispose();
-                Log.Information("Generated DocFX documentation can be found at '{Path}'.", DocsDirectory / "generated");
+                Log.Information("Generated DocFX documentation can be found at '{Path}'.", GeneratedDocsDirectory);
             }
         });
 
