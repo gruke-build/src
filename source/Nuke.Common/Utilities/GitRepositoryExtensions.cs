@@ -19,51 +19,57 @@ public enum GitHubItemType
 
 public static class GitRepositoryExtensions
 {
-    public static bool IsGitHubRepository(this GitRepository repository)
+    extension(GitRepository repo)
     {
-        return repository?.Endpoint?.EqualsOrdinalIgnoreCase("github.com") ?? false;
-    }
+        public bool IsGitHubRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase("github.com") ?? false;
 
-    public static string GetGitHubOwner(this GitRepository repository)
-    {
-        Assert.True(repository.IsGitHubRepository());
-        return repository.Identifier.Split('/')[0];
-    }
-
-    public static string GetGitHubName(this GitRepository repository)
-    {
-        Assert.True(repository.IsGitHubRepository());
-        return repository.Identifier.Split('/')[1];
+        public string GitHubOwner
+        {
+            get
+            {
+                Assert.True(repo.IsGitHubRepository);
+                return repo.Identifier.Split('/')[0];
+            }
+        }
+        
+        public string GitHubName
+        {
+            get
+            {
+                Assert.True(repo.IsGitHubRepository);
+                return repo.Identifier.Split('/')[1];
+            }
+        }
     }
 
     public static string GetGitHubCompareCommitsUrl(this GitRepository repository, string startCommitSha, string endCommitSha)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         return $"https://github.com/{repository.Identifier}/compare/{endCommitSha}^...{startCommitSha}";
     }
 
     public static string GetGitHubCompareTagToHeadUrl(this GitRepository repository, string tag)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         return $"https://github.com/{repository.Identifier}/compare/{tag}...HEAD";
     }
 
     public static string GetGitHubCompareTagsUrl(this GitRepository repository, string startTag, string endTag)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         return $"https://github.com/{repository.Identifier}/compare/{endTag}...{startTag}";
     }
 
     public static string GetGitHubCommitUrl(this GitRepository repository, string commitSha)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         return $"https://github.com/{repository.Identifier}/commit/{commitSha}";
     }
 
     /// <summary>Url in the form of <c>https://raw.githubusercontent.com/{identifier}/{branch}/{file}</c>.</summary>
     public static string GetGitHubDownloadUrl(this GitRepository repository, string file, string branch = null)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
 
         branch ??= repository.Branch.NotNull("repository.Branch != null");
         var relativePath = GetRepositoryRelativePath(file, repository);
@@ -80,7 +86,7 @@ public static class GitRepositoryExtensions
         string branch = null,
         GitHubItemType itemType = GitHubItemType.Automatic)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
 
         branch ??= repository.Branch.NotNull();
         var relativePath = GetRepositoryRelativePath(path, repository);

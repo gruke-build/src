@@ -30,7 +30,7 @@ public static class GitHubTasks
         string directory = null,
         string branch = null)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         Assert.True(!HasPathRoot(directory) || repository.LocalDirectory != null);
 
         var relativeDirectory = HasPathRoot(directory)
@@ -40,8 +40,8 @@ public static class GitHubTasks
 
         branch ??= await repository.GetDefaultBranch();
         var treeResponse = await GitHubClient.Git.Tree.GetRecursive(
-            repository.GetGitHubOwner(),
-            repository.GetGitHubName(),
+            repository.GitHubOwner,
+            repository.GitHubName,
             branch);
 
         return treeResponse.Tree
@@ -52,37 +52,37 @@ public static class GitHubTasks
 
     public static async Task<string> GetDefaultBranch(this GitRepository repository)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
 
-        var repo = await GitHubClient.Repository.Get(repository.GetGitHubOwner(), repository.GetGitHubName());
+        var repo = await GitHubClient.Repository.Get(repository.GitHubOwner, repository.GitHubName);
         return repo.DefaultBranch;
     }
 
     public static async Task<string> GetLatestRelease(this GitRepository repository, bool includePrerelease = false, bool trimPrefix = false)
     {
-        Assert.True(repository.IsGitHubRepository());
-        var releases = await GitHubClient.Repository.Release.GetAll(repository.GetGitHubOwner(), repository.GetGitHubName());
+        Assert.True(repository.IsGitHubRepository);
+        var releases = await GitHubClient.Repository.Release.GetAll(repository.GitHubOwner, repository.GitHubName);
         return releases.First(x => !x.Prerelease || includePrerelease).TagName.TrimStart(trimPrefix ? "v" : string.Empty);
     }
 
     [ItemCanBeNull]
     public static async Task<Milestone> GetGitHubMilestone(this GitRepository repository, string name)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         var milestones = await GitHubClient.Issue.Milestone.GetAllForRepository(
-            repository.GetGitHubOwner(),
-            repository.GetGitHubName(),
+            repository.GitHubOwner,
+            repository.GitHubName,
             new MilestoneRequest { State = ItemStateFilter.All });
         return milestones.FirstOrDefault(x => x.Title == name);
     }
 
     public static async Task<IReadOnlyList<Issue>> GetGitHubMilestoneIssues(this GitRepository repository, string name)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         var milestone = await repository.GetGitHubMilestone(name).NotNull();
         return await GitHubClient.Issue.GetAllForRepository(
-            repository.GetGitHubOwner(),
-            repository.GetGitHubName(),
+            repository.GitHubOwner,
+            repository.GitHubName,
             new RepositoryIssueRequest { State = ItemStateFilter.All, Milestone = milestone.Number.ToString() });
     }
 
@@ -100,16 +100,16 @@ public static class GitHubTasks
 
     public static async Task CreateGitHubMilestone(this GitRepository repository, string title)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         await GitHubClient.Issue.Milestone.Create(
-            repository.GetGitHubOwner(),
-            repository.GetGitHubName(),
+            repository.GitHubOwner,
+            repository.GitHubName,
             new NewMilestone(title));
     }
 
     public static async Task CloseGitHubMilestone(this GitRepository repository, string title, bool enableIssueChecks = true)
     {
-        Assert.True(repository.IsGitHubRepository());
+        Assert.True(repository.IsGitHubRepository);
         var milestone = (await repository.GetGitHubMilestone(title)).NotNull("milestone != null");
 
         if (enableIssueChecks)
@@ -119,8 +119,8 @@ public static class GitHubTasks
         }
 
         await GitHubClient.Issue.Milestone.Update(
-            repository.GetGitHubOwner(),
-            repository.GetGitHubName(),
+            repository.GitHubOwner,
+            repository.GitHubName,
             milestone.Number,
             new MilestoneUpdate { State = ItemState.Closed });
     }

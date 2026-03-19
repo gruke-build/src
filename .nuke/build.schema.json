@@ -154,6 +154,12 @@
           "description": "feedz.io API key",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
+        "GitHubReleaseGitHubOwner": {
+          "type": "string"
+        },
+        "GitHubReleaseGitHubRepoName": {
+          "type": "string"
+        },
         "GitHubReleaseGitHubToken": {
           "type": "string",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"

@@ -38,7 +38,7 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 
     Target CreateGitHubRelease => _ => _
         .Requires(() => GitHubToken)
-        .When(!GitRepository.IsGitHubRepository(), _ => _
+        .When(!GitRepository.IsGitHubRepository, _ => _
             .Requires(() => GitHubOwner)
             .Requires(() => GitHubRepoName)
         )
@@ -86,8 +86,8 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
                 Task.WaitAll(uploadTasks);
             }
 
-            if (GitRepository.IsGitHubRepository())
-                await CreateReleaseOnRepository(GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
+            if (GitRepository.IsGitHubRepository)
+                await CreateReleaseOnRepository(GitRepository.GitHubOwner, GitRepository.GitHubName);
             else
                 await CreateReleaseOnRepository(GitHubOwner, GitHubRepoName);
         });

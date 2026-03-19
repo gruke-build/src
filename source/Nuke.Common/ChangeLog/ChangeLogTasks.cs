@@ -32,7 +32,7 @@ public static class ChangelogTasks
                 .Replace(",", "%2C")
             ).ToList();
 
-        if (repository.IsGitHubRepository())
+        if (repository.IsGitHubRepository)
         {
             changelogSectionNotes.Add(string.Empty);
             changelogSectionNotes.Add($"Full changelog at {repository.GetGitHubBrowseUrl(changelogFile)}");
@@ -229,7 +229,7 @@ public static class ChangelogTasks
 
     private static void UpdateVersionSummary(string tag, List<string> content, [CanBeNull] GitRepository repository)
     {
-        if (repository != null && repository.IsGitHubRepository())
+        if (repository is { IsGitHubRepository: true })
         {
             var sections = GetReleaseSections(content).ToList();
             var firstSection = sections.First();

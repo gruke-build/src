@@ -20,7 +20,7 @@ public class GitHubTasksTest
     public void GitHubRepositoryFromLocalDirectoryTest()
     {
         var repository = GitRepository.FromLocalDirectory(RootDirectory).NotNull();
-        if (!repository.IsGitHubRepository())
+        if (!repository.IsGitHubRepository)
             return;
 
         var rawUrl = $"https://raw.githubusercontent.com/{repository.Identifier}/{repository.Branch}";
