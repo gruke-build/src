@@ -19,7 +19,7 @@ namespace Nuke.Common.IO;
 [PublicAPI]
 public static partial class HttpTasks
 {
-    public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
+    public static TimeSpan DefaultTimeout { get; set; } = TimeSpan.FromSeconds(5);
 
     [Pure]
     public static string HttpDownloadString(

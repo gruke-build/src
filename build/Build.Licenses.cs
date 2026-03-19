@@ -2,6 +2,7 @@
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
+using System;
 using Nuke.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,11 +40,15 @@ partial class Build
         {
             LicensesDirectory.CreateOrCleanDirectory();
 
+            DefaultTimeout = TimeSpan.FromSeconds(15);
             var downloadTasks = Licenses.Select(async x =>
             {
+
                 await HttpDownloadFileLoggedAsync(x.Url, LicensesDirectory / $"{x.Project}.txt");
                 Log.Information("Downloaded license for {Project}", x.Project);
             });
+
             Task.WaitAll(downloadTasks.ToArray());
+            DefaultTimeout = TimeSpan.FromSeconds(5);
         });
 }
