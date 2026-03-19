@@ -81,6 +81,8 @@ public partial class Build
         return sb.ToString();
     }
 
+    private static string HtmlHyperlink(string visibleText, string url) => $"<a href=\"{url}\">{visibleText}</a>";
+
     private IDisposable HotswapDocfxConfigContents(string[] jsonLines) =>
         DelegateDisposable.CreateBracket(
             () =>
@@ -92,8 +94,8 @@ public partial class Build
                     $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
                 modified.SetNested("build.globalMetadata._appFooter", HtmlSpanWrapFooter(
                         appFooter,
-                        $"{From<IHazGitVersion>().Versioning.FullSemVer} @ "
-                        + $"<a href=\"{GitRepository.GetGitHubCommitUrl(GitRepository.Commit)}\">{GitRepository.Commit![..7]}</a>"
+                        $"{From<IHazGitVersion>().Versioning.FullSemVer} @ " +
+                        HtmlHyperlink(GitRepository.Commit![..7], GitRepository.GetGitHubCommitUrl(GitRepository.Commit))
                     )
                 );
 
