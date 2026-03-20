@@ -7,7 +7,6 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Nuke.Common.Components.Forgejo.Activitypub;
-using Nuke.Common.Components.Forgejo.Admin;
 using Nuke.Common.Components.Forgejo.Gitignore;
 using Nuke.Common.Components.Forgejo.Label;
 using Nuke.Common.Components.Forgejo.Licenses;
@@ -44,11 +43,6 @@ namespace Nuke.Common.Components.Forgejo
         public global::Nuke.Common.Components.Forgejo.Activitypub.ActivitypubRequestBuilder Activitypub
         {
             get => new global::Nuke.Common.Components.Forgejo.Activitypub.ActivitypubRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The admin property</summary>
-        public global::Nuke.Common.Components.Forgejo.Admin.AdminRequestBuilder Admin
-        {
-            get => new global::Nuke.Common.Components.Forgejo.Admin.AdminRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gitignore property</summary>
         public global::Nuke.Common.Components.Forgejo.Gitignore.GitignoreRequestBuilder Gitignore
