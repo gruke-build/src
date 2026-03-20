@@ -38,7 +38,7 @@ partial class Build
             (_, _, _) => "https://em-content.zobj.net/thumbs/320/apple/325/package_1f4e6.png"
         };
 
-    string AnnouncementComparisonUrl => GitRepository.GetGitHubCompareTagsUrl(MajorMinorPatchVersion, $"{MajorMinorPatchVersion}^");
+    string AnnouncementComparisonUrl => GitRepository.GitHub.GetCompareTagsUrl(MajorMinorPatchVersion, $"{MajorMinorPatchVersion}^");
 
     string AnnouncementReleaseNotes =>
         new StringBuilder()

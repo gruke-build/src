@@ -35,7 +35,7 @@ public class LatestGitHubReleaseAttribute : ValueInjectionAttributeBase
     {
         var repository = GitRepository.FromUrl($"https://github.com/{_identifier}");
         var releases = GitHubTasks.GitHubClient.Repository.Release
-            .GetAll(repository.GitHubOwner, repository.GitHubName).GetAwaiter().GetResult();
+            .GetAll(repository.GitHub.Owner, repository.GitHub.Name).GetAwaiter().GetResult();
         var versions = releases
             .Select(x => Regex.Match((!UseTagName ? x.Name : x.TagName).NotNullOrWhiteSpace(), Pattern))
             .Select(x => x.Groups["version"].Value)

@@ -40,28 +40,28 @@ public static class GitHubTasks
 
         branch ??= await repository.GetDefaultBranch();
         var treeResponse = await GitHubClient.Git.Tree.GetRecursive(
-            repository.GitHubOwner,
-            repository.GitHubName,
+            repository.GitHub.Owner,
+            repository.GitHub.Name,
             branch);
 
         return treeResponse.Tree
             .Where(x => x.Type == TreeType.Blob)
             .Where(x => x.Path.StartsWithOrdinalIgnoreCase(relativeDirectory))
-            .Select(x => (repository.GetGitHubDownloadUrl(x.Path, branch), x.Path.TrimStart(relativeDirectory)));
+            .Select(x => (repository.GitHub.GetDownloadUrl(x.Path, branch), x.Path.TrimStart(relativeDirectory)));
     }
 
     public static async Task<string> GetDefaultBranch(this GitRepository repository)
     {
         Assert.True(repository.IsGitHubRepository);
 
-        var repo = await GitHubClient.Repository.Get(repository.GitHubOwner, repository.GitHubName);
+        var repo = await GitHubClient.Repository.Get(repository.GitHub.Owner, repository.GitHub.Name);
         return repo.DefaultBranch;
     }
 
     public static async Task<string> GetLatestRelease(this GitRepository repository, bool includePrerelease = false, bool trimPrefix = false)
     {
         Assert.True(repository.IsGitHubRepository);
-        var releases = await GitHubClient.Repository.Release.GetAll(repository.GitHubOwner, repository.GitHubName);
+        var releases = await GitHubClient.Repository.Release.GetAll(repository.GitHub.Owner, repository.GitHub.Name);
         return releases.First(x => !x.Prerelease || includePrerelease).TagName.TrimStart(trimPrefix ? "v" : string.Empty);
     }
 
@@ -70,8 +70,8 @@ public static class GitHubTasks
     {
         Assert.True(repository.IsGitHubRepository);
         var milestones = await GitHubClient.Issue.Milestone.GetAllForRepository(
-            repository.GitHubOwner,
-            repository.GitHubName,
+            repository.GitHub.Owner,
+            repository.GitHub.Name,
             new MilestoneRequest { State = ItemStateFilter.All });
         return milestones.FirstOrDefault(x => x.Title == name);
     }
@@ -81,8 +81,8 @@ public static class GitHubTasks
         Assert.True(repository.IsGitHubRepository);
         var milestone = await repository.GetGitHubMilestone(name).NotNull();
         return await GitHubClient.Issue.GetAllForRepository(
-            repository.GitHubOwner,
-            repository.GitHubName,
+            repository.GitHub.Owner,
+            repository.GitHub.Name,
             new RepositoryIssueRequest { State = ItemStateFilter.All, Milestone = milestone.Number.ToString() });
     }
 
@@ -102,8 +102,8 @@ public static class GitHubTasks
     {
         Assert.True(repository.IsGitHubRepository);
         await GitHubClient.Issue.Milestone.Create(
-            repository.GitHubOwner,
-            repository.GitHubName,
+            repository.GitHub.Owner,
+            repository.GitHub.Name,
             new NewMilestone(title));
     }
 
@@ -119,8 +119,8 @@ public static class GitHubTasks
         }
 
         await GitHubClient.Issue.Milestone.Update(
-            repository.GitHubOwner,
-            repository.GitHubName,
+            repository.GitHub.Owner,
+            repository.GitHub.Name,
             milestone.Number,
             new MilestoneUpdate { State = ItemState.Closed });
     }

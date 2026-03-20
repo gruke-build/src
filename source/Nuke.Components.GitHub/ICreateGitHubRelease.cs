@@ -86,7 +86,7 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
             }
 
             if (GitRepository.IsGitHubRepository)
-                await CreateReleaseOnRepository(GitRepository.GitHubOwner, GitRepository.GitHubName);
+                await CreateReleaseOnRepository(GitRepository.GitHub.Owner, GitRepository.GitHub.Name);
             else
                 await CreateReleaseOnRepository(GitHubOwner, GitHubRepoName);
         });

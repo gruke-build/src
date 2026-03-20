@@ -95,7 +95,7 @@ public partial class Build
                 modified.SetNested("build.globalMetadata._appFooter", HtmlSpanWrapFooter(
                         appFooter,
                         $"{From<IHazGitVersion>().Versioning.FullSemVer} @ " +
-                        HtmlHyperlink(GitRepository.Commit![..7], GitRepository.GetGitHubCommitUrl(GitRepository.Commit))
+                        HtmlHyperlink(GitRepository.Commit![..7], GitRepository.GitHub.GetCommitUrl(GitRepository.Commit))
                     )
                 );
 

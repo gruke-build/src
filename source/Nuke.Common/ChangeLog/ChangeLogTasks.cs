@@ -35,7 +35,7 @@ public static class ChangelogTasks
         if (repository.IsGitHubRepository)
         {
             changelogSectionNotes.Add(string.Empty);
-            changelogSectionNotes.Add($"Full changelog at {repository.GetGitHubBrowseUrl(changelogFile)}");
+            changelogSectionNotes.Add($"Full changelog at {repository.GitHub.GetBrowseUrl(changelogFile)}");
         }
 
         return changelogSectionNotes.JoinNewLine();
@@ -238,10 +238,10 @@ public static class ChangelogTasks
             content.RemoveRange(lastSection.EndIndex + 1, content.Count - lastSection.EndIndex - 1);
 
             content.Add(string.Empty);
-            content.Add($"[{firstSection.Caption}]: {repository.GetGitHubCompareTagToHeadUrl(tag)}");
+            content.Add($"[{firstSection.Caption}]: {repository.GitHub.GetCompareTagToHeadUrl(tag)}");
             for (var i = 1; i + 1 < sections.Count; i++)
-                content.Add($"[{sections[i].Caption}]: {repository.GetGitHubCompareTagsUrl(sections[i].Caption, sections[i + 1].Caption)}");
-            content.Add($"[{lastSection.Caption}]: {repository.GetGitHubBrowseUrl(branch: lastSection.Caption)}");
+                content.Add($"[{sections[i].Caption}]: {repository.GitHub.GetCompareTagsUrl(sections[i].Caption, sections[i + 1].Caption)}");
+            content.Add($"[{lastSection.Caption}]: {repository.GitHub.GetBrowseUrl(branch: lastSection.Caption)}");
         }
     }
 

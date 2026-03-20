@@ -19,8 +19,8 @@ partial class Build
         .Executes(async () =>
         {
             var stargazerUsers = await GitHubTasks.GitHubClient.Activity.Starring.GetAllStargazers(
-                GitRepository.GitHubOwner,
-                GitRepository.GitHubName
+                GitRepository.GitHub.Owner,
+                GitRepository.GitHub.Name
             );
             var stargazerEntries = stargazerUsers.Select(async x =>
             {
