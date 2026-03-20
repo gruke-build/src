@@ -47,6 +47,13 @@ project {
             checked = "True",
             unchecked = "False",
             display = ParameterDisplay.NORMAL)
+        checkbox (
+            "env.CleanOutput",
+            label = "CleanOutput",
+            value = "False",
+            checked = "True",
+            unchecked = "False",
+            display = ParameterDisplay.NORMAL)
         select (
             "env.Configuration",
             label = "Configuration",
