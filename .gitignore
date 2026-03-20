@@ -1,5 +1,6 @@
 external
 nuke-global.*
+build/scratchpad.cs
 
 # docfx output
 docs/apimeta
