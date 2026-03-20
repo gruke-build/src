@@ -48,7 +48,7 @@ x64/
 .*crunch*.local.xml
 
 # NuGet Packages Directory
-packages
+/packages/
 
 # IDEs
 .idea
