@@ -142,7 +142,7 @@ public partial class GitRepositoryExtensions
 
         /// <summary>
         /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the Forgejo server specified by <paramref name="host"/>.
-        /// Use <see cref="IsForgejoRepository"/> to check against the default server specified by <see cref="ForgejoHost.Default"/>.
+        /// Use <see cref="get_IsForgejoRepository"/> to check against the default server specified by <see cref="ForgejoHost.Default"/>.
         /// </summary>
         /// <param name="host">The Forgejo host. See static methods on <see cref="ForgejoHost"/>.</param>
         public bool IsRepositoryOnForgejoHost(ForgejoHost host)

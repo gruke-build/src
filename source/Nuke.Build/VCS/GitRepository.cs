@@ -22,7 +22,7 @@ public enum GitProtocol
 
 [PublicAPI]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public partial class GitRepository
+public partial record GitRepository
 {
     private const string FallbackRemoteName = "origin";
 
@@ -242,6 +242,20 @@ public partial class GitRepository
 
     /// <summary>Identifier of the repository.</summary>
     public string Identifier { get; private set; }
+
+    /// <summary>
+    ///     Creates a copy of the current <see cref="GitRepository"/> with the specified parameters set as the respective properties on the copy.
+    /// </summary>
+    /// <param name="identifier"><see cref="Identifier"/></param>
+    /// <param name="endpoint"><see cref="Endpoint"/></param>
+    public GitRepository ModifyCopy(string identifier = null, string endpoint = null)
+    {
+        return this with
+               {
+                   Identifier = identifier ?? Identifier,
+                   Endpoint = endpoint ?? Endpoint
+               };
+    }
 
     /// <summary>Local path from which the repository was parsed.</summary>
     [CanBeNull]
