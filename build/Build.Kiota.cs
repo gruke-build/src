@@ -7,7 +7,7 @@ using Nuke.Common.Tools.Kiota;
 
 public partial class Build
 {
-    [Parameter] readonly bool CleanOutput;
+    [Parameter(description: "Clean Kiota output before running the generator.")] readonly bool CleanOutput;
 
     Target Kiota => _ => _
         .After(GenerateTools)

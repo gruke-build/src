@@ -19,8 +19,8 @@ using static Nuke.Common.Tools.GitVersion.GitVersionTasks;
 
 partial class Build
 {
-    [Parameter] readonly bool AutoStash = true;
-    [Parameter] readonly bool Major;
+    [Parameter(description: "Automatically stash changes when using branch-related targets")] readonly bool AutoStash = true;
+    [Parameter(description: "Is this a major (x.0.0) release?")] readonly bool Major;
 
     string MajorMinorPatchVersion => Major ? $"{GitVersion.Major + 1}.0.0" : GitVersion.MajorMinorPatch;
     string MilestoneTitle => $"v{MajorMinorPatchVersion}";

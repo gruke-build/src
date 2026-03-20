@@ -24,7 +24,7 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
 {
     bool CreateCoverageHtmlReport { get; }
     bool ReportToCodecov { get; }
-    [Parameter] [Secret] string CodecovToken => TryGetValue(() => CodecovToken);
+    [Parameter("codecov.io API token")] [Secret] string CodecovToken => TryGetValue(() => CodecovToken);
 
     AbsolutePath CoverageReportDirectory => ReportDirectory / "coverage-report";
     AbsolutePath CoverageReportArchive => CoverageReportDirectory.WithExtension("zip");

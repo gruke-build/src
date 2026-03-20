@@ -24,10 +24,10 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 {
     public const string GitHubRelease = nameof(GitHubRelease);
 
-    [Parameter] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? GitHubActions.Instance?.Token;
+    [Parameter("GitHub API token with appropriate API access")] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? GitHubActions.Instance?.Token;
 
-    [Parameter] public string GitHubOwner => TryGetValue(() => GitHubOwner);
-    [Parameter] public string GitHubRepoName => TryGetValue(() => GitHubRepoName);
+    [Parameter("Owner of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases.")] public string GitHubOwner => TryGetValue(() => GitHubOwner);
+    [Parameter("Name of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases.")] public string GitHubRepoName => TryGetValue(() => GitHubRepoName);
 
     string Name { get; }
     bool Prerelease => false;

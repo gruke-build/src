@@ -87,7 +87,7 @@ partial class Build
     IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects 
         => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
-    [Parameter]
+    [Parameter("Degree of parallelism for test execution.")]
     public int TestDegreeOfParallelism { get; } = 1;
 
     Target ITest.Test => _ => _

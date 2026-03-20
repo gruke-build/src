@@ -130,20 +130,25 @@
     {
       "properties": {
         "AnnouncementPing": {
-          "type": "string"
+          "type": "string",
+          "description": "a role ID or @everyone"
         },
         "AutoStash": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Automatically stash changes when using branch-related targets"
         },
         "CleanOutput": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Clean Kiota output before running the generator"
         },
         "CodecovToken": {
           "type": "string",
+          "description": "codecov.io API token",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "Configuration": {
           "type": "string",
+          "description": "The release configuration to use",
           "enum": [
             "Debug",
             "Release"
@@ -151,6 +156,7 @@
         },
         "DiscordWebhook": {
           "type": "string",
+          "description": "the Discord webhook that should receive release notification embeds",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "FeedzNuGetApiKey": {
@@ -159,13 +165,16 @@
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "GitHubReleaseGitHubOwner": {
-          "type": "string"
+          "type": "string",
+          "description": "Owner of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases"
         },
         "GitHubReleaseGitHubRepoName": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases"
         },
         "GitHubReleaseGitHubToken": {
           "type": "string",
+          "description": "GitHub API token with appropriate API access",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "IgnoreFailedSources": {
@@ -173,7 +182,8 @@
           "description": "Ignore unreachable sources during Restore"
         },
         "Major": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Is this a major (x.0.0) release?"
         },
         "PublicNuGetApiKey": {
           "type": "string",
@@ -186,6 +196,7 @@
         },
         "TestDegreeOfParallelism": {
           "type": "integer",
+          "description": "Degree of parallelism for test execution",
           "format": "int32"
         }
       }

@@ -15,8 +15,8 @@ public interface IHazTwitterCredentials : INukeBuild
 {
     public const string Twitter = nameof(Twitter);
 
-    [Parameter] [Secret] string ConsumerKey => TryGetValue(() => ConsumerKey);
-    [Parameter] [Secret] string ConsumerSecret => TryGetValue(() => ConsumerSecret);
-    [Parameter] [Secret] string AccessToken => TryGetValue(() => AccessToken);
-    [Parameter] [Secret] string AccessTokenSecret => TryGetValue(() => AccessTokenSecret);
+    [Parameter("Twitter API Key")] [Secret] string ConsumerKey => TryGetValue(() => ConsumerKey);
+    [Parameter("Twitter API Key Secret")] [Secret] string ConsumerSecret => TryGetValue(() => ConsumerSecret);
+    [Parameter("Twitter API Access Token")] [Secret] string AccessToken => TryGetValue(() => AccessToken);
+    [Parameter("Twitter API Access Token Secret")] [Secret] string AccessTokenSecret => TryGetValue(() => AccessTokenSecret);
 }

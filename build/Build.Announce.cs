@@ -64,10 +64,10 @@ partial class Build
     }
 
     // Server settings | Apps | Integrations | Webhooks | NUKE
-    [Parameter] [Secret] readonly string DiscordWebhook;
+    [Parameter("the Discord webhook that should receive release notification embeds")] [Secret] readonly string DiscordWebhook;
 
     // either null, 'everyone'/'@everyone' or a role ID
-    [Parameter] readonly string AnnouncementPing;
+    [Parameter("a role ID or @everyone")] readonly string AnnouncementPing;
 
     Target AnnounceDiscord => _ => _
         .TriggeredBy(Announce)

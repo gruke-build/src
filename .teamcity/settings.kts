@@ -37,12 +37,14 @@ project {
         text (
             "env.AnnouncementPing",
             label = "AnnouncementPing",
+            description = "a role ID or @everyone",
             value = "",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
         checkbox (
             "env.AutoStash",
             label = "AutoStash",
+            description = "Automatically stash changes when using branch-related targets",
             value = "True",
             checked = "True",
             unchecked = "False",
@@ -50,6 +52,7 @@ project {
         checkbox (
             "env.CleanOutput",
             label = "CleanOutput",
+            description = "Clean Kiota output before running the generator.",
             value = "False",
             checked = "True",
             unchecked = "False",
@@ -57,18 +60,21 @@ project {
         select (
             "env.Configuration",
             label = "Configuration",
+            description = "The release configuration to use.",
             value = "Release",
             options = listOf("Debug" to "Debug", "Release" to "Release"),
             display = ParameterDisplay.NORMAL)
         text (
             "env.GitHubReleaseGitHubOwner",
             label = "GitHubReleaseGitHubOwner",
+            description = "Owner of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases.",
             value = "",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
         text (
             "env.GitHubReleaseGitHubRepoName",
             label = "GitHubReleaseGitHubRepoName",
+            description = "Name of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases.",
             value = "",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
@@ -83,6 +89,7 @@ project {
         checkbox (
             "env.Major",
             label = "Major",
+            description = "Is this a major (x.0.0) release?",
             value = "False",
             checked = "True",
             unchecked = "False",
@@ -90,6 +97,7 @@ project {
         text (
             "env.TestDegreeOfParallelism",
             label = "TestDegreeOfParallelism",
+            description = "Degree of parallelism for test execution.",
             value = "1",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)

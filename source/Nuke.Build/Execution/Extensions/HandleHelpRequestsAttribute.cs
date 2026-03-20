@@ -78,7 +78,11 @@ internal class HandleHelpRequestsAttribute : BuildExtensionAttributeBase, IOnBui
                 // TODO: remove
                 ParameterService.GetParameterDescription(parameter)
                     ?.Replace("{default_target}", defaultTargets.Count > 0 ? defaultTargets.JoinCommaSpace() : "<none>")
-                    .TrimEnd(".").Append(".")
+                    .TrimEnd(".")
+                    .Apply(s =>
+                        s.EndsWith('?')
+                            ? s
+                            : s.Append("."))
                 ?? "<no description>");
             var parameterName = ParameterService.GetParameterDashedName(parameter);
             builder.AppendLine($"  --{parameterName.PadRight(padRightParameter)}  {description.First()}");
