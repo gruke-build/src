@@ -7,14 +7,21 @@ using JetBrains.Annotations;
 using Nuke.Common.Git;
 using Nuke.Common.Utilities;
 
-namespace Nuke.Common.Tools.GitHub;
+namespace Nuke.Common.Tools.Forgejo;
 
-public readonly ref struct ForgejoRepository(GitRepository repo, ForgejoHost host)
+public readonly struct ForgejoRepository(GitRepository repo, ForgejoHost host)
 {
+    public string Host => host;
+    
+    public bool IsForgejoRepository
+        => repo?.IsRepositoryOnForgejoHost(host) ?? false;
+
+    internal GitRepository Git => repo;
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private GitRepository Assertion()
+    internal GitRepository Assertion()
     {
-        Assert.True(repo.IsRepositoryOnForgejoHost(host));
+        //Assert.True(repo.IsRepositoryOnForgejoHost(host));
         return repo;
     }
 
@@ -60,7 +67,7 @@ public readonly ref struct ForgejoRepository(GitRepository repo, ForgejoHost hos
         _ = Assertion();
 
         branch ??= repo.Branch.NotNull("repo.Branch != null");
-        var relativePath = repo.GetRepositoryRelativePath(file);
+        var relativePath = repo.GetRelativePath(file);
         return $"https://{host}/{repo.Identifier}/raw/branch/{branch}/{relativePath}";
     }
 
@@ -74,7 +81,7 @@ public readonly ref struct ForgejoRepository(GitRepository repo, ForgejoHost hos
         _ = Assertion();
 
         branch ??= repo.Branch.NotNull("repo.Branch != null");
-        var relativePath = repo.GetRepositoryRelativePath(path);
+        var relativePath = repo.GetRelativePath(path);
 
         return $"https://{host}/{repo.Identifier}/src/branch/{branch}/{relativePath}".TrimEnd("/");
     }
@@ -110,44 +117,5 @@ public readonly struct ForgejoHost(string host)
     public override string ToString()
     {
         return Host.TrimEnd('/').TrimStart("https://").TrimStart("http://");
-    }
-}
-
-public partial class GitRepositoryExtensions
-{
-    extension(GitRepository repo)
-    {
-        /// <summary>
-        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the Forgejo server specified in <see cref="ForgejoHost.Default"/>.
-        /// Use <see cref="IsRepositoryOnForgejoHost"/> to check against a different server, or change the value of <see cref="ForgejoHost.Default"/> to modify the operation of this property.
-        /// </summary>
-        public bool IsForgejoRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase(ForgejoHost.Default) ?? false;
-
-        /// <summary>
-        /// Create a <see cref="ForgejoRepository"/> instance, basing the Forgejo server off the current repository.
-        /// To create a <see cref="ForgejoRepository"/> from a custom Forgejo server, see <see cref="GitRepositoryExtensions.Forgejo(Nuke.Common.Git.GitRepository,Nuke.Common.Tools.GitHub.ForgejoHost)"/>.
-        /// </summary>
-        public ForgejoRepository Forgejo()
-        {
-            return repo.Forgejo(ForgejoHost.FromRepository(repo));
-        }
-
-        /// <summary>
-        /// Create a <see cref="ForgejoRepository"/> instance, basing the Forgejo server off an arbitrary hostname.
-        /// </summary>
-        public ForgejoRepository Forgejo(ForgejoHost host)
-        {
-            return new ForgejoRepository(repo, host);
-        }
-
-        /// <summary>
-        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the Forgejo server specified by <paramref name="host"/>.
-        /// Use <see cref="get_IsForgejoRepository"/> to check against the default server specified by <see cref="ForgejoHost.Default"/>.
-        /// </summary>
-        /// <param name="host">The Forgejo host. See static methods on <see cref="ForgejoHost"/>.</param>
-        public bool IsRepositoryOnForgejoHost(ForgejoHost host)
-        {
-            return repo?.Endpoint?.EqualsOrdinalIgnoreCase(host) ?? false;
-        }
     }
 }

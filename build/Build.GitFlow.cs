@@ -27,7 +27,7 @@ partial class Build
 
     Target Milestone => _ => _
         .Unlisted()
-        .OnlyWhenStatic(() => GitRepository.IsOnReleaseBranch() || GitRepository.IsOnHotfixBranch())
+        .OnlyWhenStatic(() => GitRepository.IsOnReleaseBranch || GitRepository.IsOnHotfixBranch)
         .Executes(async () =>
         {
             var milestone = await GitRepository.GetGitHubMilestone(MilestoneTitle);
@@ -42,7 +42,7 @@ partial class Build
     Target Changelog => _ => _
         .Unlisted()
         .DependsOn(Milestone)
-        .OnlyWhenStatic(() => GitRepository.IsOnReleaseBranch() || GitRepository.IsOnHotfixBranch())
+        .OnlyWhenStatic(() => GitRepository.IsOnReleaseBranch || GitRepository.IsOnHotfixBranch)
         .Executes(() =>
         {
             var changelogFile = From<IHazChangelog>().ChangelogFile;
@@ -57,10 +57,10 @@ partial class Build
     [UsedImplicitly]
     Target Release => _ => _
         .DependsOn(Changelog)
-        .Requires(() => !GitRepository.IsOnReleaseBranch() || GitHasCleanWorkingCopy())
+        .OnlyWhenStatic(() => !GitRepository.IsOnReleaseBranch || GitHasCleanWorkingCopy())
         .Executes(() =>
         {
-            if (!GitRepository.IsOnReleaseBranch())
+            if (!GitRepository.IsOnReleaseBranch)
                 Checkout($"{ReleaseBranchPrefix}/{MajorMinorPatchVersion}", start: DevelopBranch);
             else
                 FinishReleaseOrHotfix();
@@ -69,7 +69,7 @@ partial class Build
     [UsedImplicitly]
     Target Hotfix => _ => _
         .DependsOn(Changelog)
-        .Requires(() => !GitRepository.IsOnHotfixBranch() || GitHasCleanWorkingCopy())
+        .OnlyWhenStatic(() => !GitRepository.IsOnHotfixBranch || GitHasCleanWorkingCopy())
         .Executes(() =>
         {
             var masterVersion = GitVersion(s => s
@@ -79,7 +79,7 @@ partial class Build
                 .EnableNoFetch()
                 .DisableProcessOutputLogging()).Result;
 
-            if (!GitRepository.IsOnHotfixBranch())
+            if (!GitRepository.IsOnHotfixBranch)
                 Checkout($"{HotfixBranchPrefix}/{masterVersion.Major}.{masterVersion.Minor}.{masterVersion.Patch + 1}", start: MasterBranch);
             else
                 FinishReleaseOrHotfix();

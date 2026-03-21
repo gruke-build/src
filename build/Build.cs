@@ -142,7 +142,7 @@ partial class Build
     [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
-    bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
+    bool IsPublicRelease => GitRepository.IsOnMasterBranch || GitRepository.IsOnReleaseBranch;
 
     string IPublish.NuGetSource => IsPublicRelease
         ? PublicNuGetSource
@@ -159,9 +159,9 @@ partial class Build
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => 
+        .OnlyWhenStatic(() =>
             (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
-            (GitRepository.IsOnDevelopBranch() 
+            (GitRepository.IsOnDevelopBranch
              && ((Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment) || Host is GitLab)))
         .WhenSkipped(DependencyBehavior.Execute);
 

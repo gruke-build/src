@@ -5,6 +5,8 @@
 using System;
 using System.Linq;
 using JetBrains.Annotations;
+using Nuke.Common.Tools.Forgejo;
+using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 
 namespace Nuke.Common.Git;
@@ -12,49 +14,79 @@ namespace Nuke.Common.Git;
 [PublicAPI]
 public static class GitRepositoryExtensions
 {
-    public static bool IsOnMainOrMasterBranch(this GitRepository repository)
+    extension(GitRepository repo)
     {
-        return repository.IsOnMainBranch() ||
-               repository.IsOnMasterBranch();
-    }
+        #region GitHub
 
-    public static bool IsOnMasterBranch(this GitRepository repository)
-    {
-        return repository.Branch?.EqualsOrdinalIgnoreCase("master") ?? false;
-    }
+        public bool IsGitHubRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase("github.com") ?? false;
+        public GitHubRepository GitHub => new(repo);
 
-    public static bool IsOnMainBranch(this GitRepository repository)
-    {
-        return repository.Branch?.EqualsOrdinalIgnoreCase("main") ?? false;
-    }
+        #endregion
 
-    public static bool IsOnDevelopBranch(this GitRepository repository)
-    {
-        return (repository.Branch?.EqualsOrdinalIgnoreCase("dev") ?? false) ||
-               (repository.Branch?.EqualsOrdinalIgnoreCase("develop") ?? false) ||
-               (repository.Branch?.EqualsOrdinalIgnoreCase("development") ?? false);
-    }
+        #region Forgejo
 
-    public static bool IsOnFeatureBranch(this GitRepository repository)
-    {
-        return (repository.Branch?.StartsWithOrdinalIgnoreCase("feature/") ?? false) ||
-               (repository.Branch?.StartsWithOrdinalIgnoreCase("features/") ?? false);
-    }
+        /// <summary>
+        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the Forgejo server specified in <see cref="ForgejoHost.Default"/>.
+        /// Use <see cref="IsRepositoryOnForgejoHost"/> to check against a different server, or change the value of <see cref="ForgejoHost.Default"/> to modify the operation of this property.
+        /// </summary>
+        public bool IsForgejoRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase(ForgejoHost.Default) ?? false;
 
-    // public static bool IsOnBugfixBranch(this GitRepository repository)
-    // {
-    //     return repository.Branch?.StartsWithOrdinalIgnoreCase("feature/fix-") ?? false;
-    // }
+        /// <summary>
+        /// Create a <see cref="ForgejoRepository"/> instance, basing the Forgejo server off the current repository.
+        /// To create a <see cref="ForgejoRepository"/> from a custom Forgejo server, see <see cref="GitRepositoryExtensions.Forgejo(GitRepository, ForgejoHost)"/>.
+        /// </summary>
+        public ForgejoRepository Forgejo()
+        {
+            return repo.Forgejo(ForgejoHost.FromRepository(repo));
+        }
 
-    public static bool IsOnReleaseBranch(this GitRepository repository)
-    {
-        return (repository.Branch?.StartsWithOrdinalIgnoreCase("release/") ?? false) ||
-               (repository.Branch?.StartsWithOrdinalIgnoreCase("releases/") ?? false);
-    }
+        /// <summary>
+        /// Create a <see cref="ForgejoRepository"/> instance, basing the Forgejo server off an arbitrary hostname.
+        /// </summary>
+        public ForgejoRepository Forgejo(ForgejoHost host)
+        {
+            return new ForgejoRepository(repo, host);
+        }
 
-    public static bool IsOnHotfixBranch(this GitRepository repository)
-    {
-        return (repository.Branch?.StartsWithOrdinalIgnoreCase("hotfix/") ?? false) ||
-               (repository.Branch?.StartsWithOrdinalIgnoreCase("hotfixes/") ?? false);
+        /// <summary>
+        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the Forgejo server specified by <paramref name="host"/>.
+        /// Use <see cref="get_IsForgejoRepository"/> to check against the default server specified by <see cref="ForgejoHost.Default"/>.
+        /// </summary>
+        /// <param name="host">The Forgejo host. See static methods on <see cref="ForgejoHost"/>.</param>
+        public bool IsRepositoryOnForgejoHost(ForgejoHost host)
+        {
+            return repo?.Endpoint?.EqualsOrdinalIgnoreCase(host) ?? false;
+        }
+
+        #endregion
+
+        #region Branch helpers
+
+        public bool IsOnMainOrMasterBranch => repo.IsOnMainBranch || repo.IsOnMasterBranch;
+
+        public bool IsOnMasterBranch => repo.Branch?.EqualsOrdinalIgnoreCase("master") ?? false;
+
+        public bool IsOnMainBranch => repo.Branch?.EqualsOrdinalIgnoreCase("main") ?? false;
+
+        public bool IsOnDevelopBranch =>
+            (repo.Branch?.EqualsOrdinalIgnoreCase("dev") ?? false) ||
+            (repo.Branch?.EqualsOrdinalIgnoreCase("develop") ?? false) ||
+            (repo.Branch?.EqualsOrdinalIgnoreCase("development") ?? false);
+
+        public bool IsOnFeatureBranch =>
+            (repo.Branch?.StartsWithOrdinalIgnoreCase("feature/") ?? false) ||
+            (repo.Branch?.StartsWithOrdinalIgnoreCase("features/") ?? false);
+
+        public bool IsOnBugfixBranch => repo.Branch?.StartsWithOrdinalIgnoreCase("feature/fix-") ?? false;
+
+        public bool IsOnReleaseBranch
+            => (repo.Branch?.StartsWithOrdinalIgnoreCase("release/") ?? false) ||
+               (repo.Branch?.StartsWithOrdinalIgnoreCase("releases/") ?? false);
+
+        public bool IsOnHotfixBranch
+            => (repo.Branch?.StartsWithOrdinalIgnoreCase("hotfix/") ?? false) ||
+               (repo.Branch?.StartsWithOrdinalIgnoreCase("hotfixes/") ?? false);
+
+        #endregion
     }
 }

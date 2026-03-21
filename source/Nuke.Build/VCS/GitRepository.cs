@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
@@ -307,11 +308,25 @@ public partial record GitRepository
             RemoteBranch);
     }
 
+    [ContractAnnotation("path: null => null; path: notnull => notnull")]
+    internal string GetRelativePath([CanBeNull] string path)
+    {
+        if (path == null)
+            return null;
+
+        if (!Path.IsPathRooted(path))
+            return path;
+
+        var localDirectory = LocalDirectory.NotNull();
+        Assert.True(localDirectory.Contains(path), $"Path {path.SingleQuote()} must be descendant of {localDirectory:s}");
+        return localDirectory.GetRelativePathTo(path);
+    }
+
     public override string ToString()
     {
         return (Protocol == GitProtocol.Https ? HttpsUrl : SshUrl).TrimEnd(".git");
     }
-    
+
     public static readonly Regex GitRemoteRegex = GitRemotePattern();
 
     [GeneratedRegex(@"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$")]

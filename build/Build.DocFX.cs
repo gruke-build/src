@@ -12,7 +12,7 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DocFX;
 using Nuke.Common.Tools.Git;
-using Nuke.Common.Tools.GitHub;
+using Nuke.Common.Git;
 using Nuke.Common.Utilities;
 using Nuke.Components;
 using Nuke.Utilities.Text.Json;

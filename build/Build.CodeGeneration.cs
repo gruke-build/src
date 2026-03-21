@@ -6,7 +6,7 @@ using System;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Nuke.Common.Tools.GitHub;
+using Nuke.Common.Git;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.CodeGeneration.CodeGenerator;
 using static Nuke.CodeGeneration.ReferenceUpdater;

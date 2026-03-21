@@ -22,7 +22,7 @@ partial class Build
         .DependsOn(ReleaseImage)
         .WhenSkipped(DependencyBehavior.Skip)
         .TriggeredBy<IPublish>()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch());
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch);
 
     IEnumerable<string> ChangelogSectionNotes => ChangelogTasks.ExtractChangelogSectionNotes(From<IHazChangelog>().ChangelogFile);
 

@@ -69,7 +69,7 @@ public readonly ref struct GitHubRepository(GitRepository repo)
         Assert.True(repo.IsGitHubRepository);
 
         branch ??= repo.Branch.NotNull("repo.Branch != null");
-        var relativePath = repo.GetRepositoryRelativePath(file);
+        var relativePath = repo.GetRelativePath(file);
         return $"https://raw.githubusercontent.com/{repo.Identifier}/{branch}/{relativePath}";
     }
 
@@ -85,7 +85,7 @@ public readonly ref struct GitHubRepository(GitRepository repo)
         Assert.True(repo.IsGitHubRepository);
 
         branch ??= repo.Branch.NotNull();
-        var relativePath = repo.GetRepositoryRelativePath(path);
+        var relativePath = repo.GetRelativePath(path);
         var method = GetMethod(relativePath, itemType, repo);
         Assert.True(path == null || method != null, "Could not determine item type");
 
@@ -106,14 +106,5 @@ public readonly ref struct GitHubRepository(GitRepository repo)
             return "blob";
 
         return null;
-    }
-}
-
-public static partial class GitRepositoryExtensions
-{
-    extension(GitRepository repo)
-    {
-        public bool IsGitHubRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase("github.com") ?? false;
-        public GitHubRepository GitHub => new(repo);
     }
 }
