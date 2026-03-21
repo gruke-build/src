@@ -7,6 +7,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using Nuke.Common.Tools.Forgejo;
 using Nuke.Common.Tools.GitHub;
+using Nuke.Common.Tools.GitLab;
 using Nuke.Common.Utilities;
 
 namespace Nuke.Common.Git;
@@ -54,6 +55,43 @@ public static class GitRepositoryExtensions
         /// </summary>
         /// <param name="host">The Forgejo host. See static methods on <see cref="ForgejoHost"/>.</param>
         public bool IsRepositoryOnForgejoHost(ForgejoHost host)
+        {
+            return repo?.Endpoint?.EqualsOrdinalIgnoreCase(host) ?? false;
+        }
+
+        #endregion
+
+        #region GitLab
+
+        /// <summary>
+        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the GitLab server specified in <see cref="GitLabHost.Default"/>.
+        /// Use <see cref="IsRepositoryOnGitLabHost"/> to check against a different server, or change the value of <see cref="GitLabHost.Default"/> to modify the operation of this property.
+        /// </summary>
+        public bool IsGitLabRepository => repo?.Endpoint?.EqualsOrdinalIgnoreCase(GitLabHost.Default) ?? false;
+
+        /// <summary>
+        /// Create a <see cref="GitLabRepository"/> instance, basing the GitLab server off the current repository.
+        /// To create a <see cref="GitLabRepository"/> from a custom GitLab server, see <see cref="GitRepositoryExtensions.GitLab(GitRepository, GitLabHost)"/>.
+        /// </summary>
+        public GitLabRepository GitLab()
+        {
+            return repo.GitLab(GitLabHost.FromRepository(repo));
+        }
+
+        /// <summary>
+        /// Create a <see cref="GitLabRepository"/> instance, basing the GitLab server off an arbitrary hostname.
+        /// </summary>
+        public GitLabRepository GitLab(GitLabHost host)
+        {
+            return new GitLabRepository(repo, host);
+        }
+
+        /// <summary>
+        /// Determines if the current <see cref="GitRepository"/> is a repository hosted on the GitLab server specified by <paramref name="host"/>.
+        /// Use <see cref="get_IsGitLabRepository"/> to check against the default server specified by <see cref="GitLabHost.Default"/>.
+        /// </summary>
+        /// <param name="host">The GitLab host. See static methods on <see cref="GitLabHost"/>.</param>
+        public bool IsRepositoryOnGitLabHost(GitLabHost host)
         {
             return repo?.Endpoint?.EqualsOrdinalIgnoreCase(host) ?? false;
         }
