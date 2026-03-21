@@ -249,12 +249,14 @@ public partial record GitRepository
     /// </summary>
     /// <param name="identifier"><see cref="Identifier"/></param>
     /// <param name="endpoint"><see cref="Endpoint"/></param>
-    public GitRepository ModifyCopy(string identifier = null, string endpoint = null)
+    /// <param name="branch"><see cref="Branch"/></param>
+    public GitRepository ModifyCopy(string identifier = null, string endpoint = null, string branch = null)
     {
         return this with
                {
                    Identifier = identifier ?? Identifier,
-                   Endpoint = endpoint ?? Endpoint
+                   Endpoint = endpoint ?? Endpoint,
+                   Branch = branch ?? Branch
                };
     }
 
@@ -292,21 +294,6 @@ public partial record GitRepository
     /// <summary>Url in the form of <c>git@endpoint:identifier.git</c></summary>
     [CanBeNull]
     public string SshUrl => Endpoint != null ? $"git@{Endpoint}:{Identifier}.git" : null;
-
-    public GitRepository SetBranch(string branch)
-    {
-        return new GitRepository(
-            Protocol,
-            Endpoint,
-            Identifier,
-            branch,
-            LocalDirectory,
-            Head,
-            Commit,
-            Tags,
-            RemoteName,
-            RemoteBranch);
-    }
 
     [ContractAnnotation("path: null => null; path: notnull => notnull")]
     internal string GetRelativePath([CanBeNull] string path)
