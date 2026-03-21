@@ -12,7 +12,7 @@ namespace Nuke.Common.Tools.Forgejo;
 public readonly struct ForgejoRepository(GitRepository repo, ForgejoHost host)
 {
     public string Host => host;
-    
+
     public bool IsForgejoRepository
         => repo?.IsRepositoryOnForgejoHost(host) ?? false;
 
@@ -25,21 +25,9 @@ public readonly struct ForgejoRepository(GitRepository repo, ForgejoHost host)
         return repo;
     }
 
-    public string Owner
-    {
-        get
-        {
-            return Assertion().Identifier.Split('/')[0];
-        }
-    }
+    public string Owner => Assertion().Identifier.Split('/')[0];
 
-    public string Name
-    {
-        get
-        {
-            return Assertion().Identifier.Split('/')[1];
-        }
-    }
+    public string Name => Assertion().Identifier.Split('/')[1];
 
     public string GetCompareCommitsUrl(string startCommitSha, string endCommitSha)
     {
