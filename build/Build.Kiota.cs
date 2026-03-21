@@ -31,7 +31,7 @@ public partial class Build
                 .SetTargetLanguage(KiotaLanguage.csharp)
                 .SetLogLevel(KiotaLogLevel.error)
                 .EnableExcludeBackwardsCompatible()
-                .AddExcludePaths("/admin/**")
+                .AddExcludePaths("/admin/**", "/activitypub/**", "/nodeinfo", "/notifications/**", "/notifications")
                 .SetClassName("ForgejoApiClient")
                 .SetNamespaceName("Nuke.Common.Components.Forgejo")
                 .SetCleanOutput(CleanOutput)

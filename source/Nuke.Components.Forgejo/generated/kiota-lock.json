@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "5D83CA9B2F2855AEE74E75573BE66C0197E32D13B5B6F80B31F9ACEC7BE91080A18FC6CA6375148AD4CDB35C9BF4079A3926DE8EA189DC9C2A52058E1387E0CB",
+  "descriptionHash": "C18158E8718B4B686D75F430B7C9E51A7BE624E8F843A290FD4987833F4A7FAB4FD2063500585388D2C5573CD53EAFD4C12F554C93BE8D6C5CF0D7F950E9BD1B",
   "descriptionLocation": "../../../.nuke/forgejo-openapi-spec.json",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
@@ -30,7 +30,11 @@
   ],
   "includePatterns": [],
   "excludePatterns": [
-    "/admin/**"
+    "/admin/**",
+    "/activitypub/**",
+    "/nodeinfo",
+    "/notifications/**",
+    "/notifications"
   ],
   "disabledValidationRules": []
 }

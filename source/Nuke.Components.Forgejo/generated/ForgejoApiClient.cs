@@ -6,14 +6,11 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Nuke.Common.Components.Forgejo.Activitypub;
 using Nuke.Common.Components.Forgejo.Gitignore;
 using Nuke.Common.Components.Forgejo.Label;
 using Nuke.Common.Components.Forgejo.Licenses;
 using Nuke.Common.Components.Forgejo.Markdown;
 using Nuke.Common.Components.Forgejo.Markup;
-using Nuke.Common.Components.Forgejo.Nodeinfo;
-using Nuke.Common.Components.Forgejo.Notifications;
 using Nuke.Common.Components.Forgejo.Org;
 using Nuke.Common.Components.Forgejo.Orgs;
 using Nuke.Common.Components.Forgejo.Packages;
@@ -39,11 +36,6 @@ namespace Nuke.Common.Components.Forgejo
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ForgejoApiClient : BaseRequestBuilder
     {
-        /// <summary>The activitypub property</summary>
-        public global::Nuke.Common.Components.Forgejo.Activitypub.ActivitypubRequestBuilder Activitypub
-        {
-            get => new global::Nuke.Common.Components.Forgejo.Activitypub.ActivitypubRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The gitignore property</summary>
         public global::Nuke.Common.Components.Forgejo.Gitignore.GitignoreRequestBuilder Gitignore
         {
@@ -68,16 +60,6 @@ namespace Nuke.Common.Components.Forgejo
         public global::Nuke.Common.Components.Forgejo.Markup.MarkupRequestBuilder Markup
         {
             get => new global::Nuke.Common.Components.Forgejo.Markup.MarkupRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The nodeinfo property</summary>
-        public global::Nuke.Common.Components.Forgejo.Nodeinfo.NodeinfoRequestBuilder Nodeinfo
-        {
-            get => new global::Nuke.Common.Components.Forgejo.Nodeinfo.NodeinfoRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The notifications property</summary>
-        public global::Nuke.Common.Components.Forgejo.Notifications.NotificationsRequestBuilder Notifications
-        {
-            get => new global::Nuke.Common.Components.Forgejo.Notifications.NotificationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The org property</summary>
         public global::Nuke.Common.Components.Forgejo.Org.OrgRequestBuilder Org
