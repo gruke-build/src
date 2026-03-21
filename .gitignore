@@ -1,5 +1,6 @@
 external
 nuke-global.*
+.nuke/forgejo-openapi-spec.json
 build/scratchpad.cs
 
 # docfx output

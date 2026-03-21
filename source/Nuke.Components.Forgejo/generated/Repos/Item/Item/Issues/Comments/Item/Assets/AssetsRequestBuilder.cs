@@ -83,11 +83,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.As
         /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIRepoArchivedError">When receiving a 423 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Attachment?> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Common.Components.Forgejo.Models.Attachment?> PostAsync(global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsPostRequestBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Attachment> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Common.Components.Forgejo.Models.Attachment> PostAsync(global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsPostRequestBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -128,18 +128,18 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.As
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsPostRequestBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsPostRequestBody body, Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Comments.Item.Assets.AssetsRequestBuilder.AssetsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
-            requestInfo.SetContentFromParsable(RequestAdapter, "multipart/form-data", body);
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

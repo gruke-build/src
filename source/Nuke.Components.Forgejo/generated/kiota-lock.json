@@ -1,6 +1,6 @@
 {
-  "descriptionHash": "8AC63D6B6A5595F8B197AA9E3177AA13A4B9E104625FA3D595953A712DAE4BF31B3D404379FD5A602E55CC0DA0ADB3B705FD94B237278571149A40170B10D984",
-  "descriptionLocation": "https://codeberg.org/swagger.v1.json",
+  "descriptionHash": "5D83CA9B2F2855AEE74E75573BE66C0197E32D13B5B6F80B31F9ACEC7BE91080A18FC6CA6375148AD4CDB35C9BF4079A3926DE8EA189DC9C2A52058E1387E0CB",
+  "descriptionLocation": "../../../.nuke/forgejo-openapi-spec.json",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
   "clientClassName": "ForgejoApiClient",
