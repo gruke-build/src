@@ -65,6 +65,27 @@ project {
             options = listOf("Debug" to "Debug", "Release" to "Release"),
             display = ParameterDisplay.NORMAL)
         text (
+            "env.ForgejoReleaseForgejoHostName",
+            label = "ForgejoReleaseForgejoHostName",
+            description = "Host of the Forgejo server. Only required if the current repo is not cloned from Forgejo, or you want to use a different server for releases.",
+            value = "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
+        text (
+            "env.ForgejoReleaseForgejoOwner",
+            label = "ForgejoReleaseForgejoOwner",
+            description = "Owner of the Forgejo repository. Only required if the current repo is not cloned from Forgejo, or you want to use a different repository for releases.",
+            value = "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
+        text (
+            "env.ForgejoReleaseForgejoRepoName",
+            label = "ForgejoReleaseForgejoRepoName",
+            description = "Name of the Forgejo repository. Only required if the current repo is not cloned from Forgejo, or you want to use a different repository for releases.",
+            value = "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
+        text (
             "env.GitHubReleaseGitHubOwner",
             label = "GitHubReleaseGitHubOwner",
             description = "Owner of the GitHub repository. Only required if the current repo is not cloned from GitHub, or you want to use a different repository for releases.",

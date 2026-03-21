@@ -31,6 +31,7 @@
         "Changelog",
         "Clean",
         "Compile",
+        "CreateForgejoRelease",
         "CreateGitHubRelease",
         "DeleteGitLabCIPackages",
         "DeletePackages",
@@ -162,6 +163,23 @@
         "FeedzNuGetApiKey": {
           "type": "string",
           "description": "feedz.io API key",
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
+        },
+        "ForgejoReleaseForgejoHostName": {
+          "type": "string",
+          "description": "Host of the Forgejo server. Only required if the current repo is not cloned from Forgejo, or you want to use a different server for releases"
+        },
+        "ForgejoReleaseForgejoOwner": {
+          "type": "string",
+          "description": "Owner of the Forgejo repository. Only required if the current repo is not cloned from Forgejo, or you want to use a different repository for releases"
+        },
+        "ForgejoReleaseForgejoRepoName": {
+          "type": "string",
+          "description": "Name of the Forgejo repository. Only required if the current repo is not cloned from Forgejo, or you want to use a different repository for releases"
+        },
+        "ForgejoReleaseForgejoToken": {
+          "type": "string",
+          "description": "Forgejo API token with appropriate API access",
           "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "GitHubReleaseGitHubOwner": {

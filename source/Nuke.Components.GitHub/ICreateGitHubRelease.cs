@@ -14,6 +14,7 @@ using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
+using Nuke.Common.Git;
 using Octokit;
 
 namespace Nuke.Components;
@@ -85,7 +86,7 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
                 Task.WaitAll(uploadTasks);
             }
 
-            if (GitRepository.IsGitHubRepository)
+            if (GitRepository.IsGitHubRepository && (GitHubOwner is null || GitHubRepoName is null))
                 await CreateReleaseOnRepository(GitRepository.GitHub.Owner, GitRepository.GitHub.Name);
             else
                 await CreateReleaseOnRepository(GitHubOwner, GitHubRepoName);

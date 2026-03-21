@@ -14,4 +14,11 @@ using Nuke.Components;
     InvokedTargets = [nameof(ITest.Test)],
     PublishArtifacts = true
 )]
+[ForgejoActions(
+    ReleaseWorkflow,
+    CodebergRunners.MediumLazy,
+    FetchDepth = 0,
+    OnPushBranches = [MasterBranch, $"{ReleaseBranchPrefix}/*"],
+    InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack), nameof(IPublish.Publish)],
+    PublishArtifacts = false)]
 public partial class Build;

@@ -319,7 +319,8 @@ public partial record GitRepository
 
         var localDirectory = LocalDirectory.NotNull();
         Assert.True(localDirectory.Contains(path), $"Path {path.SingleQuote()} must be descendant of {localDirectory:s}");
-        return localDirectory.GetRelativePathTo(path);
+        // ReSharper disable once PathConstruction_GetRelativePath_CodeTemplate
+        return PathConstruction.GetRelativePath(localDirectory, path).Replace(oldChar: '\\', newChar: '/');
     }
 
     public override string ToString()

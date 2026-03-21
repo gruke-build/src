@@ -9,6 +9,7 @@ using NuGet.Packaging;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
 using Nuke.Common.CI;
+using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.GitLab;
 using Nuke.Common.Execution;
@@ -41,7 +42,8 @@ partial class Build
         IReportIssues,
         IReportDuplicates,
         IPublish,
-        ICreateGitHubRelease
+        ICreateGitHubRelease,
+        ICreateForgejoRelease
 {
     public static int Main() => Execute<Build>(x => ((IPack)x).Pack);
 
@@ -196,11 +198,15 @@ partial class Build
     string ICreateGitHubRelease.Name => MajorMinorPatchVersion;
     IEnumerable<AbsolutePath> ICreateGitHubRelease.AssetFiles => NuGetPackageFiles;
 
+    string ICreateForgejoRelease.Name => MajorMinorPatchVersion;
+
+    IEnumerable<AbsolutePath> ICreateForgejoRelease.AssetFiles => NuGetPackageFiles;
+
     Target ICreateGitHubRelease.CreateGitHubRelease => _ => _
         .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch())
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is GitHubActions)
         .Executes(async () =>
         {
             try
@@ -218,6 +224,12 @@ partial class Build
 #pragma warning restore CA2254
             }
         });
+
+    Target ICreateForgejoRelease.CreateForgejoRelease => _ => _
+        .Inherit<ICreateForgejoRelease>()
+        .TriggeredBy<IPublish>()
+        .ProceedAfterFailure()
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is ForgejoActions);
 
     Target Install => _ => _
         .Executes(() =>
