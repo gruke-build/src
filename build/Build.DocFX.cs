@@ -52,8 +52,11 @@ public partial class Build
             var original = DocFxConfiguration.ExistingFile()?.ReadAllLines()
                            ?? throw new InvalidOperationException($"Could not read DocFX config at '{DocFxConfiguration}'.");
 
-            AbsolutePath.Create(From<IHazChangelog>().ChangelogFile)
-                .Copy(ChangelogOutput, ExistsPolicy.FileOverwrite, createDirectories: true);
+            var changelogLines = File.ReadAllLines(From<IHazChangelog>().ChangelogFile)
+                .Skip(5)
+                .Prepend("# Changelog");
+
+            ChangelogOutput.WriteAllLines(changelogLines, platformFamily: PlatformFamily.Linux);
 
             var hotswap = HotswapDocfxConfigContents(original);
             try
