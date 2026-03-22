@@ -54,6 +54,7 @@
         "ReportIssues",
         "Restore",
         "RunTargetInDockerImageTest",
+        "Sandbox",
         "Test",
         "UpdateContributors",
         "UpdateStargazers"

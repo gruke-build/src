@@ -18,7 +18,7 @@ using JetBrains.Annotations;
 namespace Nuke.Common.Utilities.Net;
 
 [PublicAPI]
-public interface IHttpClientProxy
+public interface IHttpClientProxy : IDisposable
 {
     public HttpRequestHeaders DefaultRequestHeaders { get; }
     public Version DefaultRequestVersion { get; set; }

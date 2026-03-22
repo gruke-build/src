@@ -67,6 +67,7 @@
   <ItemGroup>
     <ProjectReference Include="..\source\Nuke.Components.GitHub\Nuke.Components.GitHub.csproj" />
     <ProjectReference Include="..\source\Nuke.Components.Forgejo\Nuke.Components.Forgejo.csproj" />
+    <ProjectReference Include="..\source\Nuke.Components.GitLab\Nuke.Components.GitLab.csproj" />
     <ProjectReference Include="..\source\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>

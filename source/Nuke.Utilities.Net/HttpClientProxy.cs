@@ -21,8 +21,6 @@ namespace Nuke.Common.Utilities.Net;
 /// <summary>
 /// A simple wrapper around <see cref="HttpClient"/> which calls the specified callback with (non-private)
 /// information about all requests issued via this class.
-/// <br/>
-/// This class is non-owning of the passed <see cref="HttpClient"/>. The caller is responsible for disposal, if needed.
 /// </summary>
 [PublicAPI]
 public partial class HttpClientProxy : IHttpClientProxy
@@ -144,5 +142,10 @@ public partial class HttpClientProxy : IHttpClientProxy
         result[2] = ((int?)response?.StatusCode)?.ToString() ?? "ERR";
         result[3] = sw.Elapsed.TotalMilliseconds;
         return result;
+    }
+
+    public void Dispose()
+    {
+        _http.Dispose();
     }
 }
