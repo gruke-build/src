@@ -11,6 +11,7 @@ using Nuke.Common.Utilities.Net;
 
 namespace Nuke.Components.GitLab;
 
+#nullable enable
 public partial class PaginatedEndpoint<T> where T : class
 {
     private PaginatedEndpoint(IHttpClientProxy client,

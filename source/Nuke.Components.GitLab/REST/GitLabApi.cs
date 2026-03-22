@@ -60,7 +60,7 @@ public static class GitLabApi
     /// <param name="projectPath">The 'namespace/subpath' of the project.</param>
     /// <param name="packageName">The name of the generic package.</param>
     /// <param name="packageVersion">The version currently being uploaded to.</param>
-    /// <returns>A <see cref="IReadOnlyList{string}"/> of errors that occurred when uploading. If this is empty, everything succeeded.</returns>
+    /// <returns>A <see cref="IReadOnlyList{String}"/> of errors that occurred when uploading. If this is empty, everything succeeded.</returns>
     [ItemCanBeNull]
     public static async Task<IReadOnlyList<string>> UploadGenericPackagesToSpecificProjectAsync(
         IHttpClientProxy http,
