@@ -27,6 +27,7 @@ public class DisableDefaultOutputAttribute : Attribute
     }
 }
 
+
 public enum DefaultOutput
 {
     Logo,
@@ -35,5 +36,6 @@ public enum DefaultOutput
     ErrorsAndWarnings,
     TargetOutcome,
     BuildOutcome,
-    Timestamps
+    Timestamps,
+    Notifications
 }

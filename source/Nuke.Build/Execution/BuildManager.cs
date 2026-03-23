@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.Extensions.DependencyModel;
+using Nuke.Build.Shared;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
@@ -40,6 +41,7 @@ internal static class BuildManager
     public static int Execute<T>(Expression<Func<T, Target>>[] defaultTargetExpressions)
         where T : NukeBuild, new()
     {
+        _ = NotificationFetcher.GetNotificationsAsync();
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;
         Console.CancelKeyPress += (_, _) => s_cancellationHandlers.ForEach(x => x());
@@ -113,6 +115,7 @@ internal static class BuildManager
             build.WriteErrorsAndWarnings();
             build.WriteTargetOutcome();
             build.WriteBuildOutcome();
+            build.WriteNotifications();
             build.ExecuteExtension<IOnBuildFinished>(x => x.OnBuildFinished());
         }
     }

@@ -5,7 +5,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using Nuke.Build.Shared;
 using Nuke.Common.Utilities;
+using Serilog;
 
 namespace Nuke.Common;
 
@@ -63,6 +66,55 @@ partial class NukeBuild
 
         if (IsOutputEnabled(DefaultOutput.BuildOutcome))
             Host.WriteBuildOutcome(this);
+    }
+
+    internal void WriteNotifications()
+    {
+        if (IsInterceptorExecution)
+            return;
+
+        if (IsOutputEnabled(DefaultOutput.Notifications))
+        {
+            var temp = CopyArray(NotificationFetcher.Cached);
+
+            if (temp.Length is 0)
+                return;
+
+            Host.WriteBlock("Notifications").Dispose();
+
+            var notificationBody = new StringBuilder();
+
+            foreach (var notification in temp)
+            {
+                notificationBody.AppendLine(notification.Title);
+                notificationBody.AppendLine(notification.Text);
+                if (notification.Links.Length is not 0)
+                {
+                    notificationBody.AppendLine("Links:");
+                    foreach (var link in notification.Links)
+                    {
+                        notificationBody.AppendLine($"  - {link.Text}: {link.Url}");
+                    }
+                }
+
+                var formattedText = notificationBody.ToString();
+                notificationBody.Clear();
+
+                foreach (var line in formattedText.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    Log.Information(line);
+                }
+            }
+        }
+
+        return;
+
+        T[] CopyArray<T>(T[] source)
+        {
+            var destination = new T[source.Length];
+            source.CopyTo(new Span<T>(destination));
+            return destination;
+        }
     }
 
     private bool IsOutputEnabled(DefaultOutput output)

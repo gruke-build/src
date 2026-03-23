@@ -27,7 +27,7 @@ public class ConsoleUtility
 
     // ReSharper disable once CognitiveComplexity
     [CanBeNull]
-    public static string PromptForInput(string question, string defaultValue)
+    public static string PromptForInput(string question, string defaultValue = null)
     {
         if (s_interrupted)
             return defaultValue;
@@ -80,7 +80,7 @@ public class ConsoleUtility
         return result;
     }
 
-    private static readonly char[] s_acceptableChars = ['.', '/', '\\', '_', '-'];
+    private static readonly char[] s_acceptableChars = ['.', '/', '\\', '_', '-', ' ', ':'];
 
     // ReSharper disable once CognitiveComplexity
     public static T PromptForChoice<T>(string question, params (T Value, string Description)[] options)

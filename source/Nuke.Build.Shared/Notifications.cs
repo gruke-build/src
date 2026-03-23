@@ -6,48 +6,74 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities;
 
 namespace Nuke.Build.Shared;
 
 [PublicAPI]
-internal record Notification(string Title, string Text, Link[] Links)
+internal record Notification
 {
-    public string Title { get; } = Title;
-    public string Text { get; } = Text;
-    public Link[] Links { get; } = Links;
-}
+    [JsonPropertyName("id")] public Guid Id { get; set; }
+    [JsonPropertyName("title")] public string Title { get; set; }
+    [JsonPropertyName("text")] public string Text { get; set; }
+    [JsonPropertyName("links")] public Link[] Links { get; set; }
 
-[PublicAPI]
-internal record Link(string Text, string Url)
-{
-    public string Text { get; } = Text;
-    public string Url { get; } = Url;
-}
-
-[PublicAPI]
-internal class NotificationFetcher
-{
-    private const string NotificationEndpoint = "https://nuke.build/notifications.json";
-    private const string UtmMedium = "development";
-
-    private readonly AbsolutePath _notificationDirectory = Constants.GlobalNukeDirectory / "received-notifications";
-    private readonly string _utmSource;
-
-    public NotificationFetcher(string utmSource)
+    internal Notification Assertion()
     {
-        _utmSource = utmSource;
+        Title.NotNull();
+        Text.NotNull();
+        Links.NotNull();
+        return this;
     }
+}
 
-    public async Task<Notification> GetNotificationAsync()
+[PublicAPI]
+internal record Link
+{
+    [JsonPropertyName("text")] public string Text { get; set; }
+    [JsonPropertyName("url")] public string Url { get; set; }
+
+    internal Link Assertion()
+    {
+        Text.NotNull();
+        Url.NotNull();
+        return this;
+    }
+}
+
+[JsonSerializable(typeof(Notification[]))]
+internal partial class NotificationJsonSerializer : JsonSerializerContext;
+
+[PublicAPI]
+internal static class NotificationFetcher
+{
+    public static Notification[] Cached { get; private set; } = [];
+
+    private const string NotificationEndpoint = "https://fs.greemdev.net/fs/notifications.json";
+
+    private static readonly AbsolutePath s_notificationDirectory = Constants.GlobalNukeDirectory / "received-notifications";
+
+    public static async Task<Notification[]> GetNotificationsAsync()
     {
         try
         {
-            return await GetNotificationInternal();
+            var notifications = await GetNotificationsInternal();
+
+            var newNotifications = notifications
+                .Select(x => (Json: x, File: s_notificationDirectory / x.Id.ToString()))
+                .Where(x => !x.File.Exists())
+                .ToArray();
+
+            foreach (var (_, file) in newNotifications)
+            {
+                file.TouchFile(createDirectories: true);
+            }
+
+            return newNotifications.Select(x => x.Json).ToArray();
         }
         catch (Exception)
         {
@@ -55,44 +81,17 @@ internal class NotificationFetcher
         }
     }
 
-    private async Task<Notification> GetNotificationInternal()
+    private static async Task<Notification[]> GetNotificationsInternal()
     {
-        var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync(NotificationEndpoint);
+        using var httpClient = new HttpClient();
+        var response = await httpClient.GetAsync(NotificationEndpoint).ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
             return null;
 
-        var content = await response.Content.ReadAsStringAsync();
-        var json = JsonDocument.Parse(content).RootElement;
+        // ReSharper disable once UseAwaitUsing
+        // 'await using' causes this code to not be able to compile for .NET Standard 2.0.
+        using var contentStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
-        var notification = json.EnumerateArray()
-            .Where(IsApplicable)
-            .Select(x => (Json: x, File: _notificationDirectory / x.ToString().GetMD5Hash()))
-            .FirstOrDefault(x => !x.File.Exists());
-        if (notification.File == null)
-            return null;
-
-        notification.File.TouchFile();
-
-        return new Notification(
-            Title: notification.Json.GetProperty("title").GetString(),
-            Text: notification.Json.GetProperty("text").GetString(),
-            Links: notification.Json.GetProperty("links").EnumerateArray().Select(GetLink).ToArray());
-
-        bool IsApplicable(JsonElement element)
-            => !element.TryGetProperty("exclude", out var exclusions) ||
-               !exclusions.EnumerateArray().Select(x => x.GetString()).Contains(_utmSource);
-
-        Link GetLink(JsonElement obj)
-        {
-            var originalUrl = new Uri(obj.GetProperty("url").GetString().NotNullOrEmpty())
-                .WithUtmValues(
-                    medium: UtmMedium,
-                    source: _utmSource,
-                    campaign: obj.GetProperty("campaign").GetString());
-            return new Link(
-                Text: obj.GetProperty("title").GetString(),
-                Url: originalUrl.AbsoluteUri);
-        }
+        return await JsonSerializer.DeserializeAsync(contentStream, NotificationJsonSerializer.Default.NotificationArray).ConfigureAwait(false);
     }
 }
