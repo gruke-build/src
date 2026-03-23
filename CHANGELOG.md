@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - You have access to Forge-specific APIs in the new `GreemDev.Nuke.Components.{GitHub, Forgejo, GitLab}` NuGet packages.
     - You can use these to create releases. The Woodpecker CI generator has support for importing secrets.
       - `ICreateGitHubRelease` has moved to `GreemDev.Nuke.Components.GitHub`
-      - `ICreateForgejoRelease` has been added to `GreemDev.Nuke.Components.Forgejo`, and works identically to GitHub
+      - `ICreateForgejoRelease` has been added to `GreemDev.Nuke.Components.Forgejo`, and works identically to GitHub; except where it had GitHub it has Forgejo now, what a surprise.
       - `ICreateGitLabRelease` has been added to `GreemDev.Nuke.Components.GitLab`, and is more complex, expecting a `Name`, `Version`, and `PackageName`.
         - GitLab works differently to GitHub & Forgejo; it does not have a dedicated "release assets" feature.
           - The solution we use is to upload to the [Generic Package repository](https://docs.gitlab.com/user/packages/generic_packages/), then create a release that links to all the files in the GPR package version.
