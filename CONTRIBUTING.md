@@ -53,7 +53,7 @@ There are plenty of ways to show your commitment to the project and strengthen i
 Evaluate whether your topic is going to be a valid issue:
 
 - Have you read and searched the [documentation](https://nuke.greemdev.net/release/introduction/)?
-- Have you checked the [FAQ](https://nuke.build/faq/)?
+- Have you checked the [FAQ](https://nuke.greemdev.net/release/faq/)?
 - Is your issue more of a question? Ask on [GitHub discussions](https://github.com/gruke-build/src/discussions)!
 - Have you checked existing/closed issues? Is your version behind?
 - Have you read the relevant [changelog notes](https://github.com/gruke-build/src/blob/develop/CHANGELOG.md)?
