@@ -9,6 +9,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using NGitLab;
@@ -513,5 +515,28 @@ public static class GitLabApi
             predicate: it => it.Name == name && it.Version == version,
             onNonSuccess: _ => Log.Error("Target project has the package registry disabled.")
         );
+    }
+
+#nullable enable
+    public static Task<GitLabReleaseJsonResponse?> GetLatestReleaseAsync(IHttpClientProxy http,long projectId)
+        => GetReleaseAsync(http, projectId, "permalink/latest");
+
+    public static async Task<GitLabReleaseJsonResponse?> GetReleaseAsync(IHttpClientProxy http, long projectId, string tagName) =>
+        await HandleNotFoundAsync(
+            await http.GetAsync($"api/v4/projects/{projectId}/releases/{tagName}"),
+            GitLabSerializerContexts.Default.GitLabReleaseJsonResponse
+        );
+
+    private static async ValueTask<T?> HandleNotFoundAsync<T>(HttpResponseMessage? response, JsonTypeInfo<T> typeInfo)
+        where T : class
+    {
+        if (response is null)
+            return null;
+
+        var contentString = await response.Content.ReadAsStringAsync();
+
+        return contentString is """{"message":"404 Not Found"}"""
+            ? null
+            : JsonSerializer.Deserialize(contentString, typeInfo);
     }
 }
