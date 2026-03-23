@@ -27,6 +27,10 @@ using static Nuke.Common.ControlFlow;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
 
+[DisableDefaultOutput<Terminal>(
+    DefaultOutput.Logo,
+    DefaultOutput.Timestamps,
+    DefaultOutput.BuildOutcome)]
 [DotNetVerbosityMapping]
 partial class Build
     : NukeBuild,
