@@ -36,8 +36,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - You can re-enable build servers (not possible before) by setting your [`NukeBuild`'s `DisableDotNetBuildServers` property](https://nuke.greemdev.net/docfx/api/Nuke.Common.NukeBuild.html#Nuke_Common_NukeBuild_DisableDotNetBuildServers) to `true`.
 - [Dusted off the old Notifications system that existed in the project](https://github.com/gruke-build/src/commit/90e8a484d750d35a6767ff68a2c54cfb56e42e1c) and hooked it up to a notifications JSON file I control.
   - Probably will use this to notify about breaking changes.
-  - Notifications display after a build. 
-  - Support has also been added to `DisableDefaultOutputAttribute` to fully block displaying notifications at all.
+  - Notifications display after a build.
+  - Support has also been added to `DisableDefaultOutputAttribute` to fully block displaying notifications at all. This will also skip requesting them.
 - [Removed Telemetry](https://github.com/gruke-build/src/commit/c4943bcab7a645b571bf9452fd2a5a7a11457b9b)
   - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e) about it.
 - [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input

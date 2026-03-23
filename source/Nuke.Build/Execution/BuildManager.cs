@@ -41,13 +41,17 @@ internal static class BuildManager
     public static int Execute<T>(Expression<Func<T, Target>>[] defaultTargetExpressions)
         where T : NukeBuild, new()
     {
-        _ = NotificationFetcher.GetNotificationsAsync();
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;
         Console.CancelKeyPress += (_, _) => s_cancellationHandlers.ForEach(x => x());
         ToolOptions.Created += (options, _) => VerbosityMapping.Apply((ToolOptions)options);
 
         var build = new T();
+
+        if (build.IsOutputEnabled(DefaultOutput.Notifications))
+        {
+            _ = NotificationFetcher.GetNotificationsAsync();
+        }
 
         try
         {

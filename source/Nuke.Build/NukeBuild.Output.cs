@@ -117,7 +117,7 @@ partial class NukeBuild
         }
     }
 
-    private bool IsOutputEnabled(DefaultOutput output)
+    internal bool IsOutputEnabled(DefaultOutput output)
     {
         return !GetType().GetCustomAttributes<DisableDefaultOutputAttribute>()
             .Where(x => x.IsApplicable(this))
