@@ -9,6 +9,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Nuke.Common;
+using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DocFX;
 using Nuke.Common.Tools.Git;
@@ -34,7 +35,8 @@ public partial class Build
 
     Target DocFx => _ => _
         .Requires(() => From<IHazGitVersion>().Versioning)
-        .Requires(() => GitTasks.GitHasCleanWorkingCopy())
+        .When(Host is Terminal, _ => _
+            .Requires(() => GitTasks.GitHasCleanWorkingCopy()))
         .Executes(() =>
         {
             ApiMetaDirectory.CleanDirectory();
