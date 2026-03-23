@@ -13,9 +13,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Due to Forgejo Actions' [overwhelming similarities to GitHub Actions](https://forgejo.org/docs/latest/user/actions/github-actions/), I was able to maintain practically 1:1 feature parity with the GitHub Actions generator.
         - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
     - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
+    - To provide GitHub Actions familiarity, Forgejo exposes `GITHUB_`-prefixed environment variables. However, Forgejo *also* exposes `FORGEJO_`-prefixed variables, while GitHub does not.
+      - As a result, [Forgejo Actions is no longer treated as being a GitHub Actions environment](https://github.com/gruke-build/src/commit/a5c99dc2c1cbfe225be28c2f178140f4d9c21d93).
+      - If you relied on this functionality you will need to replace your usages of `GitHubActions` with `ForgejoActions` where relevant.
 - [Woodpecker CI](https://woodpecker-ci.org/docs/intro) workflow generation & CI environment support
-  - Woodpecker has no first-party job artifacts functionality, expecting you to provide your own S3 (or compatible) bucket.
-  - This is mostly only useful as a linter/tester.
+  - Woodpecker has no first-party job artifacts functionality, expecting you to use a plugin to provide that.
+    - The only plugins I could find require some form of external storage solution, meaning you (the user of Woodpecker) is responsible for managing your own artifacts bin.
+  - As a result, this is mostly only useful as a linter/tester on its own.
   - You have access to Forge-specific APIs in the new `GreemDev.Nuke.Components.{GitHub, Forgejo, GitLab}` NuGet packages.
     - You can use these to create releases. The Woodpecker CI generator has support for importing secrets.
       - `ICreateGitHubRelease` has moved to `GreemDev.Nuke.Components.GitHub`
@@ -26,8 +30,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
           - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
       - These component interfaces do not need to be used on Woodpecker.
 
+- `SetBranch` on `GitRepository` has been removed; use `GitRepository.ModifyCopy(branch: ...)` instead.
+- Removed `ShutdownDotNetAfterServerBuild` attribute, it existed due to the .NET CLI's lack of ability for forcibly disabling the use of build servers.
+  - .NET has since added this, as such the attribute has [been removed and its behavior has been nativized](https://github.com/gruke-build/src/commit/8b29341a37e0668ddeb918baf6610c338150b77e).
+  - You can re-enable build servers (not possible before) by setting your [`NukeBuild`'s `DisableDotNetBuildServers` property](https://nuke.greemdev.net/docfx/api/Nuke.Common.NukeBuild.html#Nuke_Common_NukeBuild_DisableDotNetBuildServers) to `true`.
+- [Dusted off the old Notifications system that existed in the project](https://github.com/gruke-build/src/commit/90e8a484d750d35a6767ff68a2c54cfb56e42e1c) and hooked it up to a notifications JSON file I control.
+  - Probably will use this to notify about breaking changes.
+  - Notifications display after a build. 
+  - Support has also been added to `DisableDefaultOutputAttribute` to fully block displaying notifications at all.
 - [Removed Telemetry](https://github.com/gruke-build/src/commit/c4943bcab7a645b571bf9452fd2a5a7a11457b9b)
-  - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e)about it.
+  - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e) about it.
 - [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
   - Thanks, [@rus-art](https://github.com/rus-art)!
 
