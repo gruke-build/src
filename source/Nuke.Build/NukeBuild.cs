@@ -139,7 +139,7 @@ public abstract partial class NukeBuild : INukeBuild
     /// <summary>
     /// Gets a value whether to show the execution plan (HTML).
     /// </summary>
-    [Parameter("Shows the execution plan (HTML).")]
+    [Parameter("Shows the execution plan (HTML). Seems to have functional issues in Firefox-based browsers.")]
     public bool Plan { get; }
 
     /// <summary>
