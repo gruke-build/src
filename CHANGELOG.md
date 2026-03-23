@@ -5,7 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
-
+- Added `KiotaTasks`, a NUKE CLI tool wrapper for [microsoft/kiota](https://github.com/microsoft/kiota).
+  - Example usage can be found in this very project, as I added this to generate the API client in `GreemDev.Nuke.Components.Forgejo`.
+  - [usage](https://github.com/gruke-build/src/blob/2174568e3cadfccc8127fa8e11ed8cc625fbe370/build/Build.Kiota.cs); [generated output](https://github.com/gruke-build/src/tree/2174568e3cadfccc8127fa8e11ed8cc625fbe370/source/Nuke.Components.Forgejo/generated)
 - [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) workflow generation & CI environment
   support
     - [Access environment variables defined in their documentation in your C# code in a type-safe manner with documentation for each variable](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.ForgejoActions.html).
@@ -15,15 +17,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
 - [Woodpecker CI](https://woodpecker-ci.org/docs/intro) workflow generation & CI environment support
   - Woodpecker has no first-party job artifacts functionality, expecting you to provide your own S3 (or compatible) bucket.
-    - This is mostly only useful as a linter/tester.
-    - You have access to Forge-specific APIs in the new `GreemDev.Nuke.Components.{GitHub, Forgejo, GitLab}` NuGet packages.
-      - You can use these to create releases. The Woodpecker CI generator has support for importing secrets.
-        - `ICreateGitHubRelease` has moved to `GreemDev.Nuke.Components.GitHub`
-        - `ICreateForgejoRelease` has been added to `GreemDev.Nuke.Components.Forgejo`, and works identically to GitHub
-        - `ICreateGitLabRelease` has been added to `GreemDev.Nuke.Components.GitLab`, and is more complex, expecting a `Name`, `Version`, and `PackageName`.
-          - GitLab works differently to GitHub & Forgejo; it does not have a dedicated "release assets" feature.
-            - The solution we use is to upload to the [Generic Package repository](https://docs.gitlab.com/user/packages/generic_packages/), then create a release that links to all the files in the GPR package version.
-            - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
+  - This is mostly only useful as a linter/tester.
+  - You have access to Forge-specific APIs in the new `GreemDev.Nuke.Components.{GitHub, Forgejo, GitLab}` NuGet packages.
+    - You can use these to create releases. The Woodpecker CI generator has support for importing secrets.
+      - `ICreateGitHubRelease` has moved to `GreemDev.Nuke.Components.GitHub`
+      - `ICreateForgejoRelease` has been added to `GreemDev.Nuke.Components.Forgejo`, and works identically to GitHub
+      - `ICreateGitLabRelease` has been added to `GreemDev.Nuke.Components.GitLab`, and is more complex, expecting a `Name`, `Version`, and `PackageName`.
+        - GitLab works differently to GitHub & Forgejo; it does not have a dedicated "release assets" feature.
+          - The solution we use is to upload to the [Generic Package repository](https://docs.gitlab.com/user/packages/generic_packages/), then create a release that links to all the files in the GPR package version.
+          - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
+      - These component interfaces do not need to be used on Woodpecker.
 
 - [Removed Telemetry](https://github.com/gruke-build/src/commit/c4943bcab7a645b571bf9452fd2a5a7a11457b9b)
   - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e)about it.
