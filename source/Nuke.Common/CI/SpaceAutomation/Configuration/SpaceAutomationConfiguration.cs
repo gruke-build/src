@@ -10,6 +10,7 @@ using Nuke.Common.Utilities.Collections;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public class SpaceAutomationConfiguration : ConfigurationEntity
 {
     public string Name { get; set; }

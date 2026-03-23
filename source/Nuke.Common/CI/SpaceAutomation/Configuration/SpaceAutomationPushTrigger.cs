@@ -11,6 +11,7 @@ using Nuke.Common.Utilities.Collections;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public class SpaceAutomationPushTrigger : SpaceAutomationTrigger
 {
     public bool? OnPush { get; set; }

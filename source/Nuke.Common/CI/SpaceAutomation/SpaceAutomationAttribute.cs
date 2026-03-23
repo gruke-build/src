@@ -14,14 +14,15 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.SpaceAutomation;
 
+[ExcludeFromApiReferenceGeneration]
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 #pragma warning disable CS0618 // Type or member is obsolete
-// ReSharper disable once ClassNeverInstantiated.Global
 public class SpaceAutomationOnPremisesAttribute(string name, string image) : SpaceAutomationAttribute(name, image);
 #pragma warning restore CS0618 // Type or member is obsolete
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 [Obsolete(message: $"JetBrains Space was officially discontinued on June 1, 2025. "
                    + $"If you are still using a self-managed Space instance, "

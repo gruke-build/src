@@ -12,6 +12,7 @@ using Nuke.Common.Utilities.Collections;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public class SpaceAutomationContainer : ConfigurationEntity
 {
     public string Image { get; set; }

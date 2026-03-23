@@ -9,4 +9,5 @@ using JetBrains.Annotations;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public abstract class SpaceAutomationTrigger : ConfigurationEntity;

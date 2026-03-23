@@ -16,7 +16,7 @@
 
 ## Elevator Pitch
 
-[<img align="right" width="130px" src="https://github.com/gruke-build/src/raw/develop/images/icon.png" />](https://nuke.build/)
+<img align="right" width="130px" src="https://github.com/gruke-build/src/raw/develop/images/icon.png" />
 
 Solid and scalable CI/CD pipelines are an essential pillar for being competitive and creating a great product. But why are most of us a little afraid of touching YAML files and don't even dare to look at build scripts? Much of this is because C# developers are spoiled with a great language and smart IDEs, and they don't like missing their buddy for code-completion, ease of debugging, refactorings, and code formatting.
 

@@ -15,6 +15,7 @@ namespace Nuke.Common.CI.SpaceAutomation;
 [PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
+[ExcludeFromApiReferenceGeneration]
 public partial class SpaceAutomation : Host, IBuildServer, IEnvironment<SpaceAutomation>
 {
     public static string EnvironmentVariablePrefix => "JB_SPACE";

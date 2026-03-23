@@ -8,12 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `KiotaTasks`, a NUKE CLI tool wrapper for [microsoft/kiota](https://github.com/microsoft/kiota).
   - Example usage can be found in this very project, as I added this to generate the API client in `GreemDev.Nuke.Components.Forgejo`.
   - [usage](https://github.com/gruke-build/src/blob/2174568e3cadfccc8127fa8e11ed8cc625fbe370/build/Build.Kiota.cs); [generated output](https://github.com/gruke-build/src/tree/2174568e3cadfccc8127fa8e11ed8cc625fbe370/source/Nuke.Components.Forgejo/generated)
-- [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) workflow generation & CI environment
-  support
+- [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) workflow generation & CI environment support
     - [Access environment variables defined in their documentation in your C# code in a type-safe manner with documentation for each variable](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.ForgejoActions.html).
     - Due to Forgejo Actions' [overwhelming similarities to GitHub Actions](https://forgejo.org/docs/latest/user/actions/github-actions/), I was able to maintain practically 1:1 feature parity with the GitHub Actions generator.
-        - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is
-          the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
+        - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
     - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
 - [Woodpecker CI](https://woodpecker-ci.org/docs/intro) workflow generation & CI environment support
   - Woodpecker has no first-party job artifacts functionality, expecting you to provide your own S3 (or compatible) bucket.
