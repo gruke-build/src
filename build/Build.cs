@@ -86,7 +86,7 @@ partial class Build
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects 
+    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects
         => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
     [Parameter("Degree of parallelism for test execution.")]
@@ -114,28 +114,12 @@ partial class Build
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
         .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
         .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion))
-        .Edit(_ =>
-        {
-            return _.SetPackageReleaseNotes(getNuGetReleaseNotes(From<IHazChangelog>().ChangelogFile));
-
-            string getNuGetReleaseNotes(string changelogFile)
-            {
-                var changelogSectionNotes = ChangelogTasks.ExtractChangelogSectionNotes(changelogFile)
-                    .Select(x => x
-                        .Replace("- ", "\u2022 ")
-                        .Replace("* ", "\u2022 ")
-                        .Replace("+ ", "\u2022 ")
-                        .Replace("`", string.Empty)
-                        .Replace(";", "%2C")
-                        .Replace(",", "%2C")
-                    ).ToList();
-
-                changelogSectionNotes.Add(string.Empty);
-                changelogSectionNotes.Add("Full changelog at https://nuke.greemdev.net/docfx/changelog.html");
-
-                return changelogSectionNotes.JoinNewLine();
-            }
-        });
+        .SetPackageReleaseNotes(
+            ChangelogTasks.GetNuGetReleaseNotes(
+                From<IHazChangelog>().ChangelogFile,
+                "https://nuke.greemdev.net/docfx/changelog.html"
+            )
+        );
 
     const string PublicNuGetSource = "https://api.nuget.org/v3/index.json";
     const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
@@ -152,9 +136,9 @@ partial class Build
             ? gl.GetNuGetSourceUrlForCurrentProject()
             : FeedzNuGetSource;
 
-    string IPublish.NuGetApiKey => IsPublicRelease 
-        ? PublicNuGetApiKey 
-        : Host is GitLab gl 
+    string IPublish.NuGetApiKey => IsPublicRelease
+        ? PublicNuGetApiKey
+        : Host is GitLab gl
             ? gl.JobToken
             : FeedzNuGetApiKey;
 
@@ -162,7 +146,7 @@ partial class Build
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
         .OnlyWhenStatic(() =>
-            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
+            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) ||
             (GitRepository.IsOnDevelopBranch
              && ((Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment) || Host is GitLab)))
         .WhenSkipped(DependencyBehavior.Execute);
@@ -218,7 +202,7 @@ partial class Build
             catch (Exception e)
             {
                 Log.Warning("Failed to comment on milestone issues: {message}", e.Message);
-                if (e.StackTrace is {} st)
+                if (e.StackTrace is { } st)
 #pragma warning disable CA2254
                     Log.Warning(st);
 #pragma warning restore CA2254

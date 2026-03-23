@@ -10,7 +10,6 @@ using JetBrains.Annotations;
 using NuGet.Versioning;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
-using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 using Serilog;
 
@@ -20,7 +19,15 @@ namespace Nuke.Common.ChangeLog;
 [PublicAPI]
 public static class ChangelogTasks
 {
-    public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository = null)
+    public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository)
+    {
+        return GetNuGetReleaseNotes(changelogFile,
+            repository.IsGitHubRepository
+                ? repository.GitHub.GetBrowseUrl(changelogFile)
+                : null);
+    }
+
+    public static string GetNuGetReleaseNotes(string changelogFile, string changelogUrl = null)
     {
         var changelogSectionNotes = ExtractChangelogSectionNotes(changelogFile)
             .Select(x => x
@@ -32,10 +39,10 @@ public static class ChangelogTasks
                 .Replace(",", "%2C")
             ).ToList();
 
-        if (repository.IsGitHubRepository)
+        if (changelogUrl != null)
         {
             changelogSectionNotes.Add(string.Empty);
-            changelogSectionNotes.Add($"Full changelog at {repository.GitHub.GetBrowseUrl(changelogFile)}");
+            changelogSectionNotes.Add($"Full changelog at {changelogUrl}");
         }
 
         return changelogSectionNotes.JoinNewLine();
