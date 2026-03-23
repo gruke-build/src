@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.User.Settings
+namespace Nuke.Components.Forgejo.User.Settings
 {
     /// <summary>
     /// Builds and executes requests for operations under \user\settings
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.User.Settings
     public partial class SettingsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.User.Settings
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,54 +36,54 @@ namespace Nuke.Common.Components.Forgejo.User.Settings
         /// <summary>
         /// Get current user&apos;s account settings
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.UserSettings"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.UserSettings"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.UserSettings?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.UserSettings?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.UserSettings> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.UserSettings> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "401", global::Nuke.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.UserSettings>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.UserSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.UserSettings>(requestInfo, global::Nuke.Components.Forgejo.Models.UserSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update settings in current user&apos;s account
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.UserSettings"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.UserSettings"/></returns>
         /// <param name="body">UserSettingsOptions represents options to change user settings</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.UserSettings?> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.UserSettings?> PatchAsync(global::Nuke.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.UserSettings> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.UserSettings> PatchAsync(global::Nuke.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "401", global::Nuke.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.UserSettings>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.UserSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.UserSettings>(requestInfo, global::Nuke.Components.Forgejo.Models.UserSettings.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get current user&apos;s account settings
@@ -112,11 +112,11 @@ namespace Nuke.Common.Components.Forgejo.User.Settings
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.UserSettingsOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -129,11 +129,11 @@ namespace Nuke.Common.Components.Forgejo.User.Settings
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

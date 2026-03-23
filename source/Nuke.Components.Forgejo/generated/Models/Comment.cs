@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Comment represents a comment on a commit or issue
@@ -18,10 +18,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The assets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment>? Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment>? Assets { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment> Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment> Assets { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,13 +74,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Comment"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Comment"/> and sets the default values.
         /// </summary>
         public Comment()
         {
@@ -89,12 +89,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Comment"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Comment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Comment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Comment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Comment();
+            return new global::Nuke.Components.Forgejo.Models.Comment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,7 +104,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>(global::Nuke.Common.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>(global::Nuke.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
@@ -114,7 +114,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "original_author_id", n => { OriginalAuthorId = n.GetLongValue(); } },
                 { "pull_request_url", n => { PullRequestUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -124,7 +124,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>("assets", Assets);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>("assets", Assets);
             writer.WriteStringValue("body", Body);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("html_url", HtmlUrl);
@@ -134,7 +134,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteLongValue("original_author_id", OriginalAuthorId);
             writer.WriteStringValue("pull_request_url", PullRequestUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

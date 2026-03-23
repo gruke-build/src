@@ -3,25 +3,25 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Times;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Times;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\issues\{index}
@@ -30,67 +30,67 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
     public partial class WithIndexItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The assets property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets.AssetsRequestBuilder Assets
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets.AssetsRequestBuilder Assets
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets.AssetsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Assets.AssetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The blocks property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks.BlocksRequestBuilder Blocks
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks.BlocksRequestBuilder Blocks
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks.BlocksRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Blocks.BlocksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The comments property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments.CommentsRequestBuilder Comments
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments.CommentsRequestBuilder Comments
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The deadline property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline.DeadlineRequestBuilder Deadline
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline.DeadlineRequestBuilder Deadline
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline.DeadlineRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Deadline.DeadlineRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dependencies property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies.DependenciesRequestBuilder Dependencies
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies.DependenciesRequestBuilder Dependencies
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies.DependenciesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Dependencies.DependenciesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The labels property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels.LabelsRequestBuilder Labels
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels.LabelsRequestBuilder Labels
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels.LabelsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Labels.LabelsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pin property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin.PinRequestBuilder Pin
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin.PinRequestBuilder Pin
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin.PinRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Pin.PinRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reactions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions.ReactionsRequestBuilder Reactions
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions.ReactionsRequestBuilder Reactions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions.ReactionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Reactions.ReactionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stopwatch property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder Stopwatch
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder Stopwatch
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subscriptions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.SubscriptionsRequestBuilder Subscriptions
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.SubscriptionsRequestBuilder Subscriptions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The timeline property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder Timeline
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder Timeline
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The times property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Times.TimesRequestBuilder Times
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Times.TimesRequestBuilder Times
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -98,7 +98,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -110,8 +110,8 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -124,62 +124,62 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get an issue
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Issue"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Issue"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Issue?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Issue?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Issue> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Issue> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Edit an issue. If using deadline only the date will be taken into account, and time of day ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Issue"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Issue"/></returns>
         /// <param name="body">EditIssueOption options for editing an issue</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 412 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 412 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Issue?> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Issue?> PatchAsync(global::Nuke.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Issue> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Issue> PatchAsync(global::Nuke.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "412", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "412", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an issue
@@ -227,11 +227,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditIssueOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -244,11 +244,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.WithIndexItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

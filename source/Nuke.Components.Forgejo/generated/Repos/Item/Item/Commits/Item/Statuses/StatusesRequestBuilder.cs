@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\commits\{ref-id}\statuses
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
     public partial class StatusesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,27 +36,27 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
         /// <summary>
         /// Get a commit&apos;s statuses, by branch/tag/commit reference
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.CommitStatus&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.CommitStatus&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.CommitStatus>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.CommitStatus>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.CommitStatus>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.CommitStatus>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.CommitStatus>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.CommitStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.CommitStatus>(requestInfo, global::Nuke.Components.Forgejo.Models.CommitStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -66,11 +66,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder.StatusesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -81,11 +81,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Get a commit&apos;s statuses, by branch/tag/commit reference
@@ -101,10 +101,10 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses
             public int? Page { get; set; }
             /// <summary>type of sort</summary>
             [QueryParameter("sort")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.GetSortQueryParameterType? Sort { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.GetSortQueryParameterType? Sort { get; set; }
             /// <summary>type of state</summary>
             [QueryParameter("state")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.GetStateQueryParameterType? State { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.GetStateQueryParameterType? State { get; set; }
         }
     }
 }

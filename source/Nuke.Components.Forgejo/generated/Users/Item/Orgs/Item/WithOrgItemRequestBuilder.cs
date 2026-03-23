@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item.Permissions;
+using Nuke.Components.Forgejo.Users.Item.Orgs.Item.Permissions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item
+namespace Nuke.Components.Forgejo.Users.Item.Orgs.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \users\{username}\orgs\{org}
@@ -16,12 +16,12 @@ namespace Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item
     public partial class WithOrgItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The permissions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item.Permissions.PermissionsRequestBuilder Permissions
+        public global::Nuke.Components.Forgejo.Users.Item.Orgs.Item.Permissions.PermissionsRequestBuilder Permissions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item.Permissions.PermissionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Orgs.Item.Permissions.PermissionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item.WithOrgItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.Item.Orgs.Item.WithOrgItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -29,7 +29,7 @@ namespace Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.Item.WithOrgItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.Item.Orgs.Item.WithOrgItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

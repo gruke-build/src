@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// EditHookOption options when modify one hook
@@ -36,10 +36,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.EditHookOption_config? Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.EditHookOption_config? Config { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.EditHookOption_config Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.EditHookOption_config Config { get; set; }
 #endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public List<string> Events { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.EditHookOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditHookOption"/> and sets the default values.
         /// </summary>
         public EditHookOption()
         {
@@ -59,12 +59,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.EditHookOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditHookOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.EditHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.EditHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.EditHookOption();
+            return new global::Nuke.Components.Forgejo.Models.EditHookOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,7 +77,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "authorization_header", n => { AuthorizationHeader = n.GetStringValue(); } },
                 { "branch_filter", n => { BranchFilter = n.GetStringValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.EditHookOption_config>(global::Nuke.Common.Components.Forgejo.Models.EditHookOption_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.EditHookOption_config>(global::Nuke.Components.Forgejo.Models.EditHookOption_config.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -91,7 +91,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("active", Active);
             writer.WriteStringValue("authorization_header", AuthorizationHeader);
             writer.WriteStringValue("branch_filter", BranchFilter);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.EditHookOption_config>("config", Config);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.EditHookOption_config>("config", Config);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
             writer.WriteAdditionalData(AdditionalData);
         }

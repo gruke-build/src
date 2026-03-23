@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// GeneralAttachmentSettings contains global Attachment settings exposed by API
@@ -30,7 +30,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The max_size property</summary>
         public long? MaxSize { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.GeneralAttachmentSettings"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.GeneralAttachmentSettings"/> and sets the default values.
         /// </summary>
         public GeneralAttachmentSettings()
         {
@@ -39,12 +39,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.GeneralAttachmentSettings"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.GeneralAttachmentSettings"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.GeneralAttachmentSettings CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.GeneralAttachmentSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.GeneralAttachmentSettings();
+            return new global::Nuke.Components.Forgejo.Models.GeneralAttachmentSettings();
         }
         /// <summary>
         /// The deserialization information for the current model

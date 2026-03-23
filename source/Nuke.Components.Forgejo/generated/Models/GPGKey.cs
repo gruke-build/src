@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// GPGKey a user GPG key to sign commit and tag in repository
@@ -28,10 +28,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The emails property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.GPGKeyEmail>? Emails { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GPGKeyEmail>? Emails { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.GPGKeyEmail> Emails { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GPGKeyEmail> Emails { get; set; }
 #endif
         /// <summary>The expires_at property</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
@@ -64,15 +64,15 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The subkeys property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.GPGKey>? Subkeys { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GPGKey>? Subkeys { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.GPGKey> Subkeys { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GPGKey> Subkeys { get; set; }
 #endif
         /// <summary>The verified property</summary>
         public bool? Verified { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.GPGKey"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.GPGKey"/> and sets the default values.
         /// </summary>
         public GPGKey()
         {
@@ -81,12 +81,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.GPGKey"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.GPGKey"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.GPGKey CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.GPGKey CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.GPGKey();
+            return new global::Nuke.Components.Forgejo.Models.GPGKey();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,13 +101,13 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "can_encrypt_storage", n => { CanEncryptStorage = n.GetBoolValue(); } },
                 { "can_sign", n => { CanSign = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "emails", n => { Emails = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GPGKeyEmail>(global::Nuke.Common.Components.Forgejo.Models.GPGKeyEmail.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "emails", n => { Emails = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GPGKeyEmail>(global::Nuke.Components.Forgejo.Models.GPGKeyEmail.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "key_id", n => { KeyId = n.GetStringValue(); } },
                 { "primary_key_id", n => { PrimaryKeyId = n.GetStringValue(); } },
                 { "public_key", n => { PublicKey = n.GetStringValue(); } },
-                { "subkeys", n => { Subkeys = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GPGKey>(global::Nuke.Common.Components.Forgejo.Models.GPGKey.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "subkeys", n => { Subkeys = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GPGKey>(global::Nuke.Components.Forgejo.Models.GPGKey.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
             };
         }
@@ -123,13 +123,13 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("can_encrypt_storage", CanEncryptStorage);
             writer.WriteBoolValue("can_sign", CanSign);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GPGKeyEmail>("emails", Emails);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GPGKeyEmail>("emails", Emails);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("key_id", KeyId);
             writer.WriteStringValue("primary_key_id", PrimaryKeyId);
             writer.WriteStringValue("public_key", PublicKey);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GPGKey>("subkeys", Subkeys);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GPGKey>("subkeys", Subkeys);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }

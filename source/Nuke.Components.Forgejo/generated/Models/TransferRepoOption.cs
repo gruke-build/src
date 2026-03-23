@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// TransferRepoOption options when transfer a repository&apos;s ownership
@@ -32,7 +32,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public List<long?> TeamIds { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.TransferRepoOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.TransferRepoOption"/> and sets the default values.
         /// </summary>
         public TransferRepoOption()
         {
@@ -41,12 +41,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.TransferRepoOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.TransferRepoOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.TransferRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.TransferRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.TransferRepoOption();
+            return new global::Nuke.Components.Forgejo.Models.TransferRepoOption();
         }
         /// <summary>
         /// The deserialization information for the current model

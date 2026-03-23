@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Attachment a generic attachment
@@ -40,7 +40,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The size property</summary>
         public long? Size { get; set; }
         /// <summary>The type property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.Attachment_type? Type { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Attachment_type? Type { get; set; }
         /// <summary>The uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Uuid { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Attachment"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Attachment"/> and sets the default values.
         /// </summary>
         public Attachment()
         {
@@ -59,12 +59,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Attachment"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Attachment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Attachment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Attachment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Attachment();
+            return new global::Nuke.Components.Forgejo.Models.Attachment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,7 +80,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetLongValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.Attachment_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.Attachment_type>(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
         }
@@ -97,7 +97,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteLongValue("size", Size);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.Attachment_type>("type", Type);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.Attachment_type>("type", Type);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);
         }

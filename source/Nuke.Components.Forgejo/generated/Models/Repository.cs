@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Repository represents a repository
@@ -90,18 +90,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>ExternalTracker represents settings for external tracker</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalTracker? ExternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalTracker? ExternalTracker { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalTracker ExternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalTracker ExternalTracker { get; set; }
 #endif
         /// <summary>ExternalWiki represents setting for external wiki</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalWiki? ExternalWiki { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalWiki? ExternalWiki { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalWiki ExternalWiki { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalWiki ExternalWiki { get; set; }
 #endif
         /// <summary>The fork property</summary>
         public bool? Fork { get; set; }
@@ -148,10 +148,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>InternalTracker represents settings for internal tracker</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.InternalTracker? InternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.InternalTracker? InternalTracker { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.InternalTracker InternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.InternalTracker InternalTracker { get; set; }
 #endif
         /// <summary>The language property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -198,7 +198,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Name { get; set; }
 #endif
         /// <summary>ObjectFormatName of the underlying git repository</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.Repository_object_format_name? ObjectFormatName { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository_object_format_name? ObjectFormatName { get; set; }
         /// <summary>The open_issues_count property</summary>
         public long? OpenIssuesCount { get; set; }
         /// <summary>The open_pr_counter property</summary>
@@ -214,26 +214,26 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Owner { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Owner { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Owner { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Owner { get; set; }
 #endif
         /// <summary>Repository represents a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Repository? Parent { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository? Parent { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Repository Parent { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository Parent { get; set; }
 #endif
         /// <summary>Permission represents a set of permissions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Permission? Permissions { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Permission? Permissions { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Permission Permissions { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Permission Permissions { get; set; }
 #endif
         /// <summary>The private property</summary>
         public bool? Private { get; set; }
@@ -242,10 +242,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>RepoTransfer represents a pending repo transfer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.RepoTransfer? RepoTransfer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.RepoTransfer? RepoTransfer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.RepoTransfer RepoTransfer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.RepoTransfer RepoTransfer { get; set; }
 #endif
         /// <summary>The size property</summary>
         public long? Size { get; set; }
@@ -298,7 +298,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string WikiBranch { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Repository"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Repository"/> and sets the default values.
         /// </summary>
         public Repository()
         {
@@ -307,12 +307,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Repository"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Repository"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Repository CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Repository CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Repository();
+            return new global::Nuke.Components.Forgejo.Models.Repository();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -340,8 +340,8 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "default_update_style", n => { DefaultUpdateStyle = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "empty", n => { Empty = n.GetBoolValue(); } },
-                { "external_tracker", n => { ExternalTracker = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalTracker>(global::Nuke.Common.Components.Forgejo.Models.ExternalTracker.CreateFromDiscriminatorValue); } },
-                { "external_wiki", n => { ExternalWiki = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalWiki>(global::Nuke.Common.Components.Forgejo.Models.ExternalWiki.CreateFromDiscriminatorValue); } },
+                { "external_tracker", n => { ExternalTracker = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.ExternalTracker>(global::Nuke.Components.Forgejo.Models.ExternalTracker.CreateFromDiscriminatorValue); } },
+                { "external_wiki", n => { ExternalWiki = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.ExternalWiki>(global::Nuke.Components.Forgejo.Models.ExternalWiki.CreateFromDiscriminatorValue); } },
                 { "fork", n => { Fork = n.GetBoolValue(); } },
                 { "forks_count", n => { ForksCount = n.GetLongValue(); } },
                 { "full_name", n => { FullName = n.GetStringValue(); } },
@@ -357,7 +357,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "ignore_whitespace_conflicts", n => { IgnoreWhitespaceConflicts = n.GetBoolValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
-                { "internal_tracker", n => { InternalTracker = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.InternalTracker>(global::Nuke.Common.Components.Forgejo.Models.InternalTracker.CreateFromDiscriminatorValue); } },
+                { "internal_tracker", n => { InternalTracker = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.InternalTracker>(global::Nuke.Components.Forgejo.Models.InternalTracker.CreateFromDiscriminatorValue); } },
                 { "language", n => { Language = n.GetStringValue(); } },
                 { "languages_url", n => { LanguagesUrl = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
@@ -365,16 +365,16 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "mirror_interval", n => { MirrorInterval = n.GetStringValue(); } },
                 { "mirror_updated", n => { MirrorUpdated = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object_format_name", n => { ObjectFormatName = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.Repository_object_format_name>(); } },
+                { "object_format_name", n => { ObjectFormatName = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.Repository_object_format_name>(); } },
                 { "open_issues_count", n => { OpenIssuesCount = n.GetLongValue(); } },
                 { "open_pr_counter", n => { OpenPrCounter = n.GetLongValue(); } },
                 { "original_url", n => { OriginalUrl = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
-                { "parent", n => { Parent = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>(global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
-                { "permissions", n => { Permissions = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Permission>(global::Nuke.Common.Components.Forgejo.Models.Permission.CreateFromDiscriminatorValue); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "parent", n => { Parent = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Repository>(global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
+                { "permissions", n => { Permissions = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Permission>(global::Nuke.Components.Forgejo.Models.Permission.CreateFromDiscriminatorValue); } },
                 { "private", n => { Private = n.GetBoolValue(); } },
                 { "release_counter", n => { ReleaseCounter = n.GetLongValue(); } },
-                { "repo_transfer", n => { RepoTransfer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.RepoTransfer>(global::Nuke.Common.Components.Forgejo.Models.RepoTransfer.CreateFromDiscriminatorValue); } },
+                { "repo_transfer", n => { RepoTransfer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.RepoTransfer>(global::Nuke.Components.Forgejo.Models.RepoTransfer.CreateFromDiscriminatorValue); } },
                 { "size", n => { Size = n.GetLongValue(); } },
                 { "ssh_url", n => { SshUrl = n.GetStringValue(); } },
                 { "stars_count", n => { StarsCount = n.GetLongValue(); } },
@@ -412,8 +412,8 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("default_update_style", DefaultUpdateStyle);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("empty", Empty);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalTracker>("external_tracker", ExternalTracker);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalWiki>("external_wiki", ExternalWiki);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.ExternalTracker>("external_tracker", ExternalTracker);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.ExternalWiki>("external_wiki", ExternalWiki);
             writer.WriteBoolValue("fork", Fork);
             writer.WriteLongValue("forks_count", ForksCount);
             writer.WriteStringValue("full_name", FullName);
@@ -429,7 +429,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("ignore_whitespace_conflicts", IgnoreWhitespaceConflicts);
             writer.WriteBoolValue("internal", Internal);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.InternalTracker>("internal_tracker", InternalTracker);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.InternalTracker>("internal_tracker", InternalTracker);
             writer.WriteStringValue("language", Language);
             writer.WriteStringValue("languages_url", LanguagesUrl);
             writer.WriteStringValue("link", Link);
@@ -437,16 +437,16 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("mirror_interval", MirrorInterval);
             writer.WriteDateTimeOffsetValue("mirror_updated", MirrorUpdated);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.Repository_object_format_name>("object_format_name", ObjectFormatName);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.Repository_object_format_name>("object_format_name", ObjectFormatName);
             writer.WriteLongValue("open_issues_count", OpenIssuesCount);
             writer.WriteLongValue("open_pr_counter", OpenPrCounter);
             writer.WriteStringValue("original_url", OriginalUrl);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("owner", Owner);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>("parent", Parent);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Permission>("permissions", Permissions);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("owner", Owner);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Repository>("parent", Parent);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Permission>("permissions", Permissions);
             writer.WriteBoolValue("private", Private);
             writer.WriteLongValue("release_counter", ReleaseCounter);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.RepoTransfer>("repo_transfer", RepoTransfer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.RepoTransfer>("repo_transfer", RepoTransfer);
             writer.WriteLongValue("size", Size);
             writer.WriteStringValue("ssh_url", SshUrl);
             writer.WriteLongValue("stars_count", StarsCount);

@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.User.Actions.Secrets.Item;
+using Nuke.Components.Forgejo.User.Actions.Secrets.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.User.Actions.Secrets
+namespace Nuke.Components.Forgejo.User.Actions.Secrets
 {
     /// <summary>
     /// Builds and executes requests for operations under \user\actions\secrets
@@ -15,20 +15,20 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Secrets
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SecretsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.user.actions.secrets.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.user.actions.secrets.item collection</summary>
         /// <param name="position">name of the secret</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("secretname", position);
-                return new global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.User.Actions.Secrets.Item.WithSecretnameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Secrets
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

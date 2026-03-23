@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// MigrateRepoOptions options for migrating repository&apos;sthis is used to interact with api v1
@@ -104,13 +104,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string RepoOwner { get; set; }
 #endif
         /// <summary>The service property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions_service? Service { get; set; }
+        public global::Nuke.Components.Forgejo.Models.MigrateRepoOptions_service? Service { get; set; }
         /// <summary>deprecated (only for backwards compatibility)</summary>
         public long? Uid { get; set; }
         /// <summary>The wiki property</summary>
         public bool? Wiki { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.MigrateRepoOptions"/> and sets the default values.
         /// </summary>
         public MigrateRepoOptions()
         {
@@ -119,12 +119,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.MigrateRepoOptions"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.MigrateRepoOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions();
+            return new global::Nuke.Components.Forgejo.Models.MigrateRepoOptions();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -151,7 +151,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "releases", n => { Releases = n.GetBoolValue(); } },
                 { "repo_name", n => { RepoName = n.GetStringValue(); } },
                 { "repo_owner", n => { RepoOwner = n.GetStringValue(); } },
-                { "service", n => { Service = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions_service>(); } },
+                { "service", n => { Service = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.MigrateRepoOptions_service>(); } },
                 { "uid", n => { Uid = n.GetLongValue(); } },
                 { "wiki", n => { Wiki = n.GetBoolValue(); } },
             };
@@ -180,7 +180,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("releases", Releases);
             writer.WriteStringValue("repo_name", RepoName);
             writer.WriteStringValue("repo_owner", RepoOwner);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.MigrateRepoOptions_service>("service", Service);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.MigrateRepoOptions_service>("service", Service);
             writer.WriteLongValue("uid", Uid);
             writer.WriteBoolValue("wiki", Wiki);
             writer.WriteAdditionalData(AdditionalData);

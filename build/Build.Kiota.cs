@@ -33,7 +33,7 @@ public partial class Build
                 .EnableExcludeBackwardsCompatible()
                 .AddExcludePaths("/admin/**", "/activitypub/**", "/nodeinfo", "/notifications/**", "/notifications")
                 .SetClassName("ForgejoApiClient")
-                .SetNamespaceName("Nuke.Common.Components.Forgejo")
+                .SetNamespaceName("Nuke.Components.Forgejo")
                 .SetCleanOutput(CleanOutput)
                 .SetOutputPath(Solution.Nuke_Components_Forgejo.Directory / "generated")
             );

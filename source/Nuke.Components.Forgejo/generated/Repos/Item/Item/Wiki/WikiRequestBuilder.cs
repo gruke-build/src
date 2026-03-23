@@ -2,15 +2,15 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.New;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Page;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Pages;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Revisions;
+using Nuke.Components.Forgejo.Repos.Item.Item.Wiki.New;
+using Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Page;
+using Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Pages;
+using Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Revisions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Wiki
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\wiki
@@ -19,27 +19,27 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki
     public partial class WikiRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The new property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.New.NewRequestBuilder New
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.New.NewRequestBuilder New
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.New.NewRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.New.NewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The page property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Page.PageRequestBuilder Page
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Page.PageRequestBuilder Page
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Page.PageRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Page.PageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pages property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Pages.PagesRequestBuilder Pages
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Pages.PagesRequestBuilder Pages
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Pages.PagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Pages.PagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The revisions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Revisions.RevisionsRequestBuilder Revisions
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Revisions.RevisionsRequestBuilder Revisions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -47,7 +47,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

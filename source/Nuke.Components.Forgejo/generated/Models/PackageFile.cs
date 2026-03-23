@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PackageFile represents a package file
@@ -60,7 +60,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The Size property</summary>
         public long? Size { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PackageFile"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PackageFile"/> and sets the default values.
         /// </summary>
         public PackageFile()
         {
@@ -69,12 +69,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PackageFile"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PackageFile"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PackageFile CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PackageFile CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PackageFile();
+            return new global::Nuke.Components.Forgejo.Models.PackageFile();
         }
         /// <summary>
         /// The deserialization information for the current model

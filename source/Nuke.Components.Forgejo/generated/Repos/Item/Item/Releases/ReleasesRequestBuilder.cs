@@ -3,16 +3,16 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Item;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Latest;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Tags;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Repos.Item.Item.Releases.Item;
+using Nuke.Components.Forgejo.Repos.Item.Item.Releases.Latest;
+using Nuke.Components.Forgejo.Repos.Item.Item.Releases.Tags;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Releases
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\releases
@@ -21,29 +21,29 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
     public partial class ReleasesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The latest property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Latest.LatestRequestBuilder Latest
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Latest.LatestRequestBuilder Latest
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Latest.LatestRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Latest.LatestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tags property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Tags.TagsRequestBuilder Tags
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Tags.TagsRequestBuilder Tags
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repos.item.item.releases.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repos.item.item.releases.item collection</summary>
         /// <param name="position">id of the release to get</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder this[long position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder this[long position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("id", position);
-                return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.Item.ReleasesItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -51,7 +51,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -61,55 +61,55 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
         /// <summary>
         /// List a repo&apos;s releases
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.Release&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.Release&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Release>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Release>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Release>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Release>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.Release>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Release.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.Release>(requestInfo, global::Nuke.Components.Forgejo.Models.Release.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
         /// Create a release
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Release"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Release"/></returns>
         /// <param name="body">CreateReleaseOption options when creating a release</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 409 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Release?> PostAsync(global::Nuke.Common.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Release?> PostAsync(global::Nuke.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Release> PostAsync(global::Nuke.Common.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Release> PostAsync(global::Nuke.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "409", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "409", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Release>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Release.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Release>(requestInfo, global::Nuke.Components.Forgejo.Models.Release.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List a repo&apos;s releases
@@ -118,11 +118,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder.ReleasesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -138,11 +138,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Components.Forgejo.Models.CreateReleaseOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -155,11 +155,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List a repo&apos;s releases

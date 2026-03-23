@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Branch represents a repository branch
@@ -18,10 +18,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadCommit represents a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommit? Commit { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommit? Commit { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommit Commit { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommit Commit { get; set; }
 #endif
         /// <summary>The effective_branch_protection_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The user_can_push property</summary>
         public bool? UserCanPush { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Branch"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Branch"/> and sets the default values.
         /// </summary>
         public Branch()
         {
@@ -67,12 +67,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Branch"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Branch"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Branch CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Branch CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Branch();
+            return new global::Nuke.Components.Forgejo.Models.Branch();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,7 +82,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "commit", n => { Commit = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommit>(global::Nuke.Common.Components.Forgejo.Models.PayloadCommit.CreateFromDiscriminatorValue); } },
+                { "commit", n => { Commit = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommit>(global::Nuke.Components.Forgejo.Models.PayloadCommit.CreateFromDiscriminatorValue); } },
                 { "effective_branch_protection_name", n => { EffectiveBranchProtectionName = n.GetStringValue(); } },
                 { "enable_status_check", n => { EnableStatusCheck = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -100,7 +100,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommit>("commit", Commit);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommit>("commit", Commit);
             writer.WriteStringValue("effective_branch_protection_name", EffectiveBranchProtectionName);
             writer.WriteBoolValue("enable_status_check", EnableStatusCheck);
             writer.WriteStringValue("name", Name);

@@ -2,15 +2,15 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Issues;
-using Nuke.Common.Components.Forgejo.Repos.Item;
-using Nuke.Common.Components.Forgejo.Repos.Migrate;
-using Nuke.Common.Components.Forgejo.Repos.Search;
+using Nuke.Components.Forgejo.Repos.Issues;
+using Nuke.Components.Forgejo.Repos.Item;
+using Nuke.Components.Forgejo.Repos.Migrate;
+using Nuke.Components.Forgejo.Repos.Search;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos
+namespace Nuke.Components.Forgejo.Repos
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos
@@ -19,34 +19,34 @@ namespace Nuke.Common.Components.Forgejo.Repos
     public partial class ReposRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The issues property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Issues.IssuesRequestBuilder Issues
+        public global::Nuke.Components.Forgejo.Repos.Issues.IssuesRequestBuilder Issues
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The migrate property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Migrate.MigrateRequestBuilder Migrate
+        public global::Nuke.Components.Forgejo.Repos.Migrate.MigrateRequestBuilder Migrate
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Migrate.MigrateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Migrate.MigrateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The search property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Search.SearchRequestBuilder Search
+        public global::Nuke.Components.Forgejo.Repos.Search.SearchRequestBuilder Search
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repos.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repos.item collection</summary>
         /// <param name="position">owner of the repo</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("owner%2Did", position);
-                return new global::Nuke.Common.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repos.Item.OwnerItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.ReposRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.ReposRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -54,7 +54,7 @@ namespace Nuke.Common.Components.Forgejo.Repos
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.ReposRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.ReposRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// MergePullRequestForm form for merging Pull Request
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The delete_branch_after_merge property</summary>
         public bool? DeleteBranchAfterMerge { get; set; }
         /// <summary>The Do property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption_Do? Do { get; set; }
+        public global::Nuke.Components.Forgejo.Models.MergePullRequestOption_Do? Do { get; set; }
         /// <summary>The force_merge property</summary>
         public bool? ForceMerge { get; set; }
         /// <summary>The head_commit_id property</summary>
@@ -56,7 +56,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The merge_when_checks_succeed property</summary>
         public bool? MergeWhenChecksSucceed { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.MergePullRequestOption"/> and sets the default values.
         /// </summary>
         public MergePullRequestOption()
         {
@@ -65,12 +65,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.MergePullRequestOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.MergePullRequestOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption();
+            return new global::Nuke.Components.Forgejo.Models.MergePullRequestOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,7 +81,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "delete_branch_after_merge", n => { DeleteBranchAfterMerge = n.GetBoolValue(); } },
-                { "Do", n => { Do = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption_Do>(); } },
+                { "Do", n => { Do = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.MergePullRequestOption_Do>(); } },
                 { "force_merge", n => { ForceMerge = n.GetBoolValue(); } },
                 { "head_commit_id", n => { HeadCommitId = n.GetStringValue(); } },
                 { "MergeCommitID", n => { MergeCommitID = n.GetStringValue(); } },
@@ -98,7 +98,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("delete_branch_after_merge", DeleteBranchAfterMerge);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.MergePullRequestOption_Do>("Do", Do);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.MergePullRequestOption_Do>("Do", Do);
             writer.WriteBoolValue("force_merge", ForceMerge);
             writer.WriteStringValue("head_commit_id", HeadCommitId);
             writer.WriteStringValue("MergeCommitID", MergeCommitID);

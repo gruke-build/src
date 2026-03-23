@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
@@ -15,10 +15,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? ActUser { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? ActUser { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User ActUser { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User ActUser { get; set; }
 #endif
         /// <summary>The act_user_id property</summary>
         public long? ActUserId { get; set; }
@@ -27,10 +27,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Comment represents a comment on a commit or issue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Comment? Comment { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Comment? Comment { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Comment Comment { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Comment Comment { get; set; }
 #endif
         /// <summary>The comment_id property</summary>
         public long? CommentId { get; set; }
@@ -49,7 +49,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The is_private property</summary>
         public bool? IsPrivate { get; set; }
         /// <summary>the type of action</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.Activity_op_type? OpType { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Activity_op_type? OpType { get; set; }
         /// <summary>The ref_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,17 +61,17 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Repository represents a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Repository? Repo { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository? Repo { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Repository Repo { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository Repo { get; set; }
 #endif
         /// <summary>The repo_id property</summary>
         public long? RepoId { get; set; }
         /// <summary>The user_id property</summary>
         public long? UserId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Activity"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Activity"/> and sets the default values.
         /// </summary>
         public Activity()
         {
@@ -80,12 +80,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Activity"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Activity"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Activity CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Activity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Activity();
+            return new global::Nuke.Components.Forgejo.Models.Activity();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,17 +95,17 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "act_user", n => { ActUser = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "act_user", n => { ActUser = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
                 { "act_user_id", n => { ActUserId = n.GetLongValue(); } },
-                { "comment", n => { Comment = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Comment>(global::Nuke.Common.Components.Forgejo.Models.Comment.CreateFromDiscriminatorValue); } },
+                { "comment", n => { Comment = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Comment>(global::Nuke.Components.Forgejo.Models.Comment.CreateFromDiscriminatorValue); } },
                 { "comment_id", n => { CommentId = n.GetLongValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created", n => { Created = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "is_private", n => { IsPrivate = n.GetBoolValue(); } },
-                { "op_type", n => { OpType = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.Activity_op_type>(); } },
+                { "op_type", n => { OpType = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.Activity_op_type>(); } },
                 { "ref_name", n => { RefName = n.GetStringValue(); } },
-                { "repo", n => { Repo = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>(global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
+                { "repo", n => { Repo = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Repository>(global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
                 { "repo_id", n => { RepoId = n.GetLongValue(); } },
                 { "user_id", n => { UserId = n.GetLongValue(); } },
             };
@@ -117,17 +117,17 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("act_user", ActUser);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("act_user", ActUser);
             writer.WriteLongValue("act_user_id", ActUserId);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Comment>("comment", Comment);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Comment>("comment", Comment);
             writer.WriteLongValue("comment_id", CommentId);
             writer.WriteStringValue("content", Content);
             writer.WriteDateTimeOffsetValue("created", Created);
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("is_private", IsPrivate);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.Activity_op_type>("op_type", OpType);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.Activity_op_type>("op_type", OpType);
             writer.WriteStringValue("ref_name", RefName);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>("repo", Repo);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Repository>("repo", Repo);
             writer.WriteLongValue("repo_id", RepoId);
             writer.WriteLongValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Reaction contain one reaction
@@ -28,13 +28,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Reaction"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Reaction"/> and sets the default values.
         /// </summary>
         public Reaction()
         {
@@ -43,12 +43,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Reaction"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Reaction"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Reaction CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Reaction CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Reaction();
+            return new global::Nuke.Components.Forgejo.Models.Reaction();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +60,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

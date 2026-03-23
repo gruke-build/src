@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// IssueTemplate represents an issue template for a repository
@@ -26,10 +26,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.IssueFormField>? Body { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.IssueFormField>? Body { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.IssueFormField> Body { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.IssueFormField> Body { get; set; }
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,7 +80,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.IssueTemplate"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.IssueTemplate"/> and sets the default values.
         /// </summary>
         public IssueTemplate()
         {
@@ -89,12 +89,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.IssueTemplate"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.IssueTemplate"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.IssueTemplate CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.IssueTemplate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.IssueTemplate();
+            return new global::Nuke.Components.Forgejo.Models.IssueTemplate();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -105,7 +105,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "about", n => { About = n.GetStringValue(); } },
-                { "body", n => { Body = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.IssueFormField>(global::Nuke.Common.Components.Forgejo.Models.IssueFormField.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "body", n => { Body = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.IssueFormField>(global::Nuke.Components.Forgejo.Models.IssueFormField.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "file_name", n => { FileName = n.GetStringValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -122,7 +122,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("about", About);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.IssueFormField>("body", Body);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.IssueFormField>("body", Body);
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("file_name", FileName);
             writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);

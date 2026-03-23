@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// EditRepoOption options when editing a repository&apos;s properties
@@ -74,18 +74,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>ExternalTracker represents settings for external tracker</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalTracker? ExternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalTracker? ExternalTracker { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalTracker ExternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalTracker ExternalTracker { get; set; }
 #endif
         /// <summary>ExternalWiki represents setting for external wiki</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalWiki? ExternalWiki { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalWiki? ExternalWiki { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.ExternalWiki ExternalWiki { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ExternalWiki ExternalWiki { get; set; }
 #endif
         /// <summary>set the globally editable state of the wiki</summary>
         public bool? GloballyEditableWiki { get; set; }
@@ -108,10 +108,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>InternalTracker represents settings for internal tracker</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.InternalTracker? InternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.InternalTracker? InternalTracker { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.InternalTracker InternalTracker { get; set; }
+        public global::Nuke.Components.Forgejo.Models.InternalTracker InternalTracker { get; set; }
 #endif
         /// <summary>set to a string like `8h30m0s` to set the mirror interval time</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,7 +150,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string WikiBranch { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.EditRepoOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditRepoOption"/> and sets the default values.
         /// </summary>
         public EditRepoOption()
         {
@@ -159,12 +159,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.EditRepoOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditRepoOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.EditRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.EditRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.EditRepoOption();
+            return new global::Nuke.Components.Forgejo.Models.EditRepoOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -190,8 +190,8 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "default_update_style", n => { DefaultUpdateStyle = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enable_prune", n => { EnablePrune = n.GetBoolValue(); } },
-                { "external_tracker", n => { ExternalTracker = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalTracker>(global::Nuke.Common.Components.Forgejo.Models.ExternalTracker.CreateFromDiscriminatorValue); } },
-                { "external_wiki", n => { ExternalWiki = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalWiki>(global::Nuke.Common.Components.Forgejo.Models.ExternalWiki.CreateFromDiscriminatorValue); } },
+                { "external_tracker", n => { ExternalTracker = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.ExternalTracker>(global::Nuke.Components.Forgejo.Models.ExternalTracker.CreateFromDiscriminatorValue); } },
+                { "external_wiki", n => { ExternalWiki = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.ExternalWiki>(global::Nuke.Components.Forgejo.Models.ExternalWiki.CreateFromDiscriminatorValue); } },
                 { "globally_editable_wiki", n => { GloballyEditableWiki = n.GetBoolValue(); } },
                 { "has_actions", n => { HasActions = n.GetBoolValue(); } },
                 { "has_issues", n => { HasIssues = n.GetBoolValue(); } },
@@ -201,7 +201,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "has_releases", n => { HasReleases = n.GetBoolValue(); } },
                 { "has_wiki", n => { HasWiki = n.GetBoolValue(); } },
                 { "ignore_whitespace_conflicts", n => { IgnoreWhitespaceConflicts = n.GetBoolValue(); } },
-                { "internal_tracker", n => { InternalTracker = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.InternalTracker>(global::Nuke.Common.Components.Forgejo.Models.InternalTracker.CreateFromDiscriminatorValue); } },
+                { "internal_tracker", n => { InternalTracker = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.InternalTracker>(global::Nuke.Components.Forgejo.Models.InternalTracker.CreateFromDiscriminatorValue); } },
                 { "mirror_interval", n => { MirrorInterval = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "private", n => { Private = n.GetBoolValue(); } },
@@ -233,8 +233,8 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("default_update_style", DefaultUpdateStyle);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enable_prune", EnablePrune);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalTracker>("external_tracker", ExternalTracker);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.ExternalWiki>("external_wiki", ExternalWiki);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.ExternalTracker>("external_tracker", ExternalTracker);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.ExternalWiki>("external_wiki", ExternalWiki);
             writer.WriteBoolValue("globally_editable_wiki", GloballyEditableWiki);
             writer.WriteBoolValue("has_actions", HasActions);
             writer.WriteBoolValue("has_issues", HasIssues);
@@ -244,7 +244,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("has_releases", HasReleases);
             writer.WriteBoolValue("has_wiki", HasWiki);
             writer.WriteBoolValue("ignore_whitespace_conflicts", IgnoreWhitespaceConflicts);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.InternalTracker>("internal_tracker", InternalTracker);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.InternalTracker>("internal_tracker", InternalTracker);
             writer.WriteStringValue("mirror_interval", MirrorInterval);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("private", Private);

@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
+namespace Nuke.Components.Forgejo.Repos.Issues.Search
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\issues\search
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
     public partial class SearchRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,27 +36,27 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
         /// <summary>
         /// Search for issues across the repositories that the user has access to
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.Issue&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.Issue&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Issue>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Issue>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Issue>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Issue>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -66,11 +66,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -81,11 +81,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Issues.Search.SearchRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Search for issues across the repositories that the user has access to
@@ -165,10 +165,10 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
             public DateTimeOffset? Since { get; set; }
             /// <summary>Type of sort</summary>
             [QueryParameter("sort")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.GetSortQueryParameterType? Sort { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Issues.Search.GetSortQueryParameterType? Sort { get; set; }
             /// <summary>State of the issue</summary>
             [QueryParameter("state")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.GetStateQueryParameterType? State { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Issues.Search.GetStateQueryParameterType? State { get; set; }
             /// <summary>Filter by team (requires organization owner parameter)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -181,7 +181,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Issues.Search
 #endif
             /// <summary>Filter by issue type</summary>
             [QueryParameter("type")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Issues.Search.GetTypeQueryParameterType? Type { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Issues.Search.GetTypeQueryParameterType? Type { get; set; }
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// GitTreeResponse returns a git tree
@@ -30,10 +30,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The tree property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.GitEntry>? Tree { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GitEntry>? Tree { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.GitEntry> Tree { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.GitEntry> Tree { get; set; }
 #endif
         /// <summary>The truncated property</summary>
         public bool? Truncated { get; set; }
@@ -46,7 +46,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.GitTreeResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.GitTreeResponse"/> and sets the default values.
         /// </summary>
         public GitTreeResponse()
         {
@@ -55,12 +55,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.GitTreeResponse"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.GitTreeResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.GitTreeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.GitTreeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.GitTreeResponse();
+            return new global::Nuke.Components.Forgejo.Models.GitTreeResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,7 +73,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "page", n => { Page = n.GetLongValue(); } },
                 { "sha", n => { Sha = n.GetStringValue(); } },
                 { "total_count", n => { TotalCount = n.GetLongValue(); } },
-                { "tree", n => { Tree = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GitEntry>(global::Nuke.Common.Components.Forgejo.Models.GitEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tree", n => { Tree = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GitEntry>(global::Nuke.Components.Forgejo.Models.GitEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -88,7 +88,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteLongValue("page", Page);
             writer.WriteStringValue("sha", Sha);
             writer.WriteLongValue("total_count", TotalCount);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.GitEntry>("tree", Tree);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.GitEntry>("tree", Tree);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

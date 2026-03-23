@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\pulls\{index}.{diffType}
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiff
     public partial class WithIndexWithDiffTypeRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="diffType">whether the output is diff or patch</param>
         /// <param name="index">index of the pull request to get</param>
@@ -30,7 +30,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiff
             if (index != null) PathParameters.Add("index", index);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -43,20 +43,20 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiff
         /// <returns>A <see cref="string"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<string?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<string?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<string> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<string> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -67,11 +67,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiff
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder.WithIndexWithDiffTypeRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -82,11 +82,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiff
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.WithIndexWithDiffType.WithIndexWithDiffTypeRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Get a pull request diff or patch

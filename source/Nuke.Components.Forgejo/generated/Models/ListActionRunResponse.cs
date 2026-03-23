@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// ListActionRunResponse return a list of ActionRun
@@ -20,13 +20,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The workflow_runs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.ActionRun>? WorkflowRuns { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.ActionRun>? WorkflowRuns { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.ActionRun> WorkflowRuns { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.ActionRun> WorkflowRuns { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ListActionRunResponse"/> and sets the default values.
         /// </summary>
         public ListActionRunResponse()
         {
@@ -35,12 +35,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ListActionRunResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.ListActionRunResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse();
+            return new global::Nuke.Components.Forgejo.Models.ListActionRunResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,7 +51,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "total_count", n => { TotalCount = n.GetLongValue(); } },
-                { "workflow_runs", n => { WorkflowRuns = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.ActionRun>(global::Nuke.Common.Components.Forgejo.Models.ActionRun.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "workflow_runs", n => { WorkflowRuns = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.ActionRun>(global::Nuke.Components.Forgejo.Models.ActionRun.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("total_count", TotalCount);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.ActionRun>("workflow_runs", WorkflowRuns);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.ActionRun>("workflow_runs", WorkflowRuns);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

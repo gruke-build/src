@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PullReviewComment represents a comment on a pull request review
@@ -84,23 +84,23 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Resolver { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Resolver { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Resolver { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Resolver { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PullReviewComment"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PullReviewComment"/> and sets the default values.
         /// </summary>
         public PullReviewComment()
         {
@@ -109,12 +109,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PullReviewComment"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PullReviewComment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PullReviewComment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PullReviewComment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PullReviewComment();
+            return new global::Nuke.Components.Forgejo.Models.PullReviewComment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,9 +136,9 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "pull_request_review_id", n => { PullRequestReviewId = n.GetLongValue(); } },
                 { "pull_request_url", n => { PullRequestUrl = n.GetStringValue(); } },
-                { "resolver", n => { Resolver = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "resolver", n => { Resolver = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -160,9 +160,9 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteIntValue("position", Position);
             writer.WriteLongValue("pull_request_review_id", PullRequestReviewId);
             writer.WriteStringValue("pull_request_url", PullRequestUrl);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("resolver", Resolver);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("resolver", Resolver);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

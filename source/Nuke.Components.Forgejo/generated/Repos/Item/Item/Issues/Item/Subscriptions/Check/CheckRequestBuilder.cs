@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\issues\{index}\subscriptions\check
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptio
     public partial class CheckRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptio
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,25 +36,25 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptio
         /// <summary>
         /// Check if user is subscribed to an issue
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.WatchInfo"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.WatchInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.WatchInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.WatchInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.WatchInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.WatchInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.WatchInfo>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.WatchInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.WatchInfo>(requestInfo, global::Nuke.Components.Forgejo.Models.WatchInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Check if user is subscribed to an issue
@@ -78,11 +78,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptio
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Subscriptions.Check.CheckRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
@@ -17,10 +17,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The object property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.GitObject? Object { get; set; }
+        public global::Nuke.Components.Forgejo.Models.GitObject? Object { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.GitObject Object { get; set; }
+        public global::Nuke.Components.Forgejo.Models.GitObject Object { get; set; }
 #endif
         /// <summary>The ref property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,7 +39,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Reference"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Reference"/> and sets the default values.
         /// </summary>
         public Reference()
         {
@@ -48,12 +48,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Reference"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Reference"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Reference CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Reference CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Reference();
+            return new global::Nuke.Components.Forgejo.Models.Reference();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,7 +63,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "object", n => { Object = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.GitObject>(global::Nuke.Common.Components.Forgejo.Models.GitObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.GitObject>(global::Nuke.Components.Forgejo.Models.GitObject.CreateFromDiscriminatorValue); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -75,7 +75,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.GitObject>("object", Object);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.GitObject>("object", Object);
             writer.WriteStringValue("ref", Ref);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

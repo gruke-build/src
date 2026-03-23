@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.Feeds;
+using Nuke.Components.Forgejo.Repos.Item.Item.Activities.Feeds;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Activities
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\activities
@@ -16,12 +16,12 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities
     public partial class ActivitiesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The feeds property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.Feeds.FeedsRequestBuilder Feeds
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.Feeds.FeedsRequestBuilder Feeds
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.Feeds.FeedsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.Feeds.FeedsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -29,7 +29,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// ContentsResponse contains information about a repo&apos;s entry&apos;s (dir, file, symlink, submodule) metadata and content
@@ -68,10 +68,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>FileLinksResponse contains the links for a repo&apos;s file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse? Links { get; set; }
+        public global::Nuke.Components.Forgejo.Models.FileLinksResponse? Links { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse Links { get; set; }
+        public global::Nuke.Components.Forgejo.Models.FileLinksResponse Links { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -132,7 +132,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.ContentsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ContentsResponse"/> and sets the default values.
         /// </summary>
         public ContentsResponse()
         {
@@ -141,12 +141,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.ContentsResponse"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ContentsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.ContentsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.ContentsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.ContentsResponse();
+            return new global::Nuke.Components.Forgejo.Models.ContentsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -163,7 +163,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "last_commit_sha", n => { LastCommitSha = n.GetStringValue(); } },
                 { "last_commit_when", n => { LastCommitWhen = n.GetDateTimeOffsetValue(); } },
-                { "_links", n => { Links = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse>(global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse.CreateFromDiscriminatorValue); } },
+                { "_links", n => { Links = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.FileLinksResponse>(global::Nuke.Components.Forgejo.Models.FileLinksResponse.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "sha", n => { Sha = n.GetStringValue(); } },
@@ -188,7 +188,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteStringValue("last_commit_sha", LastCommitSha);
             writer.WriteDateTimeOffsetValue("last_commit_when", LastCommitWhen);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse>("_links", Links);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.FileLinksResponse>("_links", Links);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("sha", Sha);

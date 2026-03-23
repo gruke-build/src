@@ -3,14 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\actions\runs
@@ -18,20 +18,20 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repos.item.item.actions.runs.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repos.item.item.actions.runs.item collection</summary>
         /// <param name="position">id of the action run</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder this[long position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder this[long position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("run_id", position);
-                return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.Item.WithRun_ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -39,7 +39,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -49,27 +49,27 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
         /// <summary>
         /// List a repository&apos;s action runs
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ListActionRunResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.ListActionRunResponse?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.ListActionRunResponse> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.ListActionRunResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.ListActionRunResponse>(requestInfo, global::Nuke.Components.Forgejo.Models.ListActionRunResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List a repository&apos;s action runs
@@ -78,11 +78,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder.RunsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -93,11 +93,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List a repository&apos;s action runs
@@ -148,11 +148,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.GetStatusQueryParameterType[]? Status { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.GetStatusQueryParameterType[]? Status { get; set; }
 #nullable restore
 #else
             [QueryParameter("status")]
-            public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.GetStatusQueryParameterType[] Status { get; set; }
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.GetStatusQueryParameterType[] Status { get; set; }
 #endif
         }
     }

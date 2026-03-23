@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.Item;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\git\trees
@@ -15,20 +15,20 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TreesRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repos.item.item.git.trees.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repos.item.item.git.trees.item collection</summary>
         /// <param name="position">sha of the commit</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("sha", position);
-                return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.Item.WithShaItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

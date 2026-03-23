@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repositories.Item;
+using Nuke.Components.Forgejo.Repositories.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repositories
+namespace Nuke.Components.Forgejo.Repositories
 {
     /// <summary>
     /// Builds and executes requests for operations under \repositories
@@ -15,20 +15,20 @@ namespace Nuke.Common.Components.Forgejo.Repositories
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RepositoriesRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repositories.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repositories.item collection</summary>
         /// <param name="position">id of the repo to get</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder this[long position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder this[long position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("id", position);
-                return new global::Nuke.Common.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repositories.Item.RepositoriesItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repositories.RepositoriesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repositories.RepositoriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.Repositories
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repositories.RepositoriesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repositories.RepositoriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

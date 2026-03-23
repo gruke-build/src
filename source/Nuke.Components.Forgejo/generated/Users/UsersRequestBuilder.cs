@@ -2,13 +2,13 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Users.Item;
-using Nuke.Common.Components.Forgejo.Users.Search;
+using Nuke.Components.Forgejo.Users.Item;
+using Nuke.Components.Forgejo.Users.Search;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Users
+namespace Nuke.Components.Forgejo.Users
 {
     /// <summary>
     /// Builds and executes requests for operations under \users
@@ -17,24 +17,24 @@ namespace Nuke.Common.Components.Forgejo.Users
     public partial class UsersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The search property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Search.SearchRequestBuilder Search
+        public global::Nuke.Components.Forgejo.Users.Search.SearchRequestBuilder Search
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.users.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.users.item collection</summary>
         /// <param name="position">username of user to get</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("username", position);
-                return new global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.UsersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.UsersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +42,7 @@ namespace Nuke.Common.Components.Forgejo.Users
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.UsersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.UsersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

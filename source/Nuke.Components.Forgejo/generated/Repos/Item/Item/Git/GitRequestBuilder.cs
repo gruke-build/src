@@ -2,17 +2,17 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Blobs;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Commits;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Notes;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Refs;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Tags;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Blobs;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Commits;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Notes;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Refs;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Tags;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Git
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\git
@@ -21,37 +21,37 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git
     public partial class GitRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The blobs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Blobs.BlobsRequestBuilder Blobs
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Blobs.BlobsRequestBuilder Blobs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Blobs.BlobsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Blobs.BlobsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The commits property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Commits.CommitsRequestBuilder Commits
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Commits.CommitsRequestBuilder Commits
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The notes property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Notes.NotesRequestBuilder Notes
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Notes.NotesRequestBuilder Notes
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Notes.NotesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Notes.NotesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Refs.RefsRequestBuilder Refs
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Refs.RefsRequestBuilder Refs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Refs.RefsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Refs.RefsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tags property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Tags.TagsRequestBuilder Tags
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Tags.TagsRequestBuilder Tags
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The trees property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder Trees
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder Trees
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.Trees.TreesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -59,7 +59,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Git
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

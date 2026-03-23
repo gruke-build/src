@@ -3,14 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Orgs.Item.Teams.Search;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Orgs.Item.Teams.Search;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
+namespace Nuke.Components.Forgejo.Orgs.Item.Teams
 {
     /// <summary>
     /// Builds and executes requests for operations under \orgs\{org}\teams
@@ -19,12 +19,12 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
     public partial class TeamsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The search property</summary>
-        public global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.Search.SearchRequestBuilder Search
+        public global::Nuke.Components.Forgejo.Orgs.Item.Teams.Search.SearchRequestBuilder Search
         {
-            get => new global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Orgs.Item.Teams.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -32,7 +32,7 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,53 +42,53 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
         /// <summary>
         /// List an organization&apos;s teams
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.Team&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.Team&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Team>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Team>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.Team>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.Team>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.Team>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.Team>(requestInfo, global::Nuke.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
         /// Create a team
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Team"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Team"/></returns>
         /// <param name="body">CreateTeamOption options for creating a team</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Team?> PostAsync(global::Nuke.Common.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Team?> PostAsync(global::Nuke.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Team> PostAsync(global::Nuke.Common.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Team> PostAsync(global::Nuke.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Team>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Team>(requestInfo, global::Nuke.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List an organization&apos;s teams
@@ -97,11 +97,11 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -117,11 +117,11 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Nuke.Common.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Nuke.Components.Forgejo.Models.CreateTeamOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -134,11 +134,11 @@ namespace Nuke.Common.Components.Forgejo.Orgs.Item.Teams
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Orgs.Item.Teams.TeamsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List an organization&apos;s teams

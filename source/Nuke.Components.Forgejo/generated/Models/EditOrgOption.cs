@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// EditOrgOption options for editing an organization
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The repo_admin_change_team_access property</summary>
         public bool? RepoAdminChangeTeamAccess { get; set; }
         /// <summary>possible values are `public`, `limited` or `private`</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.EditOrgOption_visibility? Visibility { get; set; }
+        public global::Nuke.Components.Forgejo.Models.EditOrgOption_visibility? Visibility { get; set; }
         /// <summary>The website property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,7 +60,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Website { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.EditOrgOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditOrgOption"/> and sets the default values.
         /// </summary>
         public EditOrgOption()
         {
@@ -69,12 +69,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.EditOrgOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditOrgOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.EditOrgOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.EditOrgOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.EditOrgOption();
+            return new global::Nuke.Components.Forgejo.Models.EditOrgOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,7 +89,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "full_name", n => { FullName = n.GetStringValue(); } },
                 { "location", n => { Location = n.GetStringValue(); } },
                 { "repo_admin_change_team_access", n => { RepoAdminChangeTeamAccess = n.GetBoolValue(); } },
-                { "visibility", n => { Visibility = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.EditOrgOption_visibility>(); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.EditOrgOption_visibility>(); } },
                 { "website", n => { Website = n.GetStringValue(); } },
             };
         }
@@ -105,7 +105,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("full_name", FullName);
             writer.WriteStringValue("location", Location);
             writer.WriteBoolValue("repo_admin_change_team_access", RepoAdminChangeTeamAccess);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.EditOrgOption_visibility>("visibility", Visibility);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.EditOrgOption_visibility>("visibility", Visibility);
             writer.WriteStringValue("website", Website);
             writer.WriteAdditionalData(AdditionalData);
         }

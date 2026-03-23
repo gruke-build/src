@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// WikiPage a wiki page
@@ -44,10 +44,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>WikiCommit page commit/revision</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.WikiCommit? LastCommit { get; set; }
+        public global::Nuke.Components.Forgejo.Models.WikiCommit? LastCommit { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.WikiCommit LastCommit { get; set; }
+        public global::Nuke.Components.Forgejo.Models.WikiCommit LastCommit { get; set; }
 #endif
         /// <summary>The sidebar property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.WikiPage"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.WikiPage"/> and sets the default values.
         /// </summary>
         public WikiPage()
         {
@@ -83,12 +83,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.WikiPage"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.WikiPage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.WikiPage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.WikiPage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.WikiPage();
+            return new global::Nuke.Components.Forgejo.Models.WikiPage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,7 +102,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "content_base64", n => { ContentBase64 = n.GetStringValue(); } },
                 { "footer", n => { Footer = n.GetStringValue(); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
-                { "last_commit", n => { LastCommit = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.WikiCommit>(global::Nuke.Common.Components.Forgejo.Models.WikiCommit.CreateFromDiscriminatorValue); } },
+                { "last_commit", n => { LastCommit = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.WikiCommit>(global::Nuke.Components.Forgejo.Models.WikiCommit.CreateFromDiscriminatorValue); } },
                 { "sidebar", n => { Sidebar = n.GetStringValue(); } },
                 { "sub_url", n => { SubUrl = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -119,7 +119,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("content_base64", ContentBase64);
             writer.WriteStringValue("footer", Footer);
             writer.WriteStringValue("html_url", HtmlUrl);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.WikiCommit>("last_commit", LastCommit);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.WikiCommit>("last_commit", LastCommit);
             writer.WriteStringValue("sidebar", Sidebar);
             writer.WriteStringValue("sub_url", SubUrl);
             writer.WriteStringValue("title", Title);

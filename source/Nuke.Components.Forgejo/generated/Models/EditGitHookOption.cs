@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// EditGitHookOption options when modifying one Git hook
@@ -24,7 +24,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Content { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.EditGitHookOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditGitHookOption"/> and sets the default values.
         /// </summary>
         public EditGitHookOption()
         {
@@ -33,12 +33,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.EditGitHookOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditGitHookOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.EditGitHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.EditGitHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.EditGitHookOption();
+            return new global::Nuke.Components.Forgejo.Models.EditGitHookOption();
         }
         /// <summary>
         /// The deserialization information for the current model

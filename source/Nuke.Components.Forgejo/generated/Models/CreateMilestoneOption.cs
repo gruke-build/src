@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// CreateMilestoneOption options for creating a milestone
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The due_on property</summary>
         public DateTimeOffset? DueOn { get; set; }
         /// <summary>The state property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption_state? State { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateMilestoneOption_state? State { get; set; }
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.CreateMilestoneOption"/> and sets the default values.
         /// </summary>
         public CreateMilestoneOption()
         {
@@ -45,12 +45,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.CreateMilestoneOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.CreateMilestoneOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption();
+            return new global::Nuke.Components.Forgejo.Models.CreateMilestoneOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,7 +62,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "due_on", n => { DueOn = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.CreateMilestoneOption_state>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("due_on", DueOn);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateMilestoneOption_state>("state", State);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.CreateMilestoneOption_state>("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

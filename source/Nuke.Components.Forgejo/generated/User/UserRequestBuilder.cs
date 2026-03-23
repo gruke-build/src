@@ -3,36 +3,36 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.User.Actions;
-using Nuke.Common.Components.Forgejo.User.Applications;
-using Nuke.Common.Components.Forgejo.User.Avatar;
-using Nuke.Common.Components.Forgejo.User.Block;
-using Nuke.Common.Components.Forgejo.User.Emails;
-using Nuke.Common.Components.Forgejo.User.Followers;
-using Nuke.Common.Components.Forgejo.User.Following;
-using Nuke.Common.Components.Forgejo.User.Gpg_key_token;
-using Nuke.Common.Components.Forgejo.User.Gpg_key_verify;
-using Nuke.Common.Components.Forgejo.User.Gpg_keys;
-using Nuke.Common.Components.Forgejo.User.Hooks;
-using Nuke.Common.Components.Forgejo.User.Keys;
-using Nuke.Common.Components.Forgejo.User.List_blocked;
-using Nuke.Common.Components.Forgejo.User.Orgs;
-using Nuke.Common.Components.Forgejo.User.Quota;
-using Nuke.Common.Components.Forgejo.User.Repos;
-using Nuke.Common.Components.Forgejo.User.Settings;
-using Nuke.Common.Components.Forgejo.User.Starred;
-using Nuke.Common.Components.Forgejo.User.Stopwatches;
-using Nuke.Common.Components.Forgejo.User.Subscriptions;
-using Nuke.Common.Components.Forgejo.User.Teams;
-using Nuke.Common.Components.Forgejo.User.Times;
-using Nuke.Common.Components.Forgejo.User.Unblock;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.User.Actions;
+using Nuke.Components.Forgejo.User.Applications;
+using Nuke.Components.Forgejo.User.Avatar;
+using Nuke.Components.Forgejo.User.Block;
+using Nuke.Components.Forgejo.User.Emails;
+using Nuke.Components.Forgejo.User.Followers;
+using Nuke.Components.Forgejo.User.Following;
+using Nuke.Components.Forgejo.User.Gpg_key_token;
+using Nuke.Components.Forgejo.User.Gpg_key_verify;
+using Nuke.Components.Forgejo.User.Gpg_keys;
+using Nuke.Components.Forgejo.User.Hooks;
+using Nuke.Components.Forgejo.User.Keys;
+using Nuke.Components.Forgejo.User.List_blocked;
+using Nuke.Components.Forgejo.User.Orgs;
+using Nuke.Components.Forgejo.User.Quota;
+using Nuke.Components.Forgejo.User.Repos;
+using Nuke.Components.Forgejo.User.Settings;
+using Nuke.Components.Forgejo.User.Starred;
+using Nuke.Components.Forgejo.User.Stopwatches;
+using Nuke.Components.Forgejo.User.Subscriptions;
+using Nuke.Components.Forgejo.User.Teams;
+using Nuke.Components.Forgejo.User.Times;
+using Nuke.Components.Forgejo.User.Unblock;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.User
+namespace Nuke.Components.Forgejo.User
 {
     /// <summary>
     /// Builds and executes requests for operations under \user
@@ -41,122 +41,122 @@ namespace Nuke.Common.Components.Forgejo.User
     public partial class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The actions property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.ActionsRequestBuilder Actions
+        public global::Nuke.Components.Forgejo.User.Actions.ActionsRequestBuilder Actions
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The applications property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Applications.ApplicationsRequestBuilder Applications
+        public global::Nuke.Components.Forgejo.User.Applications.ApplicationsRequestBuilder Applications
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Applications.ApplicationsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Applications.ApplicationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The avatar property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Avatar.AvatarRequestBuilder Avatar
+        public global::Nuke.Components.Forgejo.User.Avatar.AvatarRequestBuilder Avatar
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Avatar.AvatarRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Avatar.AvatarRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The block property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Block.BlockRequestBuilder Block
+        public global::Nuke.Components.Forgejo.User.Block.BlockRequestBuilder Block
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Block.BlockRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Block.BlockRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The emails property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Emails.EmailsRequestBuilder Emails
+        public global::Nuke.Components.Forgejo.User.Emails.EmailsRequestBuilder Emails
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The followers property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Followers.FollowersRequestBuilder Followers
+        public global::Nuke.Components.Forgejo.User.Followers.FollowersRequestBuilder Followers
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Followers.FollowersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Followers.FollowersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The following property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Following.FollowingRequestBuilder Following
+        public global::Nuke.Components.Forgejo.User.Following.FollowingRequestBuilder Following
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Following.FollowingRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Following.FollowingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gpg_key_token property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Gpg_key_token.Gpg_key_tokenRequestBuilder Gpg_key_token
+        public global::Nuke.Components.Forgejo.User.Gpg_key_token.Gpg_key_tokenRequestBuilder Gpg_key_token
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Gpg_key_token.Gpg_key_tokenRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Gpg_key_token.Gpg_key_tokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gpg_key_verify property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Gpg_key_verify.Gpg_key_verifyRequestBuilder Gpg_key_verify
+        public global::Nuke.Components.Forgejo.User.Gpg_key_verify.Gpg_key_verifyRequestBuilder Gpg_key_verify
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Gpg_key_verify.Gpg_key_verifyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Gpg_key_verify.Gpg_key_verifyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gpg_keys property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Gpg_keys.Gpg_keysRequestBuilder Gpg_keys
+        public global::Nuke.Components.Forgejo.User.Gpg_keys.Gpg_keysRequestBuilder Gpg_keys
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Gpg_keys.Gpg_keysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Gpg_keys.Gpg_keysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The hooks property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Hooks.HooksRequestBuilder Hooks
+        public global::Nuke.Components.Forgejo.User.Hooks.HooksRequestBuilder Hooks
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Hooks.HooksRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Hooks.HooksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The keys property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Keys.KeysRequestBuilder Keys
+        public global::Nuke.Components.Forgejo.User.Keys.KeysRequestBuilder Keys
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The list_blocked property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.List_blocked.List_blockedRequestBuilder List_blocked
+        public global::Nuke.Components.Forgejo.User.List_blocked.List_blockedRequestBuilder List_blocked
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.List_blocked.List_blockedRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.List_blocked.List_blockedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The orgs property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Orgs.OrgsRequestBuilder Orgs
+        public global::Nuke.Components.Forgejo.User.Orgs.OrgsRequestBuilder Orgs
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The quota property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder Quota
+        public global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder Quota
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repos property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Repos.ReposRequestBuilder Repos
+        public global::Nuke.Components.Forgejo.User.Repos.ReposRequestBuilder Repos
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The settings property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder Settings
+        public global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder Settings
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The starred property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Starred.StarredRequestBuilder Starred
+        public global::Nuke.Components.Forgejo.User.Starred.StarredRequestBuilder Starred
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Starred.StarredRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Starred.StarredRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stopwatches property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Stopwatches.StopwatchesRequestBuilder Stopwatches
+        public global::Nuke.Components.Forgejo.User.Stopwatches.StopwatchesRequestBuilder Stopwatches
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Stopwatches.StopwatchesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Stopwatches.StopwatchesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subscriptions property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Subscriptions.SubscriptionsRequestBuilder Subscriptions
+        public global::Nuke.Components.Forgejo.User.Subscriptions.SubscriptionsRequestBuilder Subscriptions
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The teams property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Teams.TeamsRequestBuilder Teams
+        public global::Nuke.Components.Forgejo.User.Teams.TeamsRequestBuilder Teams
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The times property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Times.TimesRequestBuilder Times
+        public global::Nuke.Components.Forgejo.User.Times.TimesRequestBuilder Times
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The unblock property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Unblock.UnblockRequestBuilder Unblock
+        public global::Nuke.Components.Forgejo.User.Unblock.UnblockRequestBuilder Unblock
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Unblock.UnblockRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Unblock.UnblockRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -164,7 +164,7 @@ namespace Nuke.Common.Components.Forgejo.User
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -174,27 +174,27 @@ namespace Nuke.Common.Components.Forgejo.User
         /// <summary>
         /// Get the authenticated user
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.User"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.User"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.User?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.User?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.User> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.User> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "401", global::Nuke.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.User>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.User>(requestInfo, global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the authenticated user
@@ -218,11 +218,11 @@ namespace Nuke.Common.Components.Forgejo.User
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.UserRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.User.UserRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.User.UserRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

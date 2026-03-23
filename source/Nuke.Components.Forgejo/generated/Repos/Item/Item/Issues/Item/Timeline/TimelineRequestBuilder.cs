@@ -3,13 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\issues\{index}\timeline
@@ -18,7 +18,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
     public partial class TimelineRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +26,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,29 +36,29 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
         /// <summary>
         /// List all comments and events on an issue
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.TimelineComment&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.TimelineComment&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIInternalServerError">When receiving a 500 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIInternalServerError">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.TimelineComment>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.TimelineComment>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.TimelineComment>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.TimelineComment>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
-                { "500", global::Nuke.Common.Components.Forgejo.Models.APIInternalServerError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "500", global::Nuke.Components.Forgejo.Models.APIInternalServerError.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.TimelineComment>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.TimelineComment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.TimelineComment>(requestInfo, global::Nuke.Components.Forgejo.Models.TimelineComment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -68,11 +68,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder.TimelineRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -83,11 +83,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Timeline.TimelineRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List all comments and events on an issue

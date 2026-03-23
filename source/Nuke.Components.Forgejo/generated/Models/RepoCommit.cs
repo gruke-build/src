@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
@@ -17,18 +17,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The author property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser? Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser? Author { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser Author { get; set; }
 #endif
         /// <summary>The committer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser? Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser? Committer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser Committer { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,10 +41,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The tree property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CommitMeta? Tree { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitMeta? Tree { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CommitMeta Tree { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitMeta Tree { get; set; }
 #endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,13 +57,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadCommitVerification represents the GPG verification of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.RepoCommit"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.RepoCommit"/> and sets the default values.
         /// </summary>
         public RepoCommit()
         {
@@ -72,12 +72,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.RepoCommit"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.RepoCommit"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.RepoCommit CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.RepoCommit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.RepoCommit();
+            return new global::Nuke.Components.Forgejo.Models.RepoCommit();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,12 +87,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>(global::Nuke.Common.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
-                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>(global::Nuke.Common.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>(global::Nuke.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
+                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>(global::Nuke.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "tree", n => { Tree = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitMeta>(global::Nuke.Common.Components.Forgejo.Models.CommitMeta.CreateFromDiscriminatorValue); } },
+                { "tree", n => { Tree = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CommitMeta>(global::Nuke.Components.Forgejo.Models.CommitMeta.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
+                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,12 +102,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>("author", Author);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>("committer", Committer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>("author", Author);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>("committer", Committer);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitMeta>("tree", Tree);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CommitMeta>("tree", Tree);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

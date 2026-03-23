@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Hook a hook is a web hook when one repository changed
@@ -36,10 +36,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Deprecated: use Metadata instead</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Hook_config? Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Hook_config? Config { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Hook_config Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Hook_config Config { get; set; }
 #endif
         /// <summary>The content_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +88,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Hook"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Hook"/> and sets the default values.
         /// </summary>
         public Hook()
         {
@@ -97,12 +97,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Hook"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Hook"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Hook CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Hook CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Hook();
+            return new global::Nuke.Components.Forgejo.Models.Hook();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,7 +115,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "authorization_header", n => { AuthorizationHeader = n.GetStringValue(); } },
                 { "branch_filter", n => { BranchFilter = n.GetStringValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Hook_config>(global::Nuke.Common.Components.Forgejo.Models.Hook_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Hook_config>(global::Nuke.Components.Forgejo.Models.Hook_config.CreateFromDiscriminatorValue); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -136,7 +136,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("active", Active);
             writer.WriteStringValue("authorization_header", AuthorizationHeader);
             writer.WriteStringValue("branch_filter", BranchFilter);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Hook_config>("config", Config);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Hook_config>("config", Config);
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);

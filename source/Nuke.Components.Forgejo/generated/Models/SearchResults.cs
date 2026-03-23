@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// SearchResults results of a successful search
@@ -18,15 +18,15 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Repository>? Data { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Repository>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Repository> Data { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Repository> Data { get; set; }
 #endif
         /// <summary>The ok property</summary>
         public bool? Ok { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.SearchResults"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.SearchResults"/> and sets the default values.
         /// </summary>
         public SearchResults()
         {
@@ -35,12 +35,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.SearchResults"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.SearchResults"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.SearchResults CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.SearchResults CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.SearchResults();
+            return new global::Nuke.Components.Forgejo.Models.SearchResults();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Repository>(global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Repository>(global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ok", n => { Ok = n.GetBoolValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Repository>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Repository>("data", Data);
             writer.WriteBoolValue("ok", Ok);
             writer.WriteAdditionalData(AdditionalData);
         }

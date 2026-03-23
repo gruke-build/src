@@ -2,14 +2,14 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Status;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses;
+using Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull;
+using Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Status;
+using Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\commits\{ref-id}
@@ -18,22 +18,22 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item
     public partial class RefItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The pull property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull.PullRequestBuilder Pull
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull.PullRequestBuilder Pull
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull.PullRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Pull.PullRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The status property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Status.StatusRequestBuilder Status
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Status.StatusRequestBuilder Status
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The statuses property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder Statuses
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder Statuses
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.Statuses.StatusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.RefItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.RefItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -41,7 +41,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.Item.RefItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.Item.RefItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

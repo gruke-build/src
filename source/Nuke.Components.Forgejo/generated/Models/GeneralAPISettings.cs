@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// GeneralAPISettings contains global api settings exposed by it
@@ -24,7 +24,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The max_response_items property</summary>
         public long? MaxResponseItems { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.GeneralAPISettings"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.GeneralAPISettings"/> and sets the default values.
         /// </summary>
         public GeneralAPISettings()
         {
@@ -33,12 +33,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.GeneralAPISettings"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.GeneralAPISettings"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.GeneralAPISettings CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.GeneralAPISettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.GeneralAPISettings();
+            return new global::Nuke.Components.Forgejo.Models.GeneralAPISettings();
         }
         /// <summary>
         /// The deserialization information for the current model

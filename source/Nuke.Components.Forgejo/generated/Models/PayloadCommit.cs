@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PayloadCommit represents a commit
@@ -26,18 +26,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadUser represents the author or committer of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser? Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser? Author { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser Author { get; set; }
 #endif
         /// <summary>PayloadUser represents the author or committer of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser? Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser? Committer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser Committer { get; set; }
 #endif
         /// <summary>sha1 hash of the commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,13 +84,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadCommitVerification represents the GPG verification of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PayloadCommit"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PayloadCommit"/> and sets the default values.
         /// </summary>
         public PayloadCommit()
         {
@@ -99,12 +99,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PayloadCommit"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PayloadCommit"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PayloadCommit CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PayloadCommit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PayloadCommit();
+            return new global::Nuke.Components.Forgejo.Models.PayloadCommit();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,15 +115,15 @@ namespace Nuke.Common.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "added", n => { Added = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "author", n => { Author = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>(global::Nuke.Common.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
-                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>(global::Nuke.Common.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>(global::Nuke.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
+                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>(global::Nuke.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "modified", n => { Modified = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "removed", n => { Removed = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
+                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -134,15 +134,15 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("added", Added);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>("author", Author);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>("committer", Committer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>("author", Author);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>("committer", Committer);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("message", Message);
             writer.WriteCollectionOfPrimitiveValues<string>("modified", Modified);
             writer.WriteCollectionOfPrimitiveValues<string>("removed", Removed);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

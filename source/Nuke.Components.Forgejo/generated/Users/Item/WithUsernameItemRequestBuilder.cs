@@ -3,24 +3,24 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Users.Item.Activities;
-using Nuke.Common.Components.Forgejo.Users.Item.Followers;
-using Nuke.Common.Components.Forgejo.Users.Item.Following;
-using Nuke.Common.Components.Forgejo.Users.Item.Gpg_keys;
-using Nuke.Common.Components.Forgejo.Users.Item.Heatmap;
-using Nuke.Common.Components.Forgejo.Users.Item.Keys;
-using Nuke.Common.Components.Forgejo.Users.Item.Orgs;
-using Nuke.Common.Components.Forgejo.Users.Item.Repos;
-using Nuke.Common.Components.Forgejo.Users.Item.Starred;
-using Nuke.Common.Components.Forgejo.Users.Item.Subscriptions;
-using Nuke.Common.Components.Forgejo.Users.Item.Tokens;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Users.Item.Activities;
+using Nuke.Components.Forgejo.Users.Item.Followers;
+using Nuke.Components.Forgejo.Users.Item.Following;
+using Nuke.Components.Forgejo.Users.Item.Gpg_keys;
+using Nuke.Components.Forgejo.Users.Item.Heatmap;
+using Nuke.Components.Forgejo.Users.Item.Keys;
+using Nuke.Components.Forgejo.Users.Item.Orgs;
+using Nuke.Components.Forgejo.Users.Item.Repos;
+using Nuke.Components.Forgejo.Users.Item.Starred;
+using Nuke.Components.Forgejo.Users.Item.Subscriptions;
+using Nuke.Components.Forgejo.Users.Item.Tokens;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Users.Item
+namespace Nuke.Components.Forgejo.Users.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \users\{username}
@@ -29,62 +29,62 @@ namespace Nuke.Common.Components.Forgejo.Users.Item
     public partial class WithUsernameItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The activities property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Activities.ActivitiesRequestBuilder Activities
+        public global::Nuke.Components.Forgejo.Users.Item.Activities.ActivitiesRequestBuilder Activities
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The followers property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Followers.FollowersRequestBuilder Followers
+        public global::Nuke.Components.Forgejo.Users.Item.Followers.FollowersRequestBuilder Followers
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Followers.FollowersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Followers.FollowersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The following property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Following.FollowingRequestBuilder Following
+        public global::Nuke.Components.Forgejo.Users.Item.Following.FollowingRequestBuilder Following
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Following.FollowingRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Following.FollowingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gpg_keys property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Gpg_keys.Gpg_keysRequestBuilder Gpg_keys
+        public global::Nuke.Components.Forgejo.Users.Item.Gpg_keys.Gpg_keysRequestBuilder Gpg_keys
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Gpg_keys.Gpg_keysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Gpg_keys.Gpg_keysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The heatmap property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Heatmap.HeatmapRequestBuilder Heatmap
+        public global::Nuke.Components.Forgejo.Users.Item.Heatmap.HeatmapRequestBuilder Heatmap
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Heatmap.HeatmapRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Heatmap.HeatmapRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The keys property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Keys.KeysRequestBuilder Keys
+        public global::Nuke.Components.Forgejo.Users.Item.Keys.KeysRequestBuilder Keys
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The orgs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.OrgsRequestBuilder Orgs
+        public global::Nuke.Components.Forgejo.Users.Item.Orgs.OrgsRequestBuilder Orgs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repos property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Repos.ReposRequestBuilder Repos
+        public global::Nuke.Components.Forgejo.Users.Item.Repos.ReposRequestBuilder Repos
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The starred property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Starred.StarredRequestBuilder Starred
+        public global::Nuke.Components.Forgejo.Users.Item.Starred.StarredRequestBuilder Starred
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Starred.StarredRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Starred.StarredRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subscriptions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Subscriptions.SubscriptionsRequestBuilder Subscriptions
+        public global::Nuke.Components.Forgejo.Users.Item.Subscriptions.SubscriptionsRequestBuilder Subscriptions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tokens property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.Tokens.TokensRequestBuilder Tokens
+        public global::Nuke.Components.Forgejo.Users.Item.Tokens.TokensRequestBuilder Tokens
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.Item.Tokens.TokensRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.Item.Tokens.TokensRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -92,7 +92,7 @@ namespace Nuke.Common.Components.Forgejo.Users.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -102,25 +102,25 @@ namespace Nuke.Common.Components.Forgejo.Users.Item
         /// <summary>
         /// Get a user
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.User"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.User"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.User?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.User?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.User> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.User> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.User>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.User>(requestInfo, global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a user
@@ -144,11 +144,11 @@ namespace Nuke.Common.Components.Forgejo.Users.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Users.Item.WithUsernameItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

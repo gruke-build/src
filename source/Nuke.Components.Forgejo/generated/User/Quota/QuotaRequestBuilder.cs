@@ -3,17 +3,17 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.User.Quota.Artifacts;
-using Nuke.Common.Components.Forgejo.User.Quota.Attachments;
-using Nuke.Common.Components.Forgejo.User.Quota.Check;
-using Nuke.Common.Components.Forgejo.User.Quota.Packages;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.User.Quota.Artifacts;
+using Nuke.Components.Forgejo.User.Quota.Attachments;
+using Nuke.Components.Forgejo.User.Quota.Check;
+using Nuke.Components.Forgejo.User.Quota.Packages;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.User.Quota
+namespace Nuke.Components.Forgejo.User.Quota
 {
     /// <summary>
     /// Builds and executes requests for operations under \user\quota
@@ -22,27 +22,27 @@ namespace Nuke.Common.Components.Forgejo.User.Quota
     public partial class QuotaRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The artifacts property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.Artifacts.ArtifactsRequestBuilder Artifacts
+        public global::Nuke.Components.Forgejo.User.Quota.Artifacts.ArtifactsRequestBuilder Artifacts
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Quota.Artifacts.ArtifactsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Quota.Artifacts.ArtifactsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachments property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.Attachments.AttachmentsRequestBuilder Attachments
+        public global::Nuke.Components.Forgejo.User.Quota.Attachments.AttachmentsRequestBuilder Attachments
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Quota.Attachments.AttachmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Quota.Attachments.AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The check property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.Check.CheckRequestBuilder Check
+        public global::Nuke.Components.Forgejo.User.Quota.Check.CheckRequestBuilder Check
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Quota.Check.CheckRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Quota.Check.CheckRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The packages property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.Packages.PackagesRequestBuilder Packages
+        public global::Nuke.Components.Forgejo.User.Quota.Packages.PackagesRequestBuilder Packages
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Quota.Packages.PackagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Quota.Packages.PackagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.User.Quota
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -60,27 +60,27 @@ namespace Nuke.Common.Components.Forgejo.User.Quota
         /// <summary>
         /// Get quota information for the authenticated user
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaInfo"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.QuotaInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.QuotaInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.QuotaInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.QuotaInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.QuotaInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "401", global::Nuke.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.QuotaInfo>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.QuotaInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.QuotaInfo>(requestInfo, global::Nuke.Components.Forgejo.Models.QuotaInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get quota information for the authenticated user
@@ -104,11 +104,11 @@ namespace Nuke.Common.Components.Forgejo.User.Quota
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.User.Quota.QuotaRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.User.Quota.QuotaRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

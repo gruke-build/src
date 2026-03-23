@@ -6,29 +6,29 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Nuke.Common.Components.Forgejo.Gitignore;
-using Nuke.Common.Components.Forgejo.Label;
-using Nuke.Common.Components.Forgejo.Licenses;
-using Nuke.Common.Components.Forgejo.Markdown;
-using Nuke.Common.Components.Forgejo.Markup;
-using Nuke.Common.Components.Forgejo.Org;
-using Nuke.Common.Components.Forgejo.Orgs;
-using Nuke.Common.Components.Forgejo.Packages;
-using Nuke.Common.Components.Forgejo.Repos;
-using Nuke.Common.Components.Forgejo.Repositories;
-using Nuke.Common.Components.Forgejo.Settings;
-using Nuke.Common.Components.Forgejo.SigningKeyGpg;
-using Nuke.Common.Components.Forgejo.SigningKeySsh;
-using Nuke.Common.Components.Forgejo.Teams;
-using Nuke.Common.Components.Forgejo.Topics;
-using Nuke.Common.Components.Forgejo.User;
-using Nuke.Common.Components.Forgejo.Users;
-using Nuke.Common.Components.Forgejo.VersionNamespace;
+using Nuke.Components.Forgejo.Gitignore;
+using Nuke.Components.Forgejo.Label;
+using Nuke.Components.Forgejo.Licenses;
+using Nuke.Components.Forgejo.Markdown;
+using Nuke.Components.Forgejo.Markup;
+using Nuke.Components.Forgejo.Org;
+using Nuke.Components.Forgejo.Orgs;
+using Nuke.Components.Forgejo.Packages;
+using Nuke.Components.Forgejo.Repos;
+using Nuke.Components.Forgejo.Repositories;
+using Nuke.Components.Forgejo.Settings;
+using Nuke.Components.Forgejo.SigningKeyGpg;
+using Nuke.Components.Forgejo.SigningKeySsh;
+using Nuke.Components.Forgejo.Teams;
+using Nuke.Components.Forgejo.Topics;
+using Nuke.Components.Forgejo.User;
+using Nuke.Components.Forgejo.Users;
+using Nuke.Components.Forgejo.VersionNamespace;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo
+namespace Nuke.Components.Forgejo
 {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
@@ -37,97 +37,97 @@ namespace Nuke.Common.Components.Forgejo
     public partial class ForgejoApiClient : BaseRequestBuilder
     {
         /// <summary>The gitignore property</summary>
-        public global::Nuke.Common.Components.Forgejo.Gitignore.GitignoreRequestBuilder Gitignore
+        public global::Nuke.Components.Forgejo.Gitignore.GitignoreRequestBuilder Gitignore
         {
-            get => new global::Nuke.Common.Components.Forgejo.Gitignore.GitignoreRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Gitignore.GitignoreRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The label property</summary>
-        public global::Nuke.Common.Components.Forgejo.Label.LabelRequestBuilder Label
+        public global::Nuke.Components.Forgejo.Label.LabelRequestBuilder Label
         {
-            get => new global::Nuke.Common.Components.Forgejo.Label.LabelRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Label.LabelRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The licenses property</summary>
-        public global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder Licenses
+        public global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder Licenses
         {
-            get => new global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markdown property</summary>
-        public global::Nuke.Common.Components.Forgejo.Markdown.MarkdownRequestBuilder Markdown
+        public global::Nuke.Components.Forgejo.Markdown.MarkdownRequestBuilder Markdown
         {
-            get => new global::Nuke.Common.Components.Forgejo.Markdown.MarkdownRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Markdown.MarkdownRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markup property</summary>
-        public global::Nuke.Common.Components.Forgejo.Markup.MarkupRequestBuilder Markup
+        public global::Nuke.Components.Forgejo.Markup.MarkupRequestBuilder Markup
         {
-            get => new global::Nuke.Common.Components.Forgejo.Markup.MarkupRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Markup.MarkupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The org property</summary>
-        public global::Nuke.Common.Components.Forgejo.Org.OrgRequestBuilder Org
+        public global::Nuke.Components.Forgejo.Org.OrgRequestBuilder Org
         {
-            get => new global::Nuke.Common.Components.Forgejo.Org.OrgRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Org.OrgRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The orgs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Orgs.OrgsRequestBuilder Orgs
+        public global::Nuke.Components.Forgejo.Orgs.OrgsRequestBuilder Orgs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Orgs.OrgsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The packages property</summary>
-        public global::Nuke.Common.Components.Forgejo.Packages.PackagesRequestBuilder Packages
+        public global::Nuke.Components.Forgejo.Packages.PackagesRequestBuilder Packages
         {
-            get => new global::Nuke.Common.Components.Forgejo.Packages.PackagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Packages.PackagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repos property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.ReposRequestBuilder Repos
+        public global::Nuke.Components.Forgejo.Repos.ReposRequestBuilder Repos
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repositories property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repositories.RepositoriesRequestBuilder Repositories
+        public global::Nuke.Components.Forgejo.Repositories.RepositoriesRequestBuilder Repositories
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repositories.RepositoriesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repositories.RepositoriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The settings property</summary>
-        public global::Nuke.Common.Components.Forgejo.Settings.SettingsRequestBuilder Settings
+        public global::Nuke.Components.Forgejo.Settings.SettingsRequestBuilder Settings
         {
-            get => new global::Nuke.Common.Components.Forgejo.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signingKeyGpg property</summary>
-        public global::Nuke.Common.Components.Forgejo.SigningKeyGpg.SigningKeyGpgRequestBuilder SigningKeyGpg
+        public global::Nuke.Components.Forgejo.SigningKeyGpg.SigningKeyGpgRequestBuilder SigningKeyGpg
         {
-            get => new global::Nuke.Common.Components.Forgejo.SigningKeyGpg.SigningKeyGpgRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.SigningKeyGpg.SigningKeyGpgRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signingKeySsh property</summary>
-        public global::Nuke.Common.Components.Forgejo.SigningKeySsh.SigningKeySshRequestBuilder SigningKeySsh
+        public global::Nuke.Components.Forgejo.SigningKeySsh.SigningKeySshRequestBuilder SigningKeySsh
         {
-            get => new global::Nuke.Common.Components.Forgejo.SigningKeySsh.SigningKeySshRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.SigningKeySsh.SigningKeySshRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The teams property</summary>
-        public global::Nuke.Common.Components.Forgejo.Teams.TeamsRequestBuilder Teams
+        public global::Nuke.Components.Forgejo.Teams.TeamsRequestBuilder Teams
         {
-            get => new global::Nuke.Common.Components.Forgejo.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The topics property</summary>
-        public global::Nuke.Common.Components.Forgejo.Topics.TopicsRequestBuilder Topics
+        public global::Nuke.Components.Forgejo.Topics.TopicsRequestBuilder Topics
         {
-            get => new global::Nuke.Common.Components.Forgejo.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder User
+        public global::Nuke.Components.Forgejo.User.UserRequestBuilder User
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.UserRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The users property</summary>
-        public global::Nuke.Common.Components.Forgejo.Users.UsersRequestBuilder Users
+        public global::Nuke.Components.Forgejo.Users.UsersRequestBuilder Users
         {
-            get => new global::Nuke.Common.Components.Forgejo.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The version property</summary>
-        public global::Nuke.Common.Components.Forgejo.VersionNamespace.VersionRequestBuilder Version
+        public global::Nuke.Components.Forgejo.VersionNamespace.VersionRequestBuilder Version
         {
-            get => new global::Nuke.Common.Components.Forgejo.VersionNamespace.VersionRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.VersionNamespace.VersionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.ForgejoApiClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.ForgejoApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public ForgejoApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

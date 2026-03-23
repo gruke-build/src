@@ -2,13 +2,13 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link;
-using Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Unlink;
+using Nuke.Components.Forgejo.Packages.Item.Item.Item.Link;
+using Nuke.Components.Forgejo.Packages.Item.Item.Item.Unlink;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item
+namespace Nuke.Components.Forgejo.Packages.Item.Item.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \packages\{owner}\{type}\{name}\-
@@ -17,17 +17,17 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item
     public partial class Minus_RequestBuilder : BaseRequestBuilder
     {
         /// <summary>The link property</summary>
-        public global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder Link
+        public global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder Link
         {
-            get => new global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The unlink property</summary>
-        public global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Unlink.UnlinkRequestBuilder Unlink
+        public global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Unlink.UnlinkRequestBuilder Unlink
         {
-            get => new global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Unlink.UnlinkRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Unlink.UnlinkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Minus_RequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Minus_RequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +35,7 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Minus_RequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Minus_RequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

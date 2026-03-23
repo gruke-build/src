@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// DispatchWorkflowOption options when dispatching a workflow
@@ -18,10 +18,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Input keys and values configured in the workflow file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption_inputs? Inputs { get; set; }
+        public global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption_inputs? Inputs { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption_inputs Inputs { get; set; }
+        public global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption_inputs Inputs { get; set; }
 #endif
         /// <summary>Git reference for the workflow</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,7 +34,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Flag to return the run info</summary>
         public bool? ReturnRunInfo { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption"/> and sets the default values.
         /// </summary>
         public DispatchWorkflowOption()
         {
@@ -43,12 +43,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption();
+            return new global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,7 +58,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "inputs", n => { Inputs = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption_inputs>(global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption_inputs.CreateFromDiscriminatorValue); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption_inputs>(global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption_inputs.CreateFromDiscriminatorValue); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "return_run_info", n => { ReturnRunInfo = n.GetBoolValue(); } },
             };
@@ -70,7 +70,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.DispatchWorkflowOption_inputs>("inputs", Inputs);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.DispatchWorkflowOption_inputs>("inputs", Inputs);
             writer.WriteStringValue("ref", Ref);
             writer.WriteBoolValue("return_run_info", ReturnRunInfo);
             writer.WriteAdditionalData(AdditionalData);

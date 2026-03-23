@@ -3,14 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.User.Actions.Variables.Item;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.User.Actions.Variables.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
+namespace Nuke.Components.Forgejo.User.Actions.Variables
 {
     /// <summary>
     /// Builds and executes requests for operations under \user\actions\variables
@@ -18,20 +18,20 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VariablesRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.user.actions.variables.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.user.actions.variables.item collection</summary>
         /// <param name="position">name of the variable</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("variablename", position);
-                return new global::Nuke.Common.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.User.Actions.Variables.Item.WithVariablenameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -39,7 +39,7 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -49,31 +49,31 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
         /// <summary>
         /// Get the user-level list of variables which is created by current doer
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.ActionVariable&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.ActionVariable&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIUnauthorizedError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.ActionVariable>?> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.ActionVariable>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.ActionVariable>> GetAsync(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.ActionVariable>> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "401", global::Nuke.Common.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "401", global::Nuke.Components.Forgejo.Models.APIUnauthorizedError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.ActionVariable>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.ActionVariable.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.ActionVariable>(requestInfo, global::Nuke.Components.Forgejo.Models.ActionVariable.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -83,11 +83,11 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder.VariablesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -98,11 +98,11 @@ namespace Nuke.Common.Components.Forgejo.User.Actions.Variables
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Get the user-level list of variables which is created by current doer

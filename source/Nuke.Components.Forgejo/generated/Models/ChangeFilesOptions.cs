@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// ChangeFilesOptions options for creating, updating or deleting multiple filesNote: `author` and `committer` are optional (if only one is given, it will be used for the other, otherwise the authenticated user will be used)
@@ -18,10 +18,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Identity for a person&apos;s identity like an author or committer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Identity? Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Identity? Author { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Identity Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Identity Author { get; set; }
 #endif
         /// <summary>branch (optional) to base this file from. if not given, the default branch is used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,26 +34,26 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Identity for a person&apos;s identity like an author or committer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Identity? Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Identity? Committer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Identity Committer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Identity Committer { get; set; }
 #endif
         /// <summary>CommitDateOptions store dates for GIT_AUTHOR_DATE and GIT_COMMITTER_DATE</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CommitDateOptions? Dates { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitDateOptions? Dates { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CommitDateOptions Dates { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitDateOptions Dates { get; set; }
 #endif
         /// <summary>list of file operations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation>? Files { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.ChangeFileOperation>? Files { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation> Files { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.ChangeFileOperation> Files { get; set; }
 #endif
         /// <summary>message (optional) for the commit of this file. if not supplied, a default message will be used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Add a Signed-off-by trailer by the committer at the end of the commit log message.</summary>
         public bool? Signoff { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.ChangeFilesOptions"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ChangeFilesOptions"/> and sets the default values.
         /// </summary>
         public ChangeFilesOptions()
         {
@@ -83,12 +83,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.ChangeFilesOptions"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ChangeFilesOptions"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.ChangeFilesOptions CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.ChangeFilesOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.ChangeFilesOptions();
+            return new global::Nuke.Components.Forgejo.Models.ChangeFilesOptions();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,11 +98,11 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Identity>(global::Nuke.Common.Components.Forgejo.Models.Identity.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Identity>(global::Nuke.Components.Forgejo.Models.Identity.CreateFromDiscriminatorValue); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
-                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Identity>(global::Nuke.Common.Components.Forgejo.Models.Identity.CreateFromDiscriminatorValue); } },
-                { "dates", n => { Dates = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitDateOptions>(global::Nuke.Common.Components.Forgejo.Models.CommitDateOptions.CreateFromDiscriminatorValue); } },
-                { "files", n => { Files = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation>(global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "committer", n => { Committer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Identity>(global::Nuke.Components.Forgejo.Models.Identity.CreateFromDiscriminatorValue); } },
+                { "dates", n => { Dates = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CommitDateOptions>(global::Nuke.Components.Forgejo.Models.CommitDateOptions.CreateFromDiscriminatorValue); } },
+                { "files", n => { Files = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.ChangeFileOperation>(global::Nuke.Components.Forgejo.Models.ChangeFileOperation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "new_branch", n => { NewBranch = n.GetStringValue(); } },
                 { "signoff", n => { Signoff = n.GetBoolValue(); } },
@@ -115,11 +115,11 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Identity>("author", Author);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Identity>("author", Author);
             writer.WriteStringValue("branch", Branch);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Identity>("committer", Committer);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitDateOptions>("dates", Dates);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation>("files", Files);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Identity>("committer", Committer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CommitDateOptions>("dates", Dates);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.ChangeFileOperation>("files", Files);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("new_branch", NewBranch);
             writer.WriteBoolValue("signoff", Signoff);

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// AnnotatedTag represents an annotated tag
@@ -18,10 +18,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>TagArchiveDownloadCount counts how many times a archive was downloaded</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount? ArchiveDownloadCount { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount? ArchiveDownloadCount { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount ArchiveDownloadCount { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount ArchiveDownloadCount { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,10 +34,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>AnnotatedTagObject contains meta information of the tag object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.AnnotatedTagObject? Object { get; set; }
+        public global::Nuke.Components.Forgejo.Models.AnnotatedTagObject? Object { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.AnnotatedTagObject Object { get; set; }
+        public global::Nuke.Components.Forgejo.Models.AnnotatedTagObject Object { get; set; }
 #endif
         /// <summary>The sha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,10 +58,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The tagger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser? Tagger { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser? Tagger { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CommitUser Tagger { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CommitUser Tagger { get; set; }
 #endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,13 +74,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadCommitVerification represents the GPG verification of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification? Verification { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadCommitVerification Verification { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.AnnotatedTag"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.AnnotatedTag"/> and sets the default values.
         /// </summary>
         public AnnotatedTag()
         {
@@ -89,12 +89,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.AnnotatedTag"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.AnnotatedTag"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.AnnotatedTag CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.AnnotatedTag CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.AnnotatedTag();
+            return new global::Nuke.Components.Forgejo.Models.AnnotatedTag();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,14 +104,14 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "archive_download_count", n => { ArchiveDownloadCount = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount>(global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount.CreateFromDiscriminatorValue); } },
+                { "archive_download_count", n => { ArchiveDownloadCount = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount>(global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.AnnotatedTagObject>(global::Nuke.Common.Components.Forgejo.Models.AnnotatedTagObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.AnnotatedTagObject>(global::Nuke.Components.Forgejo.Models.AnnotatedTagObject.CreateFromDiscriminatorValue); } },
                 { "sha", n => { Sha = n.GetStringValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
-                { "tagger", n => { Tagger = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>(global::Nuke.Common.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
+                { "tagger", n => { Tagger = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>(global::Nuke.Components.Forgejo.Models.CommitUser.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
+                { "verification", n => { Verification = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>(global::Nuke.Components.Forgejo.Models.PayloadCommitVerification.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -121,14 +121,14 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount>("archive_download_count", ArchiveDownloadCount);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount>("archive_download_count", ArchiveDownloadCount);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.AnnotatedTagObject>("object", Object);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.AnnotatedTagObject>("object", Object);
             writer.WriteStringValue("sha", Sha);
             writer.WriteStringValue("tag", Tag);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CommitUser>("tagger", Tagger);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CommitUser>("tagger", Tagger);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadCommitVerification>("verification", Verification);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -2,13 +2,13 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\actions\runners
@@ -17,17 +17,17 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners
     public partial class RunnersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The jobs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs.JobsRequestBuilder Jobs
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs.JobsRequestBuilder Jobs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs.JobsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.Jobs.JobsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The registrationToken property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder RegistrationToken
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder RegistrationToken
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +35,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// FileLinksResponse contains the links for a repo&apos;s file
@@ -40,7 +40,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Self { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.FileLinksResponse"/> and sets the default values.
         /// </summary>
         public FileLinksResponse()
         {
@@ -49,12 +49,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.FileLinksResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.FileLinksResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.FileLinksResponse();
+            return new global::Nuke.Components.Forgejo.Models.FileLinksResponse();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// QuotaRuleInfo contains information about a quota rule
@@ -34,7 +34,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public List<string> Subjects { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaRuleInfo"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.QuotaRuleInfo"/> and sets the default values.
         /// </summary>
         public QuotaRuleInfo()
         {
@@ -43,12 +43,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaRuleInfo"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.QuotaRuleInfo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.QuotaRuleInfo CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.QuotaRuleInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.QuotaRuleInfo();
+            return new global::Nuke.Components.Forgejo.Models.QuotaRuleInfo();
         }
         /// <summary>
         /// The deserialization information for the current model

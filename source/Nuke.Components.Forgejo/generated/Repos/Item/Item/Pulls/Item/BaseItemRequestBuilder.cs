@@ -3,20 +3,20 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\pulls\{base-id}
@@ -25,49 +25,49 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
     public partial class BaseItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The commits property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits.CommitsRequestBuilder Commits
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits.CommitsRequestBuilder Commits
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The files property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files.FilesRequestBuilder Files
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files.FilesRequestBuilder Files
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The merge property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge.MergeRequestBuilder Merge
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge.MergeRequestBuilder Merge
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge.MergeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Merge.MergeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The requested_reviewers property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers.Requested_reviewersRequestBuilder Requested_reviewers
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers.Requested_reviewersRequestBuilder Requested_reviewers
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers.Requested_reviewersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers.Requested_reviewersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reviews property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews.ReviewsRequestBuilder Reviews
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews.ReviewsRequestBuilder Reviews
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews.ReviewsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Reviews.ReviewsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The update property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update.UpdateRequestBuilder Update
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update.UpdateRequestBuilder Update
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update.UpdateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Update.UpdateRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.repos.item.item.pulls.item.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.repos.item.item.pulls.item.item collection</summary>
         /// <param name="position">head of the pull request to get</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("head", position);
-                return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Item.WithHeadItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -75,7 +75,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -85,58 +85,58 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
         /// <summary>
         /// Get a pull request
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PullRequest"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PullRequest"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.PullRequest?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.PullRequest?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.PullRequest> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.PullRequest> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.PullRequest>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.PullRequest.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.PullRequest>(requestInfo, global::Nuke.Components.Forgejo.Models.PullRequest.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PullRequest"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PullRequest"/></returns>
         /// <param name="body">EditPullRequestOption options when modify pull request</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 409 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIError">When receiving a 412 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 412 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.PullRequest?> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.PullRequest?> PatchAsync(global::Nuke.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.PullRequest> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.PullRequest> PatchAsync(global::Nuke.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "409", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "412", global::Nuke.Common.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "409", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "412", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.PullRequest>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.PullRequest.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.PullRequest>(requestInfo, global::Nuke.Components.Forgejo.Models.PullRequest.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a pull request
@@ -165,11 +165,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditPullRequestOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -182,11 +182,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.BaseItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

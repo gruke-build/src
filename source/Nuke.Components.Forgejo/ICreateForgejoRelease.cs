@@ -11,11 +11,11 @@ using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
 using Nuke.Common.CI.ForgejoActions;
-using Nuke.Common.Components.Forgejo.Models;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.Forgejo;
 using Nuke.Common.Utilities;
 using Nuke.Common.Git;
+using Nuke.Components.Forgejo.Models;
 using Serilog;
 
 namespace Nuke.Components;

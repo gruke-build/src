@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.Item;
+using Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link
+namespace Nuke.Components.Forgejo.Packages.Item.Item.Item.Link
 {
     /// <summary>
     /// Builds and executes requests for operations under \packages\{owner}\{type}\{name}\-\link
@@ -15,20 +15,20 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LinkRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.packages.item.item.item.link.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.packages.item.item.item.link.item collection</summary>
         /// <param name="position">name of the repository to link.</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("repo_name", position);
-                return new global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.Item.WithRepo_nameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.Link.LinkRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

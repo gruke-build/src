@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// ChangeFileOperation for creating, updating or deleting a file
@@ -32,7 +32,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string FromPath { get; set; }
 #endif
         /// <summary>indicates what to do with the file</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation_operation? Operation { get; set; }
+        public global::Nuke.Components.Forgejo.Models.ChangeFileOperation_operation? Operation { get; set; }
         /// <summary>path to the existing or new file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Sha { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ChangeFileOperation"/> and sets the default values.
         /// </summary>
         public ChangeFileOperation()
         {
@@ -59,12 +59,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ChangeFileOperation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.ChangeFileOperation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation();
+            return new global::Nuke.Components.Forgejo.Models.ChangeFileOperation();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +76,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "from_path", n => { FromPath = n.GetStringValue(); } },
-                { "operation", n => { Operation = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation_operation>(); } },
+                { "operation", n => { Operation = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.ChangeFileOperation_operation>(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "sha", n => { Sha = n.GetStringValue(); } },
             };
@@ -90,7 +90,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("from_path", FromPath);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.ChangeFileOperation_operation>("operation", Operation);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.ChangeFileOperation_operation>("operation", Operation);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("sha", Sha);
             writer.WriteAdditionalData(AdditionalData);

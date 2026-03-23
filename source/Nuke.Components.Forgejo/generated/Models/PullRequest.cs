@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PullRequest represents a pull request
@@ -22,26 +22,26 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Assignee { get; set; }
 #endif
         /// <summary>The assignees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.User>? Assignees { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User>? Assignees { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.User> Assignees { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User> Assignees { get; set; }
 #endif
         /// <summary>PRBranchInfo information about a branch</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo? Base { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PRBranchInfo? Base { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo Base { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PRBranchInfo Base { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,10 +78,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PRBranchInfo information about a branch</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo? Head { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PRBranchInfo? Head { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo Head { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PRBranchInfo Head { get; set; }
 #endif
         /// <summary>The html_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,10 +98,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The labels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Label>? Labels { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Label>? Labels { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Label> Labels { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Label> Labels { get; set; }
 #endif
         /// <summary>The mergeable property</summary>
         public bool? Mergeable { get; set; }
@@ -128,18 +128,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? MergedBy { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? MergedBy { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User MergedBy { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User MergedBy { get; set; }
 #endif
         /// <summary>Milestone milestone is a collection of issues on one repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone? Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone? Milestone { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone Milestone { get; set; }
 #endif
         /// <summary>The number property</summary>
         public long? Number { get; set; }
@@ -156,18 +156,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The requested_reviewers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.User>? RequestedReviewers { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User>? RequestedReviewers { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.User> RequestedReviewers { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User> RequestedReviewers { get; set; }
 #endif
         /// <summary>The requested_reviewers_teams property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Team>? RequestedReviewersTeams { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Team>? RequestedReviewersTeams { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Team> RequestedReviewersTeams { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Team> RequestedReviewersTeams { get; set; }
 #endif
         /// <summary>number of review comments made on the diff of a PR review (not including comments on commits or issues in a PR)</summary>
         public long? ReviewComments { get; set; }
@@ -200,13 +200,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PullRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PullRequest"/> and sets the default values.
         /// </summary>
         public PullRequest()
         {
@@ -215,12 +215,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PullRequest"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PullRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PullRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PullRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PullRequest();
+            return new global::Nuke.Components.Forgejo.Models.PullRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -232,9 +232,9 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "additions", n => { Additions = n.GetLongValue(); } },
                 { "allow_maintainer_edit", n => { AllowMaintainerEdit = n.GetBoolValue(); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
-                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "base", n => { Base = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo>(global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "base", n => { Base = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PRBranchInfo>(global::Nuke.Components.Forgejo.Models.PRBranchInfo.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "changed_files", n => { ChangedFiles = n.GetLongValue(); } },
                 { "closed_at", n => { ClosedAt = n.GetDateTimeOffsetValue(); } },
@@ -245,29 +245,29 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "draft", n => { Draft = n.GetBoolValue(); } },
                 { "due_date", n => { DueDate = n.GetDateTimeOffsetValue(); } },
                 { "flow", n => { Flow = n.GetLongValue(); } },
-                { "head", n => { Head = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo>(global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo.CreateFromDiscriminatorValue); } },
+                { "head", n => { Head = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PRBranchInfo>(global::Nuke.Components.Forgejo.Models.PRBranchInfo.CreateFromDiscriminatorValue); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "is_locked", n => { IsLocked = n.GetBoolValue(); } },
-                { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Label>(global::Nuke.Common.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Label>(global::Nuke.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "merge_base", n => { MergeBase = n.GetStringValue(); } },
                 { "merge_commit_sha", n => { MergeCommitSha = n.GetStringValue(); } },
                 { "mergeable", n => { Mergeable = n.GetBoolValue(); } },
                 { "merged", n => { Merged = n.GetBoolValue(); } },
                 { "merged_at", n => { MergedAt = n.GetDateTimeOffsetValue(); } },
-                { "merged_by", n => { MergedBy = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
-                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>(global::Nuke.Common.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
+                { "merged_by", n => { MergedBy = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>(global::Nuke.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
                 { "number", n => { Number = n.GetLongValue(); } },
                 { "patch_url", n => { PatchUrl = n.GetStringValue(); } },
                 { "pin_order", n => { PinOrder = n.GetLongValue(); } },
-                { "requested_reviewers", n => { RequestedReviewers = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "requested_reviewers_teams", n => { RequestedReviewersTeams = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Team>(global::Nuke.Common.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "requested_reviewers", n => { RequestedReviewers = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "requested_reviewers_teams", n => { RequestedReviewersTeams = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Team>(global::Nuke.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "review_comments", n => { ReviewComments = n.GetLongValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -279,9 +279,9 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("additions", Additions);
             writer.WriteBoolValue("allow_maintainer_edit", AllowMaintainerEdit);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("assignee", Assignee);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>("assignees", Assignees);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo>("base", Base);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("assignee", Assignee);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>("assignees", Assignees);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PRBranchInfo>("base", Base);
             writer.WriteStringValue("body", Body);
             writer.WriteLongValue("changed_files", ChangedFiles);
             writer.WriteDateTimeOffsetValue("closed_at", ClosedAt);
@@ -292,29 +292,29 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("draft", Draft);
             writer.WriteDateTimeOffsetValue("due_date", DueDate);
             writer.WriteLongValue("flow", Flow);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo>("head", Head);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PRBranchInfo>("head", Head);
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("is_locked", IsLocked);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Label>("labels", Labels);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Label>("labels", Labels);
             writer.WriteBoolValue("mergeable", Mergeable);
             writer.WriteStringValue("merge_base", MergeBase);
             writer.WriteStringValue("merge_commit_sha", MergeCommitSha);
             writer.WriteBoolValue("merged", Merged);
             writer.WriteDateTimeOffsetValue("merged_at", MergedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("merged_by", MergedBy);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>("milestone", Milestone);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("merged_by", MergedBy);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>("milestone", Milestone);
             writer.WriteLongValue("number", Number);
             writer.WriteStringValue("patch_url", PatchUrl);
             writer.WriteLongValue("pin_order", PinOrder);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>("requested_reviewers", RequestedReviewers);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Team>("requested_reviewers_teams", RequestedReviewersTeams);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>("requested_reviewers", RequestedReviewers);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Team>("requested_reviewers_teams", RequestedReviewersTeams);
             writer.WriteLongValue("review_comments", ReviewComments);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

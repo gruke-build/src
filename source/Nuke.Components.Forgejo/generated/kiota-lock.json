@@ -5,7 +5,7 @@
   "kiotaVersion": "1.30.0",
   "clientClassName": "ForgejoApiClient",
   "typeAccessModifier": "Public",
-  "clientNamespaceName": "Nuke.Common.Components.Forgejo",
+  "clientNamespaceName": "Nuke.Components.Forgejo",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": true,

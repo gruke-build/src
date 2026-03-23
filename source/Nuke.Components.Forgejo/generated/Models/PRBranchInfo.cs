@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PRBranchInfo information about a branch
@@ -34,10 +34,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Repository represents a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Repository? Repo { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository? Repo { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Repository Repo { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository Repo { get; set; }
 #endif
         /// <summary>The repo_id property</summary>
         public long? RepoId { get; set; }
@@ -50,7 +50,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Sha { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PRBranchInfo"/> and sets the default values.
         /// </summary>
         public PRBranchInfo()
         {
@@ -59,12 +59,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PRBranchInfo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PRBranchInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PRBranchInfo();
+            return new global::Nuke.Components.Forgejo.Models.PRBranchInfo();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +76,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
-                { "repo", n => { Repo = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>(global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
+                { "repo", n => { Repo = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Repository>(global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
                 { "repo_id", n => { RepoId = n.GetLongValue(); } },
                 { "sha", n => { Sha = n.GetStringValue(); } },
             };
@@ -90,7 +90,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("ref", Ref);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>("repo", Repo);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Repository>("repo", Repo);
             writer.WriteLongValue("repo_id", RepoId);
             writer.WriteStringValue("sha", Sha);
             writer.WriteAdditionalData(AdditionalData);

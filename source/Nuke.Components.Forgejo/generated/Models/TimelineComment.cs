@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// TimelineComment represents a timeline comment (comment of any type) on a commit or issue
@@ -18,18 +18,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Assignee { get; set; }
 #endif
         /// <summary>Team represents a team in an organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Team? AssigneeTeam { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Team? AssigneeTeam { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Team AssigneeTeam { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Team AssigneeTeam { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +44,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Issue represents an issue in a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Issue? DependentIssue { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Issue? DependentIssue { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Issue DependentIssue { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Issue DependentIssue { get; set; }
 #endif
         /// <summary>The html_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,18 +70,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Label a label to an issue or a pr</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Label? Label { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Label? Label { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Label Label { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Label Label { get; set; }
 #endif
         /// <summary>Milestone milestone is a collection of issues on one repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone? Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone? Milestone { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone Milestone { get; set; }
 #endif
         /// <summary>The new_ref property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -102,10 +102,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Milestone milestone is a collection of issues on one repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone? OldMilestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone? OldMilestone { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone OldMilestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone OldMilestone { get; set; }
 #endif
         /// <summary>The old_project_id property</summary>
         public long? OldProjectId { get; set; }
@@ -146,10 +146,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Comment represents a comment on a commit or issue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Comment? RefComment { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Comment? RefComment { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Comment RefComment { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Comment RefComment { get; set; }
 #endif
         /// <summary>commit SHA where issue/PR was referenced</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -162,30 +162,30 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Issue represents an issue in a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Issue? RefIssue { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Issue? RefIssue { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Issue RefIssue { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Issue RefIssue { get; set; }
 #endif
         /// <summary>whether the assignees were removed or added</summary>
         public bool? RemovedAssignee { get; set; }
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? ResolveDoer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? ResolveDoer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User ResolveDoer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User ResolveDoer { get; set; }
 #endif
         /// <summary>The review_id property</summary>
         public long? ReviewId { get; set; }
         /// <summary>TrackedTime worked time for an issue / pr</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.TrackedTime? TrackedTime { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TrackedTime? TrackedTime { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.TrackedTime TrackedTime { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TrackedTime TrackedTime { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -200,13 +200,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.TimelineComment"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.TimelineComment"/> and sets the default values.
         /// </summary>
         public TimelineComment()
         {
@@ -215,12 +215,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.TimelineComment"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.TimelineComment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.TimelineComment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.TimelineComment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.TimelineComment();
+            return new global::Nuke.Components.Forgejo.Models.TimelineComment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -230,35 +230,35 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
-                { "assignee_team", n => { AssigneeTeam = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Team>(global::Nuke.Common.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "assignee_team", n => { AssigneeTeam = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Team>(global::Nuke.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "dependent_issue", n => { DependentIssue = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Issue>(global::Nuke.Common.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue); } },
+                { "dependent_issue", n => { DependentIssue = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Issue>(global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "issue_url", n => { IssueUrl = n.GetStringValue(); } },
-                { "label", n => { Label = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Label>(global::Nuke.Common.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue); } },
-                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>(global::Nuke.Common.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
+                { "label", n => { Label = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Label>(global::Nuke.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue); } },
+                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>(global::Nuke.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
                 { "new_ref", n => { NewRef = n.GetStringValue(); } },
                 { "new_title", n => { NewTitle = n.GetStringValue(); } },
-                { "old_milestone", n => { OldMilestone = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>(global::Nuke.Common.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
+                { "old_milestone", n => { OldMilestone = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>(global::Nuke.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
                 { "old_project_id", n => { OldProjectId = n.GetLongValue(); } },
                 { "old_ref", n => { OldRef = n.GetStringValue(); } },
                 { "old_title", n => { OldTitle = n.GetStringValue(); } },
                 { "project_id", n => { ProjectId = n.GetLongValue(); } },
                 { "pull_request_url", n => { PullRequestUrl = n.GetStringValue(); } },
                 { "ref_action", n => { RefAction = n.GetStringValue(); } },
-                { "ref_comment", n => { RefComment = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Comment>(global::Nuke.Common.Components.Forgejo.Models.Comment.CreateFromDiscriminatorValue); } },
+                { "ref_comment", n => { RefComment = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Comment>(global::Nuke.Components.Forgejo.Models.Comment.CreateFromDiscriminatorValue); } },
                 { "ref_commit_sha", n => { RefCommitSha = n.GetStringValue(); } },
-                { "ref_issue", n => { RefIssue = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Issue>(global::Nuke.Common.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue); } },
+                { "ref_issue", n => { RefIssue = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Issue>(global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue); } },
                 { "removed_assignee", n => { RemovedAssignee = n.GetBoolValue(); } },
-                { "resolve_doer", n => { ResolveDoer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "resolve_doer", n => { ResolveDoer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
                 { "review_id", n => { ReviewId = n.GetLongValue(); } },
-                { "tracked_time", n => { TrackedTime = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.TrackedTime>(global::Nuke.Common.Components.Forgejo.Models.TrackedTime.CreateFromDiscriminatorValue); } },
+                { "tracked_time", n => { TrackedTime = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.TrackedTime>(global::Nuke.Components.Forgejo.Models.TrackedTime.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -268,35 +268,35 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("assignee", Assignee);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Team>("assignee_team", AssigneeTeam);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("assignee", Assignee);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Team>("assignee_team", AssigneeTeam);
             writer.WriteStringValue("body", Body);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Issue>("dependent_issue", DependentIssue);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Issue>("dependent_issue", DependentIssue);
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("issue_url", IssueUrl);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Label>("label", Label);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>("milestone", Milestone);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Label>("label", Label);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>("milestone", Milestone);
             writer.WriteStringValue("new_ref", NewRef);
             writer.WriteStringValue("new_title", NewTitle);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>("old_milestone", OldMilestone);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>("old_milestone", OldMilestone);
             writer.WriteLongValue("old_project_id", OldProjectId);
             writer.WriteStringValue("old_ref", OldRef);
             writer.WriteStringValue("old_title", OldTitle);
             writer.WriteLongValue("project_id", ProjectId);
             writer.WriteStringValue("pull_request_url", PullRequestUrl);
             writer.WriteStringValue("ref_action", RefAction);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Comment>("ref_comment", RefComment);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Comment>("ref_comment", RefComment);
             writer.WriteStringValue("ref_commit_sha", RefCommitSha);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Issue>("ref_issue", RefIssue);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Issue>("ref_issue", RefIssue);
             writer.WriteBoolValue("removed_assignee", RemovedAssignee);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("resolve_doer", ResolveDoer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("resolve_doer", ResolveDoer);
             writer.WriteLongValue("review_id", ReviewId);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.TrackedTime>("tracked_time", TrackedTime);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.TrackedTime>("tracked_time", TrackedTime);
             writer.WriteStringValue("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// MarkupOption markup options
@@ -58,7 +58,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Is it a wiki page ?in: body</summary>
         public bool? Wiki { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.MarkupOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.MarkupOption"/> and sets the default values.
         /// </summary>
         public MarkupOption()
         {
@@ -67,12 +67,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.MarkupOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.MarkupOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.MarkupOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.MarkupOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.MarkupOption();
+            return new global::Nuke.Components.Forgejo.Models.MarkupOption();
         }
         /// <summary>
         /// The deserialization information for the current model

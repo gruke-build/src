@@ -2,14 +2,14 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.User.Actions.Runners;
-using Nuke.Common.Components.Forgejo.User.Actions.Secrets;
-using Nuke.Common.Components.Forgejo.User.Actions.Variables;
+using Nuke.Components.Forgejo.User.Actions.Runners;
+using Nuke.Components.Forgejo.User.Actions.Secrets;
+using Nuke.Components.Forgejo.User.Actions.Variables;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.User.Actions
+namespace Nuke.Components.Forgejo.User.Actions
 {
     /// <summary>
     /// Builds and executes requests for operations under \user\actions
@@ -18,22 +18,22 @@ namespace Nuke.Common.Components.Forgejo.User.Actions
     public partial class ActionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The runners property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Runners.RunnersRequestBuilder Runners
+        public global::Nuke.Components.Forgejo.User.Actions.Runners.RunnersRequestBuilder Runners
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Actions.Runners.RunnersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Actions.Runners.RunnersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The secrets property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder Secrets
+        public global::Nuke.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder Secrets
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Actions.Secrets.SecretsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The variables property</summary>
-        public global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder Variables
+        public global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder Variables
         {
-            get => new global::Nuke.Common.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.User.Actions.Variables.VariablesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.ActionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.ActionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -41,7 +41,7 @@ namespace Nuke.Common.Components.Forgejo.User.Actions
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.User.Actions.ActionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.User.Actions.ActionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

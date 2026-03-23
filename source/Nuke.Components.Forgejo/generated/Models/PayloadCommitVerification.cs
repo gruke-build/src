@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// PayloadCommitVerification represents the GPG verification of a commit
@@ -42,15 +42,15 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PayloadUser represents the author or committer of a commit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser? Signer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser? Signer { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PayloadUser Signer { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PayloadUser Signer { get; set; }
 #endif
         /// <summary>The verified property</summary>
         public bool? Verified { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.PayloadCommitVerification"/> and sets the default values.
         /// </summary>
         public PayloadCommitVerification()
         {
@@ -59,12 +59,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.PayloadCommitVerification"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.PayloadCommitVerification CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.PayloadCommitVerification();
+            return new global::Nuke.Components.Forgejo.Models.PayloadCommitVerification();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,7 +77,7 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "payload", n => { Payload = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "signature", n => { Signature = n.GetStringValue(); } },
-                { "signer", n => { Signer = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>(global::Nuke.Common.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
+                { "signer", n => { Signer = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>(global::Nuke.Components.Forgejo.Models.PayloadUser.CreateFromDiscriminatorValue); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
             };
         }
@@ -91,7 +91,7 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("payload", Payload);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("signature", Signature);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PayloadUser>("signer", Signer);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PayloadUser>("signer", Signer);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }

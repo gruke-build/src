@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// NotificationThread expose Notification on API
@@ -22,18 +22,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Repository represents a repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Repository? Repository { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository? Repository { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Repository Repository { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Repository Repository { get; set; }
 #endif
         /// <summary>NotificationSubject contains the notification subject (Issue/Pull/Commit)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.NotificationSubject? Subject { get; set; }
+        public global::Nuke.Components.Forgejo.Models.NotificationSubject? Subject { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.NotificationSubject Subject { get; set; }
+        public global::Nuke.Components.Forgejo.Models.NotificationSubject Subject { get; set; }
 #endif
         /// <summary>The unread property</summary>
         public bool? Unread { get; set; }
@@ -48,7 +48,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.NotificationThread"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.NotificationThread"/> and sets the default values.
         /// </summary>
         public NotificationThread()
         {
@@ -57,12 +57,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.NotificationThread"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.NotificationThread"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.NotificationThread CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.NotificationThread CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.NotificationThread();
+            return new global::Nuke.Components.Forgejo.Models.NotificationThread();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,8 +74,8 @@ namespace Nuke.Common.Components.Forgejo.Models
             {
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
-                { "repository", n => { Repository = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>(global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
-                { "subject", n => { Subject = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.NotificationSubject>(global::Nuke.Common.Components.Forgejo.Models.NotificationSubject.CreateFromDiscriminatorValue); } },
+                { "repository", n => { Repository = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Repository>(global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue); } },
+                { "subject", n => { Subject = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.NotificationSubject>(global::Nuke.Components.Forgejo.Models.NotificationSubject.CreateFromDiscriminatorValue); } },
                 { "unread", n => { Unread = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -90,8 +90,8 @@ namespace Nuke.Common.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("pinned", Pinned);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Repository>("repository", Repository);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.NotificationSubject>("subject", Subject);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Repository>("repository", Repository);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.NotificationSubject>("subject", Subject);
             writer.WriteBoolValue("unread", Unread);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);

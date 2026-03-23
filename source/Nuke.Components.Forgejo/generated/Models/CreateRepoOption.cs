@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// CreateRepoOption options when creating repository
@@ -66,7 +66,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Name { get; set; }
 #endif
         /// <summary>ObjectFormatName of the underlying git repository</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_object_format_name? ObjectFormatName { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateRepoOption_object_format_name? ObjectFormatName { get; set; }
         /// <summary>Whether the repository is private</summary>
         public bool? Private { get; set; }
         /// <summary>Readme of the repository to create</summary>
@@ -80,9 +80,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Whether the repository is template</summary>
         public bool? Template { get; set; }
         /// <summary>TrustModel of the repository</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_trust_model? TrustModel { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateRepoOption_trust_model? TrustModel { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.CreateRepoOption"/> and sets the default values.
         /// </summary>
         public CreateRepoOption()
         {
@@ -91,12 +91,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.CreateRepoOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.CreateRepoOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption();
+            return new global::Nuke.Components.Forgejo.Models.CreateRepoOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,11 +113,11 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "issue_labels", n => { IssueLabels = n.GetStringValue(); } },
                 { "license", n => { License = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object_format_name", n => { ObjectFormatName = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_object_format_name>(); } },
+                { "object_format_name", n => { ObjectFormatName = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.CreateRepoOption_object_format_name>(); } },
                 { "private", n => { Private = n.GetBoolValue(); } },
                 { "readme", n => { Readme = n.GetStringValue(); } },
                 { "template", n => { Template = n.GetBoolValue(); } },
-                { "trust_model", n => { TrustModel = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_trust_model>(); } },
+                { "trust_model", n => { TrustModel = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.CreateRepoOption_trust_model>(); } },
             };
         }
         /// <summary>
@@ -134,11 +134,11 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("issue_labels", IssueLabels);
             writer.WriteStringValue("license", License);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_object_format_name>("object_format_name", ObjectFormatName);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.CreateRepoOption_object_format_name>("object_format_name", ObjectFormatName);
             writer.WriteBoolValue("private", Private);
             writer.WriteStringValue("readme", Readme);
             writer.WriteBoolValue("template", Template);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateRepoOption_trust_model>("trust_model", TrustModel);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.CreateRepoOption_trust_model>("trust_model", TrustModel);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

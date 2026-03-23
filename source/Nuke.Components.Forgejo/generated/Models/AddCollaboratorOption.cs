@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// AddCollaboratorOption options when adding a user as a collaborator of a repository
@@ -16,9 +16,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The permission property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption_permission? Permission { get; set; }
+        public global::Nuke.Components.Forgejo.Models.AddCollaboratorOption_permission? Permission { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.AddCollaboratorOption"/> and sets the default values.
         /// </summary>
         public AddCollaboratorOption()
         {
@@ -27,12 +27,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.AddCollaboratorOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.AddCollaboratorOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption();
+            return new global::Nuke.Components.Forgejo.Models.AddCollaboratorOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +42,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "permission", n => { Permission = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption_permission>(); } },
+                { "permission", n => { Permission = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.AddCollaboratorOption_permission>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.AddCollaboratorOption_permission>("permission", Permission);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.AddCollaboratorOption_permission>("permission", Permission);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

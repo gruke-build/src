@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// QuotaUsedSize represents the size-based quota usage of a user
@@ -18,29 +18,29 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>QuotaUsedSizeAssets represents the size-based asset usage of a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets? Assets { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets? Assets { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets Assets { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets Assets { get; set; }
 #endif
         /// <summary>QuotaUsedSizeGit represents the size-based git (lfs) quota usage of a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeGit? Git { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeGit? Git { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeGit Git { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeGit Git { get; set; }
 #endif
         /// <summary>QuotaUsedSizeRepos represents the size-based repository quota usage of a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeRepos? Repos { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeRepos? Repos { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeRepos Repos { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeRepos Repos { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSize"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.QuotaUsedSize"/> and sets the default values.
         /// </summary>
         public QuotaUsedSize()
         {
@@ -49,12 +49,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSize"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.QuotaUsedSize"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSize CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.QuotaUsedSize CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSize();
+            return new global::Nuke.Components.Forgejo.Models.QuotaUsedSize();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,9 +64,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assets", n => { Assets = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets>(global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets.CreateFromDiscriminatorValue); } },
-                { "git", n => { Git = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeGit>(global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeGit.CreateFromDiscriminatorValue); } },
-                { "repos", n => { Repos = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeRepos>(global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeRepos.CreateFromDiscriminatorValue); } },
+                { "assets", n => { Assets = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets>(global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets.CreateFromDiscriminatorValue); } },
+                { "git", n => { Git = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeGit>(global::Nuke.Components.Forgejo.Models.QuotaUsedSizeGit.CreateFromDiscriminatorValue); } },
+                { "repos", n => { Repos = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeRepos>(global::Nuke.Components.Forgejo.Models.QuotaUsedSizeRepos.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,9 +76,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets>("assets", Assets);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeGit>("git", Git);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeRepos>("repos", Repos);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets>("assets", Assets);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeGit>("git", Git);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeRepos>("repos", Repos);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

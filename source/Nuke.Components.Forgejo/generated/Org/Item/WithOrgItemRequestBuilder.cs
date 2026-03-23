@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Org.Item.Repos;
+using Nuke.Components.Forgejo.Org.Item.Repos;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Org.Item
+namespace Nuke.Components.Forgejo.Org.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \org\{org}
@@ -16,12 +16,12 @@ namespace Nuke.Common.Components.Forgejo.Org.Item
     public partial class WithOrgItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The repos property</summary>
-        public global::Nuke.Common.Components.Forgejo.Org.Item.Repos.ReposRequestBuilder Repos
+        public global::Nuke.Components.Forgejo.Org.Item.Repos.ReposRequestBuilder Repos
         {
-            get => new global::Nuke.Common.Components.Forgejo.Org.Item.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Org.Item.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Org.Item.WithOrgItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Org.Item.WithOrgItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -29,7 +29,7 @@ namespace Nuke.Common.Components.Forgejo.Org.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Org.Item.WithOrgItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Org.Item.WithOrgItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

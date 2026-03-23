@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Issue represents an issue in a repository
@@ -18,26 +18,26 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The assets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment>? Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment>? Assets { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment> Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment> Assets { get; set; }
 #endif
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Assignee { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Assignee { get; set; }
 #endif
         /// <summary>The assignees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.User>? Assignees { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User>? Assignees { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.User> Assignees { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.User> Assignees { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,18 +70,18 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The labels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Label>? Labels { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Label>? Labels { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Label> Labels { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Label> Labels { get; set; }
 #endif
         /// <summary>Milestone milestone is a collection of issues on one repository</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone? Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone? Milestone { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Milestone Milestone { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Milestone Milestone { get; set; }
 #endif
         /// <summary>The number property</summary>
         public long? Number { get; set; }
@@ -100,10 +100,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>PullRequestMeta PR info if an issue is a PR</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.PullRequestMeta? PullRequest { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PullRequestMeta? PullRequest { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.PullRequestMeta PullRequest { get; set; }
+        public global::Nuke.Components.Forgejo.Models.PullRequestMeta PullRequest { get; set; }
 #endif
         /// <summary>The ref property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -116,10 +116,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>RepositoryMeta basic repository information</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.RepositoryMeta? Repository { get; set; }
+        public global::Nuke.Components.Forgejo.Models.RepositoryMeta? Repository { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.RepositoryMeta Repository { get; set; }
+        public global::Nuke.Components.Forgejo.Models.RepositoryMeta Repository { get; set; }
 #endif
         /// <summary>StateType issue state type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,13 +150,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? User { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User User { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Issue"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Issue"/> and sets the default values.
         /// </summary>
         public Issue()
         {
@@ -165,12 +165,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Issue"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Issue"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Issue CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Issue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Issue();
+            return new global::Nuke.Components.Forgejo.Models.Issue();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -180,9 +180,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>(global::Nuke.Common.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
-                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>(global::Nuke.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "closed_at", n => { ClosedAt = n.GetDateTimeOffsetValue(); } },
                 { "comments", n => { Comments = n.GetLongValue(); } },
@@ -191,20 +191,20 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "is_locked", n => { IsLocked = n.GetBoolValue(); } },
-                { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Label>(global::Nuke.Common.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>(global::Nuke.Common.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
+                { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Label>(global::Nuke.Components.Forgejo.Models.Label.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "milestone", n => { Milestone = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>(global::Nuke.Components.Forgejo.Models.Milestone.CreateFromDiscriminatorValue); } },
                 { "number", n => { Number = n.GetLongValue(); } },
                 { "original_author", n => { OriginalAuthor = n.GetStringValue(); } },
                 { "original_author_id", n => { OriginalAuthorId = n.GetLongValue(); } },
                 { "pin_order", n => { PinOrder = n.GetLongValue(); } },
-                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.PullRequestMeta>(global::Nuke.Common.Components.Forgejo.Models.PullRequestMeta.CreateFromDiscriminatorValue); } },
+                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.PullRequestMeta>(global::Nuke.Components.Forgejo.Models.PullRequestMeta.CreateFromDiscriminatorValue); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
-                { "repository", n => { Repository = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.RepositoryMeta>(global::Nuke.Common.Components.Forgejo.Models.RepositoryMeta.CreateFromDiscriminatorValue); } },
+                { "repository", n => { Repository = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.RepositoryMeta>(global::Nuke.Components.Forgejo.Models.RepositoryMeta.CreateFromDiscriminatorValue); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -214,9 +214,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>("assets", Assets);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("assignee", Assignee);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.User>("assignees", Assignees);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>("assets", Assets);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("assignee", Assignee);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.User>("assignees", Assignees);
             writer.WriteStringValue("body", Body);
             writer.WriteDateTimeOffsetValue("closed_at", ClosedAt);
             writer.WriteLongValue("comments", Comments);
@@ -225,20 +225,20 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("is_locked", IsLocked);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Label>("labels", Labels);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Milestone>("milestone", Milestone);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Label>("labels", Labels);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Milestone>("milestone", Milestone);
             writer.WriteLongValue("number", Number);
             writer.WriteStringValue("original_author", OriginalAuthor);
             writer.WriteLongValue("original_author_id", OriginalAuthorId);
             writer.WriteLongValue("pin_order", PinOrder);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.PullRequestMeta>("pull_request", PullRequest);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.PullRequestMeta>("pull_request", PullRequest);
             writer.WriteStringValue("ref", Ref);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.RepositoryMeta>("repository", Repository);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.RepositoryMeta>("repository", Repository);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("user", User);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

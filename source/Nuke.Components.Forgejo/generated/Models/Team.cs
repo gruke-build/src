@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Team represents a team in an organization
@@ -40,13 +40,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>Organization represents an organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Organization? Organization { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Organization? Organization { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Organization Organization { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Organization Organization { get; set; }
 #endif
         /// <summary>The permission property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.Team_permission? Permission { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Team_permission? Permission { get; set; }
         /// <summary>The units property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,13 +58,13 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>The units_map property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.Team_units_map? UnitsMap { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Team_units_map? UnitsMap { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.Team_units_map UnitsMap { get; set; }
+        public global::Nuke.Components.Forgejo.Models.Team_units_map UnitsMap { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Team"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Team"/> and sets the default values.
         /// </summary>
         public Team()
         {
@@ -73,12 +73,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Team"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Team"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Team CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Team CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Team();
+            return new global::Nuke.Components.Forgejo.Models.Team();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,10 +93,10 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "includes_all_repositories", n => { IncludesAllRepositories = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "organization", n => { Organization = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Organization>(global::Nuke.Common.Components.Forgejo.Models.Organization.CreateFromDiscriminatorValue); } },
-                { "permission", n => { Permission = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.Team_permission>(); } },
+                { "organization", n => { Organization = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Organization>(global::Nuke.Components.Forgejo.Models.Organization.CreateFromDiscriminatorValue); } },
+                { "permission", n => { Permission = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.Team_permission>(); } },
                 { "units", n => { Units = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "units_map", n => { UnitsMap = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.Team_units_map>(global::Nuke.Common.Components.Forgejo.Models.Team_units_map.CreateFromDiscriminatorValue); } },
+                { "units_map", n => { UnitsMap = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.Team_units_map>(global::Nuke.Components.Forgejo.Models.Team_units_map.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -111,10 +111,10 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("includes_all_repositories", IncludesAllRepositories);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Organization>("organization", Organization);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.Team_permission>("permission", Permission);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Organization>("organization", Organization);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.Team_permission>("permission", Permission);
             writer.WriteCollectionOfPrimitiveValues<string>("units", Units);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.Team_units_map>("units_map", UnitsMap);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.Team_units_map>("units_map", UnitsMap);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

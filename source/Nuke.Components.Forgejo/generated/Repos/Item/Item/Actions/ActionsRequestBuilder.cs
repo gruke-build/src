@@ -2,17 +2,17 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Secrets;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Tasks;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Variables;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Workflows;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Secrets;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Variables;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions.Workflows;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\actions
@@ -21,37 +21,37 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions
     public partial class ActionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The runners property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder Runners
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder Runners
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runners.RunnersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The runs property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder Runs
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder Runs
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The secrets property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Secrets.SecretsRequestBuilder Secrets
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Secrets.SecretsRequestBuilder Secrets
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Secrets.SecretsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Secrets.SecretsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tasks property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Tasks.TasksRequestBuilder Tasks
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks.TasksRequestBuilder Tasks
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Tasks.TasksRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks.TasksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The variables property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Variables.VariablesRequestBuilder Variables
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Variables.VariablesRequestBuilder Variables
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Variables.VariablesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Variables.VariablesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflows property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Workflows.WorkflowsRequestBuilder Workflows
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Workflows.WorkflowsRequestBuilder Workflows
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.Workflows.WorkflowsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Workflows.WorkflowsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -59,7 +59,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

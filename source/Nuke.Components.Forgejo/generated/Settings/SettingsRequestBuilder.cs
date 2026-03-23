@@ -2,15 +2,15 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Settings.Api;
-using Nuke.Common.Components.Forgejo.Settings.Attachment;
-using Nuke.Common.Components.Forgejo.Settings.Repository;
-using Nuke.Common.Components.Forgejo.Settings.Ui;
+using Nuke.Components.Forgejo.Settings.Api;
+using Nuke.Components.Forgejo.Settings.Attachment;
+using Nuke.Components.Forgejo.Settings.Repository;
+using Nuke.Components.Forgejo.Settings.Ui;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Settings
+namespace Nuke.Components.Forgejo.Settings
 {
     /// <summary>
     /// Builds and executes requests for operations under \settings
@@ -19,27 +19,27 @@ namespace Nuke.Common.Components.Forgejo.Settings
     public partial class SettingsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The api property</summary>
-        public global::Nuke.Common.Components.Forgejo.Settings.Api.ApiRequestBuilder Api
+        public global::Nuke.Components.Forgejo.Settings.Api.ApiRequestBuilder Api
         {
-            get => new global::Nuke.Common.Components.Forgejo.Settings.Api.ApiRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Settings.Api.ApiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachment property</summary>
-        public global::Nuke.Common.Components.Forgejo.Settings.Attachment.AttachmentRequestBuilder Attachment
+        public global::Nuke.Components.Forgejo.Settings.Attachment.AttachmentRequestBuilder Attachment
         {
-            get => new global::Nuke.Common.Components.Forgejo.Settings.Attachment.AttachmentRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Settings.Attachment.AttachmentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repository property</summary>
-        public global::Nuke.Common.Components.Forgejo.Settings.Repository.RepositoryRequestBuilder Repository
+        public global::Nuke.Components.Forgejo.Settings.Repository.RepositoryRequestBuilder Repository
         {
-            get => new global::Nuke.Common.Components.Forgejo.Settings.Repository.RepositoryRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Settings.Repository.RepositoryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ui property</summary>
-        public global::Nuke.Common.Components.Forgejo.Settings.Ui.UiRequestBuilder Ui
+        public global::Nuke.Components.Forgejo.Settings.Ui.UiRequestBuilder Ui
         {
-            get => new global::Nuke.Common.Components.Forgejo.Settings.Ui.UiRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Settings.Ui.UiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Settings.SettingsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Settings.SettingsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -47,7 +47,7 @@ namespace Nuke.Common.Components.Forgejo.Settings
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Settings.SettingsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Settings.SettingsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

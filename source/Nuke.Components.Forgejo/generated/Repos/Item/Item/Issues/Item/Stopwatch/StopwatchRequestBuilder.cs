@@ -2,14 +2,14 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch
+namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}\issues\{index}\stopwatch
@@ -18,22 +18,22 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch
     public partial class StopwatchRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The deletePath property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete.DeleteRequestBuilder DeletePath
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete.DeleteRequestBuilder DeletePath
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete.DeleteRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Delete.DeleteRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The start property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start.StartRequestBuilder Start
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start.StartRequestBuilder Start
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start.StartRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Start.StartRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stop property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop.StopRequestBuilder Stop
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop.StopRequestBuilder Stop
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop.StopRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.Stop.StopRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -41,7 +41,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.Item.Stopwatch.StopwatchRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

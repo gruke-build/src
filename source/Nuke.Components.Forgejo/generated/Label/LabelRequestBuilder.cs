@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Label.Templates;
+using Nuke.Components.Forgejo.Label.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Label
+namespace Nuke.Components.Forgejo.Label
 {
     /// <summary>
     /// Builds and executes requests for operations under \label
@@ -16,12 +16,12 @@ namespace Nuke.Common.Components.Forgejo.Label
     public partial class LabelRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The templates property</summary>
-        public global::Nuke.Common.Components.Forgejo.Label.Templates.TemplatesRequestBuilder Templates
+        public global::Nuke.Components.Forgejo.Label.Templates.TemplatesRequestBuilder Templates
         {
-            get => new global::Nuke.Common.Components.Forgejo.Label.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Label.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Label.LabelRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Label.LabelRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -29,7 +29,7 @@ namespace Nuke.Common.Components.Forgejo.Label
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Label.LabelRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Label.LabelRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

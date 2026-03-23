@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// EditMilestoneOption options for editing a milestone
@@ -42,7 +42,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.EditMilestoneOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditMilestoneOption"/> and sets the default values.
         /// </summary>
         public EditMilestoneOption()
         {
@@ -51,12 +51,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.EditMilestoneOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditMilestoneOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.EditMilestoneOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.EditMilestoneOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.EditMilestoneOption();
+            return new global::Nuke.Components.Forgejo.Models.EditMilestoneOption();
         }
         /// <summary>
         /// The deserialization information for the current model

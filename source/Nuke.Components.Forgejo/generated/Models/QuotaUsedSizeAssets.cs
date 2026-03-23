@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// QuotaUsedSizeAssets represents the size-based asset usage of a user
@@ -20,21 +20,21 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>QuotaUsedSizeAssetsAttachments represents the size-based attachment quota usage of a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments? Attachments { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments? Attachments { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments Attachments { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments Attachments { get; set; }
 #endif
         /// <summary>QuotaUsedSizeAssetsPackages represents the size-based package quota usage of a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages? Packages { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages? Packages { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages Packages { get; set; }
+        public global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages Packages { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets"/> and sets the default values.
         /// </summary>
         public QuotaUsedSizeAssets()
         {
@@ -43,12 +43,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssets();
+            return new global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssets();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,8 +59,8 @@ namespace Nuke.Common.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "artifacts", n => { Artifacts = n.GetLongValue(); } },
-                { "attachments", n => { Attachments = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments>(global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments.CreateFromDiscriminatorValue); } },
-                { "packages", n => { Packages = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages>(global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages.CreateFromDiscriminatorValue); } },
+                { "attachments", n => { Attachments = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments>(global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments.CreateFromDiscriminatorValue); } },
+                { "packages", n => { Packages = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages>(global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,8 +71,8 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("artifacts", Artifacts);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments>("attachments", Attachments);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages>("packages", Packages);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsAttachments>("attachments", Attachments);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.QuotaUsedSizeAssetsPackages>("packages", Packages);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// CreateHookOption options when create a hook
@@ -36,10 +36,10 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>CreateHookOptionConfig has all config options in itrequired are &quot;content_type&quot; and &quot;url&quot; Required</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.CreateHookOptionConfig? Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateHookOptionConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.CreateHookOptionConfig Config { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateHookOptionConfig Config { get; set; }
 #endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,9 +50,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         public List<string> Events { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Nuke.Common.Components.Forgejo.Models.CreateHookOption_type? Type { get; set; }
+        public global::Nuke.Components.Forgejo.Models.CreateHookOption_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateHookOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.CreateHookOption"/> and sets the default values.
         /// </summary>
         public CreateHookOption()
         {
@@ -61,12 +61,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.CreateHookOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.CreateHookOption"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.CreateHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.CreateHookOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.CreateHookOption();
+            return new global::Nuke.Components.Forgejo.Models.CreateHookOption();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,9 +79,9 @@ namespace Nuke.Common.Components.Forgejo.Models
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "authorization_header", n => { AuthorizationHeader = n.GetStringValue(); } },
                 { "branch_filter", n => { BranchFilter = n.GetStringValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.CreateHookOptionConfig>(global::Nuke.Common.Components.Forgejo.Models.CreateHookOptionConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.CreateHookOptionConfig>(global::Nuke.Components.Forgejo.Models.CreateHookOptionConfig.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateHookOption_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.CreateHookOption_type>(); } },
             };
         }
         /// <summary>
@@ -94,9 +94,9 @@ namespace Nuke.Common.Components.Forgejo.Models
             writer.WriteBoolValue("active", Active);
             writer.WriteStringValue("authorization_header", AuthorizationHeader);
             writer.WriteStringValue("branch_filter", BranchFilter);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.CreateHookOptionConfig>("config", Config);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.CreateHookOptionConfig>("config", Config);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
-            writer.WriteEnumValue<global::Nuke.Common.Components.Forgejo.Models.CreateHookOption_type>("type", Type);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.CreateHookOption_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

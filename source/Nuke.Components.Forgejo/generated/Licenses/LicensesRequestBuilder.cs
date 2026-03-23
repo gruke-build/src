@@ -3,14 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Licenses.Item;
-using Nuke.Common.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Licenses.Item;
+using Nuke.Components.Forgejo.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Licenses
+namespace Nuke.Components.Forgejo.Licenses
 {
     /// <summary>
     /// Builds and executes requests for operations under \licenses
@@ -18,20 +18,20 @@ namespace Nuke.Common.Components.Forgejo.Licenses
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LicensesRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.licenses.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.licenses.item collection</summary>
         /// <param name="position">name of the license</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("name", position);
-                return new global::Nuke.Common.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Licenses.Item.WithNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -39,7 +39,7 @@ namespace Nuke.Common.Components.Forgejo.Licenses
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -49,20 +49,20 @@ namespace Nuke.Common.Components.Forgejo.Licenses
         /// <summary>
         /// Returns a list of all license templates
         /// </summary>
-        /// <returns>A List&lt;global::Nuke.Common.Components.Forgejo.Models.LicensesTemplateListEntry&gt;</returns>
+        /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.LicensesTemplateListEntry&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.LicensesTemplateListEntry>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.LicensesTemplateListEntry>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Nuke.Common.Components.Forgejo.Models.LicensesTemplateListEntry>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Nuke.Components.Forgejo.Models.LicensesTemplateListEntry>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Common.Components.Forgejo.Models.LicensesTemplateListEntry>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.LicensesTemplateListEntry.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.LicensesTemplateListEntry>(requestInfo, global::Nuke.Components.Forgejo.Models.LicensesTemplateListEntry.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -87,11 +87,11 @@ namespace Nuke.Common.Components.Forgejo.Licenses
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Licenses.LicensesRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Licenses.LicensesRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

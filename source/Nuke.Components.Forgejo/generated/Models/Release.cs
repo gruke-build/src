@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Nuke.Common.Components.Forgejo.Models
+namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
     /// Release represents a repository release
@@ -18,26 +18,26 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>TagArchiveDownloadCount counts how many times a archive was downloaded</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount? ArchiveDownloadCount { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount? ArchiveDownloadCount { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount ArchiveDownloadCount { get; set; }
+        public global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount ArchiveDownloadCount { get; set; }
 #endif
         /// <summary>The assets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment>? Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment>? Assets { get; set; }
 #nullable restore
 #else
-        public List<global::Nuke.Common.Components.Forgejo.Models.Attachment> Assets { get; set; }
+        public List<global::Nuke.Components.Forgejo.Models.Attachment> Assets { get; set; }
 #endif
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Nuke.Common.Components.Forgejo.Models.User? Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User? Author { get; set; }
 #nullable restore
 #else
-        public global::Nuke.Common.Components.Forgejo.Models.User Author { get; set; }
+        public global::Nuke.Components.Forgejo.Models.User Author { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -124,7 +124,7 @@ namespace Nuke.Common.Components.Forgejo.Models
         public string ZipballUrl { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Models.Release"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Release"/> and sets the default values.
         /// </summary>
         public Release()
         {
@@ -133,12 +133,12 @@ namespace Nuke.Common.Components.Forgejo.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Release"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Release"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Common.Components.Forgejo.Models.Release CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.Release CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Common.Components.Forgejo.Models.Release();
+            return new global::Nuke.Components.Forgejo.Models.Release();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -148,9 +148,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "archive_download_count", n => { ArchiveDownloadCount = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount>(global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount.CreateFromDiscriminatorValue); } },
-                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>(global::Nuke.Common.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "author", n => { Author = n.GetObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>(global::Nuke.Common.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
+                { "archive_download_count", n => { ArchiveDownloadCount = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount>(global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount.CreateFromDiscriminatorValue); } },
+                { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>(global::Nuke.Components.Forgejo.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "author", n => { Author = n.GetObjectValue<global::Nuke.Components.Forgejo.Models.User>(global::Nuke.Components.Forgejo.Models.User.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "draft", n => { Draft = n.GetBoolValue(); } },
@@ -175,9 +175,9 @@ namespace Nuke.Common.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.TagArchiveDownloadCount>("archive_download_count", ArchiveDownloadCount);
-            writer.WriteCollectionOfObjectValues<global::Nuke.Common.Components.Forgejo.Models.Attachment>("assets", Assets);
-            writer.WriteObjectValue<global::Nuke.Common.Components.Forgejo.Models.User>("author", Author);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.TagArchiveDownloadCount>("archive_download_count", ArchiveDownloadCount);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.Attachment>("assets", Assets);
+            writer.WriteObjectValue<global::Nuke.Components.Forgejo.Models.User>("author", Author);
             writer.WriteStringValue("body", Body);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteBoolValue("draft", Draft);

@@ -3,62 +3,62 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Models;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Archive;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Assignees;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Avatar;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Branch_protections;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Branches;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Collaborators;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Compare;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Contents;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.ConvertNamespace;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Diffpatch;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Editorconfig;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Flags;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Forks;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Generate;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Git;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Hooks;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_config;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_templates;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Keys;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Labels;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Languages;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Media;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Milestones;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.MirrorSync;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.New_pin_allowed;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Notifications;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrors;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Raw;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Reviewers;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.SigningKeyGpg;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Stargazers;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Statuses;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscribers;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscription;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Sync_fork;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Tag_protections;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Tags;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Teams;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Times;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Topics;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Transfer;
-using Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki;
+using Nuke.Components.Forgejo.Models;
+using Nuke.Components.Forgejo.Repos.Item.Item.Actions;
+using Nuke.Components.Forgejo.Repos.Item.Item.Activities;
+using Nuke.Components.Forgejo.Repos.Item.Item.Archive;
+using Nuke.Components.Forgejo.Repos.Item.Item.Assignees;
+using Nuke.Components.Forgejo.Repos.Item.Item.Avatar;
+using Nuke.Components.Forgejo.Repos.Item.Item.Branch_protections;
+using Nuke.Components.Forgejo.Repos.Item.Item.Branches;
+using Nuke.Components.Forgejo.Repos.Item.Item.Collaborators;
+using Nuke.Components.Forgejo.Repos.Item.Item.Commits;
+using Nuke.Components.Forgejo.Repos.Item.Item.Compare;
+using Nuke.Components.Forgejo.Repos.Item.Item.Contents;
+using Nuke.Components.Forgejo.Repos.Item.Item.ConvertNamespace;
+using Nuke.Components.Forgejo.Repos.Item.Item.Diffpatch;
+using Nuke.Components.Forgejo.Repos.Item.Item.Editorconfig;
+using Nuke.Components.Forgejo.Repos.Item.Item.Flags;
+using Nuke.Components.Forgejo.Repos.Item.Item.Forks;
+using Nuke.Components.Forgejo.Repos.Item.Item.Generate;
+using Nuke.Components.Forgejo.Repos.Item.Item.Git;
+using Nuke.Components.Forgejo.Repos.Item.Item.Hooks;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issue_config;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issue_templates;
+using Nuke.Components.Forgejo.Repos.Item.Item.Issues;
+using Nuke.Components.Forgejo.Repos.Item.Item.Keys;
+using Nuke.Components.Forgejo.Repos.Item.Item.Labels;
+using Nuke.Components.Forgejo.Repos.Item.Item.Languages;
+using Nuke.Components.Forgejo.Repos.Item.Item.Media;
+using Nuke.Components.Forgejo.Repos.Item.Item.Milestones;
+using Nuke.Components.Forgejo.Repos.Item.Item.MirrorSync;
+using Nuke.Components.Forgejo.Repos.Item.Item.New_pin_allowed;
+using Nuke.Components.Forgejo.Repos.Item.Item.Notifications;
+using Nuke.Components.Forgejo.Repos.Item.Item.Pulls;
+using Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrors;
+using Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync;
+using Nuke.Components.Forgejo.Repos.Item.Item.Raw;
+using Nuke.Components.Forgejo.Repos.Item.Item.Releases;
+using Nuke.Components.Forgejo.Repos.Item.Item.Reviewers;
+using Nuke.Components.Forgejo.Repos.Item.Item.SigningKeyGpg;
+using Nuke.Components.Forgejo.Repos.Item.Item.Stargazers;
+using Nuke.Components.Forgejo.Repos.Item.Item.Statuses;
+using Nuke.Components.Forgejo.Repos.Item.Item.Subscribers;
+using Nuke.Components.Forgejo.Repos.Item.Item.Subscription;
+using Nuke.Components.Forgejo.Repos.Item.Item.Sync_fork;
+using Nuke.Components.Forgejo.Repos.Item.Item.Tag_protections;
+using Nuke.Components.Forgejo.Repos.Item.Item.Tags;
+using Nuke.Components.Forgejo.Repos.Item.Item.Teams;
+using Nuke.Components.Forgejo.Repos.Item.Item.Times;
+using Nuke.Components.Forgejo.Repos.Item.Item.Topics;
+using Nuke.Components.Forgejo.Repos.Item.Item.Transfer;
+using Nuke.Components.Forgejo.Repos.Item.Item.Wiki;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
+namespace Nuke.Components.Forgejo.Repos.Item.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner-id}\{repo-id}
@@ -67,252 +67,252 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
     public partial class RepoItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The actions property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder Actions
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder Actions
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The activities property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder Activities
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder Activities
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Activities.ActivitiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The archive property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Archive.ArchiveRequestBuilder Archive
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Archive.ArchiveRequestBuilder Archive
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Archive.ArchiveRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Archive.ArchiveRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The assignees property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Assignees.AssigneesRequestBuilder Assignees
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Assignees.AssigneesRequestBuilder Assignees
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Assignees.AssigneesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Assignees.AssigneesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The avatar property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Avatar.AvatarRequestBuilder Avatar
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Avatar.AvatarRequestBuilder Avatar
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Avatar.AvatarRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Avatar.AvatarRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The branch_protections property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Branch_protections.Branch_protectionsRequestBuilder Branch_protections
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Branch_protections.Branch_protectionsRequestBuilder Branch_protections
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Branch_protections.Branch_protectionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Branch_protections.Branch_protectionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The branches property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Branches.BranchesRequestBuilder Branches
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Branches.BranchesRequestBuilder Branches
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Branches.BranchesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Branches.BranchesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The collaborators property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Collaborators.CollaboratorsRequestBuilder Collaborators
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Collaborators.CollaboratorsRequestBuilder Collaborators
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Collaborators.CollaboratorsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Collaborators.CollaboratorsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The commits property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.CommitsRequestBuilder Commits
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.CommitsRequestBuilder Commits
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Commits.CommitsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The compare property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Compare.CompareRequestBuilder Compare
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Compare.CompareRequestBuilder Compare
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Compare.CompareRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Compare.CompareRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The contents property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Contents.ContentsRequestBuilder Contents
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Contents.ContentsRequestBuilder Contents
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Contents.ContentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Contents.ContentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The convert property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.ConvertNamespace.ConvertRequestBuilder Convert
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.ConvertNamespace.ConvertRequestBuilder Convert
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.ConvertNamespace.ConvertRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.ConvertNamespace.ConvertRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The diffpatch property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Diffpatch.DiffpatchRequestBuilder Diffpatch
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Diffpatch.DiffpatchRequestBuilder Diffpatch
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Diffpatch.DiffpatchRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Diffpatch.DiffpatchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The editorconfig property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Editorconfig.EditorconfigRequestBuilder Editorconfig
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Editorconfig.EditorconfigRequestBuilder Editorconfig
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Editorconfig.EditorconfigRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Editorconfig.EditorconfigRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The flags property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Flags.FlagsRequestBuilder Flags
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Flags.FlagsRequestBuilder Flags
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Flags.FlagsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Flags.FlagsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The forks property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Forks.ForksRequestBuilder Forks
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Forks.ForksRequestBuilder Forks
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Forks.ForksRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Forks.ForksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The generate property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Generate.GenerateRequestBuilder Generate
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Generate.GenerateRequestBuilder Generate
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Generate.GenerateRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Generate.GenerateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The git property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder Git
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder Git
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Git.GitRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The hooks property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Hooks.HooksRequestBuilder Hooks
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Hooks.HooksRequestBuilder Hooks
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Hooks.HooksRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Hooks.HooksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The issue_config property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_config.Issue_configRequestBuilder Issue_config
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issue_config.Issue_configRequestBuilder Issue_config
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_config.Issue_configRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issue_config.Issue_configRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The issue_templates property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_templates.Issue_templatesRequestBuilder Issue_templates
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issue_templates.Issue_templatesRequestBuilder Issue_templates
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issue_templates.Issue_templatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issue_templates.Issue_templatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The issues property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.IssuesRequestBuilder Issues
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.IssuesRequestBuilder Issues
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The keys property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Keys.KeysRequestBuilder Keys
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Keys.KeysRequestBuilder Keys
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Keys.KeysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The labels property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Labels.LabelsRequestBuilder Labels
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Labels.LabelsRequestBuilder Labels
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Labels.LabelsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Labels.LabelsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The languages property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Languages.LanguagesRequestBuilder Languages
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Languages.LanguagesRequestBuilder Languages
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Languages.LanguagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Languages.LanguagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The media property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Media.MediaRequestBuilder Media
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Media.MediaRequestBuilder Media
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Media.MediaRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Media.MediaRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The milestones property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Milestones.MilestonesRequestBuilder Milestones
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Milestones.MilestonesRequestBuilder Milestones
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Milestones.MilestonesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Milestones.MilestonesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mirrorSync property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.MirrorSync.MirrorSyncRequestBuilder MirrorSync
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.MirrorSync.MirrorSyncRequestBuilder MirrorSync
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.MirrorSync.MirrorSyncRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.MirrorSync.MirrorSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The new_pin_allowed property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.New_pin_allowed.New_pin_allowedRequestBuilder New_pin_allowed
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.New_pin_allowed.New_pin_allowedRequestBuilder New_pin_allowed
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.New_pin_allowed.New_pin_allowedRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.New_pin_allowed.New_pin_allowedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The notifications property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Notifications.NotificationsRequestBuilder Notifications
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Notifications.NotificationsRequestBuilder Notifications
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Notifications.NotificationsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Notifications.NotificationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pulls property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.PullsRequestBuilder Pulls
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.PullsRequestBuilder Pulls
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Pulls.PullsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Pulls.PullsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The push_mirrors property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrors.Push_mirrorsRequestBuilder Push_mirrors
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrors.Push_mirrorsRequestBuilder Push_mirrors
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrors.Push_mirrorsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrors.Push_mirrorsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The push_mirrorsSync property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync.Push_mirrorsSyncRequestBuilder Push_mirrorsSync
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync.Push_mirrorsSyncRequestBuilder Push_mirrorsSync
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync.Push_mirrorsSyncRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Push_mirrorsSync.Push_mirrorsSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The raw property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Raw.RawRequestBuilder Raw
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Raw.RawRequestBuilder Raw
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Raw.RawRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Raw.RawRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The releases property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder Releases
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder Releases
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reviewers property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Reviewers.ReviewersRequestBuilder Reviewers
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Reviewers.ReviewersRequestBuilder Reviewers
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Reviewers.ReviewersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Reviewers.ReviewersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The signingKeyGpg property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.SigningKeyGpg.SigningKeyGpgRequestBuilder SigningKeyGpg
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.SigningKeyGpg.SigningKeyGpgRequestBuilder SigningKeyGpg
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.SigningKeyGpg.SigningKeyGpgRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.SigningKeyGpg.SigningKeyGpgRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stargazers property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Stargazers.StargazersRequestBuilder Stargazers
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Stargazers.StargazersRequestBuilder Stargazers
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Stargazers.StargazersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Stargazers.StargazersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The statuses property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Statuses.StatusesRequestBuilder Statuses
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Statuses.StatusesRequestBuilder Statuses
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Statuses.StatusesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Statuses.StatusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subscribers property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscribers.SubscribersRequestBuilder Subscribers
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Subscribers.SubscribersRequestBuilder Subscribers
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscribers.SubscribersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Subscribers.SubscribersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The subscription property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscription.SubscriptionRequestBuilder Subscription
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Subscription.SubscriptionRequestBuilder Subscription
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Subscription.SubscriptionRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Subscription.SubscriptionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sync_fork property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Sync_fork.Sync_forkRequestBuilder Sync_fork
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Sync_fork.Sync_forkRequestBuilder Sync_fork
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Sync_fork.Sync_forkRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Sync_fork.Sync_forkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tag_protections property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Tag_protections.Tag_protectionsRequestBuilder Tag_protections
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Tag_protections.Tag_protectionsRequestBuilder Tag_protections
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Tag_protections.Tag_protectionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Tag_protections.Tag_protectionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tags property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Tags.TagsRequestBuilder Tags
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Tags.TagsRequestBuilder Tags
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The teams property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Teams.TeamsRequestBuilder Teams
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Teams.TeamsRequestBuilder Teams
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The times property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Times.TimesRequestBuilder Times
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Times.TimesRequestBuilder Times
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Times.TimesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The topics property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Topics.TopicsRequestBuilder Topics
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Topics.TopicsRequestBuilder Topics
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transfer property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Transfer.TransferRequestBuilder Transfer
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Transfer.TransferRequestBuilder Transfer
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Transfer.TransferRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Transfer.TransferRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The wiki property</summary>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder Wiki
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder Wiki
         {
-            get => new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Nuke.Components.Forgejo.Repos.Item.Item.Wiki.WikiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -320,7 +320,7 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -332,8 +332,8 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -346,62 +346,62 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a repository
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Repository"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Repository"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Repository?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Repository?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Repository> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Repository> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Repository>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Repository>(requestInfo, global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Edit a repository&apos;s properties. Only fields that are set will be changed.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Models.Repository"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.Repository"/></returns>
         /// <param name="body">EditRepoOption options when editing a repository&apos;s properties</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
-        /// <exception cref="global::Nuke.Common.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Repository?> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Repository?> PatchAsync(global::Nuke.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Nuke.Common.Components.Forgejo.Models.Repository> PatchAsync(global::Nuke.Common.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.Repository> PatchAsync(global::Nuke.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Nuke.Common.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
-                { "404", global::Nuke.Common.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
-                { "422", global::Nuke.Common.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
+                { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Nuke.Common.Components.Forgejo.Models.Repository>(requestInfo, global::Nuke.Common.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.Repository>(requestInfo, global::Nuke.Components.Forgejo.Models.Repository.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a repository
@@ -449,11 +449,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Nuke.Common.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Nuke.Components.Forgejo.Models.EditRepoOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -466,11 +466,11 @@ namespace Nuke.Common.Components.Forgejo.Repos.Item.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Common.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Common.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Repos.Item.Item.RepoItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

@@ -2,12 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Nuke.Common.Components.Forgejo.Packages.Item.Item.Item;
+using Nuke.Components.Forgejo.Packages.Item.Item.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-namespace Nuke.Common.Components.Forgejo.Packages.Item.Item
+namespace Nuke.Components.Forgejo.Packages.Item.Item
 {
     /// <summary>
     /// Builds and executes requests for operations under \packages\{owner}\{type}
@@ -15,20 +15,20 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithTypeItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Nuke.Common.Components.Forgejo.packages.item.item.item collection</summary>
+        /// <summary>Gets an item from the Nuke.Components.Forgejo.packages.item.item.item collection</summary>
         /// <param name="position">name of the package</param>
-        /// <returns>A <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder"/></returns>
-        public global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder"/></returns>
+        public global::Nuke.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("name", position);
-                return new global::Nuke.Common.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Nuke.Components.Forgejo.Packages.Item.Item.Item.WithNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.WithTypeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.WithTypeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +36,7 @@ namespace Nuke.Common.Components.Forgejo.Packages.Item.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Common.Components.Forgejo.Packages.Item.Item.WithTypeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Packages.Item.Item.WithTypeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
