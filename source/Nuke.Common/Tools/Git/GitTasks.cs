@@ -3,6 +3,7 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Nuke.Common.Tooling;
 
@@ -18,7 +19,7 @@ partial class GitTasks
 
     public static bool GitIsDetached(string workingDirectory)
     {
-        return !Git($"branch --show-current", workingDirectory, logOutput: false).Any();
+        return Git($"branch --show-current", workingDirectory, logOutput: false).Count == 0;
     }
 
     public static bool GitHasCleanWorkingCopy()
@@ -28,12 +29,17 @@ partial class GitTasks
 
     public static bool GitHasCleanWorkingCopy(string workingDirectory)
     {
-        return !Git($"status --short", workingDirectory, logOutput: false).Any();
+        return Git($"status --short", workingDirectory, logOutput: false).Count == 0;
     }
 
     public static string GitCurrentBranch()
     {
         return GitCurrentBranch(workingDirectory: null);
+    }
+
+    public static IReadOnlyCollection<Output> GitLogPretty(string format)
+    {
+        return Git($"{$"log --pretty=\"{format}\"":nq}", logOutput: false);
     }
 
     public static string GitCurrentBranch(string workingDirectory)

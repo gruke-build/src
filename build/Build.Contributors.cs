@@ -22,7 +22,7 @@ partial class Build
         {
             var previousContributors = ContributorsCacheFile.Existing()?.ReadAllLines() ?? [];
 
-            var contributors = Git($"{"log --pretty=\"%an|%ae%n%cn|%ce\"":nq}", logOutput: false)
+            var contributors = GitLogPretty("%an|%ae%n%cn|%ce")
                 .Select(x => x.Text)
                 .Distinct()
                 .ToList()
