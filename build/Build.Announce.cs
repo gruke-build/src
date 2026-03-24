@@ -10,8 +10,8 @@ using Discord;
 using Discord.Webhook;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Git;
-using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 using Nuke.Components;
 using static Nuke.Common.Tools.Git.GitTasks;
@@ -22,7 +22,7 @@ partial class Build
         .DependsOn(ReleaseImage)
         .WhenSkipped(DependencyBehavior.Skip)
         .TriggeredBy<IPublish>()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch);
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is GitHubActions);
 
     IEnumerable<string> ChangelogSectionNotes => ChangelogTasks.ExtractChangelogSectionNotes(From<IHazChangelog>().ChangelogFile);
 
