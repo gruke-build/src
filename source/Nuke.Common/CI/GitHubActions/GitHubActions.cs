@@ -140,7 +140,7 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     /// <summary>
     /// Will be equivalent to <see cref="long.MinValue"/> if there is no <c>GITHUB_TOKEN</c> environment variable set.
     /// </summary>
-    public long JobId => _jobId.Value;
+    [NoValueCheck] public long JobId => _jobId.Value;
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
