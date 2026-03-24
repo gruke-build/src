@@ -128,7 +128,7 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public string RefType => IEnvironment<GitHubActions>.Get("REF_TYPE");
 
     public long RunAttempt => IEnvironment<GitHubActions>.Get<long>("RUN_ATTEMPT");
-    public long RunNumber => IEnvironment<GitHubActions>.Get<long>("_RUN_NUMBER");
+    public long RunNumber => IEnvironment<GitHubActions>.Get<long>("RUN_NUMBER");
     public long RunId => IEnvironment<GitHubActions>.Get<long>("RUN_ID");
     public string ServerUrl => IEnvironment<GitHubActions>.Get("SERVER_URL");
     public string Job => IEnvironment<GitHubActions>.Get("JOB");
