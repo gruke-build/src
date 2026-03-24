@@ -23,8 +23,8 @@ on:
       - 'release/*'
 
 jobs:
-  'Run: Test,Pack,Publish (codeberg-medium-lazy)':
-    name: 'Run: Test,Pack,Publish (codeberg-medium-lazy)'
+  'Run: Test, Pack, Publish (codeberg-medium-lazy)':
+    name: 'Run: Test, Pack, Publish (codeberg-medium-lazy)'
     runs-on: codeberg-medium-lazy
     timeout-minutes: 10
     steps:
