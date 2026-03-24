@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
           - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
       - These component interfaces do not need to be used on Woodpecker.
 
+- Moved `GitterTasks` to the namespace `Nuke.Common.Tools.Gitter`.
 - `SetBranch` on `GitRepository` has been removed; use `GitRepository.ModifyCopy(branch: ...)` instead.
 - Removed `ShutdownDotNetAfterServerBuild` attribute, it existed due to the .NET CLI's lack of ability for forcibly disabling the use of build servers.
   - .NET has since added this, as such the attribute has [been removed and its behavior has been nativized](https://github.com/gruke-build/src/commit/8b29341a37e0668ddeb918baf6610c338150b77e).

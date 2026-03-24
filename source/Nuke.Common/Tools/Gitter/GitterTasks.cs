@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Net;
 
-namespace Nuke.Common.Gitter;
+namespace Nuke.Common.Tools.Gitter;
 //[PublicAPI]
 //[Headers("Accept: application/json")]
 //public interface IGitterRestClient
