@@ -31,6 +31,8 @@ public class GitVersionAttribute : ValueInjectionAttributeBase
     public bool NoFetch { get; set; }
     public bool NoCache { get; set; } = true;
 
+    public bool PrintOutput { get; set; }
+
     public override object GetValue(MemberInfo member, object instance)
     {
         var repository = SuppressErrors(() => GitRepository.FromLocalDirectory(Build.RootDirectory));
@@ -46,16 +48,30 @@ public class GitVersionAttribute : ValueInjectionAttributeBase
                 .When(TeamCity.Instance is { IsPullRequest: true } && !EnvironmentInfo.Variables.ContainsKey("Git_Branch"), _ => _
                     .AddProcessEnvironmentVariable(
                         "Git_Branch",
-                        TeamCity.Instance.ConfigurationProperties.Single(x => x.Key.StartsWith("teamcity.build.vcs.branch")).Value)))
-            .Result;
+                        TeamCity.Instance.ConfigurationProperties.Single(x => x.Key.StartsWith("teamcity.build.vcs.branch")).Value)));
+
+        if (PrintOutput)
+        {
+            foreach (var output in gitVersion.Output)
+            {
+                if (output.Type is OutputType.Err)
+                {
+                    Log.Error(output.Text);
+                }
+                else
+                {
+                    Log.Debug(output.Text);
+                }
+            }
+        }
 
         if (UpdateBuildNumber)
         {
-            AzurePipelines.Instance?.UpdateBuildNumber(gitVersion.FullSemVer);
-            TeamCity.Instance?.SetBuildNumber(gitVersion.FullSemVer);
-            AppVeyor.Instance?.UpdateBuildVersion($"{gitVersion.FullSemVer}.build.{AppVeyor.Instance.BuildNumber}");
+            AzurePipelines.Instance?.UpdateBuildNumber(gitVersion.Result.FullSemVer);
+            TeamCity.Instance?.SetBuildNumber(gitVersion.Result.FullSemVer);
+            AppVeyor.Instance?.UpdateBuildVersion($"{gitVersion.Result.FullSemVer}.build.{AppVeyor.Instance.BuildNumber}");
         }
 
-        return gitVersion;
+        return gitVersion.Result;
     }
 }

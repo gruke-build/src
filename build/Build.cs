@@ -36,7 +36,7 @@ partial class Build
     : NukeBuild,
         IHazChangelog,
         IHazGitRepository,
-        IHazGitVersion,
+        IHazDebuggableGitVersion,
         IHazSolution,
         IRestore,
         ICompile,
@@ -53,7 +53,7 @@ partial class Build
 
     [CI] readonly GitHubActions GitHubActions;
 
-    GitVersion GitVersion => From<IHazGitVersion>().Versioning;
+    GitVersion GitVersion => From<IHazDebuggableGitVersion>().Versioning;
     GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;

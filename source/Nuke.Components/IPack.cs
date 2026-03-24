@@ -45,6 +45,10 @@ public interface IPack : ICompile, IHazArtifacts
             .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
             .SetVersion(o.Versioning.SemVer))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.SemVer))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetVersion(o.Versioning.NuGetPackageVersion))
         .WhenNotNull(this as IHazChangelog, (_, o) => _

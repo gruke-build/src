@@ -30,7 +30,11 @@ public interface ICompile : IRestore, IHazConfiguration
                 .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
                     .AddPair("Version", o.Versioning.SemVer))
                 .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
-                    .AddPair("Version", o.Versioning.NuGetPackageVersion)));
+                    .AddPair("Version", o.Versioning.NuGetPackageVersion))
+                .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.SemVer))
+                .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.SemVer)));
 
             DotNetBuild(_ => _
                 .Apply(CompileSettingsBase)
@@ -62,6 +66,14 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
@@ -81,6 +93,14 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))

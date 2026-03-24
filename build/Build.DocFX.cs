@@ -34,7 +34,7 @@ public partial class Build
     AbsolutePath IndexMd => DocsDirectory / "index.md";
 
     Target DocFx => _ => _
-        .Requires(() => From<IHazGitVersion>().Versioning)
+        .Requires(() => From<IHazDebuggableGitVersion>().Versioning)
         .When(Host is Terminal, _ => _
             .Requires(() => GitTasks.GitHasCleanWorkingCopy()))
         .Executes(() =>
@@ -95,11 +95,11 @@ public partial class Build
                 var modified = JObject.ReadFrom(new JsonTextReader(new StringReader(jsonLines.JoinNewLine())));
                 var appTitle = modified.GetNested<string>("build.globalMetadata._appTitle");
                 var appFooter = modified.GetNested<string>("build.globalMetadata._appFooter");
-                modified.SetNested("build.globalMetadata._appTitle", 
-                    $"{appTitle} {From<IHazGitVersion>().Versioning.MajorMinorPatch}");
+                modified.SetNested("build.globalMetadata._appTitle",
+                    $"{appTitle} {From<IHazDebuggableGitVersion>().Versioning.MajorMinorPatch}");
                 modified.SetNested("build.globalMetadata._appFooter", HtmlSpanWrapFooter(
                         appFooter,
-                        $"{From<IHazGitVersion>().Versioning.FullSemVer} @ " +
+                        $"{From<IHazDebuggableGitVersion>().Versioning.FullSemVer} @ " +
                         HtmlHyperlink(GitRepository.Commit![..7], GitRepository.GitHub.GetCommitUrl(GitRepository.Commit))
                     )
                 );
