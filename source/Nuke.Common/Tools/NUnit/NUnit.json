@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "references": [
-    "https://github.com/nunit/docs/wiki/Console-Command-Line#//div[@id='wiki-body']"
+    "https://docs.nunit.org/articles/nunit/running-tests/Console-Command-Line.html#//article[@id='_content']"
   ],
   "name": "NUnit",
   "officialUrl": "https://www.nunit.org/",

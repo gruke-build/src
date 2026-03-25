@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "references": [
-    "https://github.com/AArnott/Nerdbank.GitVersioning/blob/master/doc/nbgv-cli.md"
+    "https://github.com/dotnet/Nerdbank.GitVersioning/blob/main/docfx/docs/nbgv-cli.md"
   ],
   "name": "NerdbankGitVersioning",
-  "officialUrl": "https://github.com/AArnott/Nerdbank.GitVersioning",
+  "officialUrl": "https://github.com/dotnet/Nerdbank.GitVersioning",
   "nugetPackageId": "nbgv",
   "packageExecutable": "nbgv.dll",
   "tasks": [
