@@ -51,13 +51,13 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
 
     public override Type HostType => typeof(AzurePipelines);
     public override AbsolutePath ConfigurationFile => ConfigurationDirectory / ConfigurationFileName;
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
     protected virtual AbsolutePath ConfigurationDirectory => Build.RootDirectory;
     private string ConfigurationFileName => _suffix != null ? $"azure-pipelines.{_suffix}.yml" : "azure-pipelines.yml";
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
 
-    public string[] InvokedTargets { get; set; } = new string[0];
+    public string[] InvokedTargets { get; set; } = [];
 
     public bool TriggerDisabled { get; set; }
 
@@ -91,12 +91,12 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
-    public string[] TriggerBranchesInclude { get; set; } = new string[0];
-    public string[] TriggerBranchesExclude { get; set; } = new string[0];
-    public string[] TriggerTagsInclude { get; set; } = new string[0];
-    public string[] TriggerTagsExclude { get; set; } = new string[0];
-    public string[] TriggerPathsInclude { get; set; } = new string[0];
-    public string[] TriggerPathsExclude { get; set; } = new string[0];
+    public string[] TriggerBranchesInclude { get; set; } = [];
+    public string[] TriggerBranchesExclude { get; set; } = [];
+    public string[] TriggerTagsInclude { get; set; } = [];
+    public string[] TriggerTagsExclude { get; set; } = [];
+    public string[] TriggerPathsInclude { get; set; } = [];
+    public string[] TriggerPathsExclude { get; set; } = [];
 
     public bool PullRequestsDisabled { get; set; }
 
@@ -106,16 +106,16 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
-    public string[] PullRequestsBranchesInclude { get; set; } = new string[0];
-    public string[] PullRequestsBranchesExclude { get; set; } = new string[0];
-    public string[] PullRequestsPathsInclude { get; set; } = new string[0];
-    public string[] PullRequestsPathsExclude { get; set; } = new string[0];
+    public string[] PullRequestsBranchesInclude { get; set; } = [];
+    public string[] PullRequestsBranchesExclude { get; set; } = [];
+    public string[] PullRequestsPathsInclude { get; set; } = [];
+    public string[] PullRequestsPathsExclude { get; set; } = [];
 
-    public string[] CacheKeyFiles { get; set; } = { "**/global.json", "**/*.csproj", "**/Directory.Packages.props" };
-    public string[] CachePaths { get; set; } = { AzurePipelinesCachePaths.Nuke, AzurePipelinesCachePaths.NuGet };
+    public string[] CacheKeyFiles { get; set; } = ["**/global.json", "**/*.csproj", "**/Directory.Packages.props"];
+    public string[] CachePaths { get; set; } = [AzurePipelinesCachePaths.Nuke, AzurePipelinesCachePaths.NuGet];
 
-    public string[] ImportVariableGroups { get; set; } = new string[0];
-    public string[] ImportSecrets { get; set; } = new string[0];
+    public string[] ImportVariableGroups { get; set; } = [];
+    public string[] ImportSecrets { get; set; } = [];
     public bool EnableAccessToken { get; set; }
 
     public override CustomFileWriter CreateWriter(StreamWriter streamWriter)
@@ -177,8 +177,8 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
                    AutoCancel = _pullRequestsAutoCancel,
                    BranchesInclude = PullRequestsBranchesInclude,
                    BranchesExclude = PullRequestsBranchesExclude,
-                   TagsInclude = new string[0],
-                   TagsExclude = new string[0],
+                   TagsInclude = [],
+                   TagsExclude = [],
                    PathsInclude = PullRequestsPathsInclude,
                    PathsExclude = PullRequestsPathsExclude,
                };
@@ -199,7 +199,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
                    Name = image.GetValue().Replace("-", "_").Replace(".", "_"),
                    DisplayName = image.GetValue(),
                    Image = image,
-                   Dependencies = new AzurePipelinesStage[0],
+                   Dependencies = [],
                    Jobs = jobs
                };
     }

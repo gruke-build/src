@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageId>GreemDev.Nuke.Components.Forgejo</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nuke.Components\Nuke.Components.csproj" />
+    <PackageReference Include="Microsoft.Kiota.Bundle" />
+  </ItemGroup>
+
+</Project>

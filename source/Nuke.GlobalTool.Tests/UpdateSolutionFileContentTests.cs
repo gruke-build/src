@@ -179,10 +179,6 @@ public class UpdateSolutionFileContentTests
         content.Save(writer);
         writer.Flush();
 
-        _testOutputHelper.WriteLine($"input: {Environment.NewLine}{input}");
-        _testOutputHelper.WriteLine($"expected: {Environment.NewLine}{expected}");
-        _testOutputHelper.WriteLine($"result: {Environment.NewLine}{stringStream}");
-
         return Verifier.VerifyXml(expected)
             .UseParameters(number);
     }

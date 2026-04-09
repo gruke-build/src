@@ -46,24 +46,24 @@ public class AppVeyorAttribute : ConfigurationAttributeBase
 
     public override Type HostType => typeof(AppVeyor);
     public override AbsolutePath ConfigurationFile => Build.RootDirectory / ConfigurationFileName;
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
     private string ConfigurationFileName => _suffix != null ? $"appveyor.{_suffix}.yml" : "appveyor.yml";
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
     public override IEnumerable<string> IrrelevantTargetNames => new string[0];
 
-    public AppVeyorService[] Services { get; set; } = new AppVeyorService[0];
-    public string[] InvokedTargets { get; set; } = new string[0];
-    public string[] BranchesOnly { get; set; } = new string[0];
-    public string[] BranchesExcept { get; set; } = new string[0];
+    public AppVeyorService[] Services { get; set; } = [];
+    public string[] InvokedTargets { get; set; } = [];
+    public string[] BranchesOnly { get; set; } = [];
+    public string[] BranchesExcept { get; set; } = [];
     public bool SkipTags { get; set; }
     public bool SkipBranchesWithPullRequest { get; set; }
     public string OnlyCommitsMessage { get; set; }
     public string OnlyCommitsAuthor { get; set; }
     public string SkipCommitsMessage { get; set; }
     public string SkipCommitsAuthor { get; set; }
-    public string[] Init { get; set; } = new string[0];
-    public string[] Cache { get; set; } = new string[0];
+    public string[] Init { get; set; } = [];
+    public string[] Cache { get; set; } = [];
     public string[] Secrets { get; set; }
     public bool Submodules { get; set; }
 

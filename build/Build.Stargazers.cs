@@ -8,6 +8,7 @@ using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.GitHub;
+using Nuke.Common.Git;
 using Nuke.Common.Utilities;
 
 partial class Build
@@ -19,8 +20,9 @@ partial class Build
         .Executes(async () =>
         {
             var stargazerUsers = await GitHubTasks.GitHubClient.Activity.Starring.GetAllStargazers(
-                GitRepository.GetGitHubOwner(),
-                GitRepository.GetGitHubName());
+                GitRepository.GitHub.Owner,
+                GitRepository.GitHub.Name
+            );
             var stargazerEntries = stargazerUsers.Select(async x =>
             {
                 var user = await GitHubTasks.GitHubClient.User.Get(x.Login);

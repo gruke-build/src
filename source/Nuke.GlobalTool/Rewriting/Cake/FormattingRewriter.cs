@@ -14,7 +14,7 @@ namespace Nuke.GlobalTool.Rewriting.Cake;
 
 internal class FormattingRewriter : SafeSyntaxRewriter
 {
-    private static readonly SyntaxTrivia[] Indent = { Space, Space, Space, Space };
+    private static readonly SyntaxTrivia[] Indent = [Space, Space, Space, Space];
 
     public override SyntaxNode VisitPropertyDeclaration(PropertyDeclarationSyntax node)
     {
@@ -58,7 +58,7 @@ internal class FormattingRewriter : SafeSyntaxRewriter
                 _ => _
                     .WithModifiers(TokenList(node
                         .Modifiers.Select((x, i) => x
-                            .WithLeadingTrivia(i == 0 ? new SyntaxTrivia[0] : new[] { Space })))));
+                            .WithLeadingTrivia(i == 0 ? [] : new[] { Space })))));
     }
 
     public override SyntaxNode VisitInterpolatedStringExpression(InterpolatedStringExpressionSyntax node)

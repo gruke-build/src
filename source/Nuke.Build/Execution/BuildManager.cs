@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.Extensions.DependencyModel;
+using Nuke.Build.Shared;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
@@ -21,7 +22,7 @@ internal static class BuildManager
 {
     private const int ErrorExitCode = -1;
 
-    private static readonly LinkedList<Action> s_cancellationHandlers = new();
+    private static readonly LinkedList<Action> s_cancellationHandlers = [];
 
     public static event Action CancellationHandler
     {
@@ -46,6 +47,11 @@ internal static class BuildManager
         ToolOptions.Created += (options, _) => VerbosityMapping.Apply((ToolOptions)options);
 
         var build = new T();
+
+        if (build.IsOutputEnabled(DefaultOutput.Notifications))
+        {
+            _ = NotificationFetcher.GetNotificationsAsync();
+        }
 
         try
         {
@@ -113,6 +119,7 @@ internal static class BuildManager
             build.WriteErrorsAndWarnings();
             build.WriteTargetOutcome();
             build.WriteBuildOutcome();
+            build.WriteNotifications();
             build.ExecuteExtension<IOnBuildFinished>(x => x.OnBuildFinished());
         }
     }

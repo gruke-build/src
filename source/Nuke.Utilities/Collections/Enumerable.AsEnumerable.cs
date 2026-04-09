@@ -15,6 +15,6 @@ public static partial class EnumerableExtensions
     /// </summary>
     public static IEnumerable<T> AsEnumerable<T>(this object obj)
     {
-        return obj is IEnumerable enumerable ? enumerable.Cast<T>() : new[] { (T) obj };
+        return obj is IEnumerable enumerable ? enumerable.Cast<T>() : [(T) obj];
     }
 }

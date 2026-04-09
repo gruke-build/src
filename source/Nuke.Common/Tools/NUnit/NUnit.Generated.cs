@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/NUnit/NUnit.json
 
 using JetBrains.Annotations;
@@ -29,7 +33,7 @@ public partial class NUnitTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>NUnit is a unit-testing framework for all .Net languages. Initially ported from <a href="http://www.junit.org/">JUnit</a>, the current production release, version 3.0, has been completely rewritten with many new features and support for a wide range of .NET platforms.</p><p>For more details, visit the <a href="https://www.nunit.org/">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> NUnit(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new NUnitTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>NUnit is a unit-testing framework for all .Net languages. Initially ported from <a href="http://www.junit.org/">JUnit</a>, the current production release, version 3.0, has been completely rewritten with many new features and support for a wide range of .NET platforms.</p><p>For more details, visit the <a href="https://www.nunit.org/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;inputFiles&gt;</c> via <see cref="NUnit3Settings.InputFiles"/></li><li><c>--agents</c> via <see cref="NUnit3Settings.Agents"/></li><li><c>--config</c> via <see cref="NUnit3Settings.Configuration"/></li><li><c>--debug</c> via <see cref="NUnit3Settings.Debug"/></li><li><c>--debug-agent</c> via <see cref="NUnit3Settings.DebugAgent"/></li><li><c>--dispose-runners</c> via <see cref="NUnit3Settings.DisposeRunners"/></li><li><c>--domain</c> via <see cref="NUnit3Settings.Domain"/></li><li><c>--encoding</c> via <see cref="NUnit3Settings.Encoding"/></li><li><c>--err</c> via <see cref="NUnit3Settings.ErrorFile"/></li><li><c>--explore</c> via <see cref="NUnit3Settings.Explores"/></li><li><c>--framework</c> via <see cref="NUnit3Settings.Framework"/></li><li><c>--inprocess</c> via <see cref="NUnit3Settings.InProcess"/></li><li><c>--labels</c> via <see cref="NUnit3Settings.Labels"/></li><li><c>--list-extensions</c> via <see cref="NUnit3Settings.ListExtensions"/></li><li><c>--loaduserprofile</c> via <see cref="NUnit3Settings.LoadUserProfile"/></li><li><c>--nocolor</c> via <see cref="NUnit3Settings.NoColor"/></li><li><c>--noheader</c> via <see cref="NUnit3Settings.NoHeader"/></li><li><c>--noresult</c> via <see cref="NUnit3Settings.NoResults"/></li><li><c>--output</c> via <see cref="NUnit3Settings.OutputFile"/></li><li><c>--pause</c> via <see cref="NUnit3Settings.Pause"/></li><li><c>--process</c> via <see cref="NUnit3Settings.Process"/></li><li><c>--result</c> via <see cref="NUnit3Settings.Results"/></li><li><c>--seed</c> via <see cref="NUnit3Settings.Seed"/></li><li><c>--set-principal-policy</c> via <see cref="NUnit3Settings.SetPrincipalPolicy"/></li><li><c>--shadowcopy</c> via <see cref="NUnit3Settings.ShadowCopy"/></li><li><c>--skipnontestassemblies</c> via <see cref="NUnit3Settings.SkipNonTestAssemblies"/></li><li><c>--stoponerror</c> via <see cref="NUnit3Settings.StopOnError"/></li><li><c>--teamcity</c> via <see cref="NUnit3Settings.TeamCity"/></li><li><c>--test</c> via <see cref="NUnit3Settings.Tests"/></li><li><c>--testlist</c> via <see cref="NUnit3Settings.TestListFile"/></li><li><c>--testparam</c> via <see cref="NUnit3Settings.Parameters"/></li><li><c>--timeout</c> via <see cref="NUnit3Settings.Timeout"/></li><li><c>--trace</c> via <see cref="NUnit3Settings.Trace"/></li><li><c>--wait</c> via <see cref="NUnit3Settings.Wait"/></li><li><c>--where</c> via <see cref="NUnit3Settings.WhereExpression"/></li><li><c>--work</c> via <see cref="NUnit3Settings.WorkPath"/></li><li><c>--workers</c> via <see cref="NUnit3Settings.Workers"/></li><li><c>--x86</c> via <see cref="NUnit3Settings.X86"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;inputFiles&gt;</c> via <see cref="NUnit3Settings.InputFiles"/></li><li><c>--agents</c> via <see cref="NUnit3Settings.Agents"/></li><li><c>--config</c> via <see cref="NUnit3Settings.Configuration"/></li><li><c>--debug</c> via <see cref="NUnit3Settings.Debug"/></li><li><c>--debug-agent</c> via <see cref="NUnit3Settings.DebugAgent"/></li><li><c>--dispose-runners</c> via <see cref="NUnit3Settings.DisposeRunners"/></li><li><c>--domain</c> via <see cref="NUnit3Settings.Domain"/></li><li><c>--encoding</c> via <see cref="NUnit3Settings.Encoding"/></li><li><c>--err</c> via <see cref="NUnit3Settings.ErrorFile"/></li><li><c>--explore</c> via <see cref="NUnit3Settings.Explores"/></li><li><c>--framework</c> via <see cref="NUnit3Settings.Framework"/></li><li><c>--inprocess</c> via <see cref="NUnit3Settings.InProcess"/></li><li><c>--labels</c> via <see cref="NUnit3Settings.Labels"/></li><li><c>--list-extensions</c> via <see cref="NUnit3Settings.ListExtensions"/></li><li><c>--loaduserprofile</c> via <see cref="NUnit3Settings.LoadUserProfile"/></li><li><c>--nocolor</c> via <see cref="NUnit3Settings.NoColor"/></li><li><c>--noheader</c> via <see cref="NUnit3Settings.NoHeader"/></li><li><c>--noresult</c> via <see cref="NUnit3Settings.NoResults"/></li><li><c>--output</c> via <see cref="NUnit3Settings.OutputFile"/></li><li><c>--pause</c> via <see cref="NUnit3Settings.Pause"/></li><li><c>--process</c> via <see cref="NUnit3Settings.Process"/></li><li><c>--result</c> via <see cref="NUnit3Settings.Results"/></li><li><c>--seed</c> via <see cref="NUnit3Settings.Seed"/></li><li><c>--set-principal-policy</c> via <see cref="NUnit3Settings.SetPrincipalPolicy"/></li><li><c>--shadowcopy</c> via <see cref="NUnit3Settings.ShadowCopy"/></li><li><c>--skipnontestassemblies</c> via <see cref="NUnit3Settings.SkipNonTestAssemblies"/></li><li><c>--stoponerror</c> via <see cref="NUnit3Settings.StopOnError"/></li><li><c>--teamcity</c> via <see cref="NUnit3Settings.TeamCity"/></li><li><c>--test</c> via <see cref="NUnit3Settings.Tests"/></li><li><c>--testlist</c> via <see cref="NUnit3Settings.TestListFile"/></li><li><c>--testparam</c> via <see cref="NUnit3Settings.Parameters"/></li><li><c>--timeout</c> via <see cref="NUnit3Settings.Timeout"/></li><li><c>--trace</c> via <see cref="NUnit3Settings.Trace"/></li><li><c>--wait</c> via <see cref="NUnit3Settings.Wait"/></li><li><c>--where</c> via <see cref="NUnit3Settings.WhereExpression"/></li><li><c>--work</c> via <see cref="NUnit3Settings.WorkPath"/></li><li><c>--workers</c> via <see cref="NUnit3Settings.Workers"/></li><li><c>--x86</c> via <see cref="NUnit3Settings.X86"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NUnit3(NUnit3Settings options = null) => new NUnitTasks().Run<NUnit3Settings>(options);
     /// <inheritdoc cref="NUnitTasks.NUnit3(Nuke.Common.Tools.NUnit.NUnit3Settings)"/>
     public static IReadOnlyCollection<Output> NUnit3(Configure<NUnit3Settings> configurator) => new NUnitTasks().Run<NUnit3Settings>(configurator.Invoke(new NUnit3Settings()));
@@ -654,9 +658,9 @@ public static partial class NUnit3SettingsExtensions
 [TypeConverter(typeof(TypeConverter<NUnitProcessType>))]
 public partial class NUnitProcessType : Enumeration
 {
-    public static NUnitProcessType Single = (NUnitProcessType) "Single";
-    public static NUnitProcessType Separate = (NUnitProcessType) "Separate";
-    public static NUnitProcessType Multiple = (NUnitProcessType) "Multiple";
+    public static readonly NUnitProcessType Single = (NUnitProcessType) "Single";
+    public static readonly NUnitProcessType Separate = (NUnitProcessType) "Separate";
+    public static readonly NUnitProcessType Multiple = (NUnitProcessType) "Multiple";
     public static implicit operator NUnitProcessType(string value)
     {
         return new NUnitProcessType { Value = value };
@@ -671,9 +675,9 @@ public partial class NUnitProcessType : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitPrincipalPolicy>))]
 public partial class NUnitPrincipalPolicy : Enumeration
 {
-    public static NUnitPrincipalPolicy UnauthenticatedPrincipal = (NUnitPrincipalPolicy) "UnauthenticatedPrincipal";
-    public static NUnitPrincipalPolicy NoPrincipal = (NUnitPrincipalPolicy) "NoPrincipal";
-    public static NUnitPrincipalPolicy WindowsPrincipal = (NUnitPrincipalPolicy) "WindowsPrincipal";
+    public static readonly NUnitPrincipalPolicy UnauthenticatedPrincipal = (NUnitPrincipalPolicy) "UnauthenticatedPrincipal";
+    public static readonly NUnitPrincipalPolicy NoPrincipal = (NUnitPrincipalPolicy) "NoPrincipal";
+    public static readonly NUnitPrincipalPolicy WindowsPrincipal = (NUnitPrincipalPolicy) "WindowsPrincipal";
     public static implicit operator NUnitPrincipalPolicy(string value)
     {
         return new NUnitPrincipalPolicy { Value = value };
@@ -688,13 +692,13 @@ public partial class NUnitPrincipalPolicy : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitLabelType>))]
 public partial class NUnitLabelType : Enumeration
 {
-    public static NUnitLabelType Off = (NUnitLabelType) "Off";
-    public static NUnitLabelType On = (NUnitLabelType) "On";
-    public static NUnitLabelType All = (NUnitLabelType) "All";
-    public static NUnitLabelType OnOutputOnly = (NUnitLabelType) "OnOutputOnly";
-    public static NUnitLabelType Before = (NUnitLabelType) "Before";
-    public static NUnitLabelType After = (NUnitLabelType) "After";
-    public static NUnitLabelType BeforeAndAfter = (NUnitLabelType) "BeforeAndAfter";
+    public static readonly NUnitLabelType Off = (NUnitLabelType) "Off";
+    public static readonly NUnitLabelType On = (NUnitLabelType) "On";
+    public static readonly NUnitLabelType All = (NUnitLabelType) "All";
+    public static readonly NUnitLabelType OnOutputOnly = (NUnitLabelType) "OnOutputOnly";
+    public static readonly NUnitLabelType Before = (NUnitLabelType) "Before";
+    public static readonly NUnitLabelType After = (NUnitLabelType) "After";
+    public static readonly NUnitLabelType BeforeAndAfter = (NUnitLabelType) "BeforeAndAfter";
     public static implicit operator NUnitLabelType(string value)
     {
         return new NUnitLabelType { Value = value };
@@ -709,11 +713,11 @@ public partial class NUnitLabelType : Enumeration
 [TypeConverter(typeof(TypeConverter<NUnitTraceLevel>))]
 public partial class NUnitTraceLevel : Enumeration
 {
-    public static NUnitTraceLevel Off = (NUnitTraceLevel) "Off";
-    public static NUnitTraceLevel Error = (NUnitTraceLevel) "Error";
-    public static NUnitTraceLevel Warning = (NUnitTraceLevel) "Warning";
-    public static NUnitTraceLevel Info = (NUnitTraceLevel) "Info";
-    public static NUnitTraceLevel Verbose = (NUnitTraceLevel) "Verbose";
+    public static readonly NUnitTraceLevel Off = (NUnitTraceLevel) "Off";
+    public static readonly NUnitTraceLevel Error = (NUnitTraceLevel) "Error";
+    public static readonly NUnitTraceLevel Warning = (NUnitTraceLevel) "Warning";
+    public static readonly NUnitTraceLevel Info = (NUnitTraceLevel) "Info";
+    public static readonly NUnitTraceLevel Verbose = (NUnitTraceLevel) "Verbose";
     public static implicit operator NUnitTraceLevel(string value)
     {
         return new NUnitTraceLevel { Value = value };

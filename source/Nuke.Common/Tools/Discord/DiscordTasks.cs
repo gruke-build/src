@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
+using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Net;
 
 namespace Nuke.Common.Tools.Discord;
@@ -22,9 +23,7 @@ public static class DiscordTasks
     {
         var message = configurator(new DiscordMessage());
 
-        using var client = new HttpClient();
-
-        var response = await client.CreateRequest(HttpMethod.Post, webhook)
+        var response = await HttpClientProxy.Shared.CreateRequest(HttpMethod.Post, webhook)
             .WithJsonContent(message)
             .GetResponseAsync();
 

@@ -24,7 +24,7 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
 {
     bool CreateCoverageHtmlReport { get; }
     bool ReportToCodecov { get; }
-    [Parameter] [Secret] string CodecovToken => TryGetValue(() => CodecovToken);
+    [Parameter("codecov.io API token")] [Secret] string CodecovToken => TryGetValue(() => CodecovToken);
 
     AbsolutePath CoverageReportDirectory => ReportDirectory / "coverage-report";
     AbsolutePath CoverageReportArchive => CoverageReportDirectory.WithExtension("zip");
@@ -64,6 +64,10 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
             .SetBuild(o.Versioning.FullSemVer))
         .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetBuild(o.Versioning.FullSemVer))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+            .SetBuild(o.Versioning.FullSemVer))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
             .SetBuild(o.Versioning.FullSemVer))
         .SetFramework("netcoreapp3.0");
 

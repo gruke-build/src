@@ -9,7 +9,6 @@
     <RootNamespace></RootNamespace>
     <NoWarn>CS0649;CS0169</NoWarn>
     <NukeRootDirectory>.\..</NukeRootDirectory>
-    <NukeTelemetryVersion>1</NukeTelemetryVersion>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -57,16 +56,25 @@
     <PackageReference Include="Discord.Net.Webhook" Version="3.19.0" />
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
     <PackageDownload Include="Codecov.Tool" Version="[1.13.0]" />
+    <PackageDownload Include="docfx" Version="[2.78.5]" />
     <PackageDownload Include="GitVersion.Tool" Version="[6.6.0]" />
     <PackageDownload Include="JetBrains.ReSharper.GlobalTools" Version="[2023.2.3]" />
+    <PackageDownload Include="Microsoft.OpenApi.Kiota" Version="[1.30.0]" />
     <PackageDownload Include="ReportGenerator" Version="[5.2.0]" />
     <PackageDownload Include="xunit.runner.console" Version="[2.6.1]" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\source\Nuke.Components\Nuke.Components.csproj" />
+    <ProjectReference Include="..\source\Nuke.Components.GitHub\Nuke.Components.GitHub.csproj" />
+    <ProjectReference Include="..\source\Nuke.Components.Forgejo\Nuke.Components.Forgejo.csproj" />
+    <ProjectReference Include="..\source\Nuke.Components.GitLab\Nuke.Components.GitLab.csproj" />
     <ProjectReference Include="..\source\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(NukeRootDirectory)\docs\docfx.json" LinkBase="docfx" />
+    <None Include="$(NukeRootDirectory)\docs\toc.yml" LinkBase="docfx" />
   </ItemGroup>
 
   <Import Project="..\source\Nuke.Common\Nuke.Common.targets" />

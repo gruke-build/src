@@ -17,8 +17,8 @@ namespace Nuke.Components;
 [PublicAPI]
 public interface IPublish : IPack, ITest
 {
-    [Parameter] string NuGetSource => TryGetValue(() => NuGetSource) ?? "https://api.nuget.org/v3/index.json";
-    [Parameter] [Secret] string NuGetApiKey => TryGetValue(() => NuGetApiKey);
+    [Parameter(description: "Source for NuGet packages. Defaults to nuget.org.")] string NuGetSource => TryGetValue(() => NuGetSource) ?? "https://api.nuget.org/v3/index.json";
+    [Parameter("NuGet source authentication key")] [Secret] string NuGetApiKey => TryGetValue(() => NuGetApiKey);
 
     Target Publish => _ => _
         .DependsOn(Test, Pack)

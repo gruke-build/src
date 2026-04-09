@@ -92,7 +92,7 @@
         },
         "Plan": {
           "type": "boolean",
-          "description": "Shows the execution plan (HTML)"
+          "description": "Shows the execution plan (HTML). Seems to have functional issues in Firefox-based browsers"
         },
         "Profile": {
           "type": "array",
@@ -179,7 +179,7 @@
         },
         "SecretParam": {
           "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "StringArrayParam": {
           "type": "array",

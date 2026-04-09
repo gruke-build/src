@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Xunit/Xunit.json
 
 using JetBrains.Annotations;
@@ -28,7 +32,7 @@ public partial class XunitTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework. Written by the original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin. It is part of the <a href="https://www.dotnetfoundation.org/">.NET Foundation</a>, and operates under their <a href="https://www.dotnetfoundation.org/code-of-conduct">code of conduct</a>. It is licensed under <a href="https://opensource.org/licenses/Apache-2.0">Apache 2</a> (an OSI approved license).</p><p>For more details, visit the <a href="https://xunit.github.io">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> Xunit(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new XunitTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework. Written by the original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin. It is part of the <a href="https://www.dotnetfoundation.org/">.NET Foundation</a>, and operates under their <a href="https://www.dotnetfoundation.org/code-of-conduct">code of conduct</a>. It is licensed under <a href="https://opensource.org/licenses/Apache-2.0">Apache 2</a> (an OSI approved license).</p><p>For more details, visit the <a href="https://xunit.github.io">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetAssemblyWithConfigs&gt;</c> via <see cref="Xunit2Settings.TargetAssemblyWithConfigs"/></li><li><c>-</c> via <see cref="Xunit2Settings.Reporter"/></li><li><c>-</c> via <see cref="Xunit2Settings.ResultReports"/></li><li><c>-appdomains</c> via <see cref="Xunit2Settings.AppDomainMode"/></li><li><c>-class</c> via <see cref="Xunit2Settings.Classes"/></li><li><c>-debug</c> via <see cref="Xunit2Settings.Debug"/></li><li><c>-diagnostics</c> via <see cref="Xunit2Settings.Diagnostics"/></li><li><c>-failskips</c> via <see cref="Xunit2Settings.FailSkips"/></li><li><c>-maxthreads</c> via <see cref="Xunit2Settings.MaxThreads"/></li><li><c>-method</c> via <see cref="Xunit2Settings.Methods"/></li><li><c>-namespace</c> via <see cref="Xunit2Settings.Namespaces"/></li><li><c>-noautoreporters</c> via <see cref="Xunit2Settings.NoAutoReporters"/></li><li><c>-nocolor</c> via <see cref="Xunit2Settings.NoColor"/></li><li><c>-nologo</c> via <see cref="Xunit2Settings.NoLogo"/></li><li><c>-noshadow</c> via <see cref="Xunit2Settings.NoShadowCopying"/></li><li><c>-notrait</c> via <see cref="Xunit2Settings.ExcludedTraits"/></li><li><c>-parallel</c> via <see cref="Xunit2Settings.Parallel"/></li><li><c>-pause</c> via <see cref="Xunit2Settings.Pause"/></li><li><c>-serialize</c> via <see cref="Xunit2Settings.Serialization"/></li><li><c>-stoponfail</c> via <see cref="Xunit2Settings.StopOnFail"/></li><li><c>-trait</c> via <see cref="Xunit2Settings.Traits"/></li><li><c>-wait</c> via <see cref="Xunit2Settings.Wait"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetAssemblyWithConfigs&gt;</c> via <see cref="Xunit2Settings.TargetAssemblyWithConfigs"/></li><li><c>-</c> via <see cref="Xunit2Settings.Reporter"/></li><li><c>-</c> via <see cref="Xunit2Settings.ResultReports"/></li><li><c>-appdomains</c> via <see cref="Xunit2Settings.AppDomainMode"/></li><li><c>-class</c> via <see cref="Xunit2Settings.Classes"/></li><li><c>-debug</c> via <see cref="Xunit2Settings.Debug"/></li><li><c>-diagnostics</c> via <see cref="Xunit2Settings.Diagnostics"/></li><li><c>-failskips</c> via <see cref="Xunit2Settings.FailSkips"/></li><li><c>-maxthreads</c> via <see cref="Xunit2Settings.MaxThreads"/></li><li><c>-method</c> via <see cref="Xunit2Settings.Methods"/></li><li><c>-namespace</c> via <see cref="Xunit2Settings.Namespaces"/></li><li><c>-noautoreporters</c> via <see cref="Xunit2Settings.NoAutoReporters"/></li><li><c>-nocolor</c> via <see cref="Xunit2Settings.NoColor"/></li><li><c>-nologo</c> via <see cref="Xunit2Settings.NoLogo"/></li><li><c>-noshadow</c> via <see cref="Xunit2Settings.NoShadowCopying"/></li><li><c>-notrait</c> via <see cref="Xunit2Settings.ExcludedTraits"/></li><li><c>-parallel</c> via <see cref="Xunit2Settings.Parallel"/></li><li><c>-pause</c> via <see cref="Xunit2Settings.Pause"/></li><li><c>-serialize</c> via <see cref="Xunit2Settings.Serialization"/></li><li><c>-stoponfail</c> via <see cref="Xunit2Settings.StopOnFail"/></li><li><c>-trait</c> via <see cref="Xunit2Settings.Traits"/></li><li><c>-wait</c> via <see cref="Xunit2Settings.Wait"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Xunit2(Xunit2Settings options = null) => new XunitTasks().Run<Xunit2Settings>(options);
     /// <inheritdoc cref="XunitTasks.Xunit2(Nuke.Common.Tools.Xunit.Xunit2Settings)"/>
     public static IReadOnlyCollection<Output> Xunit2(Configure<Xunit2Settings> configurator) => new XunitTasks().Run<Xunit2Settings>(configurator.Invoke(new Xunit2Settings()));
@@ -478,11 +482,11 @@ public static partial class Xunit2SettingsExtensions
 [TypeConverter(typeof(TypeConverter<Xunit2ReporterType>))]
 public partial class Xunit2ReporterType : Enumeration
 {
-    public static Xunit2ReporterType AppVeyor = (Xunit2ReporterType) "AppVeyor";
-    public static Xunit2ReporterType JSON = (Xunit2ReporterType) "JSON";
-    public static Xunit2ReporterType Quiet = (Xunit2ReporterType) "Quiet";
-    public static Xunit2ReporterType TeamCity = (Xunit2ReporterType) "TeamCity";
-    public static Xunit2ReporterType Verbose = (Xunit2ReporterType) "Verbose";
+    public static readonly Xunit2ReporterType AppVeyor = (Xunit2ReporterType) "AppVeyor";
+    public static readonly Xunit2ReporterType JSON = (Xunit2ReporterType) "JSON";
+    public static readonly Xunit2ReporterType Quiet = (Xunit2ReporterType) "Quiet";
+    public static readonly Xunit2ReporterType TeamCity = (Xunit2ReporterType) "TeamCity";
+    public static readonly Xunit2ReporterType Verbose = (Xunit2ReporterType) "Verbose";
     public static implicit operator Xunit2ReporterType(string value)
     {
         return new Xunit2ReporterType { Value = value };
@@ -497,10 +501,10 @@ public partial class Xunit2ReporterType : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2ResultFormat>))]
 public partial class Xunit2ResultFormat : Enumeration
 {
-    public static Xunit2ResultFormat Xml = (Xunit2ResultFormat) "Xml";
-    public static Xunit2ResultFormat XmlV1 = (Xunit2ResultFormat) "XmlV1";
-    public static Xunit2ResultFormat NUnit = (Xunit2ResultFormat) "NUnit";
-    public static Xunit2ResultFormat HTML = (Xunit2ResultFormat) "HTML";
+    public static readonly Xunit2ResultFormat Xml = (Xunit2ResultFormat) "Xml";
+    public static readonly Xunit2ResultFormat XmlV1 = (Xunit2ResultFormat) "XmlV1";
+    public static readonly Xunit2ResultFormat NUnit = (Xunit2ResultFormat) "NUnit";
+    public static readonly Xunit2ResultFormat HTML = (Xunit2ResultFormat) "HTML";
     public static implicit operator Xunit2ResultFormat(string value)
     {
         return new Xunit2ResultFormat { Value = value };
@@ -515,10 +519,10 @@ public partial class Xunit2ResultFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2ParallelOption>))]
 public partial class Xunit2ParallelOption : Enumeration
 {
-    public static Xunit2ParallelOption none = (Xunit2ParallelOption) "none";
-    public static Xunit2ParallelOption collections = (Xunit2ParallelOption) "collections";
-    public static Xunit2ParallelOption assemblies = (Xunit2ParallelOption) "assemblies";
-    public static Xunit2ParallelOption all = (Xunit2ParallelOption) "all";
+    public static readonly Xunit2ParallelOption none = (Xunit2ParallelOption) "none";
+    public static readonly Xunit2ParallelOption collections = (Xunit2ParallelOption) "collections";
+    public static readonly Xunit2ParallelOption assemblies = (Xunit2ParallelOption) "assemblies";
+    public static readonly Xunit2ParallelOption all = (Xunit2ParallelOption) "all";
     public static implicit operator Xunit2ParallelOption(string value)
     {
         return new Xunit2ParallelOption { Value = value };
@@ -533,9 +537,9 @@ public partial class Xunit2ParallelOption : Enumeration
 [TypeConverter(typeof(TypeConverter<Xunit2AppDomainMode>))]
 public partial class Xunit2AppDomainMode : Enumeration
 {
-    public static Xunit2AppDomainMode IfAvailable = (Xunit2AppDomainMode) "IfAvailable";
-    public static Xunit2AppDomainMode Required = (Xunit2AppDomainMode) "Required";
-    public static Xunit2AppDomainMode Denied = (Xunit2AppDomainMode) "Denied";
+    public static readonly Xunit2AppDomainMode IfAvailable = (Xunit2AppDomainMode) "IfAvailable";
+    public static readonly Xunit2AppDomainMode Required = (Xunit2AppDomainMode) "Required";
+    public static readonly Xunit2AppDomainMode Denied = (Xunit2AppDomainMode) "Denied";
     public static implicit operator Xunit2AppDomainMode(string value)
     {
         return new Xunit2AppDomainMode { Value = value };

@@ -16,7 +16,7 @@ partial class ToolOptionsExtensions
     public static T SetProcessLogger<T>(this T o, Action<OutputType, string> v)
         where T : ToolOptions
     {
-        return o.Modify2(b =>
+        return o.Edit(b =>
         {
             b.ProcessLogger = v;
         });
@@ -28,7 +28,7 @@ partial class ToolOptionsExtensions
     public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Action<IProcess> exitHandler)
         where T : ToolOptions
     {
-        return o.Modify2(b =>
+        return o.Edit(b =>
         {
             b.ProcessExitHandler = exitHandler != null
                 ? (_, process) =>
@@ -46,7 +46,7 @@ partial class ToolOptionsExtensions
     public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Func<IProcess, object> exitHandler)
         where T : ToolOptions
     {
-        return o.Modify2(b =>
+        return o.Edit(b =>
         {
             b.ProcessExitHandler = exitHandler != null
                 ? (_, process) => exitHandler.Invoke(process)
@@ -60,7 +60,7 @@ partial class ToolOptionsExtensions
     public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Action<T, IProcess> exitHandler)
         where T : ToolOptions
     {
-        return o.Modify2(b =>
+        return o.Edit(b =>
         {
             b.ProcessExitHandler = exitHandler != null
                 ? (options, process) =>
@@ -78,7 +78,7 @@ partial class ToolOptionsExtensions
     public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Func<T, IProcess, object> exitHandler)
         where T : ToolOptions
     {
-        return o.Modify2(b =>
+        return o.Edit(b =>
         {
             b.ProcessExitHandler = exitHandler != null
                 ? (options, process) => exitHandler.Invoke((T)options, process)

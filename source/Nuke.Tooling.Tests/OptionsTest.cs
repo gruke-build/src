@@ -61,10 +61,10 @@ public class OptionsTest
             x.Get<List<int>>(() => ListValue).Should().Equal(1, 2, 3);
 
             x.AddCollection(() => ListValue, [4, 5]);
-            x.Get<List<int>>(() => ListValue).Should().EndWith(new[] { 4, 5 });
+            x.Get<List<int>>(() => ListValue).Should().EndWith([4, 5]);
 
             x.RemoveCollection(() => ListValue, [2, 4]);
-            x.Get<List<int>>(() => ListValue).Should().NotContain(new[] { 2, 4 });
+            x.Get<List<int>>(() => ListValue).Should().NotContain([2, 4]);
 
             x.ClearCollection(() => ListValue);
             x.Get<List<int>>(() => ListValue).Should().BeEmpty();
@@ -125,7 +125,7 @@ public class OptionsTest
                     y.Set(() => ScalarValue, "scalar-value");
                     y.Set(() => ListValue, new[] { 1, 2, 3 });
                     y.Set(() => DictionaryValue, new Dictionary<string, object> { ["key"] = "value" });
-                    y.Set(() => LookupValue, new LookupTable<string, int> { ["key"] = new[] { 1, 2, 3 } });
+                    y.Set(() => LookupValue, new LookupTable<string, int> { ["key"] = [1, 2, 3] });
                 }));
 
             IOptions nested = x.Get<Options>(() => NestedValue);
@@ -143,7 +143,7 @@ public class OptionsTest
         options.Set(() => ScalarValue, "scalar-value");
         options.Set(() => ListValue, new[] { 1, 2, 3 });
         options.Set(() => DictionaryValue, new Dictionary<string, object> { ["key"] = "value" });
-        options.Set(() => LookupValue, new LookupTable<string, int> { ["key"] = new[] { 1, 2, 3 } });
+        options.Set(() => LookupValue, new LookupTable<string, int> { ["key"] = [1, 2, 3] });
         options.Set(() => NestedValue, options);
 
         return Verifier.Verify(options.ToJson(Options.JsonSerializerSettings));

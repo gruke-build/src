@@ -1,4 +1,4 @@
-﻿// Copyright 2023 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of NUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -7,14 +7,19 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Nuke.Common.Utilities;
-using Nuke.Common.Utilities.Net;
 
 namespace Nuke.Common.CI.GitHubActions;
 
 public partial class GitHubActions
 {
+    /// <summary>
+    /// Will not do anything without a <c>GITHUB_TOKEN</c> environment variable set.
+    /// </summary>
     public async Task CreateComment(int issue, string text)
     {
+        if (_httpClient.Value is null)
+            return;
+
         await _httpClient.Value
             .CreateRequest(HttpMethod.Post, $"repos/{Repository}/issues/{issue}/comments")
             .WithJsonContent(new { body = text })
@@ -23,6 +28,10 @@ public partial class GitHubActions
 
     private JObject GetJobDetails(long runId)
     {
+        // ReSharper disable once UseNullPropagation
+        if (_httpClient.Value is null)
+            return null;
+
         var response = _httpClient.Value
             .CreateRequest(HttpMethod.Get, $"repos/{Repository}/actions/runs/{runId}/jobs")
             .GetResponse()
@@ -35,6 +44,6 @@ public partial class GitHubActions
 
     private long GetJobId()
     {
-        return GetJobDetails(RunId).GetPropertyValue<long>("id");
+        return GetJobDetails(RunId)?.GetPropertyValue<long>("id") ?? long.MinValue;
     }
 }

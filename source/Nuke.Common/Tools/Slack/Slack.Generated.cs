@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Slack/Slack.json
 
 using JetBrains.Annotations;
@@ -585,8 +589,8 @@ public static partial class SlackMessageConfirmationExtensions
 [TypeConverter(typeof(TypeConverter<SlackMessageActionStyle>))]
 public partial class SlackMessageActionStyle : Enumeration
 {
-    public static SlackMessageActionStyle primary = (SlackMessageActionStyle) "primary";
-    public static SlackMessageActionStyle danger = (SlackMessageActionStyle) "danger";
+    public static readonly SlackMessageActionStyle primary = (SlackMessageActionStyle) "primary";
+    public static readonly SlackMessageActionStyle danger = (SlackMessageActionStyle) "danger";
     public static implicit operator SlackMessageActionStyle(string value)
     {
         return new SlackMessageActionStyle { Value = value };

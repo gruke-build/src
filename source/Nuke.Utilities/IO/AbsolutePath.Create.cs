@@ -34,6 +34,16 @@ public static partial class AbsolutePathExtensions
     }
 
     /// <summary>
+    /// Cleans the directory.
+    /// </summary>
+    public static AbsolutePath CleanDirectory(this AbsolutePath path)
+    {
+        path.DeleteDirectory();
+
+        return path;
+    }
+
+    /// <summary>
     /// Creates (touches) the file. Similar to the UNIX command, the last-write time is updated.
     /// </summary>
     public static AbsolutePath TouchFile(this AbsolutePath path, DateTime? time = null, bool createDirectories = true)
@@ -42,7 +52,7 @@ public static partial class AbsolutePathExtensions
             path.Parent.CreateDirectory();
 
         if (!File.Exists(path))
-            File.WriteAllBytes(path, new byte[0]);
+            File.WriteAllBytes(path, []);
 
         File.SetLastWriteTime(path, time ?? DateTime.Now);
 

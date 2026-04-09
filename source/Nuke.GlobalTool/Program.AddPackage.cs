@@ -24,7 +24,6 @@ partial class Program
     {
         PrintInfo();
         Logging.Configure();
-        Telemetry.AddPackage();
         ProjectModelTasks.Initialize();
 
         var packageId = args.ElementAt(0);

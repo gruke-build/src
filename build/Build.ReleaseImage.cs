@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Nuke.Common.Tooling;
 using Nuke.Common.Utilities.Collections;
 using Serilog;
 using SixLabors.Fonts;
@@ -20,15 +19,11 @@ using static Nuke.Common.IO.HttpTasks;
 
 partial class Build
 {
-    [LatestGitHubRelease("JetBrains/JetBrainsMono")]
-    readonly string JetBrainsMonoVersion;
-
-    string[] FontDownloadUrls =>
-        new[]
-        {
-            "https://github.com/googlefonts/roboto/releases/latest/download/roboto-unhinted.zip",
-            $"https://github.com/JetBrains/JetBrainsMono/releases/download/v{JetBrainsMonoVersion}/JetBrainsMono-{JetBrainsMonoVersion}.zip"
-        };
+    readonly string[] FontDownloadUrls =
+    [
+        "https://github.com/googlefonts/roboto/releases/latest/download/roboto-unhinted.zip",
+        "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+    ];
 
     AbsolutePath FontDirectory => TemporaryDirectory / "fonts";
     IReadOnlyCollection<AbsolutePath> FontArchives => FontDirectory.GlobFiles("*.*");
@@ -38,7 +33,7 @@ partial class Build
     Target InstallFonts => _ => _
         .Executes(() =>
         {
-            FontDownloadUrls.ForEach(x => HttpDownloadFile(x, FontDirectory / new Uri(x).Segments.Last()));
+            FontDownloadUrls.ForEach(x => HttpDownloadFileLogged(x, FontDirectory / new Uri(x).Segments.Last()));
             FontArchives.ForEach(x => x.UncompressTo(FontDirectory / x.NameWithoutExtension));
 
             FontFiles.ForEach(x =>
@@ -75,12 +70,8 @@ partial class Build
 
             var headerText = "New Release".ToUpperInvariant();
             var headerRect = TextMeasurer.MeasureBounds(headerText, headerTextOptions);
-            var gradientBrush = new LinearGradientBrush(
-                new PointF(headerRect.Left, headerRect.Top),
-                new PointF(headerRect.Right, headerRect.Bottom),
-                GradientRepetitionMode.Repeat,
-                GetRainbowGradientStops().ToArray()
-            );
+            var gradientBrush = headerRect.CreateLinearGradientBrush(ColorStop.CreateEquidistant(_gradients.Random()), 
+                gradientMode: GradientRepetitionMode.Repeat);
 
             image.Mutate(x => x
                 .BackgroundColor(color: Color.FromRgb(r: 25, g: 25, b: 25))
@@ -103,24 +94,18 @@ partial class Build
             image.SaveAsPng(fileStream);
         });
 
-    private IEnumerable<ColorStop> GetRainbowGradientStops()
-    {
-        yield return createStop(ratio: 0.166666667f, color: 0xFE0000);
-        yield return createStop(ratio: 0.333333334f, color: 0xFE8D00);
-        yield return createStop(ratio: 0.500000001f, color: 0xFFEE00);
-        yield return createStop(ratio: 0.666666668f, color: 0x018114);
-        yield return createStop(ratio: 0.833333335f, color: 0x014CFF);
-        yield return createStop(ratio: 1f, color: 0x8A018C);
-
-        yield break;
-
-        static ColorStop createStop(float ratio, uint color)
-        {
-            var red = (byte)((color >> 16) & 255);
-            var green = (byte)((color >> 8) & 255);
-            var blue = (byte)(color & 255);
-
-            return new ColorStop(ratio, new Color(new Rgb24(red, green, blue)));
-        }
-    }
+    private static readonly uint[][] _gradients = [
+        [
+            0xD72C00u, 0xF07527u, 0xFF9A56u, 0xFFFFFFu, 0xD162A4u, 0xB75592u, 0xA50162u
+        ],
+        [
+            0xFE0000u, 0xFE8D00u, 0xFFEE00u, 0x018114u, 0x014CFFu, 0x8A018Cu
+        ],
+        [
+            0x55C5EBu, 0xE49DADu, 0xE4E4E4u, 0xE49DADu, 0x55C5EBu
+        ],
+        [
+            0xD6006Fu, 0x724E94u, 0x0038A7u
+        ]
+    ];
 }

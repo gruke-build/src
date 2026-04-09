@@ -14,7 +14,7 @@ namespace Nuke.Common.Tools.MSBuild;
 
 public static class MSBuildToolPathResolver
 {
-    private static readonly MSBuildPlatform[] s_platforms = { MSBuildPlatform.x86, MSBuildPlatform.x64 };
+    private static readonly MSBuildPlatform[] s_platforms = [MSBuildPlatform.x86, MSBuildPlatform.x64];
 
     public static string Resolve(MSBuildVersion? msBuildVersion = null, MSBuildPlatform? msBuildPlatform = null)
     {

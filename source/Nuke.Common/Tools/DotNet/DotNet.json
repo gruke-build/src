@@ -58,6 +58,13 @@
             "help": "Configuration under which to build. The default value is <c>Debug</c>, but your project's configuration could override this default SDK setting."
           },
           {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
+          },
+          {
             "name": "DataCollector",
             "type": "string",
             "format": "--collect {value}",
@@ -226,6 +233,7 @@
             "name": "DisableBuildServers",
             "type": "bool",
             "format": "--disable-build-servers",
+            "oneWayFlag": true,
             "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
           },
           {
@@ -343,6 +351,13 @@
             "help": "The NuGet configuration file (<em>NuGet.config</em>) to use for the restore operation."
           },
           {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
+          },
+          {
             "name": "Verbosity",
             "type": "DotNetVerbosity",
             "format": "--verbosity {value}",
@@ -374,6 +389,13 @@
             "type": "string",
             "format": "--configuration {value}",
             "help": "Configuration to use when building the project. If not specified, configuration defaults to <c>Debug</c>."
+          },
+          {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
           },
           {
             "name": "IncludeSource",
@@ -460,6 +482,13 @@
             "type": "string",
             "format": "--configuration {value}",
             "help": "Defines the build configuration. If omitted, the build configuration defaults to <c>Debug</c>. Use <c>Release</c> build a Release configuration."
+          },
+          {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
           },
           {
             "name": "Framework",
@@ -562,6 +591,13 @@
             "type": "bool",
             "format": "/detailedsummary",
             "help": "Show detailed information at the end of the build log about the configurations that were built and how they were scheduled to nodes."
+          },
+          {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
           },
           {
             "name": "MaxCpuCount",
@@ -799,6 +835,13 @@
             "help": "Defines the build configuration. The default value is <c>Debug</c>. This option is only required when cleaning if you specified it during build time."
           },
           {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
+          },
+          {
             "name": "Framework",
             "type": "string",
             "format": "--framework {value}",
@@ -935,6 +978,13 @@
             "type": "string",
             "format": "--configuration {value}",
             "help": "Defines the build configuration. The default value is <c>Debug</c>."
+          },
+          {
+            "name": "DisableBuildServers",
+            "type": "bool",
+            "format": "--disable-build-servers",
+            "oneWayFlag": true,
+            "help": "Force the command to ignore any persistent build servers. This option provides a consistent way to disable all use of build caching, which forces a build from scratch. A build that doesn't rely on caches is useful when the caches might be corrupted or incorrect for some reason. Available since .NET 7 SDK."
           },
           {
             "name": "Framework",
@@ -2161,6 +2211,45 @@
     ]
   },
   "enumerations": [
+    {
+      "name": "DotNetRuntimeIdentifier",
+      "values": [
+        "win-x64",
+        "win-x86",
+        "win-arm",
+        "win-arm64",
+        "win7-x64",
+        "win7-x86",
+        "win81-x64",
+        "win81-x86",
+        "win81-arm",
+        "win10-x64",
+        "win10-x86",
+        "win10-arm",
+        "win10-arm64",
+        "linux-x64",
+        "linux-musl-x64",
+        "linux-arm",
+        "linux-arm64",
+        "rhel-x64",
+        "rhel.6-x64",
+        "tizen",
+        "tizen.4.0.0",
+        "tizen.5.0.0",
+        "osx-arm64",
+        "osx-x64",
+        "osx.10.10-x64",
+        "osx.10.11-x64",
+        "osx.10.12-x64",
+        "osx.10.13-x64",
+        "osx.10.14-x64",
+        "osx.10.15-x64",
+        "osx.11.0-x64",
+        "osx.11.0-arm64",
+        "osx.12-x64",
+        "osx.12-arm64"
+      ]
+    },
     {
       "name": "DotNetVerbosity",
       "values": [

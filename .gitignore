@@ -1,5 +1,7 @@
 external
 nuke-global.*
+.nuke/forgejo-openapi-spec.json
+build/scratchpad.cs
 
 # docfx output
 docs/apimeta
@@ -48,7 +50,7 @@ x64/
 .*crunch*.local.xml
 
 # NuGet Packages Directory
-packages
+/packages/
 
 # IDEs
 .idea

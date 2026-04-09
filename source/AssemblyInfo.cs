@@ -19,6 +19,9 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Nuke.Tooling.Tests")]
 [assembly: InternalsVisibleTo("Nuke.Utilities.IO.Globbing")]
 [assembly: InternalsVisibleTo("Nuke.Utilities.Tests")]
+[assembly: InternalsVisibleTo("Nuke.Components.Forgejo")]
+[assembly: InternalsVisibleTo("Nuke.Components.GitLab")]
+[assembly: InternalsVisibleTo("_build")]
 
 // Extensions
 [assembly: InternalsVisibleTo("Nuke.VisualStudio")]

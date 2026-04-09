@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
@@ -13,7 +12,6 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
-using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;
@@ -32,7 +30,11 @@ public interface ICompile : IRestore, IHazConfiguration
                 .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
                     .AddPair("Version", o.Versioning.SemVer))
                 .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
-                    .AddPair("Version", o.Versioning.NuGetPackageVersion)));
+                    .AddPair("Version", o.Versioning.NuGetPackageVersion))
+                .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.SemVer))
+                .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+                    .AddPair("Version", o.Versioning.SemVer)));
 
             DotNetBuild(_ => _
                 .Apply(CompileSettingsBase)
@@ -48,6 +50,7 @@ public interface ICompile : IRestore, IHazConfiguration
         });
 
     sealed Configure<DotNetBuildSettings> CompileSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProjectFile(Solution)
         .SetConfiguration(Configuration)
         .When(IsServerBuild, _ => _
@@ -63,12 +66,21 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
             .SetInformationalVersion(o.Versioning.AssemblyInformationalVersion));
 
     sealed Configure<DotNetPublishSettings> PublishSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetConfiguration(Configuration)
         .EnableNoBuild()
         .EnableNoLogo()
@@ -81,6 +93,14 @@ public interface ICompile : IRestore, IHazConfiguration
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
         .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
+            .SetAssemblyVersion(o.Versioning.AssemblySemVer)
+            .SetFileVersion(o.Versioning.AssemblySemFileVer)
+            .SetInformationalVersion(o.Versioning.InformationalVersion))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))

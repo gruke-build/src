@@ -5,7 +5,7 @@
 using System;
 using System.Threading;
 
-namespace Nuke.Build.Utilities;
+namespace Nuke.Common.Utilities;
 
 public class ConsoleKeyReader : IDisposable
 {

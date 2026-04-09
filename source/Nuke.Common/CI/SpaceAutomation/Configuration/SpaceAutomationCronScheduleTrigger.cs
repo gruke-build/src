@@ -10,6 +10,7 @@ using Nuke.Common.Utilities;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public class SpaceAutomationCronScheduleTrigger : SpaceAutomationTrigger
 {
     public string CronExpression { get; set; }

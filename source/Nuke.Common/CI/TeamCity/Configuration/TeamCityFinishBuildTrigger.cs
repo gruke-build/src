@@ -16,7 +16,7 @@ public class TeamCityFinishBuildTrigger : TeamCityTrigger
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("finishBuildTrigger"))
+        using (writer.WriteKotlinLambda("finishBuildTrigger"))
         {
             writer.WriteLine($"buildType = {$"${{{BuildType.Id}.id}}".DoubleQuote()}");
         }

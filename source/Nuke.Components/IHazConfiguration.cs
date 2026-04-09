@@ -12,6 +12,6 @@ namespace Nuke.Components;
 [PublicAPI]
 public interface IHazConfiguration : INukeBuild
 {
-    [Parameter] Configuration Configuration => TryGetValue(() => Configuration) ??
+    [Parameter(description: "The release configuration to use.")] Configuration Configuration => TryGetValue(() => Configuration) ??
                                                (IsLocalBuild ? Configuration.Debug : Configuration.Release);
 }

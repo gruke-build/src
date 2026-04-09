@@ -56,8 +56,8 @@ public interface ISignPackages : INukeBuild
         string ProjectSlug,
         string PolicySlug);
 
-    [Parameter] SignPathSettings Settings => TryGetValue(() => Settings);
-    [Parameter] [Secret] string ApiToken => TryGetValue(() => ApiToken);
+    [Parameter("SignPath settings")] SignPathSettings Settings => TryGetValue(() => Settings);
+    [Parameter("SignPath API token")] [Secret] string ApiToken => TryGetValue(() => ApiToken);
 
     AbsolutePath SignPathTemporaryDirectory => TemporaryDirectory / "signpath";
     AbsolutePath SignPathRequestDirectory => SignPathTemporaryDirectory / "signing-request";

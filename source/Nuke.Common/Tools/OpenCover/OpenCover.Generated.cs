@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/OpenCover/OpenCover.json
 
 using JetBrains.Annotations;
@@ -29,7 +33,7 @@ public partial class OpenCoverTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p><p>For more details, visit the <a href="https://github.com/OpenCover/opencover">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> OpenCover(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new OpenCoverTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p><p>For more details, visit the <a href="https://github.com/OpenCover/opencover">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-coverbytest</c> via <see cref="OpenCoverSettings.CoverByTests"/></li><li><c>-enableperformancecounters</c> via <see cref="OpenCoverSettings.PerformanceCounters"/></li><li><c>-excludebyattribute</c> via <see cref="OpenCoverSettings.ExcludeByAttributes"/></li><li><c>-excludebyfile</c> via <see cref="OpenCoverSettings.ExcludeByFile"/></li><li><c>-excludedirs</c> via <see cref="OpenCoverSettings.ExcludeDirectories"/></li><li><c>-filter</c> via <see cref="OpenCoverSettings.Filters"/></li><li><c>-hideskipped</c> via <see cref="OpenCoverSettings.HideSkippedKinds"/></li><li><c>-log</c> via <see cref="OpenCoverSettings.Verbosity"/></li><li><c>-mergebyhash</c> via <see cref="OpenCoverSettings.MergeByHash"/></li><li><c>-mergeoutput</c> via <see cref="OpenCoverSettings.MergeOutput"/></li><li><c>-nodefaultfilters</c> via <see cref="OpenCoverSettings.NoDefaultFilters"/></li><li><c>-oldStyle</c> via <see cref="OpenCoverSettings.OldStyle"/></li><li><c>-output</c> via <see cref="OpenCoverSettings.Output"/></li><li><c>-register</c> via <see cref="OpenCoverSettings.Registration"/></li><li><c>-returntargetcode</c> via <see cref="OpenCoverSettings.TargetExitCodeOffset"/></li><li><c>-safemode</c> via <see cref="OpenCoverSettings.SafeMode"/></li><li><c>-searchdirs</c> via <see cref="OpenCoverSettings.SearchDirectories"/></li><li><c>-service</c> via <see cref="OpenCoverSettings.Service"/></li><li><c>-showunvisited</c> via <see cref="OpenCoverSettings.ShowUnvisited"/></li><li><c>-skipautoprops</c> via <see cref="OpenCoverSettings.SkipAutoProperties"/></li><li><c>-target</c> via <see cref="OpenCoverSettings.TargetPath"/></li><li><c>-targetargs</c> via <see cref="OpenCoverSettings.TargetArguments"/></li><li><c>-targetdir</c> via <see cref="OpenCoverSettings.TargetDirectory"/></li><li><c>-threshold</c> via <see cref="OpenCoverSettings.MaximumVisitCount"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-coverbytest</c> via <see cref="OpenCoverSettings.CoverByTests"/></li><li><c>-enableperformancecounters</c> via <see cref="OpenCoverSettings.PerformanceCounters"/></li><li><c>-excludebyattribute</c> via <see cref="OpenCoverSettings.ExcludeByAttributes"/></li><li><c>-excludebyfile</c> via <see cref="OpenCoverSettings.ExcludeByFile"/></li><li><c>-excludedirs</c> via <see cref="OpenCoverSettings.ExcludeDirectories"/></li><li><c>-filter</c> via <see cref="OpenCoverSettings.Filters"/></li><li><c>-hideskipped</c> via <see cref="OpenCoverSettings.HideSkippedKinds"/></li><li><c>-log</c> via <see cref="OpenCoverSettings.Verbosity"/></li><li><c>-mergebyhash</c> via <see cref="OpenCoverSettings.MergeByHash"/></li><li><c>-mergeoutput</c> via <see cref="OpenCoverSettings.MergeOutput"/></li><li><c>-nodefaultfilters</c> via <see cref="OpenCoverSettings.NoDefaultFilters"/></li><li><c>-oldStyle</c> via <see cref="OpenCoverSettings.OldStyle"/></li><li><c>-output</c> via <see cref="OpenCoverSettings.Output"/></li><li><c>-register</c> via <see cref="OpenCoverSettings.Registration"/></li><li><c>-returntargetcode</c> via <see cref="OpenCoverSettings.TargetExitCodeOffset"/></li><li><c>-safemode</c> via <see cref="OpenCoverSettings.SafeMode"/></li><li><c>-searchdirs</c> via <see cref="OpenCoverSettings.SearchDirectories"/></li><li><c>-service</c> via <see cref="OpenCoverSettings.Service"/></li><li><c>-showunvisited</c> via <see cref="OpenCoverSettings.ShowUnvisited"/></li><li><c>-skipautoprops</c> via <see cref="OpenCoverSettings.SkipAutoProperties"/></li><li><c>-target</c> via <see cref="OpenCoverSettings.TargetPath"/></li><li><c>-targetargs</c> via <see cref="OpenCoverSettings.TargetArguments"/></li><li><c>-targetdir</c> via <see cref="OpenCoverSettings.TargetDirectory"/></li><li><c>-threshold</c> via <see cref="OpenCoverSettings.MaximumVisitCount"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> OpenCover(OpenCoverSettings options = null) => new OpenCoverTasks().Run<OpenCoverSettings>(options);
     /// <inheritdoc cref="OpenCoverTasks.OpenCover(Nuke.Common.Tools.OpenCover.OpenCoverSettings)"/>
     public static IReadOnlyCollection<Output> OpenCover(Configure<OpenCoverSettings> configurator) => new OpenCoverTasks().Run<OpenCoverSettings>(configurator.Invoke(new OpenCoverSettings()));
@@ -487,14 +491,14 @@ public static partial class OpenCoverSettingsExtensions
 [TypeConverter(typeof(TypeConverter<OpenCoverVerbosity>))]
 public partial class OpenCoverVerbosity : Enumeration
 {
-    public static OpenCoverVerbosity Off = (OpenCoverVerbosity) "Off";
-    public static OpenCoverVerbosity Fatal = (OpenCoverVerbosity) "Fatal";
-    public static OpenCoverVerbosity Error = (OpenCoverVerbosity) "Error";
-    public static OpenCoverVerbosity Warn = (OpenCoverVerbosity) "Warn";
-    public static OpenCoverVerbosity Info = (OpenCoverVerbosity) "Info";
-    public static OpenCoverVerbosity Debug = (OpenCoverVerbosity) "Debug";
-    public static OpenCoverVerbosity Verbose = (OpenCoverVerbosity) "Verbose";
-    public static OpenCoverVerbosity All = (OpenCoverVerbosity) "All";
+    public static readonly OpenCoverVerbosity Off = (OpenCoverVerbosity) "Off";
+    public static readonly OpenCoverVerbosity Fatal = (OpenCoverVerbosity) "Fatal";
+    public static readonly OpenCoverVerbosity Error = (OpenCoverVerbosity) "Error";
+    public static readonly OpenCoverVerbosity Warn = (OpenCoverVerbosity) "Warn";
+    public static readonly OpenCoverVerbosity Info = (OpenCoverVerbosity) "Info";
+    public static readonly OpenCoverVerbosity Debug = (OpenCoverVerbosity) "Debug";
+    public static readonly OpenCoverVerbosity Verbose = (OpenCoverVerbosity) "Verbose";
+    public static readonly OpenCoverVerbosity All = (OpenCoverVerbosity) "All";
     public static implicit operator OpenCoverVerbosity(string value)
     {
         return new OpenCoverVerbosity { Value = value };
@@ -509,10 +513,10 @@ public partial class OpenCoverVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<OpenCoverSkipping>))]
 public partial class OpenCoverSkipping : Enumeration
 {
-    public static OpenCoverSkipping File = (OpenCoverSkipping) "File";
-    public static OpenCoverSkipping Filter = (OpenCoverSkipping) "Filter";
-    public static OpenCoverSkipping Attribute = (OpenCoverSkipping) "Attribute";
-    public static OpenCoverSkipping MissingPdb = (OpenCoverSkipping) "MissingPdb";
+    public static readonly OpenCoverSkipping File = (OpenCoverSkipping) "File";
+    public static readonly OpenCoverSkipping Filter = (OpenCoverSkipping) "Filter";
+    public static readonly OpenCoverSkipping Attribute = (OpenCoverSkipping) "Attribute";
+    public static readonly OpenCoverSkipping MissingPdb = (OpenCoverSkipping) "MissingPdb";
     public static implicit operator OpenCoverSkipping(string value)
     {
         return new OpenCoverSkipping { Value = value };
@@ -527,9 +531,9 @@ public partial class OpenCoverSkipping : Enumeration
 [TypeConverter(typeof(TypeConverter<RegistrationType>))]
 public partial class RegistrationType : Enumeration
 {
-    public static RegistrationType User = (RegistrationType) "User";
-    public static RegistrationType Path32 = (RegistrationType) "Path32";
-    public static RegistrationType Path64 = (RegistrationType) "Path64";
+    public static readonly RegistrationType User = (RegistrationType) "User";
+    public static readonly RegistrationType Path32 = (RegistrationType) "Path32";
+    public static readonly RegistrationType Path64 = (RegistrationType) "Path64";
     public static implicit operator RegistrationType(string value)
     {
         return new RegistrationType { Value = value };

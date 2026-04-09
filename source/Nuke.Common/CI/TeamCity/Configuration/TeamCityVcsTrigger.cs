@@ -17,7 +17,7 @@ public class TeamCityVcsTrigger : TeamCityTrigger
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("vcs"))
+        using (writer.WriteKotlinLambda("vcs"))
         {
             writer.WriteArray("branchFilter", BranchFilters);
             writer.WriteArray("triggerRules", TriggerRules);

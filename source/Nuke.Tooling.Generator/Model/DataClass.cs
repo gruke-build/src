@@ -40,7 +40,7 @@ public class DataClass : IDeprecatable
     public bool OmitDataClass { get; set; }
 
     [Description("Properties of the data class.")]
-    public List<Property> Properties { get; set; } = new();
+    public List<Property> Properties { get; set; } = [];
 
     [Description("Obsolete message. DataClass is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }

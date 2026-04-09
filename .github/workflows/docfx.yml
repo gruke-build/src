@@ -9,6 +9,8 @@ on:
     paths:
       - 'docs/**'
       - 'source/**'
+      - 'README.md'
+      - "build/Build.DocFX.cs"
   workflow_dispatch:
     inputs: {}
 jobs:
@@ -16,18 +18,20 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5    
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v5
+    - uses: actions/checkout@v6
       with:
-        dotnet-version: 10.0.x
+        fetch-depth: 0
 
-    - name: Setup DocFX
-      run: dotnet tool install -g docfx --version 2.78.5
+    - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+      uses: actions/cache@v5
+      with:
+        path: |
+          .nuke/temp
+          ~/.nuget/packages
+        key: docfx-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
 
-    - name: Build GRUKE docs
-      run: docfx docs/docfx.json
+    - name: 'Run: DocFX'
+      run: ./build.cmd DocFX
 
     - name: Push to the Docs Repo
       uses: cpina/github-action-push-to-another-repository@main
@@ -36,8 +40,8 @@ jobs:
       with:
         source-directory: 'docs/generated'
         destination-github-username: 'gruke-build'
-        destination-repository-name: 'src'
+        destination-repository-name: 'docs'
         user-name: "GitHub Actions on behalf of GreemDev"
         user-email: greemdev@ryujinx.app
-        target-branch: gh-pages
-        create-target-branch-if-needed: true
+        target-branch: docfx
+        target-directory: docs

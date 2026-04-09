@@ -26,25 +26,25 @@ public class ExecutableTarget
     public string Description { get; set; }
     public bool Listed { get; set; }
     public Delegate Factory { get; set; }
-    public List<(string Text, Func<bool> Delegate)> DynamicConditions { get; internal set; } = new();
-    public List<(string Text, Func<bool> Delegate)> StaticConditions { get; internal set; } = new();
+    public List<(string Text, Func<bool> Delegate)> DynamicConditions { get; internal set; } = [];
+    public List<(string Text, Func<bool> Delegate)> StaticConditions { get; internal set; } = [];
     public DependencyBehavior DependencyBehavior { get; internal set; }
     public bool AssuredAfterFailure { get; internal set; }
     public bool ProceedAfterFailure { get; internal set; }
-    public List<LambdaExpression> DelegateRequirements { get; internal set; } = new();
-    public List<ToolRequirement> ToolRequirements { get; internal set; } = new();
-    public List<Action> Actions { get; internal set; } = new();
+    public List<LambdaExpression> DelegateRequirements { get; internal set; } = [];
+    public List<ToolRequirement> ToolRequirements { get; internal set; } = [];
+    public List<Action> Actions { get; internal set; } = [];
 
-    public List<ExecutableTarget> ExecutionDependencies { get; } = new();
-    public List<ExecutableTarget> OrderDependencies { get; } = new();
-    public List<ExecutableTarget> TriggerDependencies { get; } = new();
-    public List<ExecutableTarget> Triggers { get; } = new();
+    public List<ExecutableTarget> ExecutionDependencies { get; } = [];
+    public List<ExecutableTarget> OrderDependencies { get; } = [];
+    public List<ExecutableTarget> TriggerDependencies { get; } = [];
+    public List<ExecutableTarget> Triggers { get; } = [];
 
     public IReadOnlyCollection<ExecutableTarget> AllDependencies
         => ExecutionDependencies.Concat(OrderDependencies).Concat(TriggerDependencies).ToList();
 
     public LookupTable<ExecutableTarget, string> ArtifactDependencies { get; internal set; } = new();
-    public List<string> ArtifactProducts { get; internal set; } = new();
+    public List<string> ArtifactProducts { get; internal set; } = [];
 
     public int? PartitionSize { get; set; }
 

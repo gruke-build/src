@@ -205,6 +205,6 @@ internal static class BuildExecutor
 
     private static void AppendToBuildAttemptFile(string value)
     {
-        File.AppendAllLines(BuildAttemptFile, new[] { value });
+        File.AppendAllLines(BuildAttemptFile, [value]);
     }
 }

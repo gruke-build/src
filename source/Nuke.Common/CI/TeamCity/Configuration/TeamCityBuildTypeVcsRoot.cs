@@ -18,7 +18,7 @@ public class TeamCityBuildTypeVcsRoot : ConfigurationEntity
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("vcs"))
+        using (writer.WriteKotlinLambda("vcs"))
         {
             writer.WriteLine($"root({Root.Id})");
             if (CleanCheckoutDirectory)

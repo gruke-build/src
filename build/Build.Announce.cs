@@ -4,15 +4,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Discord;
 using Discord.Webhook;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Git;
-using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 using Nuke.Components;
 using static Nuke.Common.Tools.Git.GitTasks;
@@ -23,7 +22,7 @@ partial class Build
         .DependsOn(ReleaseImage)
         .WhenSkipped(DependencyBehavior.Skip)
         .TriggeredBy<IPublish>()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch());
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is GitHubActions);
 
     IEnumerable<string> ChangelogSectionNotes => ChangelogTasks.ExtractChangelogSectionNotes(From<IHazChangelog>().ChangelogFile);
 
@@ -39,7 +38,7 @@ partial class Build
             (_, _, _) => "https://em-content.zobj.net/thumbs/320/apple/325/package_1f4e6.png"
         };
 
-    string AnnouncementComparisonUrl => GitRepository.GetGitHubCompareTagsUrl(MajorMinorPatchVersion, $"{MajorMinorPatchVersion}^");
+    string AnnouncementComparisonUrl => GitRepository.GitHub.GetCompareTagsUrl(MajorMinorPatchVersion, $"{MajorMinorPatchVersion}^");
 
     string AnnouncementReleaseNotes =>
         new StringBuilder()
@@ -65,10 +64,10 @@ partial class Build
     }
 
     // Server settings | Apps | Integrations | Webhooks | NUKE
-    [Parameter] [Secret] readonly string DiscordWebhook;
+    [Parameter("the Discord webhook that should receive release notification embeds")] [Secret] readonly string DiscordWebhook;
 
     // either null, 'everyone'/'@everyone' or a role ID
-    [Parameter] readonly string AnnouncementPing;
+    [Parameter("a role ID or @everyone")] readonly string AnnouncementPing;
 
     Target AnnounceDiscord => _ => _
         .TriggeredBy(Announce)

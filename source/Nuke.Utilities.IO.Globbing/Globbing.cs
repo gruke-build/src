@@ -59,6 +59,6 @@ public static class Globbing
     {
         var directory = definition.DescendantsAndSelf(x => x.Parent).FirstOrDefault(x => !x.ToString().ContainsOrdinalIgnoreCase("*"));
         var pattern = definition.ToString().TrimStart(directory).TrimStart(PathConstruction.AllSeparators);
-        return (directory, new[] { pattern });
+        return (directory, [pattern]);
     }
 }

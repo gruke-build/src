@@ -46,7 +46,7 @@ internal class AbsolutePathRewriter : SafeSyntaxRewriter
         var str = node.ToString();
         var index = str.IndexOf('*');
         if (index == -1)
-            return CreateAbsolutePathExpression(new[] { SyntaxFactory.ParseExpression(str.Replace("/", "\" / $\"")) });
+            return CreateAbsolutePathExpression([SyntaxFactory.ParseExpression(str.Replace("/", "\" / $\""))]);
 
         var lastPathSeparatorIndex = str[..index].LastIndexOf('/');
         if (lastPathSeparatorIndex < 0)
@@ -60,7 +60,7 @@ internal class AbsolutePathRewriter : SafeSyntaxRewriter
                     SyntaxKind.SimpleMemberAccessExpression,
                     node.Contents.First() is InterpolationSyntax
                         ? SyntaxFactory.ParseExpression(absolutePart)
-                        : SyntaxFactory.ParenthesizedExpression(CreateAbsolutePathExpression(new[] { SyntaxFactory.ParseExpression(absolutePart) })),
+                        : SyntaxFactory.ParenthesizedExpression(CreateAbsolutePathExpression([SyntaxFactory.ParseExpression(absolutePart)])),
                     SyntaxFactory.IdentifierName(GetGlobbingMethod(node, wildcardPart.Split("/")))))
             .WithArguments(wildcardPart.TrimMatchingDoubleQuotes().ToLiteralExpression());
 

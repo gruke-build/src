@@ -1,0 +1,375 @@
+{
+  "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
+  "references": [
+    "https://learn.microsoft.com/en-gb/openapi/kiota/using"
+  ],
+  "name": "Kiota",
+  "officialUrl": "https://learn.microsoft.com/en-gb/openapi/kiota/",
+  "help": "Kiota is a command line tool for generating an API client to call any OpenAPI-described API you're interested in. The goal is to eliminate the need to take a dependency on a different API client library for every API that you need to call. Kiota API clients provide a strongly typed experience with all the features you expect from a high quality API SDK, but without having to learn a new library for every HTTP API.",
+  "nugetPackageId": "Microsoft.OpenApi.Kiota",
+  "packageExecutable": "kiota.dll",
+  "tasks": [
+    {
+      "help": "Search for APIs and their description from various registries.",
+      "postfix": "Search",
+      "commonPropertySets": [
+        "log_level",
+        "version",
+        "clear_cache"
+      ],
+      "definiteArgument": "search",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "SearchTerm",
+            "type": "string",
+            "format": "{value}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "help": "Download an API description.",
+      "postfix": "Download",
+      "commonPropertySets": [
+        "log_level",
+        "version",
+        "clear_cache",
+        "clean_output",
+        "output",
+        "disable_ssl_validation"
+      ],
+      "definiteArgument": "download",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "SearchTerm",
+            "type": "string",
+            "format": "{value}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "help": "Show the API paths tree for an API description.",
+      "postfix": "Show",
+      "commonPropertySets": [
+        "openapi",
+        "log_level",
+        "version",
+        "search_key",
+        "clear_cache",
+        "clean_output",
+        "output",
+        "disable_ssl_validation",
+        "include_path",
+        "exclude_path"
+      ],
+      "definiteArgument": "show",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "MaxDepth",
+            "type": "int",
+            "format": "--max-depth {value}"
+          }
+        ]
+      }
+    },
+    {
+      "help": "Generate a client for any API from its description.",
+      "postfix": "Generate",
+      "commonPropertySets": [
+        "openapi",
+        "language",
+        "log_level",
+        "version",
+        "clear_cache",
+        "clean_output",
+        "output",
+        "disable_ssl_validation",
+        "include_path",
+        "exclude_path"
+      ],
+      "definiteArgument": "generate",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "ClassName",
+            "type": "string",
+            "format": "--class-name {value}",
+            "help": "The class name to use for the core client class. Defaults to <c>ApiClient</c>. The provided name MUST be a valid class name for the target language."
+          },
+          {
+            "name": "NamespaceName",
+            "type": "string",
+            "format": "--namespace-name {value}",
+            "help": "The namespace to use for the core client class specified with the <c>--class-name</c> option. Defaults to <c>ApiSdk</c>. The provided name MUST be a valid module or namespace name for the target language."
+          },
+          {
+            "name": "BackingStore",
+            "type": "bool",
+            "format": "--backing-store"
+          },
+          {
+            "name": "DeserializerClasses",
+            "type": "List<string>",
+            "format": "--deserializer {value}",
+            "help": "The fully qualified class names for deserializers.<br/><br/>These values are used in the client class to initialize the deserialization providers.<br/><br/>Since version 1.11 this parameter also supports a none key to generate a client with no deserialization providers in order to enable better portability. Defaults visible on Microsoft documentation."
+          },
+          {
+            "name": "SerializerClasses",
+            "type": "List<string>",
+            "format": "--serializer {value}",
+            "help": "The fully qualified class names for serializers.<br/><br/>These values are used in the client class to initialize the serialization providers.<br/><br/>Since version 1.11 this parameter also supports a none key to generate a client with no serialization providers in order to enable better portability. Defaults visible on Microsoft documentation."
+          },
+          {
+            "name": "StructuredMimeTypes",
+            "type": "List<string>",
+            "format": "--structured-mime-types {value}",
+            "help": "The MIME types to use for structured data model generation with their preference weight. Any type without a preference has its preference defaulted to 1. Accepts multiple values. The notation style and the preference weight logic follow the convention <a href=\"https://www.rfc-editor.org/rfc/rfc9110.html#name-accept\">defined in RFC9110</a>. Default values: <c>application/json;q=1</c>, <c>application/x-www-form-urlencoded;q=0.2</c>, <c>multipart/form-data;q=0.1</c>, <c>text/plain;q=0.9</c>"
+          },
+          {
+            "name": "TypeAccessModifier",
+            "type": "KiotaAccessModifier",
+            "format": "--type-access-modifier {value}",
+            "help": "Controls the accessibility level for generated client types.<br/><br/>This can be useful to reduce the scope of visibility in library scenarios where you do not want to expose the generated types to consuming projects."
+          },
+          {
+            "name": "AdditionalData",
+            "type": "bool",
+            "format": "--additional-data",
+            "help": "Include the 'AdditionalData' property for generated models. Defaults to <c>true</c>."
+          },
+          {
+            "name": "ExcludeBackwardsCompatible",
+            "type": "bool",
+            "format": "--exclude-backward-compatible",
+            "help": "Whether to exclude the code generated only for backward compatibility reasons or not. Defaults to false.<br/><br/>To maintain compatibility with applications that depends on generated clients, Kiota emits extra code marked as obsolete. New clients don't need this extra backward compatible code. The code marked as obsolete will be removed in the next major version of Kiota. Use this option to omit emitting the backward compatible code when generating a new client, or when the application using the existing client being refreshed doesn't depend on backward compatible code."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Update existing clients from previous generations. This command searches for lock files in the output directory and all its subdirectories and triggers generations to refresh the existing clients using settings from the lock files.",
+      "postfix": "Update",
+      "commonPropertySets": [
+        "log_level",
+        "clear_cache",
+        "clean_output",
+        "output"
+      ],
+      "definiteArgument": "update",
+      "settingsClass": {}
+    },
+    {
+      "help": "Show languages and runtime dependencies information.",
+      "postfix": "Info",
+      "commonPropertySets": [
+        "openapi",
+        "language",
+        "log_level",
+        "version",
+        "search_key",
+        "clear_cache"
+      ],
+      "definiteArgument": "info",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "Json",
+            "type": "bool",
+            "format": "--json",
+            "help": "Renders the output in a machine parsable format."
+          },
+          {
+            "name": "DependencyTypes",
+            "type": "List<KiotaDependencyType>",
+            "format": "--dependency-type {value}",
+            "help": "The type of dependencies to display when used in combination with the language option. Does not impact the json output. Default empty."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Signs in to private API descriptions repositories. Currently only GitHub is supported.",
+      "postfix": "Login",
+      "commonPropertySets": [
+        "log_level"
+      ],
+      "definiteArgument": "login github",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "LoginMethod",
+            "type": "KiotaLoginMethod",
+            "format": "{value}",
+            "position": 1
+          },
+          {
+            "name": "AccessToken",
+            "type": "string",
+            "format": "--pat {value}",
+            "help": "You can use either a classic personal access token (PAT) or a granular PAT. A classic PAT needs the repo permission and to be granted access to the target organizations. A granular PAT needs a read-only permission for the contents scope under the repository category and they need to be consented for all private repositories or selected private repositories."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Signs out from private API descriptions repositories. Currently only GitHub is supported.",
+      "postfix": "Logout",
+      "commonPropertySets": [
+        "log_level"
+      ],
+      "definiteArgument": "logout github",
+      "settingsClass": {}
+    }
+  ],
+  "commonTaskPropertySets": {
+    "clean_output": [
+      {
+        "name": "CleanOutput",
+        "type": "bool",
+        "format": "--clean-output",
+        "help": "Delete the output directory before generating the client. Defaults to false."
+      }
+    ],
+    "clear_cache": [
+      {
+        "name": "ClearCache",
+        "type": "bool",
+        "format": "--clear-cache",
+        "help": "Clears the currently cached file for the command. Defaults to false.<br/><br/>Cached files are stored under '%TEMP%/kiota/cache' and valid for one (1) hour after the initial download. Kiota caches API descriptions during generation and static index files during search."
+      }
+    ],
+    "exclude_path": [
+      {
+        "name": "ExcludePaths",
+        "type": "List<string>",
+        "format": "--exclude-path {value}",
+        "help": "A glob pattern to exclude paths from generation. Accepts multiple values. If this parameter is absent, everything is included.<br/><br/>You can also filter specific HTTP methods by appending <c>#METHOD</c> to the pattern, replacing <c>METHOD</c> with the HTTP method to filter. For example, <c>**/users/**#GET</c>."
+      }
+    ],
+    "include_path": [
+      {
+        "name": "IncludePaths",
+        "type": "List<string>",
+        "format": "--include-path {value}",
+        "help": "A glob pattern to include paths from generation. Accepts multiple values. If this parameter is absent, everything is included.<br/><br/>You can also filter specific HTTP methods by appending <c>#METHOD</c> to the pattern, replacing <c>METHOD</c> with the HTTP method to filter. For example, <c>**/users/**#GET</c>."
+      }
+    ],
+    "openapi": [
+      {
+        "name": "OpenApiDescription",
+        "type": "string",
+        "format": "--openapi {value}",
+        "help": "The location of the OpenAPI description in JSON or YAML format to use to generate the SDK. Accepts a URL or a local path."
+      }
+    ],
+    "language": [
+      {
+        "name": "TargetLanguage",
+        "type": "KiotaLanguage",
+        "format": "--language {value}",
+        "help": "The target language for the generated code files or for the information."
+      }
+    ],
+    "log_level": [
+      {
+        "name": "LogLevel",
+        "type": "KiotaLogLevel",
+        "format": "--log-level {value}",
+        "help": "The log level to use when logging events to the main output. Defaults to <c>warning</c>."
+      }
+    ],
+    "output": [
+      {
+        "name": "OutputPath",
+        "type": "string",
+        "format": "--output {value}",
+        "help": "The output directory or file path for the generated code files. Defaults to <c>./output</c> for generate and <c>./output/result.json</c> for download."
+      }
+    ],
+    "search_key": [
+      {
+        "name": "SearchKey",
+        "type": "string",
+        "format": "--search-key {value}",
+        "help": "The search key to use to fetch the Open API description. This parameter can be used in combination with the version option. Shouldn't be used in combination with the <c>--openapi</c> option. Default empty."
+      }
+    ],
+    "version": [
+      {
+        "name": "Version",
+        "type": "string",
+        "format": "--version {value}",
+        "help": "Select a specific version of the API description. No default value."
+      }
+    ],
+    "disable_ssl_validation": [
+      {
+        "name": "DisableSslValidation",
+        "type": "bool",
+        "format": "--disable-ssl-validation",
+        "oneWayFlag": true,
+        "help": "Select a specific version of the API description. No default value."
+      }
+    ]
+  },
+  "enumerations": [
+    {
+      "name": "KiotaLogLevel",
+      "values": [
+        "critical",
+        "debug",
+        "error",
+        "information",
+        "none",
+        "trace",
+        "warning"
+      ]
+    },
+    {
+      "name": "KiotaLanguage",
+      "values": [
+        "csharp",
+        "go",
+        "java",
+        "php",
+        "python",
+        "ruby",
+        "shell",
+        "swift",
+        "typescript"
+      ]
+    },
+    {
+      "name": "KiotaAccessModifier",
+      "values": [
+        "Public",
+        "Internal",
+        "Protected"
+      ]
+    },
+    {
+      "name": "KiotaDependencyType",
+      "values": [
+        "Abstractions",
+        "Additional",
+        "Authentication",
+        "Bundle",
+        "HTTP",
+        "Serialization"
+      ]
+    },
+    {
+      "name": "KiotaLoginMethod",
+      "values": [
+        "device",
+        "pat"
+      ]
+    }
+  ]
+}

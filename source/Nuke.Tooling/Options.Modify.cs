@@ -28,10 +28,15 @@ public static partial class OptionsExtensions
         return copy;
     }
 
-    // TODO: only exists for SetProcessExitHandler
-    public static T Modify2<T>(this T options, Action<T> modification = null)
+    public static T Edit<T>(this T options, Action<T> modification = null)
         where T : class, IOptions
     {
         return options.Modify(o => modification?.Invoke(o as T));
+    }
+    
+    public static T Edit<T>(this T options, Func<T, T> modification = null)
+        where T : class, IOptions
+    {
+        return modification?.Invoke(options);
     }
 }

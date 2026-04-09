@@ -16,19 +16,17 @@ internal class LogParser
     private readonly Action<MatchedBlock> _logBlockEndAction;
 
     private readonly IReadOnlyList<BlockMatcher> _blockMatchers =
-        new[]
-        {
-            new BlockMatcher("Player statistics", "\\*\\*\\*Player size statistics\\*\\*\\*", "Unloading.*", endMatchType: MatchType.Exclusive),
+    [
+        new BlockMatcher("Player statistics", "\\*\\*\\*Player size statistics\\*\\*\\*", "Unloading.*", endMatchType: MatchType.Exclusive),
             new BlockMatcher("Lightmap", "---- Lightmapping Start for (.*) ----", "---- Lightmapping End for (.*) ----"),
             new BlockMatcher("Compile", "-----Compiler Commandline Arguments:", "-----EndCompilerOutput---------------"),
             new BlockMatcher("Update", "Updating (.+) - GUID: .*", "\\s*done: hash - .+"),
             new BlockMatcher("Prepare Build", "---- PrepareBuild Start ----", "---- PrepareBuild End ----")
-        };
+    ];
 
     private readonly IReadOnlyList<LineMatcher> _lineMatchers =
-        new[]
-        {
-            // Warnings
+    [
+        // Warnings
             new LineMatcher("Script attached to.*?is missing or no valid script is attached.", LogLevel.Warning),
             new LineMatcher(".*?warning CS\\d+.*?", LogLevel.Warning),
             new LineMatcher("There are inconsistent line endings in the.*?", LogLevel.Warning),
@@ -40,7 +38,7 @@ internal class LogParser
             new LineMatcher("Compilation failed:.*", LogLevel.Error),
             new LineMatcher("Scripts have compiler errors\\..*", LogLevel.Error),
             new LineMatcher("An error occured", LogLevel.Warning)
-        };
+    ];
 
     public LogParser(
         Action<string, LogLevel> logLineAction,

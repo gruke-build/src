@@ -19,7 +19,7 @@ namespace Nuke.GlobalTool;
 // TODO: unlock prompt
 // TODO: environment variable name
 // TODO: profile vs. environment
-// TODO: nuke :profile <name>
+// TODO: gruke :profile <name>
 partial class Program
 {
     private const string SaveAndExit = "<Save & Exit>";

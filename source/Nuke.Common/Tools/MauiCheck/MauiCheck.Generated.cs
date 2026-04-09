@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/MauiCheck/MauiCheck.json
 
 using JetBrains.Annotations;
@@ -29,14 +33,14 @@ public partial class MauiCheckTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> MauiCheck(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new MauiCheckTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--ci</c> via <see cref="MauiCheckSettings.Ci"/></li><li><c>--fix</c> via <see cref="MauiCheckSettings.Fix"/></li><li><c>--manifest</c> via <see cref="MauiCheckSettings.Manifest"/></li><li><c>--non-interactive</c> via <see cref="MauiCheckSettings.NonInteractive"/></li><li><c>--preview</c> via <see cref="MauiCheckSettings.Preview"/></li><li><c>--skip</c> via <see cref="MauiCheckSettings.Skip"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--ci</c> via <see cref="MauiCheckSettings.Ci"/></li><li><c>--fix</c> via <see cref="MauiCheckSettings.Fix"/></li><li><c>--manifest</c> via <see cref="MauiCheckSettings.Manifest"/></li><li><c>--non-interactive</c> via <see cref="MauiCheckSettings.NonInteractive"/></li><li><c>--preview</c> via <see cref="MauiCheckSettings.Preview"/></li><li><c>--skip</c> via <see cref="MauiCheckSettings.Skip"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MauiCheck(MauiCheckSettings options = null) => new MauiCheckTasks().Run<MauiCheckSettings>(options);
     /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Nuke.Common.Tools.MauiCheck.MauiCheckSettings)"/>
     public static IReadOnlyCollection<Output> MauiCheck(Configure<MauiCheckSettings> configurator) => new MauiCheckTasks().Run<MauiCheckSettings>(configurator.Invoke(new MauiCheckSettings()));
     /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Nuke.Common.Tools.MauiCheck.MauiCheckSettings)"/>
     public static IEnumerable<(MauiCheckSettings Settings, IReadOnlyCollection<Output> Output)> MauiCheck(CombinatorialConfigure<MauiCheckSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MauiCheck, degreeOfParallelism, completeOnFailure);
     /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--dotnet-pre</c> via <see cref="MauiCheckConfigSettings.DotNetPrerelease"/></li><li><c>--dotnet-rollForward</c> via <see cref="MauiCheckConfigSettings.DotNetRollForward"/></li><li><c>--dotnet-version</c> via <see cref="MauiCheckConfigSettings.DotNetVersion"/></li><li><c>--nuget-sources</c> via <see cref="MauiCheckConfigSettings.NuGetSources"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--dotnet-pre</c> via <see cref="MauiCheckConfigSettings.DotNetPrerelease"/></li><li><c>--dotnet-rollForward</c> via <see cref="MauiCheckConfigSettings.DotNetRollForward"/></li><li><c>--dotnet-version</c> via <see cref="MauiCheckConfigSettings.DotNetVersion"/></li><li><c>--nuget-sources</c> via <see cref="MauiCheckConfigSettings.NuGetSources"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MauiCheckConfig(MauiCheckConfigSettings options = null) => new MauiCheckTasks().Run<MauiCheckConfigSettings>(options);
     /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Nuke.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
     public static IReadOnlyCollection<Output> MauiCheckConfig(Configure<MauiCheckConfigSettings> configurator) => new MauiCheckTasks().Run<MauiCheckConfigSettings>(configurator.Invoke(new MauiCheckConfigSettings()));
@@ -263,15 +267,15 @@ public static partial class MauiCheckConfigSettingsExtensions
 [TypeConverter(typeof(TypeConverter<MauiCheckDotNetRollForward>))]
 public partial class MauiCheckDotNetRollForward : Enumeration
 {
-    public static MauiCheckDotNetRollForward disable = (MauiCheckDotNetRollForward) "disable";
-    public static MauiCheckDotNetRollForward major = (MauiCheckDotNetRollForward) "major";
-    public static MauiCheckDotNetRollForward minor = (MauiCheckDotNetRollForward) "minor";
-    public static MauiCheckDotNetRollForward feature = (MauiCheckDotNetRollForward) "feature";
-    public static MauiCheckDotNetRollForward patch = (MauiCheckDotNetRollForward) "patch";
-    public static MauiCheckDotNetRollForward latestMajor = (MauiCheckDotNetRollForward) "latestMajor";
-    public static MauiCheckDotNetRollForward latestMinor = (MauiCheckDotNetRollForward) "latestMinor";
-    public static MauiCheckDotNetRollForward latestFeature = (MauiCheckDotNetRollForward) "latestFeature";
-    public static MauiCheckDotNetRollForward latestPatch = (MauiCheckDotNetRollForward) "latestPatch";
+    public static readonly MauiCheckDotNetRollForward disable = (MauiCheckDotNetRollForward) "disable";
+    public static readonly MauiCheckDotNetRollForward major = (MauiCheckDotNetRollForward) "major";
+    public static readonly MauiCheckDotNetRollForward minor = (MauiCheckDotNetRollForward) "minor";
+    public static readonly MauiCheckDotNetRollForward feature = (MauiCheckDotNetRollForward) "feature";
+    public static readonly MauiCheckDotNetRollForward patch = (MauiCheckDotNetRollForward) "patch";
+    public static readonly MauiCheckDotNetRollForward latestMajor = (MauiCheckDotNetRollForward) "latestMajor";
+    public static readonly MauiCheckDotNetRollForward latestMinor = (MauiCheckDotNetRollForward) "latestMinor";
+    public static readonly MauiCheckDotNetRollForward latestFeature = (MauiCheckDotNetRollForward) "latestFeature";
+    public static readonly MauiCheckDotNetRollForward latestPatch = (MauiCheckDotNetRollForward) "latestPatch";
     public static implicit operator MauiCheckDotNetRollForward(string value)
     {
         return new MauiCheckDotNetRollForward { Value = value };
@@ -286,15 +290,15 @@ public partial class MauiCheckDotNetRollForward : Enumeration
 [TypeConverter(typeof(TypeConverter<MauiCheckCheckup>))]
 public partial class MauiCheckCheckup : Enumeration
 {
-    public static MauiCheckCheckup OpenJdkCheckup = (MauiCheckCheckup) "OpenJdkCheckup";
-    public static MauiCheckCheckup VisualStudioMacCheckup = (MauiCheckCheckup) "VisualStudioMacCheckup";
-    public static MauiCheckCheckup AndroidSdkPackagesCheckup = (MauiCheckCheckup) "AndroidSdkPackagesCheckup";
-    public static MauiCheckCheckup AndroidEmulatorCheckup = (MauiCheckCheckup) "AndroidEmulatorCheckup";
-    public static MauiCheckCheckup XCodeCheckup = (MauiCheckCheckup) "XCodeCheckup";
-    public static MauiCheckCheckup DotNetCheckup = (MauiCheckCheckup) "DotNetCheckup";
-    public static MauiCheckCheckup DotNetWorkloadDuplicatesCheckup = (MauiCheckCheckup) "DotNetWorkloadDuplicatesCheckup";
-    public static MauiCheckCheckup DotNetSentinelCheckup = (MauiCheckCheckup) "DotNetSentinelCheckup";
-    public static MauiCheckCheckup DotNetWorkloadsCheckup = (MauiCheckCheckup) "DotNetWorkloadsCheckup";
+    public static readonly MauiCheckCheckup OpenJdkCheckup = (MauiCheckCheckup) "OpenJdkCheckup";
+    public static readonly MauiCheckCheckup VisualStudioMacCheckup = (MauiCheckCheckup) "VisualStudioMacCheckup";
+    public static readonly MauiCheckCheckup AndroidSdkPackagesCheckup = (MauiCheckCheckup) "AndroidSdkPackagesCheckup";
+    public static readonly MauiCheckCheckup AndroidEmulatorCheckup = (MauiCheckCheckup) "AndroidEmulatorCheckup";
+    public static readonly MauiCheckCheckup XCodeCheckup = (MauiCheckCheckup) "XCodeCheckup";
+    public static readonly MauiCheckCheckup DotNetCheckup = (MauiCheckCheckup) "DotNetCheckup";
+    public static readonly MauiCheckCheckup DotNetWorkloadDuplicatesCheckup = (MauiCheckCheckup) "DotNetWorkloadDuplicatesCheckup";
+    public static readonly MauiCheckCheckup DotNetSentinelCheckup = (MauiCheckCheckup) "DotNetSentinelCheckup";
+    public static readonly MauiCheckCheckup DotNetWorkloadsCheckup = (MauiCheckCheckup) "DotNetWorkloadsCheckup";
     public static implicit operator MauiCheckCheckup(string value)
     {
         return new MauiCheckCheckup { Value = value };

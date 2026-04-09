@@ -18,8 +18,10 @@ internal class RenameFieldIdentifierRewriter : SafeSyntaxRewriter
 
     public override SyntaxNode VisitFieldDeclaration(FieldDeclarationSyntax node)
     {
+#pragma warning disable CS9336 // The pattern is redundant.
         if (node.Parent is not CompilationUnitSyntax or ClassDeclarationSyntax)
             return node;
+#pragma warning restore CS9336 // The pattern is redundant.
 
         string CreateRename(string name)
             => _renames[name] = name.Capitalize().ReplaceKnownWords();

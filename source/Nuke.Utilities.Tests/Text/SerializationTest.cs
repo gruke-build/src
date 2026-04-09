@@ -3,11 +3,8 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using JetBrains.Annotations;
-using Nuke.Common.IO;
 using Nuke.Common.Utilities;
 using Nuke.Utilities.Text.Yaml;
 using Xunit;

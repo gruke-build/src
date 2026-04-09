@@ -35,7 +35,7 @@ public static class ControlFlow
 
     public static IEnumerable<T> SuppressErrors<T>(Func<IEnumerable<T>> action, bool includeStackTrace = false)
     {
-        return SuppressErrors<IEnumerable<T>>(action, includeStackTrace: includeStackTrace) ?? Enumerable.Empty<T>();
+        return SuppressErrors<IEnumerable<T>>(action, includeStackTrace: includeStackTrace) ?? [];
     }
 
     [ContractAnnotation("defaultValue: notnull => notnull")]

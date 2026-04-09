@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/BenchmarkDotNet/BenchmarkDotNet.json
 
 using JetBrains.Annotations;
@@ -29,7 +33,7 @@ public partial class BenchmarkDotNetTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Powerful .NET library for benchmarking</p><p>For more details, visit the <a href="https://benchmarkdotnet.org/">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> BenchmarkDotNet(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new BenchmarkDotNetTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>Powerful .NET library for benchmarking</p><p>For more details, visit the <a href="https://benchmarkdotnet.org/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;assemblyFile&gt;</c> via <see cref="BenchmarkDotNetSettings.AssemblyFile"/></li><li><c>--affinity</c> via <see cref="BenchmarkDotNetSettings.Affinity"/></li><li><c>--allCategories</c> via <see cref="BenchmarkDotNetSettings.AllCategories"/></li><li><c>--allStats</c> via <see cref="BenchmarkDotNetSettings.DisplayAllStatistics"/></li><li><c>--anyCategories</c> via <see cref="BenchmarkDotNetSettings.AnyCategories"/></li><li><c>--artifacts</c> via <see cref="BenchmarkDotNetSettings.ArtifactsDirecory"/></li><li><c>--attribute</c> via <see cref="BenchmarkDotNetSettings.AttributeNames"/></li><li><c>--buildTimeout</c> via <see cref="BenchmarkDotNetSettings.BuildTimeout"/></li><li><c>--cli</c> via <see cref="BenchmarkDotNetSettings.CliPath"/></li><li><c>--clrVersion</c> via <see cref="BenchmarkDotNetSettings.ClrVersion"/></li><li><c>--coreRtVersion</c> via <see cref="BenchmarkDotNetSettings.CoreRtVersion"/></li><li><c>--coreRun</c> via <see cref="BenchmarkDotNetSettings.CoreRunPaths"/></li><li><c>--counters</c> via <see cref="BenchmarkDotNetSettings.HardwareCounters"/></li><li><c>--disableLogFile</c> via <see cref="BenchmarkDotNetSettings.DisableLogFile"/></li><li><c>--disasm</c> via <see cref="BenchmarkDotNetSettings.Disassembly"/></li><li><c>--disasmDepth</c> via <see cref="BenchmarkDotNetSettings.DisassemblyRecursiveDepth"/></li><li><c>--disasmDiff</c> via <see cref="BenchmarkDotNetSettings.DisassemblyDiff"/></li><li><c>--exporters</c> via <see cref="BenchmarkDotNetSettings.Exporters"/></li><li><c>--filter</c> via <see cref="BenchmarkDotNetSettings.Filter"/></li><li><c>--ilcPath</c> via <see cref="BenchmarkDotNetSettings.CoreRtPath"/></li><li><c>--info</c> via <see cref="BenchmarkDotNetSettings.PrintInformation"/></li><li><c>--inProcess</c> via <see cref="BenchmarkDotNetSettings.RunInProcess"/></li><li><c>--invocationCount</c> via <see cref="BenchmarkDotNetSettings.InvocationCount"/></li><li><c>--iterationCount</c> via <see cref="BenchmarkDotNetSettings.IterationCount"/></li><li><c>--iterationTime</c> via <see cref="BenchmarkDotNetSettings.IterationTime"/></li><li><c>--job</c> via <see cref="BenchmarkDotNetSettings.Job"/></li><li><c>--join</c> via <see cref="BenchmarkDotNetSettings.Join"/></li><li><c>--keepFiles</c> via <see cref="BenchmarkDotNetSettings.KeepBenchmarkFiles"/></li><li><c>--launchCount</c> via <see cref="BenchmarkDotNetSettings.LaunchCount"/></li><li><c>--list</c> via <see cref="BenchmarkDotNetSettings.ListBenchmarkCaseMode"/></li><li><c>--maxIterationCount</c> via <see cref="BenchmarkDotNetSettings.MaxIterationCount"/></li><li><c>--maxWarmupCount</c> via <see cref="BenchmarkDotNetSettings.MaxWarmupCount"/></li><li><c>--maxWidth</c> via <see cref="BenchmarkDotNetSettings.MaxParameterColumnWidth"/></li><li><c>--memory</c> via <see cref="BenchmarkDotNetSettings.MemoryStats"/></li><li><c>--minIterationCount</c> via <see cref="BenchmarkDotNetSettings.MinIterationCount"/></li><li><c>--minWarmupCount</c> via <see cref="BenchmarkDotNetSettings.MinWarmupCount"/></li><li><c>--monoPath</c> via <see cref="BenchmarkDotNetSettings.MonoPath"/></li><li><c>--noOverwrite</c> via <see cref="BenchmarkDotNetSettings.DontOverwriteResults"/></li><li><c>--outliers</c> via <see cref="BenchmarkDotNetSettings.OutlierMode"/></li><li><c>--packages</c> via <see cref="BenchmarkDotNetSettings.RestorePath"/></li><li><c>--profiler</c> via <see cref="BenchmarkDotNetSettings.Profiler"/></li><li><c>--runOncePerIteration</c> via <see cref="BenchmarkDotNetSettings.RunOncePerIteration"/></li><li><c>--runtimes</c> via <see cref="BenchmarkDotNetSettings.Runtimes"/></li><li><c>--statisticalTest</c> via <see cref="BenchmarkDotNetSettings.StatisticalTestThreshold"/></li><li><c>--stopOnFirstError</c> via <see cref="BenchmarkDotNetSettings.StopOnFirstError"/></li><li><c>--strategy</c> via <see cref="BenchmarkDotNetSettings.RunStrategy"/></li><li><c>--threading</c> via <see cref="BenchmarkDotNetSettings.ThreadingStats"/></li><li><c>--unrollFactor</c> via <see cref="BenchmarkDotNetSettings.UnrollFactor"/></li><li><c>--warmupCount</c> via <see cref="BenchmarkDotNetSettings.WarmupCount"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;assemblyFile&gt;</c> via <see cref="BenchmarkDotNetSettings.AssemblyFile"/></li><li><c>--affinity</c> via <see cref="BenchmarkDotNetSettings.Affinity"/></li><li><c>--allCategories</c> via <see cref="BenchmarkDotNetSettings.AllCategories"/></li><li><c>--allStats</c> via <see cref="BenchmarkDotNetSettings.DisplayAllStatistics"/></li><li><c>--anyCategories</c> via <see cref="BenchmarkDotNetSettings.AnyCategories"/></li><li><c>--artifacts</c> via <see cref="BenchmarkDotNetSettings.ArtifactsDirecory"/></li><li><c>--attribute</c> via <see cref="BenchmarkDotNetSettings.AttributeNames"/></li><li><c>--buildTimeout</c> via <see cref="BenchmarkDotNetSettings.BuildTimeout"/></li><li><c>--cli</c> via <see cref="BenchmarkDotNetSettings.CliPath"/></li><li><c>--clrVersion</c> via <see cref="BenchmarkDotNetSettings.ClrVersion"/></li><li><c>--coreRtVersion</c> via <see cref="BenchmarkDotNetSettings.CoreRtVersion"/></li><li><c>--coreRun</c> via <see cref="BenchmarkDotNetSettings.CoreRunPaths"/></li><li><c>--counters</c> via <see cref="BenchmarkDotNetSettings.HardwareCounters"/></li><li><c>--disableLogFile</c> via <see cref="BenchmarkDotNetSettings.DisableLogFile"/></li><li><c>--disasm</c> via <see cref="BenchmarkDotNetSettings.Disassembly"/></li><li><c>--disasmDepth</c> via <see cref="BenchmarkDotNetSettings.DisassemblyRecursiveDepth"/></li><li><c>--disasmDiff</c> via <see cref="BenchmarkDotNetSettings.DisassemblyDiff"/></li><li><c>--exporters</c> via <see cref="BenchmarkDotNetSettings.Exporters"/></li><li><c>--filter</c> via <see cref="BenchmarkDotNetSettings.Filter"/></li><li><c>--ilcPath</c> via <see cref="BenchmarkDotNetSettings.CoreRtPath"/></li><li><c>--info</c> via <see cref="BenchmarkDotNetSettings.PrintInformation"/></li><li><c>--inProcess</c> via <see cref="BenchmarkDotNetSettings.RunInProcess"/></li><li><c>--invocationCount</c> via <see cref="BenchmarkDotNetSettings.InvocationCount"/></li><li><c>--iterationCount</c> via <see cref="BenchmarkDotNetSettings.IterationCount"/></li><li><c>--iterationTime</c> via <see cref="BenchmarkDotNetSettings.IterationTime"/></li><li><c>--job</c> via <see cref="BenchmarkDotNetSettings.Job"/></li><li><c>--join</c> via <see cref="BenchmarkDotNetSettings.Join"/></li><li><c>--keepFiles</c> via <see cref="BenchmarkDotNetSettings.KeepBenchmarkFiles"/></li><li><c>--launchCount</c> via <see cref="BenchmarkDotNetSettings.LaunchCount"/></li><li><c>--list</c> via <see cref="BenchmarkDotNetSettings.ListBenchmarkCaseMode"/></li><li><c>--maxIterationCount</c> via <see cref="BenchmarkDotNetSettings.MaxIterationCount"/></li><li><c>--maxWarmupCount</c> via <see cref="BenchmarkDotNetSettings.MaxWarmupCount"/></li><li><c>--maxWidth</c> via <see cref="BenchmarkDotNetSettings.MaxParameterColumnWidth"/></li><li><c>--memory</c> via <see cref="BenchmarkDotNetSettings.MemoryStats"/></li><li><c>--minIterationCount</c> via <see cref="BenchmarkDotNetSettings.MinIterationCount"/></li><li><c>--minWarmupCount</c> via <see cref="BenchmarkDotNetSettings.MinWarmupCount"/></li><li><c>--monoPath</c> via <see cref="BenchmarkDotNetSettings.MonoPath"/></li><li><c>--noOverwrite</c> via <see cref="BenchmarkDotNetSettings.DontOverwriteResults"/></li><li><c>--outliers</c> via <see cref="BenchmarkDotNetSettings.OutlierMode"/></li><li><c>--packages</c> via <see cref="BenchmarkDotNetSettings.RestorePath"/></li><li><c>--profiler</c> via <see cref="BenchmarkDotNetSettings.Profiler"/></li><li><c>--runOncePerIteration</c> via <see cref="BenchmarkDotNetSettings.RunOncePerIteration"/></li><li><c>--runtimes</c> via <see cref="BenchmarkDotNetSettings.Runtimes"/></li><li><c>--statisticalTest</c> via <see cref="BenchmarkDotNetSettings.StatisticalTestThreshold"/></li><li><c>--stopOnFirstError</c> via <see cref="BenchmarkDotNetSettings.StopOnFirstError"/></li><li><c>--strategy</c> via <see cref="BenchmarkDotNetSettings.RunStrategy"/></li><li><c>--threading</c> via <see cref="BenchmarkDotNetSettings.ThreadingStats"/></li><li><c>--unrollFactor</c> via <see cref="BenchmarkDotNetSettings.UnrollFactor"/></li><li><c>--warmupCount</c> via <see cref="BenchmarkDotNetSettings.WarmupCount"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> BenchmarkDotNet(BenchmarkDotNetSettings options = null) => new BenchmarkDotNetTasks().Run<BenchmarkDotNetSettings>(options);
     /// <inheritdoc cref="BenchmarkDotNetTasks.BenchmarkDotNet(Nuke.Common.Tools.BenchmarkDotNet.BenchmarkDotNetSettings)"/>
     public static IReadOnlyCollection<Output> BenchmarkDotNet(Configure<BenchmarkDotNetSettings> configurator) => new BenchmarkDotNetTasks().Run<BenchmarkDotNetSettings>(configurator.Invoke(new BenchmarkDotNetSettings()));
@@ -788,11 +792,11 @@ public static partial class BenchmarkDotNetSettingsExtensions
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetJob>))]
 public partial class BenchmarkDotNetJob : Enumeration
 {
-    public static BenchmarkDotNetJob Dry = (BenchmarkDotNetJob) "Dry";
-    public static BenchmarkDotNetJob Short = (BenchmarkDotNetJob) "Short";
-    public static BenchmarkDotNetJob Medium = (BenchmarkDotNetJob) "Medium";
-    public static BenchmarkDotNetJob Long = (BenchmarkDotNetJob) "Long";
-    public static BenchmarkDotNetJob Default = (BenchmarkDotNetJob) "Default";
+    public static readonly BenchmarkDotNetJob Dry = (BenchmarkDotNetJob) "Dry";
+    public static readonly BenchmarkDotNetJob Short = (BenchmarkDotNetJob) "Short";
+    public static readonly BenchmarkDotNetJob Medium = (BenchmarkDotNetJob) "Medium";
+    public static readonly BenchmarkDotNetJob Long = (BenchmarkDotNetJob) "Long";
+    public static readonly BenchmarkDotNetJob Default = (BenchmarkDotNetJob) "Default";
     public static implicit operator BenchmarkDotNetJob(string value)
     {
         return new BenchmarkDotNetJob { Value = value };
@@ -807,10 +811,10 @@ public partial class BenchmarkDotNetJob : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetOutlierMode>))]
 public partial class BenchmarkDotNetOutlierMode : Enumeration
 {
-    public static BenchmarkDotNetOutlierMode DontRemove = (BenchmarkDotNetOutlierMode) "DontRemove";
-    public static BenchmarkDotNetOutlierMode RemoveUpper = (BenchmarkDotNetOutlierMode) "RemoveUpper";
-    public static BenchmarkDotNetOutlierMode RemoveLower = (BenchmarkDotNetOutlierMode) "RemoveLower";
-    public static BenchmarkDotNetOutlierMode RemoveAll = (BenchmarkDotNetOutlierMode) "RemoveAll";
+    public static readonly BenchmarkDotNetOutlierMode DontRemove = (BenchmarkDotNetOutlierMode) "DontRemove";
+    public static readonly BenchmarkDotNetOutlierMode RemoveUpper = (BenchmarkDotNetOutlierMode) "RemoveUpper";
+    public static readonly BenchmarkDotNetOutlierMode RemoveLower = (BenchmarkDotNetOutlierMode) "RemoveLower";
+    public static readonly BenchmarkDotNetOutlierMode RemoveAll = (BenchmarkDotNetOutlierMode) "RemoveAll";
     public static implicit operator BenchmarkDotNetOutlierMode(string value)
     {
         return new BenchmarkDotNetOutlierMode { Value = value };
@@ -825,13 +829,13 @@ public partial class BenchmarkDotNetOutlierMode : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetExporter>))]
 public partial class BenchmarkDotNetExporter : Enumeration
 {
-    public static BenchmarkDotNetExporter GitHub = (BenchmarkDotNetExporter) "GitHub";
-    public static BenchmarkDotNetExporter StackOverflow = (BenchmarkDotNetExporter) "StackOverflow";
-    public static BenchmarkDotNetExporter RPlot = (BenchmarkDotNetExporter) "RPlot";
-    public static BenchmarkDotNetExporter CSV = (BenchmarkDotNetExporter) "CSV";
-    public static BenchmarkDotNetExporter JSON = (BenchmarkDotNetExporter) "JSON";
-    public static BenchmarkDotNetExporter HTML = (BenchmarkDotNetExporter) "HTML";
-    public static BenchmarkDotNetExporter XML = (BenchmarkDotNetExporter) "XML";
+    public static readonly BenchmarkDotNetExporter GitHub = (BenchmarkDotNetExporter) "GitHub";
+    public static readonly BenchmarkDotNetExporter StackOverflow = (BenchmarkDotNetExporter) "StackOverflow";
+    public static readonly BenchmarkDotNetExporter RPlot = (BenchmarkDotNetExporter) "RPlot";
+    public static readonly BenchmarkDotNetExporter CSV = (BenchmarkDotNetExporter) "CSV";
+    public static readonly BenchmarkDotNetExporter JSON = (BenchmarkDotNetExporter) "JSON";
+    public static readonly BenchmarkDotNetExporter HTML = (BenchmarkDotNetExporter) "HTML";
+    public static readonly BenchmarkDotNetExporter XML = (BenchmarkDotNetExporter) "XML";
     public static implicit operator BenchmarkDotNetExporter(string value)
     {
         return new BenchmarkDotNetExporter { Value = value };
@@ -846,10 +850,10 @@ public partial class BenchmarkDotNetExporter : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetProfiler>))]
 public partial class BenchmarkDotNetProfiler : Enumeration
 {
-    public static BenchmarkDotNetProfiler EP = (BenchmarkDotNetProfiler) "EP";
-    public static BenchmarkDotNetProfiler ETW = (BenchmarkDotNetProfiler) "ETW";
-    public static BenchmarkDotNetProfiler CV = (BenchmarkDotNetProfiler) "CV";
-    public static BenchmarkDotNetProfiler NativeMemory = (BenchmarkDotNetProfiler) "NativeMemory";
+    public static readonly BenchmarkDotNetProfiler EP = (BenchmarkDotNetProfiler) "EP";
+    public static readonly BenchmarkDotNetProfiler ETW = (BenchmarkDotNetProfiler) "ETW";
+    public static readonly BenchmarkDotNetProfiler CV = (BenchmarkDotNetProfiler) "CV";
+    public static readonly BenchmarkDotNetProfiler NativeMemory = (BenchmarkDotNetProfiler) "NativeMemory";
     public static implicit operator BenchmarkDotNetProfiler(string value)
     {
         return new BenchmarkDotNetProfiler { Value = value };
@@ -864,9 +868,9 @@ public partial class BenchmarkDotNetProfiler : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetRunStrategy>))]
 public partial class BenchmarkDotNetRunStrategy : Enumeration
 {
-    public static BenchmarkDotNetRunStrategy Throughput = (BenchmarkDotNetRunStrategy) "Throughput";
-    public static BenchmarkDotNetRunStrategy ColdStart = (BenchmarkDotNetRunStrategy) "ColdStart";
-    public static BenchmarkDotNetRunStrategy Monitoring = (BenchmarkDotNetRunStrategy) "Monitoring";
+    public static readonly BenchmarkDotNetRunStrategy Throughput = (BenchmarkDotNetRunStrategy) "Throughput";
+    public static readonly BenchmarkDotNetRunStrategy ColdStart = (BenchmarkDotNetRunStrategy) "ColdStart";
+    public static readonly BenchmarkDotNetRunStrategy Monitoring = (BenchmarkDotNetRunStrategy) "Monitoring";
     public static implicit operator BenchmarkDotNetRunStrategy(string value)
     {
         return new BenchmarkDotNetRunStrategy { Value = value };
@@ -881,8 +885,8 @@ public partial class BenchmarkDotNetRunStrategy : Enumeration
 [TypeConverter(typeof(TypeConverter<BenchmarkDotNetCaseMode>))]
 public partial class BenchmarkDotNetCaseMode : Enumeration
 {
-    public static BenchmarkDotNetCaseMode Flat = (BenchmarkDotNetCaseMode) "Flat";
-    public static BenchmarkDotNetCaseMode Tree = (BenchmarkDotNetCaseMode) "Tree";
+    public static readonly BenchmarkDotNetCaseMode Flat = (BenchmarkDotNetCaseMode) "Flat";
+    public static readonly BenchmarkDotNetCaseMode Tree = (BenchmarkDotNetCaseMode) "Tree";
     public static implicit operator BenchmarkDotNetCaseMode(string value)
     {
         return new BenchmarkDotNetCaseMode { Value = value };

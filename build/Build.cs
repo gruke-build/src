@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
 using Nuke.Common;
+using Nuke.Common.ChangeLog;
 using Nuke.Common.CI;
-using Nuke.Common.CI.AzurePipelines;
+using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.GitLab;
-using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
@@ -22,17 +22,21 @@ using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities;
 using Nuke.Components;
+using Serilog;
 using static Nuke.Common.ControlFlow;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
 
+[DisableDefaultOutput<Terminal>(
+    DefaultOutput.Logo,
+    DefaultOutput.Timestamps,
+    DefaultOutput.BuildOutcome)]
 [DotNetVerbosityMapping]
-[ShutdownDotNetAfterServerBuild]
 partial class Build
     : NukeBuild,
         IHazChangelog,
         IHazGitRepository,
-        IHazGitVersion,
+        IHazDebuggableGitVersion,
         IHazSolution,
         IRestore,
         ICompile,
@@ -42,15 +46,14 @@ partial class Build
         IReportIssues,
         IReportDuplicates,
         IPublish,
-        ICreateGitHubRelease
+        ICreateGitHubRelease,
+        ICreateForgejoRelease
 {
     public static int Main() => Execute<Build>(x => ((IPack)x).Pack);
 
-    [CI] readonly TeamCity TeamCity;
-    [CI] readonly AzurePipelines AzurePipelines;
     [CI] readonly GitHubActions GitHubActions;
 
-    GitVersion GitVersion => From<IHazGitVersion>().Versioning;
+    GitVersion GitVersion => From<IHazDebuggableGitVersion>().Versioning;
     GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
@@ -87,14 +90,11 @@ partial class Build
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects 
+    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects
         => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
-    [Parameter]
+    [Parameter("Degree of parallelism for test execution.")]
     public int TestDegreeOfParallelism { get; } = 1;
-
-    Configure<DotNetTestSettings> ITest.TestSettings => _ => _
-        .SetProcessEnvironmentVariable("NUKE_TELEMETRY_OPTOUT", bool.TrueString);
 
     Target ITest.Test => _ => _
         .Inherit<ITest>()
@@ -105,10 +105,10 @@ partial class Build
     bool IReportCoverage.ReportToCodecov => false;
 
     IEnumerable<(string PackageId, string Version)> IReportIssues.InspectCodePlugins
-        => new (string PackageId, string Version)[]
-           {
-               new("ReSharperPlugin.CognitiveComplexity", ReSharperPluginLatest)
-           };
+        =>
+        [
+            new("ReSharperPlugin.CognitiveComplexity", ReSharperPluginLatest)
+        ];
 
     bool IReportIssues.InspectCodeFailOnWarning => false;
     bool IReportIssues.InspectCodeReportWarnings => true;
@@ -117,7 +117,13 @@ partial class Build
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
         .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _.SetVersion(DefaultDeploymentVersion))
-        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion));
+        .When(Host is GitHubActions { Workflow: ReleaseWorkflow }, _ => _.SetVersion(MajorMinorPatchVersion))
+        .SetPackageReleaseNotes(
+            ChangelogTasks.GetNuGetReleaseNotes(
+                From<IHazChangelog>().ChangelogFile,
+                "https://nuke.greemdev.net/docfx/changelog.html"
+            )
+        );
 
     const string PublicNuGetSource = "https://api.nuget.org/v3/index.json";
     const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
@@ -126,7 +132,7 @@ partial class Build
     [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
-    bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
+    bool IsPublicRelease => GitRepository.IsOnMasterBranch || GitRepository.IsOnReleaseBranch;
 
     string IPublish.NuGetSource => IsPublicRelease
         ? PublicNuGetSource
@@ -134,18 +140,18 @@ partial class Build
             ? gl.GetNuGetSourceUrlForCurrentProject()
             : FeedzNuGetSource;
 
-    string IPublish.NuGetApiKey => IsPublicRelease 
-        ? PublicNuGetApiKey 
-        : Host is GitLab gl 
+    string IPublish.NuGetApiKey => IsPublicRelease
+        ? PublicNuGetApiKey
+        : Host is GitLab gl
             ? gl.JobToken
             : FeedzNuGetApiKey;
 
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => 
-            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) || 
-            (GitRepository.IsOnDevelopBranch() 
+        .OnlyWhenStatic(() =>
+            (IsPublicRelease && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow) ||
+            (GitRepository.IsOnDevelopBranch
              && ((Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment) || Host is GitLab)))
         .WhenSkipped(DependencyBehavior.Execute);
 
@@ -180,17 +186,38 @@ partial class Build
     string ICreateGitHubRelease.Name => MajorMinorPatchVersion;
     IEnumerable<AbsolutePath> ICreateGitHubRelease.AssetFiles => NuGetPackageFiles;
 
+    string ICreateForgejoRelease.Name => MajorMinorPatchVersion;
+
+    IEnumerable<AbsolutePath> ICreateForgejoRelease.AssetFiles => NuGetPackageFiles;
+
     Target ICreateGitHubRelease.CreateGitHubRelease => _ => _
         .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch())
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is GitHubActions)
         .Executes(async () =>
         {
-            var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
-            foreach (var issue in issues)
-                await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+            try
+            {
+                var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
+                foreach (var issue in issues)
+                    await GitHubActions.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Failed to comment on milestone issues: {message}", e.Message);
+                if (e.StackTrace is { } st)
+#pragma warning disable CA2254
+                    Log.Warning(st);
+#pragma warning restore CA2254
+            }
         });
+
+    Target ICreateForgejoRelease.CreateForgejoRelease => _ => _
+        .Inherit<ICreateForgejoRelease>()
+        .TriggeredBy<IPublish>()
+        .ProceedAfterFailure()
+        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is ForgejoActions);
 
     Target Install => _ => _
         .Executes(() =>

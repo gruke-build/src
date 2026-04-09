@@ -19,7 +19,7 @@ public class TeamCityProject : ConfigurationEntity
 
     public override void Write(CustomFileWriter writer)
     {
-        using (writer.WriteBlock("project"))
+        using (writer.WriteKotlinLambda("project"))
         {
             if (Description != null)
                 writer.WriteLine($"description = {Description}");
@@ -33,7 +33,7 @@ public class TeamCityProject : ConfigurationEntity
 
             if (Parameters.Any())
             {
-                using (writer.WriteBlock("params"))
+                using (writer.WriteKotlinLambda("params"))
                 {
                     foreach (var parameter in Parameters)
                         parameter.Write(writer);

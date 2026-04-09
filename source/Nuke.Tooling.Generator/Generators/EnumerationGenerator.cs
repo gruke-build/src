@@ -36,7 +36,7 @@ public static class EnumerationGenerator
             .WriteBlock(w => w
                 .ForEach(enumeration.Values,
                     x => w.WriteLine(
-                        $"public static {enumeration.Name} {GetIdentifier(x).EscapeProperty()} = ({enumeration.Name}) {x.DoubleQuote()};"))
+                        $"public static readonly {enumeration.Name} {GetIdentifier(x).EscapeProperty()} = ({enumeration.Name}) {x.DoubleQuote()};"))
                 .WriteLine($"public static implicit operator {enumeration.Name}(string value)")
                 .WriteBlock(w2 => w2
                     .WriteLine($"return new {enumeration.Name} {{ Value = value }};")))

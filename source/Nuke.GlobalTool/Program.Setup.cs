@@ -38,7 +38,6 @@ partial class Program
     {
         PrintInfo();
         Logging.Configure();
-        Telemetry.SetupBuild();
 
         AnsiConsole.WriteLine();
         AnsiConsole.MarkupLine("[bold]Let's setup a new build![/]");
@@ -141,7 +140,6 @@ partial class Program
                         RootDirectory = buildDirectory.GetWinRelativePathTo(rootDirectory),
                         ScriptDirectory = buildDirectory.GetWinRelativePathTo(WorkingDirectory),
                         TargetFramework = TARGET_FRAMEWORK,
-                        TelemetryVersion = Telemetry.CurrentVersion,
                         NukeVersion = nukeVersion,
                     })));
 

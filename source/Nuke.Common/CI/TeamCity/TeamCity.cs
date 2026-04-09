@@ -21,13 +21,16 @@ namespace Nuke.Common.CI.TeamCity;
 /// Interface according to the <a href="https://confluence.jetbrains.com/display/TCDL/Build+Script+Interaction+with+TeamCity">official website</a>.
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
-public partial class TeamCity : Host, IBuildServer
+public partial class TeamCity : Host, IBuildServer, IEnvironment<TeamCity>
 {
+    public static string EnvironmentVariablePrefix => "TEAMCITY";
+
     public new static TeamCity Instance => Host.Instance as TeamCity;
 
     [UsedImplicitly]
-    internal static bool IsRunningTeamCity => EnvironmentInfo.HasVariable("TEAMCITY_VERSION");
+    internal static bool IsRunningTeamCity => IEnvironment<TeamCity>.Has("VERSION");
 
     [CanBeNull]
     private static IReadOnlyDictionary<string, string> ParseDictionary([CanBeNull] AbsolutePath file)
@@ -81,7 +84,7 @@ public partial class TeamCity : Host, IBuildServer
     {
         _messageSink = messageSink ?? Console.WriteLine;
 
-        _systemProperties = Lazy.Create(() => ParseDictionary(EnvironmentInfo.GetVariable("TEAMCITY_BUILD_PROPERTIES_FILE")));
+        _systemProperties = Lazy.Create(() => ParseDictionary(IEnvironment<TeamCity>.Get("BUILD_PROPERTIES_FILE")));
         _configurationProperties = Lazy.Create(() => ParseDictionary(SystemProperties?["teamcity.configuration.properties.file"]));
         _runnerProperties = Lazy.Create(() => ParseDictionary(SystemProperties?["teamcity.runner.properties.file"]));
         _recentlyFailedTests = Lazy.Create(() =>

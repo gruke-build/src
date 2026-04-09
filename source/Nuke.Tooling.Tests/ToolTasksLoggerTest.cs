@@ -16,7 +16,7 @@ namespace Nuke.Common.Tests;
 
 public class ToolTasksLoggerTest
 {
-    private readonly List<LogEvent> _logEvents = new();
+    private readonly List<LogEvent> _logEvents = [];
 
     public ToolTasksLoggerTest()
     {
@@ -108,7 +108,7 @@ public class ToolTasksLoggerTest
 
 file class InMemorySink : ILogEventSink, IDisposable
 {
-    public readonly List<LogEvent> LogEvents = new();
+    public readonly List<LogEvent> LogEvents = [];
     public void Emit(LogEvent logEvent) => LogEvents.Add(logEvent);
     public void Dispose() => LogEvents.Clear();
 }

@@ -72,7 +72,7 @@ public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, I
 
     private void InstallDotNetRuntime()
     {
-        HttpTasks.HttpDownloadFile(ScriptUrl, ScriptFile);
+        HttpTasks.HttpDownloadFileLogged(ScriptUrl, ScriptFile);
 
         var version = GetDotNetRuntimeVersion();
         var installLocation = Constants.GlobalNukeDirectory / "dotnet-runtime" / (version ?? "current");

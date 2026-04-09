@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
+using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Net;
 
 namespace Nuke.Common.Tools.Mastodon;
@@ -26,13 +27,12 @@ public static class MastodonTasks
         var status = configurator(new MastodonStatus());
         var uri = new Uri(instance);
         var apiUrl = $"{uri.Scheme}://{uri.Host}/api";
-        using var client = new HttpClient();
 
         async Task<string> PostMediaFile(string file)
         {
             using var stream = File.OpenRead(file);
 
-            var response = await client.CreateRequest(HttpMethod.Post, $"{apiUrl}/v2/media")
+            var response = await HttpClientProxy.Shared.CreateRequest(HttpMethod.Post, $"{apiUrl}/v2/media")
                 .WithBearerAuthentication(accessToken)
                 .WithMultipartFormDataContent(_ => _
                     .AddStreamContent("file", stream, Path.GetFileName(file)))
@@ -46,7 +46,7 @@ public static class MastodonTasks
         Task.WaitAll(mediaTasks);
         var mediaIds = mediaTasks.Select(x => x.Result);
 
-        var response = await client.CreateRequest(HttpMethod.Post, $"{apiUrl}/v1/statuses")
+        var response = await HttpClientProxy.Shared.CreateRequest(HttpMethod.Post, $"{apiUrl}/v1/statuses")
             .WithBearerAuthentication(accessToken)
             .WithJsonContent(
                 new

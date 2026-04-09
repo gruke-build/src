@@ -20,18 +20,18 @@ public class ExecutionPlannerTest
     [Fact]
     public void TestDefault()
     {
-        GetPlan().Should().BeEquivalentTo(new[] { A });
+        GetPlan().Should().BeEquivalentTo([A]);
     }
 
     [Fact]
     public void TestInvoked()
     {
-        GetPlan(invokedTargets: new[] { B }).Should().Equal(B);
+        GetPlan(invokedTargets: [B]).Should().Equal(B);
         A.Invoked.Should().BeFalse();
         B.Invoked.Should().BeTrue();
         C.Invoked.Should().BeFalse();
 
-        GetPlan(invokedTargets: new[] { A, B }).Should().BeEquivalentTo(new[] { A, B });
+        GetPlan(invokedTargets: [A, B]).Should().BeEquivalentTo([A, B]);
         A.Invoked.Should().BeTrue();
         B.Invoked.Should().BeTrue();
         C.Invoked.Should().BeFalse();
@@ -62,10 +62,10 @@ public class ExecutionPlannerTest
     {
         B.OrderDependencies.Add(A);
         C.OrderDependencies.Add(A);
-        GetPlan(invokedTargets: new[] { B, A, C }).First().Should().Be(A);
+        GetPlan(invokedTargets: [B, A, C]).First().Should().Be(A);
 
         C.OrderDependencies.Add(B);
-        GetPlan(invokedTargets: new[] { A, C, B }).Should().Equal(A, B, C);
+        GetPlan(invokedTargets: [A, C, B]).Should().Equal(A, B, C);
     }
 
     [Fact]
@@ -98,7 +98,7 @@ public class ExecutionPlannerTest
     {
         static string[] SelectNames(ExecutableTarget[] targets) => targets?.Select(x => x.Name).ToArray();
 
-        return ExecutionPlanner.GetExecutionPlan(new[] { A, B, C }, SelectNames(invokedTargets));
+        return ExecutionPlanner.GetExecutionPlan([A, B, C], SelectNames(invokedTargets));
     }
 
     private void AddTrigger(ExecutableTarget source, ExecutableTarget target)

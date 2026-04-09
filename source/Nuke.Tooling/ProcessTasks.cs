@@ -25,7 +25,7 @@ public static class ProcessTasks
     public static bool LogWorkingDirectory = true;
     public static string DefaultWorkingDirectory = EnvironmentInfo.WorkingDirectory;
 
-    private static readonly char[] s_pathSeparators = { EnvironmentInfo.IsWin ? ';' : ':' };
+    private static readonly char[] s_pathSeparators = [EnvironmentInfo.IsWin ? ';' : ':'];
     private static readonly object s_lock = new();
 
     public static IProcess StartShell(
@@ -249,7 +249,7 @@ public static class ProcessTasks
             var padding = values.Length.ToString().Length;
 
             return values.Length == 1
-                ? new[] { (pair.Key, values.Single()) }
+                ? [(pair.Key, values.Single())]
                 : values.Select((x, i) => ($"{pair.Key}[{i.ToString().PadLeft(padding, paddingChar: '0')}]", x));
         }
 

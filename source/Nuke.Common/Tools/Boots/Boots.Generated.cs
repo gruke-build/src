@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Boots/Boots.json
 
 using JetBrains.Annotations;
@@ -29,7 +33,7 @@ public partial class BootsTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p><p>For more details, visit the <a href="https://github.com/jonathanpeppers/boots">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> Boots(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new BootsTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p><p>For more details, visit the <a href="https://github.com/jonathanpeppers/boots">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--file-type</c> via <see cref="BootsSettings.FileType"/></li><li><c>--preview</c> via <see cref="BootsSettings.Preview"/></li><li><c>--read-write-timeout</c> via <see cref="BootsSettings.ReadWriteTimeout"/></li><li><c>--retries</c> via <see cref="BootsSettings.Retries"/></li><li><c>--stable</c> via <see cref="BootsSettings.Stable"/></li><li><c>--timeout</c> via <see cref="BootsSettings.Timeout"/></li><li><c>--url</c> via <see cref="BootsSettings.Url"/></li><li><c>--version</c> via <see cref="BootsSettings.Version"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--file-type</c> via <see cref="BootsSettings.FileType"/></li><li><c>--preview</c> via <see cref="BootsSettings.Preview"/></li><li><c>--read-write-timeout</c> via <see cref="BootsSettings.ReadWriteTimeout"/></li><li><c>--retries</c> via <see cref="BootsSettings.Retries"/></li><li><c>--stable</c> via <see cref="BootsSettings.Stable"/></li><li><c>--timeout</c> via <see cref="BootsSettings.Timeout"/></li><li><c>--url</c> via <see cref="BootsSettings.Url"/></li><li><c>--version</c> via <see cref="BootsSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Boots(BootsSettings options = null) => new BootsTasks().Run<BootsSettings>(options);
     /// <inheritdoc cref="BootsTasks.Boots(Nuke.Common.Tools.Boots.BootsSettings)"/>
     public static IReadOnlyCollection<Output> Boots(Configure<BootsSettings> configurator) => new BootsTasks().Run<BootsSettings>(configurator.Invoke(new BootsSettings()));
@@ -150,10 +154,10 @@ public static partial class BootsSettingsExtensions
 [TypeConverter(typeof(TypeConverter<BootsProductType>))]
 public partial class BootsProductType : Enumeration
 {
-    public static BootsProductType Mono = (BootsProductType) "Mono";
-    public static BootsProductType Xamarin_Android = (BootsProductType) "Xamarin.Android";
-    public static BootsProductType Xamarin_iOS = (BootsProductType) "Xamarin.iOS";
-    public static BootsProductType Xamarin_Mac = (BootsProductType) "Xamarin.Mac";
+    public static readonly BootsProductType Mono = (BootsProductType) "Mono";
+    public static readonly BootsProductType Xamarin_Android = (BootsProductType) "Xamarin.Android";
+    public static readonly BootsProductType Xamarin_iOS = (BootsProductType) "Xamarin.iOS";
+    public static readonly BootsProductType Xamarin_Mac = (BootsProductType) "Xamarin.Mac";
     public static implicit operator BootsProductType(string value)
     {
         return new BootsProductType { Value = value };
@@ -168,9 +172,9 @@ public partial class BootsProductType : Enumeration
 [TypeConverter(typeof(TypeConverter<BootsFileType>))]
 public partial class BootsFileType : Enumeration
 {
-    public static BootsFileType vsix = (BootsFileType) "vsix";
-    public static BootsFileType pkg = (BootsFileType) "pkg";
-    public static BootsFileType msi = (BootsFileType) "msi";
+    public static readonly BootsFileType vsix = (BootsFileType) "vsix";
+    public static readonly BootsFileType pkg = (BootsFileType) "pkg";
+    public static readonly BootsFileType msi = (BootsFileType) "msi";
     public static implicit operator BootsFileType(string value)
     {
         return new BootsFileType { Value = value };

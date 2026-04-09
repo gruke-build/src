@@ -19,9 +19,25 @@ public interface IHazGitVersion : INukeBuild
 }
 
 [PublicAPI]
+public interface IHazDebuggableGitVersion : INukeBuild
+{
+    [GitVersion(NoFetch = true, Framework = "net8.0", PrintOutput = true)]
+    [Required]
+    GitVersion Versioning => TryGetValue(() => Versioning);
+}
+
+[PublicAPI]
 public interface IHazFetchingGitVersion : INukeBuild
 {
     [GitVersion(NoFetch = false, Framework = "net8.0")]
+    [Required]
+    GitVersion Versioning => TryGetValue(() => Versioning);
+}
+
+[PublicAPI]
+public interface IHazDebuggableFetchingGitVersion : INukeBuild
+{
+    [GitVersion(NoFetch = false, Framework = "net8.0", PrintOutput = true)]
     [Required]
     GitVersion Versioning => TryGetValue(() => Versioning);
 }

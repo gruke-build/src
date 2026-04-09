@@ -8,6 +8,23 @@ using System.Linq;
 namespace Nuke.Common.CI;
 
 [AttributeUsage(AttributeTargets.Property)]
-public class NoConvertAttribute : Attribute
+internal class NoConvertAttribute : Attribute;
+
+[AttributeUsage(AttributeTargets.Property)]
+internal class NoValueCheckAttribute : Attribute;
+
+[AttributeUsage(AttributeTargets.Property)]
+internal class NoValueCheckOnPlatformAttribute : Attribute
 {
+    private PlatformFamily[] Platforms { get; }
+
+    public NoValueCheckOnPlatformAttribute(params PlatformFamily[] platforms)
+    {
+        Platforms = platforms;
+    }
+
+    public bool ShouldSkip()
+    {
+        return Platforms.Contains(EnvironmentInfo.Platform);
+    }
 }

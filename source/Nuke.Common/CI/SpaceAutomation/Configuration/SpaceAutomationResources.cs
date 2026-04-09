@@ -10,6 +10,7 @@ using Nuke.Common.Utilities;
 namespace Nuke.Common.CI.SpaceAutomation.Configuration;
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 public class SpaceAutomationResources : ConfigurationEntity
 {
     public string Cpu { get; set; }
@@ -19,7 +20,7 @@ public class SpaceAutomationResources : ConfigurationEntity
     {
         if (Cpu != null || Memory != null)
         {
-            using (writer.WriteBlock($"resources"))
+            using (writer.WriteKotlinLambda("resources"))
             {
                 if (Cpu != null)
                     writer.WriteLine($"cpu = {Cpu}");

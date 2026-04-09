@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities.Collections;
 using Xunit;
 using static Nuke.Common.Utilities.ReflectionUtility;
 
@@ -17,7 +16,7 @@ public class ParameterServiceTest
 {
     private ParameterService GetService(string[] commandLineArguments = null, IDictionary<string, string> environmentVariables = null)
     {
-        commandLineArguments ??= new string[0];
+        commandLineArguments ??= [];
         environmentVariables ??= new Dictionary<string, string>();
 
         return new ParameterService(
@@ -97,7 +96,7 @@ public class ParameterServiceTest
             .Should().BeOfType<bool>().Subject.Should().BeTrue();
 
         ParameterService.GetFromMemberInfo(GetMemberInfo(() => build.Set), destinationType: null, service.GetParameter)
-            .Should().BeOfType<int[]>().Subject.Should().BeEquivalentTo(new[] { 1, 2, 3 });
+            .Should().BeOfType<int[]>().Subject.Should().BeEquivalentTo([1, 2, 3]);
 
         ParameterService.GetFromMemberInfo(GetMemberInfo(() => ((ITestComponent)build).Param), destinationType: null, service.GetParameter)
             .Should().BeOfType<bool>().Subject.Should().BeTrue();

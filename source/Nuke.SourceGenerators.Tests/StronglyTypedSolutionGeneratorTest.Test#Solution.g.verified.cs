@@ -15,6 +15,9 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Nuke.Common.Pr
     public Nuke.Common.ProjectModel.Project Nuke_Common => this.GetProject("Nuke.Common");
     public Nuke.Common.ProjectModel.Project Nuke_Common_Tests => this.GetProject("Nuke.Common.Tests");
     public Nuke.Common.ProjectModel.Project Nuke_Components => this.GetProject("Nuke.Components");
+    public Nuke.Common.ProjectModel.Project Nuke_Components_Forgejo => this.GetProject("Nuke.Components.Forgejo");
+    public Nuke.Common.ProjectModel.Project Nuke_Components_GitHub => this.GetProject("Nuke.Components.GitHub");
+    public Nuke.Common.ProjectModel.Project Nuke_Components_GitLab => this.GetProject("Nuke.Components.GitLab");
     public Nuke.Common.ProjectModel.Project Nuke_GlobalTool => this.GetProject("Nuke.GlobalTool");
     public Nuke.Common.ProjectModel.Project Nuke_GlobalTool_Tests => this.GetProject("Nuke.GlobalTool.Tests");
     public Nuke.Common.ProjectModel.Project Nuke_MSBuildTasks => this.GetProject("Nuke.MSBuildTasks");

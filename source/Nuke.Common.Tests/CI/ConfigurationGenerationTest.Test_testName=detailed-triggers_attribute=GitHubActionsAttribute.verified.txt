@@ -68,7 +68,7 @@ jobs:
           progress: false
           filter: tree:0
       - name: 'Cache: .nuke/temp, ~/.nuget/packages'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .nuke/temp
@@ -80,19 +80,19 @@ jobs:
           OptionalInput: ${{ github.event.inputs.OptionalInput }}
           RequiredInput: ${{ github.event.inputs.RequiredInput }}
       - name: 'Publish: src'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: coverage-report.zip
@@ -116,7 +116,7 @@ jobs:
           progress: false
           filter: tree:0
       - name: 'Cache: .nuke/temp, ~/.nuget/packages'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .nuke/temp
@@ -128,19 +128,19 @@ jobs:
           OptionalInput: ${{ github.event.inputs.OptionalInput }}
           RequiredInput: ${{ github.event.inputs.RequiredInput }}
       - name: 'Publish: src'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: coverage-report.zip
@@ -164,7 +164,7 @@ jobs:
           progress: false
           filter: tree:0
       - name: 'Cache: .nuke/temp, ~/.nuget/packages'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .nuke/temp
@@ -176,19 +176,19 @@ jobs:
           OptionalInput: ${{ github.event.inputs.OptionalInput }}
           RequiredInput: ${{ github.event.inputs.RequiredInput }}
       - name: 'Publish: src'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: src
           path: src
       - name: 'Publish: test-results'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: test-results
           path: output/test-results
       - name: 'Publish: coverage-report.zip'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: success() || failure()
         with:
           name: coverage-report.zip

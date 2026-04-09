@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "Host": {
@@ -47,7 +47,7 @@
         },
         "Plan": {
           "type": "boolean",
-          "description": "Shows the execution plan (HTML)"
+          "description": "Shows the execution plan (HTML). Seems to have functional issues in Firefox-based browsers"
         },
         "Profile": {
           "type": "array",

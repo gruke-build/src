@@ -46,7 +46,7 @@ public partial class Program
 
     private static void PrintInfo()
     {
-        Host.Information($"NUKE Global Tool 🌐 version GreemDev/{typeof(Program).Assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})");
+        Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
     }
 
     [CanBeNull]
@@ -89,7 +89,7 @@ public partial class Program
                 : "build.ps1/sh files";
 
             return PromptForConfirmation($"Could not find {missingItem}. Do you want to setup a build?")
-                ? Setup(new string[0], rootDirectory, buildScript: null)
+                ? Setup([], rootDirectory, buildScript: null)
                 : 0;
         }
 

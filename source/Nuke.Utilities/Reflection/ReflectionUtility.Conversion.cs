@@ -35,7 +35,6 @@ public static partial class ReflectionUtility
         catch
         {
             Assert.Fail($"Value '{value}' could not be converted to '{destinationType.GetDisplayShortName()}'");
-            // ReSharper disable once HeuristicUnreachableCode
             return null;
         }
     }
@@ -44,7 +43,7 @@ public static partial class ReflectionUtility
     [CanBeNull]
     public static object Convert(string value, Type destinationType, char? separator, bool booleanDefault)
     {
-        var values = (separator.HasValue ? value.Split(separator.Value) : new[] { value })
+        var values = (separator.HasValue ? value.Split(separator.Value) : [value])
             .Where(x => !x.IsNullOrWhiteSpace()).ToArray();
         return Convert(values, destinationType, booleanDefault);
     }

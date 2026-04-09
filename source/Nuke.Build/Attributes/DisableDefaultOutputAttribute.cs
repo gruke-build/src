@@ -27,6 +27,23 @@ public class DisableDefaultOutputAttribute : Attribute
     }
 }
 
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Class)]
+public class DisableDefaultOutputAttribute<T> : DisableDefaultOutputAttribute
+    where T : Host
+{
+    public DisableDefaultOutputAttribute(params DefaultOutput[] disabledOutputs)
+        : base(disabledOutputs)
+    {
+    }
+
+    public override bool IsApplicable(INukeBuild build)
+    {
+        return build.Host is T;
+    }
+}
+
+
 public enum DefaultOutput
 {
     Logo,
@@ -35,5 +52,6 @@ public enum DefaultOutput
     ErrorsAndWarnings,
     TargetOutcome,
     BuildOutcome,
-    Timestamps
+    Timestamps,
+    Notifications
 }

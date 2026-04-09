@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Discord/Discord.json
 
 using JetBrains.Annotations;
@@ -503,12 +507,12 @@ public static partial class DiscordEmbedFieldExtensions
 [TypeConverter(typeof(TypeConverter<DiscordEmbedType>))]
 public partial class DiscordEmbedType : Enumeration
 {
-    public static DiscordEmbedType rich = (DiscordEmbedType) "rich";
-    public static DiscordEmbedType image = (DiscordEmbedType) "image";
-    public static DiscordEmbedType video = (DiscordEmbedType) "video";
-    public static DiscordEmbedType gifv = (DiscordEmbedType) "gifv";
-    public static DiscordEmbedType article = (DiscordEmbedType) "article";
-    public static DiscordEmbedType link = (DiscordEmbedType) "link";
+    public static readonly DiscordEmbedType rich = (DiscordEmbedType) "rich";
+    public static readonly DiscordEmbedType image = (DiscordEmbedType) "image";
+    public static readonly DiscordEmbedType video = (DiscordEmbedType) "video";
+    public static readonly DiscordEmbedType gifv = (DiscordEmbedType) "gifv";
+    public static readonly DiscordEmbedType article = (DiscordEmbedType) "article";
+    public static readonly DiscordEmbedType link = (DiscordEmbedType) "link";
     public static implicit operator DiscordEmbedType(string value)
     {
         return new DiscordEmbedType { Value = value };

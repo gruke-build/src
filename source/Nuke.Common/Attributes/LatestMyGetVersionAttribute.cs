@@ -17,16 +17,23 @@ public class LatestMyGetVersionAttribute : ValueInjectionAttributeBase
 {
     private readonly string _feed;
     private readonly string _package;
+    private readonly bool _logRequestDestination;
 
-    public LatestMyGetVersionAttribute(string feed, string package)
+    public LatestMyGetVersionAttribute(string feed, string package, bool useLogging = true)
     {
         _feed = feed;
         _package = package;
+        _logRequestDestination = useLogging;
     }
+
+    private string Url => $"https://www.myget.org/RSS/{_feed}";
 
     public override object GetValue(MemberInfo member, object instance)
     {
-        var content = HttpTasks.HttpDownloadString($"https://www.myget.org/RSS/{_feed}");
+        var content = _logRequestDestination
+            ? HttpTasks.HttpDownloadStringLogged(Url)
+            : HttpTasks.HttpDownloadString(Url);
+
         return XmlTasks.XmlPeekFromString(content, ".//title")
             // TODO: regex?
             .First(x => x.Contains($"/{_package} "))

@@ -32,8 +32,8 @@ public class Tool : IDeprecatable
     [CanBeNull] [JsonIgnore] public IDeprecatable Parent => null;
 
     [Description("Contains all references on which this definition is based on. Allows checking for updates.")]
-    public List<string> References { get; set; } = new();
-    public List<string> Imports { get; set; } = new();
+    public List<string> References { get; set; } = [];
+    public List<string> Imports { get; set; } = [];
 
     [JsonProperty(Required = Required.Always)]
     [RegularExpression(RegexPatterns.Name)]
@@ -82,19 +82,19 @@ public class Tool : IDeprecatable
     public bool CustomExitHandler { get; set; }
 
     [Description("Help or introduction text to for the tool. Can contain HTML tags for better formatting.")]
-    public List<Task> Tasks { get; set; } = new();
+    public List<Task> Tasks { get; set; } = [];
 
     [Description("Common properties for all tasks.")]
-    public List<Property> CommonTaskProperties { get; set; } = new();
+    public List<Property> CommonTaskProperties { get; set; } = [];
 
     [Description("Named common property sets which can be used by tasks.")]
     public Dictionary<string, List<Property>> CommonTaskPropertySets { get; set; } = new();
 
     [Description("Common used data classes.")]
-    public List<DataClass> DataClasses { get; set; } = new();
+    public List<DataClass> DataClasses { get; set; } = [];
 
     [Description("Used enumerations.")]
-    public List<Enumeration> Enumerations { get; set; } = new();
+    public List<Enumeration> Enumerations { get; set; } = [];
 
     [CanBeNull]
     [Description("Can be used to store additional information about the tool.")]

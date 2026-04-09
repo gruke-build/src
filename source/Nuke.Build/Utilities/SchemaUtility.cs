@@ -30,7 +30,7 @@ public class SchemaUtility
             protected override List<MemberInfo> GetSerializableMembers(Type objectType)
             {
                 return objectType == typeof(ExecutableTarget) || objectType == typeof(Host)
-                    ? new List<MemberInfo>()
+                    ? []
                     : base.GetSerializableMembers(objectType);
             }
         }
@@ -46,7 +46,7 @@ public class SchemaUtility
                         new JsonSerializerSettings
                         {
                             ContractResolver = new Resolver(),
-                            Converters = new JsonConverter[] { new StringEnumConverter() }
+                            Converters = [new StringEnumConverter()]
                         }
                 }).Generate();
         }
@@ -133,7 +133,7 @@ public class SchemaUtility
 
             property.Description = ParameterService.GetParameterDescription(parameterMember);
             property.Default = parameterMember.HasCustomAttribute<SecretAttribute>()
-                ? "Secrets must be entered via 'nuke :secrets [profile]'"
+                ? "Secrets must be entered via 'gruke :secrets [profile]'"
                 : null;
 
             var values = ParameterService.GetParameterValueSet(parameterMember, _build)

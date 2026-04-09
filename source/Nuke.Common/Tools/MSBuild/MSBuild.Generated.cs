@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/MSBuild/MSBuild.json
 
 using JetBrains.Annotations;
@@ -26,7 +30,7 @@ public partial class MSBuildTasks : ToolTasks
     /// <summary><p>The Microsoft Build Engine is a platform for building applications. This engine, which is also known as MSBuild, provides an XML schema for a project file that controls how the build platform processes and builds software. Visual Studio uses MSBuild, but it doesn't depend on Visual Studio. By invoking msbuild.exe on your project or solution file, you can orchestrate and build products in environments where Visual Studio isn't installed. Visual Studio uses MSBuild to load and build managed projects. The project files in Visual Studio (.csproj,.vbproj, vcxproj, and others) contain MSBuild XML code that executes when you build a project by using the IDE. Visual Studio projects import all the necessary settings and build processes to do typical development work, but you can extend or modify them from within Visual Studio or by using an XML editor.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> MSBuild(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new MSBuildTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>The Microsoft Build Engine is a platform for building applications. This engine, which is also known as MSBuild, provides an XML schema for a project file that controls how the build platform processes and builds software. Visual Studio uses MSBuild, but it doesn't depend on Visual Studio. By invoking msbuild.exe on your project or solution file, you can orchestrate and build products in environments where Visual Studio isn't installed. Visual Studio uses MSBuild to load and build managed projects. The project files in Visual Studio (.csproj,.vbproj, vcxproj, and others) contain MSBuild XML code that executes when you build a project by using the IDE. Visual Studio projects import all the necessary settings and build processes to do typical development work, but you can extend or modify them from within Visual Studio or by using an XML editor.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="MSBuildSettings.TargetPath"/></li><li><c>/detailedsummary</c> via <see cref="MSBuildSettings.DetailedSummary"/></li><li><c>/logger</c> via <see cref="MSBuildSettings.Loggers"/></li><li><c>/maxcpucount</c> via <see cref="MSBuildSettings.MaxCpuCount"/></li><li><c>/noconsolelogger</c> via <see cref="MSBuildSettings.NoConsoleLogger"/></li><li><c>/nodeReuse</c> via <see cref="MSBuildSettings.NodeReuse"/></li><li><c>/nologo</c> via <see cref="MSBuildSettings.NoLogo"/></li><li><c>/p</c> via <see cref="MSBuildSettings.Properties"/></li><li><c>/p:Platform</c> via <see cref="MSBuildSettings.TargetPlatform"/></li><li><c>/restore</c> via <see cref="MSBuildSettings.Restore"/></li><li><c>/target</c> via <see cref="MSBuildSettings.Targets"/></li><li><c>/toolsversion</c> via <see cref="MSBuildSettings.ToolsVersion"/></li><li><c>/verbosity</c> via <see cref="MSBuildSettings.Verbosity"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="MSBuildSettings.TargetPath"/></li><li><c>/detailedsummary</c> via <see cref="MSBuildSettings.DetailedSummary"/></li><li><c>/logger</c> via <see cref="MSBuildSettings.Loggers"/></li><li><c>/maxcpucount</c> via <see cref="MSBuildSettings.MaxCpuCount"/></li><li><c>/noconsolelogger</c> via <see cref="MSBuildSettings.NoConsoleLogger"/></li><li><c>/nodeReuse</c> via <see cref="MSBuildSettings.NodeReuse"/></li><li><c>/nologo</c> via <see cref="MSBuildSettings.NoLogo"/></li><li><c>/p</c> via <see cref="MSBuildSettings.Properties"/></li><li><c>/p:Platform</c> via <see cref="MSBuildSettings.TargetPlatform"/></li><li><c>/restore</c> via <see cref="MSBuildSettings.Restore"/></li><li><c>/target</c> via <see cref="MSBuildSettings.Targets"/></li><li><c>/toolsversion</c> via <see cref="MSBuildSettings.ToolsVersion"/></li><li><c>/verbosity</c> via <see cref="MSBuildSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MSBuild(MSBuildSettings options = null) => new MSBuildTasks().Run<MSBuildSettings>(options);
     /// <inheritdoc cref="MSBuildTasks.MSBuild(Nuke.Common.Tools.MSBuild.MSBuildSettings)"/>
     public static IReadOnlyCollection<Output> MSBuild(Configure<MSBuildSettings> configurator) => new MSBuildTasks().Run<MSBuildSettings>(configurator.Invoke(new MSBuildSettings()));
@@ -749,12 +753,12 @@ public static partial class MSBuildSettingsExtensions
 [TypeConverter(typeof(TypeConverter<MSBuildToolsVersion>))]
 public partial class MSBuildToolsVersion : Enumeration
 {
-    public static MSBuildToolsVersion _2_0 = (MSBuildToolsVersion) "2.0";
-    public static MSBuildToolsVersion _3_5 = (MSBuildToolsVersion) "3.5";
-    public static MSBuildToolsVersion _4_0 = (MSBuildToolsVersion) "4.0";
-    public static MSBuildToolsVersion _12_0 = (MSBuildToolsVersion) "12.0";
-    public static MSBuildToolsVersion _14_0 = (MSBuildToolsVersion) "14.0";
-    public static MSBuildToolsVersion _15_0 = (MSBuildToolsVersion) "15.0";
+    public static readonly MSBuildToolsVersion _2_0 = (MSBuildToolsVersion) "2.0";
+    public static readonly MSBuildToolsVersion _3_5 = (MSBuildToolsVersion) "3.5";
+    public static readonly MSBuildToolsVersion _4_0 = (MSBuildToolsVersion) "4.0";
+    public static readonly MSBuildToolsVersion _12_0 = (MSBuildToolsVersion) "12.0";
+    public static readonly MSBuildToolsVersion _14_0 = (MSBuildToolsVersion) "14.0";
+    public static readonly MSBuildToolsVersion _15_0 = (MSBuildToolsVersion) "15.0";
     public static implicit operator MSBuildToolsVersion(string value)
     {
         return new MSBuildToolsVersion { Value = value };
@@ -769,11 +773,11 @@ public partial class MSBuildToolsVersion : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildVerbosity>))]
 public partial class MSBuildVerbosity : Enumeration
 {
-    public static MSBuildVerbosity Quiet = (MSBuildVerbosity) "Quiet";
-    public static MSBuildVerbosity Minimal = (MSBuildVerbosity) "Minimal";
-    public static MSBuildVerbosity Normal = (MSBuildVerbosity) "Normal";
-    public static MSBuildVerbosity Detailed = (MSBuildVerbosity) "Detailed";
-    public static MSBuildVerbosity Diagnostic = (MSBuildVerbosity) "Diagnostic";
+    public static readonly MSBuildVerbosity Quiet = (MSBuildVerbosity) "Quiet";
+    public static readonly MSBuildVerbosity Minimal = (MSBuildVerbosity) "Minimal";
+    public static readonly MSBuildVerbosity Normal = (MSBuildVerbosity) "Normal";
+    public static readonly MSBuildVerbosity Detailed = (MSBuildVerbosity) "Detailed";
+    public static readonly MSBuildVerbosity Diagnostic = (MSBuildVerbosity) "Diagnostic";
     public static implicit operator MSBuildVerbosity(string value)
     {
         return new MSBuildVerbosity { Value = value };
@@ -788,11 +792,11 @@ public partial class MSBuildVerbosity : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildTargetPlatform>))]
 public partial class MSBuildTargetPlatform : Enumeration
 {
-    public static MSBuildTargetPlatform MSIL = (MSBuildTargetPlatform) "MSIL";
-    public static MSBuildTargetPlatform x86 = (MSBuildTargetPlatform) "x86";
-    public static MSBuildTargetPlatform x64 = (MSBuildTargetPlatform) "x64";
-    public static MSBuildTargetPlatform arm = (MSBuildTargetPlatform) "arm";
-    public static MSBuildTargetPlatform Win32 = (MSBuildTargetPlatform) "Win32";
+    public static readonly MSBuildTargetPlatform MSIL = (MSBuildTargetPlatform) "MSIL";
+    public static readonly MSBuildTargetPlatform x86 = (MSBuildTargetPlatform) "x86";
+    public static readonly MSBuildTargetPlatform x64 = (MSBuildTargetPlatform) "x64";
+    public static readonly MSBuildTargetPlatform arm = (MSBuildTargetPlatform) "arm";
+    public static readonly MSBuildTargetPlatform Win32 = (MSBuildTargetPlatform) "Win32";
     public static implicit operator MSBuildTargetPlatform(string value)
     {
         return new MSBuildTargetPlatform { Value = value };
@@ -807,8 +811,8 @@ public partial class MSBuildTargetPlatform : Enumeration
 [TypeConverter(typeof(TypeConverter<MSBuildSymbolPackageFormat>))]
 public partial class MSBuildSymbolPackageFormat : Enumeration
 {
-    public static MSBuildSymbolPackageFormat symbols_nupkg = (MSBuildSymbolPackageFormat) "symbols.nupkg";
-    public static MSBuildSymbolPackageFormat snupkg = (MSBuildSymbolPackageFormat) "snupkg";
+    public static readonly MSBuildSymbolPackageFormat symbols_nupkg = (MSBuildSymbolPackageFormat) "symbols.nupkg";
+    public static readonly MSBuildSymbolPackageFormat snupkg = (MSBuildSymbolPackageFormat) "snupkg";
     public static implicit operator MSBuildSymbolPackageFormat(string value)
     {
         return new MSBuildSymbolPackageFormat { Value = value };

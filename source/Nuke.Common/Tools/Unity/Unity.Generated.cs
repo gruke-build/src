@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Unity/Unity.json
 
 using JetBrains.Annotations;
@@ -26,35 +30,35 @@ public partial class UnityTasks : ToolTasks
     /// <summary><p>Unity is usually launched by double-clicking its icon from the desktop. However, it is also possible to run it from the command line (from the macOS Terminal or the Windows Command Prompt). When launched in this way, Unity can receive commands and information on startup, which can be very useful for test suites, automated builds and other production tasks.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> Unity(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new UnityTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>(2018.2+) Exports the currently activated license to the path of the Unity executable or either the default Unity license location, see the logs or <a href="https://docs.unity3d.com/Manual/ActivationFAQ.html">Activation FAQ</a> for more information.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityCreateManualActivationFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityCreateManualActivationFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityCreateManualActivationFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityCreateManualActivationFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityCreateManualActivationFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityCreateManualActivationFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityCreateManualActivationFileSettings.Username"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityCreateManualActivationFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityCreateManualActivationFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityCreateManualActivationFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityCreateManualActivationFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityCreateManualActivationFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityCreateManualActivationFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityCreateManualActivationFileSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityCreateManualActivationFile(UnityCreateManualActivationFileSettings options = null) => new UnityTasks().Run<UnityCreateManualActivationFileSettings>(options);
     /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Nuke.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
     public static IReadOnlyCollection<Output> UnityCreateManualActivationFile(Configure<UnityCreateManualActivationFileSettings> configurator) => new UnityTasks().Run<UnityCreateManualActivationFileSettings>(configurator.Invoke(new UnityCreateManualActivationFileSettings()));
     /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Nuke.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
     public static IEnumerable<(UnityCreateManualActivationFileSettings Settings, IReadOnlyCollection<Output> Output)> UnityCreateManualActivationFile(CombinatorialConfigure<UnityCreateManualActivationFileSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityCreateManualActivationFile, degreeOfParallelism, completeOnFailure);
     /// <summary><p>(2018.2+) Activates Unity with a license file.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityManualLicenseFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-manualLicenseFile</c> via <see cref="UnityManualLicenseFileSettings.LicenseFile"/></li><li><c>-nographics</c> via <see cref="UnityManualLicenseFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityManualLicenseFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityManualLicenseFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityManualLicenseFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityManualLicenseFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityManualLicenseFileSettings.Username"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityManualLicenseFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-manualLicenseFile</c> via <see cref="UnityManualLicenseFileSettings.LicenseFile"/></li><li><c>-nographics</c> via <see cref="UnityManualLicenseFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityManualLicenseFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityManualLicenseFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityManualLicenseFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityManualLicenseFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityManualLicenseFileSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityManualLicenseFile(UnityManualLicenseFileSettings options = null) => new UnityTasks().Run<UnityManualLicenseFileSettings>(options);
     /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Nuke.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
     public static IReadOnlyCollection<Output> UnityManualLicenseFile(Configure<UnityManualLicenseFileSettings> configurator) => new UnityTasks().Run<UnityManualLicenseFileSettings>(configurator.Invoke(new UnityManualLicenseFileSettings()));
     /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Nuke.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
     public static IEnumerable<(UnityManualLicenseFileSettings Settings, IReadOnlyCollection<Output> Output)> UnityManualLicenseFile(CombinatorialConfigure<UnityManualLicenseFileSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityManualLicenseFile, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Execute Unity.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnitySettings.BatchMode"/></li><li><c>-buildLinux32Player</c> via <see cref="UnitySettings.BuildLinux32Player"/></li><li><c>-buildLinux64Player</c> via <see cref="UnitySettings.BuildLinux64Player"/></li><li><c>-buildLinuxUniversalPlayer</c> via <see cref="UnitySettings.BuildLinuxUniversalPlayer"/></li><li><c>-buildOSX64Player</c> via <see cref="UnitySettings.BuildOSX64Player"/></li><li><c>-buildOSXPlayer</c> via <see cref="UnitySettings.BuildOSXPlayer"/></li><li><c>-buildOSXUniversalPlayer</c> via <see cref="UnitySettings.BuildOSXUniversalPlayer"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-buildWindows64Player</c> via <see cref="UnitySettings.BuildWindows64Player"/></li><li><c>-buildWindowsPlayer</c> via <see cref="UnitySettings.BuildWindowsPlayer"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-createProject</c> via <see cref="UnitySettings.CreateProject"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-editorTestsCategories</c> via <see cref="UnitySettings.EditorTestsCategories"/></li><li><c>-editorTestsFilter</c> via <see cref="UnitySettings.EditorTestsFilter"/></li><li><c>-editorTestsResultFile</c> via <see cref="UnitySettings.EditorTestsResultFile"/></li><li><c>-executeMethod</c> via <see cref="UnitySettings.ExecuteMethod"/></li><li><c>-exportPackage</c> via <see cref="UnitySettings.ExportPackage"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-importPackage</c> via <see cref="UnitySettings.ImportPackage"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnitySettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnitySettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnitySettings.Quit"/></li><li><c>-runEditorTests</c> via <see cref="UnitySettings.RunEditorTests"/></li><li><c>-serial</c> via <see cref="UnitySettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnitySettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-username</c> via <see cref="UnitySettings.Username"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnitySettings.BatchMode"/></li><li><c>-buildLinux32Player</c> via <see cref="UnitySettings.BuildLinux32Player"/></li><li><c>-buildLinux64Player</c> via <see cref="UnitySettings.BuildLinux64Player"/></li><li><c>-buildLinuxUniversalPlayer</c> via <see cref="UnitySettings.BuildLinuxUniversalPlayer"/></li><li><c>-buildOSX64Player</c> via <see cref="UnitySettings.BuildOSX64Player"/></li><li><c>-buildOSXPlayer</c> via <see cref="UnitySettings.BuildOSXPlayer"/></li><li><c>-buildOSXUniversalPlayer</c> via <see cref="UnitySettings.BuildOSXUniversalPlayer"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-buildWindows64Player</c> via <see cref="UnitySettings.BuildWindows64Player"/></li><li><c>-buildWindowsPlayer</c> via <see cref="UnitySettings.BuildWindowsPlayer"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-createProject</c> via <see cref="UnitySettings.CreateProject"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-editorTestsCategories</c> via <see cref="UnitySettings.EditorTestsCategories"/></li><li><c>-editorTestsFilter</c> via <see cref="UnitySettings.EditorTestsFilter"/></li><li><c>-editorTestsResultFile</c> via <see cref="UnitySettings.EditorTestsResultFile"/></li><li><c>-executeMethod</c> via <see cref="UnitySettings.ExecuteMethod"/></li><li><c>-exportPackage</c> via <see cref="UnitySettings.ExportPackage"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-importPackage</c> via <see cref="UnitySettings.ImportPackage"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnitySettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnitySettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnitySettings.Quit"/></li><li><c>-runEditorTests</c> via <see cref="UnitySettings.RunEditorTests"/></li><li><c>-serial</c> via <see cref="UnitySettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnitySettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-username</c> via <see cref="UnitySettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Unity(UnitySettings options = null) => new UnityTasks().Run<UnitySettings>(options);
     /// <inheritdoc cref="UnityTasks.Unity(Nuke.Common.Tools.Unity.UnitySettings)"/>
     public static IReadOnlyCollection<Output> Unity(Configure<UnitySettings> configurator) => new UnityTasks().Run<UnitySettings>(configurator.Invoke(new UnitySettings()));
     /// <inheritdoc cref="UnityTasks.Unity(Nuke.Common.Tools.Unity.UnitySettings)"/>
     public static IEnumerable<(UnitySettings Settings, IReadOnlyCollection<Output> Output)> Unity(CombinatorialConfigure<UnitySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Unity, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Return the currenlty activated Unity license.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityReturnLicenseSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityReturnLicenseSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityReturnLicenseSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityReturnLicenseSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityReturnLicenseSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityReturnLicenseSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityReturnLicenseSettings.Username"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityReturnLicenseSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityReturnLicenseSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityReturnLicenseSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityReturnLicenseSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityReturnLicenseSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityReturnLicenseSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityReturnLicenseSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityReturnLicense(UnityReturnLicenseSettings options = null) => new UnityTasks().Run<UnityReturnLicenseSettings>(options);
     /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Nuke.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
     public static IReadOnlyCollection<Output> UnityReturnLicense(Configure<UnityReturnLicenseSettings> configurator) => new UnityTasks().Run<UnityReturnLicenseSettings>(configurator.Invoke(new UnityReturnLicenseSettings()));
     /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Nuke.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
     public static IEnumerable<(UnityReturnLicenseSettings Settings, IReadOnlyCollection<Output> Output)> UnityReturnLicense(CombinatorialConfigure<UnityReturnLicenseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityReturnLicense, degreeOfParallelism, completeOnFailure);
     /// <summary><p>(2019.2+) Run tests in the project using Unity Test Framework. This argument requires the <c>projectPath</c>, and it's good practice to run it with <c>batchmode</c> argument. <c>quit</c> is not required, because the Editor automatically closes down after the run is finished.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnityRunTestsSettings.BatchMode"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityRunTestsSettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnityRunTestsSettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnityRunTestsSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityRunTestsSettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnityRunTestsSettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-testCategory</c> via <see cref="UnityRunTestsSettings.TestCategories"/></li><li><c>-testFilter</c> via <see cref="UnityRunTestsSettings.TestFilters"/></li><li><c>-testPlatform</c> via <see cref="UnityRunTestsSettings.TestPlatform"/></li><li><c>-testResults</c> via <see cref="UnityRunTestsSettings.TestResultFile"/></li><li><c>-username</c> via <see cref="UnityRunTestsSettings.Username"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnityRunTestsSettings.BatchMode"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityRunTestsSettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnityRunTestsSettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnityRunTestsSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityRunTestsSettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnityRunTestsSettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-testCategory</c> via <see cref="UnityRunTestsSettings.TestCategories"/></li><li><c>-testFilter</c> via <see cref="UnityRunTestsSettings.TestFilters"/></li><li><c>-testPlatform</c> via <see cref="UnityRunTestsSettings.TestPlatform"/></li><li><c>-testResults</c> via <see cref="UnityRunTestsSettings.TestResultFile"/></li><li><c>-username</c> via <see cref="UnityRunTestsSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityRunTests(UnityRunTestsSettings options = null) => new UnityTasks().Run<UnityRunTestsSettings>(options);
     /// <inheritdoc cref="UnityTasks.UnityRunTests(Nuke.Common.Tools.Unity.UnityRunTestsSettings)"/>
     public static IReadOnlyCollection<Output> UnityRunTests(Configure<UnityRunTestsSettings> configurator) => new UnityTasks().Run<UnityRunTestsSettings>(configurator.Invoke(new UnityRunTestsSettings()));
@@ -1375,44 +1379,44 @@ public static partial class UnityProjectOptionsExtensions
 [TypeConverter(typeof(TypeConverter<UnityBuildTarget>))]
 public partial class UnityBuildTarget : Enumeration
 {
-    public static UnityBuildTarget Android = (UnityBuildTarget) "Android";
-    public static UnityBuildTarget Bratwurst = (UnityBuildTarget) "Bratwurst";
-    public static UnityBuildTarget CloudRendering = (UnityBuildTarget) "CloudRendering";
-    public static UnityBuildTarget iOS = (UnityBuildTarget) "iOS";
-    public static UnityBuildTarget Linux = (UnityBuildTarget) "Linux";
-    public static UnityBuildTarget Linux64 = (UnityBuildTarget) "Linux64";
-    public static UnityBuildTarget LinuxHeadlessSimulation = (UnityBuildTarget) "LinuxHeadlessSimulation";
-    public static UnityBuildTarget LinuxUniversal = (UnityBuildTarget) "LinuxUniversal";
-    public static UnityBuildTarget N3DS = (UnityBuildTarget) "N3DS";
-    public static UnityBuildTarget OSXUniversal = (UnityBuildTarget) "OSXUniversal";
-    public static UnityBuildTarget PS4 = (UnityBuildTarget) "PS4";
-    public static UnityBuildTarget PS5 = (UnityBuildTarget) "PS5";
-    public static UnityBuildTarget PSM = (UnityBuildTarget) "PSM";
-    public static UnityBuildTarget PSP2 = (UnityBuildTarget) "PSP2";
-    public static UnityBuildTarget SamsungTV = (UnityBuildTarget) "SamsungTV";
-    public static UnityBuildTarget Stadia = (UnityBuildTarget) "Stadia";
-    public static UnityBuildTarget standalone = (UnityBuildTarget) "standalone";
-    public static UnityBuildTarget StandaloneLinux = (UnityBuildTarget) "StandaloneLinux";
-    public static UnityBuildTarget StandaloneLinux64 = (UnityBuildTarget) "StandaloneLinux64";
-    public static UnityBuildTarget StandaloneLinuxUniversal = (UnityBuildTarget) "StandaloneLinuxUniversal";
-    public static UnityBuildTarget StandaloneOSX = (UnityBuildTarget) "StandaloneOSX";
-    public static UnityBuildTarget StandaloneOSXIntel = (UnityBuildTarget) "StandaloneOSXIntel";
-    public static UnityBuildTarget StandaloneOSXIntel64 = (UnityBuildTarget) "StandaloneOSXIntel64";
-    public static UnityBuildTarget StandaloneOSXUniversal = (UnityBuildTarget) "StandaloneOSXUniversal";
-    public static UnityBuildTarget StandaloneWindows = (UnityBuildTarget) "StandaloneWindows";
-    public static UnityBuildTarget StandaloneWindows64 = (UnityBuildTarget) "StandaloneWindows64";
-    public static UnityBuildTarget Switch = (UnityBuildTarget) "Switch";
-    public static UnityBuildTarget Tizen = (UnityBuildTarget) "Tizen";
-    public static UnityBuildTarget tvOS = (UnityBuildTarget) "tvOS";
-    public static UnityBuildTarget WSAPlayer = (UnityBuildTarget) "WSAPlayer";
-    public static UnityBuildTarget Web = (UnityBuildTarget) "Web";
-    public static UnityBuildTarget WebGL = (UnityBuildTarget) "WebGL";
-    public static UnityBuildTarget WebStreamed = (UnityBuildTarget) "WebStreamed";
-    public static UnityBuildTarget WiiU = (UnityBuildTarget) "WiiU";
-    public static UnityBuildTarget Win = (UnityBuildTarget) "Win";
-    public static UnityBuildTarget Win64 = (UnityBuildTarget) "Win64";
-    public static UnityBuildTarget WindowsStoreApps = (UnityBuildTarget) "WindowsStoreApps";
-    public static UnityBuildTarget XboxOne = (UnityBuildTarget) "XboxOne";
+    public static readonly UnityBuildTarget Android = (UnityBuildTarget) "Android";
+    public static readonly UnityBuildTarget Bratwurst = (UnityBuildTarget) "Bratwurst";
+    public static readonly UnityBuildTarget CloudRendering = (UnityBuildTarget) "CloudRendering";
+    public static readonly UnityBuildTarget iOS = (UnityBuildTarget) "iOS";
+    public static readonly UnityBuildTarget Linux = (UnityBuildTarget) "Linux";
+    public static readonly UnityBuildTarget Linux64 = (UnityBuildTarget) "Linux64";
+    public static readonly UnityBuildTarget LinuxHeadlessSimulation = (UnityBuildTarget) "LinuxHeadlessSimulation";
+    public static readonly UnityBuildTarget LinuxUniversal = (UnityBuildTarget) "LinuxUniversal";
+    public static readonly UnityBuildTarget N3DS = (UnityBuildTarget) "N3DS";
+    public static readonly UnityBuildTarget OSXUniversal = (UnityBuildTarget) "OSXUniversal";
+    public static readonly UnityBuildTarget PS4 = (UnityBuildTarget) "PS4";
+    public static readonly UnityBuildTarget PS5 = (UnityBuildTarget) "PS5";
+    public static readonly UnityBuildTarget PSM = (UnityBuildTarget) "PSM";
+    public static readonly UnityBuildTarget PSP2 = (UnityBuildTarget) "PSP2";
+    public static readonly UnityBuildTarget SamsungTV = (UnityBuildTarget) "SamsungTV";
+    public static readonly UnityBuildTarget Stadia = (UnityBuildTarget) "Stadia";
+    public static readonly UnityBuildTarget standalone = (UnityBuildTarget) "standalone";
+    public static readonly UnityBuildTarget StandaloneLinux = (UnityBuildTarget) "StandaloneLinux";
+    public static readonly UnityBuildTarget StandaloneLinux64 = (UnityBuildTarget) "StandaloneLinux64";
+    public static readonly UnityBuildTarget StandaloneLinuxUniversal = (UnityBuildTarget) "StandaloneLinuxUniversal";
+    public static readonly UnityBuildTarget StandaloneOSX = (UnityBuildTarget) "StandaloneOSX";
+    public static readonly UnityBuildTarget StandaloneOSXIntel = (UnityBuildTarget) "StandaloneOSXIntel";
+    public static readonly UnityBuildTarget StandaloneOSXIntel64 = (UnityBuildTarget) "StandaloneOSXIntel64";
+    public static readonly UnityBuildTarget StandaloneOSXUniversal = (UnityBuildTarget) "StandaloneOSXUniversal";
+    public static readonly UnityBuildTarget StandaloneWindows = (UnityBuildTarget) "StandaloneWindows";
+    public static readonly UnityBuildTarget StandaloneWindows64 = (UnityBuildTarget) "StandaloneWindows64";
+    public static readonly UnityBuildTarget Switch = (UnityBuildTarget) "Switch";
+    public static readonly UnityBuildTarget Tizen = (UnityBuildTarget) "Tizen";
+    public static readonly UnityBuildTarget tvOS = (UnityBuildTarget) "tvOS";
+    public static readonly UnityBuildTarget WSAPlayer = (UnityBuildTarget) "WSAPlayer";
+    public static readonly UnityBuildTarget Web = (UnityBuildTarget) "Web";
+    public static readonly UnityBuildTarget WebGL = (UnityBuildTarget) "WebGL";
+    public static readonly UnityBuildTarget WebStreamed = (UnityBuildTarget) "WebStreamed";
+    public static readonly UnityBuildTarget WiiU = (UnityBuildTarget) "WiiU";
+    public static readonly UnityBuildTarget Win = (UnityBuildTarget) "Win";
+    public static readonly UnityBuildTarget Win64 = (UnityBuildTarget) "Win64";
+    public static readonly UnityBuildTarget WindowsStoreApps = (UnityBuildTarget) "WindowsStoreApps";
+    public static readonly UnityBuildTarget XboxOne = (UnityBuildTarget) "XboxOne";
     public static implicit operator UnityBuildTarget(string value)
     {
         return new UnityBuildTarget { Value = value };
@@ -1427,14 +1431,14 @@ public partial class UnityBuildTarget : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityGLCore>))]
 public partial class UnityGLCore : Enumeration
 {
-    public static UnityGLCore _32 = (UnityGLCore) "32";
-    public static UnityGLCore _33 = (UnityGLCore) "33";
-    public static UnityGLCore _40 = (UnityGLCore) "40";
-    public static UnityGLCore _41 = (UnityGLCore) "41";
-    public static UnityGLCore _42 = (UnityGLCore) "42";
-    public static UnityGLCore _43 = (UnityGLCore) "43";
-    public static UnityGLCore _44 = (UnityGLCore) "44";
-    public static UnityGLCore _45 = (UnityGLCore) "45";
+    public static readonly UnityGLCore _32 = (UnityGLCore) "32";
+    public static readonly UnityGLCore _33 = (UnityGLCore) "33";
+    public static readonly UnityGLCore _40 = (UnityGLCore) "40";
+    public static readonly UnityGLCore _41 = (UnityGLCore) "41";
+    public static readonly UnityGLCore _42 = (UnityGLCore) "42";
+    public static readonly UnityGLCore _43 = (UnityGLCore) "43";
+    public static readonly UnityGLCore _44 = (UnityGLCore) "44";
+    public static readonly UnityGLCore _45 = (UnityGLCore) "45";
     public static implicit operator UnityGLCore(string value)
     {
         return new UnityGLCore { Value = value };
@@ -1449,9 +1453,9 @@ public partial class UnityGLCore : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityGLES>))]
 public partial class UnityGLES : Enumeration
 {
-    public static UnityGLES _30 = (UnityGLES) "30";
-    public static UnityGLES _31 = (UnityGLES) "31";
-    public static UnityGLES _32 = (UnityGLES) "32";
+    public static readonly UnityGLES _30 = (UnityGLES) "30";
+    public static readonly UnityGLES _31 = (UnityGLES) "31";
+    public static readonly UnityGLES _32 = (UnityGLES) "32";
     public static implicit operator UnityGLES(string value)
     {
         return new UnityGLES { Value = value };
@@ -1466,9 +1470,9 @@ public partial class UnityGLES : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityStackTraceLogType>))]
 public partial class UnityStackTraceLogType : Enumeration
 {
-    public static UnityStackTraceLogType None = (UnityStackTraceLogType) "None";
-    public static UnityStackTraceLogType Script_Only = (UnityStackTraceLogType) "Script Only";
-    public static UnityStackTraceLogType Full = (UnityStackTraceLogType) "Full";
+    public static readonly UnityStackTraceLogType None = (UnityStackTraceLogType) "None";
+    public static readonly UnityStackTraceLogType Script_Only = (UnityStackTraceLogType) "Script Only";
+    public static readonly UnityStackTraceLogType Full = (UnityStackTraceLogType) "Full";
     public static implicit operator UnityStackTraceLogType(string value)
     {
         return new UnityStackTraceLogType { Value = value };
@@ -1483,12 +1487,12 @@ public partial class UnityStackTraceLogType : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityPlatformTextureFormat>))]
 public partial class UnityPlatformTextureFormat : Enumeration
 {
-    public static UnityPlatformTextureFormat dxt = (UnityPlatformTextureFormat) "dxt";
-    public static UnityPlatformTextureFormat pvrtc = (UnityPlatformTextureFormat) "pvrtc";
-    public static UnityPlatformTextureFormat atc = (UnityPlatformTextureFormat) "atc";
-    public static UnityPlatformTextureFormat etc = (UnityPlatformTextureFormat) "etc";
-    public static UnityPlatformTextureFormat etc2 = (UnityPlatformTextureFormat) "etc2";
-    public static UnityPlatformTextureFormat astc = (UnityPlatformTextureFormat) "astc";
+    public static readonly UnityPlatformTextureFormat dxt = (UnityPlatformTextureFormat) "dxt";
+    public static readonly UnityPlatformTextureFormat pvrtc = (UnityPlatformTextureFormat) "pvrtc";
+    public static readonly UnityPlatformTextureFormat atc = (UnityPlatformTextureFormat) "atc";
+    public static readonly UnityPlatformTextureFormat etc = (UnityPlatformTextureFormat) "etc";
+    public static readonly UnityPlatformTextureFormat etc2 = (UnityPlatformTextureFormat) "etc2";
+    public static readonly UnityPlatformTextureFormat astc = (UnityPlatformTextureFormat) "astc";
     public static implicit operator UnityPlatformTextureFormat(string value)
     {
         return new UnityPlatformTextureFormat { Value = value };
@@ -1503,8 +1507,8 @@ public partial class UnityPlatformTextureFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<UnityTestPlatform>))]
 public partial class UnityTestPlatform : Enumeration
 {
-    public static UnityTestPlatform EditMode = (UnityTestPlatform) "EditMode";
-    public static UnityTestPlatform PlayMode = (UnityTestPlatform) "PlayMode";
+    public static readonly UnityTestPlatform EditMode = (UnityTestPlatform) "EditMode";
+    public static readonly UnityTestPlatform PlayMode = (UnityTestPlatform) "PlayMode";
     public static implicit operator UnityTestPlatform(string value)
     {
         return new UnityTestPlatform { Value = value };

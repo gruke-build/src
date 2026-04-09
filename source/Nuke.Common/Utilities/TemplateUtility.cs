@@ -148,7 +148,7 @@ public static class TemplateUtility
             return true;
 
         var requiredTokensText = line[(commentIndex + 4)..].Replace(" ", string.Empty);
-        var requiredTokens = requiredTokensText.Split(new[] { "||", "&&" }, StringSplitOptions.RemoveEmptyEntries);
+        var requiredTokens = requiredTokensText.Split(["||", "&&"], StringSplitOptions.RemoveEmptyEntries);
         var orConjunction = requiredTokensText.Contains("||");
         var andConjunction = requiredTokensText.Contains("&&");
         Assert.False(orConjunction && andConjunction, "Conjunctions AND and OR can only be used mutually exclusively");

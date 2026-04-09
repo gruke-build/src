@@ -10,7 +10,6 @@ using JetBrains.Annotations;
 using NuGet.Versioning;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
-using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Utilities;
 using Serilog;
 
@@ -20,7 +19,15 @@ namespace Nuke.Common.ChangeLog;
 [PublicAPI]
 public static class ChangelogTasks
 {
-    public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository = null)
+    public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository)
+    {
+        return GetNuGetReleaseNotes(changelogFile,
+            repository.IsGitHubRepository
+                ? repository.GitHub.GetBrowseUrl(changelogFile)
+                : null);
+    }
+
+    public static string GetNuGetReleaseNotes(string changelogFile, string changelogUrl = null)
     {
         var changelogSectionNotes = ExtractChangelogSectionNotes(changelogFile)
             .Select(x => x
@@ -32,10 +39,10 @@ public static class ChangelogTasks
                 .Replace(",", "%2C")
             ).ToList();
 
-        if (repository.IsGitHubRepository())
+        if (changelogUrl != null)
         {
             changelogSectionNotes.Add(string.Empty);
-            changelogSectionNotes.Add($"Full changelog at {repository.GetGitHubBrowseUrl(changelogFile)}");
+            changelogSectionNotes.Add($"Full changelog at {changelogUrl}");
         }
 
         return changelogSectionNotes.JoinNewLine();
@@ -229,7 +236,7 @@ public static class ChangelogTasks
 
     private static void UpdateVersionSummary(string tag, List<string> content, [CanBeNull] GitRepository repository)
     {
-        if (repository != null && repository.IsGitHubRepository())
+        if (repository is { IsGitHubRepository: true })
         {
             var sections = GetReleaseSections(content).ToList();
             var firstSection = sections.First();
@@ -238,10 +245,10 @@ public static class ChangelogTasks
             content.RemoveRange(lastSection.EndIndex + 1, content.Count - lastSection.EndIndex - 1);
 
             content.Add(string.Empty);
-            content.Add($"[{firstSection.Caption}]: {repository.GetGitHubCompareTagToHeadUrl(tag)}");
+            content.Add($"[{firstSection.Caption}]: {repository.GitHub.GetCompareTagToHeadUrl(tag)}");
             for (var i = 1; i + 1 < sections.Count; i++)
-                content.Add($"[{sections[i].Caption}]: {repository.GetGitHubCompareTagsUrl(sections[i].Caption, sections[i + 1].Caption)}");
-            content.Add($"[{lastSection.Caption}]: {repository.GetGitHubBrowseUrl(branch: lastSection.Caption)}");
+                content.Add($"[{sections[i].Caption}]: {repository.GitHub.GetCompareTagsUrl(sections[i].Caption, sections[i + 1].Caption)}");
+            content.Add($"[{lastSection.Caption}]: {repository.GitHub.GetBrowseUrl(branch: lastSection.Caption)}");
         }
     }
 

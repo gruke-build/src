@@ -93,7 +93,7 @@ internal class ArgumentParser
 
         return ConvertArgument(
             $"$positional[{position}]",
-            new[] { _arguments[position] },
+            [_arguments[position]],
             destinationType,
             separator);
     }
@@ -128,7 +128,7 @@ internal class ArgumentParser
         Assert.True(values.Length == 1 || !separator.HasValue || values.All(x => !x.Contains(separator.Value)),
             $"Argumenet '{argumentName}' with value [ {values.JoinCommaSpace()} ] cannot be split with separator '{separator}'");
         values = separator.HasValue && values.Any(x => x.Contains(separator.Value))
-            ? values.SingleOrDefault()?.Split(separator.Value) ?? new string[0]
+            ? values.SingleOrDefault()?.Split(separator.Value) ?? []
             : values;
 
         try

@@ -60,7 +60,6 @@ namespace Nuke.Common;
 // After logo
 [HandlePlanRequests(Priority = 10)]
 [HandleHelpRequests(Priority = 5)]
-[Telemetry]
 [HandleVisualStudioDebugging]
 [InjectNonParameterValues(Priority = -100)]
 // After finish
@@ -68,6 +67,15 @@ namespace Nuke.Common;
 [SerializeBuildServerState]
 public abstract partial class NukeBuild : INukeBuild
 {
+    private bool? _disableDotNetBuildServers;
+
+    /// <inheritdoc/>
+    public bool DisableDotNetBuildServers
+    {
+        get => _disableDotNetBuildServers.GetValueOrDefault(IsServerBuild && !IsInterceptorExecution);
+        set => _disableDotNetBuildServers = value;
+    }
+
     /// <summary>
     /// Executes the build. The provided expression defines the <em>default</em> target that is invoked,
     /// if no targets have been specified via command-line arguments.
@@ -131,7 +139,7 @@ public abstract partial class NukeBuild : INukeBuild
     /// <summary>
     /// Gets a value whether to show the execution plan (HTML).
     /// </summary>
-    [Parameter("Shows the execution plan (HTML).")]
+    [Parameter("Shows the execution plan (HTML). Seems to have functional issues in Firefox-based browsers.")]
     public bool Plan { get; }
 
     /// <summary>

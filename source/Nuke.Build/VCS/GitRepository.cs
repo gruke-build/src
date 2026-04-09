@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
@@ -22,7 +23,7 @@ public enum GitProtocol
 
 [PublicAPI]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public partial class GitRepository
+public partial record GitRepository
 {
     private const string FallbackRemoteName = "origin";
 
@@ -151,7 +152,7 @@ public partial class GitRepository
     private static IReadOnlyCollection<string> GetTagsFromCommit(AbsolutePath gitDirectory, string commit)
     {
         if (commit == null)
-            return Array.Empty<string>();
+            return [];
 
         var packedTags = GetPackedRefs(gitDirectory)
             .Where(x => x.Commit == commit && x.Reference.StartsWithOrdinalIgnoreCase("refs/tags"))
@@ -170,7 +171,7 @@ public partial class GitRepository
     {
         var packedRefsFile = gitDirectory / "packed-refs";
         if (!packedRefsFile.Exists())
-            return Array.Empty<(string Commit, string Reference)>();
+            return [];
 
         return packedRefsFile.ReadAllLines()
             .Where(x => !x.StartsWith("#") && !x.StartsWith("^"))
@@ -243,6 +244,22 @@ public partial class GitRepository
     /// <summary>Identifier of the repository.</summary>
     public string Identifier { get; private set; }
 
+    /// <summary>
+    ///     Creates a copy of the current <see cref="GitRepository"/> with the specified parameters set as the respective properties on the copy.
+    /// </summary>
+    /// <param name="identifier"><see cref="Identifier"/></param>
+    /// <param name="endpoint"><see cref="Endpoint"/></param>
+    /// <param name="branch"><see cref="Branch"/></param>
+    public GitRepository ModifyCopy(string identifier = null, string endpoint = null, string branch = null)
+    {
+        return this with
+               {
+                   Identifier = identifier ?? Identifier,
+                   Endpoint = endpoint ?? Endpoint,
+                   Branch = branch ?? Branch
+               };
+    }
+
     /// <summary>Local path from which the repository was parsed.</summary>
     [CanBeNull]
     public AbsolutePath LocalDirectory { get; private set; }
@@ -278,26 +295,26 @@ public partial class GitRepository
     [CanBeNull]
     public string SshUrl => Endpoint != null ? $"git@{Endpoint}:{Identifier}.git" : null;
 
-    public GitRepository SetBranch(string branch)
+    [ContractAnnotation("path: null => null; path: notnull => notnull")]
+    internal string GetRelativePath([CanBeNull] string path)
     {
-        return new GitRepository(
-            Protocol,
-            Endpoint,
-            Identifier,
-            branch,
-            LocalDirectory,
-            Head,
-            Commit,
-            Tags,
-            RemoteName,
-            RemoteBranch);
+        if (path == null)
+            return null;
+
+        if (!Path.IsPathRooted(path))
+            return path;
+
+        var localDirectory = LocalDirectory.NotNull();
+        Assert.True(localDirectory.Contains(path), $"Path {path.SingleQuote()} must be descendant of {localDirectory:s}");
+        // ReSharper disable once PathConstruction_GetRelativePath_CodeTemplate
+        return PathConstruction.GetRelativePath(localDirectory, path).Replace(oldChar: '\\', newChar: '/');
     }
 
     public override string ToString()
     {
         return (Protocol == GitProtocol.Https ? HttpsUrl : SshUrl).TrimEnd(".git");
     }
-    
+
     public static readonly Regex GitRemoteRegex = GitRemotePattern();
 
     [GeneratedRegex(@"^(?'protocol'\w+)?(\:\/\/)?(?>(?'user'.*)@)?(?'endpoint'[^\/:]+)(?>\:(?'port'\d+))?[\/:](?'identifier'.*?)\/?(?>\.git)?$")]

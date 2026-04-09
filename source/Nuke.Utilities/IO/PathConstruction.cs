@@ -105,8 +105,8 @@ public static class PathConstruction
         Assert.True(separator == GetSeparator(destinationPath), "Separators do not match");
         Assert.True(!IsWinRoot(basePath) || Path.GetPathRoot(basePath) == Path.GetPathRoot(destinationPath), "Root must be same");
 
-        var baseParts = basePath.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
-        var destinationParts = destinationPath.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+        var baseParts = basePath.Split([separator], StringSplitOptions.RemoveEmptyEntries);
+        var destinationParts = destinationPath.Split([separator], StringSplitOptions.RemoveEmptyEntries);
 
         var sameParts = baseParts.Zip(destinationParts, (a, b) => new { Base = a, Destination = b })
             .TakeWhile(x => x.Base.EqualsOrdinalIgnoreCase(x.Destination)).Count();
@@ -137,7 +137,7 @@ public static class PathConstruction
     internal const char UncSeparator = '\\';
     internal const char UnixSeparator = '/';
 
-    internal static readonly char[] AllSeparators = { WinSeparator, UncSeparator, UnixSeparator };
+    internal static readonly char[] AllSeparators = [WinSeparator, UncSeparator, UnixSeparator];
 
     private static bool IsSameDirectory([CanBeNull] string pathPart)
         => pathPart?.Length == 1 &&

@@ -11,7 +11,8 @@
           "exclude": ["Nuke.GlobalTool/templates/*.csproj", "Nuke.**.Tests/*.csproj"]
         }
       ],
-      "output": "apimeta"
+      "output": "apimeta",
+      "filter": "filter.yml"
     }
   ],
   "build": {
@@ -28,7 +29,7 @@
         "dest": "api"
       },
       {
-        "files": [ "toc.yml", "index.md" ]
+        "files": [ "toc.yml", "**.md" ]
       }
     ],
     "resource": [
@@ -50,7 +51,7 @@
       "_appTitle": "gruke",
       "_appFaviconPath": "images/icon.ico",
       "_appLogoPath": "images/icon-tiny.png",
-      "_appFooter": "The AKEless Build System for C#/.NET",
+      "_appFooter": "The next-generation .NET build automation system.",
       "_enableSearch": true,
       "pdf": false
     }

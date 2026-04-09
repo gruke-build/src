@@ -16,8 +16,8 @@ public abstract class ChainedConfigurationAttributeBase : ConfigurationAttribute
 {
     public override IEnumerable<string> IrrelevantTargetNames => NonEntryTargets.Concat(ExcludedTargets);
 
-    public string[] NonEntryTargets { get; set; } = new string[0];
-    public string[] ExcludedTargets { get; set; } = new string[0];
+    public string[] NonEntryTargets { get; set; } = [];
+    public string[] ExcludedTargets { get; set; } = [];
 
     protected IEnumerable<ExecutableTarget> GetInvokedTargets(ExecutableTarget executableTarget, IReadOnlyCollection<ExecutableTarget> relevantTargets)
     {
@@ -33,9 +33,9 @@ public abstract class ChainedConfigurationAttributeBase : ConfigurationAttribute
             invokedTargets.AddRange(additionalInvokedTargets);
         } while (additionalInvokedTargets.Count > 0);
 
-        Assert.True(invokedTargets.Except(new[] { executableTarget }).Count(x => x.PartitionSize != null) == 0,
+        Assert.True(invokedTargets.Except([executableTarget]).Count(x => x.PartitionSize != null) == 0,
             $"Non-entry targets for {executableTarget.Name} cannot define partitions");
-        return ExecutionPlanner.GetExecutionPlan(invokedTargets, new[] { executableTarget.Name });
+        return ExecutionPlanner.GetExecutionPlan(invokedTargets, [executableTarget.Name]);
     }
 
     protected IEnumerable<ExecutableTarget> GetTargetDependencies(ExecutableTarget executableTarget)

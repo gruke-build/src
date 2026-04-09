@@ -6,6 +6,46 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 
+## [10.3.0] / 2026-04-08
+- Added `KiotaTasks`, a NUKE CLI tool wrapper for [microsoft/kiota](https://github.com/microsoft/kiota).
+  - Example usage can be found in this very project, as I added this to generate the API client in `GreemDev.Nuke.Components.Forgejo`.
+  - [usage](https://github.com/gruke-build/src/blob/2174568e3cadfccc8127fa8e11ed8cc625fbe370/build/Build.Kiota.cs); [generated output](https://github.com/gruke-build/src/tree/2174568e3cadfccc8127fa8e11ed8cc625fbe370/source/Nuke.Components.Forgejo/generated)
+- [Forgejo Actions](https://forgejo.org/docs/next/user/actions/overview/) workflow generation & CI environment support
+    - [Access environment variables defined in their documentation in your C# code in a type-safe manner with documentation for each variable](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.ForgejoActions.html).
+    - Due to Forgejo Actions' [overwhelming similarities to GitHub Actions](https://forgejo.org/docs/latest/user/actions/github-actions/), I was able to maintain practically 1:1 feature parity with the GitHub Actions generator.
+        - The only missing feature (as far as I can tell, and only that I could have possibly encountered) is the [lack of a `permissions` YAML block](https://forgejo.org/docs/latest/user/actions/github-actions/#known-list-of-differences).
+    - Explicit support was added to support the limits of the [Codeberg public FJA runners](https://codeberg.org/actions/meta), as well as a class containing constants for them: [`CodebergRunners`](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.ForgejoActions.CodebergRunners.html)
+    - To provide GitHub Actions familiarity, Forgejo exposes `GITHUB_`-prefixed environment variables. However, Forgejo *also* exposes `FORGEJO_`-prefixed variables, while GitHub does not.
+      - As a result, [Forgejo Actions is no longer treated as being a GitHub Actions environment](https://github.com/gruke-build/src/commit/a5c99dc2c1cbfe225be28c2f178140f4d9c21d93).
+      - If you relied on this functionality you will need to replace your usages of `GitHubActions` with `ForgejoActions` where relevant.
+- [Woodpecker CI](https://woodpecker-ci.org/docs/intro) workflow generation & CI environment support
+  - Woodpecker has no first-party job artifacts functionality, expecting you to use a plugin to provide that.
+    - The only plugins I could find require some form of external storage solution, meaning you (the user of Woodpecker) is responsible for managing your own artifacts bin.
+  - As a result, this is mostly only useful as a linter/tester on its own.
+  - You have access to Forge-specific APIs in the new `GreemDev.Nuke.Components.{GitHub, Forgejo, GitLab}` NuGet packages.
+    - You can use these to create releases. The Woodpecker CI generator has support for importing secrets.
+      - `ICreateGitHubRelease` has moved to `GreemDev.Nuke.Components.GitHub`
+      - `ICreateForgejoRelease` has been added to `GreemDev.Nuke.Components.Forgejo`, and works identically to GitHub; except where it had GitHub it has Forgejo now, what a surprise.
+      - `ICreateGitLabRelease` has been added to `GreemDev.Nuke.Components.GitLab`, and is more complex, expecting a `Name`, `Version`, and `PackageName`.
+        - GitLab works differently to GitHub & Forgejo; it does not have a dedicated "release assets" feature.
+          - The solution we use is to upload to the [Generic Package repository](https://docs.gitlab.com/user/packages/generic_packages/), then create a release that links to all the files in the GPR package version.
+          - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
+      - These component interfaces do not need to be used on Woodpecker.
+
+- Moved `GitterTasks` to the namespace `Nuke.Common.Tools.Gitter`.
+- `SetBranch` on `GitRepository` has been removed; use `GitRepository.ModifyCopy(branch: ...)` instead.
+- Removed `ShutdownDotNetAfterServerBuild` attribute, it existed due to the .NET CLI's lack of ability for forcibly disabling the use of build servers.
+  - .NET has since added this, as such the attribute has [been removed and its behavior has been nativized](https://github.com/gruke-build/src/commit/8b29341a37e0668ddeb918baf6610c338150b77e).
+  - You can re-enable build servers (not possible before) by setting your [`NukeBuild`'s `DisableDotNetBuildServers` property](https://nuke.greemdev.net/docfx/api/Nuke.Common.NukeBuild.html#Nuke_Common_NukeBuild_DisableDotNetBuildServers) to `true`.
+- [Dusted off the old Notifications system that existed in the project](https://github.com/gruke-build/src/commit/90e8a484d750d35a6767ff68a2c54cfb56e42e1c) and hooked it up to a notifications JSON file I control.
+  - Probably will use this to notify about breaking changes.
+  - Notifications display after a build.
+  - Support has also been added to `DisableDefaultOutputAttribute` to fully block displaying notifications at all. This will also skip requesting them.
+- [Removed Telemetry](https://github.com/gruke-build/src/commit/c4943bcab7a645b571bf9452fd2a5a7a11457b9b)
+  - And [removed the page on the docs](https://github.com/gruke-build/docs/commit/256cfab2467cfff578aa5b22c5e554cd9e946c4e) about it.
+- [nuke-build#1321](https://github.com/nuke-build/nuke/pull/1321): fix: Allow UTF-8 console input
+  - Thanks, [@rus-art](https://github.com/rus-art)!
+
 ## [10.2.0] / 2026-03-07
 - Removed properties in the `GitVersion` record that have been removed in newer versions. 
   - Instead of `NuGetVersionV2`, use `FullSemVer`.
@@ -15,12 +55,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Global Tool now generates build projects using .NET 10 and with the `GreemDev.Nuke` package.
 - Fixed duplicate key error in `GitRepository.GetRemoteNameAndBranch` (fixes [#1537](https://github.com/nuke-build/nuke/issues/1537))
     - Instead, only the most recent value is retained.
-- Refactored the documentation in-repository to work on `mkdocs`:
+- Refactored the documentation in-repository to work on `mkdocs`, hosted by [readthedocs](https://readthedocs.org):
   - https://github.com/gruke-build/docs
-  - View the deployment on [gruke.readthedocs.io](https://gruke.readthedocs.io).
-- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on GitHub Pages for *C# API reference* documentation specifically.
-  - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`gh-pages`](https://github.com/gruke-build/src/tree/gh-pages) branch, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
-  - View the deployment on [gruke-build.github.io](https://gruke-build.github.io/src/api/).
+  - View the deployment on [nuke.greemdev.net](https://nuke.greemdev.net).
+- Additionally, a [docfx](https://github.com/dotnet/docfx) configuration has been made and has been deployed on ReadTheDocs alongside the above documentation for *C# API reference* documentation specifically.
+  - Results of the [docfx](https://github.com/dotnet/docfx) build output are pushed to the [`docfx`](https://github.com/gruke-build/docs/tree/docfx) branch on the [`gruke-build/docs`](https://github.com/gruke-build/docs) repository, via a [non-generated GitHub Action workflow](https://github.com/gruke-build/src/blob/develop/.github/workflows/docfx.yml). 
+  - View the deployment on [nuke.greemdev.net/docfx](https://nuke.greemdev.net/docfx).
 - [nuke-build#1523](https://github.com/nuke-build/nuke/pull/1523): fix: log `npm` warn messages as a warning
   - Thanks, [@moritz-baecker-integra](https://github.com/moritz-baecker-integra)!
 - [nuke-build#1572](https://github.com/nuke-build/nuke/pull/1572): Added support for XML Solutions into `gruke :setup`
@@ -1256,7 +1296,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.2.0...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/10.3.0...HEAD
+[10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0
 [10.2.0]: https://github.com/gruke-build/src/compare/10.1.0...10.2.0
 [10.1.0]: https://github.com/gruke-build/src/compare/10.0.0...10.1.0
 [10.0.0]: https://github.com/gruke-build/src/compare/9.0.4...10.0.0

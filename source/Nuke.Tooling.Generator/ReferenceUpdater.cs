@@ -7,12 +7,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using JetBrains.Annotations;
 using Nuke.CodeGeneration.Model;
 using Nuke.Common;
+using Nuke.Common.Utilities;
+using Nuke.Common.Utilities.Collections;
 using Nuke.Common.Utilities.Net;
 using Serilog;
 
@@ -21,8 +24,27 @@ namespace Nuke.CodeGeneration;
 [PublicAPI]
 public static class ReferenceUpdater
 {
-    private static HttpClient s_client = new();
-
+    private static readonly Lazy<HttpClientProxy> s_client = Lazy.Create(() => new HttpClientProxy(
+            new HttpClient
+            {
+                DefaultRequestHeaders =
+                {
+                    UserAgent =
+                    {
+                        new ProductInfoHeaderValue("GRUKE", typeof(ReferenceUpdater).Assembly.GetVersionText())
+                    }
+                }
+            },
+            (fmt, args, extraLines, caller) =>
+            {
+#pragma warning disable CA2254
+                Log.Information($"{caller} : {fmt}", args);
+                extraLines.ForEach(line => Log.Error(line));
+#pragma warning restore CA2254
+            }
+        )
+    );
+    
     public static void UpdateReferences(string specificationsDirectory, string referencesDirectory = null)
     {
         UpdateReferences(Directory.GetFiles(specificationsDirectory, "*.json", SearchOption.TopDirectoryOnly), referencesDirectory);
@@ -46,7 +68,7 @@ public static class ReferenceUpdater
                 referencesDirectory,
                 $"{Path.GetFileNameWithoutExtension(tool.SpecificationFile)}.ref.{referenceId}.txt");
             var referenceContent = await GetReferenceContent(reference);
-            File.WriteAllText(referenceFile, referenceContent);
+            await File.WriteAllTextAsync(referenceFile, referenceContent);
 
             Log.Information("Updated reference for {File}#{Index}'", Path.GetFileName(tool.SpecificationFile), index);
         }
@@ -62,12 +84,14 @@ public static class ReferenceUpdater
         var referenceValues = reference.Split('#');
         var tempFile = Path.GetTempFileName();
 
-        var response = await s_client.CreateRequest(HttpMethod.Get, referenceValues[0])
+        var response = await s_client.Value
+            .CreateRequest(HttpMethod.Get, referenceValues[0])
             .GetResponseAsync();
+
         await response.WriteToFile(tempFile);
 
         if (referenceValues.Length == 1)
-            return File.ReadAllText(tempFile, Encoding.UTF8);
+            return await File.ReadAllTextAsync(tempFile, Encoding.UTF8);
 
         var document = new HtmlDocument();
         document.Load(tempFile, Encoding.UTF8);

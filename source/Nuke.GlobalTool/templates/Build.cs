@@ -20,7 +20,6 @@ using static Nuke.Common.Tools.MSBuild.MSBuildTasks;                            
 using static Nuke.Common.Tools.NuGet.NuGetTasks;                                                // NUGET && MSBUILD
 
 [CheckBuildProjectConfigurations]                                                               // SOLUTION_FILE
-[ShutdownDotNetAfterServerBuild]                                                                // DOTNET
 class Build : NukeBuild
 {
     public static int Main () => Execute<Build>(x => x.Compile);

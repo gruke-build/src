@@ -1,3 +1,7 @@
+// Copyright 2026 Maintainers of NUKE.
+// Distributed under the MIT License.
+// https://github.com/gruke-build/src/blob/master/LICENSE
+
 // Generated from https://github.com/gruke-build/src/blob/master/source/Nuke.Common/Tools/Pwsh/Pwsh.json
 
 using JetBrains.Annotations;
@@ -28,7 +32,7 @@ public partial class PwshTasks : ToolTasks, IRequirePathTool
     /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> Pwsh(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new PwshTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
-    /// <remarks><p>This is a <a href="https://gruke.readthedocs.io/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;fileArguments&gt;</c> via <see cref="PwshSettings.FileArguments"/></li><li><c>-Command</c> via <see cref="PwshSettings.Command"/></li><li><c>-ConfigurationFile</c> via <see cref="PwshSettings.ConfigurationFile"/></li><li><c>-ConfigurationName</c> via <see cref="PwshSettings.ConfigurationName"/></li><li><c>-CustomPipeName</c> via <see cref="PwshSettings.CustomPipeName"/></li><li><c>-EncodedCommand</c> via <see cref="PwshSettings.EncodedCommand"/></li><li><c>-ExecutionPolicy</c> via <see cref="PwshSettings.ExecutionPolicy"/></li><li><c>-File</c> via <see cref="PwshSettings.File"/></li><li><c>-InputFormat</c> via <see cref="PwshSettings.InputFormat"/></li><li><c>-Interactive</c> via <see cref="PwshSettings.Interactive"/></li><li><c>-Login</c> via <see cref="PwshSettings.Login"/></li><li><c>-Mta</c> via <see cref="PwshSettings.MultiThreadedApartment"/></li><li><c>-NoExit</c> via <see cref="PwshSettings.NoExit"/></li><li><c>-NoLogo</c> via <see cref="PwshSettings.NoLogo"/></li><li><c>-NonInteractive</c> via <see cref="PwshSettings.NonInteractive"/></li><li><c>-NoProfile</c> via <see cref="PwshSettings.NoProfile"/></li><li><c>-NoProfileLoadTime</c> via <see cref="PwshSettings.NoProfileLoadTime"/></li><li><c>-OutputFormat</c> via <see cref="PwshSettings.OutputFormat"/></li><li><c>-SettingsFile</c> via <see cref="PwshSettings.SettingsFile"/></li><li><c>-SSHServerMode</c> via <see cref="PwshSettings.SSHServerMode"/></li><li><c>-Sta</c> via <see cref="PwshSettings.SingleThreadedApartment"/></li><li><c>-Version</c> via <see cref="PwshSettings.Version"/></li><li><c>-WindowStyle</c> via <see cref="PwshSettings.WindowStyle"/></li><li><c>-WorkingDirectory</c> via <see cref="PwshSettings.WorkingDirectory"/></li></ul></remarks>
+    /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;fileArguments&gt;</c> via <see cref="PwshSettings.FileArguments"/></li><li><c>-Command</c> via <see cref="PwshSettings.Command"/></li><li><c>-ConfigurationFile</c> via <see cref="PwshSettings.ConfigurationFile"/></li><li><c>-ConfigurationName</c> via <see cref="PwshSettings.ConfigurationName"/></li><li><c>-CustomPipeName</c> via <see cref="PwshSettings.CustomPipeName"/></li><li><c>-EncodedCommand</c> via <see cref="PwshSettings.EncodedCommand"/></li><li><c>-ExecutionPolicy</c> via <see cref="PwshSettings.ExecutionPolicy"/></li><li><c>-File</c> via <see cref="PwshSettings.File"/></li><li><c>-InputFormat</c> via <see cref="PwshSettings.InputFormat"/></li><li><c>-Interactive</c> via <see cref="PwshSettings.Interactive"/></li><li><c>-Login</c> via <see cref="PwshSettings.Login"/></li><li><c>-Mta</c> via <see cref="PwshSettings.MultiThreadedApartment"/></li><li><c>-NoExit</c> via <see cref="PwshSettings.NoExit"/></li><li><c>-NoLogo</c> via <see cref="PwshSettings.NoLogo"/></li><li><c>-NonInteractive</c> via <see cref="PwshSettings.NonInteractive"/></li><li><c>-NoProfile</c> via <see cref="PwshSettings.NoProfile"/></li><li><c>-NoProfileLoadTime</c> via <see cref="PwshSettings.NoProfileLoadTime"/></li><li><c>-OutputFormat</c> via <see cref="PwshSettings.OutputFormat"/></li><li><c>-SettingsFile</c> via <see cref="PwshSettings.SettingsFile"/></li><li><c>-SSHServerMode</c> via <see cref="PwshSettings.SSHServerMode"/></li><li><c>-Sta</c> via <see cref="PwshSettings.SingleThreadedApartment"/></li><li><c>-Version</c> via <see cref="PwshSettings.Version"/></li><li><c>-WindowStyle</c> via <see cref="PwshSettings.WindowStyle"/></li><li><c>-WorkingDirectory</c> via <see cref="PwshSettings.WorkingDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Pwsh(PwshSettings options = null) => new PwshTasks().Run<PwshSettings>(options);
     /// <inheritdoc cref="PwshTasks.Pwsh(Nuke.Common.Tools.Pwsh.PwshSettings)"/>
     public static IReadOnlyCollection<Output> Pwsh(Configure<PwshSettings> configurator) => new PwshTasks().Run<PwshSettings>(configurator.Invoke(new PwshSettings()));
@@ -414,13 +418,13 @@ public static partial class PwshSettingsExtensions
 [TypeConverter(typeof(TypeConverter<PwshExecutionPolicy>))]
 public partial class PwshExecutionPolicy : Enumeration
 {
-    public static PwshExecutionPolicy AllSigned = (PwshExecutionPolicy) "AllSigned";
-    public static PwshExecutionPolicy Bypass = (PwshExecutionPolicy) "Bypass";
-    public static PwshExecutionPolicy Default = (PwshExecutionPolicy) "Default";
-    public static PwshExecutionPolicy RemoteSigned = (PwshExecutionPolicy) "RemoteSigned";
-    public static PwshExecutionPolicy Restricted = (PwshExecutionPolicy) "Restricted";
-    public static PwshExecutionPolicy Undefined = (PwshExecutionPolicy) "Undefined";
-    public static PwshExecutionPolicy Unrestricted = (PwshExecutionPolicy) "Unrestricted";
+    public static readonly PwshExecutionPolicy AllSigned = (PwshExecutionPolicy) "AllSigned";
+    public static readonly PwshExecutionPolicy Bypass = (PwshExecutionPolicy) "Bypass";
+    public static readonly PwshExecutionPolicy Default = (PwshExecutionPolicy) "Default";
+    public static readonly PwshExecutionPolicy RemoteSigned = (PwshExecutionPolicy) "RemoteSigned";
+    public static readonly PwshExecutionPolicy Restricted = (PwshExecutionPolicy) "Restricted";
+    public static readonly PwshExecutionPolicy Undefined = (PwshExecutionPolicy) "Undefined";
+    public static readonly PwshExecutionPolicy Unrestricted = (PwshExecutionPolicy) "Unrestricted";
     public static implicit operator PwshExecutionPolicy(string value)
     {
         return new PwshExecutionPolicy { Value = value };
@@ -435,8 +439,8 @@ public partial class PwshExecutionPolicy : Enumeration
 [TypeConverter(typeof(TypeConverter<PwshInOutFormat>))]
 public partial class PwshInOutFormat : Enumeration
 {
-    public static PwshInOutFormat Text = (PwshInOutFormat) "Text";
-    public static PwshInOutFormat Xml = (PwshInOutFormat) "Xml";
+    public static readonly PwshInOutFormat Text = (PwshInOutFormat) "Text";
+    public static readonly PwshInOutFormat Xml = (PwshInOutFormat) "Xml";
     public static implicit operator PwshInOutFormat(string value)
     {
         return new PwshInOutFormat { Value = value };
@@ -451,10 +455,10 @@ public partial class PwshInOutFormat : Enumeration
 [TypeConverter(typeof(TypeConverter<PwshWindowStyle>))]
 public partial class PwshWindowStyle : Enumeration
 {
-    public static PwshWindowStyle Normal = (PwshWindowStyle) "Normal";
-    public static PwshWindowStyle Minimized = (PwshWindowStyle) "Minimized";
-    public static PwshWindowStyle Maximized = (PwshWindowStyle) "Maximized";
-    public static PwshWindowStyle Hidden = (PwshWindowStyle) "Hidden";
+    public static readonly PwshWindowStyle Normal = (PwshWindowStyle) "Normal";
+    public static readonly PwshWindowStyle Minimized = (PwshWindowStyle) "Minimized";
+    public static readonly PwshWindowStyle Maximized = (PwshWindowStyle) "Maximized";
+    public static readonly PwshWindowStyle Hidden = (PwshWindowStyle) "Hidden";
     public static implicit operator PwshWindowStyle(string value)
     {
         return new PwshWindowStyle { Value = value };

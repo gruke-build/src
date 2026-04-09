@@ -16,6 +16,9 @@
   <Project Path="source\Nuke.Common.Tests\Nuke.Common.Tests.csproj" />
   <Project Path="source\Nuke.Common\Nuke.Common.csproj" />
   <Project Path="source\Nuke.Components\Nuke.Components.csproj" Type="Classic C#" />
+  <Project Path="source\Nuke.Components.GitHub\Nuke.Components.GitHub.csproj" Type="Classic C#" />
+  <Project Path="source\Nuke.Components.Forgejo\Nuke.Components.Forgejo.csproj" Type="Classic C#" />
+  <Project Path="source\Nuke.Components.GitLab\Nuke.Components.GitLab.csproj" Type="Classic C#" />
   <Project Path="source\Nuke.GlobalTool.Tests\Nuke.GlobalTool.Tests.csproj" Type="Classic C#" />
   <Project Path="source\Nuke.GlobalTool\Nuke.GlobalTool.csproj" Type="Classic C#" />
   <Project Path="source\Nuke.MSBuildTasks\Nuke.MSBuildTasks.csproj" Type="Classic C#" />

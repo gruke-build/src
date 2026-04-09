@@ -29,7 +29,6 @@ partial class Program
     {
         PrintInfo();
         Logging.Configure();
-        Telemetry.ConvertCake();
         ProjectModelTasks.Initialize();
 
         Host.Warning(

@@ -8,6 +8,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Utilities;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 namespace Nuke.Components;
@@ -23,6 +24,7 @@ public interface IGlobalTool : INukeBuild
         .Executes(() =>
         {
             DotNetPack(_ => _
+                .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
                 .SetProject(BuildProjectFile)
                 .SetOutputDirectory(TemporaryDirectory));
         });

@@ -41,7 +41,7 @@ internal class UpdateNotificationAttribute : BuildExtensionAttributeBase, IOnBui
                 "1. Update your global tool",
                 "   dotnet tool update Nuke.GlobalTool -g",
                 "2. Update your build",
-                "   nuke :update",
+                "   gruke :update",
                 "3. Confirm on update for configuration file and build scripts",
                 "   (Others are be optional)",
                 string.Empty

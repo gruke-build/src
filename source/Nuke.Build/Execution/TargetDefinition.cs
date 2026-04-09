@@ -32,23 +32,23 @@ internal class TargetDefinition : ITargetDefinition
     internal Func<bool> Intercept { get; set; }
 
     internal string Description { get; set; }
-    internal List<(string Text, Func<bool> Delegate)> DynamicConditions { get; } = new();
-    internal List<(string Text, Func<bool> Delegate)> StaticConditions { get; } = new();
-    internal List<LambdaExpression> DelegateRequirements { get; } = new();
-    internal List<ToolRequirement> ToolRequirements { get; } = new();
-    internal List<Delegate> DependsOnTargets { get; } = new();
-    internal List<Delegate> DependentForTargets { get; } = new();
-    internal List<Action> Actions { get; } = new();
+    internal List<(string Text, Func<bool> Delegate)> DynamicConditions { get; } = [];
+    internal List<(string Text, Func<bool> Delegate)> StaticConditions { get; } = [];
+    internal List<LambdaExpression> DelegateRequirements { get; } = [];
+    internal List<ToolRequirement> ToolRequirements { get; } = [];
+    internal List<Delegate> DependsOnTargets { get; } = [];
+    internal List<Delegate> DependentForTargets { get; } = [];
+    internal List<Action> Actions { get; } = [];
     internal DependencyBehavior DependencyBehavior { get; private set; }
     internal bool IsProceedAfterFailure { get; private set; }
     internal bool IsAssuredAfterFailure { get; private set; }
     internal bool IsInternal { get; private set; }
-    internal List<Delegate> BeforeTargets { get; } = new();
-    internal List<Delegate> AfterTargets { get; } = new();
-    internal List<Delegate> TriggersTargets { get; } = new();
-    internal List<Delegate> TriggeredByTargets { get; } = new();
+    internal List<Delegate> BeforeTargets { get; } = [];
+    internal List<Delegate> AfterTargets { get; } = [];
+    internal List<Delegate> TriggersTargets { get; } = [];
+    internal List<Delegate> TriggeredByTargets { get; } = [];
     internal int? PartitionSize { get; private set; }
-    internal List<string> ArtifactProducts { get; } = new();
+    internal List<string> ArtifactProducts { get; } = [];
     internal LookupTable<Target, string[]> ArtifactDependencies { get; } = new();
 
     ITargetDefinition ITargetDefinition.Description(string description)
@@ -268,7 +268,7 @@ internal class TargetDefinition : ITargetDefinition
     {
         var properties = targets.Length > 0
             ? targets.Select(x => x.GetMemberInfo())
-            : new[] { GetSingleTargetProperty<T>("shorthand inheritance") };
+            : [GetSingleTargetProperty<T>("shorthand inheritance")];
         Inherit(properties.Select(x => x.GetValueNonVirtual<Target>(Build)).ToArray());
         return this;
     }
@@ -328,7 +328,7 @@ internal class TargetDefinition : ITargetDefinition
     {
         return targets.Length > 0
             ? targets
-            : new[] { (Target) GetSingleTargetProperty<T>("shorthand dependency").GetValue(Build) };
+            : [(Target) GetSingleTargetProperty<T>("shorthand dependency").GetValue(Build)];
     }
 
     private PropertyInfo GetSingleTargetProperty<T>(string kind, Type targetType = null)
@@ -338,7 +338,7 @@ internal class TargetDefinition : ITargetDefinition
         if (interfaceTargets.Count != 1)
         {
             Assert.Fail($"Target '{Target.DeclaringType}.{Target.Name}' cannot have {kind} on component '{typeof(T).Name}'."
-                .Concat(new[] { interfaceTargets.Count > 1 ? "Too many relevant targets:" : "No relevant targets." })
+                .Concat([interfaceTargets.Count > 1 ? "Too many relevant targets:" : "No relevant targets."])
                 .Concat(interfaceTargets.Select(x => $"  - {x.Name}")).JoinNewLine());
         }
 

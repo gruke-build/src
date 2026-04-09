@@ -40,7 +40,7 @@ internal static class Constants
     internal const string InterceptorEnvironmentKey = "NUKE_INTERNAL_INTERCEPTOR";
 
     internal static AbsolutePath GlobalTemporaryDirectory => Path.GetTempPath();
-    internal static AbsolutePath GlobalNukeDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".nuke";
+    internal static AbsolutePath GlobalNukeDirectory => EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".nuke";
 
     [CanBeNull]
     internal static AbsolutePath TryGetRootDirectoryFrom(AbsolutePath startDirectory, bool includeLegacy = true)

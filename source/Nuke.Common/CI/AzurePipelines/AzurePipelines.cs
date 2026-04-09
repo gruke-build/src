@@ -17,6 +17,7 @@ namespace Nuke.Common.CI.AzurePipelines;
 /// <a href="https://github.com/Microsoft/azure-pipelines-tasks/blob/master/docs/authoring/commands.md">Azure Pipeline Tasks Documentation</a>
 /// </summary>
 [PublicAPI]
+[CI]
 [ExcludeFromCodeCoverage]
 public partial class AzurePipelines : Host, IBuildServer
 {
@@ -237,7 +238,7 @@ public partial class AzurePipelines : Host, IBuildServer
             dictionaryConfigurator?
                 .Invoke(new Dictionary<string, object>())
                 .Select(x => $"{x.Key}={EscapeValue(x.Value.ToString())}").ToArray()
-            ?? new string[0];
+            ?? [];
 
         Write(command, escapedTokens, message);
     }

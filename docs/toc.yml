@@ -1,4 +1,6 @@
 - name: Docs
-  href: https://gruke.readthedocs.io/
+  href: https://nuke.greemdev.net
 - name: API
   href: api/
+- name: Changelog
+  href: https://nuke.greemdev.net/docfx/changelog.html

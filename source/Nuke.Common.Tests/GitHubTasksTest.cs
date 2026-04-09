@@ -20,26 +20,26 @@ public class GitHubTasksTest
     public void GitHubRepositoryFromLocalDirectoryTest()
     {
         var repository = GitRepository.FromLocalDirectory(RootDirectory).NotNull();
-        if (!repository.IsGitHubRepository())
+        if (!repository.IsGitHubRepository)
             return;
 
         var rawUrl = $"https://raw.githubusercontent.com/{repository.Identifier}/{repository.Branch}";
         var blobUrl = $"https://github.com/{repository.Identifier}/blob/{repository.Branch}";
         var treeUrl = $"https://github.com/{repository.Identifier}/tree/{repository.Branch}";
 
-        repository.GetGitHubDownloadUrl(RootDirectory / "LICENSE").Should().Be($"{rawUrl}/LICENSE");
+        repository.GitHub.GetDownloadUrl(RootDirectory / "LICENSE").Should().Be($"{rawUrl}/LICENSE");
 
-        repository.GetGitHubBrowseUrl("LICENSE").Should().Be($"{blobUrl}/LICENSE");
-        repository.GetGitHubBrowseUrl("source").Should().Be($"{treeUrl}/source");
+        repository.GitHub.GetBrowseUrl("LICENSE").Should().Be($"{blobUrl}/LICENSE");
+        repository.GitHub.GetBrowseUrl("source").Should().Be($"{treeUrl}/source");
 
-        repository.GetGitHubBrowseUrl(RootDirectory / "LICENSE").Should().Be($"{blobUrl}/LICENSE");
-        repository.GetGitHubBrowseUrl(RootDirectory / "source").Should().Be($"{treeUrl}/source");
-        repository.GetGitHubBrowseUrl(RootDirectory / "source" / "Directory.Build.props").Should().Be($"{blobUrl}/source/Directory.Build.props");
+        repository.GitHub.GetBrowseUrl(RootDirectory / "LICENSE").Should().Be($"{blobUrl}/LICENSE");
+        repository.GitHub.GetBrowseUrl(RootDirectory / "source").Should().Be($"{treeUrl}/source");
+        repository.GitHub.GetBrowseUrl(RootDirectory / "source" / "Directory.Build.props").Should().Be($"{blobUrl}/source/Directory.Build.props");
 
-        repository.GetGitHubBrowseUrl("directory", itemType: GitHubItemType.Directory).Should().Be($"{treeUrl}/directory");
-        repository.GetGitHubBrowseUrl("dir/file", itemType: GitHubItemType.File).Should().Be($"{blobUrl}/dir/file");
+        repository.GitHub.GetBrowseUrl("directory", itemType: GitHubItemType.Directory).Should().Be($"{treeUrl}/directory");
+        repository.GitHub.GetBrowseUrl("dir/file", itemType: GitHubItemType.File).Should().Be($"{blobUrl}/dir/file");
 
-        repository.GetGitHubBrowseUrl(branch: repository.Branch).Should().Be(treeUrl);
+        repository.GitHub.GetBrowseUrl(branch: repository.Branch).Should().Be(treeUrl);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class GitHubTasksTest
     {
         var repository = GitRepository.FromUrl("https://github.com/gruke-build/src", "dev");
 
-        repository.GetGitHubBrowseUrl("LICENSE", itemType: GitHubItemType.File).Should().Be($"{repository}/blob/dev/LICENSE");
-        repository.GetGitHubBrowseUrl("source", itemType: GitHubItemType.Directory).Should().Be($"{repository}/tree/dev/source");
+        repository.GitHub.GetBrowseUrl("LICENSE", itemType: GitHubItemType.File).Should().Be($"{repository}/blob/dev/LICENSE");
+        repository.GitHub.GetBrowseUrl("source", itemType: GitHubItemType.Directory).Should().Be($"{repository}/tree/dev/source");
     }
 }

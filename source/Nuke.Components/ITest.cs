@@ -59,7 +59,7 @@ public interface ITest : ICompile, IHazArtifacts
             AzurePipelines.Instance?.PublishTestResults(
                 type: AzurePipelinesTestResultsType.VSTest,
                 title: $"{Path.GetFileNameWithoutExtension(x)} ({AzurePipelines.Instance.StageDisplayName})",
-                files: new string[] { x }));
+                files: [x]));
     }
 
     void ReportTestCount()
@@ -85,6 +85,7 @@ public interface ITest : ICompile, IHazArtifacts
     }
 
     sealed Configure<DotNetTestSettings> TestSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetConfiguration(Configuration)
         .SetNoBuild(SucceededTargets.Contains(Compile))
         .ResetVerbosity()
@@ -99,6 +100,7 @@ public interface ITest : ICompile, IHazArtifacts
                 .EnableUseSourceLink()));
 
     sealed Configure<DotNetTestSettings, Project> TestProjectSettingsBase => (_, v) => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProjectFile(v)
         // https://github.com/Tyrrrz/GitHubActionsTestLogger
         .When(GitHubActions.Instance is not null && v.HasPackageReference("GitHubActionsTestLogger"), _ => _

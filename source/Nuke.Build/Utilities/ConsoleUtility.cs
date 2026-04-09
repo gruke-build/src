@@ -3,13 +3,10 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using JetBrains.Annotations;
-using Nuke.Build.Utilities;
 using Serilog;
 
 namespace Nuke.Common.Utilities;
@@ -30,7 +27,7 @@ public class ConsoleUtility
 
     // ReSharper disable once CognitiveComplexity
     [CanBeNull]
-    public static string PromptForInput(string question, string defaultValue)
+    public static string PromptForInput(string question, string defaultValue = null)
     {
         if (s_interrupted)
             return defaultValue;
@@ -57,21 +54,33 @@ public class ConsoleUtility
             }
 
             key = Console.ReadKey(intercept: true);
-            if (ConsoleKey.A <= key.Key && key.Key <= ConsoleKey.Z
-                || ConsoleKey.D0 <= key.Key && key.Key <= ConsoleKey.D9
-                || new[] { '.', '/', '\\', '_', '-' }.Any(x => x == key.KeyChar))
+            if (key.Key is >= ConsoleKey.A and <= ConsoleKey.Z
+                || key.Key is >= ConsoleKey.D0 and <= ConsoleKey.D9
+                || s_acceptableChars.Contains(key.KeyChar)
+                || char.IsLetterOrDigit(key.KeyChar))
                 input.Append(key.KeyChar);
-            else if (key.Key == ConsoleKey.Backspace && input.Length > 0)
-                input.Remove(input.Length - 1, length: 1);
-            else if (key.Key == InterruptKey)
-                s_interrupted = true;
-        } while (!(key.Key == ConfirmationKey || key.Key == InterruptKey));
+            else
+            {
+                // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+                switch (key.Key)
+                {
+                    case ConsoleKey.Backspace when input.Length > 0:
+                        input.Remove(input.Length - 1, length: 1);
+                        break;
+                    case InterruptKey:
+                        s_interrupted = true;
+                        break;
+                }
+            }
+        } while (key.Key is not (ConfirmationKey or InterruptKey));
 
         var result = input.Length > 0 ? input.ToString() : defaultValue;
         Console.CursorLeft = 0;
         Console.WriteLine($"{Confirmed}  {result ?? "<null>"}".PadRight(BufferWidth), Color.Lime);
         return result;
     }
+
+    private static readonly char[] s_acceptableChars = ['.', '/', '\\', '_', '-', ' ', ':'];
 
     // ReSharper disable once CognitiveComplexity
     public static T PromptForChoice<T>(string question, params (T Value, string Description)[] options)

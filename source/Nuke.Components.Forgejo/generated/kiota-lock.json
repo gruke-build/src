@@ -1,0 +1,40 @@
+{
+  "descriptionHash": "C18158E8718B4B686D75F430B7C9E51A7BE624E8F843A290FD4987833F4A7FAB4FD2063500585388D2C5573CD53EAFD4C12F554C93BE8D6C5CF0D7F950E9BD1B",
+  "descriptionLocation": "../../../.nuke/forgejo-openapi-spec.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.30.0",
+  "clientClassName": "ForgejoApiClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "Nuke.Components.Forgejo",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [
+    "/admin/**",
+    "/activitypub/**",
+    "/nodeinfo",
+    "/notifications/**",
+    "/notifications"
+  ],
+  "disabledValidationRules": []
+}

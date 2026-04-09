@@ -3,7 +3,6 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
@@ -96,7 +95,7 @@ partial class Program
     {
         try
         {
-            var content = SessionFile.Existing()?.ReadAllLines().ToList() ?? new List<string> { null };
+            var content = SessionFile.Existing()?.ReadAllLines().ToList() ?? [null];
             content[0] = directoryProvider.Invoke();
             content.Insert(index: 1, EnvironmentInfo.WorkingDirectory);
             SessionFile.WriteAllLines(content);

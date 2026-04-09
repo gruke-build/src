@@ -35,4 +35,9 @@ public static partial class JObjectExtensions
     {
         return jobject.GetPropertyValue<string>(name);
     }
+    
+    public static string GetPropertyStringValueOrNull(this JObject jobject, string name)
+    {
+        return jobject.GetPropertyValueOrNull<string>(name);
+    }
 }

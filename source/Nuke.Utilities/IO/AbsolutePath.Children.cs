@@ -24,7 +24,7 @@ partial class AbsolutePathExtensions
         Assert.True(depth >= 0);
 
         if (depth == 0)
-            return Enumerable.Empty<AbsolutePath>();
+            return [];
 
         var files = Directory.EnumerateFiles(path, pattern, SearchOption.TopDirectoryOnly)
             .Where(x => (File.GetAttributes(x) & attributes) == attributes)

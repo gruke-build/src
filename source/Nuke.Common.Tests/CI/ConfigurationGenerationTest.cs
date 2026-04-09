@@ -12,8 +12,10 @@ using JetBrains.Annotations;
 using Nuke.Common.CI;
 using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
+using Nuke.Common.CI.ForgejoActions;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
+using Nuke.Common.CI.WoodpeckerCI;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
@@ -25,7 +27,7 @@ namespace Nuke.Common.Tests.CI;
 public class ConfigurationGenerationTest
 {
     private static readonly TestBuild s_testBuild = new();
-    
+
     [Theory]
     [MemberData(nameof(GetAttributes))]
     public Task Test(string testName, ITestConfigurationGenerator attribute)
@@ -65,13 +67,13 @@ public class ConfigurationGenerationTest
                     Build = testBuild,
                     Description = "description",
                     Version = "1.3.3.7",
-                    NonEntryTargets = new[] { nameof(Clean) },
-                    VcsTriggeredTargets = new[] { nameof(Test), nameof(Pack) },
-                    ManuallyTriggeredTargets = new[] { nameof(Publish) },
-                    NightlyTriggeredTargets = new[] { nameof(Publish) },
-                    NightlyTriggerBranchFilters = new[] { "nightly_branch_filter" },
-                    VcsTriggerBranchFilters = new[] { "vcs_branch_filter" },
-                    ImportSecrets = new[] { "GitHubToken", "ManualToken" }
+                    NonEntryTargets = [nameof(Clean)],
+                    VcsTriggeredTargets = [nameof(Test), nameof(Pack)],
+                    ManuallyTriggeredTargets = [nameof(Publish)],
+                    NightlyTriggeredTargets = [nameof(Publish)],
+                    NightlyTriggerBranchFilters = ["nightly_branch_filter"],
+                    VcsTriggerBranchFilters = ["vcs_branch_filter"],
+                    ImportSecrets = ["GitHubToken", "ManualToken"]
                 }
             );
 
@@ -83,19 +85,19 @@ public class ConfigurationGenerationTest
                     AzurePipelinesImage.Windows2025)
                 {
                     Build = testBuild,
-                    NonEntryTargets = new[] { nameof(Clean) },
-                    InvokedTargets = new[] { nameof(Test) },
-                    ExcludedTargets = new[] { nameof(Pack) },
+                    NonEntryTargets = [nameof(Clean)],
+                    InvokedTargets = [nameof(Test)],
+                    ExcludedTargets = [nameof(Pack)],
                     EnableAccessToken = true,
-                    ImportVariableGroups = new[] { "variable-group-1" },
-                    ImportSecrets = new[] { nameof(ApiKey) },
+                    ImportVariableGroups = ["variable-group-1"],
+                    ImportSecrets = [nameof(ApiKey)],
                     TriggerBatch = true,
-                    TriggerBranchesInclude = new[] { "included_branch" },
-                    TriggerBranchesExclude = new[] { "excluded_branch" },
-                    TriggerPathsInclude = new[] { "included_path" },
-                    TriggerPathsExclude = new[] { "excluded_path" },
-                    TriggerTagsInclude = new[] { "included_tags" },
-                    TriggerTagsExclude = new[] { "excluded_tags" },
+                    TriggerBranchesInclude = ["included_branch"],
+                    TriggerBranchesExclude = ["excluded_branch"],
+                    TriggerPathsInclude = ["included_path"],
+                    TriggerPathsExclude = ["excluded_path"],
+                    TriggerTagsInclude = ["included_tags"],
+                    TriggerTagsExclude = ["excluded_tags"],
                     Submodules = true,
                     LargeFileStorage = false,
                     Clean = true,
@@ -111,13 +113,13 @@ public class ConfigurationGenerationTest
                     AppVeyorImage.VisualStudio2022)
                 {
                     Build = testBuild,
-                    InvokedTargets = new[] { nameof(Test) },
-                    BranchesOnly = new[] { "only_branch" },
-                    BranchesExcept = new[] { "except_branch" },
+                    InvokedTargets = [nameof(Test)],
+                    BranchesOnly = ["only_branch"],
+                    BranchesExcept = ["except_branch"],
                     SkipTags = true,
                     SkipBranchesWithPullRequest = true,
                     Submodules = true,
-                    Secrets = new[] { "GitHubToken" }
+                    Secrets = ["GitHubToken"]
                 }
             );
 
@@ -130,12 +132,27 @@ public class ConfigurationGenerationTest
                     GitHubActionsImage.WindowsLatest)
                 {
                     Build = testBuild,
-                    On = new[] { GitHubActionsTrigger.Push, GitHubActionsTrigger.PullRequest },
-                    InvokedTargets = new[] { nameof(Test) },
-                    ImportSecrets = new[] { nameof(ApiKey) },
+                    On = [GitHubActionsTrigger.Push, GitHubActionsTrigger.PullRequest],
+                    InvokedTargets = [nameof(Test)],
+                    ImportSecrets = [nameof(ApiKey)],
                     EnableGitHubToken = true,
-                    WritePermissions = new[] { GitHubActionsPermissions.Contents },
-                    ReadPermissions = new[] { GitHubActionsPermissions.Actions }
+                    WritePermissions = [GitHubActionsPermissions.Contents],
+                    ReadPermissions = [GitHubActionsPermissions.Actions]
+                }
+            );
+
+            yield return
+            (
+                "simple-triggers",
+                new TestForgejoActionsAttribute(
+                    CodebergRunners.Tiny,
+                    CodebergRunners.SmallLazy)
+                {
+                    Build = testBuild,
+                    On = [ForgejoActionsTrigger.Push, ForgejoActionsTrigger.PullRequest],
+                    InvokedTargets = [nameof(Test)],
+                    ImportSecrets = [nameof(ApiKey)],
+                    ConcurrencyCancelInProgress = true
                 }
             );
 
@@ -148,20 +165,55 @@ public class ConfigurationGenerationTest
                     GitHubActionsImage.WindowsLatest)
                 {
                     Build = testBuild,
-                    InvokedTargets = new[] { nameof(Test) },
+                    InvokedTargets = [nameof(Test)],
                     OnCronSchedule = "* 0 * * *",
-                    OnPushBranches = new[] { "push_branch" },
-                    OnPushTags = new[] { "push_tag/*" },
-                    OnPushIncludePaths = new[] { "push_include_path" },
-                    OnPushExcludePaths = new[] { "push_exclude_path" },
-                    OnPullRequestBranches = new[] { "pull_request_branch" },
-                    OnPullRequestTags = new[] { "pull_request_tag" },
-                    OnPullRequestIncludePaths = new[] { "pull_request_include_path" },
-                    OnPullRequestExcludePaths = new[] { "pull_request_exclude_path/**" },
-                    OnWorkflowDispatchOptionalInputs = new[] { "OptionalInput" },
-                    OnWorkflowDispatchRequiredInputs = new[] { "RequiredInput" },
+                    OnPushBranches = ["push_branch"],
+                    OnPushTags = ["push_tag/*"],
+                    OnPushIncludePaths = ["push_include_path"],
+                    OnPushExcludePaths = ["push_exclude_path"],
+                    OnPullRequestBranches = ["pull_request_branch"],
+                    OnPullRequestTags = ["pull_request_tag"],
+                    OnPullRequestIncludePaths = ["pull_request_include_path"],
+                    OnPullRequestExcludePaths = ["pull_request_exclude_path/**"],
+                    OnWorkflowDispatchOptionalInputs = ["OptionalInput"],
+                    OnWorkflowDispatchRequiredInputs = ["RequiredInput"],
                     PublishCondition = "success() || failure()",
                     Submodules = GitHubActionsSubmodules.Recursive,
+                    Lfs = true,
+                    FetchDepth = 2,
+                    Progress = false,
+                    Filter = "tree:0",
+                    TimeoutMinutes = 30,
+                    ConcurrencyCancelInProgress = true,
+                    JobConcurrencyCancelInProgress = true,
+                    JobConcurrencyGroup = "custom-job-group",
+                    EnvironmentName = "environment-name",
+                    EnvironmentUrl = "environment-url"
+                }
+            );
+
+            yield return
+            (
+                "detailed-triggers",
+                new TestForgejoActionsAttribute(
+                    CodebergRunners.Tiny,
+                    "my-windows-runner-that-isnt-real")
+                {
+                    Build = testBuild,
+                    InvokedTargets = [nameof(Test)],
+                    OnCronSchedule = "* 0 * * *",
+                    OnPushBranches = ["push_branch"],
+                    OnPushTags = ["push_tag/*"],
+                    OnPushIncludePaths = ["push_include_path"],
+                    OnPushExcludePaths = ["push_exclude_path"],
+                    OnPullRequestBranches = ["pull_request_branch"],
+                    OnPullRequestTags = ["pull_request_tag"],
+                    OnPullRequestIncludePaths = ["pull_request_include_path"],
+                    OnPullRequestExcludePaths = ["pull_request_exclude_path/**"],
+                    OnWorkflowDispatchOptionalInputs = ["OptionalInput"],
+                    OnWorkflowDispatchRequiredInputs = ["RequiredInput"],
+                    PublishCondition = "success() || failure()",
+                    Submodules = ForgejoActionsSubmodules.Recursive,
                     Lfs = true,
                     FetchDepth = 2,
                     Progress = false,
@@ -181,20 +233,32 @@ public class ConfigurationGenerationTest
                 new TestSpaceAutomationAttribute("Name", "mcr.microsoft.com/dotnet/sdk:5.0")
                 {
                     Build = testBuild,
-                    InvokedTargets = new[] { nameof(Test) },
+                    InvokedTargets = [nameof(Test)],
                     VolumeSize = "10.gb",
                     ResourcesCpu = "1.cpu",
                     ResourcesMemory = "2000.mb",
                     OnPush = true,
-                    OnPushBranchIncludes = new[] { "refs/heads/include" },
-                    OnPushBranchExcludes = new[] { "refs/heads/exclude" },
-                    OnPushBranchRegexIncludes = new[] { @"\binclude\b" },
-                    OnPushBranchRegexExcludes = new[] { @"\bexclude\b" },
-                    OnPushPathIncludes = new[] { "include-path" },
-                    OnPushPathExcludes = new[] { "exclude-path" },
+                    OnPushBranchIncludes = ["refs/heads/include"],
+                    OnPushBranchExcludes = ["refs/heads/exclude"],
+                    OnPushBranchRegexIncludes = [@"\binclude\b"],
+                    OnPushBranchRegexExcludes = [@"\bexclude\b"],
+                    OnPushPathIncludes = ["include-path"],
+                    OnPushPathExcludes = ["exclude-path"],
                     OnCronSchedule = "* 0 * * *",
-                    ImportSecrets = new[] { "GitHubToken" },
+                    ImportSecrets = ["GitHubToken"],
                     TimeoutInMinutes = 15
+                }
+            );
+
+            yield return (
+                null,
+                new TestWoodpeckerCIAttribute
+                {
+                    OnlyOnBranches = [default, "feature/*"],
+                    Triggers = [WoodpeckerCIEvent.Push, WoodpeckerCIEvent.PullRequest],
+                    InvokedTargets = [nameof(Test), nameof(Publish)],
+                    ImportSecrets = [nameof(ApiKey)],
+                    MinimalFetch = false
                 }
             );
 
@@ -204,10 +268,10 @@ public class ConfigurationGenerationTest
                 new TestGitLabCIAttribute
                 {
                     Build = testBuild,
-                    InvokedTargets = new[] { nameof(Publish) },
+                    InvokedTargets = [nameof(Publish)],
                     UploadProducedArtifacts = true,
-                    ExcludedArtifacts = new[] { "output/packages/*.nupkg" },
-                    OnlyOnPushesToBranches = [ default ]
+                    ExcludedArtifacts = ["output/packages/*.nupkg"],
+                    OnlyOnPushesToBranches = [default]
                 }
             );
         }
@@ -225,9 +289,9 @@ public class ConfigurationGenerationTest
         [Parameter("Configuration for compilation")]
         public readonly Configuration Configuration = Configuration.Debug;
 
-        [Parameter] public readonly string[] StringArray = new[] { "first", "second" };
-        [Parameter] public readonly int[] IntegerArray = new[] { 1, 2 };
-        [Parameter] public readonly Configuration[] ConfigurationArray = new[] { Configuration.Debug, Configuration.Release };
+        [Parameter] public readonly string[] StringArray = ["first", "second"];
+        [Parameter] public readonly int[] IntegerArray = [1, 2];
+        [Parameter] public readonly Configuration[] ConfigurationArray = [Configuration.Debug, Configuration.Release];
 
         public AbsolutePath OutputDirectory => RootDirectory / "output";
 

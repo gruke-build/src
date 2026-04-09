@@ -34,6 +34,7 @@ public interface IPack : ICompile, IHazArtifacts
         });
 
     sealed Configure<DotNetPackSettings> PackSettingsBase => _ => _
+        .When(DisableDotNetBuildServers, s => s.DisableBuildServers())
         .SetProject(Solution)
         .SetConfiguration(Configuration)
         .SetNoBuild(SucceededTargets.Contains(Compile))
@@ -43,6 +44,10 @@ public interface IPack : ICompile, IHazArtifacts
         .WhenNotNull(this as IHazFetchingGitVersion, (_, o) => _
             .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.SemVer))
+        .WhenNotNull(this as IHazDebuggableFetchingGitVersion, (_, o) => _
+            .SetVersion(o.Versioning.SemVer))
+        .WhenNotNull(this as IHazDebuggableGitVersion, (_, o) => _
             .SetVersion(o.Versioning.SemVer))
         .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
             .SetVersion(o.Versioning.NuGetPackageVersion))

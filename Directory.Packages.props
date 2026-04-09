@@ -12,9 +12,10 @@
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.71" />
     <PackageVersion Include="Humanizer" Version="3.0.1" />
     <PackageVersion Include="JetBrains.Annotations" Version="2025.2.2" />
-    <PackageVersion Include="Microsoft.ApplicationInsights" Version="2.23.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Kiota.Bundle" Version="1.22.1" />
+    <PackageVersion Include="NGitLab" Version="11.5.0" />
     <PackageVersion Include="NJsonSchema" Version="11.5.2" />
     <PackageVersion Include="NJsonSchema.NewtonsoftJson" Version="11.5.2" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
@@ -56,7 +57,7 @@
   <!-- Solution Model -->
   <ItemGroup>
     <PackageVersion Include="matkoch.Microsoft.VisualStudio.SolutionPersistence" Version="1.0.61" />
-    <PackageVersion Include="Scriban" Version="6.2.1" />
+    <PackageVersion Include="Scriban" Version="6.6.0" />
   </ItemGroup>
   <!-- MSBuild (Nuke.ProjectModel + Nuke.MSBuildTasks) -->
   <ItemGroup>

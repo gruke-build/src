@@ -14,7 +14,7 @@ public static partial class EnumerableExtensions
     /// </summary>
     public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
     {
-        return !enumerable.Any();
+        return enumerable is ICollection<T> icoll ? icoll.Count is 0 : !enumerable.Any();
     }
 
     /// <summary>

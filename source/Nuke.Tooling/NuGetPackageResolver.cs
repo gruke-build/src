@@ -60,7 +60,7 @@ public static class NuGetPackageResolver
                 .Single().Single()["dependencies"]
                 ?.Children<JProperty>()
                 .Select(x => x.Name).ToList()
-            ?? new List<string>();
+            ?? [];
 
         var packageReferences =
             assetsObject["libraries"].NotNull()
@@ -83,7 +83,7 @@ public static class NuGetPackageResolver
                     PackageId: x.Property("name").NotNull().Value.ToString(),
                     Version: x.Property("version").NotNull().Value.ToString().Trim('[', ']').Split(',').First().Trim()
                 )).ToList()
-            ?? new List<(string, string)>();
+            ?? [];
         // ReSharper restore HeapView.BoxingAllocation
 
         return packageDownloads.Concat(packageReferences);

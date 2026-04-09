@@ -14,14 +14,15 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common.CI.SpaceAutomation;
 
+[ExcludeFromApiReferenceGeneration]
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 #pragma warning disable CS0618 // Type or member is obsolete
-// ReSharper disable once ClassNeverInstantiated.Global
 public class SpaceAutomationOnPremisesAttribute(string name, string image) : SpaceAutomationAttribute(name, image);
 #pragma warning restore CS0618 // Type or member is obsolete
 
 [PublicAPI]
+[ExcludeFromApiReferenceGeneration]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 [Obsolete(message: $"JetBrains Space was officially discontinued on June 1, 2025. "
                    + $"If you are still using a self-managed Space instance, "
@@ -44,7 +45,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
 
     public override Type HostType => typeof(SpaceAutomation);
     public override AbsolutePath ConfigurationFile => Build.RootDirectory / ".space.kts";
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
     public override IEnumerable<string> IrrelevantTargetNames => new string[0];
@@ -52,7 +53,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
     public string VolumeSize { get; set; }
     public string ResourcesCpu { get; set; }
     public string ResourcesMemory { get; set; }
-    public string[] RefSpec { get; set; } = { "refs/heads/*:refs/heads/*" };
+    public string[] RefSpec { get; set; } = ["refs/heads/*:refs/heads/*"];
 
     public bool Submodules
     {
@@ -60,7 +61,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
-    public string[] InvokedTargets { get; set; } = new string[0];
+    public string[] InvokedTargets { get; set; } = [];
 
     public bool OnPush
     {
@@ -76,7 +77,7 @@ public class SpaceAutomationAttribute : ConfigurationAttributeBase
     public string[] OnPushPathExcludes { get; set; }
 
     public string OnCronSchedule { get; set; }
-    public string[] ImportSecrets { get; set; } = new string[0];
+    public string[] ImportSecrets { get; set; } = [];
 
     public int TimeoutInMinutes
     {

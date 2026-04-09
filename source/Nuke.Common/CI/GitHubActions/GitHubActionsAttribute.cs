@@ -43,34 +43,34 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public override string IdPostfix => _name;
     public override Type HostType => typeof(GitHubActions);
     public override AbsolutePath ConfigurationFile => Build.RootDirectory / ".github" / "workflows" / $"{_name}.yml";
-    public override IEnumerable<AbsolutePath> GeneratedFiles => new[] { ConfigurationFile };
+    public override IEnumerable<AbsolutePath> GeneratedFiles => [ConfigurationFile];
 
     public override IEnumerable<string> RelevantTargetNames => InvokedTargets;
     public override IEnumerable<string> IrrelevantTargetNames => new string[0];
 
-    public GitHubActionsTrigger[] On { get; set; } = new GitHubActionsTrigger[0];
-    public string[] OnPushBranches { get; set; } = new string[0];
-    public string[] OnPushBranchesIgnore { get; set; } = new string[0];
-    public string[] OnPushTags { get; set; } = new string[0];
-    public string[] OnPushTagsIgnore { get; set; } = new string[0];
-    public string[] OnPushIncludePaths { get; set; } = new string[0];
-    public string[] OnPushExcludePaths { get; set; } = new string[0];
-    public string[] OnPullRequestBranches { get; set; } = new string[0];
-    public string[] OnPullRequestTags { get; set; } = new string[0];
-    public string[] OnPullRequestIncludePaths { get; set; } = new string[0];
-    public string[] OnPullRequestExcludePaths { get; set; } = new string[0];
-    public string[] OnWorkflowDispatchOptionalInputs { get; set; } = new string[0];
-    public string[] OnWorkflowDispatchRequiredInputs { get; set; } = new string[0];
+    public GitHubActionsTrigger[] On { get; set; } = [];
+    public string[] OnPushBranches { get; set; } = [];
+    public string[] OnPushBranchesIgnore { get; set; } = [];
+    public string[] OnPushTags { get; set; } = [];
+    public string[] OnPushTagsIgnore { get; set; } = [];
+    public string[] OnPushIncludePaths { get; set; } = [];
+    public string[] OnPushExcludePaths { get; set; } = [];
+    public string[] OnPullRequestBranches { get; set; } = [];
+    public string[] OnPullRequestTags { get; set; } = [];
+    public string[] OnPullRequestIncludePaths { get; set; } = [];
+    public string[] OnPullRequestExcludePaths { get; set; } = [];
+    public string[] OnWorkflowDispatchOptionalInputs { get; set; } = [];
+    public string[] OnWorkflowDispatchRequiredInputs { get; set; } = [];
     public string OnCronSchedule { get; set; }
 
-    public string[] ImportSecrets { get; set; } = new string[0];
+    public string[] ImportSecrets { get; set; } = [];
     public bool EnableGitHubToken { get; set; }
-    public GitHubActionsPermissions[] WritePermissions { get; set; } = new GitHubActionsPermissions[0];
-    public GitHubActionsPermissions[] ReadPermissions { get; set; } = new GitHubActionsPermissions[0];
+    public GitHubActionsPermissions[] WritePermissions { get; set; } = [];
+    public GitHubActionsPermissions[] ReadPermissions { get; set; } = [];
 
-    public string[] CacheIncludePatterns { get; set; } = { ".nuke/temp", "~/.nuget/packages" };
-    public string[] CacheExcludePatterns { get; set; } = new string[0];
-    public string[] CacheKeyFiles { get; set; } = { "**/global.json", "**/*.csproj", "**/Directory.Packages.props" };
+    public string[] CacheIncludePatterns { get; set; } = [".nuke/temp", "~/.nuget/packages"];
+    public string[] CacheExcludePatterns { get; set; } = [];
+    public string[] CacheKeyFiles { get; set; } = ["**/global.json", "**/*.csproj", "**/Directory.Packages.props"];
 
     public bool PublishArtifacts { get; set; } = true;
     public string PublishCondition { get; set; }
@@ -86,7 +86,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public string JobConcurrencyGroup { get; set; }
     public bool JobConcurrencyCancelInProgress { get; set; }
 
-    public string[] InvokedTargets { get; set; } = new string[0];
+    public string[] InvokedTargets { get; set; } = [];
 
     public GitHubActionsSubmodules Submodules
     {
@@ -258,9 +258,9 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                          {
                              Kind = GitHubActionsTrigger.PullRequest,
                              Branches = OnPullRequestBranches,
-                             BranchesIgnore = new string[0],
+                             BranchesIgnore = [],
                              Tags = OnPullRequestTags,
-                             TagsIgnore = new string[0],
+                             TagsIgnore = [],
                              IncludePaths = OnPullRequestIncludePaths,
                              ExcludePaths = OnPullRequestExcludePaths
                          };

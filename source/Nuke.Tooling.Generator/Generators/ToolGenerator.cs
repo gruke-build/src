@@ -6,8 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using JetBrains.Annotations;
 using Nuke.CodeGeneration.Model;
 using Nuke.CodeGeneration.Writers;
+using Nuke.Common;
+using Nuke.Common.IO;
+using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 
 // ReSharper disable UnusedMethodReturnValue.Local
@@ -20,7 +25,8 @@ public static class ToolGenerator
     {
         using var writer = new ToolWriter(tool, streamWriter);
         writer
-            // TODO [3]: extract license from dotsettings file
+            .WriteLine(s_projectLicenseHeader.Value)
+            .WriteLine(string.Empty)
             .WriteLineIfTrue(tool.SourceFile != null, $"// Generated from {tool.SourceFile}")
             .WriteLine(string.Empty)
             .ForEach(GetNamespaceImports(tool), x => writer.WriteLine($"using {x};"))
@@ -29,6 +35,38 @@ public static class ToolGenerator
             .WriteLine(string.Empty)
             .WriteAll();
     }
+
+    internal static AbsolutePath GlobalNukeDirectory => EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".nuke";
+    private static AbsolutePath RootDirectory => TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory).NotNull();
+
+    private static AbsolutePath NukeDotSettings => RootDirectory / "Gruke.sln.DotSettings";
+
+    [CanBeNull]
+    internal static AbsolutePath TryGetRootDirectoryFrom(AbsolutePath startDirectory, bool includeLegacy = true)
+    {
+        var rootDirectory = new DirectoryInfo(startDirectory)
+            .DescendantsAndSelf(x => x.Parent)
+            .FirstOrDefault(x => x.GetDirectories(".nuke").Length != 0 ||
+                                 includeLegacy && x.GetFiles(".nuke").Length != 0)
+            ?.FullName;
+        return rootDirectory != GlobalNukeDirectory.Parent 
+            ? (AbsolutePath) rootDirectory 
+            : null;
+    }
+
+    private static readonly Lazy<string> s_projectLicenseHeader = new(() =>
+    {
+        var doc = XDocument.Load(NukeDotSettings);
+        var resourceDict = doc.Elements().First().Descendants();
+        var fileHeader = resourceDict.First(x =>
+            // what
+            x.Attribute("{http://schemas.microsoft.com/winfx/2006/xaml}Key")
+                ?.Value == "/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue");
+        return fileHeader.Value.Replace("${CurrentDate.Year}", DateTime.Now.Year.ToString())
+            .SplitLineBreaks()
+            .Select(x => $"// {x}")
+            .JoinNewLine();
+    });
 
     private static ToolWriter WriteAll(this ToolWriter w)
     {
@@ -77,7 +115,7 @@ public static class ToolGenerator
                    "System.Linq",
                    "System.Text"
                }
-            .Concat(tool.Imports ?? new List<string>())
+            .Concat(tool.Imports ?? [])
             .OrderBy(x => x);
     }
 }
