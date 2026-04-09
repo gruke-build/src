@@ -46,6 +46,8 @@ public interface ICreateGitLabRelease : IHazGitRepository, IHazChangelog
     string PackageName { get; }
     string Version { get; }
 
+    bool AccessOverHttps => true;
+
     IEnumerable<AbsolutePath> AssetFiles { get; }
 
     Target CreateGitLabRelease => _ => _
@@ -68,9 +70,10 @@ public interface ICreateGitLabRelease : IHazGitRepository, IHazChangelog
             {
                 http = GitLabApi.CreateHttpClient(
                     GitLabHostName ?? GitLabHost.Default,
+                    AccessOverHttps,
                     GitLabToken.NotNull("GitLab API token is required when not running on GitLab CI, or targeting another project.")
                 );
-                apiUrl = (GitLabHostName ?? GitLabHost.Default).EnsureEnding("/api/v4/").EnsureStarting("https://");
+                apiUrl = (GitLabHostName ?? GitLabHost.Default).EnsureEnding("/api/v4/").EnsureStarting(AccessOverHttps ? "https://" : "http://");
             }
 
             GitLabTasks.Reauthenticate(this);

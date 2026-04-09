@@ -47,24 +47,24 @@ public readonly struct GitLabRepository(GitRepository repo, GitLabHost host)
     /// </summary>
     public string ApiIdentifier => WebUtility.UrlEncode(Assertion().Identifier);
 
-    public string GetCompareUrl(string startCommitShaOrTag, string endCommitShaOrTagOrBranch)
+    public string GetCompareUrl(string startCommitShaOrTag, string endCommitShaOrTagOrBranch, bool useHttps = true)
     {
-        return $"https://{host}/{Assertion().Identifier}/-/compare/{startCommitShaOrTag}...{endCommitShaOrTagOrBranch}";
+        return $"{(useHttps ? "https" : "http")}://{host}/{Assertion().Identifier}/-/compare/{startCommitShaOrTag}...{endCommitShaOrTagOrBranch}";
     }
 
-    public string GetCommitUrl(string commitSha)
+    public string GetCommitUrl(string commitSha, bool useHttps = true)
     {
-        return $"https://{host}/{Assertion().Identifier}/-/commit/{commitSha}";
+        return $"{(useHttps ? "https" : "http")}://{host}/{Assertion().Identifier}/-/commit/{commitSha}";
     }
 
     /// <summary>Url in the form of <c>https://{host}/{identifier}/raw/branch/{branch}/{file}</c>.</summary>
-    public string GetDownloadUrl(string file, string branch = null)
+    public string GetDownloadUrl(string file, string branch = null, bool useHttps = true)
     {
         _ = Assertion();
 
         branch ??= repo.Branch.NotNull("repo.Branch != null");
         var relativePath = repo.GetRelativePath(file);
-        return $"https://{host}/{repo.Identifier}/-/raw/{branch}/{relativePath}";
+        return $"{(useHttps ? "https" : "http")}://{host}/{repo.Identifier}/-/raw/{branch}/{relativePath}";
     }
 
     /// <summary>
@@ -74,14 +74,15 @@ public readonly struct GitLabRepository(GitRepository repo, GitLabHost host)
     public string GetBrowseUrl(
         string path = null,
         string branch = null,
-        GitLabItemType itemType = GitLabItemType.Automatic)
+        GitLabItemType itemType = GitLabItemType.Automatic, 
+        bool useHttps = true)
     {
         branch ??= Assertion().Branch.NotNull();
         var relativePath = repo.GetRelativePath(path);
         var method = GetMethod(relativePath, itemType, repo);
         Assert.True(path == null || method != null, "Could not determine item type");
 
-        return $"https://{host}/{repo.Identifier}/-/{method}/{branch}/{relativePath}".TrimEnd("/");
+        return $"{(useHttps ? "https" : "http")}://{host}/{repo.Identifier}/-/{method}/{branch}/{relativePath}".TrimEnd("/");
     }
 
     [CanBeNull]

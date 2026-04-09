@@ -48,6 +48,8 @@ public interface ICreateForgejoRelease : IHazGitRepository, IHazChangelog
     string Name { get; }
     bool Prerelease => false;
     bool Draft => false;
+    
+    bool AccessOverHttps => true;
 
     IEnumerable<AbsolutePath> AssetFiles { get; }
 

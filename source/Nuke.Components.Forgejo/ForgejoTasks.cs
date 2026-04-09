@@ -28,7 +28,7 @@ public static class ForgejoTasks
     {
         ApiClient = new(new HttpClientRequestAdapter(CreateAuthProvider(build))
                         {
-                            BaseUrl = $"https://{build.Forgejo.Host ?? build.ForgejoHostName}/api/v1"
+                            BaseUrl = $"{(build.AccessOverHttps ? "https" : "http")}://{build.Forgejo.Host ?? build.ForgejoHostName}/api/v1"
                         });
     }
 

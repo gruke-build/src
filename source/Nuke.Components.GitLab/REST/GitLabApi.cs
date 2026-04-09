@@ -29,12 +29,12 @@ namespace Nuke.Components.GitLab;
 [PublicAPI]
 public static class GitLabApi
 {
-    public static IHttpClientProxy CreateHttpClient(string host, string accessToken, TimeSpan? timeout = null)
+    public static IHttpClientProxy CreateHttpClient(string host, bool useHttps, string accessToken, TimeSpan? timeout = null)
     {
         return new HttpClientProxy(new HttpClient
                                    {
                                        Timeout = timeout ?? TimeSpan.FromSeconds(100),
-                                       BaseAddress = new Uri(host.EnsureEnding("/api/v4/").EnsureStarting("https://")),
+                                       BaseAddress = new Uri(host.EnsureEnding("/api/v4/").EnsureStarting(useHttps ? "https://" : "http://")),
                                        DefaultRequestHeaders =
                                        {
                                            UserAgent = { new ProductInfoHeaderValue("gruke", "1.0.0") },
@@ -518,7 +518,7 @@ public static class GitLabApi
     }
 
 #nullable enable
-    public static Task<GitLabReleaseJsonResponse?> GetLatestReleaseAsync(IHttpClientProxy http,long projectId)
+    public static Task<GitLabReleaseJsonResponse?> GetLatestReleaseAsync(IHttpClientProxy http, long projectId)
         => GetReleaseAsync(http, projectId, "permalink/latest");
 
     public static async Task<GitLabReleaseJsonResponse?> GetReleaseAsync(IHttpClientProxy http, long projectId, string tagName) =>
