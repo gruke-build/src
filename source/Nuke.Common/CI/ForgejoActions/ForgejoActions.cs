@@ -39,6 +39,8 @@ public partial class ForgejoActions : Host, IBuildServer, IEnvironment<ForgejoAc
     string IBuildServer.Branch => Ref;
     string IBuildServer.Commit => Sha;
 
+    public JObject EventContext => _eventContext.Value;
+
     ///<summary>The numerical id of the current step.</summary>
     public long Action => IEnvironment<ForgejoActions>.Get<long>("ACTION");
 
