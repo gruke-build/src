@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+
+## [10.3.0] / 2026-04-08
 - Added `KiotaTasks`, a NUKE CLI tool wrapper for [microsoft/kiota](https://github.com/microsoft/kiota).
   - Example usage can be found in this very project, as I added this to generate the API client in `GreemDev.Nuke.Components.Forgejo`.
   - [usage](https://github.com/gruke-build/src/blob/2174568e3cadfccc8127fa8e11ed8cc625fbe370/build/Build.Kiota.cs); [generated output](https://github.com/gruke-build/src/tree/2174568e3cadfccc8127fa8e11ed8cc625fbe370/source/Nuke.Components.Forgejo/generated)
@@ -1294,7 +1296,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.2.0...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/10.3.0...HEAD
+[10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0
 [10.2.0]: https://github.com/gruke-build/src/compare/10.1.0...10.2.0
 [10.1.0]: https://github.com/gruke-build/src/compare/10.0.0...10.1.0
 [10.0.0]: https://github.com/gruke-build/src/compare/9.0.4...10.0.0
