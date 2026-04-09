@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+
+## [10.3.1] / 2026-04-08
 - Exposed JSON payload in ForgejoActions CI class.
 
 ## [10.3.0] / 2026-04-08
@@ -1297,7 +1299,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.3.0...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/10.3.1...HEAD
+[10.3.1]: https://github.com/gruke-build/src/compare/10.3.0...10.3.1
 [10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0
 [10.2.0]: https://github.com/gruke-build/src/compare/10.1.0...10.2.0
 [10.1.0]: https://github.com/gruke-build/src/compare/10.0.0...10.1.0
