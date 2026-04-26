@@ -18,6 +18,8 @@
     <NukeTasksEnabled Condition="'$(NukeTasksEnabled)' == ''">False</NukeTasksEnabled>
     <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\source\Nuke.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
 
+    <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
+
 <!--    <PackAsTool>True</PackAsTool>-->
 <!--    <ToolCommandName>build</ToolCommandName>-->
 
@@ -65,6 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NuGet.Frameworks" Version="6.12.1" />
     <ProjectReference Include="..\source\Nuke.Components.GitHub\Nuke.Components.GitHub.csproj" />
     <ProjectReference Include="..\source\Nuke.Components.Forgejo\Nuke.Components.Forgejo.csproj" />
     <ProjectReference Include="..\source\Nuke.Components.GitLab\Nuke.Components.GitLab.csproj" />

@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="NuGet.Packaging" />
+    <PackageReference Include="NuGet.Frameworks" ExcludeAssets="runtime" PrivateAssets="all" />
     <PackageReference Include="Serilog" />
   </ItemGroup>
 
