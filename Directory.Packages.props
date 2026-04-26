@@ -57,7 +57,7 @@
   <!-- Solution Model -->
   <ItemGroup>
     <PackageVersion Include="matkoch.Microsoft.VisualStudio.SolutionPersistence" Version="1.0.61" />
-    <PackageVersion Include="Scriban" Version="6.6.0" />
+    <PackageVersion Include="Scriban" Version="7.1.0" />
   </ItemGroup>
   <!-- MSBuild (Nuke.ProjectModel + Nuke.MSBuildTasks) -->
   <ItemGroup>
