@@ -14,6 +14,11 @@
 # </auto-generated>
 # ------------------------------------------------------------------------------
 
+trigger:
+  branches:
+    include:
+      - develop
+
 pr:
   none
 

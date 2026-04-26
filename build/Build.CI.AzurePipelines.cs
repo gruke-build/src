@@ -18,6 +18,7 @@ using Nuke.Components;
     AzurePipelinesImage.MacOsLatest,
     FetchDepth = 0,
     PullRequestsDisabled = true,
+    TriggerBranchesInclude = ["develop"],
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     NonEntryTargets = [nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage)],
     ExcludedTargets = [nameof(Clean)],

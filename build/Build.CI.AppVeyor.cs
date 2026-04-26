@@ -10,7 +10,7 @@ using Nuke.Components;
     AppVeyorImage.VisualStudioLatest,
     AppVeyorImage.UbuntuLatest,
     AppVeyorImage.MacOsLatest,
-    BranchesExcept = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
+    BranchesOnly = [DevelopBranch],
     SkipTags = true,
     InvokedTargets = [nameof(ITest.Test)],
     Secrets = [])]

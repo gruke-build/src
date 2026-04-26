@@ -20,9 +20,8 @@ image:
   - macOS
 
 branches:
-  except:
-    - master
-    - /release\/*/
+  only:
+    - develop
 
 skip_tags: true
 
