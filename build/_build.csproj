@@ -53,7 +53,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Webhook" Version="3.19.0" />
+    <PackageReference Include="Discord.Net.Webhook" Version="3.19.1" />
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
     <PackageDownload Include="Codecov.Tool" Version="[1.13.0]" />
     <PackageDownload Include="docfx" Version="[2.78.5]" />
