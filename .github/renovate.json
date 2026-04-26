@@ -2,5 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended", ":dependencyDashboard"
-  ]
+  ],
+  "draftPR": true,
+  "enabledManagers": [ "nuget" ],
+  "ignorePaths": [ ".github/**", ".forgejo/**", ".woodpecker/**", ".gitlab-ci.yml", "source/Nuke.GlobalTool.Tests/cake-scripts/**" ]
 }
