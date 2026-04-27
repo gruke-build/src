@@ -3,9 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <PackageId>GreemDev.Nuke.ProjectModel.Tests</PackageId>
+    <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Build"/>
     <ProjectReference Include="..\Nuke.Build.Shared\Nuke.Build.Shared.csproj" />
     <ProjectReference Include="..\Nuke.ProjectModel\Nuke.ProjectModel.csproj" />
   </ItemGroup>
