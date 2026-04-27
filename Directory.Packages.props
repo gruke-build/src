@@ -16,8 +16,8 @@
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Kiota.Bundle" Version="1.22.1" />
     <PackageVersion Include="NGitLab" Version="11.7.0" />
-    <PackageVersion Include="NJsonSchema" Version="11.5.2" />
-    <PackageVersion Include="NJsonSchema.NewtonsoftJson" Version="11.5.2" />
+    <PackageVersion Include="NJsonSchema" Version="11.6.1" />
+    <PackageVersion Include="NJsonSchema.NewtonsoftJson" Version="11.6.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageVersion Include="NuGet.Packaging" Version="6.14.3" />
     <PackageVersion Include="NuGet.Frameworks" Version="6.14.3" />
