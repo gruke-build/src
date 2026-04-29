@@ -12,7 +12,7 @@
     <PackageVersion Include="HtmlAgilityPack" Version="1.12.4" />
     <PackageVersion Include="Humanizer" Version="3.0.10" />
     <PackageVersion Include="JetBrains.Annotations" Version="2025.2.4" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.7" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Kiota.Bundle" Version="1.22.1" />
     <PackageVersion Include="NGitLab" Version="11.7.0" />
@@ -30,7 +30,7 @@
     <PackageVersion Include="SharpZipLib" Version="1.4.2" />
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
-    <PackageVersion Include="System.Text.Json" Version="10.0.0" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.7" />
     <PackageVersion Include="YamlDotNet" Version="17.1.0" />
     <PackageVersion Include="matkoch.spectre.console" Version="0.46.0" />
   </ItemGroup>
@@ -50,10 +50,10 @@
   <!-- Roslyn (Nuke.SourceGenerator + Nuke.GlobalTool) -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.12.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.12.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.12.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
   </ItemGroup>
   <!-- Solution Model -->
   <ItemGroup>
@@ -63,10 +63,10 @@
   <!-- MSBuild (Nuke.ProjectModel + Nuke.MSBuildTasks) -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.Build.Locator" Version="1.11.2" />
-    <PackageVersion Include="Microsoft.Build" Version="18.0.2" />
-    <PackageVersion Include="Microsoft.Build.Framework" Version="18.0.2" />
-    <PackageVersion Include="Microsoft.Build.Tasks.Core" Version="18.0.2" />
-    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.0.2" />
+    <PackageVersion Include="Microsoft.Build" Version="18.4.0" />
+    <PackageVersion Include="Microsoft.Build.Framework" Version="18.4.0" />
+    <PackageVersion Include="Microsoft.Build.Tasks.Core" Version="18.4.0" />
+    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.4.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
     <PackageVersion Update="Microsoft.Build" Version="17.14.28" />
@@ -75,9 +75,9 @@
     <PackageVersion Update="Microsoft.Build.Utilities.Core" Version="17.14.28" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageVersion Update="Microsoft.Build" Version="17.11.48" />
-    <PackageVersion Update="Microsoft.Build.Framework" Version="17.11.48" />
-    <PackageVersion Update="Microsoft.Build.Tasks.Core" Version="17.11.48" />
-    <PackageVersion Update="Microsoft.Build.Utilities.Core" Version="17.11.48" />
+    <PackageVersion Update="Microsoft.Build" Version="17.14.28" />
+    <PackageVersion Update="Microsoft.Build.Framework" Version="17.14.28" />
+    <PackageVersion Update="Microsoft.Build.Tasks.Core" Version="17.14.28" />
+    <PackageVersion Update="Microsoft.Build.Utilities.Core" Version="17.14.28" />
   </ItemGroup>
 </Project>
