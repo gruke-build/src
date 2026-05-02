@@ -8,26 +8,34 @@ using System;
 namespace Nuke.Components.Forgejo.Models
 {
     /// <summary>
-    /// ActionRunJob represents a job of a run
+    /// ActionRunner represents a runner
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ActionRunJob : IAdditionalDataHolder, IParsable
+    public partial class ActionRunner : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How many times the job has been attempted including the current attempt.</summary>
-        public long? Attempt { get; set; }
-        /// <summary>Opaque identifier that uniquely identifies a single attempt of a job.</summary>
+        /// <summary>Description provides optional details about this runner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Handle { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Handle { get; set; }
+        public string Description { get; set; }
 #endif
-        /// <summary>Identifier of this job.</summary>
+        /// <summary>Indicates if runner is ephemeral runner</summary>
+        public bool? Ephemeral { get; set; }
+        /// <summary>ID uniquely identifies this runner.</summary>
         public long? Id { get; set; }
-        /// <summary>the action run job name</summary>
+        /// <summary>Labels is a list of labels attached to this runner.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Labels { get; set; }
+#nullable restore
+#else
+        public List<string> Labels { get; set; }
+#endif
+        /// <summary>Name of the runner; not unique.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -35,52 +43,44 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>the action run job needed ids</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Needs { get; set; }
-#nullable restore
-#else
-        public List<string> Needs { get; set; }
-#endif
-        /// <summary>the owner id</summary>
+        /// <summary>OwnerID is the identifier of the user or organization this runner belongs to. O if the runner is owned by arepository.</summary>
         public long? OwnerId { get; set; }
-        /// <summary>the repository id</summary>
+        /// <summary>RepoID is the identifier of the repository this runner belongs to. 0 if the runner belongs to a user ororganization.</summary>
         public long? RepoId { get; set; }
-        /// <summary>the action run job labels to run on</summary>
+        /// <summary>Status indicates whether this runner is offline, or active, for example.</summary>
+        public global::Nuke.Components.Forgejo.Models.ActionRunner_status? Status { get; set; }
+        /// <summary>UUID uniquely identifies this runner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RunsOn { get; set; }
+        public string? Uuid { get; set; }
 #nullable restore
 #else
-        public List<string> RunsOn { get; set; }
+        public string Uuid { get; set; }
 #endif
-        /// <summary>the action run job status</summary>
+        /// <summary>Version is the self-reported version string of Forgejo Runner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Version { get; set; }
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Version { get; set; }
 #endif
-        /// <summary>the action run job latest task id</summary>
-        public long? TaskId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ActionRunJob"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.ActionRunner"/> and sets the default values.
         /// </summary>
-        public ActionRunJob()
+        public ActionRunner()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ActionRunJob"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ActionRunner"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Components.Forgejo.Models.ActionRunJob CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.ActionRunner CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Components.Forgejo.Models.ActionRunJob();
+            return new global::Nuke.Components.Forgejo.Models.ActionRunner();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,16 +90,16 @@ namespace Nuke.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attempt", n => { Attempt = n.GetLongValue(); } },
-                { "handle", n => { Handle = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "ephemeral", n => { Ephemeral = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
+                { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "needs", n => { Needs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "owner_id", n => { OwnerId = n.GetLongValue(); } },
                 { "repo_id", n => { RepoId = n.GetLongValue(); } },
-                { "runs_on", n => { RunsOn = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
-                { "task_id", n => { TaskId = n.GetLongValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Nuke.Components.Forgejo.Models.ActionRunner_status>(); } },
+                { "uuid", n => { Uuid = n.GetStringValue(); } },
+                { "version", n => { Version = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -109,16 +109,16 @@ namespace Nuke.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteLongValue("attempt", Attempt);
-            writer.WriteStringValue("handle", Handle);
+            writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("ephemeral", Ephemeral);
             writer.WriteLongValue("id", Id);
+            writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfPrimitiveValues<string>("needs", Needs);
             writer.WriteLongValue("owner_id", OwnerId);
             writer.WriteLongValue("repo_id", RepoId);
-            writer.WriteCollectionOfPrimitiveValues<string>("runs_on", RunsOn);
-            writer.WriteStringValue("status", Status);
-            writer.WriteLongValue("task_id", TaskId);
+            writer.WriteEnumValue<global::Nuke.Components.Forgejo.Models.ActionRunner_status>("status", Status);
+            writer.WriteStringValue("uuid", Uuid);
+            writer.WriteStringValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

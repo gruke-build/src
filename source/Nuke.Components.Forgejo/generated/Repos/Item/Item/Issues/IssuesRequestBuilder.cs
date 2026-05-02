@@ -65,6 +65,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Nuke.Components.Forgejo.Models.Issue>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Issues.IssuesRequestBuilder.IssuesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,6 +79,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Issues
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.Issue>(requestInfo, global::Nuke.Components.Forgejo.Models.Issue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

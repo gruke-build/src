@@ -60,7 +60,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Secrets.Item
         /// <summary>
         /// Create or Update a secret value in a repository
         /// </summary>
-        /// <param name="body">CreateOrUpdateSecretOption options when creating or updating secret</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
@@ -106,7 +106,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Secrets.Item
         /// Create or Update a secret value in a repository
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">CreateOrUpdateSecretOption options when creating or updating secret</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -129,8 +129,10 @@ namespace Nuke.Components.Forgejo.Models
         public bool? HasPullRequests { get; set; }
         /// <summary>The has_releases property</summary>
         public bool? HasReleases { get; set; }
-        /// <summary>The has_wiki property</summary>
+        /// <summary>is the wiki enabled</summary>
         public bool? HasWiki { get; set; }
+        /// <summary>have wiki pages ever been created</summary>
+        public bool? HasWikiContents { get; set; }
         /// <summary>The html_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -297,6 +299,22 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string WikiBranch { get; set; }
 #endif
+        /// <summary>The wiki_clone_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WikiCloneUrl { get; set; }
+#nullable restore
+#else
+        public string WikiCloneUrl { get; set; }
+#endif
+        /// <summary>The wiki_ssh_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WikiSshUrl { get; set; }
+#nullable restore
+#else
+        public string WikiSshUrl { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.Repository"/> and sets the default values.
         /// </summary>
@@ -353,6 +371,7 @@ namespace Nuke.Components.Forgejo.Models
                 { "has_pull_requests", n => { HasPullRequests = n.GetBoolValue(); } },
                 { "has_releases", n => { HasReleases = n.GetBoolValue(); } },
                 { "has_wiki", n => { HasWiki = n.GetBoolValue(); } },
+                { "has_wiki_contents", n => { HasWikiContents = n.GetBoolValue(); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "ignore_whitespace_conflicts", n => { IgnoreWhitespaceConflicts = n.GetBoolValue(); } },
@@ -385,6 +404,8 @@ namespace Nuke.Components.Forgejo.Models
                 { "watchers_count", n => { WatchersCount = n.GetLongValue(); } },
                 { "website", n => { Website = n.GetStringValue(); } },
                 { "wiki_branch", n => { WikiBranch = n.GetStringValue(); } },
+                { "wiki_clone_url", n => { WikiCloneUrl = n.GetStringValue(); } },
+                { "wiki_ssh_url", n => { WikiSshUrl = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -425,6 +446,7 @@ namespace Nuke.Components.Forgejo.Models
             writer.WriteBoolValue("has_pull_requests", HasPullRequests);
             writer.WriteBoolValue("has_releases", HasReleases);
             writer.WriteBoolValue("has_wiki", HasWiki);
+            writer.WriteBoolValue("has_wiki_contents", HasWikiContents);
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteLongValue("id", Id);
             writer.WriteBoolValue("ignore_whitespace_conflicts", IgnoreWhitespaceConflicts);
@@ -457,6 +479,8 @@ namespace Nuke.Components.Forgejo.Models
             writer.WriteLongValue("watchers_count", WatchersCount);
             writer.WriteStringValue("website", Website);
             writer.WriteStringValue("wiki_branch", WikiBranch);
+            writer.WriteStringValue("wiki_clone_url", WikiCloneUrl);
+            writer.WriteStringValue("wiki_ssh_url", WikiSshUrl);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

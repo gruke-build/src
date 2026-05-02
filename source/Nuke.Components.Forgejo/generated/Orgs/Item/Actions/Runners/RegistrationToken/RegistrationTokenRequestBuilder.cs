@@ -34,11 +34,12 @@ namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken
         {
         }
         /// <summary>
-        /// Get an organization&apos;s actions runner registration token
+        /// This operation has been deprecated in Forgejo 15. Use the web UI or [`/orgs/{org}/actions/runners`](#/organization/registerOrgRunner) instead.
         /// </summary>
         /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.RegistrationToken"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Nuke.Components.Forgejo.Models.RegistrationToken?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,10 +53,11 @@ namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken
             return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.RegistrationToken>(requestInfo, global::Nuke.Components.Forgejo.Models.RegistrationToken.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get an organization&apos;s actions runner registration token
+        /// This operation has been deprecated in Forgejo 15. Use the web UI or [`/orgs/{org}/actions/runners`](#/organization/registerOrgRunner) instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -75,6 +77,7 @@ namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken
         /// </summary>
         /// <returns>A <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.RegistrationToken.RegistrationTokenRequestBuilder(rawUrl, RequestAdapter);

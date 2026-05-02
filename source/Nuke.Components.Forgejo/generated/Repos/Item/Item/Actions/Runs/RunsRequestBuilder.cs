@@ -35,7 +35,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/runs{?event*,head_sha*,limit*,page*,ref*,run_number*,status*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/runs{?event*,head_sha*,limit*,page*,ref*,run_number*,status*,workflow_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/runs{?event*,head_sha*,limit*,page*,ref*,run_number*,status*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/runs{?event*,head_sha*,limit*,page*,ref*,run_number*,status*,workflow_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -153,6 +153,16 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs
 #else
             [QueryParameter("status")]
             public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Runs.GetStatusQueryParameterType[] Status { get; set; }
+#endif
+            /// <summary>Only return workflow runs that involve the given workflow ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("workflow_id")]
+            public string? WorkflowId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("workflow_id")]
+            public string WorkflowId { get; set; }
 #endif
         }
     }

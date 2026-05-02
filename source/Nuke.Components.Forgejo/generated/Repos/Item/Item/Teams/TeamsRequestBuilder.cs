@@ -53,6 +53,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Teams
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 405 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Nuke.Components.Forgejo.Models.Team>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,6 +67,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Teams
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "405", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.Team>(requestInfo, global::Nuke.Components.Forgejo.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

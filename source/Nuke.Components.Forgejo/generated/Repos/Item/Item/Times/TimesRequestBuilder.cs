@@ -56,6 +56,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Times
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Nuke.Components.Forgejo.Models.TrackedTime>?> GetAsync(Action<RequestConfiguration<global::Nuke.Components.Forgejo.Repos.Item.Item.Times.TimesRequestBuilder.TimesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -71,6 +72,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Times
                 { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
                 { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
+                { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Nuke.Components.Forgejo.Models.TrackedTime>(requestInfo, global::Nuke.Components.Forgejo.Models.TrackedTime.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

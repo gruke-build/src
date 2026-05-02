@@ -24,6 +24,14 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Indicates that an access token only has access to the specified repositories.  Will be null if the access tokenis not limited to a set of specified repositories.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Nuke.Components.Forgejo.Models.RepositoryMeta>? Repositories { get; set; }
+#nullable restore
+#else
+        public List<global::Nuke.Components.Forgejo.Models.RepositoryMeta> Repositories { get; set; }
+#endif
         /// <summary>The scopes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,6 +83,7 @@ namespace Nuke.Components.Forgejo.Models
             {
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.RepositoryMeta>(global::Nuke.Components.Forgejo.Models.RepositoryMeta.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "sha1", n => { Sha1 = n.GetStringValue(); } },
                 { "token_last_eight", n => { TokenLastEight = n.GetStringValue(); } },
@@ -89,6 +98,7 @@ namespace Nuke.Components.Forgejo.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.RepositoryMeta>("repositories", Repositories);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteStringValue("sha1", Sha1);
             writer.WriteStringValue("token_last_eight", TokenLastEight);

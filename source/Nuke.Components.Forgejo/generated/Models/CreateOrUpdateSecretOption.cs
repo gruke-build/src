@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Nuke.Components.Forgejo.Models
 {
-    /// <summary>
-    /// CreateOrUpdateSecretOption options when creating or updating secret
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class CreateOrUpdateSecretOption : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Data of the secret to update</summary>
+        /// <summary>Data of the secret. Special characters will be retained. Line endings will be normalized to LF to match thebehaviour of browsers. Encode the data with Base64 if line endings should be retained.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Data { get; set; }

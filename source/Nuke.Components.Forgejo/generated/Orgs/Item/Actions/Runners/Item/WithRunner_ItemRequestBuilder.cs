@@ -9,32 +9,32 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item
+namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \orgs\{org}\actions\secrets\{secretname}
+    /// Builds and executes requests for operations under \orgs\{org}\actions\runners\{runner_id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WithSecretnameItemRequestBuilder : BaseRequestBuilder
+    public partial class WithRunner_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item.WithSecretnameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item.WithRunner_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSecretnameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/orgs/{org}/actions/secrets/{secretname}", pathParameters)
+        public WithRunner_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/orgs/{org}/actions/runners/{runner_id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item.WithSecretnameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item.WithRunner_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSecretnameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/orgs/{org}/actions/secrets/{secretname}", rawUrl)
+        public WithRunner_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/orgs/{org}/actions/runners/{runner_id}", rawUrl)
         {
         }
         /// <summary>
-        /// Delete a secret in an organization
+        /// Delete a particular runner that belongs to the organization
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -58,33 +58,32 @@ namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create or Update a secret value in an organization
+        /// Get a particular runner that belongs to the organization
         /// </summary>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.ActionRunner"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PutAsync(global::Nuke.Components.Forgejo.Models.CreateOrUpdateSecretOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.ActionRunner?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task PutAsync(global::Nuke.Components.Forgejo.Models.CreateOrUpdateSecretOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Nuke.Components.Forgejo.Models.ActionRunner> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Nuke.Components.Forgejo.Models.ActionRunner>(requestInfo, global::Nuke.Components.Forgejo.Models.ActionRunner.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a secret in an organization
+        /// Delete a particular runner that belongs to the organization
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -103,35 +102,32 @@ namespace Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item
             return requestInfo;
         }
         /// <summary>
-        /// Create or Update a secret value in an organization
+        /// Get a particular runner that belongs to the organization
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Nuke.Components.Forgejo.Models.CreateOrUpdateSecretOption body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Nuke.Components.Forgejo.Models.CreateOrUpdateSecretOption body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item.WithSecretnameItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item.WithRunner_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item.WithSecretnameItemRequestBuilder WithUrl(string rawUrl)
+        public global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item.WithRunner_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Nuke.Components.Forgejo.Orgs.Item.Actions.Secrets.Item.WithSecretnameItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Nuke.Components.Forgejo.Orgs.Item.Actions.Runners.Item.WithRunner_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

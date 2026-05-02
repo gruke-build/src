@@ -23,6 +23,14 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>If provided and not-empty, creates an access token with access only to specified repositories.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Nuke.Components.Forgejo.Models.RepoTargetOption>? Repositories { get; set; }
+#nullable restore
+#else
+        public List<global::Nuke.Components.Forgejo.Models.RepoTargetOption> Repositories { get; set; }
+#endif
         /// <summary>The scopes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,6 +65,7 @@ namespace Nuke.Components.Forgejo.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.RepoTargetOption>(global::Nuke.Components.Forgejo.Models.RepoTargetOption.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -68,6 +77,7 @@ namespace Nuke.Components.Forgejo.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfObjectValues<global::Nuke.Components.Forgejo.Models.RepoTargetOption>("repositories", Repositories);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteAdditionalData(AdditionalData);
         }

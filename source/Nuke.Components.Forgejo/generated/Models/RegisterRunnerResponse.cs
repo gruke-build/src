@@ -7,40 +7,47 @@ using System.IO;
 using System;
 namespace Nuke.Components.Forgejo.Models
 {
-    /// <summary>
-    /// EditIssueCommentOption options for editing a comment
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class EditIssueCommentOption : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class RegisterRunnerResponse : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The body of the comment</summary>
+        /// <summary>The id property</summary>
+        public long? Id { get; set; }
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Body { get; set; }
+        public string? Token { get; set; }
 #nullable restore
 #else
-        public string Body { get; set; }
+        public string Token { get; set; }
 #endif
-        /// <summary>The time of the comment&apos;s update, needs admin or repository owner permission</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>The uuid property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Uuid { get; set; }
+#nullable restore
+#else
+        public string Uuid { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.EditIssueCommentOption"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.RegisterRunnerResponse"/> and sets the default values.
         /// </summary>
-        public EditIssueCommentOption()
+        public RegisterRunnerResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.EditIssueCommentOption"/></returns>
+        /// <returns>A <see cref="global::Nuke.Components.Forgejo.Models.RegisterRunnerResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Nuke.Components.Forgejo.Models.EditIssueCommentOption CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Nuke.Components.Forgejo.Models.RegisterRunnerResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Nuke.Components.Forgejo.Models.EditIssueCommentOption();
+            return new global::Nuke.Components.Forgejo.Models.RegisterRunnerResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +57,9 @@ namespace Nuke.Components.Forgejo.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "body", n => { Body = n.GetStringValue(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetLongValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +69,9 @@ namespace Nuke.Components.Forgejo.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("body", Body);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteLongValue("id", Id);
+            writer.WriteStringValue("token", Token);
+            writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
