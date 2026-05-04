@@ -5,7 +5,31 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- chore: Regenerated `GreemDev.Nuke.Components.Forgejo` Kiota API client for [Forgejo v15](https://forgejo.org/2026-04-release-v15-0/).
+- [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
+  - Thanks [@ITaluone](https://github.com/ITaluone)!
 - fix: Allow `http://` URLs for GitLab & Forgejo; requires opt-in.
+- chore: The `Configuration.cs` file generated with a new GRUKE build script from the global tool now [has readonly members](https://github.com/gruke-build/src/commit/6a6dc2d17b620f7ac8da9f287dc3bb9c2c80d864).
+- [gruke-build/src#8](https://github.com/gruke-build/src/pull/8): Added [Renovate bot](https://github.com/apps/renovate) to update dependencies automatically.
+  - Azure.Identity: `1.17.1` -> `1.21.0`
+  - Azure.Security.KeyVault.Keys: `4.8.0` -> `4.9.0`
+  - Azure.Security.KeyVault.Secrets: `4.8.0` -> `4.10.0`
+  - Basic.Reference.Assemblies.NetStandard20: `1.7.9` -> `1.8.5`
+  - coverlet.msbuild: `6.0.4` -> `10.0.0`
+  - HtmlAgilityPack: `1.11.71` -> `1.12.4`
+  - Humanizer: `3.0.1` -> `3.0.10`
+  - JetBrains.Annotations: `2025.2.2` -> `2025.2.4`
+  - Microsoft.Build.Locator: `1.7.8` -> `1.11.2`
+  - Microsoft.NET.Test.Sdk: `18.0.1` -> `18.5.1`
+  - NGitLab: `11.5.0` -> `11.7.0`
+  - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
+  - NJsonSchema: `11.5.2` -> `11.6.1`
+  - NuGet.Frameworks: `6.12.1` -> `6.14.3`
+  - NuGet.Packaging: `6.12.1` -> `6.14.3`
+  - Scriban: `6.6.0` -> `7.1.0`
+  - Serilog: `4.3.0` -> `4.3.1`
+  - Verify.Xunit: `31.7.1` -> `31.12.5`
+  - YamlDotNet: `16.3.0` -> `17.1.0`
 
 ## [10.3.1] / 2026-04-08
 - Exposed JSON payload in ForgejoActions CI class.
@@ -36,7 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
           - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
       - These component interfaces do not need to be used on Woodpecker.
 
-- Moved `GitterTasks` to the namespace `Nuke.Common.Tools.Gitter`.
+- Removed `GitterTasks`, Gitter uses Matrix now and has an entirely different API as a result.
 - `SetBranch` on `GitRepository` has been removed; use `GitRepository.ModifyCopy(branch: ...)` instead.
 - Removed `ShutdownDotNetAfterServerBuild` attribute, it existed due to the .NET CLI's lack of ability for forcibly disabling the use of build servers.
   - .NET has since added this, as such the attribute has [been removed and its behavior has been nativized](https://github.com/gruke-build/src/commit/8b29341a37e0668ddeb918baf6610c338150b77e).
