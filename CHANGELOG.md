@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - chore: The `Configuration.cs` file generated with a new GRUKE build script from the global tool now [has readonly members](https://github.com/gruke-build/src/commit/6a6dc2d17b620f7ac8da9f287dc3bb9c2c80d864).
 - [gruke-build/src#8](https://github.com/gruke-build/src/pull/8): Added [Renovate bot](https://github.com/apps/renovate) to update dependencies automatically.
   - Azure.Identity: `1.17.1` -> `1.21.0`
-  - Azure.Security.KeyVault.Keys: `4.8.0` -> `4.9.0`
+  - Azure.Security.KeyVault.Keys: `4.8.0` -> `4.10.0`
   - Azure.Security.KeyVault.Secrets: `4.8.0` -> `4.11.0`
   - Basic.Reference.Assemblies.NetStandard20: `1.7.9` -> `1.8.5`
   - coverlet.msbuild: `6.0.4` -> `10.0.0`
