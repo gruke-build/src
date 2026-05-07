@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Humanizer: `3.0.1` -> `3.0.10`
   - JetBrains.Annotations: `2025.2.2` -> `2025.2.4`
   - Microsoft.Build.Locator: `1.7.8` -> `1.11.2`
+  - Microsoft.Kiota.Bundle: `1.22.1` -> `2.0.0`
   - Microsoft.NET.Test.Sdk: `18.0.1` -> `18.5.1`
   - NGitLab: `11.5.0` -> `11.7.0`
   - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
