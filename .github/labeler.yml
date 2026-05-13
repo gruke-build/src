@@ -1,0 +1,45 @@
+cicd:
+- changed-files:
+  - any-glob-to-any-file: ['source/Nuke.Common/CI/**', '!source/Nuke.Common/CI/**/Configuration']
+
+workflow-generator:
+- changed-files:
+  - any-glob-to-any-file: ['source/Nuke.Common/CI/**/Configuration']
+
+tools:
+- changed-files:
+  - any-glob-to-any-file: ['source/Nuke.Common/Tools/**', 'source/Nuke.Tooling/**']
+
+docfx:
+- changed-files:
+  - any-glob-to-any-file: 'docs/**'
+
+'integration:forgejo':
+- changed-files:
+  - any-glob-to-any-file: 'source/Nuke.Components.Forgejo/**'
+
+'integration:github':
+- changed-files:
+  - any-glob-to-any-file: 'source/Nuke.Components.GitHub/**'
+
+'integration:gitlab':
+- changed-files:
+  - any-glob-to-any-file: 'source/Nuke.Components.GitLab/**'
+
+core:
+- changed-files:
+  - any-glob-to-any-file: 
+    - 'source/Nuke.Build/**'
+    - 'source/Nuke.Build.Shared/**'
+    - 'source/Nuke.SourceGenerators/**'
+    - 'source/Nuke.ProjectModel/**'
+    - 'source/Nuke.SolutionModel/**'
+    - 'source/Nuke.MSBuildTasks/**'
+
+tool-generator:
+- changed-files:
+  - any-glob-to-any-file: ['source/Nuke.Tooling.Generator/**']
+
+testing:
+- changed-files:
+  - any-glob-to-any-file: 'source/*.Tests/**'
