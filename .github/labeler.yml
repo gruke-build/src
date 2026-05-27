@@ -1,6 +1,7 @@
 cicd:
 - changed-files:
-  - any-glob-to-any-file: ['source/Nuke.Common/CI/**', '!source/Nuke.Common/CI/**/Configuration']
+  - any-glob-to-any-file: 'source/Nuke.Common/CI/**'
+  - all-globs-to-all-files: '!source/Nuke.Common/CI/**/Configuration'
 
 workflow-generator:
 - changed-files:
