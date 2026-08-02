@@ -53,7 +53,7 @@ internal static class NotificationFetcher
 {
     public static Notification[] Cached { get; private set; } = [];
 
-    private const string NotificationEndpoint = "https://fs.greemdev.net/fs/notifications.json";
+    private const string NotificationEndpoint = "https://raw.githubusercontent.com/gruke-build/src/refs/heads/develop/.nuke/notifications.json";
 
     private static readonly AbsolutePath s_notificationDirectory = Constants.GlobalNukeDirectory / "received-notifications";
 
@@ -83,6 +83,8 @@ internal static class NotificationFetcher
 
     private static async Task<Notification[]> GetNotificationsInternal()
     {
+        // ReSharper disable once ShortLivedHttpClient
+        // Only called once at the beginning of a build, by a function in an internal class.
         using var httpClient = new HttpClient();
         var response = await httpClient.GetAsync(NotificationEndpoint).ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
