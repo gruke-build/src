@@ -22,12 +22,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Microsoft.Build.Locator: `1.7.8` -> `1.11.2`
   - Microsoft.Kiota.Bundle: `1.22.1` -> `2.0.0`
   - Microsoft.NET.Test.Sdk: `18.0.1` -> `18.8.1`
-  - NGitLab: `11.5.0` -> `11.7.0`
+  - NGitLab: `11.5.0` -> `11.9.0`
   - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
   - NJsonSchema: `11.5.2` -> `11.6.1`
   - NuGet.Frameworks: `6.12.1` -> `6.14.3`
   - NuGet.Packaging: `6.12.1` -> `6.14.3`
-  - Scriban: `6.6.0` -> `7.1.0`
+  - Scriban: `6.6.0` -> `7.2.6`
   - Serilog: `4.3.0` -> `4.3.1`
   - Verify.Xunit: `31.7.1` -> `31.12.5`
   - YamlDotNet: `16.3.0` -> `17.1.0`
