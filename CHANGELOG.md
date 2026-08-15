@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Azure.Security.KeyVault.Keys: `4.8.0` -> `4.10.0`
   - Azure.Security.KeyVault.Secrets: `4.8.0` -> `4.11.0`
   - Basic.Reference.Assemblies.NetStandard20: `1.7.9` -> `1.8.7`
-  - coverlet.msbuild: `6.0.4` -> `10.0.0`
+  - coverlet.msbuild: `6.0.4` -> `10.0.1`
   - GitHubActionsTestLogger: `2.4.1` -> `3.0.5`
   - HtmlAgilityPack: `1.11.71` -> `1.12.4`
   - Humanizer: `3.0.1` -> `3.0.10`
