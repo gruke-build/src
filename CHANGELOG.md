@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Scriban: `6.6.0` -> `7.2.6`
   - Serilog: `4.3.0` -> `4.4.0`
   - Verify.Xunit: `31.7.1` -> `31.12.5`
-  - YamlDotNet: `16.3.0` -> `17.1.0`
+  - YamlDotNet: `16.3.0` -> `18.1.0`
 
 ## [10.3.1] / 2026-04-08
 - Exposed JSON payload in ForgejoActions CI class.
