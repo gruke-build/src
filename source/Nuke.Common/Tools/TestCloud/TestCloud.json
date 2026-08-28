@@ -5,6 +5,7 @@
   ],
   "name": "TestCloud",
   "officialUrl": "https://developer.xamarin.com/guides/testcloud/",
+  "deprecationMessage": "Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214",
   "help": "Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.",
   "nugetPackageId": "Xamarin.UITest",
   "packageExecutable": "test-cloud.exe",

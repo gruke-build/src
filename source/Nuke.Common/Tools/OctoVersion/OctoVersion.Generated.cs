@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Nuke.Common.Tools.OctoVersion;
 
-/// <summary><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
+/// <summary><p>.NET tool for determining version number based on the Git revision graph</p><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
 [PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
@@ -30,7 +30,7 @@ public partial class OctoVersionTasks : ToolTasks, IRequireNuGetPackage
     public static string OctoVersionPath { get => new OctoVersionTasks().GetToolPathInternal(); set => new OctoVersionTasks().SetToolPath(value); }
     public const string PackageId = "Octopus.OctoVersion.Tool";
     public const string PackageExecutable = "OctoVersion.Tool.dll";
-    /// <summary><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
+    /// <summary><p>.NET tool for determining version number based on the Git revision graph</p><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> OctoVersion(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new OctoVersionTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>Gets the version information for a project.</p><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--BuildMetadata</c> via <see cref="OctoVersionGetVersionSettings.BuildMetadata"/></li><li><c>--CurrentBranch</c> via <see cref="OctoVersionGetVersionSettings.CurrentBranch"/></li><li><c>--DetectEnvironment</c> via <see cref="OctoVersionGetVersionSettings.DetectEnvironment"/></li><li><c>--FullSemVer</c> via <see cref="OctoVersionGetVersionSettings.FullSemVer"/></li><li><c>--Major</c> via <see cref="OctoVersionGetVersionSettings.Major"/></li><li><c>--Minor</c> via <see cref="OctoVersionGetVersionSettings.Minor"/></li><li><c>--NonPreReleaseTags</c> via <see cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/></li><li><c>--OutputFormats</c> via <see cref="OctoVersionGetVersionSettings.OutputFormats"/></li><li><c>--OutputJsonFile</c> via <see cref="OctoVersionGetVersionSettings.OutputJsonFile"/></li><li><c>--Patch</c> via <see cref="OctoVersionGetVersionSettings.Patch"/></li><li><c>--PreReleaseTag</c> via <see cref="OctoVersionGetVersionSettings.PreReleaseTag"/></li><li><c>--RepositoryPath</c> via <see cref="OctoVersionGetVersionSettings.RepositoryPath"/></li></ul></remarks>

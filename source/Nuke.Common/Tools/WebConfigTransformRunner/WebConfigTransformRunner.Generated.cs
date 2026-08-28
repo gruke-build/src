@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Nuke.Common.Tools.WebConfigTransformRunner;
 
-/// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
+/// <summary><p>This is a commandline tool to run an ASP.NET web.config transformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
 [PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
@@ -30,9 +30,9 @@ public partial class WebConfigTransformRunnerTasks : ToolTasks, IRequireNuGetPac
     public static string WebConfigTransformRunnerPath { get => new WebConfigTransformRunnerTasks().GetToolPathInternal(); set => new WebConfigTransformRunnerTasks().SetToolPath(value); }
     public const string PackageId = "WebConfigTransformRunner";
     public const string PackageExecutable = "WebConfigTransformRunner.exe";
-    /// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
+    /// <summary><p>This is a commandline tool to run an ASP.NET web.config transformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> WebConfigTransformRunner(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new WebConfigTransformRunnerTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
-    /// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
+    /// <summary><p>This is a commandline tool to run an ASP.NET web.config transformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;outputFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.OutputFilename"/></li><li><c>&lt;transformFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.TransformFilename"/></li><li><c>&lt;webConfigFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.WebConfigFilename"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> WebConfigTransformRunner(WebConfigTransformRunnerSettings options = null) => new WebConfigTransformRunnerTasks().Run<WebConfigTransformRunnerSettings>(options);
     /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Nuke.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>

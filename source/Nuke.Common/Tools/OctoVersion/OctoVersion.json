@@ -5,6 +5,7 @@
   ],
   "name": "OctoVersion",
   "officialUrl": "https://github.com/OctopusDeploy/OctoVersion",
+  "help": ".NET tool for determining version number based on the Git revision graph",
   "nugetPackageId": "Octopus.OctoVersion.Tool",
   "nugetFramework": true,
   "packageExecutable": "OctoVersion.Tool.dll",
