@@ -27,8 +27,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - NGitLab: `11.5.0` -> `12.0.0`
   - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
   - NJsonSchema: `11.5.2` -> `11.6.1`
-  - NuGet.Frameworks: `6.12.1` -> `7.9.0`
-  - NuGet.Packaging: `6.12.1` -> `7.9.0`
+  - NuGet.Frameworks: `6.12.1` -> `6.14.3`
+  - NuGet.Packaging: `6.12.1` -> `6.14.3`
   - Scriban: `6.6.0` -> `7.2.6`
   - Serilog: `4.3.0` -> `4.4.0`
   - Verify.Xunit: `31.7.1` -> `31.12.5`
