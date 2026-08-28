@@ -8,7 +8,7 @@
   "help": "Minimalistic versioning using Git tags.",
   "nugetPackageId": "minver-cli",
   "nugetFramework": true,
-  "packageExecutable": "minver-cli.dll",
+  "packageExecutable": "minver.dll",
   "tasks": [
     {
       "returnType": "MinVer",
