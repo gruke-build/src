@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Nuke.CodeGeneration.Model;
 using Nuke.CodeGeneration.Writers;
 using Nuke.Common.Utilities;
@@ -22,8 +23,24 @@ public static class WriterExtensions
             return writerWrapper;
 
         var message = deprecatable.GetDeprecationMessage();
-        var obsoleteText = string.IsNullOrEmpty(message) ? string.Empty : $"(\"{message}\")";
-        return writerWrapper.WriteLine($"[Obsolete{obsoleteText}]");
+        var url = deprecatable.GetDeprecationUrl();
+
+        return writerWrapper.WriteLine($"[Obsolete{generateObsoleteAttributeContent()}]");
+
+        string generateObsoleteAttributeContent()
+        {
+            if (!string.IsNullOrEmpty(url))
+            {
+                return
+                    !string.IsNullOrEmpty(message)
+                        ? $"(\"{message}\", UrlFormat = \"{url}\")"
+                        : $"(null, UrlFormat = \"{url}\")";
+            }
+
+            return !string.IsNullOrEmpty(message)
+                ? $"(\"{message}\")"
+                : string.Empty;
+        }
     }
 
     public static T WriteSummary<T>(this T writerWrapper, Tool tool)
@@ -59,14 +76,16 @@ public static class WriterExtensions
     public static T WriteInherit<T>(this T writerWrapper, Task task)
         where T : IWriterWrapper
     {
-        return writerWrapper.WriteLine($"/// <inheritdoc cref=\"{task.Tool.GetClassName()}.{task.GetTaskMethodName()}({task.Tool.Namespace}.{task.SettingsClass.Name})\"/>");
+        return writerWrapper.WriteLine(
+            $"/// <inheritdoc cref=\"{task.Tool.GetClassName()}.{task.GetTaskMethodName()}({task.Tool.Namespace}.{task.SettingsClass.Name})\"/>");
     }
 
     private static IEnumerable<string> GetArgumentsList(DataClass dataClass)
     {
         var allDataClasses = dataClass.Tool.Tasks.Select(x => x.SettingsClass).Concat(dataClass.Tool.DataClasses).ToList();
         var typeHierarchy = dataClass.DescendantsAndSelf(x => allDataClasses.FirstOrDefault(y => y.Name == x.BaseClass));
-        var properties = typeHierarchy.SelectMany(x => x.Properties, (x, y) => (Class: x, Property: y)).Where(x => !string.IsNullOrEmpty(x.Property.Format)).ToList();
+        var properties = typeHierarchy.SelectMany(x => x.Properties, (x, y) => (Class: x, Property: y))
+            .Where(x => !string.IsNullOrEmpty(x.Property.Format)).ToList();
         if (properties.Count == 0)
             yield break;
 

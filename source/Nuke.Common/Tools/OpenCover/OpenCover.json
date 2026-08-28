@@ -5,7 +5,7 @@
   ],
   "name": "OpenCover",
   "officialUrl": "https://github.com/OpenCover/opencover",
-  "deprecationMessage": "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode",
+  "deprecationUrl": "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode",
   "help": "OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.",
   "nugetPackageId": "OpenCover",
   "packageExecutable": "OpenCover.Console.exe",

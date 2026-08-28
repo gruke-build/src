@@ -31,23 +31,23 @@ public partial class OpenCoverTasks : ToolTasks, IRequireNuGetPackage
     public const string PackageId = "OpenCover";
     public const string PackageExecutable = "OpenCover.Console.exe";
     /// <summary><p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p><p>For more details, visit the <a href="https://github.com/OpenCover/opencover">official website</a>.</p></summary>
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static IReadOnlyCollection<Output> OpenCover(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new OpenCoverTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p><p>For more details, visit the <a href="https://github.com/OpenCover/opencover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-coverbytest</c> via <see cref="OpenCoverSettings.CoverByTests"/></li><li><c>-enableperformancecounters</c> via <see cref="OpenCoverSettings.PerformanceCounters"/></li><li><c>-excludebyattribute</c> via <see cref="OpenCoverSettings.ExcludeByAttributes"/></li><li><c>-excludebyfile</c> via <see cref="OpenCoverSettings.ExcludeByFile"/></li><li><c>-excludedirs</c> via <see cref="OpenCoverSettings.ExcludeDirectories"/></li><li><c>-filter</c> via <see cref="OpenCoverSettings.Filters"/></li><li><c>-hideskipped</c> via <see cref="OpenCoverSettings.HideSkippedKinds"/></li><li><c>-log</c> via <see cref="OpenCoverSettings.Verbosity"/></li><li><c>-mergebyhash</c> via <see cref="OpenCoverSettings.MergeByHash"/></li><li><c>-mergeoutput</c> via <see cref="OpenCoverSettings.MergeOutput"/></li><li><c>-nodefaultfilters</c> via <see cref="OpenCoverSettings.NoDefaultFilters"/></li><li><c>-oldStyle</c> via <see cref="OpenCoverSettings.OldStyle"/></li><li><c>-output</c> via <see cref="OpenCoverSettings.Output"/></li><li><c>-register</c> via <see cref="OpenCoverSettings.Registration"/></li><li><c>-returntargetcode</c> via <see cref="OpenCoverSettings.TargetExitCodeOffset"/></li><li><c>-safemode</c> via <see cref="OpenCoverSettings.SafeMode"/></li><li><c>-searchdirs</c> via <see cref="OpenCoverSettings.SearchDirectories"/></li><li><c>-service</c> via <see cref="OpenCoverSettings.Service"/></li><li><c>-showunvisited</c> via <see cref="OpenCoverSettings.ShowUnvisited"/></li><li><c>-skipautoprops</c> via <see cref="OpenCoverSettings.SkipAutoProperties"/></li><li><c>-target</c> via <see cref="OpenCoverSettings.TargetPath"/></li><li><c>-targetargs</c> via <see cref="OpenCoverSettings.TargetArguments"/></li><li><c>-targetdir</c> via <see cref="OpenCoverSettings.TargetDirectory"/></li><li><c>-threshold</c> via <see cref="OpenCoverSettings.MaximumVisitCount"/></li></ul></remarks>
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static IReadOnlyCollection<Output> OpenCover(OpenCoverSettings options = null) => new OpenCoverTasks().Run<OpenCoverSettings>(options);
     /// <inheritdoc cref="OpenCoverTasks.OpenCover(Nuke.Common.Tools.OpenCover.OpenCoverSettings)"/>
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static IReadOnlyCollection<Output> OpenCover(Configure<OpenCoverSettings> configurator) => new OpenCoverTasks().Run<OpenCoverSettings>(configurator.Invoke(new OpenCoverSettings()));
     /// <inheritdoc cref="OpenCoverTasks.OpenCover(Nuke.Common.Tools.OpenCover.OpenCoverSettings)"/>
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static IEnumerable<(OpenCoverSettings Settings, IReadOnlyCollection<Output> Output)> OpenCover(CombinatorialConfigure<OpenCoverSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(OpenCover, degreeOfParallelism, completeOnFailure);
 }
 #region OpenCoverSettings
 /// <inheritdoc cref="OpenCoverTasks.OpenCover(Nuke.Common.Tools.OpenCover.OpenCoverSettings)"/>
 [PublicAPI]
-[Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OpenCoverTasks), Command = nameof(OpenCoverTasks.OpenCover))]
 public partial class OpenCoverSettings : ToolOptions
@@ -105,496 +105,496 @@ public partial class OpenCoverSettings : ToolOptions
 #region OpenCoverSettingsExtensions
 /// <inheritdoc cref="OpenCoverTasks.OpenCover(Nuke.Common.Tools.OpenCover.OpenCoverSettings)"/>
 [PublicAPI]
-[Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
 [ExcludeFromCodeCoverage]
 public static partial class OpenCoverSettingsExtensions
 {
     #region TargetPath
     /// <inheritdoc cref="OpenCoverSettings.TargetPath"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetTargetPath<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetPath, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetPath"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetTargetPath<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetPath));
     #endregion
     #region TargetArguments
     /// <inheritdoc cref="OpenCoverSettings.TargetArguments"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetTargetArguments<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetArguments, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetArguments"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetTargetArguments<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetArguments));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="OpenCoverSettings.TargetDirectory"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetTargetDirectory<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetDirectory"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetTargetDirectory<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region CoverByTests
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearCoverByTests<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.CoverByTests));
     #endregion
     #region PerformanceCounters
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetPerformanceCounters<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, v));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetPerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.PerformanceCounters));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnablePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, true));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisablePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, false));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T TogglePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, !o.PerformanceCounters));
     #endregion
     #region ExcludeByAttributes
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearExcludeByAttributes<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeByAttributes));
     #endregion
     #region ExcludeByFile
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearExcludeByFile<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeByFile));
     #endregion
     #region ExcludeDirectories
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearExcludeDirectories<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeDirectories));
     #endregion
     #region Filters
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region HideSkippedKinds
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearHideSkippedKinds<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.HideSkippedKinds));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="OpenCoverSettings.Verbosity"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetVerbosity<T>(this T o, OpenCoverVerbosity v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="OpenCoverSettings.Verbosity"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetVerbosity<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region MergeByHash
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetMergeByHash<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, v));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MergeByHash));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, true));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, false));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, !o.MergeByHash));
     #endregion
     #region MergeOutput
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetMergeOutput<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, v));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MergeOutput));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, true));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, false));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, !o.MergeOutput));
     #endregion
     #region NoDefaultFilters
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetNoDefaultFilters<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, v));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.NoDefaultFilters));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, true));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, false));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, !o.NoDefaultFilters));
     #endregion
     #region OldStyle
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetOldStyle<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, v));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.OldStyle));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, true));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, false));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, !o.OldStyle));
     #endregion
     #region Output
     /// <inheritdoc cref="OpenCoverSettings.Output"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetOutput<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="OpenCoverSettings.Output"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region SafeMode
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetSafeMode<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, v));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.SafeMode));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, true));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, false));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, !o.SafeMode));
     #endregion
     #region SearchDirectories
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T AddSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T RemoveSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ClearSearchDirectories<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.SearchDirectories));
     #endregion
     #region Service
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetService<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, v));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Service));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, true));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, false));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, !o.Service));
     #endregion
     #region ShowUnvisited
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetShowUnvisited<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, v));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.ShowUnvisited));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, true));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, false));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, !o.ShowUnvisited));
     #endregion
     #region SkipAutoProperties
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetSkipAutoProperties<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, v));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.SkipAutoProperties));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T EnableSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, true));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T DisableSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, false));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ToggleSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, !o.SkipAutoProperties));
     #endregion
     #region MaximumVisitCount
     /// <inheritdoc cref="OpenCoverSettings.MaximumVisitCount"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetMaximumVisitCount<T>(this T o, int? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MaximumVisitCount, v));
     /// <inheritdoc cref="OpenCoverSettings.MaximumVisitCount"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetMaximumVisitCount<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MaximumVisitCount));
     #endregion
     #region Registration
     /// <inheritdoc cref="OpenCoverSettings.Registration"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetRegistration<T>(this T o, RegistrationType v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Registration, v));
     /// <inheritdoc cref="OpenCoverSettings.Registration"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetRegistration<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Registration));
     #endregion
     #region TargetExitCodeOffset
     /// <inheritdoc cref="OpenCoverSettings.TargetExitCodeOffset"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T SetTargetExitCodeOffset<T>(this T o, int? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetExitCodeOffset, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetExitCodeOffset"/>
     [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
-    [Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+    [Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
     public static T ResetTargetExitCodeOffset<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetExitCodeOffset));
     #endregion
 }
@@ -603,7 +603,7 @@ public static partial class OpenCoverSettingsExtensions
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
 [PublicAPI]
 [Serializable]
-[Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OpenCoverVerbosity>))]
 public partial class OpenCoverVerbosity : Enumeration
@@ -626,7 +626,7 @@ public partial class OpenCoverVerbosity : Enumeration
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
 [PublicAPI]
 [Serializable]
-[Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OpenCoverSkipping>))]
 public partial class OpenCoverSkipping : Enumeration
@@ -645,7 +645,7 @@ public partial class OpenCoverSkipping : Enumeration
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
 [PublicAPI]
 [Serializable]
-[Obsolete("https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<RegistrationType>))]
 public partial class RegistrationType : Enumeration

@@ -48,6 +48,9 @@ public class Tool : IDeprecatable
     [Description("Obsolete message. Tool is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }
 
+    [Description("Obsolete URL. Tool is marked as obsolete when specified.")]
+    public string DeprecationUrl { get; set; }
+
     [Description(
         "Help or introduction text to for the tool. Supports 'a-href', 'c', 'em', 'b', 'ul', 'li' and 'para' tags for better formatting.")]
     public string Help { get; set; }

@@ -31,23 +31,23 @@ public partial class TestCloudTasks : ToolTasks, IRequireNuGetPackage
     public const string PackageId = "Xamarin.UITest";
     public const string PackageExecutable = "test-cloud.exe";
     /// <summary><p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p><p>For more details, visit the <a href="https://developer.xamarin.com/guides/testcloud/">official website</a>.</p></summary>
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static IReadOnlyCollection<Output> TestCloud(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new TestCloudTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p><p>For more details, visit the <a href="https://developer.xamarin.com/guides/testcloud/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://nuke.greemdev.net/release/common/cli-tools/#fluent-api">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--assembly-dir</c> via <see cref="TestCloudSettings.AssemblyDirectory"/></li><li><c>--data</c> via <see cref="TestCloudSettings.DataPaths"/></li><li><c>--devices</c> via <see cref="TestCloudSettings.Devices"/></li><li><c>--dsym</c> via <see cref="TestCloudSettings.DsymFile"/></li><li><c>--exclude</c> via <see cref="TestCloudSettings.ExcludeCategories"/></li><li><c>--fixture</c> via <see cref="TestCloudSettings.Fixtures"/></li><li><c>--fixture-chunk</c> via <see cref="TestCloudSettings.FixtureChunk"/></li><li><c>--include</c> via <see cref="TestCloudSettings.IncludeCategories"/></li><li><c>--nunit-xml</c> via <see cref="TestCloudSettings.NunitResultsFile"/></li><li><c>--sign-info</c> via <see cref="TestCloudSettings.SignInfoFile"/></li><li><c>--test-chunk</c> via <see cref="TestCloudSettings.TestChunk"/></li><li><c>--user</c> via <see cref="TestCloudSettings.UserEmail"/></li></ul></remarks>
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static IReadOnlyCollection<Output> TestCloud(TestCloudSettings options = null) => new TestCloudTasks().Run<TestCloudSettings>(options);
     /// <inheritdoc cref="TestCloudTasks.TestCloud(Nuke.Common.Tools.TestCloud.TestCloudSettings)"/>
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static IReadOnlyCollection<Output> TestCloud(Configure<TestCloudSettings> configurator) => new TestCloudTasks().Run<TestCloudSettings>(configurator.Invoke(new TestCloudSettings()));
     /// <inheritdoc cref="TestCloudTasks.TestCloud(Nuke.Common.Tools.TestCloud.TestCloudSettings)"/>
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static IEnumerable<(TestCloudSettings Settings, IReadOnlyCollection<Output> Output)> TestCloud(CombinatorialConfigure<TestCloudSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(TestCloud, degreeOfParallelism, completeOnFailure);
 }
 #region TestCloudSettings
 /// <inheritdoc cref="TestCloudTasks.TestCloud(Nuke.Common.Tools.TestCloud.TestCloudSettings)"/>
 [PublicAPI]
-[Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+[Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(TestCloudTasks), Command = nameof(TestCloudTasks.TestCloud), Arguments = "submit")]
 public partial class TestCloudSettings : ToolOptions
@@ -81,232 +81,232 @@ public partial class TestCloudSettings : ToolOptions
 #region TestCloudSettingsExtensions
 /// <inheritdoc cref="TestCloudTasks.TestCloud(Nuke.Common.Tools.TestCloud.TestCloudSettings)"/>
 [PublicAPI]
-[Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+[Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
 [ExcludeFromCodeCoverage]
 public static partial class TestCloudSettingsExtensions
 {
     #region AssemblyDirectory
     /// <inheritdoc cref="TestCloudSettings.AssemblyDirectory"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetAssemblyDirectory<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.AssemblyDirectory, v));
     /// <inheritdoc cref="TestCloudSettings.AssemblyDirectory"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetAssemblyDirectory<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.AssemblyDirectory));
     #endregion
     #region Devices
     /// <inheritdoc cref="TestCloudSettings.Devices"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetDevices<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Devices, v));
     /// <inheritdoc cref="TestCloudSettings.Devices"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetDevices<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.Devices));
     #endregion
     #region UserEmail
     /// <inheritdoc cref="TestCloudSettings.UserEmail"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetUserEmail<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.UserEmail, v));
     /// <inheritdoc cref="TestCloudSettings.UserEmail"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetUserEmail<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.UserEmail));
     #endregion
     #region NunitResultsFile
     /// <inheritdoc cref="TestCloudSettings.NunitResultsFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetNunitResultsFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.NunitResultsFile, v));
     /// <inheritdoc cref="TestCloudSettings.NunitResultsFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetNunitResultsFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.NunitResultsFile));
     #endregion
     #region SignInfoFile
     /// <inheritdoc cref="TestCloudSettings.SignInfoFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetSignInfoFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.SignInfoFile, v));
     /// <inheritdoc cref="TestCloudSettings.SignInfoFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetSignInfoFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.SignInfoFile));
     #endregion
     #region DsymFile
     /// <inheritdoc cref="TestCloudSettings.DsymFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetDsymFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DsymFile, v));
     /// <inheritdoc cref="TestCloudSettings.DsymFile"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetDsymFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.DsymFile));
     #endregion
     #region Fixtures
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ClearFixtures<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.Fixtures));
     #endregion
     #region IncludeCategories
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ClearIncludeCategories<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.IncludeCategories));
     #endregion
     #region ExcludeCategories
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ClearExcludeCategories<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeCategories));
     #endregion
     #region TestChunk
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetTestChunk<T>(this T o, bool? v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, v));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.TestChunk));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T EnableTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, true));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T DisableTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, false));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ToggleTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, !o.TestChunk));
     #endregion
     #region FixtureChunk
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetFixtureChunk<T>(this T o, bool? v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, v));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ResetFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.FixtureChunk));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T EnableFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, true));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T DisableFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, false));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ToggleFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, !o.FixtureChunk));
     #endregion
     #region DataPaths
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T SetDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T AddDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T RemoveDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
     [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
-    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI. For more information, see the End of Support FAQ: https://github.com/dotnet/maui/discussions/21214")]
+    [Obsolete("Xamarin has been deprecated since May 1 2024, replaced with .NET MAUI.", UrlFormat = "https://github.com/dotnet/maui/discussions/21214")]
     public static T ClearDataPaths<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.DataPaths));
     #endregion
 }

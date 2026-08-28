@@ -96,6 +96,9 @@ public class Property : IDeprecatable
 
     [Description("Obsolete message. Property is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }
+    
+    [Description("Obsolete URL. Tool is marked as obsolete when specified.")]
+    public string DeprecationUrl { get; set; }
 
     public bool OnlyDelegates { get; set; }
 

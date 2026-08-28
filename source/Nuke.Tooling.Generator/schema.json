@@ -33,6 +33,11 @@
         "deprecationMessage": {
           "description": "Obsolete message. DataClass is marked as obsolete when specified.",
           "type": "string"
+        },
+        "deprecationUrl": {
+          "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+          "type": "string",
+          "format": "uri"
         }
       },
       "required": [
@@ -57,6 +62,11 @@
         "deprecationMessage": {
           "description": "Obsolete message. Enumeration is marked as obsolete when specified.",
           "type": "string"
+        },
+        "deprecationUrl": {
+          "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+          "type": "string",
+          "format": "uri"
         }
       },
       "required": [
@@ -152,6 +162,11 @@
           "description": "Obsolete message. Property is marked as obsolete when specified.",
           "type": "string"
         },
+        "deprecationUrl": {
+          "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+          "type": "string",
+          "format": "uri"
+        },
         "onlyDelegates": {
           "type": "boolean"
         },
@@ -198,6 +213,11 @@
         "deprecationMessage": {
           "description": "Obsolete message. DataClass is marked as obsolete when specified.",
           "type": "string"
+        },
+        "deprecationUrl": {
+          "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+          "type": "string",
+          "format": "uri"
         }
       }
     },
@@ -262,6 +282,11 @@
         "deprecationMessage": {
           "description": "Obsolete message. Task is marked as obsolete when specified.",
           "type": "string"
+        },
+        "deprecationUrl": {
+          "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+          "type": "string",
+          "format": "uri"
         }
       }
     }
@@ -297,6 +322,11 @@
     "deprecationMessage": {
       "description": "Obsolete message. Tool is marked as obsolete when specified.",
       "type": "string"
+    },
+    "deprecationUrl": {
+      "description": "Obsolete URL. Tool is marked as obsolete when specified.",
+      "type": "string",
+      "format": "uri"
     },
     "help": {
       "description": "Help or introduction text to for the tool. Supports 'a-href', 'c', 'em', 'b', 'ul', 'li' and 'para' tags for better formatting.",
