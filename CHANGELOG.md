@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- feature: Minimal Gradle support via `GradleTasks`.
+  - This wrapper is *intentionally* minimal, and is mostly meant for your GRUKE scripts to be able to build Kotlin/Java/Android projects and manipulate their artifacts.
+  - Simply call `GradleInvoke(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
+    - automatically resolve the working directory's Gradle wrapper (if present), falling back to system installation;
+    - act as if you had opened a terminal at that path and ran Gradle yourself.
+  - Avoid using `Gradle()`, as that does not get the working directory context to the tool path resolver.
+  - Helpful for multi-language repositories!
 - chore: Regenerated `GreemDev.Nuke.Components.Forgejo` Kiota API client for [Forgejo v15](https://forgejo.org/2026-04-release-v15-0/).
 - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
   - Thanks [@ITaluone](https://github.com/ITaluone)!

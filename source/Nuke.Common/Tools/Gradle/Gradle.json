@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
+  "name": "Gradle",
+  "officialUrl": "https://docs.gradle.org/",
+  "help": "Gradle is the open source build system of choice for Kotlin, Java, and Android developers; offering an extensive range of DSLs to configure the build process, as well as plugins to augment various functionalities and provide new ones.",
+  "customExecutable": true,
+  "tasks": [
+    {
+      "help": "Invoke any Gradle task(s), by name. Capable of using the Gradle Wrapper in the working directory.",
+      "postfix": "Invoke",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "Task",
+            "type": "string",
+            "format": "{value}",
+            "position": 1
+          }
+        ]
+      }
+    }
+  ]
+}
