@@ -2,6 +2,7 @@
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
+using System;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
@@ -9,6 +10,9 @@ using Nuke.Common.Utilities;
 namespace Nuke.Common.Tools.OpenCover;
 
 [PublicAPI]
+#pragma warning disable CA1041
+[Obsolete(null, UrlFormat = "https://github.com/OpenCover/opencover#putting-opencover-into-archive-mode")]
+#pragma warning restore CA1041
 public class OpenCoverVerbosityMappingAttribute : VerbosityMappingAttribute
 {
     public OpenCoverVerbosityMappingAttribute()
