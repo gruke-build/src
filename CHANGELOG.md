@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- **BREAKING CHANGES**:
+  - Add `<DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>` to your GRUKE build script's `.csproj` file.
+  - Not adding this to your project file results in:
+    - `<nuget cache dir>/packages/microsoft.build.locator/1.11.2/buildTransitive/Microsoft.Build.Locator.targets(19,5): error MSBL001: A PackageReference to the package 'NuGet.Frameworks' at version '6.14.3' is present in this project without ExcludeAssets="runtime" and PrivateAssets="all" set. This can cause errors at run-time due to MSBuild assembly-loading.`
+    - We want these assemblies, so the fix is to disable the check, unfortunately.
+    - This has also been added to the Global Tool's new project template.
+
+
 - feature: Minimal Gradle support via `GradleTasks`.
   - This wrapper is *intentionally* minimal, and is mostly meant for your GRUKE scripts to be able to build Kotlin/Java/Android projects and manipulate their artifacts.
   - Simply call `GradleInvoke(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
