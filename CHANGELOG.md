@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - fix: Allow `http://` URLs for GitLab & Forgejo; requires opt-in.
   - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
     - Thanks [@ITaluone](https://github.com/ITaluone)!
+  - fix: Restored Latest/Latest Prerelease Global Tool behavior for creating a new project.
+    - Previously, the pre-release version checker was checking nuget.org's API for our pre-release packages. Our pre-releases are on GitLab.
+    - Additionally, it was using the outdated package ID `GreemDev.Nuke.Common`, which is now `GreemDev.Nuke` to package consumers.
+    - This functionality has been restored, and you can create a project using the full feature-set of the global tool once again!
 
 
 - **New Features**

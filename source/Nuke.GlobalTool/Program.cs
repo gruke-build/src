@@ -70,7 +70,7 @@ public partial class Program
         {
             var command = args.First().Trim(CommandPrefix).Replace("-", string.Empty);
             if (string.IsNullOrWhiteSpace(command))
-                Assert.Fail($"No command specified. Usage is: nuke {CommandPrefix}<command> [args]");
+                Assert.Fail($"No command specified. Usage is: gruke {CommandPrefix}<command> [args]");
 
             var availableCommands = typeof(Program).GetMethods(ReflectionUtility.Static).Where(x => x.ReturnType == typeof(int)).ToList();
             var commandHandler = availableCommands.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(command))

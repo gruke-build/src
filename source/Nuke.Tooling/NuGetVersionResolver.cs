@@ -18,6 +18,28 @@ public static class NuGetVersionResolver
     private static readonly HttpClient s_client = new();
 
     [ItemCanBeNull]
+    internal static async Task<string> GetLatestPreReleaseSelfVersion(string packageId)
+    {
+        try
+        {
+            // https://gitlab.com/gruke/src/-/packages
+            var jsonString = await s_client.GetStringAsync(
+                "https://gitlab.com/api/v4/projects/79839956/packages/nuget/query"
+                );
+            var jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
+
+            return jsonObject["data"].NotNull("Version array is not present")
+                .FirstOrDefault(x => x["id"].Value<string>() == packageId).NotNull($"Could not find {packageId} package in feed")
+                ["version"].NotNull("Version element not present")
+                .Value<string>();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    [ItemCanBeNull]
     public static async Task<string> GetLatestVersion(string packageId, bool includePrereleases, bool includeUnlisted = false)
     {
         try
