@@ -42,6 +42,11 @@ public static class ProjectUpdater
             return;
 
         packageItem.SetMetadataValue("Version", latestPackageVersion);
+
+        if (NuGetVersion.Parse(latestPackageVersion) >= NuGetVersion.Parse("10.4.0"))
+        {
+            buildProject.SetProperty("DisableMSBuildAssemblyCopyCheck", "true");
+        }
     }
 
     private static void RemoveLegacyFileIncludes(Microsoft.Build.Evaluation.Project buildProject)
