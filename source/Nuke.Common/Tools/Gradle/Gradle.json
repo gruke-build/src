@@ -6,18 +6,361 @@
   "customExecutable": true,
   "tasks": [
     {
-      "help": "Invoke any Gradle task(s), by name. Capable of using the Gradle Wrapper in the working directory.",
-      "postfix": "Invoke",
+      "help": "Invoke any Gradle task, by name. Capable of using the Gradle Wrapper in the working directory.",
+      "commonPropertySets": [
+        "logging",
+        "console",
+        "configuration",
+        "execution",
+        "performance_values",
+        "performance_flags",
+        "daemon"
+      ],
       "settingsClass": {
         "properties": [
           {
             "name": "Task",
             "type": "string",
             "format": "{value}",
-            "position": 1
+            "position": 1,
+            "help": "The fully formed Gradle task string or strings to invoke."
           }
         ]
       }
+    }
+  ],
+  "commonTaskPropertySets": {
+    "logging": [
+      {
+        "name": "MinimalLogging",
+        "type": "bool",
+        "format": "--quiet",
+        "oneWayFlag": true,
+        "help": "Logs errors only."
+      },
+      {
+        "name": "DebugLogging",
+        "type": "bool",
+        "format": "--debug",
+        "oneWayFlag": true,
+        "help": "Sets log level to debug. Includes the normal stacktrace."
+      },
+      {
+        "name": "InfoLogging",
+        "type": "bool",
+        "format": "--info",
+        "oneWayFlag": true,
+        "help": "Sets the log level to info."
+      },
+      {
+        "name": "WarnLogging",
+        "type": "bool",
+        "format": "--warn",
+        "oneWayFlag": true,
+        "help": "Sets the log level to warn."
+      },
+      {
+        "name": "Stacktrace",
+        "type": "bool",
+        "format": "--warn",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Show",
+        "help": "Prints the stacktrace for all exceptions."
+      },
+      {
+        "name": "FullStacktrace",
+        "type": "bool",
+        "format": "--warn",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Show",
+        "help": "Prints the full (very verbose) stacktrace for all exceptions."
+      }
+    ],
+    "console": [
+      {
+        "name": "Console",
+        "type": "GradleConsoleOutput",
+        "format": "--console {value}",
+        "help": "Specifies which type of console output to generate. Default value is <c>auto</c>."
+      },
+      {
+        "name": "ConsoleUnicode",
+        "type": "GradleConsoleUnicode",
+        "format": "--console-unicode {value}",
+        "help": "Specifies which character types are allowed in the console output. Default value is <c>auto</c>."
+      },
+      {
+        "name": "NonInteractive",
+        "type": "bool",
+        "format": "--non-interactive",
+        "oneWayFlag": true,
+        "help": "Do not do interactive prompting. [<a href=\"https://docs.gradle.org/current/javadoc/org/gradle/api/Incubating.html\">incubating</a>]"
+      }
+    ],
+    "configuration": [
+      {
+        "name": "IncludeBuild",
+        "type": "string",
+        "format": "--include-build {value}",
+        "help": "Run the build as a <a href=\"https://docs.gradle.org/current/userguide/composite_builds.html#composite_builds\">composite</a>, including the specified build."
+      },
+      {
+        "name": "InitScript",
+        "type": "string",
+        "format": "--init-script {value}",
+        "help": "Specifies an <a href=\"https://docs.gradle.org/current/userguide/init_scripts.html#init_scripts\">initialization script</a>."
+      },
+      {
+        "name": "GradleUserHome",
+        "type": "string",
+        "format": "--gradle-user-home {value}",
+        "help": "Specifies the Gradle user home directory. Default is <c>~/.gradle</c>."
+      },
+      {
+        "name": "ProjectDir",
+        "type": "string",
+        "format": "--project-dir {value}",
+        "help": "Specifies the start directory for Gradle. Default is the current directory."
+      },
+      {
+        "name": "ProjectCacheDir",
+        "type": "string",
+        "format": "--project-cache-dir {value}",
+        "help": " Specifies the project-specific cache directory. Default is <c>.gradle</c> in the root project directory."
+      },
+      {
+        "name": "Offline",
+        "type": "bool",
+        "format": "--offline",
+        "oneWayFlag": true,
+        "help": "Runs the build without accessing network resources."
+      },
+      {
+        "name": "RefreshDependencies",
+        "type": "bool",
+        "format": "--refresh-dependencies",
+        "oneWayFlag": true,
+        "help": "Refreshes the state of dependencies."
+      },
+      {
+        "name": "ProjectProperties",
+        "type": "Dictionary<string, string>",
+        "format": "--project-prop {key}={value}",
+        "help": "The property values to pass to the Gradle invocation, for access within the build script."
+      },
+      {
+        "name": "SystemProperties",
+        "type": "Dictionary<string, string>",
+        "format": "--system-prop {key}={value}",
+        "help": "The JVM system properties to invoke Gradle with."
+      }
+    ],
+    "execution": [
+      {
+        "name": "ContinueOnTaskFailure",
+        "type": "bool",
+        "format": "--continue",
+        "oneWayFlag": true,
+        "help": "Continues task execution after a task failure."
+      },
+      {
+        "name": "NoContinueOnTaskFailure",
+        "type": "bool",
+        "format": "--no-continue",
+        "oneWayFlag": true,
+        "help": "Stops task execution after a task failure."
+      },
+      {
+        "name": "DryRun",
+        "type": "bool",
+        "format": "--dry-run",
+        "oneWayFlag": true,
+        "help": "Runs the build with all task actions disabled. Use this to show the chain of tasks that would have executed."
+      },
+      {
+        "name": "NoRebuildDependencies",
+        "type": "bool",
+        "format": "--no-rebuild",
+        "oneWayFlag": true,
+        "help": "Disables rebuilding of project dependencies."
+      },
+      {
+        "name": "RerunTasks",
+        "type": "bool",
+        "format": "--rerun-tasks",
+        "oneWayFlag": true,
+        "help": "Ignores previously cached task results."
+      },
+      {
+        "name": "ExcludedTasks",
+        "type": "List<string>",
+        "format": "--exclude-task={value}",
+        "help": "Specifies a task to exclude from execution."
+      }
+    ],
+    "performance_values": [
+      {
+        "name": "MaxWorkers",
+        "type": "int",
+        "format": "--max-workers={value}",
+        "help": "Configures the maximum number of concurrent workers Gradle is allowed to use."
+      },
+      {
+        "name": "Priority",
+        "type": "GradlePriority",
+        "format": "--priority={value}",
+        "help": "Specifies the scheduling priority for the Gradle daemon and all processes launched by it. Default value is <c>normal</c>."
+      }
+    ],
+    "performance_flags": [
+      {
+        "name": "BuildCache",
+        "type": "bool",
+        "format": "--build-cache",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Enables the Gradle build cache. Gradle will try to reuse outputs from previous builds."
+      },
+      {
+        "name": "NoBuildCache",
+        "type": "bool",
+        "format": "--no-build-cache",
+        "oneWayFlag": true,
+        "help": "Disables the Gradle build cache."
+      },
+      {
+        "name": "ConfigurationCache",
+        "type": "bool",
+        "format": "--configuration-cache",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Enables the configuration cache. Gradle will try to reuse the build configuration from previous builds."
+      },
+      {
+        "name": "NoConfigurationCache",
+        "type": "bool",
+        "format": "--no-configuration-cache",
+        "oneWayFlag": true,
+        "help": "Disables the Gradle configuration cache."
+      },
+      {
+        "name": "ConfigureOnDemand",
+        "type": "bool",
+        "format": "--configure-on-demand",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Configures necessary projects only. Gradle will attempt to reduce configuration time for large multi-project builds. [<a href=\"https://docs.gradle.org/current/javadoc/org/gradle/api/Incubating.html\">incubating</a>]"
+      },
+      {
+        "name": "NoConfigureOnDemand",
+        "type": "bool",
+        "format": "--no-configure-on-demand",
+        "oneWayFlag": true,
+        "help": "Disables the use of configuration on demand. [<a href=\"https://docs.gradle.org/current/javadoc/org/gradle/api/Incubating.html\">incubating</a>]"
+      },
+      {
+        "name": "IsolatedProjects",
+        "type": "bool",
+        "format": "--isolated-projects",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Enables Isolated Projects. Projects are configured in parallel. Implies <c>--configuration-cache</c>. [<a href=\"https://docs.gradle.org/current/javadoc/org/gradle/api/Incubating.html\">incubating</a>]"
+      },
+      {
+        "name": "NoIsolatedProjects",
+        "type": "bool",
+        "format": "--no-isolated-projects",
+        "oneWayFlag": true,
+        "help": "Disables Isolated Projects. [<a href=\"https://docs.gradle.org/current/javadoc/org/gradle/api/Incubating.html\">incubating</a>]"
+      },
+      {
+        "name": "Parallel",
+        "type": "bool",
+        "format": "--parallel",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Builds projects in parallel. Gradle will attempt to determine the optimal number of executor threads to use."
+      },
+      {
+        "name": "NoParallel",
+        "type": "bool",
+        "format": "--no-parallel",
+        "oneWayFlag": true,
+        "help": "Disables parallel project execution."
+      },
+      {
+        "name": "WatchFileSystem",
+        "type": "bool",
+        "format": "--watch-fs",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Enables file system watching. Reuses file system data for subsequent builds."
+      },
+      {
+        "name": "NoWatchFileSystem",
+        "type": "bool",
+        "format": "--no-watch-fs",
+        "oneWayFlag": true,
+        "help": "Disables file system watching."
+      }
+    ],
+    "daemon": [
+      {
+        "name": "Daemon",
+        "type": "bool",
+        "format": "--daemon",
+        "oneWayFlag": true,
+        "customBoolExtensionPrefix": "Use",
+        "help": "Uses the Gradle daemon to run the build. Starts the daemon if it is not running."
+      },
+      {
+        "name": "NoDaemon",
+        "type": "bool",
+        "format": "--no-daemon",
+        "oneWayFlag": true,
+        "help": "Runs the build without the Gradle daemon. Useful occasionally if you have configured Gradle to always run with the daemon by default."
+      },
+      {
+        "name": "StopDaemon",
+        "type": "bool",
+        "format": "--stop",
+        "oneWayFlag": true,
+        "help": "Stops the Gradle daemon if it is running."
+      },
+      {
+        "name": "ForegroundDaemon",
+        "type": "bool",
+        "format": "--foreground",
+        "oneWayFlag": true,
+        "help": "Starts the Gradle daemon in the foreground."
+      }
+    ]
+  },
+  "enumerations": [
+    {
+      "name": "GradlePriority",
+      "values": [
+        "normal",
+        "low"
+      ]
+    },
+    {
+      "name": "GradleConsoleOutput",
+      "values": [
+        "auto",
+        "plain",
+        "colored",
+        "rich",
+        "verbose"
+      ]
+    },
+    {
+      "name": "GradleConsoleUnicode",
+      "values": [
+        "auto",
+        "enable",
+        "disable"
+      ]
     }
   ]
 }

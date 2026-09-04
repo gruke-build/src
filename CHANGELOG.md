@@ -25,12 +25,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 - **New Features**
-  - feature: Minimal Gradle support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
-    - This wrapper is *intentionally* minimal, and is mostly meant for your GRUKE scripts to be able to build Kotlin/Java/Android projects and manipulate their artifacts.
-    - Simply call `GradleInvoke(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
+  - feature: Mostly complete [Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html) support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
+    - Simply call `Gradle(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
       - automatically resolve the working directory's Gradle wrapper (if present), falling back to system installation;
       - act as if you had opened a terminal at that path and ran Gradle yourself.
-    - Avoid using `Gradle()`, as the tool path resolver __does not get working directory context__ when using that.
+    - Avoid using `Gradle()` (the one with a lot of arguments), as the tool path resolver __does not get working directory context__ when using that.
     - Helpful for multi-language repositories!
 
 
