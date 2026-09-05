@@ -45,6 +45,10 @@ public class Tool : IDeprecatable
     [Description("Url to the official website.")]
     public string OfficialUrl { get; set; }
 
+    [JsonProperty(PropertyName = "preferTypedApi")]
+    [Description("Marks the generic task (ArgumentStringHandler as its first parameter) as deprecated, signaling to callers to prefer the typed API instead for the specified reason.")]
+    public string PreferTypedApi { get; set; }
+
     [Description("Obsolete message. Tool is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }
 

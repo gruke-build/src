@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
   "name": "Gradle",
   "officialUrl": "https://docs.gradle.org/",
+  "preferTypedApi": "The untyped generic task is unable to resolve the Gradle wrapper from a working directory you provide it. The typed API can do this, however; so its usage is preferred and encouraged.",
   "help": "Gradle is the open source build system of choice for Kotlin, Java, and Android developers; offering an extensive range of DSLs to configure the build process, as well as plugins to augment various functionalities and provide new ones.",
   "customExecutable": true,
   "tasks": [

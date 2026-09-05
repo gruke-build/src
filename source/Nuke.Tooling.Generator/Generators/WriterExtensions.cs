@@ -16,14 +16,26 @@ namespace Nuke.CodeGeneration.Generators;
 
 public static class WriterExtensions
 {
-    public static T WriteObsoleteAttributeWhenObsolete<T>(this T writerWrapper, IDeprecatable deprecatable)
+    public static T WritePreferTypedApiAttribute<T>(this T writerWrapper, Tool tool)
         where T : IWriterWrapper
     {
+        return tool.PreferTypedApi is not {} reason
+            ? writerWrapper
+            : writerWrapper.WriteLine($"[Obsolete(\"{reason.Replace("\"", "\\\"")}\")]");
+    }
+
+    public static T WriteObsoleteAttributeWhenObsolete<T>(this T writerWrapper, IDeprecatable deprecatable, out bool written)
+        where T : IWriterWrapper
+    {
+        written = false;
+
         if (!deprecatable.IsDeprecated())
             return writerWrapper;
 
         var message = deprecatable.GetDeprecationMessage();
         var url = deprecatable.GetDeprecationUrl();
+
+        written = true;
 
         return writerWrapper.WriteLine($"[Obsolete{generateObsoleteAttributeContent()}]");
 

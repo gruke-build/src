@@ -85,7 +85,7 @@ public static class DataClassGenerator
             .WriteLine($"#region {dataClass.Name}")
             .WriteSummary(dataClass)
             .WriteLine("[PublicAPI]")
-            .WriteObsoleteAttributeWhenObsolete(dataClass)
+            .WriteObsoleteAttributeWhenObsolete(dataClass, out _)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine(GetCommandAttribute())
             .WriteLine($"public partial class {dataClass.Name} : {baseTypes.JoinCommaSpace()}")

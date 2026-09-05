@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
       - automatically resolve the working directory's Gradle wrapper (if present), falling back to system installation;
       - act as if you had opened a terminal at that path and ran Gradle yourself.
     - Avoid using `Gradle()` (the one with a lot of arguments), as the tool path resolver __does not get working directory context__ when using that.
+      - If you use it by accident, it's marked as deprecated; so your IDE will let you know about this at the call-site.
     - Helpful for multi-language repositories!
 
 

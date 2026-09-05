@@ -319,6 +319,10 @@
       "type": "string",
       "format": "uri"
     },
+    "preferTypedApi": {
+      "description": "Marks the generic task (ArgumentStringHandler as its first parameter) as deprecated, signaling to callers to prefer the typed API instead for the specified reason.",
+      "type": "string"
+    },
     "deprecationMessage": {
       "description": "Obsolete message. Tool is marked as obsolete when specified.",
       "type": "string"

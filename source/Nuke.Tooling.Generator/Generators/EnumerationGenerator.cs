@@ -29,7 +29,7 @@ public static class EnumerationGenerator
             .WriteSummary(enumeration)
             .WriteLine("[PublicAPI]")
             .WriteLine("[Serializable]")
-            .WriteObsoleteAttributeWhenObsolete(enumeration)
+            .WriteObsoleteAttributeWhenObsolete(enumeration, out _)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine($"[TypeConverter(typeof(TypeConverter<{enumeration.Name}>))]")
             .WriteLine($"public partial class {enumeration.Name} : Enumeration")
