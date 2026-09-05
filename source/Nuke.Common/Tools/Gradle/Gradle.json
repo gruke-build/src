@@ -62,7 +62,7 @@
       {
         "name": "Stacktrace",
         "type": "bool",
-        "format": "--warn",
+        "format": "--stacktrace",
         "oneWayFlag": true,
         "customBoolExtensionPrefix": "Show",
         "help": "Prints the stacktrace for all exceptions."
@@ -70,7 +70,7 @@
       {
         "name": "FullStacktrace",
         "type": "bool",
-        "format": "--warn",
+        "format": "--full-stacktrace",
         "oneWayFlag": true,
         "customBoolExtensionPrefix": "Show",
         "help": "Prints the full (very verbose) stacktrace for all exceptions."
