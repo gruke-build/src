@@ -21,16 +21,17 @@ partial class Build
         =>
         [
             ("Glob", "https://raw.githubusercontent.com/kthompson/glob/develop/LICENSE"),
-               ("ICSharpCode.SharpZipLib", "https://raw.githubusercontent.com/icsharpcode/SharpZipLib/master/LICENSE.txt"),
-               ("JetBrains.Annotations", "https://raw.githubusercontent.com/JetBrains/JetBrains.Annotations/main/license.md"),
-               ("Microsoft.Build", "https://raw.githubusercontent.com/dotnet/msbuild/main/LICENSE"),
-               ("Microsoft.CodeAnalysis", "https://raw.githubusercontent.com/dotnet/roslyn/main/License.txt"),
-               ("Newtonsoft.Json", "https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"),
-               ("NuGet", "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt"),
-               ("Octokit", "https://raw.githubusercontent.com/octokit/octokit.net/main/LICENSE.txt"),
-               ("Serilog", "https://raw.githubusercontent.com/serilog/serilog/dev/LICENSE"),
-               ("Spectre.Console", "https://raw.githubusercontent.com/matkoch/spectre.console/main/LICENSE.md"),
-               ("YamlDotNet", "https://raw.githubusercontent.com/aaubry/YamlDotNet/master/LICENSE.txt")
+            ("ICSharpCode.SharpZipLib", "https://raw.githubusercontent.com/icsharpcode/SharpZipLib/master/LICENSE.txt"),
+            ("JetBrains.Annotations", "https://raw.githubusercontent.com/JetBrains/JetBrains.Annotations/main/license.md"),
+            ("Microsoft.Build", "https://raw.githubusercontent.com/dotnet/msbuild/main/LICENSE"),
+            ("Microsoft.CodeAnalysis", "https://raw.githubusercontent.com/dotnet/roslyn/main/License.txt"),
+            ("Newtonsoft.Json", "https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"),
+            ("NuGet", "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt"),
+            ("Octokit", "https://raw.githubusercontent.com/octokit/octokit.net/main/LICENSE.txt"),
+            ("Serilog", "https://raw.githubusercontent.com/serilog/serilog/dev/LICENSE"),
+            ("Spectre.Console", "https://raw.githubusercontent.com/matkoch/spectre.console/main/LICENSE.md"),
+            ("YamlDotNet", "https://raw.githubusercontent.com/aaubry/YamlDotNet/master/LICENSE.txt"),
+            ("UnityPackager", "https://git.weatherelectric.xyz/MabelAmber/UnityPackager/raw/branch/main/LICENSE.md")
         ];
 
     Target DownloadLicenses => _ => _
