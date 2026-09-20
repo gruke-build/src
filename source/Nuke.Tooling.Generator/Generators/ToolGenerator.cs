@@ -58,16 +58,36 @@ public static class ToolGenerator
     private static readonly Lazy<string> s_projectLicenseHeader = new(() =>
     {
         var doc = XDocument.Load(NukeDotSettings);
-        var resourceDict = doc.Elements().First().Descendants();
+        var resourceDict = doc.Elements().First().Descendants().ToArray();
+        return GetGeneratedCodeHeader(resourceDict) ?? GetCodeHeader(resourceDict);
+    });
+
+    [CanBeNull]
+    private static string GetGeneratedCodeHeader(IEnumerable<XElement> resourceDict)
+    {
+        var fileHeader = resourceDict.FirstOrDefault(x =>
+            // what
+            x.Attribute("{http://schemas.microsoft.com/winfx/2006/xaml}Key")
+                ?.Value == "/Default/CodeStyle/GeneratedFileHeader/FileHeaderText/@EntryValue");
+
+        return fileHeader?.Value.Replace("${CurrentDate.Year}", DateTime.Now.Year.ToString())
+            .SplitLineBreaks()
+            .Select(x => $"// {x}")
+            .JoinNewLine();
+    }
+
+    private static string GetCodeHeader(IEnumerable<XElement> resourceDict)
+    {
         var fileHeader = resourceDict.First(x =>
             // what
             x.Attribute("{http://schemas.microsoft.com/winfx/2006/xaml}Key")
                 ?.Value == "/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue");
+
         return fileHeader.Value.Replace("${CurrentDate.Year}", DateTime.Now.Year.ToString())
             .SplitLineBreaks()
             .Select(x => $"// {x}")
             .JoinNewLine();
-    });
+    }
 
     private static ToolWriter WriteAll(this ToolWriter w)
     {
