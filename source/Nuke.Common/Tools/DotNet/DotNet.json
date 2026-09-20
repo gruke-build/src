@@ -2214,6 +2214,12 @@
     {
       "name": "DotNetRuntimeIdentifier",
       "values": [
+        "android-arm64",
+        "android-arm",
+        "android-x64",
+        "android-x86",
+        "browser",
+        "browser-wasm",
         "win-x64",
         "win-x86",
         "win-arm",
@@ -2231,6 +2237,10 @@
         "linux-musl-x64",
         "linux-arm",
         "linux-arm64",
+        "freebsd-arm64",
+        "freebsd-x64",
+        "openbsd-arm64",
+        "openbsd-x64",
         "rhel-x64",
         "rhel.6-x64",
         "tizen",
@@ -2247,7 +2257,10 @@
         "osx.11.0-x64",
         "osx.11.0-arm64",
         "osx.12-x64",
-        "osx.12-arm64"
+        "osx.12-arm64",
+        "ios-arm64",
+        "iossimulator-arm64",
+        "iossimulator-x64"
       ]
     },
     {

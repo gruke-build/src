@@ -8660,6 +8660,12 @@ public static partial class DotNetWorkloadRepairSettingsExtensions
 [TypeConverter(typeof(TypeConverter<DotNetRuntimeIdentifier>))]
 public partial class DotNetRuntimeIdentifier : Enumeration
 {
+    public static readonly DotNetRuntimeIdentifier android_arm64 = (DotNetRuntimeIdentifier) "android-arm64";
+    public static readonly DotNetRuntimeIdentifier android_arm = (DotNetRuntimeIdentifier) "android-arm";
+    public static readonly DotNetRuntimeIdentifier android_x64 = (DotNetRuntimeIdentifier) "android-x64";
+    public static readonly DotNetRuntimeIdentifier android_x86 = (DotNetRuntimeIdentifier) "android-x86";
+    public static readonly DotNetRuntimeIdentifier browser = (DotNetRuntimeIdentifier) "browser";
+    public static readonly DotNetRuntimeIdentifier browser_wasm = (DotNetRuntimeIdentifier) "browser-wasm";
     public static readonly DotNetRuntimeIdentifier win_x64 = (DotNetRuntimeIdentifier) "win-x64";
     public static readonly DotNetRuntimeIdentifier win_x86 = (DotNetRuntimeIdentifier) "win-x86";
     public static readonly DotNetRuntimeIdentifier win_arm = (DotNetRuntimeIdentifier) "win-arm";
@@ -8677,6 +8683,10 @@ public partial class DotNetRuntimeIdentifier : Enumeration
     public static readonly DotNetRuntimeIdentifier linux_musl_x64 = (DotNetRuntimeIdentifier) "linux-musl-x64";
     public static readonly DotNetRuntimeIdentifier linux_arm = (DotNetRuntimeIdentifier) "linux-arm";
     public static readonly DotNetRuntimeIdentifier linux_arm64 = (DotNetRuntimeIdentifier) "linux-arm64";
+    public static readonly DotNetRuntimeIdentifier freebsd_arm64 = (DotNetRuntimeIdentifier) "freebsd-arm64";
+    public static readonly DotNetRuntimeIdentifier freebsd_x64 = (DotNetRuntimeIdentifier) "freebsd-x64";
+    public static readonly DotNetRuntimeIdentifier openbsd_arm64 = (DotNetRuntimeIdentifier) "openbsd-arm64";
+    public static readonly DotNetRuntimeIdentifier openbsd_x64 = (DotNetRuntimeIdentifier) "openbsd-x64";
     public static readonly DotNetRuntimeIdentifier rhel_x64 = (DotNetRuntimeIdentifier) "rhel-x64";
     public static readonly DotNetRuntimeIdentifier rhel_6_x64 = (DotNetRuntimeIdentifier) "rhel.6-x64";
     public static readonly DotNetRuntimeIdentifier tizen = (DotNetRuntimeIdentifier) "tizen";
@@ -8694,6 +8704,9 @@ public partial class DotNetRuntimeIdentifier : Enumeration
     public static readonly DotNetRuntimeIdentifier osx_11_0_arm64 = (DotNetRuntimeIdentifier) "osx.11.0-arm64";
     public static readonly DotNetRuntimeIdentifier osx_12_x64 = (DotNetRuntimeIdentifier) "osx.12-x64";
     public static readonly DotNetRuntimeIdentifier osx_12_arm64 = (DotNetRuntimeIdentifier) "osx.12-arm64";
+    public static readonly DotNetRuntimeIdentifier ios_arm64 = (DotNetRuntimeIdentifier) "ios-arm64";
+    public static readonly DotNetRuntimeIdentifier iossimulator_arm64 = (DotNetRuntimeIdentifier) "iossimulator-arm64";
+    public static readonly DotNetRuntimeIdentifier iossimulator_x64 = (DotNetRuntimeIdentifier) "iossimulator-x64";
     public static implicit operator DotNetRuntimeIdentifier(string value)
     {
         return new DotNetRuntimeIdentifier { Value = value };
