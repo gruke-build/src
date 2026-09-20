@@ -13,19 +13,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - This has been added to the Global Tool's new project template, as well as the project updater command.
 
 
-
 - **Fixes**
-  - fix: Allow `http://` URLs for GitLab & Forgejo; requires opt-in.
-  - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
-    - Thanks [@ITaluone](https://github.com/ITaluone)!
-  - fix: Restored Latest/Latest Prerelease Global Tool behavior for creating a new project.
+  - Allow `http://` URLs for GitLab & Forgejo; requires opt-in.
+  - Restored Latest/Latest Prerelease Global Tool behavior for creating a new project.
     - Previously, the pre-release version checker was checking nuget.org's API for our pre-release packages. Our pre-releases are on GitLab.
     - Additionally, it was using the outdated package ID `GreemDev.Nuke.Common`, which is now `GreemDev.Nuke` to package consumers.
     - This functionality has been restored, and you can create a project using the full feature-set of the global tool once again!
 
 
 - **New Features**
-  - feature: Mostly complete [Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html) support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
+  - Unity Package builder API, via [`UnityPackageBuilder`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Unity.UnityPackageBuilder.html).
+    - Derived from an open-source project made by [@FragileDeviations](https://github.com/FragileDeviations), [UnityPackager](https://git.weatherelectric.xyz/MabelAmber/UnityPackager).
+    - Allows the creation of `.unitypackage` files, without requiring Unity to be installed.
+    - All members of the builder are required. Failure to provide any will result in an assertion failure any way `Build()` is called.
+  - Mostly complete [Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html) support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
     - Simply call `Gradle(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
       - automatically resolve the working directory's Gradle wrapper (if present), falling back to system installation;
       - act as if you had opened a terminal at that path and ran Gradle yourself.
@@ -35,6 +36,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 - **Project Maintenance**
+  - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
+    - Thanks [@ITaluone](https://github.com/ITaluone)!
   - chore: Updated the .NET SDK Docker image versions used in some workflow generators 
   - chore: Regenerated `GreemDev.Nuke.Components.Forgejo` Kiota API client for [Forgejo v15](https://forgejo.org/2026-04-release-v15-0/).
   - chore: The `Configuration.cs` file generated with a new GRUKE build script from the global tool now [has readonly members](https://github.com/gruke-build/src/commit/6a6dc2d17b620f7ac8da9f287dc3bb9c2c80d864).

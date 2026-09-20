@@ -15,17 +15,24 @@ using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 using JetBrains.Annotations;
 using Nuke.Common.IO;
-using Nuke.Common.Utilities;
 
 namespace Nuke.Common.Tools.Unity;
 
 [PublicAPI]
 public class UnityPackageBuilder
 {
+    /// <summary>
+    /// Local directory containing the assets and their .meta files
+    /// </summary>
     public AbsolutePath SourceDirectory { get; private set; }
+    /// <summary>
+    /// Where those assets live in a Unity project, e.g. "Assets/Shaders"
+    /// </summary>
     public string UnityRoot { get; private set; }
-    public AbsolutePath OutputDirectory { get; private set; }
-    public string OutputName { get; private set; }
+    /// <summary>
+    /// Package file output path
+    /// </summary>
+    public AbsolutePath OutputPath { get; private set; }
 
     /// <summary>
     /// Local directory containing the assets and their .meta files
@@ -46,21 +53,15 @@ public class UnityPackageBuilder
     }
 
     /// <summary>
-    /// Directory to write the package to (created if missing)
+    /// Package file output path
     /// </summary>
-    public UnityPackageBuilder WithOutputDirectory(AbsolutePath outputDir)
+    /// <remarks><c>.unitypackage</c> is appended to the input automatically</remarks>
+    public UnityPackageBuilder WithOutputPath(AbsolutePath outputPath)
     {
-        OutputDirectory = outputDir;
-        return this;
-    }
+        OutputPath = outputPath.Extension is PackageExtension 
+            ? outputPath
+            : outputPath + PackageExtension;
 
-    /// <summary>
-    /// Package file name
-    /// </summary>
-    /// <remarks><c>.unitypackage</c> is appended automatically</remarks>
-    public UnityPackageBuilder WithOutputName(string outputName)
-    {
-        OutputName = outputName.EnsureEnding(PackageExtension, StringComparison.OrdinalIgnoreCase);
         return this;
     }
 
@@ -68,33 +69,46 @@ public class UnityPackageBuilder
 
     private const string PackageExtension = ".unitypackage";
 
+    internal void Assertion()
+    {
+        SourceDirectory.NotNull("Unity package builder requires a source directory.");
+        UnityRoot.NotNull("Unity package builder requires a Unity root, which is where the assets should live in a Unity project.");
+        OutputPath.NotNull("Unity package builder requires an output path.");
+    }
+
+    /// <summary>
+    ///     Perform the package-building operation on the inputs provided.
+    /// </summary>
+    /// <returns>The resulting <c>.unitypackage</c>'s path.</returns>
+    /// <exception cref="DirectoryNotFoundException"><see cref="SourceDirectory"/> does not exist as a directory.</exception>
+    /// <exception cref="InvalidOperationException"><see cref="SourceDirectory"/> does not contain any Unity assets.</exception>
+    /// <exception cref="InvalidDataException">The Unity package's contents are invalid.</exception>
     public AbsolutePath Build()
     {
-        if (!SourceDirectory.NotNull("SourceDirectory != null").DirectoryExists())
+        Assertion();
+
+        if (!SourceDirectory.DirectoryExists())
             throw new DirectoryNotFoundException($"Source directory not found: {SourceDirectory}");
 
-        var assets = CollectAssets(SourceDirectory,
-            NormalizeUnityRoot(UnityRoot.NotNull("UnityRoot != null"))
-        );
+        var assets = CollectAssets(SourceDirectory, NormalizeUnityRoot(UnityRoot));
 
         if (assets.Count == 0)
             throw new InvalidOperationException($"No assets found in {SourceDirectory}");
 
-        var outputPath = Path.GetFullPath(Path.Combine(OutputDirectory, OutputName));
-        Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
+        OutputPath.Parent?.CreateDirectory();
 
-        var tempPath = outputPath + ".tmp";
+        var tempPath = OutputPath + ".tmp";
         try
         {
             WriteArchive(tempPath, assets);
-            File.Move(tempPath, outputPath, overwrite: true);
+            File.Move(tempPath, OutputPath, overwrite: true);
         }
         finally
         {
             File.Delete(tempPath);
         }
 
-        return outputPath;
+        return OutputPath;
     }
 
     private static List<Asset> CollectAssets(AbsolutePath sourceDir, string unityRoot)
