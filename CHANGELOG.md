@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - **New Features**
   - Unity Package builder API, via [`UnityPackageBuilder`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Unity.UnityPackageBuilder.html).
-    - Derived from an open-source project made by [@FragileDeviations](https://github.com/FragileDeviations), [UnityPackager](https://git.weatherelectric.xyz/MabelAmber/UnityPackager).
+    - Derived from an open-source project made by [@MabelAmber](https://git.weatherelectric.xyz/MabelAmber), [UnityPackager](https://git.weatherelectric.xyz/MabelAmber/UnityPackager).
     - Allows the creation of `.unitypackage` files, without requiring Unity to be installed.
     - All members of the builder are required. Failure to provide any will result in an assertion failure any way `Build()` is called.
   - Mostly complete [Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html) support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
