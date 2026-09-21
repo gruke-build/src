@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **Project Maintenance**
   - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
     - Thanks [@ITaluone](https://github.com/ITaluone)!
+  - chore: Added more .NET Runtime Identifiers to [DotNetRuntimeIdentifiers](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.DotNet.DotNetRuntimeIdentifier.html).
+    - Also added a `Current` property which simply wraps `RuntimeInformation.RuntimeIdentifier` into the enumeration type.
   - chore: Updated the .NET SDK Docker image versions used in some workflow generators 
   - chore: Regenerated `GreemDev.Nuke.Components.Forgejo` Kiota API client for [Forgejo v15](https://forgejo.org/2026-04-release-v15-0/).
   - chore: The `Configuration.cs` file generated with a new GRUKE build script from the global tool now [has readonly members](https://github.com/gruke-build/src/commit/6a6dc2d17b620f7ac8da9f287dc3bb9c2c80d864).
@@ -58,8 +60,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - NGitLab: `11.5.0` -> `12.1.0`
     - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
     - NJsonSchema: `11.5.2` -> `11.6.1`
-    - NuGet.Frameworks: `6.12.1` -> `6.14.3`
-    - NuGet.Packaging: `6.12.1` -> `6.14.3`
+    - NuGet.Frameworks: `6.12.1` -> `7.9.0`
+    - NuGet.Packaging: `6.12.1` -> `7.9.0`
     - Scriban: `6.6.0` -> `7.2.6`
     - Serilog: `4.3.0` -> `4.4.0`
     - Verify.Xunit: `31.7.1` -> `31.12.5`

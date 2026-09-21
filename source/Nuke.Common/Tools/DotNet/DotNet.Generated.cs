@@ -8681,6 +8681,8 @@ public partial class DotNetRuntimeIdentifier : Enumeration
     public static readonly DotNetRuntimeIdentifier win10_arm64 = (DotNetRuntimeIdentifier) "win10-arm64";
     public static readonly DotNetRuntimeIdentifier linux_x64 = (DotNetRuntimeIdentifier) "linux-x64";
     public static readonly DotNetRuntimeIdentifier linux_musl_x64 = (DotNetRuntimeIdentifier) "linux-musl-x64";
+    public static readonly DotNetRuntimeIdentifier linux_musl_arm64 = (DotNetRuntimeIdentifier) "linux-musl-arm64";
+    public static readonly DotNetRuntimeIdentifier linux_musl_arm = (DotNetRuntimeIdentifier) "linux-musl-arm";
     public static readonly DotNetRuntimeIdentifier linux_arm = (DotNetRuntimeIdentifier) "linux-arm";
     public static readonly DotNetRuntimeIdentifier linux_arm64 = (DotNetRuntimeIdentifier) "linux-arm64";
     public static readonly DotNetRuntimeIdentifier freebsd_arm64 = (DotNetRuntimeIdentifier) "freebsd-arm64";
