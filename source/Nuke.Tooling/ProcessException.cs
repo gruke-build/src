@@ -49,13 +49,6 @@ public class ProcessException : Exception
         ExitCode = process.ExitCode;
     }
 
-    protected ProcessException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(info, context)
-    {
-    }
-
     internal IProcess Process { get; }
 
     public int ExitCode { get; }
