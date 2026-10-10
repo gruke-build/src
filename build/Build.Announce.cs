@@ -59,7 +59,7 @@ partial class Build
                 .GroupBy(x => x)
                 .OrderByDescending(x => x.Count())
                 .Select(x => x.Key)
-                .Where(x => x is not "Matthias Koch" and not "GreemDev").ToList();
+                .Where(x => x is not "GreemDev").ToList();
             return (commitsText, notableCommitters);
         }
     }
