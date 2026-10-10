@@ -79,11 +79,11 @@ partial class Build
         });
 
     Configure<DotNetBuildSettings> ICompile.CompileSettings => _ => _
-        .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
+        .When(!ScheduledTargets.Contains(((IPublish)this).Publish), _ => _
             .ClearProperties());
 
     Configure<DotNetPublishSettings> ICompile.PublishSettings => _ => _
-        .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
+        .When(!ScheduledTargets.Contains(((IPublish)this).Publish), _ => _
             .ClearProperties());
 
     IEnumerable<(Nuke.Common.ProjectModel.Project Project, string Framework)> ICompile.PublishConfigurations =>
@@ -233,13 +233,6 @@ partial class Build
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
         .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is ForgejoActions);
-
-    Target Install => _ => _
-        .Executes(() =>
-        {
-            SuppressErrors(() => DotNet($"tool uninstall -g GreemDev.{Solution.Nuke_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g GreemDev.{Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
-        });
 
     T From<T>()
         where T : INukeBuild
