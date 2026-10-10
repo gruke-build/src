@@ -191,6 +191,8 @@ partial class Build
 
     IEnumerable<AbsolutePath> ICreateForgejoRelease.AssetFiles => NuGetPackageFiles;
 
+    string ICreateGitHubRelease.DiscussionCategory => "Announcements";
+
     Target ICreateGitHubRelease.CreateGitHubRelease => _ => _
         .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()

@@ -35,6 +35,8 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
     bool Prerelease => false;
     bool Draft => false;
 
+    string DiscussionCategory => null;
+
     IEnumerable<AbsolutePath> AssetFiles { get; }
 
     Target CreateGitHubRelease => _ => _
@@ -57,6 +59,7 @@ public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
                             Name = Name,
                             Prerelease = Prerelease,
                             Draft = Draft,
+                            DiscussionCategoryName = DiscussionCategory,
                             Body = ChangelogTasks.ExtractChangelogSectionNotes(ChangelogFile).JoinNewLine()
                         });
                 }
