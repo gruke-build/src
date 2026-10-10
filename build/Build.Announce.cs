@@ -80,7 +80,7 @@ partial class Build
             using var fileAttachment = new FileAttachment(ReleaseImageFile);
 
             await webhookClient.SendFileAsync(fileAttachment,
-                text: AnnouncementPing is not null 
+                text: AnnouncementPing is not null
                     ? AnnouncementPing.EqualsOrdinalIgnoreCase("everyone") ||
                       AnnouncementPing.EqualsOrdinalIgnoreCase("@everyone")
                         ? "@everyone"
@@ -106,7 +106,24 @@ partial class Build
                             .AppendLine()
                             .AppendLine("Remember that you can call `gruke :update` to update your builds! 💡")
                             .AppendLine()
-                            .AppendLine(AnnouncementReleaseNotes).ToString()
+                            .Apply(sb =>
+                            {
+                                var releaseNotes = AnnouncementReleaseNotes;
+
+                                if (releaseNotes.Length > 3500)
+                                {
+                                    return sb.Append("The release notes were too big to fit in Discord, so you can find them ")
+                                        .Append(
+                                            Format.Url("here",
+                                                $"https://nuke.greemdev.net/docfx/changelog.html#"
+                                                + $"{MajorMinorPatchVersion.Replace(".", string.Empty)}--{DateTime.Now:yyyy-MM-dd}")
+                                        )
+                                        .Append('.');
+                                }
+
+                                return sb.AppendLine(releaseNotes);
+                            })
+                            .ToString()
                             .Replace("*", "**")
                         ).Build()
                 ]);
