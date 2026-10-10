@@ -4,6 +4,7 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -21,16 +22,33 @@ public static partial class HttpTasks
 
     [Pure]
     public static string HttpDownloadString(
-        string uri,
+        [StringSyntax("Uri")] string uri,
         Configure<HttpClient> clientConfigurator = null,
         Action<HttpRequestHeaders> headerConfigurator = null)
     {
         return HttpDownloadStringAsync(uri, clientConfigurator, headerConfigurator).Result;
     }
 
+    public static HttpResponseMessage HttpGet(
+        [StringSyntax("Uri")] string uri,
+        Configure<HttpClient> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        return HttpGetAsync(uri, clientConfigurator, headerConfigurator).Result;
+    }
+
+    public static HttpResponseMessage HttpGet(
+        [StringSyntax("Uri")] string uri,
+        HttpContent content = null,
+        Configure<HttpClient> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        return HttpPostAsync(uri, content, clientConfigurator, headerConfigurator).Result;
+    }
+
     [Pure]
     public static async Task<string> HttpDownloadStringAsync(
-        string uri,
+        [StringSyntax("Uri")] string uri,
         Configure<HttpClient> clientConfigurator = null,
         Action<HttpRequestHeaders> headerConfigurator = null)
     {
@@ -38,8 +56,29 @@ public static partial class HttpTasks
         return await httpClient.GetAsync(uri).Result.Content.ReadAsStringAsync();
     }
 
+    [Pure]
+    public static async Task<HttpResponseMessage> HttpGetAsync(
+        [StringSyntax("Uri")] string uri,
+        Configure<HttpClient> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        var httpClient = CreateHttpClient(clientConfigurator, headerConfigurator);
+        return await httpClient.GetAsync(uri);
+    }
+
+    [Pure]
+    public static async Task<HttpResponseMessage> HttpPostAsync(
+        [StringSyntax("Uri")] string uri,
+        HttpContent content = null,
+        Configure<HttpClient> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        var httpClient = CreateHttpClient(clientConfigurator, headerConfigurator);
+        return await httpClient.PostAsync(uri, content);
+    }
+
     public static void HttpDownloadFile(
-        string uri,
+        [StringSyntax("Uri")] string uri,
         string path,
         FileMode mode = FileMode.Create,
         Configure<HttpClient> clientConfigurator = null,
@@ -49,7 +88,7 @@ public static partial class HttpTasks
     }
 
     public static async Task HttpDownloadFileAsync(
-        string uri,
+        [StringSyntax("Uri")] string uri,
         AbsolutePath path,
         FileMode mode = FileMode.Create,
         Configure<HttpClient> clientConfigurator = null,

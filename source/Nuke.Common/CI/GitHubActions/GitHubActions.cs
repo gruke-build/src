@@ -32,7 +32,7 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     public static string EnvironmentVariablePrefix => "GITHUB";
 
     [UsedImplicitly]
-    internal static bool IsRunningGitHubActions 
+    internal static bool IsRunningGitHubActions
         => IEnvironment<GitHubActions>.Has("ACTIONS") && !EnvironmentInfo.HasVariable("FORGEJO_ACTIONS");
 
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
@@ -149,4 +149,12 @@ public partial class GitHubActions : Host, IBuildServer, IEnvironment<GitHubActi
     [CanBeNull] public string PullRequestAction => GitHubEvent.GetPropertyStringValueOrNull("action");
 
     public AbsolutePath StepSummaryFile => IEnvironment<GitHubActions>.Get("STEP_SUMMARY");
+
+    public AbsolutePath OutputFile => IEnvironment<GitHubActions>.Get("OUTPUT");
+
+    [NoValueCheck]
+    public string OpenIdRequestToken => EnvironmentInfo.GetVariable("ACTIONS_ID_TOKEN_REQUEST_TOKEN");
+
+    [NoValueCheck]
+    public string OpenIdRequestUrl => EnvironmentInfo.GetVariable("ACTIONS_ID_TOKEN_REQUEST_URL");
 }

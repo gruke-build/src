@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 # New Features
 - `ICreateGitHubRelease` now has a `DiscussionCategory` property.
   - Providing this value enables automatic discussion linking for releases, and creates the discussion in the specified category.
+- NuGet Trusted Publishing support
+    - Currently only supports GitHub, GitLab is going to be trickier since part of how it works there is in the actual workflow file logic (cursed)
+    - Call `GetNuGetApiKeyWithOpenIdAsync` on an instance of the [GitHubActions](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.GitHubActions.GitHubActions.html) host type.
+      - The inputs are the same as the official GitHub Actions reusable workflow, [NuGet/login](https://github.com/NuGet/login); because this code is simply a reimplementation, intended to let users of GRUKE take advantage of Trusted Publishing.
+    - The value returned by this method can be used where you would normally use an API key. It will expire when the workflow is completed.
 
 ## [10.4.0] / 2026-10-10
 - **BREAKING CHANGES**:
