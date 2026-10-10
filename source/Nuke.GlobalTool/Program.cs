@@ -47,7 +47,7 @@ public partial class Program
 
     private static void PrintInfo()
     {
-        Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
+        Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetGrukeInformationalText()}");
     }
 
     [CanBeNull]

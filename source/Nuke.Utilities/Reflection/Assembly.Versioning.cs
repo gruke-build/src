@@ -6,12 +6,19 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 namespace Nuke.Common.Utilities;
 
+[PublicAPI]
 public static class AssemblyExtensions
 {
     public static string GetInformationalText(this Assembly assembly)
+    {
+        return $"version {assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})";
+    }
+
+    internal static string GetGrukeInformationalText(this Assembly assembly)
     {
         return $"version GreemDev/{assembly.GetVersionText()} ({EnvironmentInfo.Platform},{EnvironmentInfo.Framework})";
     }
