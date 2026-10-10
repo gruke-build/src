@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -46,13 +47,6 @@ public class ProcessException : Exception
     {
         Process = process;
         ExitCode = process.ExitCode;
-    }
-
-    protected ProcessException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(info, context)
-    {
     }
 
     internal IProcess Process { get; }

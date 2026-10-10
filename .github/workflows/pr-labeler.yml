@@ -1,0 +1,30 @@
+name: "Pull Request Triage"
+on:
+  pull_request_target:
+    types: [opened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Grab sources to get latest labeler.yml
+      - name: Fetch sources
+        uses: actions/checkout@v6
+        with:
+           # Ensure we pin the source origin as pull_request_target run under forks.
+           fetch-depth: 0
+           repository: gruke-build/src
+           ref: develop
+
+      - name: Update labels based on changes
+        uses: actions/labeler@v6
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler.yml
+          sync-labels: true
+          dot: true

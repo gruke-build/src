@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -86,7 +87,8 @@ public static class TaskGenerator
         var invocation = $"new {tool.GetClassName()}().Run({arguments.JoinCommaSpace()})";
         writer
             .WriteSummary(tool)
-            .WriteObsoleteAttributeWhenObsolete(tool)
+            .WriteObsoleteAttributeWhenObsolete(tool, out var wroteObsoletion)
+            .When(!wroteObsoletion, w => w.WritePreferTypedApiAttribute(tool))
             .WriteLine($"public static {signature} => {invocation};");
     }
 
@@ -104,7 +106,7 @@ public static class TaskGenerator
         return writer
             .WriteSummary(task)
             .WriteRemarks(task)
-            .WriteObsoleteAttributeWhenObsolete(task)
+            .WriteObsoleteAttributeWhenObsolete(task, out _)
             .WriteLine($"public static {signature} => {invocation};");
     }
 
@@ -121,7 +123,7 @@ public static class TaskGenerator
 
         return writer
             .WriteInherit(task)
-            .WriteObsoleteAttributeWhenObsolete(task)
+            .WriteObsoleteAttributeWhenObsolete(task, out _)
             .WriteLine($"public static {signature} => {invocation};");
     }
 
@@ -144,7 +146,7 @@ public static class TaskGenerator
 
         return writer
             .WriteInherit(task)
-            .WriteObsoleteAttributeWhenObsolete(task)
+            .WriteObsoleteAttributeWhenObsolete(task, out _)
             .WriteLine($"public static {signature} => {invocation};");
     }
 }

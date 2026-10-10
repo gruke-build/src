@@ -27,6 +27,6 @@ clone:
 
 steps:
   - name: 'Run: Test'
-    image: mcr.microsoft.com/dotnet/sdk:10.0.201
+    image: mcr.microsoft.com/dotnet/sdk:10.0.401
     commands:
       - './build.sh Test'

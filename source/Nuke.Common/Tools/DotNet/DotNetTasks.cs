@@ -1,9 +1,11 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
 using Serilog.Events;
@@ -26,6 +28,11 @@ public class DotNetVerbosityMappingAttribute : VerbosityMappingAttribute
 [LogLevelPattern(LogEventLevel.Warning, @": warning \w{2,5}\d{1,5}:")]
 [LogLevelPattern(LogEventLevel.Error, @": error \w{2,5}\d{1,5}:")]
 partial class DotNetTasks;
+
+public partial class DotNetRuntimeIdentifier
+{
+    public static DotNetRuntimeIdentifier Current => new() { Value = RuntimeInformation.RuntimeIdentifier };
+}
 
 public partial class DotNetTasks
 {

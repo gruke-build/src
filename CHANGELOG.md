@@ -6,6 +6,70 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 
+## [10.4.0] / 2026-10-10
+- **BREAKING CHANGES**:
+  - Add `<DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>` to your GRUKE build script's `.csproj` file.
+  - Not adding this to your project file results in:
+    - `<nuget cache dir>/packages/microsoft.build.locator/1.11.2/buildTransitive/Microsoft.Build.Locator.targets(19,5): error MSBL001: A PackageReference to the package 'NuGet.Frameworks' at version '6.14.3' is present in this project without ExcludeAssets="runtime" and PrivateAssets="all" set. This can cause errors at run-time due to MSBuild assembly-loading.`
+      - We want these assemblies, so the fix is to disable the check, unfortunately.
+  - This has been added to the Global Tool's new project template, as well as the project updater command.
+
+
+- **Fixes**
+  - Allow `http://` URLs for GitLab & Forgejo; requires opt-in.
+  - Restored Latest/Latest Prerelease Global Tool behavior for creating a new project.
+    - Previously, the pre-release version checker was checking nuget.org's API for our pre-release packages. Our pre-releases are on GitLab.
+    - Additionally, it was using the outdated package ID `GreemDev.Nuke.Common`, which is now `GreemDev.Nuke` to package consumers.
+    - This functionality has been restored, and you can create a project using the full feature-set of the global tool once again!
+
+
+- **New Features**
+  - Unity Package builder API, via [`UnityPackageBuilder`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Unity.UnityPackageBuilder.html).
+    - Derived from an open-source project made by [@MabelAmber](https://git.weatherelectric.xyz/MabelAmber), [UnityPackager](https://git.weatherelectric.xyz/MabelAmber/UnityPackager).
+    - Allows the creation of `.unitypackage` files, without requiring Unity to be installed.
+    - All members of the builder are required. Failure to provide any will result in an assertion failure any way `Build()` is called.
+  - Mostly complete [Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html) support via [`GradleTasks`](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.Gradle.GradleTasks.html).
+    - Simply call `Gradle(_ => _.SetTask(":yourTask").SetProcessWorkingDirectory("/path/to/project"))`, and the tool will:
+      - automatically resolve the working directory's Gradle wrapper (if present), falling back to system installation;
+      - act as if you had opened a terminal at that path and ran Gradle yourself.
+    - Avoid using `Gradle()` (the one with a lot of arguments), as the tool path resolver __does not get working directory context__ when using that.
+      - If you use it by accident, it's marked as deprecated; so your IDE will let you know about this at the call-site.
+    - Helpful for multi-language repositories!
+
+
+- **Project Maintenance**
+  - [gruke-build/src#5](https://github.com/gruke-build/src/pull/5): Change ASCII art to reflect the actual project name.
+    - Thanks [@ITaluone](https://github.com/ITaluone)!
+  - chore: Added more .NET Runtime Identifiers to [DotNetRuntimeIdentifiers](https://nuke.greemdev.net/docfx/api/Nuke.Common.Tools.DotNet.DotNetRuntimeIdentifier.html).
+    - Also added a `Current` property which simply wraps `RuntimeInformation.RuntimeIdentifier` into the enumeration type.
+  - chore: Updated the .NET SDK Docker image versions used in some workflow generators 
+  - chore: Regenerated `GreemDev.Nuke.Components.Forgejo` Kiota API client for [Forgejo v15](https://forgejo.org/2026-04-release-v15-0/).
+  - chore: The `Configuration.cs` file generated with a new GRUKE build script from the global tool now [has readonly members](https://github.com/gruke-build/src/commit/6a6dc2d17b620f7ac8da9f287dc3bb9c2c80d864).
+  - [gruke-build/src#8](https://github.com/gruke-build/src/pull/8): Added [Renovate bot](https://github.com/apps/renovate) to update dependencies automatically.
+    - Azure.Identity: `1.17.1` -> `1.21.0`
+    - Azure.Security.KeyVault.Certificates: `4.8.0` -> `4.9.0`
+    - Azure.Security.KeyVault.Keys: `4.8.0` -> `4.10.0`
+    - Azure.Security.KeyVault.Secrets: `4.8.0` -> `4.11.0`
+    - Basic.Reference.Assemblies.NetStandard20: `1.7.9` -> `1.8.7`
+    - coverlet.msbuild: `6.0.4` -> `10.0.1`
+    - GitHubActionsTestLogger: `2.4.1` -> `3.0.5`
+    - HtmlAgilityPack: `1.11.71` -> `1.13.0`
+    - Humanizer: `3.0.1` -> `3.0.10`
+    - JetBrains.Annotations: `2025.2.2` -> `2026.2.0`
+    - Microsoft.Build.Locator: `1.7.8` -> `1.11.2`
+    - Microsoft.Kiota.Bundle: `1.22.1` -> `2.0.0`
+    - Microsoft.NET.Test.Sdk: `18.0.1` -> `18.9.0`
+    - NGitLab: `11.5.0` -> `12.1.0`
+    - NJsonSchema.NewtonsoftJson: `11.5.2` -> `11.6.1`
+    - NJsonSchema: `11.5.2` -> `11.6.1`
+    - NuGet.Frameworks: `6.12.1` -> `7.9.0`
+    - NuGet.Packaging: `6.12.1` -> `7.9.0`
+    - Scriban: `6.6.0` -> `7.2.6`
+    - Serilog: `4.3.0` -> `4.4.0`
+    - Verify.Xunit: `31.7.1` -> `31.12.5`
+    - xunit.runner.visualstudio: `3.1.5` -> `4.0.0`
+    - YamlDotNet: `16.3.0` -> `18.1.0`
+
 ## [10.3.1] / 2026-04-08
 - Exposed JSON payload in ForgejoActions CI class.
 
@@ -35,7 +99,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
           - Requires your GitLab project to have [Releases](https://docs.gitlab.com/user/project/releases/) and [Package Registry](https://docs.gitlab.com/user/packages/package_registry/) enabled.
       - These component interfaces do not need to be used on Woodpecker.
 
-- Moved `GitterTasks` to the namespace `Nuke.Common.Tools.Gitter`.
+- Removed `GitterTasks`, Gitter uses Matrix now and has an entirely different API as a result.
 - `SetBranch` on `GitRepository` has been removed; use `GitRepository.ModifyCopy(branch: ...)` instead.
 - Removed `ShutdownDotNetAfterServerBuild` attribute, it existed due to the .NET CLI's lack of ability for forcibly disabling the use of build servers.
   - .NET has since added this, as such the attribute has [been removed and its behavior has been nativized](https://github.com/gruke-build/src/commit/8b29341a37e0668ddeb918baf6610c338150b77e).
@@ -1299,7 +1363,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.3.1...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/10.4.0...HEAD
+[10.4.0]: https://github.com/gruke-build/src/compare/10.3.1...10.4.0
 [10.3.1]: https://github.com/gruke-build/src/compare/10.3.0...10.3.1
 [10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0
 [10.2.0]: https://github.com/gruke-build/src/compare/10.1.0...10.2.0

@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -29,7 +30,7 @@ public static class EnumerationGenerator
             .WriteSummary(enumeration)
             .WriteLine("[PublicAPI]")
             .WriteLine("[Serializable]")
-            .WriteObsoleteAttributeWhenObsolete(enumeration)
+            .WriteObsoleteAttributeWhenObsolete(enumeration, out _)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine($"[TypeConverter(typeof(TypeConverter<{enumeration.Name}>))]")
             .WriteLine($"public partial class {enumeration.Name} : Enumeration")

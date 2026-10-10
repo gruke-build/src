@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -85,7 +86,7 @@ public static class DataClassGenerator
             .WriteLine($"#region {dataClass.Name}")
             .WriteSummary(dataClass)
             .WriteLine("[PublicAPI]")
-            .WriteObsoleteAttributeWhenObsolete(dataClass)
+            .WriteObsoleteAttributeWhenObsolete(dataClass, out _)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine(GetCommandAttribute())
             .WriteLine($"public partial class {dataClass.Name} : {baseTypes.JoinCommaSpace()}")

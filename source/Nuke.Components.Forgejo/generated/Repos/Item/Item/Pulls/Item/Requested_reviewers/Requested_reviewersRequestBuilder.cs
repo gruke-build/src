@@ -68,6 +68,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers
         /// <param name="body">PullReviewRequestOptions are options to add or remove pull review requests</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIForbiddenError">When receiving a 403 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIValidationError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,6 +84,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls.Item.Requested_reviewers
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "403", global::Nuke.Components.Forgejo.Models.APIForbiddenError.CreateFromDiscriminatorValue },
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
                 { "422", global::Nuke.Components.Forgejo.Models.APIValidationError.CreateFromDiscriminatorValue },
             };

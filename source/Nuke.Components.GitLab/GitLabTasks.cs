@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -17,7 +17,7 @@ public static class GitLabTasks
 
     public static void Reauthenticate(ICreateGitLabRelease build)
     {
-        ApiClient = new((build.GitLabHostName ?? GitLabHost.Default).EnsureStarting("https://"),
+        ApiClient = new((build.GitLabHostName ?? GitLabHost.Default).EnsureStarting(build.AccessOverHttps ? "https://" : "http://"),
             build.GitLabToken ?? CI.GitLab.GitLab.Instance.JobToken);
     }
 

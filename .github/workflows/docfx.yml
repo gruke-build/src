@@ -11,6 +11,7 @@ on:
       - 'source/**'
       - 'README.md'
       - "build/Build.DocFX.cs"
+      - "CHANGELOG.md"
   workflow_dispatch:
     inputs: {}
 jobs:

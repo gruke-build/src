@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -22,7 +22,7 @@ public class GitLabCIAttribute : ConfigurationAttributeBase
 
     public bool RecurseSubmodules { get; set; }
 
-    [CanBeNull] public string DockerImage { get; set; }
+    [CanBeNull] public string DockerImage { get; set; } = DotNetDockerImages.ForCurrentRuntime;
 
     public string[] InvokedTargets { get; set; } = [];
 

@@ -59,6 +59,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls
         /// <returns>A List&lt;global::Nuke.Components.Forgejo.Models.PullRequest&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APINotFound">When receiving a 404 status code</exception>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,6 +74,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Pulls
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
                 { "404", global::Nuke.Components.Forgejo.Models.APINotFound.CreateFromDiscriminatorValue },
                 { "500", global::Nuke.Components.Forgejo.Models.APIError.CreateFromDiscriminatorValue },
             };

@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -81,18 +82,6 @@ public class SettingsTest
                 .EnableDiagnostics()
                 .AddResultReport(Xunit2ResultFormat.NUnit, "new folder\\nunit.xml"),
             "-failskips -diagnostics -NUnit \"new folder\\nunit.xml\"");
-    }
-
-    [Fact]
-    public void TestOpenCover()
-    {
-        var projectFile = RootDirectory / "source" / "Nuke.Common" / "Nuke.Common.csproj";
-
-        Assert(new OpenCoverSettings()
-                .SetTargetPath(projectFile)
-                .SetTargetArguments("-diagnostics -HTML \"new folder\\data.xml\"")
-                .AddFilters("+[*]*", "-[xunit.*]*", "-[NUnit.*]*"),
-            $"-target:{projectFile.ToString().DoubleQuoteIfNeeded()} -targetargs:\"-diagnostics -HTML \\\"new folder\\data.xml\\\"\" -filter:\"+[*]* -[xunit.*]* -[NUnit.*]*\"");
     }
 
     [Fact]

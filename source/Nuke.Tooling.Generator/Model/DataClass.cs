@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -44,6 +45,9 @@ public class DataClass : IDeprecatable
 
     [Description("Obsolete message. DataClass is marked as obsolete when specified.")]
     public string DeprecationMessage { get; set; }
+    
+    [Description("Obsolete URL. Tool is marked as obsolete when specified.")]
+    public string DeprecationUrl { get; set; }
 }
 
 [UsedImplicitly]

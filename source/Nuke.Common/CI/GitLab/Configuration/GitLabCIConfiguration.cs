@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -29,11 +29,6 @@ public class GitLabCIConfiguration : ConfigurationEntity
 
     public override void Write(CustomFileWriter writer)
     {
-        if (UseDocker && DockerImage == null && DotNetDockerImages.LookupCurrent(out var dockerImage))
-        {
-            DockerImage = dockerImage;
-        }
-
         if (UseDocker)
             writer.WriteLine($"image: {DockerImage}");
 

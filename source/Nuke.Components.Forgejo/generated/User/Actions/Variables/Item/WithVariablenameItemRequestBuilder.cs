@@ -93,7 +93,7 @@ namespace Nuke.Components.Forgejo.User.Actions.Variables.Item
         /// <summary>
         /// Create a user-level variable
         /// </summary>
-        /// <param name="body">CreateVariableOption the option when creating variable</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
@@ -123,7 +123,7 @@ namespace Nuke.Components.Forgejo.User.Actions.Variables.Item
         /// <summary>
         /// Update a user-level variable which is created by current doer
         /// </summary>
-        /// <param name="body">UpdateVariableOption the option when updating variable</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Nuke.Components.Forgejo.Models.APIError">When receiving a 400 status code</exception>
@@ -192,7 +192,7 @@ namespace Nuke.Components.Forgejo.User.Actions.Variables.Item
         /// Create a user-level variable
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">CreateVariableOption the option when creating variable</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -214,7 +214,7 @@ namespace Nuke.Components.Forgejo.User.Actions.Variables.Item
         /// Update a user-level variable which is created by current doer
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">UpdateVariableOption the option when updating variable</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

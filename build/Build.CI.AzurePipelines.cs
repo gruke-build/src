@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -18,6 +19,7 @@ using Nuke.Components;
     AzurePipelinesImage.MacOsLatest,
     FetchDepth = 0,
     PullRequestsDisabled = true,
+    TriggerBranchesInclude = ["develop"],
     InvokedTargets = [nameof(ITest.Test), nameof(IPack.Pack)],
     NonEntryTargets = [nameof(IRestore.Restore), nameof(DownloadLicenses), nameof(ICompile.Compile), nameof(InstallFonts), nameof(ReleaseImage)],
     ExcludedTargets = [nameof(Clean)],

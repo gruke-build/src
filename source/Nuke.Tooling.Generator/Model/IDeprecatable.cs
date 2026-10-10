@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -14,6 +15,9 @@ public interface IDeprecatable
     string DeprecationMessage { get; }
 
     [CanBeNull]
+    string DeprecationUrl { get; }
+
+    [CanBeNull]
     IDeprecatable Parent { get; }
 }
 
@@ -22,7 +26,10 @@ public static class DeprecatableExtensions
     [Pure]
     public static bool IsDeprecated(this IDeprecatable deprecatable)
     {
-        return deprecatable.DeprecationMessage != null || deprecatable.Parent != null && deprecatable.Parent.IsDeprecated();
+        if (deprecatable.DeprecationMessage != null || deprecatable.DeprecationUrl != null)
+            return true;
+
+        return deprecatable.Parent?.IsDeprecated() ?? false;
     }
 
     [Pure]
@@ -33,5 +40,15 @@ public static class DeprecatableExtensions
         if (!string.IsNullOrEmpty(message))
             return message;
         return deprecatable.Parent?.GetDeprecationMessage();
+    }
+    
+    [Pure]
+    [CanBeNull]
+    public static string GetDeprecationUrl(this IDeprecatable deprecatable)
+    {
+        var message = deprecatable.DeprecationUrl;
+        if (!string.IsNullOrEmpty(message))
+            return message;
+        return deprecatable.Parent?.GetDeprecationUrl();
     }
 }

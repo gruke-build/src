@@ -1,5 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright ${CurrentDate.Year} Maintainers of NUKE.&#xD;
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright ${CurrentDate.Year} Maintainers of GRUKE.&#xD;
+Distributed under the MIT License.&#xD;
+https://github.com/gruke-build/src/blob/master/LICENSE</s:String>
+    <s:String x:Key="/Default/CodeStyle/GeneratedFileHeader/FileHeaderText/@EntryValue">Copyright 2018-2025 Maintainers of NUKE.&#xD;
+Copyright ${CurrentDate.Year} Maintainers of GRUKE.&#xD;
 Distributed under the MIT License.&#xD;
 https://github.com/gruke-build/src/blob/master/LICENSE</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=PrivateConstants/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb_AaBb" /&gt;</s:String>
@@ -20,5 +24,6 @@ https://github.com/gruke-build/src/blob/master/LICENSE</s:String>
 	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileA68CFA51EFE4364DA61BFD270E021A11/RelativePriority/@EntryValue">1</s:Double>
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EFeature_002EServices_002ECodeCleanup_002EFileHeader_002EFileHeaderSettingsMigrate/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EPredefinedNamingRulesToUserRulesUpgrade/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Greem/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=gruke/@EntryIndexedValue">True</s:Boolean>
 	</wpf:ResourceDictionary>

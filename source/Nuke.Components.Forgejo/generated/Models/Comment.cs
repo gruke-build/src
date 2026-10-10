@@ -15,7 +15,7 @@ namespace Nuke.Components.Forgejo.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The assets property</summary>
+        /// <summary>The attachments to the comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Nuke.Components.Forgejo.Models.Attachment>? Assets { get; set; }
@@ -23,7 +23,7 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public List<global::Nuke.Components.Forgejo.Models.Attachment> Assets { get; set; }
 #endif
-        /// <summary>The body property</summary>
+        /// <summary>The body of the comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Body { get; set; }
@@ -31,9 +31,9 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string Body { get; set; }
 #endif
-        /// <summary>The created_at property</summary>
+        /// <summary>The time of the comment&apos;s creation</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The html_url property</summary>
+        /// <summary>The HTML URL of the comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HtmlUrl { get; set; }
@@ -41,9 +41,9 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string HtmlUrl { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The identifier of the comment</summary>
         public long? Id { get; set; }
-        /// <summary>The issue_url property</summary>
+        /// <summary>The HTML URL of the issue if the comment is posted on an issue, else empty string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IssueUrl { get; set; }
@@ -51,7 +51,7 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string IssueUrl { get; set; }
 #endif
-        /// <summary>The original_author property</summary>
+        /// <summary>The original author that posted the comment if it was not posted locally, else empty string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OriginalAuthor { get; set; }
@@ -59,9 +59,9 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string OriginalAuthor { get; set; }
 #endif
-        /// <summary>The original_author_id property</summary>
+        /// <summary>The ID of the original author that posted the comment if it was not posted locally, else 0</summary>
         public long? OriginalAuthorId { get; set; }
-        /// <summary>The pull_request_url property</summary>
+        /// <summary>The HTML URL of the pull request if the comment is posted on a pull request, else empty string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PullRequestUrl { get; set; }
@@ -69,7 +69,7 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string PullRequestUrl { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>The time of the comment&apos;s update</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>User represents a user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

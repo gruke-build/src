@@ -1,4 +1,5 @@
-// Copyright 2026 Maintainers of NUKE.
+// Copyright 2018-2025 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -29,7 +30,7 @@ public partial class MinVerTasks : ToolTasks, IRequireNuGetPackage
 {
     public static string MinVerPath { get => new MinVerTasks().GetToolPathInternal(); set => new MinVerTasks().SetToolPath(value); }
     public const string PackageId = "minver-cli";
-    public const string PackageExecutable = "minver-cli.dll";
+    public const string PackageExecutable = "minver.dll";
     /// <summary><p>Minimalistic versioning using Git tags.</p><p>For more details, visit the <a href="https://github.com/adamralph/minver">official website</a>.</p></summary>
     public static IReadOnlyCollection<Output> MinVer(ArgumentStringHandler arguments, string workingDirectory = null, IReadOnlyDictionary<string, string> environmentVariables = null, int? timeout = null, bool? logOutput = null, bool? logInvocation = null, Action<OutputType, string> logger = null, Func<IProcess, object> exitHandler = null) => new MinVerTasks().Run(arguments, workingDirectory, environmentVariables, timeout, logOutput, logInvocation, logger, exitHandler);
     /// <summary><p>Minimalistic versioning using Git tags.</p><p>For more details, visit the <a href="https://github.com/adamralph/minver">official website</a>.</p></summary>

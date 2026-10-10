@@ -22,7 +22,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/tasks{?limit*,page*}", pathParameters)
+        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/tasks{?limit*,page*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/tasks{?limit*,page*}", rawUrl)
+        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/repos/{owner%2Did}/{repo%2Did}/actions/tasks{?limit*,page*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -102,6 +102,16 @@ namespace Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks
             /// <summary>page number of results to return (1-based)</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
+            /// <summary>Returns workflow tasks with the check run status or conclusion that is specified. For example, a conclusion can be success or a status can be in_progress.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("status")]
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks.GetStatusQueryParameterType[]? Status { get; set; }
+#nullable restore
+#else
+            [QueryParameter("status")]
+            public global::Nuke.Components.Forgejo.Repos.Item.Item.Actions.Tasks.GetStatusQueryParameterType[] Status { get; set; }
+#endif
         }
     }
 }

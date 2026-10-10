@@ -1,4 +1,5 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -10,7 +11,7 @@ using Nuke.Components;
     AppVeyorImage.VisualStudioLatest,
     AppVeyorImage.UbuntuLatest,
     AppVeyorImage.MacOsLatest,
-    BranchesExcept = [MasterBranch, $"/{ReleaseBranchPrefix}\\/*/"],
+    BranchesOnly = [DevelopBranch],
     SkipTags = true,
     InvokedTargets = [nameof(ITest.Test)],
     Secrets = [])]

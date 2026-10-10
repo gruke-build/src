@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -21,7 +22,7 @@ internal static class Constants
 {
     internal const string NukeFileName = NukeDirectoryName;
     internal const string NukeDirectoryName = ".nuke";
-    internal const string NukeCommonPackageId = "GreemDev." + nameof(Nuke) + "." + nameof(Common);
+    internal const string NukePackageId = "GreemDev." + nameof(Nuke);
     internal const string BuildSchemaFileName = "build.schema.json";
 
     internal const string TargetsSeparator = "+";

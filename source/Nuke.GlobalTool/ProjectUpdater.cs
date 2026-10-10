@@ -1,4 +1,5 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -14,6 +15,8 @@ namespace Nuke.GlobalTool;
 
 public static class ProjectUpdater
 {
+    public const string TARGET_FRAMEWORK = "net10.0";
+
     public static void Update(string projectFile)
     {
         var buildProject = ProjectModelTasks.ParseProject(projectFile).NotNull();
@@ -29,19 +32,24 @@ public static class ProjectUpdater
 
     private static void UpdateTargetFramework(Microsoft.Build.Evaluation.Project buildProject)
     {
-        buildProject.SetProperty("TargetFramework", "net10.0");
+        buildProject.SetProperty("TargetFramework", TARGET_FRAMEWORK);
     }
 
     private static void UpdateNukeCommonPackage(Microsoft.Build.Evaluation.Project buildProject, out FloatRange previousPackageVersion)
     {
-        var packageItem = buildProject.Items.SingleOrDefault(x => x.EvaluatedInclude == Constants.NukeCommonPackageId).NotNull();
+        var packageItem = buildProject.Items.SingleOrDefault(x => x.EvaluatedInclude == Constants.NukePackageId).NotNull();
         previousPackageVersion = FloatRange.Parse(packageItem.GetMetadataValue("Version"));
 
-        var latestPackageVersion = NuGetVersionResolver.GetLatestVersion(Constants.NukeCommonPackageId, includePrereleases: false).GetAwaiter().GetResult();
+        var latestPackageVersion = NuGetVersionResolver.GetLatestVersion(Constants.NukePackageId, includePrereleases: false).GetAwaiter().GetResult();
         if (previousPackageVersion.Satisfies(NuGetVersion.Parse(latestPackageVersion)))
             return;
 
         packageItem.SetMetadataValue("Version", latestPackageVersion);
+
+        if (NuGetVersion.Parse(latestPackageVersion) >= NuGetVersion.Parse("10.4.0"))
+        {
+            buildProject.SetProperty("DisableMSBuildAssemblyCopyCheck", "true");
+        }
     }
 
     private static void RemoveLegacyFileIncludes(Microsoft.Build.Evaluation.Project buildProject)

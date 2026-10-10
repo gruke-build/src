@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -11,7 +11,7 @@ public class WoodpeckerCIRunStep : WoodpeckerCIStep
 {
     public override required string Name { get; set; }
 
-    public override string DockerImage { get; set; } = DotNetDockerImages.Current;
+    public override string DockerImage { get; set; } = DotNetDockerImages.ForCurrentRuntime;
 
     public IEnumerable<string> InvokedTargets { get; set; }
 

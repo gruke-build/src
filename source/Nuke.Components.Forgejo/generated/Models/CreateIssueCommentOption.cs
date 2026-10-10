@@ -15,7 +15,7 @@ namespace Nuke.Components.Forgejo.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The body property</summary>
+        /// <summary>The body of the comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Body { get; set; }
@@ -23,7 +23,7 @@ namespace Nuke.Components.Forgejo.Models
 #else
         public string Body { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>The time of the comment&apos;s update, needs admin or repository owner permission</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Nuke.Components.Forgejo.Models.CreateIssueCommentOption"/> and sets the default values.

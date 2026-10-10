@@ -1,4 +1,5 @@
 // Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -28,8 +29,6 @@ namespace Nuke.GlobalTool;
 partial class Program
 {
     // ReSharper disable InconsistentNaming
-
-    private const string TARGET_FRAMEWORK = "net10.0";
     private const string PROJECT_KIND = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
 
     // ReSharper disable once CognitiveComplexity
@@ -45,9 +44,9 @@ partial class Program
 
         #region Basic
 
-        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(NukeCommonPackageId, includePrereleases: false);
-        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(NukeCommonPackageId, includePrereleases: true);
-        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(NukeCommonPackageId, version: null, packagesConfigFile: null)
+        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(NukePackageId, includePrereleases: false);
+        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestPreReleaseSelfVersion(NukePackageId);
+        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(NukePackageId, version: null, packagesConfigFile: null)
             ?.Version.ToString();
 
         if (rootDirectory == null)
@@ -69,6 +68,7 @@ partial class Program
         ClearPreviousLine();
         ShowInput("round_pushpin", "Build project location", buildProjectRelativeDirectory);
 
+        // ReSharper disable once UseCollectionExpression
         var nukeVersion = PromptForChoice("Which GreemDev.Nuke version should be used?",
             new[]
                 {
@@ -79,8 +79,18 @@ partial class Program
                 }
                 .Where(x => x.Item2 != null)
                 .Distinct(x => x.Item2)
-                .Select(x => (x.Item2, $"{x.Item2} ({x.Item1})")).ToArray());
-        ShowInput("gem_stone", "GreemDev.Nuke version", nukeVersion);
+                .Select(x => 
+                    (
+                        (
+                            Choice: x.Item2, 
+                            IsPrerelease: x.Item1.ContainsOrdinalIgnoreCase("prerelease")
+                        ),
+                        $"{x.Item2} ({x.Item1})"
+                    )
+                )
+                .ToArray()
+            );
+        ShowInput("gem_stone", "GreemDev.Nuke version", nukeVersion.Choice);
 
         var solutionFile = (AbsolutePath)PromptForChoice(
             "Which solution should be the default?",
@@ -139,8 +149,8 @@ partial class Program
                     {
                         RootDirectory = buildDirectory.GetWinRelativePathTo(rootDirectory),
                         ScriptDirectory = buildDirectory.GetWinRelativePathTo(WorkingDirectory),
-                        TargetFramework = TARGET_FRAMEWORK,
-                        NukeVersion = nukeVersion,
+                        TargetFramework = ProjectUpdater.TARGET_FRAMEWORK,
+                        NukeVersion = nukeVersion.Choice,
                     })));
 
         (buildDirectory / "Directory.Build.props").WriteAllLines(GetTemplate("Directory.Build.props"));
@@ -149,6 +159,11 @@ partial class Program
         (buildDirectory / ".editorconfig").WriteAllLines(GetTemplate(".editorconfig"));
         (buildDirectory / "Build.cs").WriteAllLines(FillTemplate(GetTemplate("Build.cs")));
         (buildDirectory / "Configuration.cs").WriteAllLines(GetTemplate("Configuration.cs"));
+
+        if (nukeVersion.IsPrerelease)
+        {
+            (buildDirectory / "nuget.config").WriteAllLines(GetTemplate("nuget.config"));
+        }
 
         #endregion
 

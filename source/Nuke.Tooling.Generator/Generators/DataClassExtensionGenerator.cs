@@ -1,4 +1,5 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -22,7 +23,7 @@ public static class DataClassExtensionGenerator
             .WriteLine($"#region {dataClass.Name}Extensions")
             .WriteSummary(dataClass)
             .WriteLine("[PublicAPI]")
-            .WriteObsoleteAttributeWhenObsolete(dataClass)
+            .WriteObsoleteAttributeWhenObsolete(dataClass, out _)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine($"public static partial class {dataClass.Name}Extensions")
             .WriteBlock(w => w.ForEach(dataClass.Properties, WriteMethods))
@@ -378,7 +379,7 @@ public static class DataClassExtensionGenerator
             .WriteLineIfTrue(help == null, $"/// <inheritdoc cref=\"{writer.DataClass.Name}.{property.Name}\"/>")
             .WriteLineIfTrue(help != null, $"/// <summary>{help}</summary>")
             .WriteLine($"[Pure] {builder}")
-            .WriteObsoleteAttributeWhenObsolete(property)
+            .WriteObsoleteAttributeWhenObsolete(property, out _)
             .WriteLine($"{signature} => {implementation};");
     }
 

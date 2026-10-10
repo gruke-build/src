@@ -1,4 +1,5 @@
 ﻿// Copyright 2023 Maintainers of NUKE.
+// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -48,6 +49,8 @@ public interface ICreateForgejoRelease : IHazGitRepository, IHazChangelog
     string Name { get; }
     bool Prerelease => false;
     bool Draft => false;
+    
+    bool AccessOverHttps => true;
 
     IEnumerable<AbsolutePath> AssetFiles { get; }
 

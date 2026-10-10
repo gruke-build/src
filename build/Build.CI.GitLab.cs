@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of GRUKE.
 // Distributed under the MIT License.
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
@@ -12,6 +12,7 @@ using static Nuke.Common.ControlFlow;
 
 [GitLabCI(
     InvokedTargets = [nameof(IPublish.Publish)],
+    DockerImage = "mcr.microsoft.com/dotnet/sdk:10.0.201",
     UploadProducedArtifacts = true,
     ExcludedArtifacts = [ "output/packages/*.nupkg" ],
     OnlyOnPushesToBranches = [ default ]
