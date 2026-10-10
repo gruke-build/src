@@ -7,6 +7,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Mime;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -67,14 +69,13 @@ public partial class GitHubActions
 
         Action<HttpRequestHeaders> headers = headers =>
         {
-            headers.Add("Content-Type", "application/json");
             headers.Add("Authorization", $"Bearer {oidcToken}");
             headers.Add("User-Agent", $"GRUKE/{typeof(NukeBuild).Assembly.GetVersionText()}");
         };
 
         var nugetResponse = await (logRequestUrls
-                ? HttpTasks.HttpPostLoggedAsync(tokenServiceUrl, new StringContent(body), headerConfigurator: headers)
-                : HttpTasks.HttpPostAsync(tokenServiceUrl, new StringContent(body), headerConfigurator: headers)
+                ? HttpTasks.HttpPostLoggedAsync(tokenServiceUrl, new StringContent(body, Encoding.UTF8, MediaTypeNames.Application.Json), headerConfigurator: headers)
+                : HttpTasks.HttpPostAsync(tokenServiceUrl, new StringContent(body, Encoding.UTF8, MediaTypeNames.Application.Json), headerConfigurator: headers)
             );
 
         var nugetResponseBody = await nugetResponse.Content.ReadAsStringAsync();
