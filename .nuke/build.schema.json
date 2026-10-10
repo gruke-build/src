@@ -205,11 +205,6 @@
           "type": "boolean",
           "description": "Is this a major (x.0.0) release?"
         },
-        "PublicNuGetApiKey": {
-          "type": "string",
-          "description": "nuget.org API key",
-          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
-        },
         "Solution": {
           "type": "string",
           "description": "Path to a solution file that is automatically loaded"

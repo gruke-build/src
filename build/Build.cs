@@ -130,7 +130,6 @@ partial class Build
     const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
     const string DefaultDeploymentVersion = "9999.0.0";
 
-    [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
     bool IsPublicRelease => GitRepository.IsOnMasterBranch || GitRepository.IsOnReleaseBranch;
@@ -141,8 +140,21 @@ partial class Build
             ? gl.GetNuGetSourceUrlForCurrentProject()
             : FeedzNuGetSource;
 
+    private string OidcNuGetToken
+    {
+        get
+        {
+            if (field != null)
+                return field;
+
+            field = (Host as GitHubActions)!.GetNuGetApiKeyWithOpenId(username: "Greem");
+
+            return field;
+        }
+    }
+
     string IPublish.NuGetApiKey => IsPublicRelease
-        ? PublicNuGetApiKey
+        ? OidcNuGetToken
         : Host is GitLab gl
             ? gl.JobToken
             : FeedzNuGetApiKey;

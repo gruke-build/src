@@ -40,6 +40,5 @@ jobs:
       - name: 'Run: Publish'
         run: ./build.cmd Publish
         env:
-          PublicNuGetApiKey: ${{ secrets.PUBLIC_NUGET_API_KEY }}
           DiscordWebhook: ${{ secrets.DISCORD_WEBHOOK }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
