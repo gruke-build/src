@@ -37,7 +37,7 @@ public static partial class HttpTasks
         return HttpGetAsync(uri, clientConfigurator, headerConfigurator).Result;
     }
 
-    public static HttpResponseMessage HttpGet(
+    public static HttpResponseMessage HttpPost(
         [StringSyntax("Uri")] string uri,
         HttpContent content = null,
         Configure<HttpClient> clientConfigurator = null,
