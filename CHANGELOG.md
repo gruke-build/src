@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Azure.Security.KeyVault.Certificates: `4.9.0` -> `4.9.0`
   - Azure.Security.KeyVault.Keys: `4.10.0` -> `4.10.2`
   - Azure.Security.KeyVault.Secrets: `4.11.0` -> `4.11.2`
+  - Microsoft.Kiota.Bundle: `2.0.0` -> `2.1.2`
 
 ## [10.4.0] / 2026-10-10
 - **BREAKING CHANGES**:
