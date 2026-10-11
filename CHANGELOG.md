@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
       - The inputs are the same as the official GitHub Actions reusable workflow, [NuGet/login](https://github.com/NuGet/login); because this code is simply a reimplementation, intended to let users of GRUKE (and GRUKE itself) take advantage of Trusted Publishing.
     - The value returned by this method can be used where you would normally use an API key. It will expire when the workflow is completed.
 
+
+# Project Maintenance
+- Dependency Updates:
+  - Azure.Security.KeyVault.Certificates: `4.9.0` -> `4.9.0`
+  - Azure.Security.KeyVault.Keys: `4.10.0` -> `4.10.2`
+  - Azure.Security.KeyVault.Secrets: `4.11.0` -> `4.11.2`
+
 ## [10.4.0] / 2026-10-10
 - **BREAKING CHANGES**:
   - Add `<DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>` to your GRUKE build script's `.csproj` file.
