@@ -14,6 +14,7 @@ using Nuke.Components;
     InvokedTargets = [nameof(IPublish.Publish)],
     EnableGitHubToken = true,
     PublishArtifacts = false,
+    WritePermissions = [ GitHubActionsPermissions.IdToken ],
     ImportSecrets = [nameof(DiscordWebhook)])]
 [GitHubActions(
     "windows-latest",
