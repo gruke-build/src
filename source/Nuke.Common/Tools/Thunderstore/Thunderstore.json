@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/gruke-build/src/master/source/Nuke.Tooling.Generator/schema.json",
+  "references": [
+    "https://github.com/thunderstore-io/thunderstore-cli/blob/863912d63a6558202d0fe425543c2b53e14f3dfe/ThunderstoreCLI/Options.cs"
+  ],
+  "name": "Thunderstore",
+  "officialUrl": "https://github.com/thunderstore-io/thunderstore-cli",
+  "help": "Thunderstore CLI is a command line tool for building and uploading mod packages to Thunderstore mod database, and installing mods via the command line.",
+  "nugetPackageId": "tcli",
+  "packageExecutable": "tcli.exe|tcli|tcli.dll",
+  "tasks": [
+    {
+      "help": "Build a package.",
+      "postfix": "Build",
+      "commonPropertySets": [
+        "base_options",
+        "package_build_options"
+      ],
+      "definiteArgument": "build",
+      "settingsClass": {}
+    },
+    {
+      "help": "Build & publish a package.",
+      "postfix": "Publish",
+      "commonPropertySets": [
+        "base_options",
+        "package_build_options",
+        "token"
+      ],
+      "definiteArgument": "publish",
+      "settingsClass": {}
+    },
+    {
+      "help": "Publish an existing package.",
+      "postfix": "PublishFile",
+      "commonPropertySets": [
+        "base_options",
+        "token"
+      ],
+      "definiteArgument": "publish",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "File",
+            "type": "string",
+            "format": "--file {value}",
+            "help": "If provided, use defined package instead of building."
+          }
+        ]
+      }
+    }
+  ],
+  "commonTaskPropertySets": {
+    "base_options": [
+      {
+        "name": "DataDirectory",
+        "type": "string",
+        "format": "--tcli-directory {value}",
+        "help": "Directory where TCLI keeps its data, %APPDATA%/ThunderstoreCLI on Windows and ~/.config/ThunderstoreCLI on Linux"
+      },
+      {
+        "name": "Repository",
+        "type": "string",
+        "format": "--repository {value}",
+        "help": "URL of the default repository"
+      },
+      {
+        "name": "ConfigPath",
+        "type": "string",
+        "format": "--config-path {value}",
+        "help": "Path for the project configuration file"
+      }
+    ],
+    "package_build_options": [
+      {
+        "name": "PackageName",
+        "type": "string",
+        "format": "--package-name {value}",
+        "help": "Name for the package"
+      },
+      {
+        "name": "PackageNamespace",
+        "type": "string",
+        "format": "--package-namespace {value}",
+        "help": "Namespace for the package"
+      },
+      {
+        "name": "PackageVersion",
+        "type": "string",
+        "format": "--package-version {value}",
+        "help": "Version for the package"
+      }
+    ],
+    "token": [
+      {
+        "name": "Token",
+        "type": "string",
+        "format": "--token {value}",
+        "help": "Authentication token to use for publishing"
+      }
+    ]
+  }
+}
