@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using Nuke.CodeGeneration.Model;
 using Nuke.CodeGeneration.Writers;
 using Nuke.Common.Utilities;
@@ -15,7 +15,7 @@ using Serilog;
 
 namespace Nuke.CodeGeneration.Generators;
 
-public static class WriterExtensions
+public static partial class WriterExtensions
 {
     public static T WritePreferTypedApiAttribute<T>(this T writerWrapper, Tool tool)
         where T : IWriterWrapper
@@ -161,13 +161,22 @@ public static class WriterExtensions
     public static T WriteSummary<T>(this T writerWrapper, params string[] lines)
         where T : IWriterWrapper
     {
-        lines = lines.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+        lines =
+        [
+            .. lines.Where(x => !string.IsNullOrEmpty(x))
+                .Select(x => s_unescapedAmpersandRegex.Replace(x, "&amp;"))
+        ];
 
         if (lines.Length == 0)
             return writerWrapper;
 
-        writerWrapper.WriteLine($"/// <summary>{lines.Join(string.Empty)}</summary>");
+        writerWrapper.WriteLine($"/// <summary>{lines.Select(x => x).Join(string.Empty)}</summary>");
 
         return writerWrapper;
     }
+
+    private static readonly Regex s_unescapedAmpersandRegex = UnescapedAmpersandPattern();
+
+    [GeneratedRegex("&(?!\\w+;)", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
+    private static partial Regex UnescapedAmpersandPattern();
 }
