@@ -638,6 +638,7 @@ public partial class GitLab : Host, IBuildServer, IEnvironment<GitLab>
     /// <summary>
     /// The revision of the runner running the job.
     /// </summary>
+    [NoValueCheck]
     public string RunnerRevision => IEnvironment<GitLab>.Get("RUNNER_REVISION");
 
     /// <summary>
