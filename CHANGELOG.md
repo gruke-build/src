@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
-# New Features
+### New Features
+- .NET 11 support for build scripts & global tool
 - `ICreateGitHubRelease` now has a `DiscussionCategory` property.
   - Providing this value enables automatic discussion linking for releases, and creates the discussion in the specified category.
 - NuGet Trusted Publishing support
@@ -15,8 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - The value returned by this method can be used where you would normally use an API key. It will expire when the workflow is completed.
 
 
-# Project Maintenance
-- Support .NET 11 build scripts
+### Project Maintenance
 - Dependency Updates:
   - Azure.Security.KeyVault.Certificates: `4.9.0` -> `4.9.0`
   - Azure.Security.KeyVault.Keys: `4.10.0` -> `4.10.2`
