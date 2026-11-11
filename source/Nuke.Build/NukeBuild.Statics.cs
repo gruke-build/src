@@ -136,8 +136,8 @@ public abstract partial class NukeBuild
         var assemblyLocationWithoutExtension = GetFilePathWithoutExtension(assemblyLocation).ToString();
         var invokedLocationWithoutExtension = GetFilePathWithoutExtension(invokedLocation).ToString();
 
-        Log.Information("Assembly location: {}", assemblyLocationWithoutExtension);
-        Log.Information("Invoked location: {}", invokedLocationWithoutExtension);
+        Console.WriteLine($"Assembly location: {assemblyLocationWithoutExtension}");
+        Console.WriteLine($"Invoked location: {invokedLocationWithoutExtension}");
 
         Assert.True(assemblyLocation == string.Empty || assemblyLocationWithoutExtension == invokedLocationWithoutExtension);
 
