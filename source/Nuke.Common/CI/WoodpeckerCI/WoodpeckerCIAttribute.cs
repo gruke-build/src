@@ -63,7 +63,7 @@ public class WoodpeckerCIAttribute : ConfigurationAttributeBase
                };
     }
 
-    public IEnumerable<WoodpeckerCIStep> GetSteps()
+    public virtual IEnumerable<WoodpeckerCIStep> GetSteps()
     {
         yield return new WoodpeckerCIRunStep
                      {

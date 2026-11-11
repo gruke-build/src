@@ -3,6 +3,7 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Net.Http;
@@ -26,9 +27,54 @@ public static partial class HttpTasks
         var httpClient = CreateHttpClientProxy(clientConfigurator, headerConfigurator);
         return await (await httpClient.GetAsync(uri))!.Content.ReadAsStringAsync();
     }
+    
+    [Pure]
+    public static HttpResponseMessage HttpGetLogged(
+        [StringSyntax("Uri")]
+        string uri,
+        Configure<HttpClientProxy> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        return HttpGetLoggedAsync(uri, clientConfigurator, headerConfigurator).Result;
+    }
+    
+    [Pure]
+    public static HttpResponseMessage HttpPostLogged(
+        [StringSyntax("Uri")]
+        string uri,
+        HttpContent content = null,
+        Configure<HttpClientProxy> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        return HttpPostLoggedAsync(uri, content, clientConfigurator, headerConfigurator).Result;
+    }
+
+    [Pure]
+    public static async Task<HttpResponseMessage> HttpGetLoggedAsync(
+        [StringSyntax("Uri")]
+        string uri,
+        Configure<HttpClientProxy> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        var httpClient = CreateHttpClientProxy(clientConfigurator, headerConfigurator);
+        return (await httpClient.GetAsync(uri))!;
+    }
+
+    [Pure]
+    public static async Task<HttpResponseMessage> HttpPostLoggedAsync(
+        [StringSyntax("Uri")]
+        string uri,
+        [AllowNull] HttpContent content = null,
+        Configure<HttpClientProxy> clientConfigurator = null,
+        Action<HttpRequestHeaders> headerConfigurator = null)
+    {
+        var httpClient = CreateHttpClientProxy(clientConfigurator, headerConfigurator);
+        return (await httpClient.PostAsync(uri, content))!;
+    }
 
     [Pure]
     public static string HttpDownloadStringLogged(
+        [StringSyntax("Uri")]
         string uri,
         Configure<HttpClientProxy> clientConfigurator = null,
         Action<HttpRequestHeaders> headerConfigurator = null)
@@ -37,6 +83,7 @@ public static partial class HttpTasks
     }
 
     public static async Task HttpDownloadFileLoggedAsync(
+        [StringSyntax("Uri")]
         string uri,
         AbsolutePath path,
         FileMode mode = FileMode.Create,
@@ -53,6 +100,7 @@ public static partial class HttpTasks
     }
 
     public static void HttpDownloadFileLogged(
+        [StringSyntax("Uri")]
         string uri,
         string path,
         FileMode mode = FileMode.Create,

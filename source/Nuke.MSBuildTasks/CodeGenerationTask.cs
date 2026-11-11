@@ -35,7 +35,7 @@ public class CodeGenerationTask : ContextAwareTask
         var specificationFiles = SpecificationFiles.Select(x => x.GetMetadata("Fullpath")).ToList();
 
         string GetFilePath(Tool tool)
-            => (AbsolutePath) BaseDirectory
+            => (Common.IO.AbsolutePath) BaseDirectory
                / (UseNestedNamespaces ? tool.Name : ".")
                / tool.DefaultOutputFileName;
 

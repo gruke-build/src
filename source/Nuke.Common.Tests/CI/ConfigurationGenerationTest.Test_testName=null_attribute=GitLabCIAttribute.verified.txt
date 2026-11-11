@@ -14,7 +14,7 @@
 # </auto-generated>
 # ------------------------------------------------------------------------------
 
-image: mcr.microsoft.com/dotnet/sdk:10.0.401
+image: mcr.microsoft.com/dotnet/sdk:11.0.100
 
 variables:
   GIT_DEPTH: 0

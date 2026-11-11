@@ -27,10 +27,10 @@ public class ProjectModelTest
         var action = new Action(() => project.GetMSBuildProject());
         action.Should().NotThrow();
 
-        project.GetTargetFrameworks().Should().Equal("net8.0", "net9.0", "net10.0");
+        project.GetTargetFrameworks().Should().Equal("net8.0", "net9.0", "net10.0", "net11.0");
         project.HasPackageReference("Microsoft.Build.Locator").Should().BeTrue();
         project.GetPackageReferenceVersion("Microsoft.Build.Locator").Should().Be("1.11.2");
-        project.GetPackageReferenceVersion("Microsoft.Build").Should().Be("18.0.2");
+        project.GetPackageReferenceVersion("Microsoft.Build").Should().Be("18.11.0");
     }
 
     [Fact]

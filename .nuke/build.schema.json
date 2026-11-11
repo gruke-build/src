@@ -34,14 +34,12 @@
         "CreateForgejoRelease",
         "CreateGitHubRelease",
         "CreateNotification",
-        "DeleteGitLabCIPackages",
         "DeletePackages",
         "DocFx",
         "DownloadLicenses",
         "GeneratePublicApi",
         "GenerateTools",
         "Hotfix",
-        "Install",
         "InstallFonts",
         "Kiota",
         "Milestone",
@@ -204,11 +202,6 @@
         "Major": {
           "type": "boolean",
           "description": "Is this a major (x.0.0) release?"
-        },
-        "PublicNuGetApiKey": {
-          "type": "string",
-          "description": "nuget.org API key",
-          "default": "Secrets must be entered via 'gruke :secrets [profile]'"
         },
         "Solution": {
           "type": "string",

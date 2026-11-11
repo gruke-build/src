@@ -17,10 +17,10 @@ public static class DotNetDockerImages
         new ReadOnlyDictionary<int, string>(
             new Dictionary<int, string>
             {
-                { 11, "mcr.microsoft.com/dotnet/sdk:11.0.100-rc.1" },
-                { 10, "mcr.microsoft.com/dotnet/sdk:10.0.401" },
-                { 9, "mcr.microsoft.com/dotnet/sdk:9.0.318" },
-                { 8, "mcr.microsoft.com/dotnet/sdk:8.0.425" },
+                { 11, "mcr.microsoft.com/dotnet/sdk:11.0.100" },
+                { 10, "mcr.microsoft.com/dotnet/sdk:10.0.404" },
+                { 9, "mcr.microsoft.com/dotnet/sdk:9.0.321" },
+                { 8, "mcr.microsoft.com/dotnet/sdk:8.0.428" },
                 { 7, "mcr.microsoft.com/dotnet/sdk:7.0.410" },
                 { 6, "mcr.microsoft.com/dotnet/sdk:6.0.428-1" }
             }

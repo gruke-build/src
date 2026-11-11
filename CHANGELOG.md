@@ -6,6 +6,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 
+## [11.0.0] / 2026-11-11
+### New Features
+- .NET 11 support for build scripts & global tool
+- `ICreateGitHubRelease` now has a `DiscussionCategory` property.
+  - Providing this value enables automatic discussion linking for releases, and creates the discussion in the specified category.
+- NuGet Trusted Publishing support
+    - Currently only supports GitHub, GitLab is going to be trickier since part of how it works there is in the actual workflow file logic (cursed)
+    - Call `GetNuGetApiKeyWithOpenIdAsync` on an instance of the [GitHubActions](https://nuke.greemdev.net/docfx/api/Nuke.Common.CI.GitHubActions.GitHubActions.html) host type.
+      - The inputs are the same as the official GitHub Actions reusable workflow, [NuGet/login](https://github.com/NuGet/login); because this code is simply a reimplementation, intended to let users of GRUKE (and GRUKE itself) take advantage of Trusted Publishing.
+    - The value returned by this method can be used where you would normally use an API key. It will expire when the workflow is completed.
+
+
+### Project Maintenance
+- Dependency Updates:
+  - Azure.Security.KeyVault.Certificates: `4.9.0` -> `4.9.0`
+  - Azure.Security.KeyVault.Keys: `4.10.0` -> `4.10.2`
+  - Azure.Security.KeyVault.Secrets: `4.11.0` -> `4.11.2`
+  - coverlet.msbuild: `10.0.1` -> `10.1.0`
+  - Microsoft.Kiota.Bundle: `2.0.0` -> `2.1.2`
+  - Microsoft.Build{.Framework, .Tasks.Core, .Utilities.Core}: `18.0.2` -> `18.9.6` (.NET 10), `18.11.0` (.NET 11)
+  - NuGet.Frameworks: `7.9.0` -> `8.0.0` (.NET 11)
+  - NuGet.Packaging: `7.9.0` -> `8.0.0` (.NET 11)
+
 ## [10.4.0] / 2026-10-10
 - **BREAKING CHANGES**:
   - Add `<DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>` to your GRUKE build script's `.csproj` file.
@@ -1363,7 +1386,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.4.0...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/11.0.0...HEAD
+[11.0.0]: https://github.com/gruke-build/src/compare/10.4.0...11.0.0
 [10.4.0]: https://github.com/gruke-build/src/compare/10.3.1...10.4.0
 [10.3.1]: https://github.com/gruke-build/src/compare/10.3.0...10.3.1
 [10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0

@@ -13,6 +13,7 @@ using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
 using static Nuke.Common.Constants;
 
 namespace Nuke.Common;
@@ -125,9 +126,29 @@ public abstract partial class NukeBuild
 
         var assemblyLocation = entryAssembly.Location;
         var invokedLocation = Environment.GetCommandLineArgs().First();
-        Assert.True(assemblyLocation == string.Empty || assemblyLocation == invokedLocation);
+
+        // .NET 11 upgrade: previous versions directly compared to the 2 above strings.
+        // This code has worked as-is for little over 4 years, until the release of .NET 11 in November 2026.
+        // It seems a change was made somewhere in the runtime to store the first program argument (aka its executable name) as an app host path, instead of a .dll.
+        // Simply comparing the paths without their extensions should be fine enough to reasonably assume that the 
+        // invoked binary is an app host for the assembly at the reported location.
+
+        var assemblyLocationWithoutExtension = GetFilePathWithoutExtension(assemblyLocation).ToString();
+        var invokedLocationWithoutExtension = GetFilePathWithoutExtension(invokedLocation).ToString();
+
+        Assert.True(assemblyLocation == string.Empty || assemblyLocationWithoutExtension == invokedLocationWithoutExtension);
 
         return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
+
+        static ReadOnlySpan<char> GetFilePathWithoutExtension(ReadOnlySpan<char> path)
+        {
+            var lastPeriod = path.LastIndexOf('.');
+            // edge case guard: don't return a sliced span if the file name specifically is known to not contain a period.
+            // this not being accounted for breaks GRUKE usage on Codeberg Woodpecker
+            return lastPeriod < 0 && !Path.GetFileName(path).Contains('.')
+                ? path // No extension was found
+                : path[..lastPeriod];
+        }
     }
 
     [CanBeNull]

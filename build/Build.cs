@@ -79,11 +79,11 @@ partial class Build
         });
 
     Configure<DotNetBuildSettings> ICompile.CompileSettings => _ => _
-        .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
+        .When(!ScheduledTargets.Contains(((IPublish)this).Publish), _ => _
             .ClearProperties());
 
     Configure<DotNetPublishSettings> ICompile.PublishSettings => _ => _
-        .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
+        .When(!ScheduledTargets.Contains(((IPublish)this).Publish), _ => _
             .ClearProperties());
 
     IEnumerable<(Nuke.Common.ProjectModel.Project Project, string Framework)> ICompile.PublishConfigurations =>
@@ -130,7 +130,6 @@ partial class Build
     const string FeedzNuGetSource = "https://f.feedz.io/gruke/alpha/nuget";
     const string DefaultDeploymentVersion = "9999.0.0";
 
-    [Parameter("nuget.org API key")] [Secret] readonly string PublicNuGetApiKey;
     [Parameter("feedz.io API key")] [Secret] readonly string FeedzNuGetApiKey;
 
     bool IsPublicRelease => GitRepository.IsOnMasterBranch || GitRepository.IsOnReleaseBranch;
@@ -141,8 +140,21 @@ partial class Build
             ? gl.GetNuGetSourceUrlForCurrentProject()
             : FeedzNuGetSource;
 
+    private string OidcNuGetToken
+    {
+        get
+        {
+            if (field != null)
+                return field;
+
+            field = (Host as GitHubActions)!.GetNuGetApiKeyWithOpenId(username: "Greem");
+
+            return field;
+        }
+    }
+
     string IPublish.NuGetApiKey => IsPublicRelease
-        ? PublicNuGetApiKey
+        ? OidcNuGetToken
         : Host is GitLab gl
             ? gl.JobToken
             : FeedzNuGetApiKey;
@@ -191,6 +203,8 @@ partial class Build
 
     IEnumerable<AbsolutePath> ICreateForgejoRelease.AssetFiles => NuGetPackageFiles;
 
+    string ICreateGitHubRelease.DiscussionCategory => "Announcements";
+
     Target ICreateGitHubRelease.CreateGitHubRelease => _ => _
         .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()
@@ -219,13 +233,6 @@ partial class Build
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
         .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch && Host is ForgejoActions);
-
-    Target Install => _ => _
-        .Executes(() =>
-        {
-            SuppressErrors(() => DotNet($"tool uninstall -g GreemDev.{Solution.Nuke_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g GreemDev.{Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
-        });
 
     T From<T>()
         where T : INukeBuild

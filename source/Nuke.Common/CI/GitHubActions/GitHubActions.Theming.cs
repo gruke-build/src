@@ -68,6 +68,15 @@ public partial class GitHubActions
         WriteCommand("error", message);
     }
 
+    /// <summary>
+    /// Instructs the GitHub Actions UI to censor occurrences of the specified string in the log output viewer.
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetSecret(string value)
+    {
+        WriteCommand("add-mask", value);
+    }
+
     public void WriteCommand(
         string command,
         string message = null,

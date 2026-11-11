@@ -3,22 +3,18 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System.Linq;
-using NuGet.Packaging;
-using Nuke.Common;
 using Nuke.Common.CI.GitLab;
 using Nuke.Components;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.ControlFlow;
 
 [GitLabCI(
     InvokedTargets = [nameof(IPublish.Publish)],
-    DockerImage = "mcr.microsoft.com/dotnet/sdk:10.0.201",
     UploadProducedArtifacts = true,
     ExcludedArtifacts = [ "output/packages/*.nupkg" ],
     OnlyOnPushesToBranches = [ default ]
 )]
 partial class Build
 {
+    /*
     Target DeleteGitLabCIPackages => _ => _
         .OnlyWhenStatic(() => Host is GitLab)
         .DependentFor<IPublish>()
@@ -35,5 +31,5 @@ partial class Build
             var packageIds = NuGetPackageFiles.Select(x => new PackageArchiveReader(x).NuspecReader.GetId());
             foreach (var packageId in packageIds)
                 SuppressErrors(() => DeletePackage(packageId, DefaultDeploymentVersion), logWarning: false);
-        });
+        });*/
 }

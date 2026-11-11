@@ -23,7 +23,7 @@ partial class NukeBuild
         if (IsOutputEnabled(DefaultOutput.Logo))
             Host.WriteLogo();
 
-        Host.Information($"NUKE Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
+        Host.Information($"NUKE Execution Engine {typeof(NukeBuild).Assembly.GetGrukeInformationalText()}");
         Host.Information();
     }
 
