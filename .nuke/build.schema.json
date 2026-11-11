@@ -34,7 +34,6 @@
         "CreateForgejoRelease",
         "CreateGitHubRelease",
         "CreateNotification",
-        "DeleteGitLabCIPackages",
         "DeletePackages",
         "DocFx",
         "DownloadLicenses",

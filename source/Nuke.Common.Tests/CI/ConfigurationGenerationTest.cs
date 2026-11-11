@@ -20,6 +20,7 @@ using Nuke.Common.CI.WoodpeckerCI;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
+using Nuke.Common.Utilities;
 using VerifyXunit;
 using Xunit;
 
@@ -255,6 +256,8 @@ public class ConfigurationGenerationTest
                 null,
                 new TestWoodpeckerCIAttribute
                 {
+                    Build = testBuild,
+                    DockerImage = DotNetDockerImages.Mapping[11],
                     OnlyOnBranches = [default, "feature/*"],
                     Triggers = [WoodpeckerCIEvent.Push, WoodpeckerCIEvent.PullRequest],
                     InvokedTargets = [nameof(Test), nameof(Publish)],
@@ -269,6 +272,7 @@ public class ConfigurationGenerationTest
                 new TestGitLabCIAttribute
                 {
                     Build = testBuild,
+                    DockerImage = DotNetDockerImages.Mapping[11],
                     InvokedTargets = [nameof(Publish)],
                     UploadProducedArtifacts = true,
                     ExcludedArtifacts = ["output/packages/*.nupkg"],

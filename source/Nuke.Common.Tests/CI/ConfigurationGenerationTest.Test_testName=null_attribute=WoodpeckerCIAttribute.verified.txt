@@ -27,7 +27,7 @@ clone:
 
 steps:
   - name: 'Run: Test, Publish'
-    image: mcr.microsoft.com/dotnet/sdk:10.0.404
+    image: mcr.microsoft.com/dotnet/sdk:11.0.100
     environment:
       ApiKey:
         from_secret: api_key
