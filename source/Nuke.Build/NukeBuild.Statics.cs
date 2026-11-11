@@ -125,9 +125,24 @@ public abstract partial class NukeBuild
 
         var assemblyLocation = entryAssembly.Location;
         var invokedLocation = Environment.GetCommandLineArgs().First();
-        Assert.True(assemblyLocation == string.Empty || assemblyLocation == invokedLocation);
+
+        // .NET 11 upgrade: previous versions directly compared to the 2 above strings.
+        // This code has worked as-is for little over 4 years, until the release of .NET 11 in November 2026.
+        // It seems a change was made somewhere in the runtime to store the first program argument (aka its executable name) as an app host path, instead of a .dll.
+        // Simply comparing the paths without their extensions should be fine enough to reasonably assume that the 
+        // invoked binary is an app host for the assembly at the reported location.
+        
+        Assert.True(assemblyLocation == string.Empty || GetFilePathWithoutExtension(assemblyLocation).ToString() == GetFilePathWithoutExtension(invokedLocation).ToString());
 
         return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
+
+        static ReadOnlySpan<char> GetFilePathWithoutExtension(ReadOnlySpan<char> path)
+        {
+            var lastPeriod = path.LastIndexOf('.');
+            return lastPeriod < 0 ?
+                path : // No extension was found
+                path[..lastPeriod];
+        }
     }
 
     [CanBeNull]

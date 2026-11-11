@@ -16,12 +16,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 # Project Maintenance
+- Support .NET 11 build scripts
 - Dependency Updates:
   - Azure.Security.KeyVault.Certificates: `4.9.0` -> `4.9.0`
   - Azure.Security.KeyVault.Keys: `4.10.0` -> `4.10.2`
   - Azure.Security.KeyVault.Secrets: `4.11.0` -> `4.11.2`
   - coverlet.msbuild: `10.0.1` -> `10.1.0`
   - Microsoft.Kiota.Bundle: `2.0.0` -> `2.1.2`
+  - Microsoft.Build{.Framework, .Tasks.Core, .Utilities.Core}: `18.0.2` -> `18.9.6` (.NET 10), `18.11.0` (.NET 11)
+  - NuGet.Frameworks: `7.9.0` -> `8.0.0` (.NET 11)
+  - NuGet.Packaging: `7.9.0` -> `8.0.0` (.NET 11)
 
 ## [10.4.0] / 2026-10-10
 - **BREAKING CHANGES**:

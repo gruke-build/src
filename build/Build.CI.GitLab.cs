@@ -3,16 +3,11 @@
 // https://github.com/gruke-build/src/blob/master/LICENSE
 
 using System.Linq;
-using NuGet.Packaging;
-using Nuke.Common;
 using Nuke.Common.CI.GitLab;
 using Nuke.Components;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.ControlFlow;
 
 [GitLabCI(
     InvokedTargets = [nameof(IPublish.Publish)],
-    DockerImage = "mcr.microsoft.com/dotnet/sdk:10.0.201",
     UploadProducedArtifacts = true,
     ExcludedArtifacts = [ "output/packages/*.nupkg" ],
     OnlyOnPushesToBranches = [ default ]
