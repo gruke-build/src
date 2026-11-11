@@ -71,6 +71,14 @@
     <PackageVersion Include="Microsoft.Build.Tasks.Core" Version="18.9.6" />
     <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="18.9.6" />
   </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageVersion Update="Microsoft.Build" Version="18.9.6" />
+    <PackageVersion Update="Microsoft.Build.Framework" Version="18.9.6" />
+    <PackageVersion Update="Microsoft.Build.Tasks.Core" Version="18.9.6" />
+    <PackageVersion Update="Microsoft.Build.Utilities.Core" Version="18.9.6" />
+    <PackageVersion Update="System.Security.Cryptography.Xml" Version="10.0.15" />
+    <PackageVersion Update="System.Security.Cryptography.Pkcs" Version="10.0.15" />
+  </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
     <PackageVersion Update="Microsoft.Build" Version="17.14.28" />
     <PackageVersion Update="Microsoft.Build.Framework" Version="17.14.28" />
