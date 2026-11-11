@@ -13,6 +13,7 @@ using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
 using static Nuke.Common.Constants;
 
 namespace Nuke.Common;
@@ -131,8 +132,14 @@ public abstract partial class NukeBuild
         // It seems a change was made somewhere in the runtime to store the first program argument (aka its executable name) as an app host path, instead of a .dll.
         // Simply comparing the paths without their extensions should be fine enough to reasonably assume that the 
         // invoked binary is an app host for the assembly at the reported location.
-        
-        Assert.True(assemblyLocation == string.Empty || GetFilePathWithoutExtension(assemblyLocation).ToString() == GetFilePathWithoutExtension(invokedLocation).ToString());
+
+        var assemblyLocationWithoutExtension = GetFilePathWithoutExtension(assemblyLocation).ToString();
+        var invokedLocationWithoutExtension = GetFilePathWithoutExtension(invokedLocation).ToString();
+
+        Log.Information("Assembly location: {}", assemblyLocationWithoutExtension);
+        Log.Information("Invoked location: {}", invokedLocationWithoutExtension);
+
+        Assert.True(assemblyLocation == string.Empty || assemblyLocationWithoutExtension == invokedLocationWithoutExtension);
 
         return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
 
