@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+
+## [11.0.0] / 2026-11-11
 ### New Features
 - .NET 11 support for build scripts & global tool
 - `ICreateGitHubRelease` now has a `DiscussionCategory` property.
@@ -1384,7 +1386,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CLT tasks for Git
 - Fixed background color in console output
 
-[vNext]: https://github.com/gruke-build/src/compare/10.4.0...HEAD
+[vNext]: https://github.com/gruke-build/src/compare/11.0.0...HEAD
+[11.0.0]: https://github.com/gruke-build/src/compare/10.4.0...11.0.0
 [10.4.0]: https://github.com/gruke-build/src/compare/10.3.1...10.4.0
 [10.3.1]: https://github.com/gruke-build/src/compare/10.3.0...10.3.1
 [10.3.0]: https://github.com/gruke-build/src/compare/10.2.0...10.3.0
