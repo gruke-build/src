@@ -136,9 +136,6 @@ public abstract partial class NukeBuild
         var assemblyLocationWithoutExtension = GetFilePathWithoutExtension(assemblyLocation).ToString();
         var invokedLocationWithoutExtension = GetFilePathWithoutExtension(invokedLocation).ToString();
 
-        Console.WriteLine($"Assembly location: {assemblyLocationWithoutExtension}");
-        Console.WriteLine($"Invoked location: {invokedLocationWithoutExtension}");
-
         Assert.True(assemblyLocation == string.Empty || assemblyLocationWithoutExtension == invokedLocationWithoutExtension);
 
         return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
@@ -146,9 +143,11 @@ public abstract partial class NukeBuild
         static ReadOnlySpan<char> GetFilePathWithoutExtension(ReadOnlySpan<char> path)
         {
             var lastPeriod = path.LastIndexOf('.');
-            return lastPeriod < 0 ?
-                path : // No extension was found
-                path[..lastPeriod];
+            // edge case guard: don't return a sliced span if the file name specifically is known to not contain a period.
+            // this not being accounted for breaks GRUKE usage on Codeberg Woodpecker
+            return lastPeriod < 0 && !Path.GetFileName(path).Contains('.')
+                ? path // No extension was found
+                : path[..lastPeriod];
         }
     }
 
