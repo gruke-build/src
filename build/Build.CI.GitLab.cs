@@ -19,6 +19,7 @@ using static Nuke.Common.ControlFlow;
 )]
 partial class Build
 {
+    /*
     Target DeleteGitLabCIPackages => _ => _
         .OnlyWhenStatic(() => Host is GitLab)
         .DependentFor<IPublish>()
@@ -35,5 +36,5 @@ partial class Build
             var packageIds = NuGetPackageFiles.Select(x => new PackageArchiveReader(x).NuspecReader.GetId());
             foreach (var packageId in packageIds)
                 SuppressErrors(() => DeletePackage(packageId, DefaultDeploymentVersion), logWarning: false);
-        });
+        });*/
 }
