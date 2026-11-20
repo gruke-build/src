@@ -21,6 +21,7 @@ if [[ $(uname) == "Darwin" ]]; then
     export DOTNET_CLI_ENABLEAOT=0
 fi
 export DOTNET_NOLOGO=1
+export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 export DOTNET_ROLL_FORWARD="Major"
 
 ###########################################################################
