@@ -17,6 +17,9 @@ DOTNET_INSTALL_URL="https://dot.net/v1/dotnet-install.sh"
 DOTNET_CHANNEL="STS"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+if [[ $(uname) == "Darwin" ]]; then
+    export DOTNET_CLI_ENABLEAOT=0
+fi
 export DOTNET_NOLOGO=1
 export DOTNET_ROLL_FORWARD="Major"
 
