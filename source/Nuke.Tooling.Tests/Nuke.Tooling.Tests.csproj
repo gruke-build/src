@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net11.0</TargetFramework>
     <PackageId>GreemDev.Tooling.Tests</PackageId>
+    <NoWarn>$(NoWarn);NETSDK1188</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

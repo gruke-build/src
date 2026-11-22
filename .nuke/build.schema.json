@@ -18,8 +18,8 @@
         "TeamCity",
         "Terminal",
         "TravisCI",
-        "VisualStudio",
         "VSCode",
+        "VisualStudio",
         "WoodpeckerCI"
       ]
     },

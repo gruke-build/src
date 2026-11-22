@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 
 internal class Solution(SolutionModel model, AbsolutePath path) : Nuke.Common.ProjectModel.Solution(model, path)
 {
-    public Nuke.Common.ProjectModel.Project _build => this.GetProject("_build");
     public Nuke.Common.ProjectModel.Project Nuke_Build => this.GetProject("Nuke.Build");
     public Nuke.Common.ProjectModel.Project Nuke_Build_Shared => this.GetProject("Nuke.Build.Shared");
     public Nuke.Common.ProjectModel.Project Nuke_Build_Tests => this.GetProject("Nuke.Build.Tests");
@@ -37,6 +36,7 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Nuke.Common.Pr
     public Nuke.Common.ProjectModel.Project Nuke_Utilities_Tests => this.GetProject("Nuke.Utilities.Tests");
     public Nuke.Common.ProjectModel.Project Nuke_Utilities_Text_Json => this.GetProject("Nuke.Utilities.Text.Json");
     public Nuke.Common.ProjectModel.Project Nuke_Utilities_Text_Yaml => this.GetProject("Nuke.Utilities.Text.Yaml");
+    public Nuke.Common.ProjectModel.Project _build => this.GetProject("_build");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
     <PackageId>GreemDev.Nuke.GlobalTool.Tests</PackageId>
+    <NoWarn>$(NoWarn);NETSDK1188</NoWarn>
     <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
   </PropertyGroup>
 

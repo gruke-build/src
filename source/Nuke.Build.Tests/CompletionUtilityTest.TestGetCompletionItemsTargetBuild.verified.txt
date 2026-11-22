@@ -4,8 +4,8 @@
   Host: [
     Rider,
     Terminal,
-    VisualStudio,
-    VSCode
+    VSCode,
+    VisualStudio
   ],
   NoLogo: [],
   Partition: [],

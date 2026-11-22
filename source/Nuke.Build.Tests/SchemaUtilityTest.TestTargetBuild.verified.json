@@ -6,8 +6,8 @@
       "enum": [
         "Rider",
         "Terminal",
-        "VisualStudio",
-        "VSCode"
+        "VSCode",
+        "VisualStudio"
       ]
     },
     "ExecutableTarget": {

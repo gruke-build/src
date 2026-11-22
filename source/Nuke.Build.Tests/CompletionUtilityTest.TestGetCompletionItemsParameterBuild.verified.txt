@@ -14,8 +14,8 @@
   Host: [
     Rider,
     Terminal,
-    VisualStudio,
-    VSCode
+    VSCode,
+    VisualStudio
   ],
   IntegerArrayParam: [],
   NoLogo: [],
